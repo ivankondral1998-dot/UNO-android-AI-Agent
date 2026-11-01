@@ -9,7 +9,7 @@ case "$origin" in
   https://github.com/ivankondral1998-dot/UNO-android-AI-Agent|https://github.com/ivankondral1998-dot/UNO-android-AI-Agent.git) ;;
   *) echo "Wrong GitHub origin; refusing to continue" >&2; exit 2 ;;
 esac
-if [[ -z "$UNO_GITFLIC_TOKEN" ]]; then
+if [[ -z "${UNO_GITFLIC_TOKEN:-}" ]]; then
   echo "UNO_GITFLIC_TOKEN is missing" >&2
   exit 2
 fi
