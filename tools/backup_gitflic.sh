@@ -33,6 +33,20 @@ remote_hash() {
 }
 gitflic ls-remote --heads "$url" > /dev/null || { echo "GitFlic authentication failed" >&2; exit 1; }
 
+# VERIFY confirms READ authentication only. It never modifies GitFlic.
+# GitFlic has an independent initial README/main commit; this is expected.
+if [[ "$mode" == verify ]]; then
+  echo "AUTH_OK: GitFlic accepted the repository token for read access."
+  gf_main="$(remote_hash refs/heads/main)"
+  if [[ -n "$gf_main" ]]; then
+    echo "GitFlic existing main: $gf_main (preserved, not modified)."
+  else
+    echo "GitFlic has no main branch (not modified)."
+  fi
+  echo "WRITE permission is NOT proven by this read-only check."
+  exit 0
+fi
+
 count=0
 missing=0
 while IFS= read -r source; do
