@@ -9,7 +9,9 @@
 - История Git нового UNO не должна быть историей или форком JarvisLab.
 
 ## Резервное размещение
-**GitFlic URL, сообщённый владельцем:** https://gitflic.ru/project/ivankondral/uno-andraid-ai-agent\n\n**Предполагаемый HTTPS Git remote по стандартному шаблону GitFlic:** `https://gitflic.ru/project/ivankondral/uno-andraid-ai-agent.git`. Имя действительно содержит `andraid` (как в присланной ссылке), не исправлять молча на `android`. Пока GitFlic не подтвердил Git remote командой `git ls-remote`, считать адрес непроверенным. Если GitFlic автоматически создал README, независимые коммиты надо сохранить и отдельно разрешить конфликт историй; не форсировать push.
+**GitFlic URL, сообщённый владельцем:** https://gitflic.ru/project/ivankondral/uno-andraid-ai-agent
+
+**Предполагаемый HTTPS Git remote по стандартному шаблону GitFlic:** `https://gitflic.ru/project/ivankondral/uno-andraid-ai-agent.git`. Имя действительно содержит `andraid` (как в присланной ссылке), не исправлять молча на `android`. Пока GitFlic не подтвердил Git remote командой `git ls-remote`, считать адрес непроверенным. Если GitFlic автоматически создал README, независимые коммиты надо сохранить и отдельно разрешить конфликт историй; не форсировать push.
 
 Внутри локального клона UNO:
 1. Проверить `git remote -v` и авторизацию на обеих площадках.
