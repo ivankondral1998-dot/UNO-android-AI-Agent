@@ -2,8 +2,7 @@
 # Does not force-push, delete refs, use GitHub Actions, or store credentials.
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory = $true)]
-    [string]$GitFlicUrl,
+    [string]$GitFlicUrl = "https://gitflic.ru/project/ivankondral/uno-andraid-ai-agent.git",
     [string]$RepoPath = ".",
     [switch]$Execute
 )
