@@ -1,0 +1,55 @@
+# Android / Gradle
+.gradle/
+**/build/
+local.properties
+*.hprof
+*.log
+captures/
+.idea/
+*.iml
+
+# Signing material, credentials, environment
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+*.asc
+.env
+.env.*
+!.env.example
+secrets/
+private/
+*.credentials
+
+# Python research environments / caches
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Device / runtime output
+*.apk
+*.aab
+*.apks
+*.profraw
+*.profdata
+*.dump
+*.trace
+captures/
+artifacts/
+local-data/
+*.sqlite-journal
+
+# Operating systems
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Do NOT ignore trained model weights indiscriminately; decide per model
+# whether it belongs in versioned Git, LFS or private artifact storage.
