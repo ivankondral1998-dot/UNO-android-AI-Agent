@@ -1,6 +1,6 @@
 # UNO — размещение исходников и резервное зеркало
 
-**Статус на 2026-11-01:** основной приватный репозиторий GitHub создан; GitFlic **пока не создан/не подключён**. Никакого утверждения о синхронизации до сравнения refs.
+**Статус на 2026-11-01:** GitHub существует. Владелец сообщил адрес второго приватного репозитория GitFlic, однако его доступность, Git-ветки и синхронизация ещё **не проверены**. Доступ к приватному GitFlic из текущего чата отсутствует. Нельзя заявлять о готовом зеркале до сравнения refs.
 
 ## Основной источник
 - GitHub: `https://github.com/ivankondral1998-dot/UNO-android-AI-Agent`.
@@ -9,7 +9,7 @@
 - История Git нового UNO не должна быть историей или форком JarvisLab.
 
 ## Резервное размещение
-Создать **пустой приватный** репозиторий `uno-android` на GitFlic, без README и самостоятельной первой истории. Его фактический SSH/HTTPS URL зафиксировать после создания. Не выдумывать ссылку.
+**GitFlic URL, сообщённый владельцем:** https://gitflic.ru/project/ivankondral/uno-andraid-ai-agent\n\n**Предполагаемый HTTPS Git remote по стандартному шаблону GitFlic:** `https://gitflic.ru/project/ivankondral/uno-andraid-ai-agent.git`. Имя действительно содержит `andraid` (как в присланной ссылке), не исправлять молча на `android`. Пока GitFlic не подтвердил Git remote командой `git ls-remote`, считать адрес непроверенным. Если GitFlic автоматически создал README, независимые коммиты надо сохранить и отдельно разрешить конфликт историй; не форсировать push.
 
 Внутри локального клона UNO:
 1. Проверить `git remote -v` и авторизацию на обеих площадках.
@@ -24,8 +24,8 @@
 git clone https://github.com/ivankondral1998-dot/UNO-android-AI-Agent.git D:\Projects\UNO
 Set-Location D:\Projects\UNO
 git switch feature/uno-repository-foundation-20261101
-.\tools\sync-gitflic.ps1 -GitFlicUrl "<реальный URL из GitFlic>"
-.\tools\sync-gitflic.ps1 -GitFlicUrl "<реальный URL из GitFlic>" -Execute
+.\tools\sync-gitflic.ps1
+.\tools\sync-gitflic.ps1 -Execute
 ```
 
 Если PowerShell блокирует запуск скриптов, использовать `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\sync-gitflic.ps1 ...` только для этого запуска и после просмотра содержимого. Не менять системную политику и настройки ОС.
