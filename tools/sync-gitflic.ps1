@@ -27,8 +27,8 @@ $origin = (Invoke-Git -GitArgs @("remote", "get-url", "origin") | Select-Object 
 if ($origin -notmatch "github\.com[:/]ivankondral1998-dot/UNO-android-AI-Agent(\.git)?$") {
     throw "Unexpected origin URL. Refusing to mirror a different repository: $origin"
 }
-if ($GitFlicUrl -notmatch "^(https://gitflic\.ru/|git@gitflic\.ru:)") {
-    throw "GitFlicUrl must be a repository HTTPS or SSH URL at gitflic.ru."
+if ($GitFlicUrl -notmatch "^(https://gitflic\.ru/project/ivankondral/uno-andraid-ai-agent(\.git)?|git@gitflic\.ru:ivankondral/uno-andraid-ai-agent(\.git)?)$") {
+    throw "Unexpected destination: expected ivankondral/uno-andraid-ai-agent at gitflic.ru."
 }
 $existingNames = @(Invoke-Git -GitArgs @("remote"))
 $hasRemote = $existingNames -contains "gitflic"
