@@ -1,0 +1,8 @@
+[project]
+name = "uno-math-reference"
+version = "0.1.0"
+requires-python = ">=3.10"
+description = "UNO mathematical reference and executable acceptance gates; host-only research"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

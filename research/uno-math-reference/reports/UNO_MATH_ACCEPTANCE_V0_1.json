@@ -1,0 +1,38 @@
+{
+  "file_sha256": {
+    "UNO_SYSTEM_FORMULA.md": "abe61311b62f39cf176648aa6315d21e05fe471ab77d710e566774847a059b7b",
+    "reference.py": "2a542df647639af36e014eec16f0f84ce248ed11fad7c3b30a673e01b826040c",
+    "test_math_contract.py": "83ab4aa82d9ce6904f4fa21bbc5bc88597b3b137cc16ef04023e7ef2ec3eb86c"
+  },
+  "not_proven": [
+    "Android device",
+    "energy joules",
+    "end-to-end language",
+    "full neural weights training",
+    "evolution",
+    "adversarial security"
+  ],
+  "numeric_checks": {
+    "budget_violations": 0,
+    "budgets_exercised": 600,
+    "holdout_accuracy": 1.0,
+    "holdout_correct": 147,
+    "holdout_count": 147,
+    "max_central_difference_gradient_error": 1.9243739934893256e-10,
+    "minimum_holdout_accuracy": 0.96,
+    "threshold": 1e-08
+  },
+  "pass_percentage_of_declared_gates": 100,
+  "platform": "Linux x86_64",
+  "python_version": "3.13.5",
+  "report_schema": "UNO_MATH_ACCEPTANCE_V0_1",
+  "scope": "finite-dimensional host reference; no Android, general intelligence or physical energy proof",
+  "status": "HOST_MATH_REFERENCE_PASS",
+  "unit_tests": {
+    "discovered": 46,
+    "parameterized_subcases_note": "37 verified by pytest separate run",
+    "passed": 46,
+    "return_code": 0,
+    "status": "PASS"
+  }
+}
