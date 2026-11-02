@@ -243,7 +243,8 @@
       "bytes": 681255,
       "sha256": "3420edf9cb7b2170b5c5e0938d43fc3ab896061a5c5fb16229d9587c2ea27987",
       "binary_not_mirrored": false,
-      "mirrored_as_binary_blob": true
+      "mirrored_as_binary_blob": true,
+      "git_blob_sha1": "0f67e3f4b6f905fd90f3d9da190afc885ad257ca"
     },
     {
       "original": "SOURCES/ASTRA_SUPPORT/FINAL_PACKAGE_MANIFEST.json",
@@ -314,7 +315,8 @@
       "bytes": 5722,
       "sha256": "55ee7134c8e84a809ed463d671f209e0c25caa407e993be6bf09316211ad9299",
       "binary_not_mirrored": false,
-      "mirrored_as_binary_blob": true
+      "mirrored_as_binary_blob": true,
+      "git_blob_sha1": "2eaa4b138a2f7f96e8c3ea52b37ef5c383c4f426"
     },
     {
       "original": "SOURCES/GROK_R53_SPEC_ORIGINAL.md",
@@ -574,7 +576,8 @@
       "bytes": 1793119,
       "sha256": "639708aff644f562c98564b20311262c96105345637e5f3a6566d55c418ca50d",
       "binary_not_mirrored": false,
-      "mirrored_as_binary_blob": true
+      "mirrored_as_binary_blob": true,
+      "git_blob_sha1": "3be368a9b7f13f0ae194fe19a72ca5bed56991ef"
     }
   ],
   "verified_at": "2026-11-02",
