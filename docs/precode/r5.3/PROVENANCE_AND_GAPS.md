@@ -11,3 +11,7 @@ Transferred via verified text reads:
 Integrity checks completed in this transfer: 11 original Astra files matched reference UTF-8 byte lengths; GitHub blob SHA must be checked against original bytes where exact preservation matters. No production code, archive deletion, main overwrite or CI runs.
 
 Do not claim all documents have been placed here. Subsequent exact-byte intake can fill these gaps without altering historical copies.
+
+## Машинная проверка
+
+[VERIFIED_SOURCE_HASHES.json](VERIFIED_SOURCE_HASHES.json) содержит SHA-256 и Git blob SHA-1 11 точных текстовых источников Astra, сверенных с оригинальным composite ZIP; эти 11 также прочитаны обратно из GitHub и проверены по blob SHA. [AGENT_PHASE_GATE.json](AGENT_PHASE_GATE.json) задаёт машинный статус G4, без утверждения владельца. Остальные файлы остаются вне этого сертификата.
