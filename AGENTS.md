@@ -1,3 +1,9 @@
+# CURRENT UNO AGENT ROUTE — 2026-11-02
+
+Read [docs/AGENT_START_HERE.md](docs/AGENT_START_HERE.md) first, then [docs/CURRENT_TASK.md](docs/CURRENT_TASK.md) and [docs/precode/r5.3/README.md](docs/precode/r5.3/README.md). R5.3 is NOT owner-approved; do not start production code. The original rules below are retained as historical and continuing constraints.
+
+---
+
 # UNO — правила разработки для людей и AI-агентов
 
 Проект: **UNO (Unified Neural Organism)** — новый независимый коммерческий Android AI-агент.

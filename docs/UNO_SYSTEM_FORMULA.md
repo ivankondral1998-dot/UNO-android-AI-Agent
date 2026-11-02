@@ -1,3 +1,5 @@
+> **Research-origin document, NOT complete current R5.3 normative math.** See [R5.3](precode/r5.3/README.md) and [W4/memory errata](precode/r5.3/ERRATA_AND_INVARIANTS.md). The historical formula below is retained unchanged after this notice.
+
 # UNO Core — исследовательская формула и критерии новой реализации
 
 **Статус: новая исследовательская программа, код рабочего UNO Core ещё не написан.** Источник концепции — исходная идея UNO и первичный Jarvis V21/JNO, но это **не копия старого JNO**. Не путать гипотезы с подтверждённой функциональностью.

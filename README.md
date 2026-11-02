@@ -1,3 +1,5 @@
+> **Current pre-code candidate R5.3 (NOT OWNER APPROVED).** Agents must start from [docs/AGENT_START_HERE.md](docs/AGENT_START_HERE.md), [docs/CURRENT_TASK.md](docs/CURRENT_TASK.md), and the [R5.3 source map](docs/precode/r5.3/README.md). The original README below predates the candidate. Do not infer trained weights, code permission, or Android test status.
+
 # UNO — Unified Neural Organism
 
 > UNO — Unified Neural Organism. A commercial, fully offline Android AI agent built around a unified adaptive neural architecture, new trainable weights, plastic connections, and verified experience-based learning.
