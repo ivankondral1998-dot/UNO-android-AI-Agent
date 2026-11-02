@@ -30,5 +30,12 @@
     "production_code",
     "start_training",
     "owner_signoff"
-  ]
+  ],
+  "source_package_files": 64,
+  "source_package_text_files_verified": 61,
+  "source_package_binary_blobs_verified": 3,
+  "source_package_transfer_complete": true,
+  "source_package_path": "docs/precode/r5.3/source-package/",
+  "source_package_manifest": "docs/precode/r5.3/SOURCE_PACKAGE_IMPORT_MANIFEST.json",
+  "next_step": "OWNER_DECISIONS_AND_G4_SCOPE_REVIEW"
 }

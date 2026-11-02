@@ -1,16 +1,25 @@
-# UNO: обязательная точка входа для всех агентов
+# UNO — MANDATORY FIRST READ FOR EVERY AGENT
 
-**Статус 2026-11-02: R5.3 — кандидат. Владелец НЕ утверждал PRE-CODE BASELINE и НЕ разрешал production-код.**
+**Current phase G4: PRECODE CANDIDATE R5.3. Owner approval = FALSE. Production code authorization = FALSE.** Read this every time you resume. This applies to GPT, Grok, Codex, Work and human maintainers.
 
-## Читать строго в следующем порядке
-1. [CURRENT_TASK.md](CURRENT_TASK.md) — актуальная задача.
-2. [STATUS.md](STATUS.md) — факты и запреты.
-3. [precode/r5.3/README.md](precode/r5.3/README.md) — навигация по математике.
-4. [precode/r5.3/SOURCE_PRIORITY.md](precode/r5.3/SOURCE_PRIORITY.md) — приоритет конфликтующих источников.
-5. [precode/r5.3/ERRATA_AND_INVARIANTS.md](precode/r5.3/ERRATA_AND_INVARIANTS.md) — исправления и границы теорем.
-6. Полный документ соответствующей подсистемы в [sources/astra](precode/r5.3/sources/astra/), а не сводка Grok.
-7. [GATE_REGISTER.md](precode/r5.3/GATE_REGISTER.md) и [OWNER_DECISIONS.md](precode/r5.3/OWNER_DECISIONS.md) — что остаётся открытым.
+## Exact read order (do not substitute summaries)
 
-Не путать UNO с Jarvis/JNO. Исторический код исследовательской JNO — только свидетельство, не новый мозг UNO. Система должна работать локально без обязательного интернета. Один общий нейронный оператор, не набор независимых рассуждающих агентов. Внешние Android-разрешения обязательны; прежний OwnerGate не обязателен как компонент.
+1. [CURRENT_TASK.md](CURRENT_TASK.md) and [STATUS.md](STATUS.md): actual phase, permissions and remaining gates.
+2. [R5.3 package start](precode/r5.3/source-package/00_START_HERE.md).
+3. [NORMATIVE/01 — source hierarchy](precode/r5.3/source-package/NORMATIVE/01_SOURCE_HIERARCHY_AND_CONTRACT_INDEX.md).
+4. [NORMATIVE/02 — formal corrections](precode/r5.3/source-package/NORMATIVE/02_FORMAL_CORRECTIONS_AND_LIMITS.md).
+5. [NORMATIVE/03 — subsystems](precode/r5.3/source-package/NORMATIVE/03_CONSOLIDATED_SUBSYSTEM_CONTRACTS.md).
+6. [NORMATIVE/04 — individual D/X/B/M gates](precode/r5.3/source-package/NORMATIVE/04_ALL_GATES_D_X_B_M.md).
+7. [NORMATIVE/05 — owner decisions](precode/r5.3/source-package/NORMATIVE/05_OWNER_DECISIONS_AND_FUTURE_EVIDENCE.md).
+8. [NORMATIVE/06 — verification boundaries](precode/r5.3/source-package/NORMATIVE/06_VERIFICATION_BOUNDARIES.md).
+9. Read the full matching Astra, R5.2 and evidence files in [source-package/SOURCES/](precode/r5.3/source-package/SOURCES/). Never implement from one-page summaries.
+10. Check the [machine-verifiable 64-file manifest](precode/r5.3/SOURCE_PACKAGE_IMPORT_MANIFEST.json), [phase gate](precode/r5.3/AGENT_PHASE_GATE.json), and [R5.3 index](precode/r5.3/README.md).
 
-Не удалять материалы. Не изменять main, не делать merge, force push, rebase/reset, не запускать GitHub Actions/CI, не публиковать и не создавать production-код без отдельного согласия владельца. Различать PROVEN_LOCAL, CONDITIONAL, SPECIFIED_UNTESTED и REQUIRES_DATA. Никогда не утверждать baseline автоматически.
+## Non-negotiable boundaries
+
+- UNO is one local neural organism (one shared operator) and has **new trained weights only after training occurs**; no cloud/OpenAI/OAuth/internet dependency.
+- Legacy Jarvis/JNO is history, NOT the UNO brain. Android OS permissions and authority checks remain external trust boundaries; never impose old OwnerGate as mandatory implementation.
+- R5.3 is candidate documentation, NOT validated model intelligence, proven global stability, tested APK, measured Samsung A52 performance or final baseline.
+- An agent cannot approve on behalf of the owner. PRE-CODE BASELINE and transition G4 → G5 remain explicitly **NOT AUTHORIZED**.
+- Do not delete files, rewrite history, force-push, change main, merge to main, run GitHub Actions, write production code or start training without separate explicit authorization.
+- Historical APPROVED text in an earlier agent report is NOT an owner decision. Preserve source history; propose corrections in new versioned documents with evidence.

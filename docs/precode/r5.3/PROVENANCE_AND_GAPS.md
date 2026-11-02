@@ -1,17 +1,15 @@
-# Evidence custody and repository completeness
+# Repository intake audit — UNO R5.3 (2026-11-02)
 
-Source composite: UNO_R53_COMPLETE_COMPOSITE_CANDIDATE_2026-11-02.zip (64 total files), SHA256 ff5dc6fb54ab57d2d5fc687fd61d3c5d848665eb4b99ee71a1da3c759230f77c. Original Astra final archive SHA256 3420edf9cb7b2170b5c5e0938d43fc3ab896061a5c5fb16229d9587c2ea27987 (historical standalone). This branch is a **text-document mirror of checked sources**, not a raw 64/64 clone.
+**Intake result: 64/64 payload files placed in separate documentation branch under [source-package/](source-package/), no deletions and no main changes.**
 
-Transferred via verified text reads:
-- Astra full source: ASTRA_00…08 and ASTRA_11/12 (11 matched expected UTF-8 byte counts).
-- R4 findings/status extracts, R5.1 math/proof excerpts, Grok Stage reviews, GPT intake/re-audit (15).
-- The following Astra items had source extraction length mismatch and were intentionally NOT mislabeled as byte-identical: ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md, ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md, ASTRA_FINAL_README_AND_DECISION.md, ASTRA_REVISION_LOG.md. Their exact originals still exist in the composite ZIP.
-- The full R5.2 address-level documents, original 9-KB Grok R5.3 summary, auxiliary tensor JSON, machine proofs, nested archives, and composite SHA manifest are present in the standalone composite ZIP but NOT completely mirrored here. Agent MUST request exact source before claiming it has all evidence.
+Source composite ZIP (outside repo): SHA256 `ff5dc6fb54ab57d2d5fc687fd61d3c5d848665eb4b99ee71a1da3c759230f77c`. The ZIP has 64 entries: 61 UTF-8 text/JSON/script files and 3 binary nested ZIP archives. Original SHA256_MANIFEST.json contains checksums for 63 other entries; it intentionally omits itself.
 
-Integrity checks completed in this transfer: 11 original Astra files matched reference UTF-8 byte lengths; GitHub blob SHA must be checked against original bytes where exact preservation matters. No production code, archive deletion, main overwrite or CI runs.
+Checks applied:
+- 63/63 expected payload SHA256 and size checked against source ZIP manifest before transfer.
+- 61/61 textual files fetched BACK from GitHub and verified using source-derived Git blob SHA-1; exact bytes confirmed.
+- 3/3 binary ZIP Git blobs created using exact base64 payload, and GitHub returned the expected Git blob SHA-1; tree paths committed.
+- No source-package file content rewritten; older copies under sources/astra and audit remain as provenance.
 
-Do not claim all documents have been placed here. Subsequent exact-byte intake can fill these gaps without altering historical copies.
+[Complete 64-file path/hash ledger](SOURCE_PACKAGE_IMPORT_MANIFEST.json). [Candidate source hierarchy](source-package/NORMATIVE/01_SOURCE_HIERARCHY_AND_CONTRACT_INDEX.md). [Machine-readable gate](AGENT_PHASE_GATE.json).
 
-## Машинная проверка
-
-[VERIFIED_SOURCE_HASHES.json](VERIFIED_SOURCE_HASHES.json) содержит SHA-256 и Git blob SHA-1 11 точных текстовых источников Astra, сверенных с оригинальным composite ZIP; эти 11 также прочитаны обратно из GitHub и проверены по blob SHA. [AGENT_PHASE_GATE.json](AGENT_PHASE_GATE.json) задаёт машинный статус G4, без утверждения владельца. Остальные файлы остаются вне этого сертификата.
+Remaining *engineering and governance* gaps, not file-transfer gaps: mathematical conditionality/adaptive selector, device/quality data, offline authorities, owner O01–O08, training weights, Android tests, and owner-approved baseline. No full formal proof or implementation is claimed.

@@ -1,20 +1,10 @@
-# Приоритет источников и предотвращение коллизий
+# Source priority — full documentary R5.3 candidate
 
-Статус: КАНДИДАТ редакционной иерархии, а не подписанный математический baseline.
+1. **The owner** may approve product requirements, choose O01–O08 and explicitly authorize implementation. No such approval is currently recorded. Historical agent "APPROVED" does not count.
+2. [source-package/NORMATIVE/01](source-package/NORMATIVE/01_SOURCE_HIERARCHY_AND_CONTRACT_INDEX.md) sets the COMPLETE proposed hierarchy; [NORMATIVE/02](source-package/NORMATIVE/02_FORMAL_CORRECTIONS_AND_LIMITS.md) limits claims and specific errata. Both are CANDIDATE, not signed.
+3. For W4, exact memory, WAKE/SENSOR and offline/masks, address-level [R5.2 corrections](source-package/SOURCES/R52/) are more specific than generic/full [Astra Final](source-package/SOURCES/ASTRA_CURRENT/); R5.1 is underlying historical evidence. Always preserve the exact hypotheses and counterexamples.
+4. All other full mathematical contracts come from [Astra Final](source-package/SOURCES/ASTRA_CURRENT/), plus machine tensor manifest at [ASTRA_SUPPORT/evidence](source-package/SOURCES/ASTRA_SUPPORT/evidence/), not the short Grok R5.3.
+5. Grok Stage 1/2, GPT audits, R4 and Work are historical independent evidence and must not silently override complete mathematics.
+6. [NORMATIVE/04](source-package/NORMATIVE/04_ALL_GATES_D_X_B_M.md) contains D01–10, X01–12, B01–14, M01–44. Each has its own status; merely having a document is not PASS.
 
-1. Явное документированное решение владельца, включая отказ от утверждения, имеет высший приоритет. Исторические слова APPROVED/COMPLETE от Grok или GPT не имеют силы.
-2. Адресные уточнения из ERRATA_AND_INVARIANTS.md и подробно документированные R5.2 amendments применяются только к перечисленным claims, не заменяют математическую базу целиком.
-3. Остальные полные уравнения, tensor ABI, gradient definitions, training scheme, resources, memory and NCR-EVO — финальные ASTRA_01…12. Заимствованная краткая спецификация Grok R5.3 не может сокращать эти контракты.
-4. R4, R5.1, Grok Stage 1/2, GPT re-audits — evidence/objections, а не новая runtime-норма.
-5. Work V1.1/V2.2, legacy JNO/Jarvis — provenance/history; нельзя восстанавливать отвергнутые универсальные claims.
-
-Формальные обозначения:
-- d: ширина; b=64; n_b=d/b.
-- Mask_{t,k}: двоичная вычислительная маска блока; не memory store.
-- MemStore_t: исходные и смысловые записи памяти.
-- Theta: медленные весовые тензоры; P: отдельная online-коррекция.
-- q (S6): длина маски, целое от 1 до n_b; q_j (feasibility): ещё не утверждённый порог качества группы.
-- c_j: coverage floor (0.9 — кандидат); pi_j>0: probability of class in sampling mixture.
-- q_R, q_Y: наблюдаемость и успех при наблюдаемости; не доказательство причинного эффекта.
-
-Правило при конфликте: указать обе точные цитаты/пути/формулы, статус и proposed erratum. Не выбирать молча более новый по дате и не заменять полный текст Astra однострочным резюме.
+No silent conflict resolution. When two sources differ, cite precise sections and write a candidate erratum. Source-package content remains immutable.

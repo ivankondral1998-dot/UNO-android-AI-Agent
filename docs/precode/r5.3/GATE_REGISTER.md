@@ -1,22 +1,12 @@
-# D/X/B/M gate register — machine/agent reading rules
+# Individual mathematical and engineering obligations (80 keys)
 
-All proof and design obligation families MUST be individually retained. Total keys: D01–D10 (10), X01–X12 (12), B01–B14 (14), M01–M44 (44) = **80**. Existence of a key is not PASS.
+**Canonical detailed register**: [source-package/NORMATIVE/04_ALL_GATES_D_X_B_M.md](source-package/NORMATIVE/04_ALL_GATES_D_X_B_M.md).
 
-- D source: sources/astra/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md and audit/r4/03_D01_D10_STATUS.md.
-- X: audit/r4/04_X01_X12_STATUS.md plus ASTRA_08 proof obligations.
-- B: audit/r51/05_D_X_B_GATE_MATRIX.md plus composite R5.3 owner list.
-- M: ASTRA_09 complete in original 64-file archive; not yet uploaded byte-identically to branch. Never auto-generate a falsely complete matrix.
+- D01–D10: 10 design/engineering duties.
+- X01–X12: 12 cross-system proof issues.
+- B01–B14: 14 later engineering/source gates.
+- M01–M44: 44 original Work/Astra claims, preserved including historical FAIL and conditional conclusions.
 
-Recommended status enum: PROVEN_LOCAL / CONDITIONAL / SPECIFIED_UNTESTED / REQUIRES_DATA / OWNER_DECISION / STILL_FAIL / NOT_AUTHORIZED. Do NOT translate all CONDITIONAL to PASS.
+All original M-claim records are in [ASTRA_09](source-package/SOURCES/ASTRA_CURRENT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md). The precise historical tests and machine evidence are in [ASTRA_SUPPORT](source-package/SOURCES/ASTRA_SUPPORT/).
 
-High-priority unresolved or conditional:
-- W4: corrected fixed-mask theorem; global adaptive selector cannot be claimed.
-- Memory: exact retrieval semantics and fault correctness need design/implementation gates.
-- Acoustic WAKE/SENSOR: owner choice and independent data/device oracles.
-- LR2/H2 alternative manifests and dequant parity; trained weights absent.
-- Android/SAF strict offline; owner consent model; STOP boundary; result causality.
-- Quality per class, licensed datasets, locked evaluation, peak RAM/energy/latency A52.
-- NCR-EVO independent generalization/performance and regeneration claims.
-- G4 approval and G5 code permission: explicitly NOT AUTHORIZED.
-
-Agent must consult primary documents and proof status for each ID, record evidence path, prior status, changed proof or counterexample, and next gate. This file is an INDEX, not an invented PASS matrix.
+Recognize PROVEN_LOCAL / CONDITIONAL / SPECIFIED_UNTESTED / REQUIRES_DATA / OWNER_DECISION / FAIL as distinct values. No blanket PASS. Device runtime and experimental safety cannot be closed with a Markdown file. Do not mark G4 owner signoff or G5 code permission complete.

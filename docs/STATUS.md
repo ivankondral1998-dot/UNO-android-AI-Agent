@@ -1,19 +1,19 @@
-# UNO — статус, который должен знать каждый агент
+# UNO — VERIFIED STATUS as of 2026-11-02
 
-| Объект | Статус |
+| Field | State |
 |---|---|
-| Концепция единого полностью локального организма | Определена |
-| Полная исходная математика Astra | Существует; условные доказательства |
-| R5.3 composite + частные errata | PRECODE_CANDIDATE |
-| Owner-approved PRE-CODE BASELINE | **НЕТ** |
-| Разрешение на производственный код | **НЕТ** |
-| Обученные новые веса UNO | НЕТ |
-| Испытания на Samsung A52 | НЕТ |
-| Android APK UNO | НЕТ |
-| Release-ready | НЕТ |
+| Research/precode phase | G4 |
+| Composite R5.3 source package in GitHub documentation branch | COMPLETE 64/64, exact blobs verified |
+| Mathematical specification | PRECODE_CANDIDATE; local proofs/known counterexamples |
+| OWNER_APPROVED_PRECODE | **FALSE** |
+| PRODUCTION_CODE_AUTHORIZED | **FALSE** |
+| Trained new UNO weights | NONE |
+| Samsung Galaxy A52 physical validation | NOT DONE |
+| Android executable/APK UNO | NOT BUILT |
+| Commercial release | NOT AUTHORIZED |
 
-G4 — спецификация и решения. G5 — реализация, обучение и испытания, только после разрешения. G6 — подтверждённый коммерческий выпуск.
+Known unresolved substantive gates: owner choices O01–O08; adaptive selector lacks global Lipschitz guarantee, weighted memory summaries noninjective; RetrieveExact, WAKE acoustic, SENSOR typed oracle and strict offline SAF need future validation. Training data/licenses and locked evaluation are missing. B2 counts and theoretical MACs do not establish A52 latency, peak PSS, energy or heat.
 
-Основные блокеры: адаптивная глобальная устойчивость недоказана; exact memory ABI и fault cases ещё не реализованы; акустический WAKE не закрыт существующим metadata head; SENSOR требует единиц/TTL/oracles; нет лицензированных корпусов, locked holdout, измерений A52; O01–O08 не подписаны. Корректные tensor counts и совпадение SHA не доказывают качество интеллектa.
+Source integrity is verified; this is NOT a proof that all underlying equations, model quality or operating-system behavior are correct.
 
-ПРИМЕЧАНИЕ: historical Grok documents may contain false APPROVED wording. Право утверждения — только у владельца.
+Agent source: [AGENT_START_HERE.md](AGENT_START_HERE.md); source checks: [SOURCE_PACKAGE_IMPORT_MANIFEST.json](precode/r5.3/SOURCE_PACKAGE_IMPORT_MANIFEST.json).
