@@ -1,0 +1,76 @@
+name: UNO N0-07 Tiny F Android APK (one owner-requested research build)
+
+on:
+  push:
+    branches:
+      - docs/uno-lab-research-handoff-20261105
+    paths:
+      - '.github/workflows/uno-n0-07-android-research.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  compile-sign-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout isolated research branch
+        uses: actions/checkout@v4
+      - name: Set Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Check frozen source archive and unpack
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "0bf6758020b22e80ba07dfaef7c487d66f2d3cf613489feda090c49f9b2316fc  research/uno-n0-07/source_bundle.tar.xz" | sha256sum --check
+          mkdir -p research/uno-n0-07/work
+          tar -xJf research/uno-n0-07/source_bundle.tar.xz -C research/uno-n0-07/work
+          (cd research/uno-n0-07/work && sha256sum --check SOURCE_MANIFEST_SHA256.txt)
+      - name: Run frozen host checks, not an Android device test
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd research/uno-n0-07/work
+          chmod +x run_host.sh
+          ./run_host.sh | tee results/CI_HOST_TEST_RESULT.txt
+          grep -q '^CHECKS_TOTAL=8434$' results/CI_HOST_TEST_RESULT.txt
+          grep -q '^FROZEN_AGGREGATE tinyF=99/240 oldN005=144/240 persistence=143/240 Markov=150/240$' results/CI_HOST_TEST_RESULT.txt
+      - name: Install Android SDK 35 and build-tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null || true
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'platforms;android-35' 'build-tools;35.0.0'
+      - name: Build and sign standalone research APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd research/uno-n0-07/work
+          chmod +x build_android_with_sdk.sh
+          ./build_android_with_sdk.sh | tee android/build/CI_BUILD_REPORT.txt
+          APK=android/build/UNO_N0_07_TINY_F_RESEARCH.apk
+          test -s "$APK"
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK" | grep -F 'Verified using v2 scheme (APK Signature Scheme v2): true'
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK" | grep -F 'Verified using v3 scheme (APK Signature Scheme v3): true'
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep -F "package: name='org.unovyra.n007'"
+          if "$ANDROID_HOME/build-tools/35.0.0/aapt" dump permissions "$APK" | grep -F 'android.permission.INTERNET'; then echo 'Unexpected INTERNET permission'; exit 1; fi
+          unzip -t "$APK" | grep -F 'No errors detected'
+          sha256sum "$APK" | tee android/build/CI_APK_SHA256.txt
+          stat -c '%s bytes' "$APK" | tee android/build/CI_APK_SIZE.txt
+          printf 'HOST_TESTED=YES\nANDROID_BUILT=YES\nDEVICE_VERIFIED=NO\nRESEARCH_ONLY=YES\n' > android/build/CI_STATUS.txt
+      - name: Upload private signed APK (not a release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: UNO-N0-07-Tiny-F-Android-Research-APK
+          path: |
+            research/uno-n0-07/work/android/build/UNO_N0_07_TINY_F_RESEARCH.apk
+            research/uno-n0-07/work/android/build/CI_APK_SHA256.txt
+            research/uno-n0-07/work/android/build/CI_APK_SIZE.txt
+            research/uno-n0-07/work/android/build/CI_STATUS.txt
+            research/uno-n0-07/work/android/build/CI_BUILD_REPORT.txt
+            research/uno-n0-07/work/results/CI_HOST_TEST_RESULT.txt
+          retention-days: 30
