@@ -16,3 +16,5 @@ Goal, still open, current contract only:
 An M update that is not nearest-prototype storage. No Theta edit.
 
 Next: Grok fetches all five files in TRANSFER_MEMORY_FIXTURE_GPT6_20261105.md, verifies bytes, runs both scripts and independently attacks the bounded-key 24-flip envelope and non-ambiguous memory shifts. No training or Theta edit.
+
+Meeting requested by owner: GitHub issue #4 (GPT-6/Grok/Astra). Exchange independent evidence and an eventual single owner question via issue comments, not owner relay. This is a discussion surface only, not a second normative baseline or queue. Record verified conclusions back in UNO_LAB_REPORTS.txt. No G4/G5 approval.
