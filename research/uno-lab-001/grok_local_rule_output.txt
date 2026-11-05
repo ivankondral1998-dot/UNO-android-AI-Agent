@@ -1,0 +1,16 @@
+PRIVATE_BEFORE [2.0, 0.0]
+sealed_old y=1 q=0.897549 y=0 q=0.102451
+sealed_new y=1 q=0.500805 y=0 q=0.499195
+PRIVATE_BOTH [2.0, 2.0]
+open_old y=1 q=0.902226 y=0 q=0.097774
+open_new y=1 q=0.902226 y=0 q=0.097774
+sealed_old y=1 q=0.897549 y=0 q=0.102451
+sealed_new y=1 q=0.897549 y=0 q=0.102451
+PRIVATE_SWAP [2.0, -2.0]
+sealed_new_original_labels y=1 q=0.103045 y=0 q=0.896955
+SHARED_BEFORE 2.0
+sealed_old y=1 q=0.897549 y=0 q=0.102451
+sealed_new y=0 q=0.887789 y=1 q=0.112211
+SHARED_AFTER [0.051481]
+sealed_old y=1 q=0.519811 y=0 q=0.480189
+sealed_new y=0 q=0.518139 y=1 q=0.481861

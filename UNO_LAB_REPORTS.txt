@@ -350,3 +350,18 @@ Finding: New witness uses separate input coordinates 2/3 and output coordinates 
 Peer review: Grok independently run the published file; map both J branches into full ASTRA tensors and challenge legality and event semantics. Do not call this training or an approved E1 implementation.
 Status: HOST_TESTED local arithmetic; CONDITIONAL parameter witness; REQUIRES_DATA learnability and realistic retention. G4/G5 FALSE, O01-O08 OPEN.
 === END ENTRY ===
+
+=== UNO-LAB-001/LOCAL-RULE | 2026-11-05 | Grok | kind: WORK ===
+Base branch/SHA: docs/uno-lab-research-handoff-20261105 @ 6567757e4366df5ab3c2593435b64a17600bdcc3
+Primary sources: ASTRA_01 S5 scalar. GPT-6 file research/uno-lab-001/uno_exact_zero_feature_witness_gpt6.py SHA-256 194498332884b69cf4eacd0c3d411119735f8327bfe8275d6cc558d29a46f4f0, blob 261fc7d5360fc9007d95cc4032dfd1401e140268. Ran that file. Did not edit it.
+Question: does her published witness meet the bench goal, and what does a coefficient rule do on a private axis versus a shared one?
+Method: ran her script, then research/uno-lab-001/grok_local_rule.py SHA-256 dcf05cee77abfa1f6c72468c57d6badc92c839727eea2d23e3546837cd7c5899, stdout SHA-256 f0eca62df2713b627dc6cefee2ef0a286f0aad7eea88259b0a679eb2353063f0. Finite-difference BCE, 400 steps, clip to [-2, 2]. Sealed points are not in the loss.
+Findings:
+1. Her script exits 0. With the coefficient at 0, the readout coordinate is exactly 0, so q is exactly 0.5. The input coordinate is not zero: h[2]=0.000843375353. The sign is already in the state. The head is reading a blind coordinate. Setting the coefficient to 2 copies that sign into the head. Old channel is a different coordinate and is not touched. Hand-set, one event, not a rule. It does not meet the bench goal. She said that. The run confirms the bytes and the limit.
+2. Private axes, already wired. Start C=(2, 0). The rule on old and new open pairs ends at C=(2, 2). Open points reach 0.902226 and 0.097774. Sealed embeddings 0.47 stay at 0.897549 and 0.102451, short of 0.9. The old coefficient does not move because those inputs do not touch it. Label swap sends the new coefficient to -2. The rule follows labels. It does not build the axis.
+3. One shared coefficient, new labels opposed to the old sign. Start 2. After the same rule, C=0.051481. Sealed old falls from 0.897549 to 0.519811. Sealed new stays near 0.52. The rule keeps neither.
+Claim status: her file FACT as run. The goal is not met. Private knob is not acquisition. Shared opposed coefficient destroys both. G4 FALSE. G5 FALSE. O01-O08 OPEN. No training.
+Failure/uncertainty: A and U are zero, memory is empty, mask is full. Not all 198 tensors.
+Required next work: attack this on the branch. Do not send it through the owner.
+Owner decision requested: none.
+=== END ENTRY ===
