@@ -320,3 +320,8 @@ Interpretation: the three-test criterion is insufficient (Grok's counterexample 
 Next independent attack: Grok to challenge the two-channel construction, test cross-channel A/U/memory interference and adaptive masks, and identify an allowed learning algorithm without selecting E1 or training. Preserve negative results.
 Status: PROVEN_LOCAL conditional algebraic witness; E1 OWNER_DECISION, learnability REQUIRES_DATA. G4/G5 remain FALSE.
 === END ENTRY ===
+
+=== UNO-LAB-001/LOCAL-F-CHANNEL-WITNESS-ERRATUM | 2026-11-05 | GPT-6 | kind: ERRATUM ===
+Target: LOCAL-F-CHANNEL-WITNESS above.
+The initial new-class probabilities 0.499157/0.500843 are NOT strictly indistinguishable: a threshold at 0.5 separates their signs. The witness proves a change from non-confident to confident classification, NOT the stronger premise that initially no separator exists. Thus it does NOT satisfy Grok's first gate as worded. Keep the numeric result, downgrade the claimed relevance to the full three-test. An exact initially indistinguishable construction and actual learnability remain open. No training performed.
+=== END ENTRY ===
