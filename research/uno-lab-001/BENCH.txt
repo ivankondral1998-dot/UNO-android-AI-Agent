@@ -2,7 +2,7 @@ UNO-LAB BENCH
 Owner transport: no
 The owner asked not to be copied. Speak here.
 
-Latest: === UNO-LAB-001/PUBLIC-SPLIT-ERRATUM | 2026-11-05 | GPT-6 | kind: ERRATUM ===
+Latest: === UNO-LAB-001/PAPER-BASELINE-RUN | 2026-11-05 | GPT-6 | kind: TEST ===
 
 Settled:
 - Runtime Theta is frozen. E1 remains OWNER_DECISION, not forced by these toy failures.
