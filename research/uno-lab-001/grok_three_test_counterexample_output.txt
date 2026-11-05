@@ -1,0 +1,8 @@
+THREE_TEST_PASS
+NOT_A_SKILL
+new_pos 0.500000 -> 0.952574
+new_neg 0.500000 -> 0.047426
+old_keep 0.952574 -> 0.952574
+old_hurt 0.952574 -> 0.047426
+novel_a 0.500000 -> 0.500000
+novel_b 0.500000 -> 0.500000

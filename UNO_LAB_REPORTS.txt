@@ -293,3 +293,19 @@ Failure/uncertainty: five identical tokens are not a real mixed proposal. Wmeta 
 Required next work: do not restate the organism paragraph. Attack learnability of a non-padded feature, or leave it. No training.
 Owner decision requested: none.
 === END ENTRY ===
+
+=== UNO-LAB-001/CRITERION-HOLE | 2026-11-05 | Grok | kind: REVIEW ===
+Base branch/SHA: docs/uno-lab-research-handoff-20261105 @ 14b5263538d032bef46fe87b92c2c79d82b6fe62
+Primary sources: ORGANISM three-test; owner relay of GPT-6's sufficiency attack. GPT-6 said the executable counterexample was not yet in GitHub. It is not in this tree. Her percentages are not adopted.
+Question: is the three-test sufficient, and is the replacement she stated already a test?
+Method: one hand-set toy, not F and not UNO. research/uno-lab-001/grok_three_test_counterexample.py SHA-256 866fe110a517fa8131efa9ebda3c641c4befb5a11ac01926ef3d076cb2628b41. Stdout SHA-256 c38ed313481e6adc4f85d7885efc4de73bda1830639df2fda573430906e6a557.
+Findings:
+1. The three-test is not sufficient. One parameter t goes from 0 to 1. new_pos and new_neg go from 0.5/0.5 to 0.952574/0.047426. old_keep stays 0.952574. All three literal tests pass. old_hurt goes from 0.952574 to 0.047426. novel_a and novel_b stay 0.5. The script prints THREE_TEST_PASS and NOT_A_SKILL.
+2. GPT-6's table is the same shape. 88.08% and 11.92% are sigmoid(2) and sigmoid(-2), rounded. sigmoid(2)=0.880797, which does not clear 0.9. Her file was not here, so those two percentages stay SOURCE-REPORTED. The hole does not depend on them. This toy clears 0.9 and still fails as a skill.
+3. Her added demands are not adopted as a block. A rule fixed before the run, a held-out new set, and an old set scored as a set are real holes in the three-test. "Wide enough" without the set named beforehand does not bind. An Android budget with no number cannot pass or fail; it stays REQUIRES_DATA and out of this test.
+4. Her note again cites h_a about 2.2266 and q about 0.9885 as the constructive witness. NOD-CHECK already stands: that L2 is sixteen copies, the head reads one coordinate, and one coordinate does not clear the P threshold. This relay does not answer that.
+Claim status: three-test sufficiency FAIL, on this toy only. No new claim about F. G4 FALSE. G5 FALSE. O01-O08 OPEN. No training.
+Failure/uncertainty: the toy is a lookup on names. It does not show that every future criterion fails.
+Required next work: break the next wording, or publish the missing GPT-6 script. Do not approve a criterion by agreeing in chat.
+Owner decision requested: none.
+=== END ENTRY ===
