@@ -1,0 +1,105 @@
+{
+  "arms": [
+    {
+      "arm": "frozen",
+      "contract": "fixture_only",
+      "locked_new_acc": 0.325,
+      "locked_old_acc": 0.5,
+      "note": "no update",
+      "old_on_transformed_acc": 0.5,
+      "pass_toy": false
+    },
+    {
+      "arm": "linear",
+      "contract": "fixture_only",
+      "locked_new_acc": 0.675,
+      "locked_old_acc": 0.6,
+      "note": "fit on adapt, h=x, not a Theta",
+      "old_on_transformed_acc": 0.675,
+      "pass_toy": false
+    },
+    {
+      "arm": "tabular_bins",
+      "contract": "fixture_only",
+      "locked_new_acc": 0.325,
+      "locked_old_acc": 0.5,
+      "note": "5 bins per coord, fit on adapt",
+      "old_on_transformed_acc": 0.525,
+      "pass_toy": false
+    },
+    {
+      "arm": "nearest_prototype",
+      "contract": "fixture_only",
+      "locked_new_acc": 0.775,
+      "locked_old_acc": 0.95,
+      "note": "observed adapt pairs",
+      "old_on_transformed_acc": 0.875,
+      "pass_toy": false
+    },
+    {
+      "arm": "P_only_assumption_h_eq_x",
+      "contract": "INVALID_as_Theta",
+      "locked_new_acc": 0.675,
+      "locked_old_acc": 0.6,
+      "note": "ASSUMPTION h=x, not legal Theta",
+      "old_on_transformed_acc": 0.675,
+      "pass_toy": false
+    },
+    {
+      "arm": "M_only_observed",
+      "contract": "fixture_only",
+      "locked_new_acc": 0.775,
+      "locked_old_acc": 0.95,
+      "note": "observed x as key, not hand-set",
+      "old_on_transformed_acc": 0.875,
+      "pass_toy": false
+    },
+    {
+      "arm": "P_plus_M_assumption",
+      "contract": "INVALID_as_Theta",
+      "locked_new_acc": 0.675,
+      "locked_old_acc": 0.6,
+      "note": "same assumption as P_only, not mixed",
+      "old_on_transformed_acc": 0.675,
+      "pass_toy": false
+    }
+  ],
+  "card_commit": "e6019d0a19f665ae1ab87e569aab703380131cb6",
+  "criteria_fixed_before_run": {
+    "meaning": "fit of this linear toy under stated assumption; not a UNO skill",
+    "pass_new": 0.9,
+    "pass_old": 0.9
+  },
+  "environment": {
+    "platform": "Linux-6.12.8+-x86_64-with-glibc2.36",
+    "python": "3.10.22 (main, Oct  1 2026, 21:57:32) [GCC 12.2.0]"
+  },
+  "invariants": {
+    "T_stays_in_bounds": true,
+    "old_label_T_invariant": true
+  },
+  "negative_control_identical_input_opposite_labels": {
+    "deterministic_ceiling": 0.5,
+    "input": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "label_a": 0,
+    "label_b": 1
+  },
+  "not_a_skill": true,
+  "refuted": "Nothing about UNO. The h=x arms are not a legal Theta.",
+  "shown": "On this linear toy, a fit on observed x reaches the toy bar. Frozen majority does not, on the new task.",
+  "split": {
+    "accept": 40,
+    "adapt": 80,
+    "locked_new": 40,
+    "locked_old": 40,
+    "n": 200,
+    "seed": 20261105,
+    "status": "OPEN_FIXTURE_not_sealed_holdout"
+  },
+  "unknown": "Whether any legal S4/S5/S7 Theta emits h=x. Whether P or M changes a later proposal. Sealed-holdout performance."
+}
