@@ -80,3 +80,45 @@ Grok bytes are in research/uno-lab-001/ at ea6d501da19dc969cc1b8b188c60e3bf7cfd0
 Remaining gap: independent rerun by a different session. No training and no A52 run is open.
 Product gates unchanged: G4 FALSE, G5 FALSE, O01-O08 OPEN.
 === END QUEUE ===
+
+=== UNO-LAB-001/CLAUDE-BYTES | 2026-11-05 | Grok | kind: ERRATUM ===
+Base branch/SHA: docs/uno-lab-research-handoff-20261105. Output and map commit 57dfd6474811f2607f27b24f23d3dd90f0504456. Script commit 28086ab6549f6849bfa39793e6c92d80dfbc8387.
+Primary sources: Claude Notion page https://app.notion.com/p/40f26acc8e10812d994ffd076983e2d6. This entry corrects only the line in CLAUDE-R1 that said this journal did not execute or rehash the script. Earlier entries were not rewritten.
+Question: are the Claude script and stdout now in git, and do the bytes match the page?
+Method / performed work: the script was restored from the Notion page and rerun by Grok with python3. SHA-256 of the script and of the rerun stdout match the hashes printed on that page. Git blob SHA of each file matches the uploaded bytes.
+Evidence:
+research/uno-lab-001/claude_lab001_checks.py size 8426 SHA-256 f9027add08fc0481987ee6e94f9cf0976226a8d1ae4560eaffea9e72b8c2dae7 gitblob 6c26a61b0f3e53a666687d5312284166daa1552d MATCH
+research/uno-lab-001/claude_lab001_output.txt size 4720 SHA-256 e2dacb5bd3b09d315d5876e74fdb1ac3c9f225bdc9499369d86d294650cf40bf gitblob bcedf002833c601d2b2e7f62a9d7121cf433d592 MATCH
+research/uno-lab-001/NOTION_MAP.txt says which Notion pages must not be copied. Read that file before importing anything else.
+Findings: the Claude byte gap is closed. This rerun is not Claude re-auditing himself. Trained UNO is still REQUIRES_DATA. Claude's source read was R5.2, not a full R5.3 byte audit. That limit stays.
+Claim status: FACT for these two hash matches.
+Failure/uncertainty: none on the hashes.
+Required next work: none for these two files.
+Owner decision requested: none.
+=== END ENTRY ===
+
+=== UNO-LAB-001/GPT-PAGES | 2026-11-05 | Grok | kind: WORK ===
+Base branch/SHA: docs/uno-lab-research-handoff-20261105 @ 2a042bad87f0c6c48ebb444ecf9c41709fd89552.
+Primary sources: Notion assignment https://app.notion.com/p/40f26acc8e10812799f0e4cbb8e2ef8f last edited 2026-11-05T08:41:03Z. Notion calculation https://app.notion.com/p/40e26acc8e10816ea777f86a7df2cf4e last edited 2026-11-04T22:15:12Z. GPT review of the hfix measurement is already the entry GPT-HFIX-REVIEW. It was not copied again.
+Question: can the next model read the GPT lab assignment and UNO-G4-LEARN-001 without Notion, without a second copy of R5.3?
+Method / performed work: fetched both pages. Wrote two files. Did not import ASTRA, NORMATIVE, the canonical index, base64 zips, or the frozen СЕЙЧАС page. Updated NOTION_MAP.txt in the same commit. No new arithmetic.
+Evidence:
+research/uno-lab-001/gpt_assignment_20261105.txt size 19972 SHA-256 a08e65411944ad63154a710d9813434f901b0d24d6f9b7d71550fd53641aacdd gitblob 8d28878bb0230ac89b425e7a57d1655cd3e57f7a
+research/uno-lab-001/gpt_g4_learn001.txt size 9539 SHA-256 5d92f9b99756afe9eb5d7de80553d9a5dfb561da5c229479b7fa04621dd40565 gitblob b2fd2ab5d9c7601f08f49ed6099f70cb523799fa
+research/uno-lab-001/NOTION_MAP.txt size 1106 SHA-256 aa6c85b3f90dfe04804e4457c3a2b36aa1f301e02579dbdcc13fe40ab4e597d6 gitblob 83cffbb951d82d329ef0c4d26c312f9bd8e9254e
+Findings: the assignment is the lab charter (directions A-D and UNO-LAB-001). The G4 file is the calculation candidate. Neither file approves G4, G5, or O01-O08. E1 stays OWNER_DECISION. The СЕЙЧАС page is frozen at 2026-11-05T09:33:29Z and is not a second queue.
+Claim status: FACT that these bytes are the fetched pages, with HTML tags stripped and two Notion mention-links replaced by a one-line note that the source is already in the repo. SOURCE-REPORTED for the claims inside them. Not an independent recalculation in this entry.
+Failure/uncertainty: stripping tags is not a byte-identical Notion export. The numbers were not retyped by hand from memory; they were taken from the fetch. A later model that wants the raw Notion markup still has the URLs.
+Required next work: read the journal from the bottom. Do not open another report file.
+Owner decision requested: none.
+=== END ENTRY ===
+
+=== QUEUE / HANDOFF 2026-11-05c ===
+Read order: AGENTS.md, then UNO_LAB_AGENTS.md, then this journal from the bottom, then research/uno-lab-001/NOTION_MAP.txt.
+Evidence directory now has Grok scripts and stdout, Claude script and stdout, the GPT assignment, and the GPT G4 calculation.
+Notion is the archive. Do not keep a second queue there. Do not import R5.3 again.
+No training. No phone run. No merge to main. No GitHub Actions.
+Gates unchanged: G4 FALSE, G5 FALSE, O01-O08 OPEN.
+Still SPECIFIED_UNTESTED: a model that did not write grok_lab001_hfix.py reruns it and checks stdout SHA-256 cfd5b0bebee162a07907714d10aa14177b09074da02958dfdd5099619947f3a5.
+Claude script rerun: done in CLAUDE-BYTES. Do not repeat it unless the bytes change.
+=== END QUEUE ===
