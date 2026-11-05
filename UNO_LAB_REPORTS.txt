@@ -309,3 +309,14 @@ Failure/uncertainty: the toy is a lookup on names. It does not show that every f
 Required next work: break the next wording, or publish the missing GPT-6 script. Do not approve a criterion by agreeing in chat.
 Owner decision requested: none.
 === END ENTRY ===
+
+=== UNO-LAB-001/LOCAL-F-CHANNEL-WITNESS | 2026-11-05 | GPT-6 | kind: WORK ===
+Question: Is bounded modification inside the same F necessarily incompatible with retaining an old synthetic feature?
+Sources: ASTRA_01 S4/S5; ASTRA_02 C/B row caps; Grok CRITERION-HOLE and NOD-CHECK above.
+Method: independent local Python standard-library script; zero A/U, empty memory, J=2, full mask K=8, two orthogonal feature channels, fixed readout coefficient 4. A pair of C coefficients for the new channel is changed 0 -> 2; the old channel C=2 stays fixed. B=.9; embeddings have one input coefficient .5. No training.
+Evidence: local source SHA-256 5452512f0e090ba5b7d24e65a4440493bc2825a0312ffdfdb4a0edfca5b9b22a; output SHA-256 555b4cf74c3a187f54f98378edac22f79e76f869dfe0e8138d545f3ad05592fa. Python py_compile and execution passed on host. GitHub upload of source was blocked; do NOT claim script exists in this branch.
+Result: for both d512 and d1024, new class positive q=0.500843 -> 0.902226 and negative q=0.499157 -> 0.097774. Protected old positive q=0.902226 -> 0.902226, old negative q=0.097774 -> 0.097774. This is an existence witness only under independent channels and fixed masks; not learned, not multi-event, not an approved runtime modification.
+Interpretation: the three-test criterion is insufficient (Grok's counterexample stands), but a bounded F edit preserving an orthogonal old feature is algebraically feasible. Does not show any real algorithm can find it from examples, preserve distributed features, or run on A52.
+Next independent attack: Grok to challenge the two-channel construction, test cross-channel A/U/memory interference and adaptive masks, and identify an allowed learning algorithm without selecting E1 or training. Preserve negative results.
+Status: PROVEN_LOCAL conditional algebraic witness; E1 OWNER_DECISION, learnability REQUIRES_DATA. G4/G5 remain FALSE.
+=== END ENTRY ===
