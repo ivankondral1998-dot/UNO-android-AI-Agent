@@ -1,3 +1,7 @@
+> **ACTIVE OWNER AMENDMENT, 2026-11-05.** **OWNER RESEARCH PERMISSION — ACTIVE 2026-11-05 (research branch only).** The owner explicitly authorized isolated, versioned research candidates for Θ, graph, P, M and learning rules, synthetic tasks, and training SMALL EXPERIMENTAL weights on a free PC environment. For EACH run: maximum 600 seconds, maximum 2 GiB RAM (use lower caps if the environment is weaker), terminate on limit; no more than 3 runs of the same candidate before reviewing the result. Register frozen task/card, inputs, seed, evaluation and thresholds before running; save reproducible evidence. This supersedes any earlier blanket ban on *research-only* small-weight training. It does NOT authorize production code, production UNO training/checkpoints, Android builds/APKs/device actions, GitHub Actions, publication, secrets, main edits/merge, deletions, destructive history changes, approval of R5.3/G4/G5, or autonomous adoption of E1. R5.3 S1 itself still freezes runtime Θ; any Θ-changing E1 remains an isolated candidate, not the adopted contract. Source: owner decision on 2026-11-05, captured in [issue #4 comment 6660428370](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/issues/4#issuecomment-6660428370) and continued in owner-provided handoff. **For the LIVE queue use [BENCH.txt](research/uno-lab-001/BENCH.txt) and append-only [UNO_LAB_REPORTS.txt](UNO_LAB_REPORTS.txt).**
+>
+> The earlier "no training" and older initial checklist statements in this file are historical except where explicitly qualified below. Frozen research-card acceptance thresholds and a public split do not imply production readiness. Any model/session signature is merely a claim under the shared GitHub account.
+
 # UNO-LAB — AGENT RESEARCH HANDOFF (candidate workflow, 2026-11-05)
 
 **Purpose.** The single entry point for sequential AI research on UNO. This file supplements, and DOES NOT replace, the repository's existing `AGENTS.md`, `README.md`, `docs/AGENT_START_HERE.md`, `docs/CURRENT_TASK.md`, `docs/STATUS.md` or the complete R5.3 source hierarchy. Owner review is required before adopting this workflow as repository-wide policy.
@@ -17,7 +21,7 @@
 
 **Research record, ONE file:** `UNO_LAB_REPORTS.txt`, maintained as an append-only chronological journal. Entries are compact: question, exact source, work performed, evidence, result, limitations, next action. No giant source dumps, conversation dumps, APKs or generated report-of-report documents. Correct earlier statements by APPENDING a correction with its target record ID, not rewriting provenance. One active editor at a time; read the latest commit before appending.
 
-**Code, tests, raw evidence:** work in task-specific research/experiment branches and normal source/test paths, with commits, input fixtures, scripts and raw outputs. Reference exact branch + commit + file path + SHA-256 from the journal. A journal entry DOES NOT count as an implementation. Permitted precode research fixtures must remain isolated and avoid production Android actions or trained production weights. No model training or production implementation without separate owner authorization.
+**Code, tests, raw evidence:** work in task-specific research/experiment branches and normal source/test paths, with commits, input fixtures, scripts and raw outputs. Reference exact branch + commit + file path + SHA-256 from the journal. A journal entry DOES NOT count as an implementation. Permitted precode research fixtures must remain isolated and avoid production Android actions or trained production weights. Small experimental PC-weight training NOW has express, bounded owner authorization dated 2026-11-05 (see active amendment above); production model training and production implementation still need distinct authorization.
 
 For peer review, use separate review entries and—when useful—GitHub Pull Requests **without merge**. Reviewers must not silently edit another researcher's immutable evidence. Preserve negative findings and alternatives.
 
@@ -53,7 +57,7 @@ Owner decision requested (if any):
 === END ENTRY ===
 ```
 
-## Initial next work: UNO-LAB-001
+## HISTORICAL initial checklist — superseded by current BENCH (do not repeat closed work)
 
 Focus: initial intelligence vs owner-side learning, plasticity P, memory M, learned representations Θ and experimental E1. Latest Grok report suggests norm collapse under one legal random F/S5 configuration. **Do not elevate that fixture to a general trained-UNO claim.**
 
@@ -61,11 +65,11 @@ Focus: initial intelligence vs owner-side learning, plasticity P, memory M, lear
 2. Verify tensor shapes, S4/S5/S7 sequence (especially post-proposal `h_a` after argument re-encoding), projection rules, masks and K. Independently reproduce d=512/1024; preserve failures and seed.
 3. Compare full/partial mask, K=1/8, fixed vs drifting s/M and a simple tabular baseline. Only interpret `q^* ≤ σ(l0+||h_a||)` at fixed feature/initial logit and bounded `||p||≤1`.
 4. If the missing script is not furnished, retain `SPECIFIED_UNTESTED` for independent reproduction and provide the exact missing artifact; do not fabricate new trials.
-5. Later training and Android hardware measurements require independently authorized gates and actual data.
+5. SMALL isolated research-weight training is authorized since 2026-11-05 with per-run caps; production UNO-weight training and Android hardware measurements still require separate owner approval, actual data and appropriate gates.
 
 ## Safety / preservation
 
-No deletions, destructive Git operations, force-push/reset/rebase with lost history, direct main edits/merge, GitHub Actions, secrets, binary publication, production code or training without explicit owner approval. No neural self-authorization. Android consent/STOP/permissions/readback are independent of P and Θ. A same-UID synthetic fixture is not a secure OS-level authority boundary.
+No deletions, destructive Git operations, force-push/reset/rebase with lost history, direct main edits/merge, GitHub Actions, secrets, binary publication, production code or **production** training without explicit owner approval. Bounded research-only training has separate owner authorization detailed above. No neural self-authorization. Android consent/STOP/permissions/readback are independent of P and Θ. A same-UID synthetic fixture is not a secure OS-level authority boundary.
 
 **The owner, not the last reviewer, accepts or rejects an architectural proposal.**
 

@@ -1,3 +1,5 @@
+> **Research checkpoint 2026-11-05:** Isolated small experimental weight training is authorized under the strict per-run limits in [UNO_LAB_AGENTS.md](UNO_LAB_AGENTS.md) and [BENCH.txt](research/uno-lab-001/BENCH.txt); this is NOT permission for UNO production code, final training, Android APK or approval of R5.3/G4/G5. Latest completed peer replay: [UNO-LAB-001](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/issues/4), 15/15 saved metrics agree but all 0.9 transfer gates failed, and the benchmark remains an open linear toy. Original source package remains unchanged.
+
 > **Current pre-code candidate R5.3 (NOT OWNER APPROVED).** Agents must start from [docs/AGENT_START_HERE.md](docs/AGENT_START_HERE.md), [docs/CURRENT_TASK.md](docs/CURRENT_TASK.md), and the [R5.3 source map](docs/precode/r5.3/README.md). The original README below predates the candidate. Do not infer trained weights, code permission, or Android test status.
 
 # UNO — Unified Neural Organism

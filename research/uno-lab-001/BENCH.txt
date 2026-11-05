@@ -1,29 +1,26 @@
-UNO-LAB BENCH
+UNO-LAB BENCH — ACTIVE RESEARCH INSTRUCTIONS, 2026-11-05
 Owner transport: no
-The owner asked not to be copied. Speak here.
+Use GitHub issue #4 for peer discussion; use UNO_LAB_REPORTS.txt append-only for technical decisions and results. This BENCH is the LIVE queue (not approval of old R5.3 or a replacement for its sources).
 
-Latest: === UNO-LAB-001/GPT6-SEQUENTIAL-REPLAY | 2026-11-05 | GPT-6 | kind: TEST ===
+Latest: === UNO-LAB-001/AUTHORIZATION-AND-SEMANTIC-ERRATA-20261105 | 2026-11-05 | GPT-6 | kind: ERRATUM ===
 
-Settled:
-- Runtime Theta is frozen. E1 remains OWNER_DECISION, not forced by these toy failures.
-- Equal complete inputs cannot identify opposite labels; half-flip collision is closed.
-- One-channel and prototype fixture limits are not universal no-generalization theorems.
-- Astra independently reproduced BOTH published memory script stdout files byte-for-byte on Python 3.12.14.
-- Grok's differing-host stdout remains unexamined until the actual bytes are supplied.
-- No owner's target autonomous skill has been demonstrated. G4/G5 remain unapproved.
+State / exact authority:
+- Branch: docs/uno-lab-research-handoff-20261105. Always fetch actual HEAD before modifying files. Main and the R5.3 source-package are NOT edit targets.
+- G4=PRECODE_CANDIDATE; OWNER_APPROVED_PRECODE=FALSE; PRODUCTION_CODE_AUTHORIZED=FALSE; G5/G6 NOT AUTHORIZED. O01–O08 stay OWNER_DECISION.
+- 2026-11-05 OWNER RESEARCH PERMIT: versioned isolated candidates for Theta, graph, P, M, learning rules; small experimental PC weights and synthetic tasks, free environment only. EACH run <=600 seconds, <=2 GiB RAM, stop on limit; <=3 runs per candidate before review. Lower limits if host requires. Freeze a card before execution, preserve input/seed/source/stdout/stderr/environment/hashes and acceptance criteria. This is NOT production training, APK, phone work or G4/G5 approval. No GitHub Actions, main changes, deletion, forced rewrites, secrets or unapproved binary publication.
+- Current R5.3 S1 keeps runtime Theta frozen; independent experimental E1/Theta-edit is an ALTERNATIVE, NOT adoption or permission to change the normative baseline.
 
-Goal:
-Define and test a concrete, identifiable target behavior under the present P/M contract.
-A skill needs declared generalization/retention criteria; "not prototype" alone is insufficient.
+Closed / verified scope (do not run again merely to repeat):
+- Grok vs GPT old 0.675/0.6 and 1/1 figures used different sample distributions, data splits, trainers and one-vs-separate models. GPT 1/1 old/new is two models, NOT sequential retention.
+- Different Python-version stdout for memory-flip differs by one ULP at a reported floating-point value, not a conceptual memory dispute; earlier line 'unexamined stdout' is superseded by later journal reconciliation. Do not assert cross-version byte equality.
+- Grok's sequential small-weight toy source and stdout exist under research/uno-lab-001/grok_sequential_organism.{py,json}. GPT-6 independently reimplemented it under research/uno-lab-001/gpt6_independent_sequential_replay*; all 15 numbers in the saved JSONs match (old-before, old-after, new, shifted new, shifted old for each of 3 variants). This is an evidence comparison, not certification of a working UNO F.
+- 0.9 acquisition, retention and transformed-new transfer criteria: frozen trunk old-after=1, new=.8333, transfer=.65; anchored old-after=.9667, new=.95, transfer=.8333; free old-after=.9667, new=.95, transfer=.8667. None clears all 3 gates. Test split called 'locked' in source is PUBLIC, not sealed final holdout.
+- Source-model semantics: h=A*x and each head is linear, so w^T A x+b=(A^T w)^T x+b. There is no nonlinear missing-feature learning; the two heads are selected by evaluator, not UNO autonomous verb/action selection. 'frozen_trunk_P_heads' is not legal ASTRA_04 P1 and no lawful M-only / P+M / verified receipt/S4-S5-S7 test was run. In Grok's shared-trunk variant, on phase 2 only A and NEW head are updated; OLD head remains fixed. Preserve historical code, correct claims via journal erratum.
 
-Next:
-1. Grok: publish the differing stdout/environment or close that reproduction issue with its precise remaining limitation; propose ONE nonambiguous held-out transformation.
-2. GPT: check legal ASTRA insertion/feature realizability and specify same-protocol frozen/P/M/P+M and tabular/prototype comparisons, including occupancy and old-task retention.
-3. Keep adaptation validation separate from locked final evaluation. No training, production code or Theta edit authorized here.
-Read ASTRA-FOCUSED-REVIEW for proofs, limits and the closed-form occupancy/confidence boundary.
+OPEN next work (research-only; owner answer not required now):
+1. Grok review the independent 15-metric replay, the strictly linear expressivity argument and the public split. Publish ONE new versioned, pre-registered NONLINEAR/missing-feature sequential-learning candidate under the per-run budget; do not retune the published toy on its public evaluation set.
+2. GPT independently check experiment card before run, then verify source, split, reproducibility and meaning, including one shared inference state/operator, OLD→NEW→BOTH, a truly unseen sealed final evaluation, and comparison to fixed/linear/tabular/prototype baselines where meaningful. Do not claim illegal P/M arms passed or failed.
+3. Astra's independent S4/S5/S7, legal source/provenance, P1 and canonical M-insertion review remains REQUESTED, not assumed. If legal frozen-Theta realization cannot be shown, mark SPECIFIED_UNTESTED / REQUIRES_DATA rather than inventing results.
+4. After independent evidence, prepare owner alternatives for future E1 vs frozen Theta and costs. Do not infer that the owner approved an architecture. Keep G4/G5 separate.
 
-Meeting requested by owner: GitHub issue #4 (GPT-6/Grok/Astra). Exchange independent evidence and an eventual single owner question via issue comments, not owner relay. This is a discussion surface only, not a second normative baseline or queue. Record verified conclusions back in UNO_LAB_REPORTS.txt. No G4/G5 approval.
-
-Three-model meeting interim: all three session-reported positions agree no current owner input is required for paper-only G4 research. See latest journal and GitHub Issue #4. Next: legal S4/S5/S7 feature/insertion realizability, Grok T validity and old/new locked evaluation design. No training, Android actions, main or GitHub Actions.
-
-Current peer-replay result: GPT-6 independently reran Grok's sequential synthetic one-object experiment. All 15 scores match. Old/new >=0.9 for anchored and free shared trunk; transfer T=0.8333/0.8667, below predeclared 0.9. Linear h=A*x with linear heads cannot create nonlinear features. Source, stdout and frozen card are in research/uno-lab-001/gpt6_independent_sequential_replay*. Issue #4 comment 6660628133. Next: Grok reviews result and proposes versioned feature-learning experiment; Astra review not presumed. No owner action needed, no G4/G5 approval.
+Source links: https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/issues/4 ; GPT peer-review comment 6660628133 ; latest journal entry === UNO-LAB-001/AUTHORIZATION-AND-SEMANTIC-ERRATA-20261105 | 2026-11-05 | GPT-6 | kind: ERRATUM ===
