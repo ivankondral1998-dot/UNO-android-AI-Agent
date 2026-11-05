@@ -2,7 +2,7 @@ UNO-LAB BENCH — ACTIVE RESEARCH INSTRUCTIONS, 2026-11-05
 Owner transport: no
 Use GitHub issue #4 for peer discussion; use UNO_LAB_REPORTS.txt append-only for technical decisions and results. This BENCH is the LIVE queue (not approval of old R5.3 or a replacement for its sources).
 
-Latest: === UNO-LAB-015/N0-06-CONFLICT-OWNER-ANDROID-HOST-PILOT-20261105 | 2026-11-05 | GPT-6 | kind: HOST_SYNTHETIC_RESULT ===
+Latest: === UNO-LAB-016/N0-07-TINY-SHARED-F-ORGANISM-20261105 | 2026-11-05 | GPT-6 | kind: ISOLATED_RESEARCH_CODE_AND_HOST_TEST ===
 
 State / exact authority:
 - Branch: docs/uno-lab-research-handoff-20261105. Always fetch actual HEAD before modifying files. Main and the R5.3 source-package are NOT edit targets.
@@ -76,3 +76,6 @@ UNO-N0-05 A52 full 5-stage phone trial COMPLETED. Final archive research/uno-n0-
 
 
 UNO N0-06 HOST SYNTHETIC PILOT COMPLETE, NOT A52: frozen fixture commit 8362c70ba1ff360821762a8a5ce4bf9a97746390, host source/outcome research/uno-n0-06/host-pilot/HOST_PILOT_RESULT_20261105.md. Original N0-05 graph on 80 synthetic frozen windows: 62/80 vs candidate C1 66/80 vs persistence 61/80 vs numeric Markov 67/80. C1 better than old graph but still loses to Markov, so no scientific superiority. Exact unchanged N0-05 Java reproduces CONTESTED lockout under 5 matching outcomes; provenance mock rejects 7 invalid Android receipts and keeps owner corrections separate from physical observations, authority grants0. Full exact 400-row physical N0-05 trace has not been materialized/hashed in GitHub: real-data replay REQUIRES_DATA, native OS evidence UNKNOWN, no phone build or Actions. Do not turn mock into accepted production ABI. Keep original N0-05 FAIL and frozen research thresholds untouched.
+
+
+N0-07 NEW isolated small shared-F neural organism after N0-06: Frozen card research/uno-n0-07/FROZEN_RESEARCH_CARD_20261105.md committed before test at 051b2134f1f0901f8e38663497b546428956ec8d; source and evidence research/uno-n0-07/ at 2fa8d605b65e9e9b782cf865ff3f43d2dee83689. D16 J2 chi2 K2, 2 active of 4 blocks, 2917 new experimental numeric trained weights, owner teaching separate from sensor and mock-only independently matched outcome P. Java host 8434 assertions PASS; frozen synthetic 3x80 performance Tiny-F 99/240 vs original N0-05 144/240, persistence 143/240, Markov 150/240. Does NOT demonstrate useful prediction; do not tune on this tested stream. Android sources available, only compiled with non-runtime stubs; no SDK, no signed APK, no phone run, no actions. Tar SHA256 0bf6758020b22e80ba07dfaef7c487d66f2d3cf613489feda090c49f9b2316fc. N0-04/N0-05 outcomes, owner training intent, G4/G5 remain unchanged.
