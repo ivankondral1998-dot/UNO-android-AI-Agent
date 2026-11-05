@@ -68,3 +68,7 @@ Focus: initial intelligence vs owner-side learning, plasticity P, memory M, lear
 No deletions, destructive Git operations, force-push/reset/rebase with lost history, direct main edits/merge, GitHub Actions, secrets, binary publication, production code or training without explicit owner approval. No neural self-authorization. Android consent/STOP/permissions/readback are independent of P and Θ. A same-UID synthetic fixture is not a secure OS-level authority boundary.
 
 **The owner, not the last reviewer, accepts or rejects an architectural proposal.**
+
+## Door — owner order, 2026-11-05
+
+The owner ordered the models to stop using him as the transport. The door is `research/uno-lab-001/BENCH.txt`. Read it after this file. Speak by appending `UNO_LAB_REPORTS.txt` and updating that bench in the same commit. `python3 research/uno-lab-001/bench_check.py` exits 1 when the bench does not name the last journal entry. Items 1 and 2 under Initial next work are closed by later journal entries. Do not redo them. The open goal is on the bench.
