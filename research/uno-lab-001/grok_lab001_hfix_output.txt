@@ -1,0 +1,43 @@
+UNO-LAB-001 H-FIX frozen re-encode
+seed_base=20261105 V=32768 biases=0 p0=0 b_p=0 K_main=8 mask_main=full
+E row init fan_out=V then L1<=8. Not trained Theta.
+
+=== d=512 proposals=32 box_breaks=0 nan=0 ===
+||h_a|| n=32 min=0.010027 med=0.010109 p95=0.010176 max=0.010210
+||h||_inf n=32 min=0.001346 med=0.001439 p95=0.001494 max=0.001524
+frac |h|>0.5 n=32 min=0.000000 med=0.000000 p95=0.000000 max=0.000000
+||h_dec-h_a|| n=32 min=0.001100 med=0.001229 p95=0.001301 max=0.001337
+||h0_last|| n=32 min=0.947146 med=0.958891 p95=0.963436 max=0.966648
+||h_K1|| n=32 min=0.628817 med=0.634882 p95=0.637198 max=0.638973
+||h_half|| n=32 min=1.236297 med=1.248195 p95=1.253938 max=1.254463
+||h_K1-h_a|| n=32 min=0.624391 med=0.630475 p95=0.632734 max=0.634613
+||h_halfmask-h_a|| n=32 min=1.233357 med=1.245188 p95=1.250895 max=1.251483
+l0 over a=3..23 n=672 min=-0.000415 med=0.000055 p95=0.000350 max=0.000486
+q0 p=0 n=672 min=0.499896 med=0.500014 p95=0.500087 max=0.500122
+cap-q0 n=672 min=0.002507 med=0.002527 p95=0.002551 max=0.002553
+fraction q*=0.9 reachable on full mask=0.0000; on half mask=0.0000
+a=3 P1 steps to 0.9: reached 0 unreachable 32
+mode B ||dh_a|| n=11 min=0.001149 med=0.001228 p95=0.001300 max=0.001304
+mode B |dl0| a=3 n=11 min=0.000001 med=0.000009 p95=0.000029 max=0.000032
+caps Wp_row_L1_max=8.0000 A_row_L1_max=1.0000
+example0 ||h||=0.010117 l0_a3=-0.000058 q0=0.499986 cap=0.502515 reach09=False p0=0
+
+=== d=1024 proposals=16 box_breaks=0 nan=0 ===
+||h_a|| n=16 min=0.007394 med=0.007489 p95=0.007525 max=0.007541
+||h||_inf n=16 min=0.000760 med=0.000786 p95=0.000829 max=0.000839
+frac |h|>0.5 n=16 min=0.000000 med=0.000000 p95=0.000000 max=0.000000
+||h_dec-h_a|| n=16 min=0.001265 med=0.001322 p95=0.001380 max=0.001387
+||h0_last|| n=16 min=0.978054 med=0.982700 p95=0.986346 max=0.986605
+||h_K1|| n=16 min=0.647116 med=0.649129 p95=0.650595 max=0.650856
+||h_half|| n=16 min=1.293570 med=1.299902 p95=1.306052 max=1.307982
+||h_K1-h_a|| n=16 min=0.643049 med=0.645115 p95=0.646526 max=0.646823
+||h_halfmask-h_a|| n=16 min=1.290745 med=1.297070 p95=1.303167 max=1.305102
+l0 over a=3..23 n=336 min=-0.000151 med=-0.000045 p95=0.000077 max=0.000102
+q0 p=0 n=336 min=0.499962 med=0.499989 p95=0.500019 max=0.500026
+cap-q0 n=336 min=0.001849 med=0.001872 p95=0.001885 max=0.001885
+fraction q*=0.9 reachable on full mask=0.0000; on half mask=0.0000
+a=3 P1 steps to 0.9: reached 0 unreachable 16
+mode B ||dh_a|| n=11 min=0.001267 med=0.001335 p95=0.001361 max=0.001364
+mode B |dl0| a=3 n=11 min=0.000000 med=0.000007 p95=0.000017 max=0.000018
+caps Wp_row_L1_max=8.0000 A_row_L1_max=1.0000
+example0 ||h||=0.007519 l0_a3=0.000085 q0=0.500021 cap=0.501901 reach09=False p0=0
