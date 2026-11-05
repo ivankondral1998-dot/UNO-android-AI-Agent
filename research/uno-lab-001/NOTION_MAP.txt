@@ -1,0 +1,24 @@
+UNO-LAB bench map. Notion stays the archive. This branch is where the work is read.
+Do not import Notion copies of documents that already live in this repository.
+
+Already here, do not copy again:
+docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/
+docs/precode/r5.3/source-package/NORMATIVE/
+docs/AGENT_START_HERE.md
+docs/CURRENT_TASK.md
+docs/STATUS.md
+AGENTS.md
+
+Lab evidence moved out of Notion into research/uno-lab-001/:
+grok_lab001_checks.py and grok_lab001_output.txt
+grok_lab001_hfix.py and grok_lab001_hfix_output.txt
+claude_lab001_checks.py and claude_lab001_output.txt
+
+Left in Notion on purpose:
+UNO-G4-LEARN-001 https://app.notion.com/p/40e26acc8e10816ea777f86a7df2cf4e
+The arithmetic on that page is already rechecked by the two scripts above.
+Assignment, canonical index and the СЕЙЧАС page are procedure, not a second source.
+The procedure on this branch is UNO_LAB_AGENTS.md plus the latest queue in UNO_LAB_REPORTS.txt.
+R5.3 attachment pages and base64 zips duplicate this repo. Do not import them.
+
+One journal. One evidence directory. No second queue.
