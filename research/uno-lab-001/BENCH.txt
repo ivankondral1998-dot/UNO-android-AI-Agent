@@ -2,7 +2,7 @@ UNO-LAB BENCH — ACTIVE RESEARCH INSTRUCTIONS, 2026-11-05
 Owner transport: no
 Use GitHub issue #4 for peer discussion; use UNO_LAB_REPORTS.txt append-only for technical decisions and results. This BENCH is the LIVE queue (not approval of old R5.3 or a replacement for its sources).
 
-Latest: === UNO-LAB-007/N0-04-A52-TEST-A-OWNER-REPORT-20261105 | 2026-11-05 | GPT-6 | kind: PARTIAL_DEVICE_RESULT ===
+Latest: === UNO-LAB-008/N0-04-A52-TRAIN-B-OWNER-REPORT-20261105 | 2026-11-05 | GPT-6 | kind: PARTIAL_DEVICE_RESULT ===
 
 State / exact authority:
 - Branch: docs/uno-lab-research-handoff-20261105. Always fetch actual HEAD before modifying files. Main and the R5.3 source-package are NOT edit targets.
@@ -51,3 +51,6 @@ UNO-N0-04 A52 STAGE A owner-reported partial result (2026-11-05): 80/80, physica
 
 
 UNO-N0-04 A52 owner-reported TEST A (2026-11-05): log research/uno-n0-04-results/OWNER_A52_TEST_A_20261105.md. Sensor linear_acceleration API34, 80 valid windows, 16 class transitions, model 64/80, persistence 64/80, numeric Markov 64/80, always STILL 56/80, 0 new rules, 10 total 44 synapses 7 contested, inference 143/194/383 us mean/p95/max, heap snapshot 2860KiB; RESTORE PASS_SHA256 checkpoint from earlier TRAIN A; new COMMIT_AND_READBACK_PASS 8b26ccaf2ad90ce5 after control. TEST A passes equality vs both baselines but not superiority. Overall protocol pending TRAIN B, TEST B and TEST A retention after app restart. Do not re-run or adjust scoring/card.
+
+
+UNO-N0-04 A52 owner-reported TRAIN B (2026-11-05): evidence research/uno-n0-04-results/OWNER_A52_TRAIN_B_20261105.md. Valid 80, 12 class changes, 1081 sensor events, 0 skipped; graph 63/80, persistence 68/80, Markov 66/80, always STILL 40/80. 9 new rules -> 19, synapses 83, contested 12; inference 98/187/215us mean/p95/max, heap snapshot 3151KiB. New checkpoint COMMIT_AND_READBACK_PASS 76f6d041270ab3b8; RESTORE PASS_SHA256 refers to PREVIOUS completed=2 / 10-node checkpoint, not new 19-node B graph. FROZEN TEST B and RETEST A after restart still pending, therefore NO overall PASS. Stage TRAIN B underperforms persistence and Markov; preserve full failure/uncertainty. Next stage: TEST B, no reset, no unrequested Actions.
