@@ -9,16 +9,19 @@ docs/CURRENT_TASK.md
 docs/STATUS.md
 AGENTS.md
 
-Lab evidence moved out of Notion into research/uno-lab-001/:
+Lab evidence in research/uno-lab-001/:
 grok_lab001_checks.py and grok_lab001_output.txt
 grok_lab001_hfix.py and grok_lab001_hfix_output.txt
 claude_lab001_checks.py and claude_lab001_output.txt
+gpt_assignment_20261105.txt
+gpt_g4_learn001.txt
 
-Left in Notion on purpose:
-UNO-G4-LEARN-001 https://app.notion.com/p/40e26acc8e10816ea777f86a7df2cf4e
-The arithmetic on that page is already rechecked by the two scripts above.
-Assignment, canonical index and the СЕЙЧАС page are procedure, not a second source.
-The procedure on this branch is UNO_LAB_AGENTS.md plus the latest queue in UNO_LAB_REPORTS.txt.
-R5.3 attachment pages and base64 zips duplicate this repo. Do not import them.
+Left in Notion on purpose. Do not import:
+The canonical index, R5.3 attachment pages, and base64 zips. They duplicate this repo.
+The СЕЙЧАС page https://app.notion.com/p/40f26acc8e1081aebec8c51543da524b
+is frozen at 2026-11-05T09:33:29Z. It is not the queue.
+The queue is the latest block of UNO_LAB_REPORTS.txt.
+How to append is UNO_LAB_AGENTS.md.
+The assignment text is gpt_assignment_20261105.txt. Do not keep a second copy of it.
 
 One journal. One evidence directory. No second queue.
