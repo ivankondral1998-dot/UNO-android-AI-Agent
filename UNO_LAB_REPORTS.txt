@@ -122,3 +122,25 @@ Gates unchanged: G4 FALSE, G5 FALSE, O01-O08 OPEN.
 Still SPECIFIED_UNTESTED: a model that did not write grok_lab001_hfix.py reruns it and checks stdout SHA-256 cfd5b0bebee162a07907714d10aa14177b09074da02958dfdd5099619947f3a5.
 Claude script rerun: done in CLAUDE-BYTES. Do not repeat it unless the bytes change.
 === END QUEUE ===
+
+=== UNO-LAB-001/VERIFIER | 2026-11-05 | Grok | kind: WORK ===
+Base branch/SHA: docs/uno-lab-research-handoff-20261105 @ 3055d30c1b54a804577f6ed9ba3b3debda761a01
+Primary sources: ASTRA_01 S4/S5/S7, ASTRA_02 W2, ASTRA_04 P1/P2/P3, and the three lab scripts already in research/uno-lab-001/.
+Question: can another session check these bytes and the P1 contract without using grok_lab001_hfix.py as the oracle?
+Method: research/uno-lab-001/uno_lab_verify.py. INTEGRITY is SHA-256. REPRODUCTION runs the script and compares stdout bytes. MATH is a separate implementation. A failed check exits 1. Missing evidence is not a pass.
+Evidence: uno_lab_verify.py SHA-256 68654508d5669d1641dd0fdf7646158edf268e563655f15495ac9a4b3903e513. test_uno_lab_verify.py SHA-256 ec24388c5ca0a3cbdf4d3491aadc74da667bb8ccf71f902267106cb98f2dc112. verifier_run.json SHA-256 0e268ccade94fe883347798dce3ed3b75774f518ecdc340d95e3346fa35f5c2e. Unit tests: 16 passed, including a corrupted file, a crashing script, a mismatched stdout, and a source statement whose condition is always true.
+This run, on the same host as the author: 27 PASS, 2 REQUIRES_DATA, 1 SPECIFIED_UNTESTED, 0 FAIL, exit 0. The three published stdouts were reprinted byte for byte. Their SHA-256 values are d0de2b551a22f8af79968eff58d5e3f2beb4898597b7bc952bb79d5448db94fd, cfd5b0bebee162a07907714d10aa14177b09074da02958dfdd5099619947f3a5, e2dacb5bd3b09d315d5876e74fdb1ac3c9f225bdc9499369d86d294650cf40bf.
+Findings: the hand step recomputes to p'=0.0025 and q1=0.5006249997. The same h with the opposite label raises the other BCE. 2*ln(9) is only the bound for l0=logit(0.1). The J=1 probe scores h_a, not h^0, and is not UNO's F.
+Claim status: INTEGRITY and REPRODUCTION hold for the pinned files on this host. MATH holds for the listed identities. The full operator is SPECIFIED_UNTESTED. Trained Theta and A52 are REQUIRES_DATA. This JSON is the author's run. GPT-6 still has to run the tool.
+Failure/uncertainty: none in this run. A later edit of a pinned file must exit 1.
+Required next work: GPT-6 checks out the branch and runs python3 research/uno-lab-001/uno_lab_verify.py --root <checkout>
+Owner decision requested: none.
+=== END ENTRY ===
+
+=== QUEUE / HANDOFF 2026-11-05d ===
+Read UNO_LAB_AGENTS.md, then the bottom of this journal, then research/uno-lab-001/NOTION_MAP.txt.
+Check the bench with: python3 research/uno-lab-001/uno_lab_verify.py --root <checkout>
+Exit 1 means a check failed. REQUIRES_DATA is not a pass.
+No training. No phone. No merge to main. No GitHub Actions.
+Gates unchanged: G4 FALSE, G5 FALSE, O01-O08 OPEN.
+=== END QUEUE ===
