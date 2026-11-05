@@ -1,0 +1,7 @@
+# UNO-N0-05 — physical Android sensor neural source audit
+
+Diagnostic-only, research-only continuation of pre-registered N0-04 A52 finding. Two activities? NO: single MainActivity and shared NeuralGraph as before. Same discrete graph update and graph decision paths as N0-04; predict now also reports exact origin and tied/fallback information. Persistent 5×80 categorical trace (no raw sensor xyz), stage counters and per-stage counterfactual comparison to persistence and Markov.
+
+Package `org.unovyra.n005audit`; versionName `0.5.0-research`; Android SDK 35, minSdk 26; offline no INTERNET, no permissions, foreground sensors. User owns only production gate decisions. Pre-frozen card: `RESEARCH_CARD_FROZEN_BEFORE_DEVICE_RUN.md`; phone instructions `PHONE_TEST_RU.md`. Build and tests in `.github/workflows/uno-n0-05-android-research.yml` (owner authorized). Host regression uses unmodified N0-04 NeuralGraph.java in `host-test/ref/`, tested against fixed seed 0x5EED00405. `host-test/org/json` is a compile-only stub and must NEVER be bundled into Android APK; it does NOT test JSON, checkpoint, physical sensor or device experience.
+
+Status after initial source creation: IMPLEMENTED, host graph-equivalence tested, ANDROID_BUILT and DEVICE_RUN awaiting independent evidence. Final native APK build evidence produced by GitHub Actions, not a claim of device testing. No publication or production code.

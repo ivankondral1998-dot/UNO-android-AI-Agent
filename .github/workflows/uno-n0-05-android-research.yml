@@ -1,0 +1,83 @@
+name: UNO N0-05 Android Audit (owner authorized 2026-11-05)
+
+on:
+  push:
+    branches:
+      - docs/uno-lab-research-handoff-20261105
+    paths:
+      - 'research/uno-n0-05/**'
+      - '.github/workflows/uno-n0-05-android-research.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout only repository research branch
+        uses: actions/checkout@v4
+      - name: Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Unpack and verify frozen research sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p research/uno-n0-05/extracted
+          tar -xJf research/uno-n0-05/source_bundle.tar.xz -C research/uno-n0-05/extracted
+          cd research/uno-n0-05/extracted
+          sha256sum -c SOURCE_MANIFEST_SHA256.txt
+      - name: Host regression without sensor or checkpoint claims
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd research/uno-n0-05/extracted
+          mkdir -p build/host
+          javac -encoding UTF-8 -source 8 -target 8 -d build/host $(find host-test -type f -name '*.java' | sort) android/src/org/unovyra/n005audit/NeuralGraph.java
+          java -Xmx256m -cp build/host org.unovyra.n005audit.AuditHostTest | tee build/HOST_TEST_RESULT.txt
+          grep -q HOST_AUDIT_REGRESSION_PASS build/HOST_TEST_RESULT.txt
+      - name: Install Android SDK 35
+        shell: bash
+        run: |
+          set -euo pipefail
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null || true
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'platforms;android-35' 'build-tools;35.0.0'
+      - name: Build signed standalone research APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd research/uno-n0-05/extracted/android
+          BT="$ANDROID_HOME/build-tools/35.0.0"
+          API="$ANDROID_HOME/platforms/android-35/android.jar"
+          mkdir -p build/classes build/dex build/compiled
+          javac -encoding UTF-8 -source 8 -target 8 -cp "$API" -d build/classes src/org/unovyra/n005audit/*.java
+          "$BT/d8" --min-api 26 --lib "$API" --output build/dex $(find build/classes -name '*.class' | sort)
+          "$BT/aapt2" compile --dir res -o build/compiled
+          "$BT/aapt2" link --version-code 1 --version-name 0.5.0-research -o build/unsigned.apk --manifest AndroidManifest.xml -I "$API" --min-sdk-version 26 --target-sdk-version 35 $(find build/compiled -name '*.flat' | sort)
+          (cd build/dex && zip -q -0 ../unsigned.apk classes.dex)
+          "$BT/zipalign" -f -p 4 build/unsigned.apk build/aligned.apk
+          keytool -genkeypair -keystore build/research-debug.jks -storepass android -alias research -keypass android -keyalg RSA -keysize 2048 -validity 365 -dname 'CN=UNO N0 Research,O=UNOVYRA,C=XX' -noprompt >/dev/null 2>&1
+          "$BT/apksigner" sign --ks build/research-debug.jks --ks-key-alias research --ks-pass pass:android --key-pass pass:android --out build/UNO_N0_05_NEURAL_AUDIT.apk build/aligned.apk
+          "$BT/apksigner" verify --verbose --print-certs build/UNO_N0_05_NEURAL_AUDIT.apk
+          "$BT/aapt" dump badging build/UNO_N0_05_NEURAL_AUDIT.apk | head -12
+          "$BT/aapt" dump permissions build/UNO_N0_05_NEURAL_AUDIT.apk
+          unzip -t build/UNO_N0_05_NEURAL_AUDIT.apk | tail -1
+          sha256sum build/UNO_N0_05_NEURAL_AUDIT.apk | tee build/APK_SHA256.txt
+          sha256sum src/org/unovyra/n005audit/*.java AndroidManifest.xml res/values/strings.xml > build/SOURCE_SHA256.txt
+          echo 'IMPLEMENTED/ANDROID_BUILT; DEVICE_VERIFIED=FALSE; no measured sensor learning yet' > build/STATUS.txt
+      - name: Collect signed APK and checksums (private CI artifact only)
+        uses: actions/upload-artifact@v4
+        with:
+          name: UNO-N0-05-Android-Sensor-Neural-Audit
+          path: |
+            research/uno-n0-05/extracted/android/build/UNO_N0_05_NEURAL_AUDIT.apk
+            research/uno-n0-05/extracted/android/build/APK_SHA256.txt
+            research/uno-n0-05/extracted/android/build/SOURCE_SHA256.txt
+            research/uno-n0-05/extracted/android/build/STATUS.txt
+            research/uno-n0-05/extracted/build/HOST_TEST_RESULT.txt
+          retention-days: 30
