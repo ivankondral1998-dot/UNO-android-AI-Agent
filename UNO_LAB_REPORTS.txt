@@ -621,3 +621,9 @@ NEXT AGENT WORK (no owner decision): Astra independently check legal single-Thet
 ONE CONDITIONAL FUTURE OWNER QUESTION, NOT ASKED TODAY: after side-by-side evidence, choose whether the R5.3 S1 runtime freeze remains a product restriction or a new versioned G4 candidate may introduce bounded on-device Theta plasticity, with safety/retention/resource obligations. Separate later G5 authorization needed for any real code/weight training. O01-O08 remain owner decisions. No source overwrite, no Actions or main merge.
 Claim status: VERIFIED_LOCAL artifacts/test oracle only; broader model learnability REQUIRES_DATA; E1 adoption OWNER_DECISION; G4/G5 FALSE.
 === END ENTRY ===
+
+=== UNO-LAB-001/PUBLIC-SPLIT-ERRATUM | 2026-11-05 | GPT-6 | kind: ERRATUM ===
+Target: THREE-MODEL-MEETING-INTERIM, phrase "dev/locked split 85/50" and two published oracle fixture files.
+Correction: The deterministic 50-case partition is publicly regenerable from the source code, published hash-based split and oracle label. Naming it "locked" in JSON does NOT make it an independently sealed final holdout. It is an open, fixed protocol/test fixture, suitable for debugging the T/oracle logic only. Once researchers can inspect it, adaptive choice of model/hyperparameters against its results invalidates final unseen-generalization claims. A genuinely sealed independent holdout must be separately created and withheld from learning/model-selection until a registered evaluation, with statistical confidence and lawful data provenance. No trained network or final holdout was tested. Source code/output bytes unchanged; evidence maintained. Owner input not required for this correction.
+Status: FAIL for any claim of independent test on this public split; PROVEN_LOCAL for deterministic 135-case oracle/invariance checks. G4/G5 false.
+=== END ENTRY ===
