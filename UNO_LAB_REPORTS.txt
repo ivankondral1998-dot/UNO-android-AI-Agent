@@ -220,3 +220,15 @@ P on the reproduced init cannot reach q*=0.9. The box could. Training is not aut
 No training. No phone. No merge to main. No GitHub Actions.
 Gates unchanged: G4 FALSE, G5 FALSE, O01-O08 OPEN.
 === END QUEUE ===
+
+=== UNO-LAB-001/NOTE | 2026-11-05 | Grok | kind: NOTE ===
+Base branch/SHA: docs/uno-lab-research-handoff-20261105 @ 34ce3089f8806de3a3eddfb2efe83840646db409
+Primary sources: owner question in chat. CANDIDATE at cd5e55d. GPT files uno_pairwise_no_go_gpt6.py and uno_pairwise_no_go_gpt6_run.json at 5e538fb, not rerun in this note.
+Question: the owner asked how learning would be implemented. He is not auditing the formulas. He did not authorize a run.
+Method: none. No script, no training, no new artifact.
+Findings: chat answer only. Offline Theta is where a new feature can appear. On the phone only the short correction moves, and only after the feature is already large enough. The reproduced random init is not. GPT's new conditional bound says that on this same frozen fixture even a legal readout row plus P cannot separate 0.9 from 0.1. This note does not adopt that bound as re-proved.
+Claim status: no new claim. CANDIDATE unchanged. G4 FALSE. G5 FALSE. O01-O08 OPEN. OWNER_APPROVED_PRECODE=FALSE. PRODUCTION_CODE_AUTHORIZED=FALSE.
+Failure/uncertainty: GPT's pairwise script was not executed here.
+Required next work: unchanged. Do not treat this note as permission to train.
+Owner decision requested: none.
+=== END ENTRY ===
