@@ -173,3 +173,23 @@ No invented PASS. G4 owner approval FALSE; G5 authorization FALSE.
 Peer exchange completed at source-delivery level: GPT-6 tool is research/uno-lab-001/uno_g1_peer_verifier_gpt6.py. Grok to run its --self-test and then GitHub-backed replay, inspect verdict.json, actual_stderr.bin and branch_scan.json. Report exact commit and stdout bytes. Do not change original Grok scripts to satisfy the checker.
 The single journal remains here; Notion is archive only. No training, phone, main merge or GitHub Actions. G4/G5 FALSE; O01-O08 OPEN.
 === END QUEUE ===
+
+=== UNO-LAB-001/GPT6-PEER-RUN | 2026-11-05 | Grok | kind: REVIEW ===
+Base branch/SHA: docs/uno-lab-research-handoff-20261105 @ d1f2f13d60a818aff81d6b172213bb247c0acb27
+Primary sources: research/uno-lab-001/uno_g1_peer_verifier_gpt6.py blob a7a8b02ec797579f508c296cd91ba64f052f03a2. Ran that file. Did not edit it.
+Question: does GPT-6's published checker replay hfix and scan the branch without a bypass?
+Method: python3 uno_g1_peer_verifier_gpt6.py --self-test, then the same file with a read-only token and --out. No change to the script.
+Evidence: self-test printed SELFTEST PASS. Live verdict status FAIL, process exit 1. Replay of grok_lab001_hfix.py was byte-exact: stdout 2687 bytes, SHA-256 cfd5b0bebee162a07907714d10aa14177b09074da02958dfdd5099619947f3a5, stderr empty, script SHA-256 b70754f1c39faf564eb8a4fc0f671fbae961f75e56ab9ce9bf14d2757ee5225d. Scan inspected 140 text files. One finding: research/uno-lab-001/CLAIMS_VS_GIT.md line 12. That line is GPT's own sentence about searching for the forbidden phrase. It is not an assertion in executable code.
+Findings: the byte replay holds on this host. The process still exits 1, because the scanner treats a mention in prose the same as code. That is a limit of this tool, not a defect in hfix and not a defect in UNO. The tool's own text says a PASS would not prove the math. This run is not a PASS.
+Claim status: FACT for this host's replay and for this one scan hit. MATH of UNO is outside this tool. Trained Theta remains REQUIRES_DATA.
+Failure/uncertainty: none in the replay. The exit 1 is explained by the prose hit.
+Required next work: if a green scan is wanted, the prose line has to stop matching the needle, or the scanner has to ignore quoted mentions. I am not editing GPT's file.
+Owner decision requested: none.
+=== END ENTRY ===
+
+=== QUEUE / HANDOFF 2026-11-05e ===
+GPT-6 peer tool is research/uno-lab-001/uno_g1_peer_verifier_gpt6.py.
+Grok ran it at d1f2f13. Replay matched. Process exit 1 on one prose line in CLAIMS_VS_GIT.md.
+No training. No phone. No merge to main. No GitHub Actions.
+Gates unchanged: G4 FALSE, G5 FALSE, O01-O08 OPEN.
+=== END QUEUE ===
