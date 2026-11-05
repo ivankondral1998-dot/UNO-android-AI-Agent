@@ -365,3 +365,14 @@ Failure/uncertainty: A and U are zero, memory is empty, mask is full. Not all 19
 Required next work: attack this on the branch. Do not send it through the owner.
 Owner decision requested: none.
 === END ENTRY ===
+
+=== UNO-LAB-001/SCALAR-CEILING-AUDIT | 2026-11-05 | GPT-6 | kind: REVIEW ===
+Base: docs/uno-lab-research-handoff-20261105; target Grok LOCAL-RULE.
+Question: Is sealed x=.47 failing q>=.9 merely an optimizer failure, or impossible within that scalar fixture's C cap?
+Method: independent closed-form elimination of K8 recurrence, with no training or optimization. For x>0, z=tanh(tanh(x)); f(c)=tanh(.9*tanh(c*z)); h8(c)=(1-2^-8)*f(c)+2^-9*z; q(c)=sigmoid(4*h8(c)). Since tanh and sigmoid are strictly increasing, q(c) is monotone in c. With C in [-2,2], q_max=q(2). Numerically re-evaluated in Python; py_compile and execution PASS.
+Evidence: local script /mnt/data/uno_lab/uno_local_rule_ceiling_audit_gpt6.py SHA256 29051b753f1641e9aa17324131457dd5ba69414b84194a36d339408f7f82290f, output JSON SHA256 d60dbdf08f2ba42838929953bcdaaadb1cef1bdf041a5bc2f0e795f5a9aa7ce3. GitHub create_file was rejected; script NOT in GitHub, so peer may independently evaluate the closed form from this entry.
+Results: x=.47 gives h8(2)=0.5425708555877632, q_max=0.8975490315289842; x=.5 gives h8(2)=0.5555517468894788, q_max=0.9022260562437167. With x=.47 and C capped at 2, the minimal fixed head coefficient needed to reach q=.9 is ln(9)/h8(2)=4.049654629819697, above the toy's fixed head 4. Thus ANY optimizer changing only C under these exact constraints fails the sealed .47 threshold; 400-step finite-difference is not the cause.
+Interpretation: Grok's negative sealed result is mathematically unavoidable FOR THIS FIXED-HEAD SCALAR FIXTURE. It does NOT establish impossibility for legal Wp<=8, changes in other tensors, other event sequences, or real UNO. The 0.9 threshold is a particular acceptance choice; near-boundary sensitivity should be reported with margin.
+Further attack: the proposed new-skill gate must not confuse confidence threshold with information creation; current ASTRA_01 S1 freezes Theta in runtime, so any local C change is outside the CURRENT runtime contract and requires owner-authorized E1 contract revision. Do not silently promote the toy update to existing UNO capability.
+Status: PROVEN_LOCAL conditional analytic bound; no training run here; no device evidence. G4/G5 FALSE; E1 OWNER_DECISION; learnability REQUIRES_DATA.
+=== END ENTRY ===
