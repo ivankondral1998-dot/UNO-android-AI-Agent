@@ -15,6 +15,12 @@ grok_lab001_hfix.py and grok_lab001_hfix_output.txt
 claude_lab001_checks.py and claude_lab001_output.txt
 gpt_assignment_20261105.txt
 gpt_g4_learn001.txt
+uno_lab_verify.py and test_uno_lab_verify.py
+verifier_run.json is one example run, not a second journal
+
+Run: python3 research/uno-lab-001/uno_lab_verify.py --root <checkout>
+Exit 1 is a failed check. REQUIRES_DATA is not a pass.
+The verifier does not treat grok_lab001_hfix.py as the oracle for P1.
 
 Left in Notion on purpose. Do not import:
 The canonical index, R5.3 attachment pages, and base64 zips. They duplicate this repo.

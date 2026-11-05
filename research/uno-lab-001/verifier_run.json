@@ -1,0 +1,261 @@
+{
+  "tool": "UNO-LAB Independent Verifier",
+  "root": ".",
+  "counts": {
+    "PASS": 27,
+    "REQUIRES_DATA": 2,
+    "SPECIFIED_UNTESTED": 1
+  },
+  "failed": [],
+  "limits": [
+    "INTEGRITY is not mathematical correctness.",
+    "REPRODUCTION is not mathematical correctness. A bug shared by the script and a copied checker would still match.",
+    "MATH below recomputes P1, P2, the W2 count, the S5 box, and h_a sequencing. The S4/S5 probe uses J=1, d=8, b=4, empty memory, U_s=I. It is not the 198-tensor operator.",
+    "2*ln(9) is only logit(0.9)-logit(0.1). It is not a universal feature-norm requirement.",
+    "P2 is one frozen sample. It is not a promise that old tasks are kept. The opposite-label pair is checked separately.",
+    "P3 is a realized convex sequence with a fixed comparator. It is not dynamic regret and not owner learning.",
+    "No trained Theta and no A52 log are in this check. Those stay REQUIRES_DATA.",
+    "The journal is append-only and is not hash-pinned."
+  ],
+  "checks": [
+    {
+      "id": "integrity:research/uno-lab-001/grok_lab001_checks.py",
+      "kind": "INTEGRITY",
+      "status": "PASS",
+      "sha256": "8f8a8ca9b54d01f3a6a476a9794f706ae79907ea83397addf529748972f71684",
+      "bytes": 3694
+    },
+    {
+      "id": "integrity:research/uno-lab-001/grok_lab001_output.txt",
+      "kind": "INTEGRITY",
+      "status": "PASS",
+      "sha256": "d0de2b551a22f8af79968eff58d5e3f2beb4898597b7bc952bb79d5448db94fd",
+      "bytes": 1289
+    },
+    {
+      "id": "integrity:research/uno-lab-001/grok_lab001_hfix.py",
+      "kind": "INTEGRITY",
+      "status": "PASS",
+      "sha256": "b70754f1c39faf564eb8a4fc0f671fbae961f75e56ab9ce9bf14d2757ee5225d",
+      "bytes": 9810
+    },
+    {
+      "id": "integrity:research/uno-lab-001/grok_lab001_hfix_output.txt",
+      "kind": "INTEGRITY",
+      "status": "PASS",
+      "sha256": "cfd5b0bebee162a07907714d10aa14177b09074da02958dfdd5099619947f3a5",
+      "bytes": 2687
+    },
+    {
+      "id": "integrity:research/uno-lab-001/claude_lab001_checks.py",
+      "kind": "INTEGRITY",
+      "status": "PASS",
+      "sha256": "f9027add08fc0481987ee6e94f9cf0976226a8d1ae4560eaffea9e72b8c2dae7",
+      "bytes": 8426
+    },
+    {
+      "id": "integrity:research/uno-lab-001/claude_lab001_output.txt",
+      "kind": "INTEGRITY",
+      "status": "PASS",
+      "sha256": "e2dacb5bd3b09d315d5876e74fdb1ac3c9f225bdc9499369d86d294650cf40bf",
+      "bytes": 4720
+    },
+    {
+      "id": "integrity:research/uno-lab-001/gpt_assignment_20261105.txt",
+      "kind": "INTEGRITY",
+      "status": "PASS",
+      "sha256": "a08e65411944ad63154a710d9813434f901b0d24d6f9b7d71550fd53641aacdd",
+      "bytes": 19972
+    },
+    {
+      "id": "integrity:research/uno-lab-001/gpt_g4_learn001.txt",
+      "kind": "INTEGRITY",
+      "status": "PASS",
+      "sha256": "5d92f9b99756afe9eb5d7de80553d9a5dfb561da5c229479b7fa04621dd40565",
+      "bytes": 9539
+    },
+    {
+      "id": "integrity:docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+      "kind": "INTEGRITY",
+      "status": "PASS",
+      "sha256": "6bd6f68989972d183b6750711dca223355a026dfcf11461275d25406319853fe",
+      "bytes": 26820
+    },
+    {
+      "id": "integrity:docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+      "kind": "INTEGRITY",
+      "status": "PASS",
+      "sha256": "4b9186bb19d71f88aed989b33ef8a40f5a699535e645c79f5eb97d5d97098a4c",
+      "bytes": 17474
+    },
+    {
+      "id": "integrity:docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+      "kind": "INTEGRITY",
+      "status": "PASS",
+      "sha256": "737654965c75e83e10a2705656af0f49ff9bf2c2bb0a4f359c67f0f426c6b0c8",
+      "bytes": 13624
+    },
+    {
+      "id": "static-or-true",
+      "kind": "STATIC",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "id": "p1-hand-step",
+      "kind": "MATH",
+      "status": "PASS",
+      "q0": 0.5,
+      "p1": 0.0025,
+      "q1": 0.5006249996744794,
+      "f0": 0.34657359027997264,
+      "f1": 0.3459489840298709
+    },
+    {
+      "id": "p2-descent-frozen-h",
+      "kind": "MATH",
+      "status": "PASS",
+      "f0": 0.34657359027997264,
+      "f1": 0.3459489840298709,
+      "required_drop": 0.000624215625,
+      "note": "one frozen sample; not a global task"
+    },
+    {
+      "id": "p1-projection-and-eligible-rows",
+      "kind": "MATH",
+      "status": "PASS",
+      "projected_norm": 1.0
+    },
+    {
+      "id": "geometry-not-universal-4.394",
+      "kind": "MATH",
+      "status": "PASS",
+      "special_l0_logit_0_1": 4.394449154672438,
+      "bound_when_l0_is_0": 2.1972245773362196,
+      "cap_rho_1": 0.23196931668407397
+    },
+    {
+      "id": "forgetting-opposite-label",
+      "kind": "MATH",
+      "status": "PASS",
+      "old_bce_before": 0.6931471805599453,
+      "old_bce_after": 0.6943979618097419,
+      "note": "P1 descent on y=1 raised BCE on y=0 for the same h"
+    },
+    {
+      "id": "s5-box",
+      "kind": "MATH",
+      "status": "PASS",
+      "legal": 0.0,
+      "illegal_mask_3": -2.0,
+      "note": "coefficients stay nonnegative only for mask in [0,1] and alpha in [0,1]"
+    },
+    {
+      "id": "p3-realized-sequence",
+      "kind": "MATH",
+      "status": "PASS",
+      "regret": 4.915874625000002,
+      "bound": 200.0502002,
+      "T": 40,
+      "note": "fixed comparator on this sequence; not owner learning"
+    },
+    {
+      "id": "h-a-after-reencode-probe",
+      "kind": "MATH",
+      "status": "PASS",
+      "k": 8,
+      "mask": "full",
+      "d": 8,
+      "h_a_norm": 0.3182801702065103,
+      "h0_norm": 0.8750555796665809,
+      "l0_from_h_a": 0.08799549366885061,
+      "l0_from_h0": 0.14705764117412828,
+      "note": "probe only; do not read this norm as a UNO measurement"
+    },
+    {
+      "id": "w2-counts",
+      "kind": "MATH",
+      "status": "PASS",
+      "computed": {
+        "512": {
+          "N": 23015887,
+          "free": 22852753,
+          "C_F": 4456448,
+          "P_active": 10752
+        },
+        "1024": {
+          "N": 55451639,
+          "free": 55125689,
+          "C_F": 17301504,
+          "P_active": 21504
+        }
+      },
+      "missing_in_astra02": []
+    },
+    {
+      "id": "published-hfix-vs-geometry",
+      "kind": "MATH",
+      "status": "PASS",
+      "problems": [],
+      "notes": [
+        "d-block max||h_a||+max l0=0.010696 logit(0.9)=2.197225 fraction=0.0000",
+        "d-block max||h_a||+max l0=0.007643 logit(0.9)=2.197225 fraction=0.0000"
+      ],
+      "limit": "uses the published summary, not a second F. Reproduction is a separate check."
+    },
+    {
+      "id": "published-scalar-caps",
+      "kind": "MATH",
+      "status": "PASS",
+      "mismatches": [],
+      "note": "cap is sigmoid(l0+rho) for this printed l0 only"
+    },
+    {
+      "id": "gpt-hand-digits",
+      "kind": "MATH",
+      "status": "PASS",
+      "recomputed_q1": 0.5006249996744794,
+      "token_in_file": true
+    },
+    {
+      "id": "reproduce:research/uno-lab-001/grok_lab001_checks.py",
+      "kind": "REPRODUCTION",
+      "status": "PASS",
+      "bytes": 1289,
+      "sha256": "d0de2b551a22f8af79968eff58d5e3f2beb4898597b7bc952bb79d5448db94fd"
+    },
+    {
+      "id": "reproduce:research/uno-lab-001/grok_lab001_hfix.py",
+      "kind": "REPRODUCTION",
+      "status": "PASS",
+      "bytes": 2687,
+      "sha256": "cfd5b0bebee162a07907714d10aa14177b09074da02958dfdd5099619947f3a5"
+    },
+    {
+      "id": "reproduce:research/uno-lab-001/claude_lab001_checks.py",
+      "kind": "REPRODUCTION",
+      "status": "PASS",
+      "bytes": 4720,
+      "sha256": "e2dacb5bd3b09d315d5876e74fdb1ac3c9f225bdc9499369d86d294650cf40bf"
+    },
+    {
+      "id": "trained-theta",
+      "kind": "LIMIT",
+      "status": "REQUIRES_DATA",
+      "detail": "no trained weights are read; a random draw is not a skill"
+    },
+    {
+      "id": "a52-device",
+      "kind": "LIMIT",
+      "status": "REQUIRES_DATA",
+      "detail": "no device log is read"
+    },
+    {
+      "id": "full-operator",
+      "kind": "LIMIT",
+      "status": "SPECIFIED_UNTESTED",
+      "detail": "the 198-tensor F is not reimplemented here"
+    }
+  ],
+  "example_note": "Produced by uno_lab_verify.py on a local checkout of docs/uno-lab-research-handoff-20261105. The checkout path is not part of the result."
+}
