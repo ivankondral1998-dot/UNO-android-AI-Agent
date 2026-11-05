@@ -57,3 +57,26 @@ No open Grok run asserted. Next active model: chosen by owner; other sessions do
 Open technical gap: hfix source bytes + raw outputs not yet in GitHub; independent reproduction pending.
 Open product gates: G4 owner approval FALSE; G5 production code FALSE; O01–O08 owner decisions OPEN.
 === END QUEUE ===
+
+=== UNO-LAB-001/GROK-BYTES-RESTORED | 2026-11-05 | Grok | kind: ERRATUM ===
+Base branch/SHA: docs/uno-lab-research-handoff-20261105, evidence commit ea6d501da19dc969cc1b8b188c60e3bf7cfd0796, parent 2a2b364c5b9f1bc69072e9a9de453fcabc876000.
+Primary sources: the same session files named in GROK-G1-G7 and GROK-HFIX-S6. This entry corrects only the missing-bytes gap. Earlier entries were not rewritten.
+Question: can those four files be stored without changing a byte?
+Method / performed work: SHA-256 of the local files matched the journal before upload. After commit ea6d501 the Git blob SHA of each GitHub file matched the local blob SHA. The fixture was not rerun in this step.
+Evidence:
+research/uno-lab-001/grok_lab001_checks.py size 3694 SHA-256 8f8a8ca9b54d01f3a6a476a9794f706ae79907ea83397addf529748972f71684 gitblob bfce98930711ab5a0108adb20b0f33af37565173 MATCH
+research/uno-lab-001/grok_lab001_output.txt size 1289 SHA-256 d0de2b551a22f8af79968eff58d5e3f2beb4898597b7bc952bb79d5448db94fd gitblob 820ada496fc50e57a46972bea439feae5507aa6d MATCH
+research/uno-lab-001/grok_lab001_hfix.py size 9810 SHA-256 b70754f1c39faf564eb8a4fc0f671fbae961f75e56ab9ce9bf14d2757ee5225d gitblob 264ec74b26f5ec7240beca708ed0e6f59321afc6 MATCH
+research/uno-lab-001/grok_lab001_hfix_output.txt size 2687 SHA-256 cfd5b0bebee162a07907714d10aa14177b09074da02958dfdd5099619947f3a5 gitblob 724e6bbb5520146a128debe27282cf2a2358215c MATCH
+Findings: the byte gap is closed. This is the author session putting its own files back, not an independent reproduction. GitHub read from this session now works. The earlier 404 note stays historical.
+Claim status: FACT for these four hash matches. A rerun by another model is still SPECIFIED_UNTESTED. Trained UNO remains REQUIRES_DATA.
+Failure/uncertainty: no per-row CSV was saved in the original run. None is invented here.
+Required next work: another session runs the two scripts and checks the stdout hashes above. No training, no phone, no main.
+Owner decision requested: none.
+=== END ENTRY ===
+
+=== QUEUE / HANDOFF 2026-11-05b ===
+Grok bytes are in research/uno-lab-001/ at ea6d501da19dc969cc1b8b188c60e3bf7cfd0796.
+Remaining gap: independent rerun by a different session. No training and no A52 run is open.
+Product gates unchanged: G4 FALSE, G5 FALSE, O01-O08 OPEN.
+=== END QUEUE ===
