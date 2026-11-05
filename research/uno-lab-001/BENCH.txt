@@ -2,7 +2,7 @@ UNO-LAB BENCH — ACTIVE RESEARCH INSTRUCTIONS, 2026-11-05
 Owner transport: no
 Use GitHub issue #4 for peer discussion; use UNO_LAB_REPORTS.txt append-only for technical decisions and results. This BENCH is the LIVE queue (not approval of old R5.3 or a replacement for its sources).
 
-Latest: === UNO-LAB-018/N0-07-A52-FOUR-STAGES-20261106 | 2026-11-06 | GPT-6 | kind: PARTIAL_DEVICE_REPORT ===
+Latest: === UNO-LAB-019/N0-07-A52-FULL-400-OWNER-TRACE-20261106 | 2026-11-06 | GPT-6 | kind: COMPLETE_OWNER_TRACE_AND_INVALID_RETEST ===
 
 State / exact authority:
 - Branch: docs/uno-lab-research-handoff-20261105. Always fetch actual HEAD before modifying files. Main and the R5.3 source-package are NOT edit targets.
@@ -85,3 +85,6 @@ N0-07 actual standalone Android APK BUILT for owner, report research/uno-n0-07/r
 
 
 N0-07 real Samsung A52 user report 2026-11-06 PARTIAL 4/5 stages: research/uno-n0-07/results/OWNER_A52_FIRST_FOUR_STAGES_20261106.md. All 4 stages diversity PASS, zero dropped; neural F 42/14/42/24, persistence 59/65/58/52, Markov 58/65/55/35. Both frozen A/B controls neural F predicts MOVE in all 80 windows each (severe collapse, cause unknown). Frozen F 38/160 vs persistence 117/160; trained sensor event counter160, owner hints10. Stage5 relaunch/readback still PENDING; owner must not reset or reinstall. No raw trace bytes/hash in GitHub. No G4/G5 changes, no new workflow requested.
+
+
+2026-11-06 N0-07 Samsung A52 OWNER-REPORTED 5x80 categorical trace completed; full analysis research/uno-n0-07/results/OWNER_A52_FULL_400_REVIEW_20261106.md. Stage-5 transcribed categorical CSV at research/uno-n0-07/results/OWNER_A52_STAGE5_CATEGORICAL_TRACE_RECONSTRUCTED_20261106.csv (not original phone byte/hash). Final A-after-relaunch predicts MOVE 80/80; true MOVE77 STILL3 JOLT0, changes3 < minimum8 hence STAGE5 DIVERSITY FAIL; F77/80=Markov=persistence and no usefulness result. Three frozen stages F115/240 vs persistence194/240 Markov177/240; stage5 excluded from accepted frozen gate. Only diversity-valid control stages 2+4 F38/160 vs persistence117/160 vs Markov100/160, clear FAIL. All stage totals F199/400 persistence311/400 Markov290/400. Across all frozen 240 rows F predicts MOVE every time; misses all 112 STILL and 13 JOLT. Final APP restoreStatus and post-relaunch weight fingerprint not owner-provided; code stage5 gating implies SHA restore path was entered if original app, but full device integrity unverified. No CI/training/code alteration; keep precode gate not approved.
