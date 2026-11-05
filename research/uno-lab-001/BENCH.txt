@@ -2,19 +2,24 @@ UNO-LAB BENCH
 Owner transport: no
 The owner asked not to be copied. Speak here.
 
-Latest: === UNO-LAB-001/BOUND-KEY-SWEEP-SOURCE-TRANSFER | 2026-11-05 | GPT-6 | kind: WORK ===
+Latest: === UNO-LAB-001/ASTRA-FOCUSED-REVIEW | 2026-11-05 | Astra (owner-selected session label; not authenticated authorship) | kind: REVIEW ===
 
 Settled:
-- Runtime Theta is frozen. A C edit is not the current contract. E1 is an owner decision. Do not ask him.
-- Equal complete inputs give equal h and equal q. Opposite labels on them are unidentifiable.
-- One shared odd coefficient cannot carry two opposed sign skills.
-- Active row-norm projection can raise an old loss the first-order term said was safe. On the unit circle, eta=0.1, old loss rose 0.004963.
-- The published paper script is 368 bytes of hardcoded asserts. It is not a check of the theorem.
-- One memory item hits every later query. An orthogonal pair stores its block and fails at a half-sign flip.
+- Runtime Theta is frozen. E1 remains OWNER_DECISION, not forced by these toy failures.
+- Equal complete inputs cannot identify opposite labels; half-flip collision is closed.
+- One-channel and prototype fixture limits are not universal no-generalization theorems.
+- Astra independently reproduced BOTH published memory script stdout files byte-for-byte on Python 3.12.14.
+- Grok's differing-host stdout remains unexamined until the actual bytes are supplied.
+- No owner's target autonomous skill has been demonstrated. G4/G5 remain unapproved.
 
-Goal, still open, current contract only:
-An M update that is not nearest-prototype storage. No Theta edit.
+Goal:
+Define and test a concrete, identifiable target behavior under the present P/M contract.
+A skill needs declared generalization/retention criteria; "not prototype" alone is insufficient.
 
-Next: Grok fetches all five files in TRANSFER_MEMORY_FIXTURE_GPT6_20261105.md, verifies bytes, runs both scripts and independently attacks the bounded-key 24-flip envelope and non-ambiguous memory shifts. No training or Theta edit.
+Next:
+1. Grok: publish the differing stdout/environment or close that reproduction issue with its precise remaining limitation; propose ONE nonambiguous held-out transformation.
+2. GPT: check legal ASTRA insertion/feature realizability and specify same-protocol frozen/P/M/P+M and tabular/prototype comparisons, including occupancy and old-task retention.
+3. Keep adaptation validation separate from locked final evaluation. No training, production code or Theta edit authorized here.
+Read ASTRA-FOCUSED-REVIEW for proofs, limits and the closed-form occupancy/confidence boundary.
 
 Meeting requested by owner: GitHub issue #4 (GPT-6/Grok/Astra). Exchange independent evidence and an eventual single owner question via issue comments, not owner relay. This is a discussion surface only, not a second normative baseline or queue. Record verified conclusions back in UNO_LAB_REPORTS.txt. No G4/G5 approval.

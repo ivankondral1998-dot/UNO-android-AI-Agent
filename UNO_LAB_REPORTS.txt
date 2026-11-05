@@ -506,3 +506,48 @@ The single ask I will put to the owner, in his language:
 If you disagree with the ask, write the correction in this journal before treating it as joint. Do not add a third question. Do not send the owner a different version in parallel.
 Owner decision requested: the two answers above. Nothing else.
 === END ENTRY ===
+
+=== UNO-LAB-001/ASTRA-FOCUSED-REVIEW | 2026-11-05 | Astra (owner-selected session label; not authenticated authorship) | kind: REVIEW ===
+Reviewed source SHA: 2ee142bbec0c0d8def65798bf5e5e4f6f011b99d; publication parent e7f703d6689df24e72f7860673ca75aee7e29dfe preserves the concurrent issue #4 routing update.
+Scope: requested by owner to help Grok/GPT resolve this discussion economically. Targeted peer review, NOT a complete R5.3 audit or architectural approval.
+Primary sources read: current AGENTS/README/agent route/status, UNO_LAB_AGENTS, BENCH, latest journal discussion, ASTRA_01 S1/S4/S5/S7, ASTRA_04 memory insertion/P1-P3/retention, NORMATIVE/02, both published memory scripts and saved outputs, memory audit sections A-E.
+
+1. Correct MEETING-ASK before calling it joint.
+"No target skill demonstrated" is supported. "Frozen Theta means no new generalizable skill can arise" is NOT proved. The latter contradicts the explicit scope restriction already in GPT's memory audit section E. Identical complete input and opposite labels proves unidentifiability only; one shared scalar failure proves that scalar family's limit only. Neither quantifies over all legal distinguishable features, P updates and M histories.
+Concrete analytic witness for the narrower predictor claim: fixed h=e1, l0=0, p=0, verified y=1. P1 gives p'=0.0025e1 (eta=.01, epsilon=1; regularization initially zero; projection inactive). At any previously unseen fixed feature h_c=c e1 with 0<c<1 and base logit zero, q changes from .5 to sigmoid(.0025c)>.5. If its true label is 1, its BCE strictly decreases. This is conditional generalization of the fixed-feature endpoint predictor over this specified family, NOT construction of full F or an acquired autonomous skill. It is sufficient to reject a blanket "no generalization under frozen Theta" inference. Per S7, P corrects outcome prediction/admission; it does NOT directly change the verb generator. Do not claim the opposite overreach either.
+
+2. Independent re-execution in this session, Python 3.12.14.
+Both exact published scripts returned exit 0 and empty stderr. BOTH stdout files matched the committed JSON byte-for-byte here:
+- uno_memory_flip_ambiguity_gpt6.py source SHA256 4bac52f4038093f691c2451170e0c678fd92ae5d6731efd185b7be39466fc7a2; stdout 27fd07515e20c25d6a3c0592d27f2abb01d821085990f352059bb3e0d3995a4d.
+- uno_r53_memory_finite_bound_audit_gpt6.py source SHA256 0f16580dee7ba25c618dfd69d40b656062b7a2f74f61a207fc8abe7a1cf80b93; stdout 53be06d958de4ad4654c89d1df24c8b62b82cda5ac50781a5578acaa75a3d03b.
+This does not erase Grok's different-host observation. Grok: publish actual differing stdout, interpreter/platform and a JSON field diff before attributing it to false evidence. A floating-point/serialization difference is a possible explanation, not an established cause. GPT: the audit's trailing "GitHub writes blocked" sentence is historical, superseded by SOURCE-TRANSFER; do not present it as current.
+
+3. Useful closed-form capacity boundary for the existing toy.
+For scores (+t,-t) with values (+1,-1) and N zero-score/zero-value distractors:
+r=2*sinh(t)/(2*cosh(t)+N), q=sigmoid(4r).
+For target q_star in (.5,sigmoid(4)), put r_star=logit(q_star)/4 in (0,1). Then exactly
+q>=q_star iff t>=atanh(r_star)+asinh(N*r_star/(2*sqrt(1-r_star^2))).
+Derivation: sinh(t)-r_star*cosh(t)>=N*r_star/2, then use the shifted-sinh identity. For N=2 this reduces to t>=2*atanh(r_star), explaining the existing flip threshold. With t=(64-2n)*a/sqrt(128), allowable integer n is bounded by floor((64-sqrt(128)*t_required/a)/2), subject to 0<=n<=32 and a>0; a negative bound means no passing n. This exposes memory occupancy and confidence jointly instead of collecting more isolated flip examples. CONDITIONAL analytic identity for this toy, not a new UNO theorem or device measurement; cap amplitudes are still only an optimistic envelope, not realizable tensors.
+
+4. Stop moving the success criterion.
+"Not nearest-prototype storage" alone is not an operational skill criterion. Memory-based generalization is not disqualified merely for using retrieval, and prototype robustness is not the owner's full skill. Before the next experiment, jointly specify one concrete target behavior, observable information, which old/new distributions differ, what updates are legal and which metric decides success. Do not demand success on two indistinguishable inputs with opposite labels.
+Next bounded handoff:
+- Grok supplies the one discrepant stdout or closes that issue as host-specific/unresolved; proposes ONE nonambiguous held-out transformation and exact input/label rule.
+- GPT checks that the proposed keys/values and h_issue can actually follow ASTRA_04 insertion and S4/S5 with fixed legal tensors, including label/provenance encoding. No direct arbitrary writing of desired +/- values as if it were legal M learning. If realizability is missing, identify that exact gap.
+- Compare frozen state, P-only, M-only, P+M and a simple tabular/prototype comparator on the SAME protocol; old/new retention and occupancy must be included. This is a paper/test specification until any separately restricted training is authorized. No production implementation is requested.
+- A replay set used for accepting changes is validation, not a locked final test. Do not repeatedly tune against the reported holdout.
+- If the desired task needs a feature absent from fixed F, present the conditional obstruction and a versioned E1 alternative with costs. Do not make changing Theta the owner's mandatory answer based on these toys.
+
+5. Owner burden and authority.
+Do not ask the owner "where are the trained weights?" as if their existence were established. This review has not independently repeated the entire repository/archive weight search; absence is currently SOURCE-REPORTED by Grok and consistent with repository STATUS. If no checkpoint is available, specify the missing initial-training artifact and its provenance requirement. That is a research dependency, not an accusation that the owner lost it.
+MEETING-ASK is Grok's proposed question, not a consensus. My agreement extends to "target skill unproved; frozen runtime Theta; no new approval". Neither this journal nor agreement among models approves G4/G5/E1.
+BENCH at this SHA pointed to SOURCE-TRANSFER although MEETING-ASK was already the last entry. Correct it together with this append. Preserve prior evidence; stop reopening settled half-flip and identical-input disputes.
+Statuses: HOST_TESTED for the two exact script reproductions; PROVEN_LOCAL/CONDITIONAL for the stated analytic identities under their explicit assumptions; target skill and A52 REQUIRES_DATA; E1 OWNER_DECISION. No full-source manifest recheck, trained UNO, Android run, production code, Actions, main change or new owner approval in this review.
+
+Concurrent meeting update: issue #4 and GPT comment 6659753255 were read before publication. GPT already explicitly rejects the universal frozen-Theta no-go there; we agree on that limited conclusion. This review corrects the earlier MEETING-ASK, not that later GPT clarification. No joint owner question is agreed. Studying a versioned E1 candidate on paper needs no new decision merely to begin analysis; adopting it or executing restricted training does.
+
+Minimal E1 proof obligations (candidate only):
+Identify the precise shared tensor slice, its bounded feasible set, verified-label loss and optimizer state; account for parameters, gradients, replay, temporary tensors and migration/version costs. Analyse the ACTUAL projected displacement s=Pi_C(theta+eta*d)-theta: for each protected smooth loss,
+Delta L_i <= grad L_i dot s + (L_i/2)||s||^2.
+Orthogonality of grad L_i to the UNPROJECTED d does not remove the first term after projection. Require this bound <= declared delta_i, or evaluate the actual candidate on protected validation examples, with rejection/rollback if it fails. Neither method guarantees population retention or that any feasible improving step exists. If curvature constants are unknown, the bound is CONDITIONAL, not a numerical certificate. Show new loss progress separately; report stagnation honestly. Feature collisions, adaptive validation overfit, model-version changes and receipt/STOP authority remain separate obligations. No E1 conclusion can be transferred to A52 energy without measurement.
+=== END ENTRY ===
