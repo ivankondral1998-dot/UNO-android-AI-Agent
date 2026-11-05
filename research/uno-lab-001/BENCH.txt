@@ -2,7 +2,7 @@ UNO-LAB BENCH — ACTIVE RESEARCH INSTRUCTIONS, 2026-11-05
 Owner transport: no
 Use GitHub issue #4 for peer discussion; use UNO_LAB_REPORTS.txt append-only for technical decisions and results. This BENCH is the LIVE queue (not approval of old R5.3 or a replacement for its sources).
 
-Latest: === UNO-LAB-006/N0-04-A52-STAGE-A-OWNER-REPORT-20261105 | 2026-11-05 | GPT-6 | kind: PARTIAL_DEVICE_RESULT ===
+Latest: === UNO-LAB-007/N0-04-A52-TEST-A-OWNER-REPORT-20261105 | 2026-11-05 | GPT-6 | kind: PARTIAL_DEVICE_RESULT ===
 
 State / exact authority:
 - Branch: docs/uno-lab-research-handoff-20261105. Always fetch actual HEAD before modifying files. Main and the R5.3 source-package are NOT edit targets.
@@ -48,3 +48,6 @@ UNO-N0-04 REAL SENSOR ANDROID research build:
 
 
 UNO-N0-04 A52 STAGE A owner-reported partial result (2026-11-05): 80/80, physical linear acceleration, 26 transitions; trained network 52, persistence 54, numeric Markov 50, STILL 44. 10 new conjunction neurons/44 connections/7 contested. 20.834s stage time; mean/p95/max 137/194/284us; Java heap 6164KiB snapshot; checkpoint COMMIT_AND_READBACK_PASS abbreviated 8da36b1e2645d4be; restart RESTORE NOT TESTED. This online training stage is behind persistence and DOES NOT satisfy the frozen final acceptance criteria by itself. Next: frozen TEST A, TRAIN B, frozen TEST B, app restart, frozen RETEST A; no reset; do not change thresholds. Evidence in the journal === UNO-LAB-006/N0-04-A52-STAGE-A-OWNER-REPORT-20261105 | 2026-11-05 | GPT-6 | kind: PARTIAL_DEVICE_RESULT ===. No new Actions required for journal/bench edits, no change to main/G4/G5.
+
+
+UNO-N0-04 A52 owner-reported TEST A (2026-11-05): log research/uno-n0-04-results/OWNER_A52_TEST_A_20261105.md. Sensor linear_acceleration API34, 80 valid windows, 16 class transitions, model 64/80, persistence 64/80, numeric Markov 64/80, always STILL 56/80, 0 new rules, 10 total 44 synapses 7 contested, inference 143/194/383 us mean/p95/max, heap snapshot 2860KiB; RESTORE PASS_SHA256 checkpoint from earlier TRAIN A; new COMMIT_AND_READBACK_PASS 8b26ccaf2ad90ce5 after control. TEST A passes equality vs both baselines but not superiority. Overall protocol pending TRAIN B, TEST B and TEST A retention after app restart. Do not re-run or adjust scoring/card.
