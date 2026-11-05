@@ -1,0 +1,48 @@
+{
+  "criteria": {
+    "T_new": 0.9,
+    "new": 0.9,
+    "old_after": 0.9
+  },
+  "env": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]"
+  },
+  "results": {
+    "anchor": {
+      "new": 0.95,
+      "old_after": 0.9667,
+      "old_before": 1.0,
+      "old_transfer": 0.9667,
+      "pass_all": false,
+      "transfer": 0.8333,
+      "trunk_displacement": 3.9597645481072608
+    },
+    "free": {
+      "new": 0.95,
+      "old_after": 0.9667,
+      "old_before": 1.0,
+      "old_transfer": 0.9333,
+      "pass_all": false,
+      "transfer": 0.8667,
+      "trunk_displacement": 5.678621139306733
+    },
+    "frozen": {
+      "new": 0.8333,
+      "old_after": 1.0,
+      "old_before": 1.0,
+      "old_transfer": 0.9833,
+      "pass_all": false,
+      "transfer": 0.65,
+      "trunk_displacement": 0.0
+    }
+  },
+  "seed": 20261105,
+  "split": {
+    "accept_unused": 80,
+    "adapt": 200,
+    "new_eval": 60,
+    "old_eval": 60
+  },
+  "status": "INDEPENDENT_PAPER_REPLAY_NOT_UNO"
+}
