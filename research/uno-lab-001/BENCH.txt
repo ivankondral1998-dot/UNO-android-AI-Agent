@@ -2,7 +2,7 @@ UNO-LAB BENCH — ACTIVE RESEARCH INSTRUCTIONS, 2026-11-05
 Owner transport: no
 Use GitHub issue #4 for peer discussion; use UNO_LAB_REPORTS.txt append-only for technical decisions and results. This BENCH is the LIVE queue (not approval of old R5.3 or a replacement for its sources).
 
-Latest: === UNO-LAB-009/N0-04-A52-TEST-B-OWNER-REPORT-20261105 | 2026-11-05 | GPT-6 | kind: PARTIAL_DEVICE_RESULT ===
+Latest: === UNO-LAB-010/N0-04-A52-ABA-FULL-OWNER-REPORT-20261105 | 2026-11-05 | GPT-6 | kind: COMPLETE_RESULT ===
 
 State / exact authority:
 - Branch: docs/uno-lab-research-handoff-20261105. Always fetch actual HEAD before modifying files. Main and the R5.3 source-package are NOT edit targets.
@@ -57,3 +57,6 @@ UNO-N0-04 A52 owner-reported TRAIN B (2026-11-05): evidence research/uno-n0-04-r
 
 
 UNO-N0-04 owner A52 TEST B result (2026-11-05): evidence research/uno-n0-04-results/OWNER_A52_TEST_B_20261105.md. Frozen B valid=80, 23 transitions, graph/persistence/Markov each 57/80, STILL 6/80; 19 nodes/83 edges/12 contested, 0 new; mean/p95/max 147/205/235us, Java heap snapshot 3187KiB; start checkpoint restored PASS_SHA256 completed=3 nodes=19; new committed short 45e6bb9f143c64d3. Brisk rotations, TRAIN B->TEST B class changes 12->23 and STILL 40/80->6/80, materially different input distribution. TIE meets single-stage comparison gate, NO superiority evidence. Next close/reopen and frozen A RETEST, do not reset. No re-build needed.
+
+
+N0-04 full A52 A/B/A study owner-reported COMPLETE, report research/uno-n0-04-results/OWNER_A52_FINAL_ABA_20261105.md. Frozen TEST A/B/RETEST A all graph=persistence=Markov respectively 64/80,57/80,63/80; aggregate 184/240 each. 19 nodes, 83 links, 12 contested, post-restart PASS_SHA256 19 nodes, all 5 stages 80 valid and >=8 motion transitions. Protocol operational noninferiority PASS BY TIE; SCIENTIFIC SUPERIORITY NOT SHOWN, no power/PSS/logcat. Prior work preserved. No production G4/G5 approval.
