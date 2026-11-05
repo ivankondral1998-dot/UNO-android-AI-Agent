@@ -1,0 +1,53 @@
+{
+  "balanced_origin_max_accuracy_when_half_flips_adversarial": 0.5,
+  "confidence_profiles": [
+    {
+      "amplitude": 1.0,
+      "label": "GROK_UNREACHABLE_UNIT_KEYS",
+      "max_flips_at_q_ge_0_9": 25,
+      "q_at_0": 0.981515211870549,
+      "q_at_25": 0.9003339264592067,
+      "q_at_26": 0.8746302087261959,
+      "q_at_32": 0.5
+    },
+    {
+      "amplitude": 0.9293491751468356,
+      "label": "CAP_Q_TIMES_CAP_K_UPPER_ENVELOPE",
+      "max_flips_at_q_ge_0_9": 24,
+      "q_at_0": 0.9812666107744481,
+      "q_at_25": 0.8885587586589349,
+      "q_at_26": 0.8612772946132825,
+      "q_at_32": 0.5
+    }
+  ],
+  "dilution_profiles": [
+    {
+      "amplitude": 1.0,
+      "q_at_0": 0.9820120654664289,
+      "q_at_2": 0.981515211870549,
+      "q_at_4094": 0.564979046124624
+    },
+    {
+      "amplitude": 0.9293491751468356,
+      "q_at_0": 0.9820099543679884,
+      "q_at_2": 0.9812666107744481,
+      "q_at_4094": 0.5446634333338527
+    }
+  ],
+  "fixture_unit_keys_exceed_contract_caps": true,
+  "identical_full_feature_query_remains_indistinguishable_under_tested_memories": true,
+  "key_abs_upper_bound_tanh_2": 0.9640275800758169,
+  "limits": "Synthetic one-event memory read and scalar output head only; NOT exact ASTRA Wk/Wv training, nor a full shared F or Android device test.",
+  "same_32_flip_query_from_opposite_origins": true,
+  "source_contracts": [
+    "ASTRA_01 S4",
+    "ASTRA_02 Omega row L1<=2",
+    "ASTRA_04 M key/value insertion"
+  ],
+  "status": "HOST_CHECKED_SYNTHETIC_MEMORY_ANALYSIS",
+  "tested_memory_outputs": [
+    0.9820137900379085,
+    0.9804357336770032,
+    0.5
+  ]
+}
