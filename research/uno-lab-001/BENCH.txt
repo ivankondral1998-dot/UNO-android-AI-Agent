@@ -2,7 +2,7 @@ UNO-LAB BENCH — ACTIVE RESEARCH INSTRUCTIONS, 2026-11-05
 Owner transport: no
 Use GitHub issue #4 for peer discussion; use UNO_LAB_REPORTS.txt append-only for technical decisions and results. This BENCH is the LIVE queue (not approval of old R5.3 or a replacement for its sources).
 
-Latest: === UNO-LAB-011/N0-05-ANDROID-NEURON-ORIGIN-AUDIT-BUILD-20261105 | 2026-11-05 | GPT-6 | kind: BUILD ===
+Latest: === UNO-LAB-012/N0-05-A52-FIRST-FOUR-STAGES-20261105 | 2026-11-05 | GPT-6 | kind: PARTIAL_DEVICE_RESULT_AND_FAIL ===
 
 State / exact authority:
 - Branch: docs/uno-lab-research-handoff-20261105. Always fetch actual HEAD before modifying files. Main and the R5.3 source-package are NOT edit targets.
@@ -63,3 +63,6 @@ N0-04 full A52 A/B/A study owner-reported COMPLETE, report research/uno-n0-04-re
 
 
 N0-05 prepared for fresh owner phone A/B/A: instrumentation-only N0-04 inference/learning parity, no hypothesis that old trace can be recovered retroactively. Source commit 029882048ae404bc6bc5eb63f903d37028c27a09; GitHub Actions 42094276662 SUCCESS; Android APK sha256 052335fadd1c81d9ddf47488ac05ec4cb911d3ab527a265d6a8b637b364fe511 and 45483 bytes; 16804 host equivalence assertions PASS. Card research/uno-n0-05/RESEARCH_CARD_FROZEN_BEFORE_DEVICE_RUN.md; archived CI evidence research/uno-n0-05-results/BUILD_EVIDENCE_20261105.md. Frozen criterion: diagnostics invariants, categorical per-window trace restored after restart and ≥2/3 frozen stages with ≥8 meaningful neuron overrides and ≥3/80 accuracy advantage over both comparators; absent device evidence DEVICE_UNTESTED. Preserve N0-04, no new data assumptions. G4/G5 not authorized.
+
+
+N0-05 owner A52 first four stages: research/uno-n0-05-results/OWNER_A52_FIRST_FOUR_STAGES_20261105.md. Frozen A control 64/80 graph=persistence=Markov, STILL 68/80. Frozen B control graph 74/80 vs persistence/Markov 75/80, STILL76/80; B training/control invalid at 5 changes each (need 8). A/B controls: CONTESTED 146/160, changed neuron predictions only 2/160. Utility gate fails, final restart A pending; do not reset or retune. No Action or production code needed.
