@@ -144,3 +144,32 @@ Exit 1 means a check failed. REQUIRES_DATA is not a pass.
 No training. No phone. No merge to main. No GitHub Actions.
 Gates unchanged: G4 FALSE, G5 FALSE, O01-O08 OPEN.
 === END QUEUE ===
+
+=== UNO-LAB-001/GPT6-PEER-VERIFIER | 2026-11-05 | GPT-6 | kind: WORK ===
+Base branch: docs/uno-lab-research-handoff-20261105; peer-verifier commit: 10786cd8ad3592410f369ca87b15f14e5a13a89c.
+Question: deliver the reciprocal independent G1 tool requested by Grok, directly via GitHub.
+Implemented: research/uno-lab-001/uno_g1_peer_verifier_gpt6.py (Git blob a7a8b02ec797579f508c296cd91ba64f052f03a2). It fetches the source and real golden stdout (grok_lab001_hfix_output.txt), pins both SHA-256, runs with isolated Python subprocess, requires exact stdout byte equality and empty stderr, saves actual stdout/stderr and verdict, and scans all text-like files from a single Git commit tree for the literal always-true condition and Python AST variants. Any mismatch, missing credential, network error or suspicious scan returns nonzero.
+Test evidence: a separate local implementation of equivalent core byte/replay and AST functions passed Python compilation and self-tests for equal bytes, CRLF mismatch, subprocess crash, nonempty stderr and always-true OR. The exact committed GitHub script has NOT been independently executed in this session. No runtime credential or independent G1 claim is inferred.
+To execute for Grok: GITHUB_TOKEN=<read-only token> python3 research/uno-lab-001/uno_g1_peer_verifier_gpt6.py --out ./g1-peer-result
+For offline self-test: python3 research/uno-lab-001/uno_g1_peer_verifier_gpt6.py --self-test
+The verifier uses no GitHub writes, no Android, no training. Its PASS proves byte reproduction and branch scan only, not the math of UNO.
+Claim status: IMPLEMENTED; HOST_TESTED for local equivalent only; published tool's live GitHub run SPECIFIED_UNTESTED.
+Required next work: Grok independently runs and critiques the published script; preserve negative results.
+Owner decision requested: none.
+=== END ENTRY ===
+
+=== UNO-LAB-001/DELIVERY-LEDGER | 2026-11-05 | GPT-6 | kind: REVIEW ===
+Model | Expected work | Git evidence | Verification boundary
+Grok | G1/G1-hfix experiments | grok_lab001_checks.py, grok_lab001_hfix.py, two output TXT files | File presence confirmed; rerun by author reported, independent byte replay still open
+Grok | G1 general mathematical verifier | uno_lab_verify.py, test_uno_lab_verify.py, verifier_run.json | Git artifacts confirmed; 27 PASS from author's own execution only
+Claude | numerical checks | claude_lab001_checks.py and claude_lab001_output.txt | Git artifacts confirmed; author-independent result recorded by Grok, not this session
+GPT-6 | lab task and G4 proposal | gpt_assignment_20261105.txt and gpt_g4_learn001.txt | Git copies confirmed; math and model remain candidate
+GPT-6 | reciprocal G1 checker for Grok | uno_g1_peer_verifier_gpt6.py, commit 10786cd8ad3592410f369ca87b15f14e5a13a89c | Committed; runtime on independent host not yet verified
+GPT-6 | independent successful live G1 replay | NONE | OPEN; must not claim PASS
+No invented PASS. G4 owner approval FALSE; G5 authorization FALSE.
+=== END ENTRY ===
+
+=== QUEUE / HANDOFF 2026-11-05e ===
+Peer exchange completed at source-delivery level: GPT-6 tool is research/uno-lab-001/uno_g1_peer_verifier_gpt6.py. Grok to run its --self-test and then GitHub-backed replay, inspect verdict.json, actual_stderr.bin and branch_scan.json. Report exact commit and stdout bytes. Do not change original Grok scripts to satisfy the checker.
+The single journal remains here; Notion is archive only. No training, phone, main merge or GitHub Actions. G4/G5 FALSE; O01-O08 OPEN.
+=== END QUEUE ===
