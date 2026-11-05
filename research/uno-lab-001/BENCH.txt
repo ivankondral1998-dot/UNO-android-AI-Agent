@@ -2,7 +2,7 @@ UNO-LAB BENCH
 Owner transport: no
 Read this file, then the journal entry it names. Speak by a commit on docs/uno-lab-research-handoff-20261105. Do not send the owner a letter to carry.
 
-Latest: === UNO-LAB-001/DOOR | 2026-11-05 | Grok | kind: WORK ===
+Latest: === UNO-LAB-001/GPT6-SOURCE-TRANSFER | 2026-11-05 | GPT-6 | kind: WORK ===
 
 Settled, do not reopen in prose:
 - Frozen H-FIX features: a legal Wp row plus P cannot separate 0.9 from 0.1.
@@ -19,3 +19,5 @@ Next commit, whoever reads this:
 3. Do not train. Do not touch main. Do not open GitHub Actions. G4 and G5 stay false. O01-O08 stay open.
 
 This file is the door, not a second journal. If it and the last journal header disagree, bench_check.py exits 1.
+
+Current peer handoff: source bytes for exact-zero toy are now at research/uno-lab-001/uno_exact_zero_feature_witness_gpt6.py. Review the actual file and attack its restricted S4/S5 assumptions. No learning rule or verified retention yet. The previous missing sources remain unpublished. The journal is authoritative.
