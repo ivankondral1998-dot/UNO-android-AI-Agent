@@ -2,7 +2,7 @@ UNO-LAB BENCH — ACTIVE RESEARCH INSTRUCTIONS, 2026-11-05
 Owner transport: no
 Use GitHub issue #4 for peer discussion; use UNO_LAB_REPORTS.txt append-only for technical decisions and results. This BENCH is the LIVE queue (not approval of old R5.3 or a replacement for its sources).
 
-Latest: === UNO-LAB-013/N0-05-A52-COMPLETE-NEGATIVE-DIAGNOSTIC-20261105 | 2026-11-05 | GPT-6 | kind: COMPLETED_EXPERIMENT_INVALID_UTILITY_FAIL ===
+Latest: === UNO-LAB-014/OWNER-TEACHING-ANDROID-OUTCOME-RECOVERY-N0-06-20261105 | 2026-11-05 | GPT-6 | kind: OWNER_REQUIREMENT_AND_CANDIDATE ===
 
 State / exact authority:
 - Branch: docs/uno-lab-research-handoff-20261105. Always fetch actual HEAD before modifying files. Main and the R5.3 source-package are NOT edit targets.
@@ -16,6 +16,10 @@ Closed / verified scope (do not run again merely to repeat):
 - Grok's sequential small-weight toy source and stdout exist under research/uno-lab-001/grok_sequential_organism.{py,json}. GPT-6 independently reimplemented it under research/uno-lab-001/gpt6_independent_sequential_replay*; all 15 numbers in the saved JSONs match (old-before, old-after, new, shifted new, shifted old for each of 3 variants). This is an evidence comparison, not certification of a working UNO F.
 - 0.9 acquisition, retention and transformed-new transfer criteria: frozen trunk old-after=1, new=.8333, transfer=.65; anchored old-after=.9667, new=.95, transfer=.8333; free old-after=.9667, new=.95, transfer=.8667. None clears all 3 gates. Test split called 'locked' in source is PUBLIC, not sealed final holdout.
 - Source-model semantics: h=A*x and each head is linear, so w^T A x+b=(A^T w)^T x+b. There is no nonlinear missing-feature learning; the two heads are selected by evaluator, not UNO autonomous verb/action selection. 'frozen_trunk_P_heads' is not legal ASTRA_04 P1 and no lawful M-only / P+M / verified receipt/S4-S5-S7 test was run. In Grok's shared-trunk variant, on phase 2 only A and NEW head are updated; OLD head remains fixed. Preserve historical code, correct claims via journal erratum.
+
+NEW MANDATORY OWNER LEARNING REQUIREMENT (2026-11-05; does not replace existing R5.3):
+- Every agent: read docs/research/OWNER_TEACHING_AND_ANDROID_EVIDENCE_20261105.md, then research/uno-n0-06/RESEARCH_CARD_CANDIDATE_20261105.md. One organism learns from observational data, owner explanations/corrections and independent Android outcome receipts with distinct provenance, never by turning memory into authority. N0-04/N0-05 test only physical sensor prediction.
+- N0-05 owner-reported A52 experiment complete, diagnostic utility FAIL, B stages fail diversity; no proof owner teaching or verified-result learning fails (untested). Next N0-06: separate host-only conflict/teaching/readback contracts; real exact 400-row trace requires verified bytes before replay. No Android build/actions or production code from this instruction.
 
 OPEN next work (research-only; owner answer not required now):
 1. Grok review the independent 15-metric replay, the strictly linear expressivity argument and the public split. Publish ONE new versioned, pre-registered NONLINEAR/missing-feature sequential-learning candidate under the per-run budget; do not retune the published toy on its public evaluation set.
