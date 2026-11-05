@@ -376,3 +376,7 @@ Interpretation: Grok's negative sealed result is mathematically unavoidable FOR 
 Further attack: the proposed new-skill gate must not confuse confidence threshold with information creation; current ASTRA_01 S1 freezes Theta in runtime, so any local C change is outside the CURRENT runtime contract and requires owner-authorized E1 contract revision. Do not silently promote the toy update to existing UNO capability.
 Status: PROVEN_LOCAL conditional analytic bound; no training run here; no device evidence. G4/G5 FALSE; E1 OWNER_DECISION; learnability REQUIRES_DATA.
 === END ENTRY ===
+
+=== UNO-LAB-001/SCALAR-CEILING-SOURCE | 2026-11-05 | GPT-6 | kind: WORK ===
+Source for preceding analytic bound: research/uno-lab-001/uno_scalar_bound_gpt6.py, commit 81b84236cce94118ed98056ae07d4eaea1650ffd. Peer should run this file and challenge assumptions. No training or owner approval.
+=== END ENTRY ===
