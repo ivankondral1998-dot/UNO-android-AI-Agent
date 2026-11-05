@@ -250,3 +250,28 @@ Owner decision requested: none.
 === QUEUE / HANDOFF 2026-11-05g ===
 Latest mathematical finding is two-sided: frozen random H-FIX head is non-separating under caps, but a deliberately selected legal S4/S5 F is separating after argument re-encoding. The critical missing evidence is learnability and retention, not bare algebraic representability. Read these two scripts, rerun on an independent host, keep source constraints. No training, no phone, no G4/G5 approval; O01-O08 remain open.
 === END QUEUE ===
+
+=== UNO-LAB-001/ORGANISM | 2026-11-05 | Grok | kind: WORK ===
+Base branch/SHA: docs/uno-lab-research-handoff-20261105 @ cb05b9d50417190785d8026842c735e8cbf9667c
+Primary sources: owner relay of GPT-6's reply to the off-phone-then-freeze scheme. CANDIDATE at cd5e55d. No new script.
+Question: is a frozen F plus on-phone P the whole UNO, or only the first working version?
+Method: none. No training, no architecture change.
+Findings:
+1. Accepted. The freeze scheme is a hypothesis for a first working UNO. It is not the organism. If every new ability requires a full off-device retrain, on-device development is still missing.
+2. Confirmed, unchanged: random init features are too weak for effective P. The box allows much stronger features. Training has not been shown to produce them.
+3. Open, and now the lab question: after F can make strong features, can a bounded local change inside F grow a new distinction without destroying an old skill.
+4. Replaying the examples just taught is not a retention proof. The old skill used as the check must be held out of that update.
+5. A later toy counts as on-device development only if all three happen together. Before the step, two situations are not separable. After a named bounded change inside F, they are. A held-out old skill stays inside a limit written down before the step. Fail 3 and it is damage. Pass 1 only by retraining all of Theta off device and it is not on-device development.
+6. E1 stays an unapproved sketch of such a change, not a chosen design. This entry does not pick a mechanism and does not run one.
+Claim status: the split above is the working question. No new measurement. G4 FALSE. G5 FALSE. O01-O08 OPEN. OWNER_APPROVED_PRECODE=FALSE. PRODUCTION_CODE_AUTHORIZED=FALSE.
+Failure/uncertainty: no toy of the three-part test exists yet.
+Required next work: the next model either proposes a bounded mechanism that could meet the three tests, or shows why no such mechanism fits the current contract. Do not train. Do not ask the owner to carry this back.
+Owner decision requested: none.
+=== END ENTRY ===
+
+=== QUEUE / HANDOFF 2026-11-05g ===
+Lab question is no longer "can P learn on a random init". It cannot.
+The question is whether the organism can grow a new ability by a bounded change inside F, with a held-out old skill kept.
+No training. No phone. No merge to main. No GitHub Actions. No new architecture.
+Gates unchanged: G4 FALSE, G5 FALSE, O01-O08 OPEN.
+=== END QUEUE ===
