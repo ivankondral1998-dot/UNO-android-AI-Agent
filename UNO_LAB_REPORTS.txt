@@ -193,3 +193,30 @@ Grok ran it at d1f2f13. Replay matched. Process exit 1 on one prose line in CLAI
 No training. No phone. No merge to main. No GitHub Actions.
 Gates unchanged: G4 FALSE, G5 FALSE, O01-O08 OPEN.
 === END QUEUE ===
+
+=== UNO-LAB-001/CANDIDATE | 2026-11-05 | Grok | kind: WORK ===
+Base branch/SHA: docs/uno-lab-research-handoff-20261105 @ 1df94c7a19ca6c8a09026f20fd2dec4500d4d7a5
+Primary sources: ASTRA_04 P1, ASTRA_01 S5 box, reproduced hfix stdout SHA-256 cfd5b0bebee162a07907714d10aa14177b09074da02958dfdd5099619947f3a5. GPT-6 byte replay of that stdout is accepted. This entry does not rerun it.
+Question: where can a new skill live, given the contract and the reproduced measurements?
+Method: one comparison. For q*=0.9 and l0=0, P with ||p||<=1 needs ||h_a|| >= ln(9) = 2.197224577336. The S5 box keeps each coordinate in [-1,1], so ||h||_2 <= sqrt(d). sqrt(512) = 22.627417. sqrt(1024) = 32. Four coordinates at +/-1 give ||h||=2, which is short. Five give sqrt(5) = 2.236068, which clears ln(9). One saturated coordinate does not.
+Findings:
+1. The box is not the obstacle. At d=512 it allows about 10.30 times the needed norm. At d=1024 about 14.56 times.
+2. The reproduced random init is the obstacle. Full mask, K=8: max ||h_a|| is 0.010210 at d=512 and 0.007541 at d=1024. That is 215.2 times and 291.4 times short of ln(9). Measured l0 stays within about 5e-4 of 0, so it does not close the gap. Half mask still tops out at 1.254463 and 1.307982, both under ln(9).
+3. Therefore P on this init cannot carry a new skill up to q*=0.9. P does not build the feature. It only reweights a frozen one.
+4. A trained F could in principle emit five strong coordinates and stay inside the box. Nobody has shown that it does. That remains REQUIRES_DATA. This entry does not claim a trained UNO fails.
+5. Even a large enough h_a does not give retention. The same h with opposite labels makes the other loss worse. A hard replay gate can also reject every step.
+6. E1, a change inside F, is the only sketched on-device way to grow the feature. It is not in the current runtime. It stays OWNER_DECISION. This entry does not ask for a decision and does not start training.
+Refuted: "4.394 is the universal requirement"; "P at this random init learns q=0.9"; "P2 descent means old tasks are kept"; "a matching stdout proves the algorithm".
+Not refuted: a later trained Theta might make h_a large enough. Phone cost, quality, and A52 remain REQUIRES_DATA.
+Claim status: PROVEN_LOCAL for the norm comparison above. CONDITIONAL on the box still holding. Not an owner approval. G4 and G5 stay false. O01-O08 stay open.
+Failure/uncertainty: the hfix numbers are one legal random skeleton, not all 198 tensors and not trained weights.
+Required next work: the next model attacks this candidate in this journal. A counterexample, or a legal untrained F that emits ||h_a|| >= ln(9) inside the box, or an explicit acceptance of the limit. Do not send the owner to carry it.
+Owner decision requested: none.
+=== END ENTRY ===
+
+=== QUEUE / HANDOFF 2026-11-05f ===
+The working result is the CANDIDATE entry above. Attack it or leave it. Do not open a second report.
+P on the reproduced init cannot reach q*=0.9. The box could. Training is not authorized.
+No training. No phone. No merge to main. No GitHub Actions.
+Gates unchanged: G4 FALSE, G5 FALSE, O01-O08 OPEN.
+=== END QUEUE ===
