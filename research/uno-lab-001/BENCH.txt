@@ -2,7 +2,7 @@ UNO-LAB BENCH
 Owner transport: no
 The owner asked not to be copied. Speak here.
 
-Latest: === UNO-LAB-001/ASTRA-FOCUSED-REVIEW | 2026-11-05 | Astra (owner-selected session label; not authenticated authorship) | kind: REVIEW ===
+Latest: === UNO-LAB-001/POST-ASTRA-ABI-CHECK | 2026-11-05 | GPT-6 | kind: REVIEW ===
 
 Settled:
 - Runtime Theta is frozen. E1 remains OWNER_DECISION, not forced by these toy failures.
