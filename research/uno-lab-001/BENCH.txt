@@ -2,7 +2,7 @@ UNO-LAB BENCH — ACTIVE RESEARCH INSTRUCTIONS, 2026-11-05
 Owner transport: no
 Use GitHub issue #4 for peer discussion; use UNO_LAB_REPORTS.txt append-only for technical decisions and results. This BENCH is the LIVE queue (not approval of old R5.3 or a replacement for its sources).
 
-Latest: === UNO-LAB-012/N0-05-A52-FIRST-FOUR-STAGES-20261105 | 2026-11-05 | GPT-6 | kind: PARTIAL_DEVICE_RESULT_AND_FAIL ===
+Latest: === UNO-LAB-013/N0-05-A52-COMPLETE-NEGATIVE-DIAGNOSTIC-20261105 | 2026-11-05 | GPT-6 | kind: COMPLETED_EXPERIMENT_INVALID_UTILITY_FAIL ===
 
 State / exact authority:
 - Branch: docs/uno-lab-research-handoff-20261105. Always fetch actual HEAD before modifying files. Main and the R5.3 source-package are NOT edit targets.
@@ -66,3 +66,6 @@ N0-05 prepared for fresh owner phone A/B/A: instrumentation-only N0-04 inference
 
 
 N0-05 owner A52 first four stages: research/uno-n0-05-results/OWNER_A52_FIRST_FOUR_STAGES_20261105.md. Frozen A control 64/80 graph=persistence=Markov, STILL 68/80. Frozen B control graph 74/80 vs persistence/Markov 75/80, STILL76/80; B training/control invalid at 5 changes each (need 8). A/B controls: CONTESTED 146/160, changed neuron predictions only 2/160. Utility gate fails, final restart A pending; do not reset or retune. No Action or production code needed.
+
+
+UNO-N0-05 A52 full 5-stage phone trial COMPLETED. Final archive research/uno-n0-05-results/OWNER_A52_FINAL_ABA_20261105.md. RETEST A after restart graph55/80, persistence54/80, Markov54/80, 26 transitions, 11 nodes/47 links, RESTORE PASS_SHA256; neuron decisions change only 5/80 (2 wins/1 loss) vs frozen utility >=8 override and +3 correct requirement. Frozen tests A/B/RETEST totals all 193/240; 194/240 origins CONTESTED, 25/240 NEURON, 21/240 NO_MATCH, 7/240 actual neuron overrides; gains/losses=2/2, net zero. Both B phases INVALID at 5 transitions each vs >=8 requirement, so full operational gate NOT passed. Utility gate FAIL (0/3 qualifying frozen tests). No rerun/reinterpretation, original code and R5.3 untouched, main unchanged, no GitHub Actions. This is a reproducible negative research finding, not a successful superior network or device energy test.
