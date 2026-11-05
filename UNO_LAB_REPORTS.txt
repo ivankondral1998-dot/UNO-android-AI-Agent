@@ -1,0 +1,59 @@
+UNO-LAB RESEARCH JOURNAL — SINGLE APPEND-ONLY RECORD
+Created: 2026-11-05 | Repo: ivankondral1998-dot/UNO-android-AI-Agent
+Experimental research handoff only; no owner-approved architecture implied.
+Source base: docs/uno-r53-agent-handoff-20261102 @ fcddf0f626cc13a60ec13200b4a48b7dee180fb4
+Current gate: G4 PRECODE CANDIDATE / OWNER_APPROVED_PRECODE=FALSE / PRODUCTION_CODE_AUTHORIZED=FALSE.
+Index and procedure: UNO_LAB_AGENTS.md (same branch).
+Append records below; preserve former records and negative findings. One active writer at a time.
+
+=== UNO-LAB-001/CLAUDE-R1 | 2026-11-05 | Claude (label in shared Notion, unverified) | kind: SOURCE-REPORTED-REVIEW ===
+Provenance: https://app.notion.com/p/40f26acc8e10812d994ffd076983e2d6
+Source stated by author: original ASTRA_04/P1-P3 and ASTRA_02, ASTRA_05; historical R5.2 package; GPT UNO-G4-LEARN-001.
+Work reported: recalculated model arithmetic and P1 toy update; random checks of local PGD/P2 conditions and feature-interference; compared retention tests and confidence-bound sample requirements.
+Reported numbers: 23,015,887 parameters at d=512; 55,451,639 at d=1024; active P rows 21d. In repeated fixed h example with initial q=0.1, p=0 and eta=.01, rho=5 reaches q>=0.9 in 1406 updates; rho=32 in 1353 updates; small rho caps q below 0.9. Feature overlap can worsen protected old-task loss. No universal no-forgetting guarantee.
+Verification: report includes own Python source and stated stdout. THIS JOURNAL DID NOT EXECUTE OR REHASH THE SCRIPT.
+Claim status: PROVEN_LOCAL as author-reported calculations only; independent reproducibility in new GitHub lab PENDING. Training quality/A52 performance REQUIRES_DATA.
+Limitations: author's source read was R5.2, not a full independent bytewise R5.3 audit. P1 fixed-feature trajectory is not owner-device learning.
+Next: independent replay with frozen feature and follow-up checks of S4/S5/S7.
+=== END ENTRY ===
+
+=== UNO-LAB-001/GROK-G1-G7 | 2026-11-05 | Grok (label in shared Notion, unverified) | kind: SOURCE-REPORTED-WORK ===
+Provenance (sections 0–5): https://app.notion.com/p/40f26acc8e10811a9317dc5fea3704b5
+Sources stated: ASTRA_01 S4/S5/S7, ASTRA_02 weights, ASTRA_04 P1–P3. GitHub was reportedly inaccessible from that Grok session; Notion copies read.
+Reported findings: verified arithmetic at d=512/1024; corrected bound on single-step logit change to include regularization term; in special fixed p0=0, l0=logit(0.1), q*=0.9 case requires ||h|| >= 2 ln 9 = 4.394449154672. General feasibility instead needs logit(q*) - l0 <= ||h||, provided ||p||<=1 and l0 fixed. For fixed p_start, max change over unit P ball <= (1+||p_start||)||h||<=2||h||. The 4.394 number is NOT universal. Low-rank E1 toy changes representation but can damage old task; strict zero-loss-growth replay gate can block all updates.
+Published toy source SHA-256 (author-stated, not rehashed): 8f8a8ca9b54d01f3a6a476a9794f706ae79907ea83397addf529748972f71684
+Published toy output SHA-256 (author-stated): d0de2b551a22f8af79968eff58d5e3f2beb4898597b7bc952bb79d5448db94fd
+Verification: toy source/output appear in Notion; not independently executed by this journal author. Status: PROVEN_LOCAL as AUTHOR-REPORTED TOY; SPECIFIED_UNTESTED as UNO training claim.
+Next: measure actual post-proposal h_a and l0 under frozen legal random initialization before making claims about P's effectiveness.
+=== END ENTRY ===
+
+=== UNO-LAB-001/GPT-HFIX-REVIEW | 2026-11-05 | GPT-6 | kind: REVIEW ===
+Provenance: comment on Grok page: https://app.notion.com/p/40f26acc8e10811a9317dc5fea3704b5
+Direct source read: GitHub ASTRA_01 S4, S5, S7; ASTRA_04 P1; NORMATIVE/02 at commit fcddf0f6...
+Checked contract: P1 uses frozen FP32 h_a AFTER canonical proposal argument re-encoding, not h^0 or intermediate h^K. For fixed h_a and base logit l0, geometry imposes q<=sigmoid(l0+||h_a||). The 4.394 example is conditional on l0=logit(.1), p0=0. Under evolving s/M the frozen-feature update count must not be treated as empirical owner learning.
+Verification: analytic contract reading, NOT reproduction of Grok measurements.
+Status: PROVEN_LOCAL for these bounds conditional on correct feature/row; empirical behavior REQUIRES_DATA.
+Recommended method: record distribution of (||h_a||, l0, ||p0||, q0) under two distinct experimental modes: fixed inputs and evolving state/memory at frozen Θ/P.
+=== END ENTRY ===
+
+=== UNO-LAB-001/GROK-HFIX-S6 | 2026-11-05 | Grok (label in shared Notion, unverified) | kind: SOURCE-REPORTED-WORK ===
+Provenance: https://app.notion.com/p/40f26acc8e10811a9317dc5fea3704b5 (section 6, 6.1–6.4)
+Experimental scope as described: a *partial S4/S5/S7 skeleton*, NOT all 198 tensors of UNO; random legal initial weights, no training, no physical A52, no live Android; full mask with K=8 primary case. Seed stated: 20261105+d; 4 re-encoded argument tokens; P fixed to zero, g=0. Reported d=512: 32 chains × 21 endpoint rows = 672. d=1024: 16 × 21 = 336 rows.
+Results stated by author:
+- d=512: median/max ||h_a|| = 0.010109/0.010210; median ||h^0|| before S5 ~0.958891; median q0~0.500014; median σ(l0+||h_a||)-q0 ~0.002527; geometric q=0.9 feasible 0/672.
+- d=1024: median/max ||h_a|| = 0.007489/0.007541; ||h^0||~0.982700; q0~0.499989; median headroom~0.001872; feasible 0/336.
+- Full mask K=8 leads to much smaller post-proposal features than pre-S5 norm. K=1 and partial-mask tests reported larger h (e.g. d=512 K=1 ~0.634882, half-mask ~1.248195), but not enough for q=0.9 in reported configuration.
+- Mode B with 12 state/memory events and frozen weights/P did not resolve the geometric gap in that synthetic fixture.
+Reported script SHA-256: b70754f1c39faf564eb8a4fc0f671fbae961f75e56ab9ce9bf14d2757ee5225d
+Reported stdout SHA-256: cfd5b0bebee162a07907714d10aa14177b09074da02958dfdd5099619947f3a5
+CRITICAL REPRODUCIBILITY GAP: the Notion Section 6 states the script filename grok_lab001_hfix.py and hashes, but DOES NOT include its full source bytes, raw CSV or full stdout. Numbers are AUTHOR-REPORTED, NOT INDEPENDENTLY REPRODUCED HERE.
+Claim status: PROVEN_LOCAL per Grok for its random skeleton; independent verification SPECIFIED_UNTESTED; future trained-UNO learning REQUIRES_DATA. Do not extrapolate a random initialization to trained weights or claim owner learning impossible.
+Concrete next work: obtain the exact script and raw output, verify SHA-256, reproduce within isolated host fixture, check initialization/norms/shape against full ASTRA_02 and S5, then compare fixed vs evolving state and tabular baseline. Do not start weight training/A52 without new owner approval.
+=== END ENTRY ===
+
+=== QUEUE / HANDOFF 2026-11-05 ===
+Current published research: Grok G1–G7 and synthetic h_a measurement; Claude P1/P2/P3 and interference; GPT-6 analytic boundary review.
+No open Grok run asserted. Next active model: chosen by owner; other sessions do not auto-wake.
+Open technical gap: hfix source bytes + raw outputs not yet in GitHub; independent reproduction pending.
+Open product gates: G4 owner approval FALSE; G5 production code FALSE; O01–O08 owner decisions OPEN.
+=== END QUEUE ===
