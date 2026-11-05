@@ -2,7 +2,7 @@ UNO-LAB BENCH — ACTIVE RESEARCH INSTRUCTIONS, 2026-11-05
 Owner transport: no
 Use GitHub issue #4 for peer discussion; use UNO_LAB_REPORTS.txt append-only for technical decisions and results. This BENCH is the LIVE queue (not approval of old R5.3 or a replacement for its sources).
 
-Latest: === UNO-LAB-001/AUTHORIZATION-AND-SEMANTIC-ERRATA-20261105 | 2026-11-05 | GPT-6 | kind: ERRATUM ===
+Latest: === UNO-LAB-003/N0-03-ANDROID-BUILD-20261105 | 2026-11-05 | GPT-6 | kind: WORK ===
 
 State / exact authority:
 - Branch: docs/uno-lab-research-handoff-20261105. Always fetch actual HEAD before modifying files. Main and the R5.3 source-package are NOT edit targets.
@@ -24,3 +24,10 @@ OPEN next work (research-only; owner answer not required now):
 4. After independent evidence, prepare owner alternatives for future E1 vs frozen Theta and costs. Do not infer that the owner approved an architecture. Keep G4/G5 separate.
 
 Source links: https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/issues/4 ; GPT peer-review comment 6660628133 ; latest journal entry === UNO-LAB-001/AUTHORIZATION-AND-SEMANTIC-ERRATA-20261105 | 2026-11-05 | GPT-6 | kind: ERRATUM ===
+
+
+NEW ANDROID RESEARCH CANDIDATE (owner-initiated 2026-11-05; not a change to previous Grok/Astra research requirements):
+- UNO-N0-03 is an isolated nonnumeric-synapse/structural-plasticity experimental Android APK, built and signed, NOT run on device. See research/uno-n0-03/android/BUILD_EVIDENCE_RU.md and RESEARCH_CARD_FROZEN_BEFORE_DEVICE_RUN.md.
+- Owner explicitly allowed Android research experiments today. Do not use PC training as a substitute for A52 validation. Device learning, phone RAM/latency, OS behavior, battery/energy remain REQUIRES_DATA.
+- SHA256 APK b3e88cb340f6e9b527fb283993271b52da47e6790d50841f025c7d037ea5da10. Built-in synthetic oracle is NOT native OS readback; graph update rule is designer-written; no general intelligence claim.
+- Safe next gate: owner-side A52 install and Stage1/Stage2 evidence. NO production code or G4/G5 approval. Original OPEN Grok/GPT/Astra items above remain open.

@@ -1,0 +1,25 @@
+# UNO-N0-03 — Android research card / pre-registered 2026-11-05
+
+Status: SPECIFIED_UNTESTED until phone runs. Research-only, no production permission. Target: Samsung Galaxy A52, Android 14, offline.
+
+## Objective
+Test whether a shared event-neuron network without numerical synaptic coefficients can create a new coincidence neuron for unexpected higher-order interactions and preserve older skills after adding the new neuron. Compare against fixed independent-flip N0-02-style baseline and exact memorization. This is NOT a claim of general intelligence or an intrinsically new law of learning.
+
+## Input and synthetic oracle
+Five binary categorical sensory events, ICE, MAGNET_ON, FIELD_HIGH, COLOR_BLUE, MATERIAL_STEEL, and two push actions. Synthetic world returns relation COPY/FLIP via formula `flip = (FIELD_HIGH OR (ICE AND MAGNET_ON)) XOR (ICE AND MAGNET_ON AND FIELD_HIGH AND COLOR_BLUE)`. The environment is implemented separately from neural inference, **not** actual Android system readback, and authored by experiment designer. STEEL is a distractor. No real Android actions or permission requests; no cloud, Internet permission, or telemetry.
+
+## Plasticity fixed before run
+Start with sensory neurons, a shared Boolean parity state, and action/outcome signals. No learned float/int scalar per synapse; each new synapse is typed `REQUIRES` or `FLIP`. The single general **pre-programmed meta-rule** is: if a verified event's outcome disagrees with the activated graph and all proper subset contrasts are known, create ONE new coincidence neuron with prerequisite links to the currently active event set and a FLIP link to the shared state. If a subset is missing, cache the surprising observation, propose the missing subsets as experimental requests, and learn as results arrive. This uses enumeration of proper subsets (exponential in active features). It is NOT strictly biological synapse-local learning, invention of a new gate primitive, or proof of causality under confounding. The graph uses Boolean logic; integer IDs/timestamps/counters still exist.
+
+## Android-only execution
+**Do not run training on the PC.** Install the research APK and press stage 1, then stage 2 on the PHONE. The Android app itself calculates and displays results using `SystemClock.elapsedRealtimeNanos` and Java heap memory, with no claim about joules or whole-device energy. Copy the screen report. Source version and SHA-256 should be recorded with test report before trusting device result.
+
+## Frozen synthetic training and test protocol
+- Stage 1: 16 observations for every context containing 0, 1 or 2 active sensory flags (rightward action only), then 1 observation at ICE+MAGNET+FIELD (no blue/steel): 17 receipts. All offered receipts have `verified=true` from the toy oracle. Graph should discover a unary FIELD neuron, a pair ICE+MAGNET neuron, and a triple ICE+MAGNET+FIELD neuron. No class labels are fed directly into inference.
+- Stage 1 old-skill retention: 12/12 on baseline and five singleton contexts, both actions. Full finite world: expected 30/32 (hidden 4-way exception). Unseen exact contexts (right action): expected 13/15. Old fixed FIELD-only baseline: expected 26/32. This is a PUBLIC, investigator-defined test and NOT a sealed holdout.
+- Stage 2: supply a single surprising context `ICE+MAGNET+FIELD+BLUE`. Network reports missing contrast subsets, requests three 3-way contexts (with blue), and resolves the buffered surprising receipt. Expected new 4-way conjunction neuron. Evaluate full 32 right, 32 left, old 12, and strict unseen original-action contexts (32 minus observed). Expected 32/32, 32/32, 12/12, and 11/11, respectively, **if the algorithm has no error**. These are falsifiable expected values, not observed Android results.
+- Negative: unverified result must not mutate graph; previously unknown new latent cause SHIELD is not representable, so unexpected outcomes cannot be predicted (EXPECTED FAIL). Contradictory verified same key marked CONFLICT, no adjustment; sensor/permission boundary out of this experiment.
+- Comparator: fixed relation parity with only FIELD=HIGH discovered, exact-key-only table (0 accuracy on all new LEFT actions), and explicit formula oracle (privileged baseline). Do not report improvement against an oracle with knowledge of true law.
+
+## Acceptance and limits
+Device report must state whether every expected gate passed, with actual counts and device; copied log required. Host tests do not count. Any failure remains recorded, do not change task or threshold after observation. Single-run wall limit <=600 seconds; memory max research cap 2 GiB where enforceable; no more than 3 complete candidate runs before inspection. Since there is no true OS-level guarantee in this toy, **DEVICE_VERIFIED only for app execution**, not UNO production behavior. G4 PRECODE_CANDIDATE; no G5/G6 approval, no production code or real Android actions.
