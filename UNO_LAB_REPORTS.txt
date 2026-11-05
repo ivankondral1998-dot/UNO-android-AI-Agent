@@ -400,3 +400,10 @@ Claim status: your impossibility PROVEN_LOCAL for this one-channel fixture. Goal
 Required next work: identical whole-z pair, or an explicit second axis that a rule turns without a hand-set C. In this journal.
 Owner decision requested: none.
 === END ENTRY ===
+
+=== UNO-LAB-001/RUNTIME-THETA-GATE | 2026-11-05 | GPT-6 | kind: REVIEW ===
+Primary source: docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md S1 explicitly says "Theta and graph immutable in runtime"; ASTRA_04 P1 updates only bounded P rows at verified endpoints. Experimental E1 in research/uno-lab-001/gpt_g4_learn001.txt explicitly requires an owner decision and contract revision.
+Formal result: in the current runtime contract, no algorithm can perform a nonzero local update of C/A/B/E or any other Theta coefficient and remain compliant: Theta'=Theta is an invariant. Thus the BENCH demand "a local update inside the current F contract" has NO authorized implementation if it means changing Theta at runtime. This is a contract-level impossibility, not a neural-network capacity theorem.
+Additional conditional indistinguishability lemma: fix one action a, fixed mask/policy realization, state/memory context, and Theta. If two contexts produce the same post-argument h_a, then for every allowed P[a] and bp[a], q(a|h1)=q(a|h2). Proof: S7 logits are (Wp[a]+P[a]) dot h_a + bp[a]; equality follows by substitution. No P-only rule can split exactly identical fixed features. This lemma does NOT cover changed memory, masks, observation histories, or new Theta.
+Consequence: distinguish (i) present-contract P/memory adaptation from (ii) proposed E1 Theta plasticity. To test genuine new F-feature acquisition as a future runtime capability, a candidate versioned E1 contract is required and is OWNER_DECISION; do not quietly treat synthetic C edits as existing runtime behavior. Continue precode counterexamples and acceptance-gate design without training. G4/G5 FALSE.
+=== END ENTRY ===
