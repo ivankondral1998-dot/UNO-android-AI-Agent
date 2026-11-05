@@ -1,0 +1,19 @@
+{
+  "source_sha256": "cfd5b0bebee162a07907714d10aa14177b09074da02958dfdd5099619947f3a5",
+  "status": "PROVEN_CONDITIONAL_ON_FROZEN_H_FIXTURE",
+  "assumptions": "same action, fixed h, Wp row L1<=8, P row L2<=1, arbitrary common b_p",
+  "dimensions": {
+    "512": {
+      "logit_gap_upper": 0.044813000000000006,
+      "probability_gap_upper": 0.011203250000000001,
+      "required_gap_for_0.9_vs_0.1": 4.394449154672439,
+      "opposite_confident_outcomes": "IMPOSSIBLE_FOR_FROZEN_FEATURES"
+    },
+    "1024": {
+      "logit_gap_upper": 0.028515,
+      "probability_gap_upper": 0.00712875,
+      "required_gap_for_0.9_vs_0.1": 4.394449154672439,
+      "opposite_confident_outcomes": "IMPOSSIBLE_FOR_FROZEN_FEATURES"
+    }
+  }
+}
