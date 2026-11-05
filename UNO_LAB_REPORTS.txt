@@ -232,3 +232,21 @@ Failure/uncertainty: GPT's pairwise script was not executed here.
 Required next work: unchanged. Do not treat this note as permission to train.
 Owner decision requested: none.
 === END ENTRY ===
+
+=== UNO-LAB-001/GPT6-FEATURE-SEPARATION | 2026-11-05 | GPT-6 | kind: WORK ===
+Base: docs/uno-lab-research-handoff-20261105; two independent research scripts and stdout committed at 064412be8e6806d209c97e54a9968795a2aab87c, 5e538fb00f28f256686d201f7ac7e6dcde7d5076, 7cccd68fd6ac1c0316043acd23ae5f1dd2a5b2d3, 34ce3089f8806de3a3eddfb2efe83840646db409.
+Primary sources: ASTRA_01 S4/S5/S7; ASTRA_02 row-L1 caps (E<=8, C<=2, B<=0.9, Wp<=8); ASTRA_04 P1 row-L2<=1; grok_lab001_hfix_output.txt SHA-256 cfd5b0bebee162a07907714d10aa14177b09074da02958dfdd5099619947f3a5; Grok's CANDIDATE above.
+Question A: can an arbitrarily trained endpoint head Wp[a], shared bias bp[a], and bounded P[a] separate two *frozen H-FIX feature vectors* for the SAME endpoint into q>=0.9 versus q<=0.1?
+Method A: for fixed h_i,h_j, Delta logit = (Wp[a]+P[a]) dot (h_i-h_j); shared bias cancels. Holder/Cauchy: |Delta logit| <= 8||Delta h||_inf + ||Delta h||_2 <= 16 H_inf + 2 H_2. Using Grok's six-decimal maxima with +0.5e-6 rounding margin, bound is <=0.044813 (d512), <=0.028515 (d1024); the needed gap is 2 ln(9)=4.394449154672439. Even retraining Wp and bp alone within caps cannot create opposite confident outcomes on these frozen H-FIX features. This is stronger than the single-context P-only cap, but DOES NOT rule out trainable F/Theta, different masks, or new data.
+Evidence A: research/uno-lab-001/uno_pairwise_no_go_gpt6.py gitblob 874a024fca304fa78e65bc9159bf56f2991e56bf; run JSON gitblob b98b212156421dc54b2796862be36399f5aaaf2c. Local Python compile, self-tests, and SHA-pinned original 2687-byte stdout passed. Source SHA256 d7ab5f37ec2c6a9e2e8d9a47503acc1153d13189d44a897301a9c370f89d378e.
+Question B: is zero feature norm forced by S4/S5 caps and full mask K8, or just a bad random realization? Construct an explicit legal parameter witness.
+Method B: one shared F, d=512/1024, J=2, B=64, full-mask K8, alpha=rho=.5, empty memory, no P, zero biases. Two distinct token embeddings use opposite sign +/-0.5 in 16 coordinates (E row L1=8); C row=2 on corresponding z coordinate, B row=.9, A=0; Wp[3,0]=8 (row L1=8). All remaining coefficients zero. Compute S4 including double tanh and S5 for decision + four argument re-encodes. For BOTH dimensions, h_a L2=2.2265557292164777 and same endpoint q(+)=0.9884916968897166 versus q(-)=0.011508303110283303. This stays within [-1,1] and proves legal weights CAN avoid collapse and preserve context separation in a synthetic case. Not sampled from required Xavier initialization and not trained; no claim of generalizable skill.
+Evidence B: research/uno-lab-001/uno_sparse_witness_gpt6.py gitblob 738155b9cbd7552c5f12e8c1d20ac16bd24f5b79; stdout JSON gitblob 31a10a84b998b812b7af3de9c9dd86b1073588de. Local Python compile/execution: PASS; source SHA256 1ab5e9161de6ae897044e3366ef1e404297e3233414209cab9f35089c9c723eb, output SHA256 b882329389e2502652d317e759639b9c87f2cd7e9eddb5cba1089b26b7a50209.
+Status: PROVEN_LOCAL for mathematical conditional inequality and explicit sparse parameter witness; HOST_TESTED for these two local Python scripts. Trained-Theta learning/generalization/retention/A52 remain REQUIRES_DATA. This is not production code or an owner-approved change to O01-O08.
+Required next work: Grok (or another model) independently run and challenge both scripts; inspect whether sparse constructed tensor mapping satisfies ALL applicable ASTRA constraints and which training/data protocol could learn noncollapsed features. Do not infer that Xavier initialization or online P alone achieves this.
+Owner decision requested: none.
+=== END ENTRY ===
+
+=== QUEUE / HANDOFF 2026-11-05g ===
+Latest mathematical finding is two-sided: frozen random H-FIX head is non-separating under caps, but a deliberately selected legal S4/S5 F is separating after argument re-encoding. The critical missing evidence is learnability and retention, not bare algebraic representability. Read these two scripts, rerun on an independent host, keep source constraints. No training, no phone, no G4/G5 approval; O01-O08 remain open.
+=== END QUEUE ===
