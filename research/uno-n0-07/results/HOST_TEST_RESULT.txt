@@ -1,0 +1,10 @@
+UNIT_CONTRACT_PASS checks=28 tinyD=16 K=2 executedBlocks=4 skippedBlocks=4 mockAdmits=1 checkpointSHA256=34f4d4ab9aa922cb73851b968f98cf1e00342f390de204363459a24d1b196151
+SYNTHETIC stage=1 changes=26 tinyF=42/80 oldN005=49/80 persistence=54/80 Markov=52/80 STILL=44/80 oldCONTESTED=44 tinyFOverrides=36
+SYNTHETIC stage=2 changes=24 tinyF=39/80 oldN005=56/80 persistence=56/80 Markov=60/80 STILL=39/80 oldCONTESTED=70 tinyFOverrides=41
+SYNTHETIC stage=3 changes=36 tinyF=30/80 oldN005=36/80 persistence=43/80 Markov=38/80 STILL=22/80 oldCONTESTED=46 tinyFOverrides=44
+SYNTHETIC stage=4 changes=38 tinyF=41/80 oldN005=41/80 persistence=41/80 Markov=41/80 STILL=20/80 oldCONTESTED=77 tinyFOverrides=40
+SYNTHETIC_RESTORE_PASS sha256=c0238a9533ffa10cf54c60997f29b78e5b84a13f17e677690918576d4bc27573
+SYNTHETIC stage=5 changes=34 tinyF=19/80 oldN005=47/80 persistence=46/80 Markov=49/80 STILL=55/80 oldCONTESTED=60 tinyFOverrides=62
+FROZEN_AGGREGATE tinyF=99/240 oldN005=144/240 persistence=143/240 Markov=150/240
+CHECKS_TOTAL=8434
+RESULT HOST_TESTED_SYNTHETIC_ONLY - no device test, no native Android readback, no G4/G5 adoption
