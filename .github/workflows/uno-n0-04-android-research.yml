@@ -41,7 +41,7 @@ jobs:
           javac -encoding UTF-8 -source 8 -target 8 -cp "$API" -d build/classes src/org/unovyra/n004research/*.java
           "$BT/d8" --min-api 26 --lib "$API" --output build/dex $(find build/classes -name '*.class' | sort)
           "$BT/aapt2" compile --dir res -o build/compiled
-          "$BT/aapt2" link -o build/unsigned.apk --manifest AndroidManifest.xml -I "$API" --min-sdk-version 26 --target-sdk-version 35 $(find build/compiled -name '*.flat' | sort)
+          "$BT/aapt2" link --version-code 1 --version-name 0.4.0-research -o build/unsigned.apk --manifest AndroidManifest.xml -I "$API" --min-sdk-version 26 --target-sdk-version 35 $(find build/compiled -name '*.flat' | sort)
           (cd build/dex && zip -q -0 ../unsigned.apk classes.dex)
           "$BT/zipalign" -f -p 4 build/unsigned.apk build/aligned.apk
           keytool -genkeypair -keystore build/research-debug.jks -storepass android -alias research -keypass android -keyalg RSA -keysize 2048 -validity 365 -dname 'CN=UNO N0 Research,O=UNOVYRA,C=XX' -noprompt >/dev/null 2>&1
