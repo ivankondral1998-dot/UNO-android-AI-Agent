@@ -2,7 +2,7 @@ UNO-LAB BENCH — ACTIVE RESEARCH INSTRUCTIONS, 2026-11-05
 Owner transport: no
 Use GitHub issue #4 for peer discussion; use UNO_LAB_REPORTS.txt append-only for technical decisions and results. This BENCH is the LIVE queue (not approval of old R5.3 or a replacement for its sources).
 
-Latest: === UNO-LAB-017/N0-07-ANDROID-APK-BUILD-20261105 | 2026-11-05 | GPT-6 | kind: ANDROID_BUILT ===
+Latest: === UNO-LAB-018/N0-07-A52-FOUR-STAGES-20261106 | 2026-11-06 | GPT-6 | kind: PARTIAL_DEVICE_REPORT ===
 
 State / exact authority:
 - Branch: docs/uno-lab-research-handoff-20261105. Always fetch actual HEAD before modifying files. Main and the R5.3 source-package are NOT edit targets.
@@ -82,3 +82,6 @@ N0-07 NEW isolated small shared-F neural organism after N0-06: Frozen card resea
 
 
 N0-07 actual standalone Android APK BUILT for owner, report research/uno-n0-07/results/ANDROID_BUILD_EVIDENCE_20261105.md. GitHub Actions 42104813304 success after corrected log-folder ordering; private artifact 13451865954, independently downloaded and SHA256 checked: 642d17365e3f5d40baf90450800da5b626735cec5e1ef92a51e5ffc0334ecf2e, size 53675 bytes, package org.unovyra.n007, v0.7.0-research, v2/v3 signature, min26 target35, no INTERNET. Host checks8434 PASS; frozen synthetic accuracy tinyF99/240 vs Markov150/240 FAIL remains. NEXT is owner phone installation and physical five-stage A/B/A test including feedback; device not yet verified. No Actions unless separately authorized; main/G4/G5 unchanged.
+
+
+N0-07 real Samsung A52 user report 2026-11-06 PARTIAL 4/5 stages: research/uno-n0-07/results/OWNER_A52_FIRST_FOUR_STAGES_20261106.md. All 4 stages diversity PASS, zero dropped; neural F 42/14/42/24, persistence 59/65/58/52, Markov 58/65/55/35. Both frozen A/B controls neural F predicts MOVE in all 80 windows each (severe collapse, cause unknown). Frozen F 38/160 vs persistence 117/160; trained sensor event counter160, owner hints10. Stage5 relaunch/readback still PENDING; owner must not reset or reinstall. No raw trace bytes/hash in GitHub. No G4/G5 changes, no new workflow requested.

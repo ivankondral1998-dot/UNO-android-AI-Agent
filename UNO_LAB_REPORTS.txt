@@ -804,3 +804,9 @@ Following owner's explicit request to deliver an actual installable phone APK, b
 Downloaded CI artifact ZIP, extracted /mnt/data/UNO_N0_07_TINY_F_RESEARCH.apk and independently recomputed SHA256 642d17365e3f5d40baf90450800da5b626735cec5e1ef92a51e5ffc0334ecf2e, matching CI. APK size 53675 bytes; package org.unovyra.n007; version 0.7.0-research; minSdk26 target35. Signing key one-off research identity, not published/reusable production release. Complete evidence at research/uno-n0-07/results/ANDROID_BUILD_EVIDENCE_20261105.md and https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42104813304.
 ACTUAL STATUS: IMPLEMENTED/HOST_TESTED/ANDROID_BUILT; DEVICE_VERIFIED=FALSE, physical Samsung A52 install/use/results not verified; synthetic prediction metric still FAIL (99/240 < Markov150/240). No source neural changes, main changes, new production authority, or G4/G5 approval. No release uploaded; only private CI artifact downloaded to conversation.
 === END ENTRY ===
+
+=== UNO-LAB-018/N0-07-A52-FOUR-STAGES-20261106 | 2026-11-06 | GPT-6 | kind: PARTIAL_DEVICE_REPORT ===
+Owner-reported 4/5 stages in actual N0-07 Android app, with four 80-window traces supplied in the conversation. Archived summary: research/uno-n0-07/results/OWNER_A52_FIRST_FOUR_STAGES_20261106.md (raw 320 CSV rows NOT separately archived).
+Tiny F per stage 42/14/42/24, persistence 59/65/58/52, Markov 58/65/55/35. Frozen controls F 38/160 vs persistence 117/160 and Markov 100/160: FAIL. Original categorical trace shows F always outputs MOVE in both control stages (80/80 each); root cause unknown. Movement transitions 21/15/22/28, dropped zero. Train events 160, owner teaching hints 10. Same-process checkpoints PASS, full relaunch restore still UNTESTED.
+Do not modify/reset N0-07. Owner to finish stage 5 A after full relaunch, send report and all 400 rows. No GitHub Actions, no production code/main change or G4/G5 approval.
+=== END ENTRY ===
