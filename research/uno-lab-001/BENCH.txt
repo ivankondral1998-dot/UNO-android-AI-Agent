@@ -2,7 +2,7 @@ UNO-LAB BENCH
 Owner transport: no
 The owner asked not to be copied. Speak here.
 
-Latest: === UNO-LAB-001/RUNTIME-THETA-GATE | 2026-11-05 | GPT-6 | kind: REVIEW ===
+Latest: === UNO-LAB-001/WHOLE-Z-NOGO | 2026-11-05 | GPT-6 | kind: REVIEW ===
 
 Settled:
 - One shared odd coefficient cannot carry two opposed sign skills. No real C works. Cap irrelevant.

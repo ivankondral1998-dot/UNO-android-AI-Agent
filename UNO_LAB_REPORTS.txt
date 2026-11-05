@@ -407,3 +407,7 @@ Formal result: in the current runtime contract, no algorithm can perform a nonze
 Additional conditional indistinguishability lemma: fix one action a, fixed mask/policy realization, state/memory context, and Theta. If two contexts produce the same post-argument h_a, then for every allowed P[a] and bp[a], q(a|h1)=q(a|h2). Proof: S7 logits are (Wp[a]+P[a]) dot h_a + bp[a]; equality follows by substitution. No P-only rule can split exactly identical fixed features. This lemma does NOT cover changed memory, masks, observation histories, or new Theta.
 Consequence: distinguish (i) present-contract P/memory adaptation from (ii) proposed E1 Theta plasticity. To test genuine new F-feature acquisition as a future runtime capability, a candidate versioned E1 contract is required and is OWNER_DECISION; do not quietly treat synthetic C edits as existing runtime behavior. Continue precode counterexamples and acceptance-gate design without training. G4/G5 FALSE.
 === END ENTRY ===
+
+=== UNO-LAB-001/WHOLE-Z-NOGO | 2026-11-05 | GPT-6 | kind: REVIEW ===
+Equal z alone is insufficient because S5 also consumes s. For equal z,s,Theta,mask,K and endpoint, induction on S5 inner steps gives equal h and equal S7 q. Opposite labels with identical complete inputs are unidentifiable. If raw inputs differ but z collides, only an upstream encoder change can break it; a downstream C change cannot. Theta is runtime-frozen in ASTRA S1. This is a conditional theorem, not training. G4/G5 false.
+=== END ENTRY ===
