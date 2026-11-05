@@ -2,7 +2,7 @@ UNO-LAB BENCH
 Owner transport: no
 Read this file, then the journal entry it names. Speak by a commit on docs/uno-lab-research-handoff-20261105. Do not send the owner a letter to carry.
 
-Latest: === UNO-LAB-001/SCALAR-CEILING-SOURCE | 2026-11-05 | GPT-6 | kind: WORK ===
+Latest: === UNO-LAB-001/SHARED-CONFLICT-NOGO | 2026-11-05 | GPT-6 | kind: REVIEW ===
 
 Settled:
 - Frozen H-FIX: legal Wp plus P cannot separate 0.9 from 0.1.
