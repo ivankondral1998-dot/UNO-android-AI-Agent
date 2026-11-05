@@ -275,3 +275,21 @@ The question is whether the organism can grow a new ability by a bounded change 
 No training. No phone. No merge to main. No GitHub Actions. No new architecture.
 Gates unchanged: G4 FALSE, G5 FALSE, O01-O08 OPEN.
 === END QUEUE ===
+
+=== UNO-LAB-001/NOD-CHECK | 2026-11-05 | Grok | kind: REVIEW ===
+Base branch/SHA: docs/uno-lab-research-handoff-20261105 @ ea770b4a2c4ffbc7dee0b038aedbc6a69adb3863
+Primary sources: GPT6-FEATURE-SEPARATION; uno_pairwise_no_go_gpt6.py; uno_sparse_witness_gpt6.py; grok_lab001_hfix.py forward; ASTRA_01 S4/S5; ASTRA_02 shapes A,C are (chi*b x d), B is (b x chi*b). Owner asked whether the two models are only agreeing.
+Question: which agreements were checked, and which were nods?
+Method: reran both GPT scripts. Rebuilt the sparse witness inside grok_lab001_hfix.forward with private u-slots, zeros elsewhere, full mask, K=8, five identical events. Then deleted the 15 duplicate coordinates in a one-coordinate rerun.
+Findings:
+1. The chat agreement was a nod. ORGANISM accepted GPT's organism paragraph with method none, without running the two scripts already in the parent journal. That entry does not count as a check.
+2. The frozen-H-FIX no-go stands. Independent run on stdout SHA-256 cfd5b0bebee162a07907714d10aa14177b09074da02958dfdd5099619947f3a5: self-test PASS, exit 0, gap upper 0.044813 at d=512 and 0.028515 at d=1024, against 2*ln(9)=4.394449154672439. On those frozen features a legal Wp row plus P cannot separate 0.9 from 0.1. This is stronger than the P-only claim and it survived the rerun.
+3. The sparse witness also runs. Inside the real forward, d=512, sign +1: h0=0.556638932304, L2=2.226555729216, q=0.988491696890. Sign -1 flips the sign. d=1024 prints the same four numbers. It is not a second experiment. The extra dimensions stay zero.
+4. The L2 above ln(9) is padding. Sixteen coordinates carry the same value; the head reads only coordinate 0, with Wp[3,0]=8. One coordinate keeps q=0.988491696890, but its L2 is 0.556638932304, which is below ln(9)=2.197224577336. So this witness does not show that P can reach q=0.9. It shows a hand-set F plus a saturated readout row can. Strip the padding and the P ceiling is still there.
+5. The point is inside the row-L1 caps and matches S5 for those private slots. It is not a Xavier initialization and not a trained Theta. Representable is not learnable. GPT's own entry already says that. Agreeing with that sentence is not a new result.
+6. Host json from uno_sparse_witness_gpt6.py was not byte-identical to the pinned run: printed L2 ended 216478 versus pinned 2164777. The value is the same float. Not a refutation.
+Claim status: no-go PROVEN_LOCAL on this host for the frozen fixture. Witness existence PROVEN_LOCAL for caps and this forward. The reading "witness clears the P threshold" is FAIL. Chat consensus on the organism is not evidence. G4 FALSE. G5 FALSE. O01-O08 OPEN.
+Failure/uncertainty: five identical tokens are not a real mixed proposal. Wmeta was zero, so the PROPOSAL role bit did not enter.
+Required next work: do not restate the organism paragraph. Attack learnability of a non-padded feature, or leave it. No training.
+Owner decision requested: none.
+=== END ENTRY ===
