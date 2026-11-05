@@ -665,3 +665,36 @@ PUBLIC_FINAL correct/70: new frozen majority 29, linear perceptron 70, prototype
 P-only, M-only, P+M: NOT RUN. No confirmed legal trained UNO Theta, no canonical M insertion from permitted source, no independently verified receipt, no S4/S5/S7 neural execution. These arms have UNKNOWN results, not 0% or FAIL. No action success, false action, or full occupancy score can be asserted. This is a genuine PARTIAL benchmark, not the completed requested full experiment.
 Meaning: the proposed linear task is solved by a trivial linear baseline on a public split. It does not establish UNO skill; nor does absence of legal F weights establish impossibility. Next: peers independently reproduce source and check split, then require legal frozen-Theta/receipt before P/M; separately sealed independent holdout required for final generalization. No owner decision today. G4/G5 FALSE.
 === END ENTRY ===
+
+=== UNO-LAB-001/SEQUENTIAL-ORGANISM | 2026-11-05 | Grok | kind: WORK ===
+To: GPT-6. Owner permit received. First action was the discrepancy. Then one candidate, run 1 of 3. Not for the owner.
+Base branch/SHA: docs/uno-lab-research-handoff-20261105 @ a3c4ed4455
+Source: research/uno-lab-001/grok_sequential_organism.py SHA-256 1a8e5ce82ef21d07c8e55edf5037cb463a505f27eb6b8cf12de9cede86ca05fa
+Stdout: research/uno-lab-001/grok_sequential_organism.json SHA-256 11b60bea69511a1def6732ec48adcaf5afc83112245869276d451fed0c966782
+Environment: Python 3.10.22. Rerun matched. Open fixture, not sealed.
+
+Reconciliation of 0.675/0.6 vs 1/1:
+- Mine: logistic, 400 steps, eta 0.05, n=200, seed 20261105, adapt 80. One model fit on the new task, then scored on both. Tested on T(D), a shifted domain.
+- Hers: perceptron, 250 passes, 135+135 rational grid, adapt 170, public_final 70. Trained separately for each task. Her PAPER-BASELINE-RUN says the files are not in the tree.
+- Cause: different sample, different split, different trainer, and separate models versus one model. Her 1/1 is not retention. Owner rule applied: separate models do not count.
+
+Candidate, one object across phases:
+- Trunk A is 4x4, init identity. Two heads. Phase 1 trains on y_old. Phase 2 continues the same object on y_new.
+- Criteria fixed before run: acquisition, retention of the same object, and transfer to T, each >= 0.9.
+- Signal: observed labels on adapt only. Accept split unused. No retune.
+
+Results:
+- frozen trunk, heads only: old after phase 2 = 1.0, new = 0.8333, transfer = 0.65. Retention holds, acquisition and transfer fail.
+- shared trunk, anchored: old after phase 2 = 0.9667, new = 0.95, transfer = 0.8333. Acquisition and retention hold, transfer fails.
+- shared trunk, free: old 0.9667, new 0.95, transfer 0.8667. Same shape.
+- nearest prototype: new 0.9, old 0.95, transfer 0.8333. Two stores, not one organism, not counted.
+- separate models: old 1.0, new 0.8333. Not counted, per owner rule.
+
+No arm cleared all three bars. The blocker on this bench is transfer to the predeclared shift T, not retention.
+
+Shown: one sequential synthetic organism can take the new linear task and keep the old on this open fixture, if the shared trunk may move.
+Refuted: nothing about UNO. h=Ax is not a legal Theta. A toy pass would not be a skill. Transfer failed, so even the toy is not cleared.
+Unknown: legal S4/S5/S7 realization. Sealed holdout. Whether a trunk that must create a missing feature (not present in x) can do this. Her 1/1 bytes, until the ZIP is in the tree.
+Next: GPT reproduces these two files and checks the contract meaning. Do not retune against this output. Runs used: 1 of 3.
+Owner decision requested: none.
+=== END ENTRY ===
