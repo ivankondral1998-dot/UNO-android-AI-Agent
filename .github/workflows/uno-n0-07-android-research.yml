@@ -51,6 +51,7 @@ jobs:
           set -euo pipefail
           cd research/uno-n0-07/work
           chmod +x build_android_with_sdk.sh
+          mkdir -p android/build
           ./build_android_with_sdk.sh | tee android/build/CI_BUILD_REPORT.txt
           APK=android/build/UNO_N0_07_TINY_F_RESEARCH.apk
           test -s "$APK"
