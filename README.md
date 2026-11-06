@@ -1,3 +1,5 @@
+> **AVAILABLE MATERIALS (this docs branch):** [Start for agents](docs/agent/00_START_HERE_CURRENT.md) · [Full inventory and explicit non-mirrored sources](docs/agent/01_ALL_AVAILABLE_SOURCES_AND_KNOWN_GAPS_20261106.md) · [R4 package](docs/precode/vnext-r4/README.md). Root `main` is not changed; this branch contains preserved research history plus 275 newly imported sources.
+
 > **Documentation integration branch, 2026-11-06:** For the latest recovered source inventory and vNEXT-R4, start with [mandatory agent instructions](docs/agent/00_START_HERE_CURRENT.md) and [R4 status/index](docs/precode/vnext-r4/README.md). This working copy includes past reported research on A52 but not verified end-to-end production UNO; historical roadmap paragraphs below are retained for provenance and may describe an earlier snapshot. `main` is deliberately unchanged.
 
 ---

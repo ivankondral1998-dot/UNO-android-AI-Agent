@@ -1,3 +1,5 @@
+> **FULL SOURCE DISCOVERY UPDATE (2026-11-06):** In this integration branch 275 new documentation/evidence blobs were SHA-verified after GitHub upload. Read [ALL AVAILABLE SOURCES + coverage policy](docs/agent/01_ALL_AVAILABLE_SOURCES_AND_KNOWN_GAPS_20261106.md), including the 396-member complete-archive register; **indexed-but-not-mirrored is NOT the same as non-existent**. This line supersedes any smaller archive count below.
+
 > **MANDATORY CURRENT ROUTE (2026-11-06, vNEXT-R4 integration branch):** Read [the current agent entry](docs/agent/00_START_HERE_CURRENT.md) before judging available evidence or editing anything. R5.3 remains a candidate; owner G4 approval and production code remain FALSE. R4 originals and prior Astra/R4.1/R3 source versions are preserved and indexed there. Historical statements below describing *no experimental A52 tests* or *missing V01–V20* must not be generalized beyond their historical date. Neither current docs nor A52 research imply production readiness.
 
 ---

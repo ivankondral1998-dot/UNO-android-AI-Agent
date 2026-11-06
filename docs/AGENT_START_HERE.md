@@ -1,3 +1,5 @@
+> **FULL ARCHIVE INDEX 2026-11-06:** [ALL AVAILABLE SOURCES](agent/01_ALL_AVAILABLE_SOURCES_AND_KNOWN_GAPS_20261106.md) indexes all 396 members of the owner-supplied preceding Work archive, with exact SHA-256, mirror path or reason absent from Git. Check this index **before** stating that an earlier test, paper, task or source does not exist.
+
 > **NEWEST MANDATORY READ (2026-11-06, THIS BRANCH):** [docs/agent/00_START_HERE_CURRENT.md](agent/00_START_HERE_CURRENT.md) → [vNEXT-R4 original package](precode/vnext-r4/package/00_START_HERE.md) → [R4 corrections](precode/vnext-r4/package/ERRATA_R4.md) → full R5.3 and original evidence. DO NOT report Astra, R3/R4.1, V01–V20 or A52 lab history as missing; their exact scope is [registered here](precode/vnext-r4/FILE_AND_EVIDENCE_REGISTER.md). Local passing fixtures ≠ Android production evidence. G4 candidate only, no G5.
 
 ---
