@@ -1,0 +1,110 @@
+[
+  {
+    "path": "ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+    "bytes": 9832,
+    "sha256": "4332225c501caf15628fa8e293895382501526c6540400e9d421c0ab712dca3c",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+    "bytes": 26820,
+    "sha256": "6bd6f68989972d183b6750711dca223355a026dfcf11461275d25406319853fe",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+    "bytes": 17474,
+    "sha256": "4b9186bb19d71f88aed989b33ef8a40f5a699535e645c79f5eb97d5d97098a4c",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+    "bytes": 27425,
+    "sha256": "52b1eab23c977d253625b98de20bee6e5802c652973cf96403037118b5fbe4be",
+    "review_source": "R3_PATCH_INPUT"
+  },
+  {
+    "path": "ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+    "bytes": 13624,
+    "sha256": "737654965c75e83e10a2705656af0f49ff9bf2c2bb0a4f359c67f0f426c6b0c8",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+    "bytes": 28652,
+    "sha256": "37754c2d980838e13877ed014f870a14a879cb32b08d6e19e78c5668a06fe817",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+    "bytes": 22056,
+    "sha256": "dc99d2e043ffff4abb28d8f9a99458cb8e2382dfe2ff920e68f1b0b67a23b9c7",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+    "bytes": 22258,
+    "sha256": "2602f04c049fc721e9c6ecc79f73d5e01400429315f05744f5ed00faa5b3f857",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+    "bytes": 15527,
+    "sha256": "4129290d9ef08c86e3aaf186fcb4d830a764c514beaca33aae61b4eae698ed69",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+    "bytes": 14467,
+    "sha256": "bbb6f6bce4f63eee163e900d4fca7a44f0d8230e397bb832db65802747856944",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md",
+    "bytes": 4942,
+    "sha256": "df269c690577792ff6c378bafa804c61bb72deb363f8ebf7808ff46d31ee4cfe",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+    "bytes": 11905,
+    "sha256": "dbcba73af110f6725183693b2dc3a67e1b310b3c6833787985325864986cf691",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+    "bytes": 10420,
+    "sha256": "bebaf4a52b8c39f32da6725a9216fc782e022c1f75067889c7a39ab780694879",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "ASTRA_FINAL_README_AND_DECISION.md",
+    "bytes": 6617,
+    "sha256": "ac51c57389bc25b529317674bc5f00ef01028d8778e845f99d465de5bdd74fb2",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "ASTRA_REVISION_LOG.md",
+    "bytes": 3876,
+    "sha256": "1b7a447a7672d6704730bb037bb50846b158cba4a891d0a4a63375c7bf984998",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "arithmetic_v2.json",
+    "bytes": 5898,
+    "sha256": "9fb83b81489bfc9cd543b9e774d2c7047aff11a99db9c5b2daa62f3fd95041d6",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "tensor_manifest_d1024.json",
+    "bytes": 43480,
+    "sha256": "569f839f3cc557fed734d41d65311b46743fbc77e4c3e11037aaf9fcc2326b32",
+    "review_source": "R3_INPUT"
+  },
+  {
+    "path": "recompute.py",
+    "bytes": 5599,
+    "sha256": "ccdb8c2006a9794376829afc7ca7f792d7c899191b4ec202644cbcfbf1807d0a",
+    "review_source": "R3_INPUT"
+  }
+]
