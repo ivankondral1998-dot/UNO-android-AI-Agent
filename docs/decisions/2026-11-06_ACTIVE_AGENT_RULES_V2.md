@@ -15,3 +15,5 @@ Single local organism; no Jarvis weights as core; no cloud dependency; licensed 
 
 ## Current evidence
 A small Kotlin event-queue/STOP primitive exists on feat/uno-production-foundation-20261106 and passed a host Kotlin test. It is NOT a complete Android trust boundary, neural F, trained model, Android build or device verification.
+
+7. Owner explicitly instructs agents to DESIGN and TEST NEW weight representations, not merely choose among existing B2/LR2/H2/C256R32/N0. UNO-HSR v1 is one experimental proposal: see docs/research/2026-11-06_UNO_HSR_WEIGHT_ARCHITECTURE_V1.md. No family is selected by default; prioritize measured task quality per joule on A52. Preserve R5.3 as historical baseline, and do not treat synthetic approximation error as intelligence.
