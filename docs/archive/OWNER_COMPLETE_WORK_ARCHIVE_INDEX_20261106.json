@@ -9,9 +9,9 @@
       "source_archive_member": "00_START_HERE.md",
       "bytes": 2274,
       "sha256": "e7c4d4457ade1b5e53ed1ece714ae2d5b905895860762c43b8d6bd477c3962e8",
-      "status": "INDEXED_NOT_MIRRORED",
-      "repo_path": null,
-      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/00_START_HERE.md",
+      "reason": "Exact original archive start preserved; Git blob e7522511efdf061a19b1b727187f02cb19baacc9 matches locally computed Git SHA1."
     },
     {
       "source_archive_member": "FINAL_RECHECK.md",
@@ -2803,5 +2803,5 @@
       "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
     }
   ],
-  "revision_note_20261106": "Correction: exact original minimal-organism paper is mirrored at project_sources/04... (SHA256 b4a657...; Git blob a143cfd1...). Counts now 262 exact mirrored, 94 archive provenance, 24 indexed only, 16 private/research. Original prior manifest remains in Git history."
+  "revision_note_20261106": "Correction: exact original minimal-organism paper is mirrored at project_sources/04... (SHA256 b4a657...; Git blob a143cfd1...). Counts now 262 exact mirrored, 94 archive provenance, 24 indexed only, 16 private/research. Original prior manifest remains in Git history. Second correction: original outer 00_START_HERE.md uploaded byte-for-byte; counts now 262 identical, 95 archive provenance, 23 indexed-only, 16 private/research."
 }
