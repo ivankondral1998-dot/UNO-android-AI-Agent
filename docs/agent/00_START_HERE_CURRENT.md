@@ -1,3 +1,5 @@
+> **N0-07 INDEPENDENT HOST REPLAY:** [8434 host checks, synthetic baseline FAIL](../research/N0_07_INDEPENDENT_HOST_REPLAY_20261106.md). Tiny F 99/240 vs Markov 150/240 on stages 3–5. No Android device test or production approval. Do not adopt Tiny F on the basis of successful host checks.
+
 > **N0-01–N0-07 SOURCE RECOVERY 2026-11-06:** исходные 83 текстовых файла извлечены из 7 ZIP в отдельный source-only архив с индивидуальными SHA-256; [проверенный handoff](../research/N0_SOURCE_ONLY_RECOVERY_HANDOFF_20261106.md). Это доступный владельцу пакет, **не Git mirror**. Не говорить «источников не было», но и не утверждать, что все 83 уже доступны из Git.
 
 > **ПЕРВИЧНЫЕ ИССЛЕДОВАТЕЛЬСКИЕ АРХИВЫ N0-01–N0-07:** [точная ведомость содержимого и различий source/CI/APK](../research/N0_PRIMARY_SOURCE_AVAILABILITY_20261106.md). Не утверждать, что source ZIP в Git, если там только отчёт. Сохранять provenance; не считать экспериментальные APK production.
