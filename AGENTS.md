@@ -1,3 +1,9 @@
+# ACTIVE OVERRIDE — 2026-11-06
+
+**READ FIRST:** [docs/decisions/2026-11-06_ACTIVE_AGENT_RULES_V2.md](docs/decisions/2026-11-06_ACTIVE_AGENT_RULES_V2.md). Owner has authorized production code. O01–O08 are revisitable, not blockers. Weight families must be compared with matched evidence. The historical prohibition below is SUPERSEDED only for production-code authorization; training, main merge, Actions, deletion and releases remain unauthorized.
+
+---
+
 # CURRENT UNO AGENT ROUTE — 2026-11-02
 
 Read [docs/AGENT_START_HERE.md](docs/AGENT_START_HERE.md) first, then [docs/CURRENT_TASK.md](docs/CURRENT_TASK.md) and [docs/precode/r5.3/README.md](docs/precode/r5.3/README.md). R5.3 is NOT owner-approved; do not start production code. The original rules below are retained as historical and continuing constraints.
