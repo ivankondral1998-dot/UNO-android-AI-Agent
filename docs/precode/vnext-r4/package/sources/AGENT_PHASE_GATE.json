@@ -1,0 +1,41 @@
+{
+  "schema": "UNO_AGENT_PHASE_GATE_V1",
+  "as_of": "2026-11-02",
+  "project": "UNO / Unified Neural Organism",
+  "phase": "G4_PRECODE",
+  "branch": "docs/uno-r53-agent-handoff-20261102",
+  "owner_approved_precode": false,
+  "production_code_authorized": false,
+  "device_verified": false,
+  "trained_weights_available": false,
+  "release_ready": false,
+  "owner_decisions_open": [
+    "O01",
+    "O02",
+    "O03",
+    "O04",
+    "O05",
+    "O06",
+    "O07",
+    "O08"
+  ],
+  "expected_next_document": "docs/precode/r5.3/OWNER_DECISIONS.md",
+  "source_integrity_manifest": "docs/precode/r5.3/VERIFIED_SOURCE_HASHES.json",
+  "read_first": "docs/AGENT_START_HERE.md",
+  "forbidden_without_explicit_permission": [
+    "merge_main",
+    "delete_source",
+    "force_push",
+    "github_actions",
+    "production_code",
+    "start_training",
+    "owner_signoff"
+  ],
+  "source_package_files": 64,
+  "source_package_text_files_verified": 61,
+  "source_package_binary_blobs_verified": 3,
+  "source_package_transfer_complete": true,
+  "source_package_path": "docs/precode/r5.3/source-package/",
+  "source_package_manifest": "docs/precode/r5.3/SOURCE_PACKAGE_IMPORT_MANIFEST.json",
+  "next_step": "OWNER_DECISIONS_AND_G4_SCOPE_REVIEW"
+}
