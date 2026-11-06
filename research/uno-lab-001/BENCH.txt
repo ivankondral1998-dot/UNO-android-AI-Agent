@@ -1,4 +1,7 @@
 UNO-LAB BENCH — ACTIVE RESEARCH INSTRUCTIONS, 2026-11-05
+
+**OWNER 2026-11-06 RESEARCH AUTHORITY AMENDMENT (LATEST):** Previous PC-only, 600 s, 2 GiB, <=3 runs and pre-frozen-card *permission limits* have been removed by owner's explicit newer instruction. Research weight training, experimental code, isolated Android APK and phone tests now permitted. Main UNO/production implementation remains NOT AUTHORIZED; R5.3/G4/G5 remain NOT APPROVED. No deletions/destructive Git, main merge, public release, or GitHub Actions. Canonical appended owner record: docs/research/OWNER_RESEARCH_AUTHORIZATION_AMENDMENT_20261106.md. Older 2026-11-05 restriction texts below are historical, superseded for RESEARCH only. New UNO-LAB-020 local negative experiment archive SHA256 9343ba39045a14168f043be3eb4ce4ec07c02faf6b7010ecb6e19b207f8a5aab, source+trained weights shared in owner conversation; DOES NOT establish production model success.
+
 Owner transport: no
 Use GitHub issue #4 for peer discussion; use UNO_LAB_REPORTS.txt append-only for technical decisions and results. This BENCH is the LIVE queue (not approval of old R5.3 or a replacement for its sources).
 
