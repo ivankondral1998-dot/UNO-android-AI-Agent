@@ -1,0 +1,92 @@
+[
+  {
+    "path": "ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+    "bytes": 25108,
+    "sha256": "05ab4f8cda159021110850941ba65c96764bdab82cf6da463576f5794671b9b6"
+  },
+  {
+    "path": "ASTRA_FINAL_README_AND_DECISION.md",
+    "bytes": 6414,
+    "sha256": "fd685b159b15bebbd32769573daf87ebe0daa4e912af4edd6454804210012b91"
+  },
+  {
+    "path": "ASTRA_REVISION_LOG.md",
+    "bytes": 2132,
+    "sha256": "f2231412995cc6c2192badce21c30ed0b4aced2d078c4b4f34ffed8eeeca4e91"
+  },
+  {
+    "path": "ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+    "bytes": 11905,
+    "sha256": "dbcba73af110f6725183693b2dc3a67e1b310b3c6833787985325864986cf691"
+  },
+  {
+    "path": "ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+    "bytes": 13700,
+    "sha256": "00010c53e07ec96c5c71a7567ed5d7bd63eb9c56420c416aec87d72e3d4556d8"
+  },
+  {
+    "path": "ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+    "bytes": 23851,
+    "sha256": "f5c0e27c387cc5eff895794fd2a5ee6794ac10adbd5301eafb072b89550d2bd8"
+  },
+  {
+    "path": "ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+    "bytes": 17474,
+    "sha256": "4b9186bb19d71f88aed989b33ef8a40f5a699535e645c79f5eb97d5d97098a4c"
+  },
+  {
+    "path": "ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+    "bytes": 10420,
+    "sha256": "bebaf4a52b8c39f32da6725a9216fc782e022c1f75067889c7a39ab780694879"
+  },
+  {
+    "path": "ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md",
+    "bytes": 4144,
+    "sha256": "a93c257343f9bac00526127ed7f5d8ef0f617685185ec3bff8533d155ea8d387"
+  },
+  {
+    "path": "ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+    "bytes": 9832,
+    "sha256": "4332225c501caf15628fa8e293895382501526c6540400e9d421c0ab712dca3c"
+  },
+  {
+    "path": "ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+    "bytes": 26887,
+    "sha256": "15ccce7a48f13d915d54d84b640b52aaa8c8ef42f6db318af9c2b555fd62cc20"
+  },
+  {
+    "path": "ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+    "bytes": 13624,
+    "sha256": "737654965c75e83e10a2705656af0f49ff9bf2c2bb0a4f359c67f0f426c6b0c8"
+  },
+  {
+    "path": "ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+    "bytes": 21030,
+    "sha256": "933f658b4bca075dc67231884ccdefb8c94c662d026eeeae026c1eef788f0d3a"
+  },
+  {
+    "path": "ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+    "bytes": 22056,
+    "sha256": "dc99d2e043ffff4abb28d8f9a99458cb8e2382dfe2ff920e68f1b0b67a23b9c7"
+  },
+  {
+    "path": "ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+    "bytes": 14514,
+    "sha256": "51d5ccbe7bd47303996d47d3a69b35c9b25f42165c1e6ece81e100b7cd51ad15"
+  },
+  {
+    "path": "arithmetic_v2.json",
+    "bytes": 5898,
+    "sha256": "9fb83b81489bfc9cd543b9e774d2c7047aff11a99db9c5b2daa62f3fd95041d6"
+  },
+  {
+    "path": "tensor_manifest_d1024.json",
+    "bytes": 43480,
+    "sha256": "569f839f3cc557fed734d41d65311b46743fbc77e4c3e11037aaf9fcc2326b32"
+  },
+  {
+    "path": "recompute.py",
+    "bytes": 5599,
+    "sha256": "ccdb8c2006a9794376829afc7ca7f792d7c899191b4ec202644cbcfbf1807d0a"
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/00_SCOPE_AND_EVIDENCE.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/01_SYMBOLS_AND_STATE_SPACES.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/02_UNO_GLOBAL_DYNAMICS.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/03_NEURAL_GRAPH_AND_WEIGHTS.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/04_LEARNING_AND_PLASTICITY.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/05_RESOURCE_AND_SAFETY_PROOFS.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/06_ASTRA_NCR_EVO_FORMAL.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/07_CRITICAL_REVIEW_AND_COUNTEREXAMPLES.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/08_MATH_ACCEPTANCE_MATRIX.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/09_CODEX_IMPLEMENTATION_CONTRACT_LATER.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/INDEPENDENT_REVIEW.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/OPEN_QUESTIONS_AND_DECISIONS.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/README.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/SOURCES_AND_REPRODUCIBILITY.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/evidence/DELIVERY_VALIDATION.json",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/evidence/PR3_formula.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/evidence/PR3_reference.py.txt",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/evidence/REVISION_LOG.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/evidence/arithmetic.json",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/evidence/github_AGENTS.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/evidence/github_PR3_metadata.json",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/evidence/github_README.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/evidence/github_UNO_SYSTEM_FORMULA.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/originals/MANIFEST_SHA256.json",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/originals/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/originals/UNO_MATH_HOST_V0_1_REFERENCE_NOT_CANONICAL.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/originals/WORK_START_HERE_UNO_MATHEMATICAL_DESIGN_2026-11-01.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/originals/MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/originals/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/originals/MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/originals/UNO_MATH_HOST_V0_1_REFERENCE_NOT_CANONICAL.md",
+    "match": true
+  },
+  {
+    "manifest": "02_ORIGINAL_WORK_V1_1/originals/MANIFEST_SHA256.json",
+    "file": "02_ORIGINAL_WORK_V1_1/originals/WORK_START_HERE_UNO_MATHEMATICAL_DESIGN_2026-11-01.md",
+    "match": true
+  }
+]
