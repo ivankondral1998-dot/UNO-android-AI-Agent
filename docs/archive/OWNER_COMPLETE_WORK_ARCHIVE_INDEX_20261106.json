@@ -1302,9 +1302,9 @@
       "source_archive_member": "workspace/UNO_MINIMAL_ORGANISM_PAPER_FINAL_FOR_OWNER_REVIEW.md",
       "bytes": 148311,
       "sha256": "b4a65751806d96573d21e727f817582db62764862b19131ca892ddece39affb2",
-      "status": "INDEXED_NOT_MIRRORED",
-      "repo_path": null,
-      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/project_sources/04-UNO_MINIMAL_ORGANISM_PAPER_FINAL_FOR_OWNER_REVIEW-1-.md",
+      "reason": "Same SHA-256 and verified Git blob SHA-1; alternate source-archive path preserved for provenance."
     },
     {
       "source_archive_member": "workspace/UNO_R3_RECHECK_OUTPUT.txt",
@@ -2802,5 +2802,6 @@
       "repo_path": null,
       "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
     }
-  ]
+  ],
+  "revision_note_20261106": "Correction: exact original minimal-organism paper is mirrored at project_sources/04... (SHA256 b4a657...; Git blob a143cfd1...). Counts now 262 exact mirrored, 94 archive provenance, 24 indexed only, 16 private/research. Original prior manifest remains in Git history."
 }
