@@ -1,3 +1,5 @@
+> **LIVE OWNER OVERRIDE — 2026-11-06:** Перед историческими правилами учитывать [действующие полномочия](decisions/2026-11-06_ACTIVE_AGENT_RULES_V2.md) и [правило общения](decisions/2026-11-06_OWNER_COMMUNICATION_RULES_V1.md): владельцу — простой, краткий, но содержательный русский ответ; результат и границы проверки, без длинных отчётов в чате. Историческое «production code = FALSE» ниже не отражает отдельное разрешение от 2026-11-06.
+
 # UNO — MANDATORY FIRST READ FOR EVERY AGENT
 
 **Current phase G4: PRECODE CANDIDATE R5.3. Owner approval = FALSE. Production code authorization = FALSE.** Read this every time you resume. This applies to GPT, Grok, Codex, Work and human maintainers.
