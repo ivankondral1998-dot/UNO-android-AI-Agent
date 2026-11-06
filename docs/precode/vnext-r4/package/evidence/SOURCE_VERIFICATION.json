@@ -1,0 +1,391 @@
+{
+  "remote_commit": "efdb1767ef75cbdb04ff813323c107c3bd22c4b6",
+  "import_count": 64,
+  "original_count": 63,
+  "files": [
+    {
+      "path": "docs/precode/r5.3/source-package/00_START_HERE.md",
+      "sha256": "f67a7caf169a1a51f106274a00321340cada5e3870b387acb7c67f9d7b858abf",
+      "git_blob_sha1": "3119a727f2dc3c2aef0028892448e311c0ea941c",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/EVIDENCE/arithmetic_run_output.txt",
+      "sha256": "e1fbd6d7557e5d1dd752f8599d6f1f3e14e50f11b065df37bd88e581d2767919",
+      "git_blob_sha1": "6ed4e4415421f5f4cee448b1049816e10df5074b",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/EVIDENCE/recheck_arithmetic.py",
+      "sha256": "6aec027d2a3ab6a3657673aa3276edd58656a45c63c729847b6b3562494fe7f6",
+      "git_blob_sha1": "07ec0e69b64287064f925400b2e18e37eae5a014",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/NORMATIVE/01_SOURCE_HIERARCHY_AND_CONTRACT_INDEX.md",
+      "sha256": "98a837fa8ce45c3c34e23274f118afc243c67b261f688c1d8846e5454e6792d6",
+      "git_blob_sha1": "6bdb6cb298ad5fb3ad23e9b628ef1f3c7dff7ac0",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/NORMATIVE/02_FORMAL_CORRECTIONS_AND_LIMITS.md",
+      "sha256": "6260310750aacfdd5326f91d6251d5649a1ca88855760110c3783fae29fade11",
+      "git_blob_sha1": "c12f6422394fc2001187c39e5e9d3322d50dc5f8",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/NORMATIVE/03_CONSOLIDATED_SUBSYSTEM_CONTRACTS.md",
+      "sha256": "69afb7138ada0188251cdbf381b03d34bc44963a080bbb63ae064da5c71953f7",
+      "git_blob_sha1": "e0781e5ed40573887d67b435b19b912dc7c7790c",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/NORMATIVE/04_ALL_GATES_D_X_B_M.md",
+      "sha256": "80f8d6c644af2b73843fe79dffdc1de9d116e80faf9b119c3bcce22773cc4867",
+      "git_blob_sha1": "69a7b204d6e23413279c818dfb6b7826681efaa5",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/NORMATIVE/05_OWNER_DECISIONS_AND_FUTURE_EVIDENCE.md",
+      "sha256": "9a01bd2be0fcc024e3c8f61a87c422a777ae443cbc014519424ceb7e5f3210d2",
+      "git_blob_sha1": "c730ef990573f085c946430f1b86c00b1747d717",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/NORMATIVE/06_VERIFICATION_BOUNDARIES.md",
+      "sha256": "72a54778f26ce1b928785a02c56b8c86c807ea3b38b685560d973f163b52b711",
+      "git_blob_sha1": "2002ae3358abcbc3026cc34a4a1b26c90a7b937b",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/NORMATIVE/07_EXPLANATION_FOR_OWNER.md",
+      "sha256": "7d7b745f2d585f31d344ecec020465e542d552536d50ea13a475d35d38b5f23a",
+      "git_blob_sha1": "943763e31b1f719c6c9e842fe492d85304fcf267",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SHA256_MANIFEST.json",
+      "sha256": "da6832458698117c946b73e09fc618b286fe8396e61d031ae854f66cc49f35e7",
+      "git_blob_sha1": "0363d557fa7f54492058bafc3ff724203ce45556",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+      "sha256": "4332225c501caf15628fa8e293895382501526c6540400e9d421c0ab712dca3c",
+      "git_blob_sha1": "31441a7c61a10f89da165ef607233a54e1982fe7",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+      "sha256": "6bd6f68989972d183b6750711dca223355a026dfcf11461275d25406319853fe",
+      "git_blob_sha1": "f2c945ab63bb6175913c4cee0fd37301c82b1025",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+      "sha256": "4b9186bb19d71f88aed989b33ef8a40f5a699535e645c79f5eb97d5d97098a4c",
+      "git_blob_sha1": "57a1dbb15cfe94091ae37fa2f465f0a89a18161f",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "sha256": "52b1eab23c977d253625b98de20bee6e5802c652973cf96403037118b5fbe4be",
+      "git_blob_sha1": "cf0528f00036a676d399b04bf9361863a45132b8",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+      "sha256": "737654965c75e83e10a2705656af0f49ff9bf2c2bb0a4f359c67f0f426c6b0c8",
+      "git_blob_sha1": "0f94481323437546ee01788114f744610f56560d",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+      "sha256": "37754c2d980838e13877ed014f870a14a879cb32b08d6e19e78c5668a06fe817",
+      "git_blob_sha1": "429603fdf8348ff3dfaf83623fe681e3f09dfb98",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+      "sha256": "dc99d2e043ffff4abb28d8f9a99458cb8e2382dfe2ff920e68f1b0b67a23b9c7",
+      "git_blob_sha1": "7c03653724a3f6ae532fe6f54ff8156fcb65de76",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+      "sha256": "2602f04c049fc721e9c6ecc79f73d5e01400429315f05744f5ed00faa5b3f857",
+      "git_blob_sha1": "610d0cb7cbc0e25e4fb97f71257aec11196ed6b0",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+      "sha256": "4129290d9ef08c86e3aaf186fcb4d830a764c514beaca33aae61b4eae698ed69",
+      "git_blob_sha1": "69196f17fed6ee658f5420b17fad0e0feb467222",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+      "sha256": "dea19182304bd8784030fe6d7b7570bdc4ffbc2bc5dafd68c8f7e772a726aa90",
+      "git_blob_sha1": "0051a3df3465e7463d99bbc9cca0fe3c6c500e11",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md",
+      "sha256": "c2fd8de591472c52f0d206b361f6a61fc857f9ae989751ad11ce9bd0603f95c5",
+      "git_blob_sha1": "9fa36b8945cfdcbf29c112839a2cf29302e0dffa",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+      "sha256": "dbcba73af110f6725183693b2dc3a67e1b310b3c6833787985325864986cf691",
+      "git_blob_sha1": "91858e6a141f55df44e2c84f1bb9a70f01229668",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+      "sha256": "bebaf4a52b8c39f32da6725a9216fc782e022c1f75067889c7a39ab780694879",
+      "git_blob_sha1": "8b92c1b60add3d823bff447ae2f3b3ef2caaeb97",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_FINAL_README_AND_DECISION.md",
+      "sha256": "5b933376c6a162ddbb03925b705bc2787b1c497b9a635d36b951ba9415aa5765",
+      "git_blob_sha1": "8485914dec1838275812d584332af3f80500dce2",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_REVISION_LOG.md",
+      "sha256": "3fc6c8c0024382a590a8f53ee8d41a34c24b16429f83d266238b0966714849fc",
+      "git_blob_sha1": "6d73149b6f0a0f3ac392cfeab07bd7c1c98991a0",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_FINAL_UNMODIFIED.zip",
+      "sha256": "3420edf9cb7b2170b5c5e0938d43fc3ab896061a5c5fb16229d9587c2ea27987",
+      "git_blob_sha1": "0f67e3f4b6f905fd90f3d9da190afc885ad257ca",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/FINAL_PACKAGE_MANIFEST.json",
+      "sha256": "a64d92b291b47b69584b0721a27b127105b072aeed064c83a3977cce58b8568b",
+      "git_blob_sha1": "667e230fd56318c8398ff08444bbacb7ee899408",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/audit/R1_REVIEW.md",
+      "sha256": "fb1e3c5534b3ea02c8c8c4e2642f1662e06453bbc2a51d4115feb470104626d5",
+      "git_blob_sha1": "2d1a8be5d9f0b72d79e05f55f1955a226bfd8a49",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/audit/R2_REVIEW.md",
+      "sha256": "9d3949bd323adbe2ac3b1c12ec624c4ba1edcf5f02866cdefd3ac6ef7b381eff",
+      "git_blob_sha1": "dcd0825c27a2b2658cd9f802b949430103943db7",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/audit/R3_FINAL_REVIEW.md",
+      "sha256": "f87bd23cea22deba5218f960bbcfc87552210678fb2fa676968b8660ec8f6bba",
+      "git_blob_sha1": "39bef957d3a651db3d3272712cf1298cc62c5af5",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/evidence/arithmetic_v2.json",
+      "sha256": "9fb83b81489bfc9cd543b9e774d2c7047aff11a99db9c5b2daa62f3fd95041d6",
+      "git_blob_sha1": "a016c6c41164c7a3b7aa732bc03b333c7e722cc5",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/evidence/recompute.py",
+      "sha256": "ccdb8c2006a9794376829afc7ca7f792d7c899191b4ec202644cbcfbf1807d0a",
+      "git_blob_sha1": "687cdc838df2f1bdf601c37eb89a63b239a9d18b",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/evidence/tensor_manifest_d1024.json",
+      "sha256": "569f839f3cc557fed734d41d65311b46743fbc77e4c3e11037aaf9fcc2326b32",
+      "git_blob_sha1": "6b23581abbdc354ffe7325349a74c1eb86125963",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/GROK_R53_ORIGINAL_UNMODIFIED.zip",
+      "sha256": "55ee7134c8e84a809ed463d671f209e0c25caa407e993be6bf09316211ad9299",
+      "git_blob_sha1": "2eaa4b138a2f7f96e8c3ea52b37ef5c383c4f426",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/GROK_R53_SPEC_ORIGINAL.md",
+      "sha256": "f530aed4377a6dd5e2882620f28233f21867fd5f9f2ccd73c83bf6cad768d265",
+      "git_blob_sha1": "b139c753bc415f2b9e14b5210b96265a6e69276b",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/GROK_STAGE1.md",
+      "sha256": "268fa9b45ca181b4b0e41fba7f16e370b9f194be10e6b4cd9404ded8ce7f2b58",
+      "git_blob_sha1": "bca1036dc15768ee5220fb8d426136613215ef60",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/GROK_STAGE2.md",
+      "sha256": "1928e9c03ad2edbb81ca52937c60f416edc4747ec387626c3e8e88693ade0e63",
+      "git_blob_sha1": "1dd8f268ef4634e0738c9b278f9a7690cf682b10",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/INDEPENDENT_INTAKE.md",
+      "sha256": "bbb373ca0cbdc865d330a0a59aa7e1501c42276911c82b7af5e2621e53aebb90",
+      "git_blob_sha1": "690fc09d3e1fbc34653b34b1902515ad7a45f3a5",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/INDEPENDENT_REAUDIT.md",
+      "sha256": "6f3bdc4d11ae92f189718a3ca77e28bdc0da17cfeec7fa252a48982f5085ccdf",
+      "git_blob_sha1": "479694fc845e9a29ac85e195c53fd52ec6c0e655",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/00_READ_FIRST.md",
+      "sha256": "566f041a5a3348a1a95b7cc46d90b787630cd797e88b7ba8d04a0c4ec698db86",
+      "git_blob_sha1": "85d1677108058afd6eb7ac4e0737a22eef6adee5",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/01_PROVENANCE_AND_INTEGRITY.md",
+      "sha256": "fedd042a7fdc28256a589a9bc510a996eb05d65a7d4a5c3e6eff669ce4fd5937",
+      "git_blob_sha1": "d853c92f8516950c6d8538be2c6e6d4cdc9d5876",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/02_INDEPENDENT_ARITHMETIC_RECHECK.md",
+      "sha256": "e56c87b272428d15949c0cfe329be76cae74fa2951a7a48dd030a644d676a9be",
+      "git_blob_sha1": "56fae30b5d30fdeaa0cd5d5a76ca2b7a2509002a",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/03_D01_D10_STATUS.md",
+      "sha256": "f5571b798f100650aab66b14ea22d86721c11eaa152b7753550ee1afd060d318",
+      "git_blob_sha1": "7cef62008cb2c910192e1a08cbdea7bb7ace5d9b",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/04_X01_X12_STATUS.md",
+      "sha256": "4aad1871ae5eb5b3e4724d017c27d7d50a3fe83ce905822f9eb6151b84dda094",
+      "git_blob_sha1": "5012fb1153f1b517637a891c293c02cb13e233e8",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/05_ADVERSARIAL_FINDINGS_IR01_IR08.md",
+      "sha256": "d2145f6318b5ae5db6d6e0cdb27f4cd69c8200cfc4b0db2ec96513e5c90fe2b9",
+      "git_blob_sha1": "6f2f165f6ef49730316e04d5c06f920fe9232c62",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/06_END_TO_END_CONSISTENCY.md",
+      "sha256": "af471788890010dfcd3ae5fa5cf3ebac7350beb371515f56715335f566d66a03",
+      "git_blob_sha1": "fcb37fdc5dcab0e3b62b3bb1e02c574025b68e32",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/07_BLOCKERS_AND_NEXT_CONTROL_POINT.md",
+      "sha256": "96c49af55510f54396a53e4c92c147a918c42e092672d6119953d17d2f2a99f5",
+      "git_blob_sha1": "49702d8bbadb9f7665fb63eb9d2e33e0a352859c",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/08_DIALOGUE_CONTEXT_UPDATE.md",
+      "sha256": "1dcf66302a6b2c1a26dc0ffcd4963caa5bc57571ddcdf3a7416eaa6685edd302",
+      "git_blob_sha1": "1f7fefcca85026a7a80d3027c9aaffe690239fbd",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/00_START_HERE_AND_VERDICT.md",
+      "sha256": "aef792f7958478f5e0151e8947498c389096e4473280374b5a7062909bd0d664",
+      "git_blob_sha1": "7bcfadf21974183811dd553e3707340a8536ca69",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/01_GROK_R1_R2_EVIDENCE.md",
+      "sha256": "04ab7cb233cb1b6340ca53dcb2242ff59cb7f152f83d4f3b3a6940aee7990ada",
+      "git_blob_sha1": "d03852958f61f62607a4aea95f3da548d5709251",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/02_W4_CORRECTION_AND_PROOF.md",
+      "sha256": "a6764047ace8eb5ab03bd9e92f7bb8d53feebc2f22f51b3482c03ea26f623e44",
+      "git_blob_sha1": "ab265d580e7ad5319592081360576469813d3d94",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/03_MEMORY_EXACT_CONTRACT_DRAFT.md",
+      "sha256": "0fe412ca52be5cada3c59a3e036399ba12e08826055074910a1ff067772b1e76",
+      "git_blob_sha1": "656b5b15ab669e7ed2a5e9d4438b32c78e3ea0bf",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/04_IR03_IR08_NOTES.md",
+      "sha256": "8282b00eded5f2eb23071daca61150e8631424e1e90b77ab83f98b715dc444b6",
+      "git_blob_sha1": "959449d834d192d37d30c992d974057a1b634229",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/05_D_X_B_GATE_MATRIX.md",
+      "sha256": "aee21424b55a9ec5a03d36e484ca84ded0b494025aef0542af95ffcb23de9a5b",
+      "git_blob_sha1": "d9dffe3d01f39371581e8bb22be8e36ed59148da",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/06_CRITICAL_AUDIT_AND_TESTS.md",
+      "sha256": "84a6945f97fe9f4a1ee29eb8414afb7affb64af2945bced4f4d3493c5cc7482c",
+      "git_blob_sha1": "d8255511fc5c44f21991ae4e148ff8913c357bf7",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/07_NEXT_CHECKPOINT.md",
+      "sha256": "2fc8c562f3ceedb361a0485f3402a57a17f202ae5a1e1326359a127a205c6bc9",
+      "git_blob_sha1": "0464356c783b742597a0500bc0f9185b4d7c7567",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R52/01_W4_ERRATUM.md",
+      "sha256": "f1260b8ee3346d41a2aa16463c248771277a3ade9f55e0bfb0ce64bc24b03167",
+      "git_blob_sha1": "a8f7e6f838e737c5cd2f174354dfc8a964b0f45e",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R52/02_MEMORY_CONTRACT.md",
+      "sha256": "42ec11748a2cb6cbe85cd82fac1adbb6195f0e17cd6e9a50bfdea007e4073d6f",
+      "git_blob_sha1": "afd93640f3831344821cec921b273ee72ff9f358",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R52/03_WAKE_SENSOR_REQUIREMENTS.md",
+      "sha256": "b9d795ad76ed173937c93e2c74abe2e1cdb990d8b396be8cbdac64891fd69b99",
+      "git_blob_sha1": "09200a0c3ee37788dd06e38b9c470e98c434059f",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R52/04_POLICIES_AND_DECISIONS.md",
+      "sha256": "208f0713e0fb9e6327b504437d5f925c9fdbf595d253674b39f58d813ba94b57",
+      "git_blob_sha1": "22b8181a9985aa4479677e560482b455863d85f4",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R52/05_VERIFICATION_AND_GATE.md",
+      "sha256": "d25663258a93fc38eec71d2598d206eb72be4bffb3304e9c3f3e56f0407d1f7e",
+      "git_blob_sha1": "acdf44ac1f9868d83f80d2c3428874f7f0c620d4",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/SELF_REAUDIT_EVIDENCE.json",
+      "sha256": "d9355fc37886b943134ce0ef15bda0eb6d471ea8a300a41b5fc3f95955b16ffc",
+      "git_blob_sha1": "062106f2f8ca01363fde2b3256075c2b699f55f1",
+      "remote_match": true
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/WORK_V22_ORIGINAL.zip",
+      "sha256": "639708aff644f562c98564b20311262c96105345637e5f3a6566d55c418ca50d",
+      "git_blob_sha1": "3be368a9b7f13f0ae194fe19a72ca5bed56991ef",
+      "remote_match": true
+    }
+  ]
+}
