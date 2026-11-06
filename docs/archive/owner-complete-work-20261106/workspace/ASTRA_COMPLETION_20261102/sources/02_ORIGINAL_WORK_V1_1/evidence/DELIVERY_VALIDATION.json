@@ -1,0 +1,8 @@
+{
+  "required_documents": 11,
+  "matrix_obligations": 44,
+  "source_sha256_checks": 3,
+  "math_delimiters": "balanced",
+  "independent_review": "E2 CONDITIONAL PASS with initial FAIL retained",
+  "scope": "Artifact integrity checks only; not proof or model/device tests"
+}
