@@ -1,3 +1,5 @@
+> **COMMUNICATION OVERRIDE — 2026-11-06:** [Владелец потребовал простых, коротких и содержательных ответов](decisions/2026-11-06_OWNER_COMMUNICATION_RULES_V1.md). Первым сообщать результат; не раздувать переписку; факты, ограничения и проверяемость сохранять.
+
 # ACTIVE TASK OVERRIDE — 2026-11-06
 
 **Current instruction:** [2026-11-06_ACTIVE_AGENT_RULES_V2.md](decisions/2026-11-06_ACTIVE_AGENT_RULES_V2.md) and [weight comparison](research/2026-11-06_WEIGHT_FAMILY_COMPARISON.md) supersede the old G4-only next-task instructions below. Production code authorized; do not block on O01–O08. Implement and test, compare candidates fairly; do not train weights without separate authorization.
