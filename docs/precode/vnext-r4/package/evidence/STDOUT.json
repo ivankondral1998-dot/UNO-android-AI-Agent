@@ -1,0 +1,171 @@
+{
+  "python": "3.12.14",
+  "sqlite": "3.53.1",
+  "checks": [
+    {
+      "check": "V19_hash",
+      "ok": true,
+      "observed": "ecdda2259b21fbe84aa2051cfe6e3f896f753443b37bbfbd39fa8203d8b66374"
+    },
+    {
+      "check": "V19_excerpts",
+      "ok": true,
+      "observed": [
+        "CONTROL",
+        "MODES",
+        "PRIORITY",
+        "Scheduler",
+        "scenario"
+      ]
+    },
+    {
+      "check": "V19_legacy_virtual_scenarios",
+      "ok": true,
+      "observed": 14
+    },
+    {
+      "check": "V19_pending_outbox_without_ready_tick",
+      "ok": true,
+      "observed": [
+        "outbox_from_1_1",
+        0,
+        0
+      ]
+    },
+    {
+      "check": "V19_old_outbox_after_boot",
+      "ok": true,
+      "observed": [
+        [
+          2,
+          "outbox_from_1_1"
+        ]
+      ]
+    },
+    {
+      "check": "V14_hash",
+      "ok": true,
+      "observed": "6be1dabe8a0e678e7b36affbec999f15b2fd1fd48d91c5c5e2ae2a18494a8875"
+    },
+    {
+      "check": "V14_excerpts",
+      "ok": true,
+      "observed": [
+        "ALLOWED",
+        "MAX_CONDITIONS",
+        "MAX_PAYLOAD",
+        "MAX_QUERY_BYTES",
+        "MAX_SLOTS",
+        "add",
+        "bump",
+        "connect",
+        "cursor_stamp",
+        "header_bytes",
+        "init_store",
+        "meta",
+        "row_matches",
+        "search_exact",
+        "validate_query",
+        "validate_record"
+      ]
+    },
+    {
+      "check": "V20_hash",
+      "ok": true,
+      "observed": "7a5792f1e3cf4d5a27078a3198965f7ff1b933ab7364a005b171e3663febd310"
+    },
+    {
+      "check": "V20_excerpts",
+      "ok": true,
+      "observed": [
+        "commit_result",
+        "connect",
+        "event",
+        "make_db",
+        "record",
+        "state",
+        "token"
+      ]
+    },
+    {
+      "check": "V14_invalid_field_type",
+      "ok": true,
+      "observed": [
+        true,
+        "TYPE_ERROR"
+      ]
+    },
+    {
+      "check": "V14_unbound_continuation",
+      "ok": true,
+      "observed": [
+        "TRUNCATED",
+        3,
+        "COMPLETE",
+        0
+      ]
+    },
+    {
+      "check": "V20_no_ticket_dedup_in_fixture",
+      "ok": true,
+      "observed": [
+        "ACCEPTED",
+        "ACCEPTED"
+      ]
+    },
+    {
+      "check": "V20_stop_negative",
+      "ok": true,
+      "observed": "REJECTED_STALE"
+    },
+    {
+      "check": "N007_stage5_transcription",
+      "ok": true,
+      "observed": {
+        "rows": 80,
+        "counts": {
+          "MOVE": 77,
+          "STILL": 3
+        },
+        "switches": 3,
+        "correct": [
+          77,
+          77,
+          77
+        ],
+        "sha256": "96f5db394bde747234d3914a4094697cb4ba9321313e4fc85012d87e48547f5a"
+      }
+    },
+    {
+      "check": "mask_count",
+      "ok": true,
+      "observed": [
+        241,
+        65535
+      ]
+    },
+    {
+      "check": "graph_example",
+      "ok": true,
+      "observed": [
+        12288,
+        131072,
+        232,
+        237824
+      ]
+    },
+    {
+      "check": "NCR_E6",
+      "ok": true,
+      "observed": [
+        9457,
+        26268
+      ]
+    },
+    {
+      "check": "P1_S7_threshold_unreachable",
+      "ok": true,
+      "observed": 0.3592125960674712
+    }
+  ]
+}

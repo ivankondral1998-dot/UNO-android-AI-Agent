@@ -1,0 +1,21 @@
+{
+  "package": "UNO_WORK_MATH_FULL_HANDOFF_2026-11-01",
+  "purpose": "Pre-code theoretical mathematics and independent critical research for unified UNO organism + Astra/NCR-EVO",
+  "files": [
+    {
+      "name": "NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md",
+      "bytes": 21841,
+      "sha256": "60bb31db6c663b4c78ea3182c1593b94ceb2b3259f690edc6ccc1792b28c6547"
+    },
+    {
+      "name": "UNO_MATH_HOST_V0_1_REFERENCE_NOT_CANONICAL.md",
+      "bytes": 13784,
+      "sha256": "abe61311b62f39cf176648aa6315d21e05fe471ab77d710e566774847a059b7b"
+    },
+    {
+      "name": "WORK_START_HERE_UNO_MATHEMATICAL_DESIGN_2026-11-01.md",
+      "bytes": 44026,
+      "sha256": "5dce811ff071b0654dfe58716424d5f6aead7fc09a1f40a6b97cdad85017f6f3"
+    }
+  ]
+}

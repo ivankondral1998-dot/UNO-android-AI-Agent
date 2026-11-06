@@ -1,0 +1,478 @@
+{
+  "00_START_HERE.md": {
+    "bytes": 1635,
+    "sha256": "da2e3f8b1aefd5d7ce41d64d30d7d67c8d23ad58fe430330899443f7b1ead037"
+  },
+  "ERRATA_R4.md": {
+    "bytes": 10469,
+    "sha256": "291bc52f81075a4b0def6ab092a3f4488c65ce5cef9400a5d0c8c58ab8ccdfc9"
+  },
+  "R4_1_INHERITED_BASE.md": {
+    "bytes": 184036,
+    "sha256": "a57aa0973b99552e9849ad49222339cea3a5711f66f62aa5f1dbebf9fd89cf07"
+  },
+  "R53_ORIGINAL_INDIVIDUAL_GATES.md": {
+    "bytes": 13025,
+    "sha256": "80f8d6c644af2b73843fe79dffdc1de9d116e80faf9b119c3bcce22773cc4867"
+  },
+  "SOURCE_AUDIT.md": {
+    "bytes": 10348,
+    "sha256": "4076d27869b9812cea108141b8a3887b791243520d820fb400ff156ced358533"
+  },
+  "UNO_ARCHITECTURE_ALTERNATIVES_AND_COUNTEREXAMPLES.md": {
+    "bytes": 12594,
+    "sha256": "b4d1936b6a4590381d19af87ebe1c2c8fdecbe168fca68f6aa3cb1b11262bff7"
+  },
+  "UNO_EVIDENCE_TRACEABILITY_AND_TEST_GATES.md": {
+    "bytes": 6475,
+    "sha256": "692b414a614036654afab3dfb9165ed0a1b11d40dd8f7fc59c18400ca0757259"
+  },
+  "UNO_INTEGRATED_NEURAL_ORGANISM_PRECODE_CANDIDATE_vNEXT.md": {
+    "bytes": 53354,
+    "sha256": "67b9ec23aa73a41d5a607faddd450579d6a29633e379f7999384e3e4f10b9b01"
+  },
+  "UNO_OWNER_DECISION_OPTIONS_O01_O08.md": {
+    "bytes": 4742,
+    "sha256": "4fb3b4853d63ba647e72101b9bd546fdd9002911150172e2431353f2e98787d5"
+  },
+  "evidence/FROZEN_CARD.md": {
+    "bytes": 2756,
+    "sha256": "9f3b76694df44b1ded673a0efea5968f2657afc0fb2f1925d24dd4d43c15f342"
+  },
+  "evidence/OWNER_A52_STAGE5_CATEGORICAL_TRACE_RECONSTRUCTED_20261106.csv": {
+    "bytes": 3371,
+    "sha256": "96f5db394bde747234d3914a4094697cb4ba9321313e4fc85012d87e48547f5a"
+  },
+  "evidence/PRE_RUN_SHA256.txt": {
+    "bytes": 349,
+    "sha256": "c88a3c00e539f6f8b9701ae3f156d73a0e4efbdfbaa369044eb66e3e80bb1f91"
+  },
+  "evidence/PROFILE_RESOURCES_R41.csv": {
+    "bytes": 1777,
+    "sha256": "58b9fc6fe76b42d5a2ba8334b5b8e55dd981a81ff1cf9b5e74d2baabe787a6f0"
+  },
+  "evidence/REMOTE_TREE_EFDB1767.json": {
+    "bytes": 103473,
+    "sha256": "47049c6b215610d9773fa69de50344d316b846378b372a7d7d6e7180275fb669"
+  },
+  "evidence/SOURCE_VERIFICATION.json": {
+    "bytes": 18402,
+    "sha256": "b5d1fface47cb1eaa000dbaaf2febf96e4241a496907de0fa46905a55078946d"
+  },
+  "evidence/STDERR.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "evidence/STDOUT.json": {
+    "bytes": 3186,
+    "sha256": "df7420ae0b4b8a5857e40cc6b334907141dfdaf2dc10c8d7d5de4e27232748aa"
+  },
+  "evidence/V01_V20_INTEGRITY.json": {
+    "bytes": 6982,
+    "sha256": "2a854297c991742494fcf12ef7ff0e2cc8af82aad0b721732c87278db488625a"
+  },
+  "evidence/recheck.py": {
+    "bytes": 6654,
+    "sha256": "0e268fb000059f518e550d17c7ccf2e774230fa2cadc5ee75823bc0432c5bcc6"
+  },
+  "evidence/v_sources/V01_UNO_A52_R41_S5_STOP_CONCURRENCY_STRESS_LAB.py": {
+    "bytes": 20458,
+    "sha256": "57aa5fc07ecde854cb0ea13658c801aba3e25ccb00feeebb5eaa7c3374de20df"
+  },
+  "evidence/v_sources/V02_UNO_A52_R41_S5_STOP_PRECOMMIT_RACE_STRESS_V2.py": {
+    "bytes": 21320,
+    "sha256": "b9002badfcfebd44bc04a5c1ae31428353a6bc90161e2fe5a9c20201a73fca65"
+  },
+  "evidence/v_sources/V03_UNO_A52_R41_S5_DURABLE_STOP_ORDER_STRESS_V3.py": {
+    "bytes": 22529,
+    "sha256": "d62753ede9550e9270324e730e0894c65e2aceb7b8426f2f0b0d4a6245e11ac1"
+  },
+  "evidence/v_sources/V04_UNO_A52_R41_S5_STOP_INGRESS_DURABILITY_STRESS_V4.py": {
+    "bytes": 22537,
+    "sha256": "e785f57acaa935e0f6a2eaecb024001c1511bcf4007301f26539977b0c35b906"
+  },
+  "evidence/v_sources/V05_UNO_A52_R41_S5_FAILCLOSED_RESTART_WATCHDOG_STRESS_V5.py": {
+    "bytes": 20958,
+    "sha256": "7dc32d822f3e131e98a895a551617314857bcf14fb2e3fec272f5294df75fa54"
+  },
+  "evidence/v_sources/V06_UNO_A52_R41_S5_DUAL_FAILURE_AND_BYPASS_STRESS_V6.py": {
+    "bytes": 21442,
+    "sha256": "8cb5323a56e4184a681964566d240335fc4391808c0be7a6c7f3c22abaab1d35"
+  },
+  "evidence/v_sources/V07_UNO_A52_R41_NATIVE_S5_EVENT_BACKPRESSURE_STRESS_V7.py": {
+    "bytes": 23468,
+    "sha256": "675e8d74fa027a39c41b414942324e071f202b63ee5ad0cb1975977e641c4e93"
+  },
+  "evidence/v_sources/V08_UNO_A52_R41_NATIVE_S5_SENSOR_FRESHNESS_BACKPRESSURE_V8.py": {
+    "bytes": 21065,
+    "sha256": "0e1edbcfe1b207832356714524ffa03bfbb970b329ba99afeefbccdc1ee18330"
+  },
+  "evidence/v_sources/V09_UNO_A52_R41_NATIVE_S5_TRUE_MASK_GATE_STRESS_V9.py": {
+    "bytes": 16772,
+    "sha256": "b23977eeeba8f783f830307735bcd03c35a143f2a663e55bdf125237d25a5090"
+  },
+  "evidence/v_sources/V10_UNO_A52_R41_NATIVE_S5_PREFIX_BUDGET_STRESS_V10.py": {
+    "bytes": 18945,
+    "sha256": "c75412df42f00412aa3166dcf99febcf4523136c6c56cbd633f03d0ce81a3808"
+  },
+  "evidence/v_sources/V11_UNO_A52_R41_NATIVE_S5_S6_SAMPLER_HAZARD_STRESS_V11.py": {
+    "bytes": 20923,
+    "sha256": "c06ec6f16154761cdf9a29688e02061d449391f3c2bb074c08fc4b54ef88853d"
+  },
+  "evidence/v_sources/V12_UNO_A52_R41_NATIVE_S5_AFTER_STEP_STATE_HAZARD_STRESS_V12.py": {
+    "bytes": 23611,
+    "sha256": "fa7484eaeae5ebf3aeb8d421a07d4132a234ecc8839b16812f7032be3e569221"
+  },
+  "evidence/v_sources/V13_UNO_A52_R41_NATIVE_S5_FULL_CYCLE_RESOURCE_ADMISSION_V13.py": {
+    "bytes": 24962,
+    "sha256": "71309ef19710f0509b9a818ca7851330acb3c1b1f09569188a34e35c65dd1c3d"
+  },
+  "evidence/v_sources/V14_UNO_A52_R41_NATIVE_S5_EXACT_MEMORY_INTEGRITY_V14.py": {
+    "bytes": 26692,
+    "sha256": "6be1dabe8a0e678e7b36affbec999f15b2fd1fd48d91c5c5e2ae2a18494a8875"
+  },
+  "evidence/v_sources/V15_UNO_A52_R41_NATIVE_S5_RECOVERY_PROVENANCE_ATOMICITY_V15.py": {
+    "bytes": 26240,
+    "sha256": "044fd1b5d44b0a09396567435235948f2bd328ce7e5e3d1144da12c2620b12d4"
+  },
+  "evidence/v_sources/V16_UNO_A52_R41_NATIVE_S5_SEMANTIC_EXACT_BOUNDARY_V16.py": {
+    "bytes": 27033,
+    "sha256": "02639bef01d7fa83f833b02ca4e92cf1433d119d4823cf453b3428e5ce2daf59"
+  },
+  "evidence/v_sources/V17_UNO_A52_R41_NATIVE_S5_SHARED_4096_MEMORY_CAPACITY_V17.py": {
+    "bytes": 23335,
+    "sha256": "7936b97d6ddd83aa7a3944fdcd232067cd13db8bd0f6bd28bd0e26cfdfee7695"
+  },
+  "evidence/v_sources/V18_UNO_A52_R41_NATIVE_S5_WAL_CONCURRENT_MEMORY_STRESS_V18.py": {
+    "bytes": 27047,
+    "sha256": "bff8adf243c85a845ec25b255d9e2023add65885020e070333b3ce20190c434c"
+  },
+  "evidence/v_sources/V19_UNO_A52_R41_NATIVE_S5_CAUSAL_CLOCK_TIMER_RACE_V19.py": {
+    "bytes": 19294,
+    "sha256": "ecdda2259b21fbe84aa2051cfe6e3f896f753443b37bbfbd39fa8203d8b66374"
+  },
+  "evidence/v_sources/V20_UNO_A52_R41_NATIVE_S5_LIVE_STOP_TIMER_EPOCH_V20.py": {
+    "bytes": 21210,
+    "sha256": "7a5792f1e3cf4d5a27078a3198965f7ff1b933ab7364a005b171e3663febd310"
+  },
+  "sources/AGENT_PHASE_GATE.json": {
+    "bytes": 1226,
+    "sha256": "9d1bcc21e7ab6ff1a24dcbb18453797ac5e7f9253b3daa12cc8d08a6917479e4"
+  },
+  "sources/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md": {
+    "bytes": 21841,
+    "sha256": "60bb31db6c663b4c78ea3182c1593b94ceb2b3259f690edc6ccc1792b28c6547"
+  },
+  "sources/PINNED_REPO_TEXT/AGENTS.md": {
+    "bytes": 9207,
+    "sha256": "989630fddc17aa9832ed15417b0c45a247ffa658c289515261a6cb4ff0536a3b"
+  },
+  "sources/PINNED_REPO_TEXT/README.md": {
+    "bytes": 17794,
+    "sha256": "0cd44bcc903c168ef56225c096870f8d2a62c5ae810aa0d5d7078e49be063d0f"
+  },
+  "sources/PINNED_REPO_TEXT/docs/AGENT_START_HERE.md": {
+    "bytes": 4904,
+    "sha256": "60907b5c7a665d4d2b029c645e70ce24550551e3201e44662336a4fb75153fc0"
+  },
+  "sources/PINNED_REPO_TEXT/docs/CURRENT_TASK.md": {
+    "bytes": 5024,
+    "sha256": "ae76293ae8587c053d1b241957be19264f224a224982664e706cb48931d80acc"
+  },
+  "sources/PINNED_REPO_TEXT/docs/STATUS.md": {
+    "bytes": 5093,
+    "sha256": "84cf3eb4651885864f5eefefa8f40ec00e029df8a448ac19b9082b69c894353d"
+  },
+  "sources/PINNED_REPO_TEXT/docs/research/OWNER_TEACHING_AND_ANDROID_EVIDENCE_20261105.md": {
+    "bytes": 5916,
+    "sha256": "83c6e2b731415db186e066fda391a31ca960c356523f37662359c9432d2700ce"
+  },
+  "sources/PINNED_REPO_TEXT/research/uno-n0-07/results/OWNER_A52_FULL_400_REVIEW_20261106.md": {
+    "bytes": 6849,
+    "sha256": "daf3c388cc68232f5aceee0f741ad9d642a170cdf880c2309e5fd7f902f5c457"
+  },
+  "sources/PINNED_REPO_TEXT/research/uno-n0-07/results/OWNER_A52_STAGE5_CATEGORICAL_TRACE_RECONSTRUCTED_20261106.csv": {
+    "bytes": 3371,
+    "sha256": "96f5db394bde747234d3914a4094697cb4ba9321313e4fc85012d87e48547f5a"
+  },
+  "sources/PRIOR_WORK_CHECKPOINT.md": {
+    "bytes": 6681,
+    "sha256": "7076a2d57c18936aa2d7f60e6631ba888aed08a5bd6984b08d0a317b96317968"
+  },
+  "sources/SOURCE_PACKAGE_IMPORT_MANIFEST.json": {
+    "bytes": 27819,
+    "sha256": "ff6b099d062ddb0c1df519391d5d7e6393848a02242206deabaa4cce91a48287"
+  },
+  "sources/repo_controls/BENCH.txt": {
+    "bytes": 17875,
+    "sha256": "c74cd9e4a8570cb5cb7a74557764dabf41b8408bf2985fa0ad975c25c015e031"
+  },
+  "sources/repo_controls/RESEARCH_CARD_CANDIDATE_20261105.md": {
+    "bytes": 4565,
+    "sha256": "a60336f8886c92a51b98817accfe928973d48c4dfc9bdee04530e406455fa3b4"
+  },
+  "sources/repo_controls/UNO_LAB_AGENTS.md": {
+    "bytes": 10347,
+    "sha256": "9604180c1388653ed8f833c47eae68dfbef94f3796092ca12b23db66721120ce"
+  },
+  "sources/source-package/00_START_HERE.md": {
+    "bytes": 3442,
+    "sha256": "f67a7caf169a1a51f106274a00321340cada5e3870b387acb7c67f9d7b858abf"
+  },
+  "sources/source-package/EVIDENCE/arithmetic_run_output.txt": {
+    "bytes": 213,
+    "sha256": "e1fbd6d7557e5d1dd752f8599d6f1f3e14e50f11b065df37bd88e581d2767919"
+  },
+  "sources/source-package/EVIDENCE/recheck_arithmetic.py": {
+    "bytes": 1537,
+    "sha256": "6aec027d2a3ab6a3657673aa3276edd58656a45c63c729847b6b3562494fe7f6"
+  },
+  "sources/source-package/NORMATIVE/01_SOURCE_HIERARCHY_AND_CONTRACT_INDEX.md": {
+    "bytes": 8270,
+    "sha256": "98a837fa8ce45c3c34e23274f118afc243c67b261f688c1d8846e5454e6792d6"
+  },
+  "sources/source-package/NORMATIVE/02_FORMAL_CORRECTIONS_AND_LIMITS.md": {
+    "bytes": 11668,
+    "sha256": "6260310750aacfdd5326f91d6251d5649a1ca88855760110c3783fae29fade11"
+  },
+  "sources/source-package/NORMATIVE/03_CONSOLIDATED_SUBSYSTEM_CONTRACTS.md": {
+    "bytes": 5217,
+    "sha256": "69afb7138ada0188251cdbf381b03d34bc44963a080bbb63ae064da5c71953f7"
+  },
+  "sources/source-package/NORMATIVE/04_ALL_GATES_D_X_B_M.md": {
+    "bytes": 13025,
+    "sha256": "80f8d6c644af2b73843fe79dffdc1de9d116e80faf9b119c3bcce22773cc4867"
+  },
+  "sources/source-package/NORMATIVE/05_OWNER_DECISIONS_AND_FUTURE_EVIDENCE.md": {
+    "bytes": 6593,
+    "sha256": "9a01bd2be0fcc024e3c8f61a87c422a777ae443cbc014519424ceb7e5f3210d2"
+  },
+  "sources/source-package/NORMATIVE/06_VERIFICATION_BOUNDARIES.md": {
+    "bytes": 4636,
+    "sha256": "72a54778f26ce1b928785a02c56b8c86c807ea3b38b685560d973f163b52b711"
+  },
+  "sources/source-package/NORMATIVE/07_EXPLANATION_FOR_OWNER.md": {
+    "bytes": 3736,
+    "sha256": "7d7b745f2d585f31d344ecec020465e542d552536d50ea13a475d35d38b5f23a"
+  },
+  "sources/source-package/SHA256_MANIFEST.json": {
+    "bytes": 11502,
+    "sha256": "da6832458698117c946b73e09fc618b286fe8396e61d031ae854f66cc49f35e7"
+  },
+  "sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md": {
+    "bytes": 9832,
+    "sha256": "4332225c501caf15628fa8e293895382501526c6540400e9d421c0ab712dca3c"
+  },
+  "sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md": {
+    "bytes": 26820,
+    "sha256": "6bd6f68989972d183b6750711dca223355a026dfcf11461275d25406319853fe"
+  },
+  "sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md": {
+    "bytes": 17474,
+    "sha256": "4b9186bb19d71f88aed989b33ef8a40f5a699535e645c79f5eb97d5d97098a4c"
+  },
+  "sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md": {
+    "bytes": 27425,
+    "sha256": "52b1eab23c977d253625b98de20bee6e5802c652973cf96403037118b5fbe4be"
+  },
+  "sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md": {
+    "bytes": 13624,
+    "sha256": "737654965c75e83e10a2705656af0f49ff9bf2c2bb0a4f359c67f0f426c6b0c8"
+  },
+  "sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md": {
+    "bytes": 28652,
+    "sha256": "37754c2d980838e13877ed014f870a14a879cb32b08d6e19e78c5668a06fe817"
+  },
+  "sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md": {
+    "bytes": 22056,
+    "sha256": "dc99d2e043ffff4abb28d8f9a99458cb8e2382dfe2ff920e68f1b0b67a23b9c7"
+  },
+  "sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md": {
+    "bytes": 22258,
+    "sha256": "2602f04c049fc721e9c6ecc79f73d5e01400429315f05744f5ed00faa5b3f857"
+  },
+  "sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md": {
+    "bytes": 15527,
+    "sha256": "4129290d9ef08c86e3aaf186fcb4d830a764c514beaca33aae61b4eae698ed69"
+  },
+  "sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md": {
+    "bytes": 14541,
+    "sha256": "dea19182304bd8784030fe6d7b7570bdc4ffbc2bc5dafd68c8f7e772a726aa90"
+  },
+  "sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md": {
+    "bytes": 6521,
+    "sha256": "c2fd8de591472c52f0d206b361f6a61fc857f9ae989751ad11ce9bd0603f95c5"
+  },
+  "sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md": {
+    "bytes": 11905,
+    "sha256": "dbcba73af110f6725183693b2dc3a67e1b310b3c6833787985325864986cf691"
+  },
+  "sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md": {
+    "bytes": 10420,
+    "sha256": "bebaf4a52b8c39f32da6725a9216fc782e022c1f75067889c7a39ab780694879"
+  },
+  "sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_FINAL_README_AND_DECISION.md": {
+    "bytes": 7168,
+    "sha256": "5b933376c6a162ddbb03925b705bc2787b1c497b9a635d36b951ba9415aa5765"
+  },
+  "sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_REVISION_LOG.md": {
+    "bytes": 4818,
+    "sha256": "3fc6c8c0024382a590a8f53ee8d41a34c24b16429f83d266238b0966714849fc"
+  },
+  "sources/source-package/SOURCES/ASTRA_FINAL_UNMODIFIED.zip": {
+    "bytes": 681255,
+    "sha256": "3420edf9cb7b2170b5c5e0938d43fc3ab896061a5c5fb16229d9587c2ea27987"
+  },
+  "sources/source-package/SOURCES/ASTRA_SUPPORT/FINAL_PACKAGE_MANIFEST.json": {
+    "bytes": 21566,
+    "sha256": "a64d92b291b47b69584b0721a27b127105b072aeed064c83a3977cce58b8568b"
+  },
+  "sources/source-package/SOURCES/ASTRA_SUPPORT/audit/R1_REVIEW.md": {
+    "bytes": 19779,
+    "sha256": "fb1e3c5534b3ea02c8c8c4e2642f1662e06453bbc2a51d4115feb470104626d5"
+  },
+  "sources/source-package/SOURCES/ASTRA_SUPPORT/audit/R2_REVIEW.md": {
+    "bytes": 14242,
+    "sha256": "9d3949bd323adbe2ac3b1c12ec624c4ba1edcf5f02866cdefd3ac6ef7b381eff"
+  },
+  "sources/source-package/SOURCES/ASTRA_SUPPORT/audit/R3_FINAL_REVIEW.md": {
+    "bytes": 9582,
+    "sha256": "f87bd23cea22deba5218f960bbcfc87552210678fb2fa676968b8660ec8f6bba"
+  },
+  "sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/arithmetic_v2.json": {
+    "bytes": 5898,
+    "sha256": "9fb83b81489bfc9cd543b9e774d2c7047aff11a99db9c5b2daa62f3fd95041d6"
+  },
+  "sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/recompute.py": {
+    "bytes": 5599,
+    "sha256": "ccdb8c2006a9794376829afc7ca7f792d7c899191b4ec202644cbcfbf1807d0a"
+  },
+  "sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/tensor_manifest_d1024.json": {
+    "bytes": 43480,
+    "sha256": "569f839f3cc557fed734d41d65311b46743fbc77e4c3e11037aaf9fcc2326b32"
+  },
+  "sources/source-package/SOURCES/GROK_R53_ORIGINAL_UNMODIFIED.zip": {
+    "bytes": 5722,
+    "sha256": "55ee7134c8e84a809ed463d671f209e0c25caa407e993be6bf09316211ad9299"
+  },
+  "sources/source-package/SOURCES/GROK_R53_SPEC_ORIGINAL.md": {
+    "bytes": 8952,
+    "sha256": "f530aed4377a6dd5e2882620f28233f21867fd5f9f2ccd73c83bf6cad768d265"
+  },
+  "sources/source-package/SOURCES/GROK_STAGE1.md": {
+    "bytes": 5491,
+    "sha256": "268fa9b45ca181b4b0e41fba7f16e370b9f194be10e6b4cd9404ded8ce7f2b58"
+  },
+  "sources/source-package/SOURCES/GROK_STAGE2.md": {
+    "bytes": 10445,
+    "sha256": "1928e9c03ad2edbb81ca52937c60f416edc4747ec387626c3e8e88693ade0e63"
+  },
+  "sources/source-package/SOURCES/INDEPENDENT_INTAKE.md": {
+    "bytes": 11227,
+    "sha256": "bbb373ca0cbdc865d330a0a59aa7e1501c42276911c82b7af5e2621e53aebb90"
+  },
+  "sources/source-package/SOURCES/INDEPENDENT_REAUDIT.md": {
+    "bytes": 14403,
+    "sha256": "6f3bdc4d11ae92f189718a3ca77e28bdc0da17cfeec7fa252a48982f5085ccdf"
+  },
+  "sources/source-package/SOURCES/R4/00_READ_FIRST.md": {
+    "bytes": 3744,
+    "sha256": "566f041a5a3348a1a95b7cc46d90b787630cd797e88b7ba8d04a0c4ec698db86"
+  },
+  "sources/source-package/SOURCES/R4/01_PROVENANCE_AND_INTEGRITY.md": {
+    "bytes": 2368,
+    "sha256": "fedd042a7fdc28256a589a9bc510a996eb05d65a7d4a5c3e6eff669ce4fd5937"
+  },
+  "sources/source-package/SOURCES/R4/02_INDEPENDENT_ARITHMETIC_RECHECK.md": {
+    "bytes": 4062,
+    "sha256": "e56c87b272428d15949c0cfe329be76cae74fa2951a7a48dd030a644d676a9be"
+  },
+  "sources/source-package/SOURCES/R4/03_D01_D10_STATUS.md": {
+    "bytes": 3278,
+    "sha256": "f5571b798f100650aab66b14ea22d86721c11eaa152b7753550ee1afd060d318"
+  },
+  "sources/source-package/SOURCES/R4/04_X01_X12_STATUS.md": {
+    "bytes": 2933,
+    "sha256": "4aad1871ae5eb5b3e4724d017c27d7d50a3fe83ce905822f9eb6151b84dda094"
+  },
+  "sources/source-package/SOURCES/R4/05_ADVERSARIAL_FINDINGS_IR01_IR08.md": {
+    "bytes": 5773,
+    "sha256": "d2145f6318b5ae5db6d6e0cdb27f4cd69c8200cfc4b0db2ec96513e5c90fe2b9"
+  },
+  "sources/source-package/SOURCES/R4/06_END_TO_END_CONSISTENCY.md": {
+    "bytes": 2838,
+    "sha256": "af471788890010dfcd3ae5fa5cf3ebac7350beb371515f56715335f566d66a03"
+  },
+  "sources/source-package/SOURCES/R4/07_BLOCKERS_AND_NEXT_CONTROL_POINT.md": {
+    "bytes": 3347,
+    "sha256": "96c49af55510f54396a53e4c92c147a918c42e092672d6119953d17d2f2a99f5"
+  },
+  "sources/source-package/SOURCES/R4/08_DIALOGUE_CONTEXT_UPDATE.md": {
+    "bytes": 1715,
+    "sha256": "1dcf66302a6b2c1a26dc0ffcd4963caa5bc57571ddcdf3a7416eaa6685edd302"
+  },
+  "sources/source-package/SOURCES/R51/00_START_HERE_AND_VERDICT.md": {
+    "bytes": 4127,
+    "sha256": "aef792f7958478f5e0151e8947498c389096e4473280374b5a7062909bd0d664"
+  },
+  "sources/source-package/SOURCES/R51/01_GROK_R1_R2_EVIDENCE.md": {
+    "bytes": 3675,
+    "sha256": "04ab7cb233cb1b6340ca53dcb2242ff59cb7f152f83d4f3b3a6940aee7990ada"
+  },
+  "sources/source-package/SOURCES/R51/02_W4_CORRECTION_AND_PROOF.md": {
+    "bytes": 4809,
+    "sha256": "a6764047ace8eb5ab03bd9e92f7bb8d53feebc2f22f51b3482c03ea26f623e44"
+  },
+  "sources/source-package/SOURCES/R51/03_MEMORY_EXACT_CONTRACT_DRAFT.md": {
+    "bytes": 7165,
+    "sha256": "0fe412ca52be5cada3c59a3e036399ba12e08826055074910a1ff067772b1e76"
+  },
+  "sources/source-package/SOURCES/R51/04_IR03_IR08_NOTES.md": {
+    "bytes": 3938,
+    "sha256": "8282b00eded5f2eb23071daca61150e8631424e1e90b77ab83f98b715dc444b6"
+  },
+  "sources/source-package/SOURCES/R51/05_D_X_B_GATE_MATRIX.md": {
+    "bytes": 4143,
+    "sha256": "aee21424b55a9ec5a03d36e484ca84ded0b494025aef0542af95ffcb23de9a5b"
+  },
+  "sources/source-package/SOURCES/R51/06_CRITICAL_AUDIT_AND_TESTS.md": {
+    "bytes": 6255,
+    "sha256": "84a6945f97fe9f4a1ee29eb8414afb7affb64af2945bced4f4d3493c5cc7482c"
+  },
+  "sources/source-package/SOURCES/R51/07_NEXT_CHECKPOINT.md": {
+    "bytes": 3242,
+    "sha256": "2fc8c562f3ceedb361a0485f3402a57a17f202ae5a1e1326359a127a205c6bc9"
+  },
+  "sources/source-package/SOURCES/R52/01_W4_ERRATUM.md": {
+    "bytes": 3866,
+    "sha256": "f1260b8ee3346d41a2aa16463c248771277a3ade9f55e0bfb0ce64bc24b03167"
+  },
+  "sources/source-package/SOURCES/R52/02_MEMORY_CONTRACT.md": {
+    "bytes": 5946,
+    "sha256": "42ec11748a2cb6cbe85cd82fac1adbb6195f0e17cd6e9a50bfdea007e4073d6f"
+  },
+  "sources/source-package/SOURCES/R52/03_WAKE_SENSOR_REQUIREMENTS.md": {
+    "bytes": 7173,
+    "sha256": "b9d795ad76ed173937c93e2c74abe2e1cdb990d8b396be8cbdac64891fd69b99"
+  },
+  "sources/source-package/SOURCES/R52/04_POLICIES_AND_DECISIONS.md": {
+    "bytes": 5420,
+    "sha256": "208f0713e0fb9e6327b504437d5f925c9fdbf595d253674b39f58d813ba94b57"
+  },
+  "sources/source-package/SOURCES/R52/05_VERIFICATION_AND_GATE.md": {
+    "bytes": 4207,
+    "sha256": "d25663258a93fc38eec71d2598d206eb72be4bffb3304e9c3f3e56f0407d1f7e"
+  },
+  "sources/source-package/SOURCES/SELF_REAUDIT_EVIDENCE.json": {
+    "bytes": 2763,
+    "sha256": "d9355fc37886b943134ce0ef15bda0eb6d471ea8a300a41b5fc3f95955b16ffc"
+  },
+  "sources/source-package/SOURCES/WORK_V22_ORIGINAL.zip": {
+    "bytes": 1793119,
+    "sha256": "639708aff644f562c98564b20311262c96105345637e5f3a6566d55c418ca50d"
+  },
+  "verify_package.py": {
+    "bytes": 3075,
+    "sha256": "59637930e3963da574cf118b81aa150d8b831c6197d639ccae84a16edc7e8928"
+  }
+}

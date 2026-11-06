@@ -1,0 +1,16 @@
+# Решения владельца по G4
+
+Все строки OWNER_DECISION. Основание R5.3 NORMATIVE/05, R52/03–04 и требования владельца к полному локальному организму. Архитектура R4 — материал для решения, подпись не оформлена.
+
+| ID | Что выбирается и цена | Что требуется перед выбором/после него |
+|---|---|---|
+| O01 | Полный WAKE/SENSOR/audio scope. Выбрать порядок допуска функций и fallback при запрещённом микрофоне/сенсоре. Foreground capture и acoustic wake требуют отдельного бюджета; metadata admission не заменяет звук | Договориться о modality/lifecycle scope и oracles. После допуска: ложные пробуждения/час, пропуски, standby, noise, screen-off/FGS и доступность сенсоров на A52 |
+| O02 | Cyclic-prefix проще в реализации и учёте, arbitrary subsets выразительнее. Fixed mask — контроль. K и forced stops влияют на качество и latency | Одни задачи и caps, parity training/runtime sampler, фактический skip, selector discontinuities, latency tails |
+| O03 | B2 контроль, compact-first screening, LR2 при bandwidth/MAC trigger, H2 при контекстном trigger. Выбрать исследовательские arms, не гарантированную ширину. A сохраняет Θ ABI; B меняет оператор и требует norm headroom | Совместимые manifests/versions, bounded graph, old/new ablations. Достаточность только по locked и device |
+| O04 | Exact+semantic обязательно различаются. Выбрать bounded exact horizon, k/TTL/scope, quotas, conflict/eviction и revocation; более длинное хранение увеличивает ресурсы и privacy burden | Согласовать API и source policy; затем ABA/forged cursor/revoke/fault injection, exact proof и правомерное удаление |
+| O05 | Strict app-private или ограниченный набор документированных local providers. Допуск стороннего provider требует установления реального offline поведения | Прозрачный allowlist scope, network audit при доступной и отключённой сети, отказ сетевому SAF |
+| O06 | Зафиксировать q_j,c_j,r_j и class-specific oracles/denominators. В ASTRA_07 числа кандидатные, более высокий риск требует усиленной проверки | Статистическая единица и simultaneous confidence, blinded annotators, sealed eval. Абсолютный нулевой риск на конечном N не следует |
+| O07 | Узкий доверенный controller, enrollment/consent и приоритет STOP. Выбор подтверждения каждого эффекта либо ограниченной по времени делегации; исключения явно перечислены | Threat model, identity proof, linearization D/C, revoke/boot, Android isolation, independent native effect, anti-rollback assumptions |
+| O08 | Сначала feasible scope, затем J/verified с J/issued рядом или Pareto по energy/latency/PSS. У малого профиля нет автоматического предпочтения по числу весов | p95/p99, peak, idle и sustained/thermal A52, измерение joules по одинаковым issued tasks. Никаких выводов из MAC |
+
+G4 может рассмотреть versioned paper + protocol, даже если trained models/A52 будущие. До подписи нужны согласованная область, точные нормы выбора, закрытый перечень исполнимых интерфейсов и угроз, план порогов/оценки, рассмотрение каждой строки O. G4 не активирует G5. Отдельное разрешение G5 включает код/обучение/стенд только в заданной области; затем нужны фактические веса, parity и device evidence. G6 — отдельное решение после security, reliability, privacy/license, reproducible build и product evidence.

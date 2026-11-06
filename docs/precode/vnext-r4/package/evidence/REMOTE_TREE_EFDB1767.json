@@ -1,0 +1,2389 @@
+{
+  "sha": "efdb1767ef75cbdb04ff813323c107c3bd22c4b6",
+  "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/efdb1767ef75cbdb04ff813323c107c3bd22c4b6",
+  "tree": [
+    {
+      "path": ".github",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1be6b8a408e29c65e8267b8ef3c0d582da38eced",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/1be6b8a408e29c65e8267b8ef3c0d582da38eced"
+    },
+    {
+      "path": ".github/workflows",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "7374602ae39eccf634c9e4df3b8a8605c5849f7b",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/7374602ae39eccf634c9e4df3b8a8605c5849f7b"
+    },
+    {
+      "path": ".github/workflows/gitflic-backup.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f58b8d18c71cfe4d69c1e7a3d989b409039fe84",
+      "size": 1370,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/7f58b8d18c71cfe4d69c1e7a3d989b409039fe84"
+    },
+    {
+      "path": ".github/workflows/uno-n0-04-android-research.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7af7fa95cee8f08787cd5b0b33e6d4de10beac93",
+      "size": 3401,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/7af7fa95cee8f08787cd5b0b33e6d4de10beac93"
+    },
+    {
+      "path": ".github/workflows/uno-n0-05-android-research.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "43aa6e65fef52d5655bc0dc2daf6b9e84cbe4bfd",
+      "size": 4389,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/43aa6e65fef52d5655bc0dc2daf6b9e84cbe4bfd"
+    },
+    {
+      "path": ".github/workflows/uno-n0-07-android-research.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bae9acd16df0d65c4ad37d9423415b4829e0fc29",
+      "size": 3741,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/bae9acd16df0d65c4ad37d9423415b4829e0fc29"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2b6750854729bb81671bb37f86500bd36c5c1f5f",
+      "size": 712,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/2b6750854729bb81671bb37f86500bd36c5c1f5f"
+    },
+    {
+      "path": "AGENTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5fd1eb2cb68231e11db6d778ee835d8dc5975ddb",
+      "size": 9206,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/5fd1eb2cb68231e11db6d778ee835d8dc5975ddb"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "68267ce529d54e55cfb55e33f65405d4ea1e0437",
+      "size": 17793,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/68267ce529d54e55cfb55e33f65405d4ea1e0437"
+    },
+    {
+      "path": "UNO_LAB_AGENTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5474bf79a8b0cfea3d646d81492745ff410095fc",
+      "size": 10347,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/5474bf79a8b0cfea3d646d81492745ff410095fc"
+    },
+    {
+      "path": "UNO_LAB_REPORTS.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "01fa326a7640956553b35645dcc4be8cde6fa0d7",
+      "size": 138860,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/01fa326a7640956553b35645dcc4be8cde6fa0d7"
+    },
+    {
+      "path": "docs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "22a532c6c7e3e9e43e870f46db62d085228802a4",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/22a532c6c7e3e9e43e870f46db62d085228802a4"
+    },
+    {
+      "path": "docs/AGENT_START_HERE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3d7d98da6e8a143ad7f3c19100c52320999051ec",
+      "size": 4903,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/3d7d98da6e8a143ad7f3c19100c52320999051ec"
+    },
+    {
+      "path": "docs/CURRENT_TASK.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6c786624a13c0d57cf846fbcfd02d2dc3ddcb175",
+      "size": 5023,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/6c786624a13c0d57cf846fbcfd02d2dc3ddcb175"
+    },
+    {
+      "path": "docs/REPOSITORY_AND_MIRROR.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "79b003629d2eb11a3d9351a4b266edde0da99e50",
+      "size": 6596,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/79b003629d2eb11a3d9351a4b266edde0da99e50"
+    },
+    {
+      "path": "docs/STATUS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8e28b1da815db3d581f8ce789e71d4f05ac8ecbb",
+      "size": 5092,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/8e28b1da815db3d581f8ce789e71d4f05ac8ecbb"
+    },
+    {
+      "path": "docs/UNO_SYSTEM_FORMULA.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2907d011d9129085b62f761e0351c300ccbe5865",
+      "size": 5830,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/2907d011d9129085b62f761e0351c300ccbe5865"
+    },
+    {
+      "path": "docs/precode",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c71057bcaff9d6343f1e3eb46c3303cc4f09da66",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/c71057bcaff9d6343f1e3eb46c3303cc4f09da66"
+    },
+    {
+      "path": "docs/precode/r5.3",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "56eafa7d4290f0b0625656a0ea80dac0abe6105e",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/56eafa7d4290f0b0625656a0ea80dac0abe6105e"
+    },
+    {
+      "path": "docs/precode/r5.3/AGENTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "655a156f6d39930f45ed302242eecd43b6d2969a",
+      "size": 762,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/655a156f6d39930f45ed302242eecd43b6d2969a"
+    },
+    {
+      "path": "docs/precode/r5.3/AGENT_PHASE_GATE.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d535464a2c3295abc492ef290c866c2bdd1352cb",
+      "size": 1226,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/d535464a2c3295abc492ef290c866c2bdd1352cb"
+    },
+    {
+      "path": "docs/precode/r5.3/ERRATA_AND_INVARIANTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce8ab5a64097a03b7d92fd124757c6bdbd7da40e",
+      "size": 1569,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/ce8ab5a64097a03b7d92fd124757c6bdbd7da40e"
+    },
+    {
+      "path": "docs/precode/r5.3/GATE_REGISTER.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b884bbd59326f7d64ffd9633f522a9d0e387c15c",
+      "size": 959,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/b884bbd59326f7d64ffd9633f522a9d0e387c15c"
+    },
+    {
+      "path": "docs/precode/r5.3/IMPLEMENTATION_STAGES.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a77ed4a97e0d1877d3d1f00d63b8788f557f2ca1",
+      "size": 1421,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/a77ed4a97e0d1877d3d1f00d63b8788f557f2ca1"
+    },
+    {
+      "path": "docs/precode/r5.3/OWNER_DECISIONS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c09871b279381cb46a0dced6c07b92160034430d",
+      "size": 1565,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/c09871b279381cb46a0dced6c07b92160034430d"
+    },
+    {
+      "path": "docs/precode/r5.3/PROVENANCE_AND_GAPS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9464da453f8c744864dc28cb7c2bbbd62a00768c",
+      "size": 1497,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/9464da453f8c744864dc28cb7c2bbbd62a00768c"
+    },
+    {
+      "path": "docs/precode/r5.3/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eca734aa9b3d590574b652cef88ad0ab7db78ba3",
+      "size": 1985,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/eca734aa9b3d590574b652cef88ad0ab7db78ba3"
+    },
+    {
+      "path": "docs/precode/r5.3/SOURCE_PACKAGE_IMPORT_MANIFEST.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8e15de5daba69d855f5b7fdca831efdb2e38e975",
+      "size": 27819,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/8e15de5daba69d855f5b7fdca831efdb2e38e975"
+    },
+    {
+      "path": "docs/precode/r5.3/SOURCE_PRIORITY.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e7b9468d2ed79d83dd4fcd8e25e3bef74d8c8c1",
+      "size": 1537,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/7e7b9468d2ed79d83dd4fcd8e25e3bef74d8c8c1"
+    },
+    {
+      "path": "docs/precode/r5.3/SUBSYSTEMS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7925cbb9b227215c4f6cd145959e4607559e8f0e",
+      "size": 2301,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/7925cbb9b227215c4f6cd145959e4607559e8f0e"
+    },
+    {
+      "path": "docs/precode/r5.3/VERIFIED_SOURCE_HASHES.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c4c9e7c53097c1b2f7487c6b0e1c823efd4233f4",
+      "size": 3434,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/c4c9e7c53097c1b2f7487c6b0e1c823efd4233f4"
+    },
+    {
+      "path": "docs/precode/r5.3/audit",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "339c824342ebeb397afe8ab0da5ad8d950ce670e",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/339c824342ebeb397afe8ab0da5ad8d950ce670e"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/gpt",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "0fc3323ce81d8fd642b52ec1bcea87cb8b5a336e",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/0fc3323ce81d8fd642b52ec1bcea87cb8b5a336e"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/gpt/UNO_R53_INDEPENDENT_INTAKE_AUDIT_2026-11-02.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba3b28efe0ddaa7abb3c05147323a2c4d15dc798",
+      "size": 11226,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/ba3b28efe0ddaa7abb3c05147323a2c4d15dc798"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/gpt/UNO_R53_REAUDIT_OF_PREVIOUS_GPT_AUDIT_2026-11-02.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3a92cad5390b8cd8cd3f081ac19b60b976a178de",
+      "size": 14402,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/3a92cad5390b8cd8cd3f081ac19b60b976a178de"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/grok",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "55b24c58abc75c6d16f53eb3237428772ac94a67",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/55b24c58abc75c6d16f53eb3237428772ac94a67"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/grok/GROK_POST_ASTRA_STAGE2_INDEPENDENT_COMPARATIVE_AUDIT_FULL.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6f19bef288b9d12bb9b56be3d98cba81b6c7e222",
+      "size": 10444,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/6f19bef288b9d12bb9b56be3d98cba81b6c7e222"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/grok/GROK_UNO_R52_WHOLE_MATH_BLIND_AUDIT_STAGE1.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bb09821054719986714ab28c02d55cb0062c1b5c",
+      "size": 5490,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/bb09821054719986714ab28c02d55cb0062c1b5c"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/grok/UNO_COMPLETE_CONSOLIDATED_DOCUMENT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a2293737ac368439146d1aecda4f14f33e727d41",
+      "size": 5092,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/a2293737ac368439146d1aecda4f14f33e727d41"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/r4",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d4822f9b91b562d925eb1b776664bd09d2d62ab4",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/d4822f9b91b562d925eb1b776664bd09d2d62ab4"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/r4/03_D01_D10_STATUS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "962a13e97319ceffa2d7597be418d1d7b5267543",
+      "size": 3277,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/962a13e97319ceffa2d7597be418d1d7b5267543"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/r4/04_X01_X12_STATUS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fa0d02fd9a8bb9b7a7347ddd66ff7c663e509179",
+      "size": 2932,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/fa0d02fd9a8bb9b7a7347ddd66ff7c663e509179"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/r4/05_ADVERSARIAL_FINDINGS_IR01_IR08.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc99d973acc991824f8de54379901019bf2b6a67",
+      "size": 5772,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/cc99d973acc991824f8de54379901019bf2b6a67"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/r4/06_END_TO_END_CONSISTENCY.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "977684ef2d4067d983b0df610c0828731af07807",
+      "size": 2837,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/977684ef2d4067d983b0df610c0828731af07807"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/r4/07_BLOCKERS_AND_NEXT_CONTROL_POINT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c738123a170933d3aa4641d59bc886711cb5b15",
+      "size": 3346,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/2c738123a170933d3aa4641d59bc886711cb5b15"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/r51",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "678fc20d05d0cec71f8af22bdd25fbea2f63746a",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/678fc20d05d0cec71f8af22bdd25fbea2f63746a"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/r51/02_W4_CORRECTION_AND_PROOF.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c5ed4bd34c124e743d1bc74389ae3b1d6b9de4a5",
+      "size": 4808,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/c5ed4bd34c124e743d1bc74389ae3b1d6b9de4a5"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/r51/03_MEMORY_EXACT_CONTRACT_DRAFT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c8063e2bca8930a558519760ee033ccd697cbc57",
+      "size": 7164,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/c8063e2bca8930a558519760ee033ccd697cbc57"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/r51/04_IR03_IR08_NOTES.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "421043ca0e324a4c5e77acaba6454cd5b4987a3a",
+      "size": 3937,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/421043ca0e324a4c5e77acaba6454cd5b4987a3a"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/r51/05_D_X_B_GATE_MATRIX.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "12240d1faa0f3cdc0e63e30bbce73e48f769f0b6",
+      "size": 4142,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/12240d1faa0f3cdc0e63e30bbce73e48f769f0b6"
+    },
+    {
+      "path": "docs/precode/r5.3/audit/r51/06_CRITICAL_AUDIT_AND_TESTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8d26f35f8e210b9b983d33d61b1266fa9bfc7ea0",
+      "size": 6254,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/8d26f35f8e210b9b983d33d61b1266fa9bfc7ea0"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "cf554a986f0c2998afc2131786eb8350c6734494",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/cf554a986f0c2998afc2131786eb8350c6734494"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/00_START_HERE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3119a727f2dc3c2aef0028892448e311c0ea941c",
+      "size": 3442,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/3119a727f2dc3c2aef0028892448e311c0ea941c"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/EVIDENCE",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d638b997af03f9514552ace20a21fb1321ff55e3",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/d638b997af03f9514552ace20a21fb1321ff55e3"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/EVIDENCE/arithmetic_run_output.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6ed4e4415421f5f4cee448b1049816e10df5074b",
+      "size": 213,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/6ed4e4415421f5f4cee448b1049816e10df5074b"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/EVIDENCE/recheck_arithmetic.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "07ec0e69b64287064f925400b2e18e37eae5a014",
+      "size": 1537,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/07ec0e69b64287064f925400b2e18e37eae5a014"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/NORMATIVE",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "14ef2420acc5d86996b3f03a2e28480506a6369e",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/14ef2420acc5d86996b3f03a2e28480506a6369e"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/NORMATIVE/01_SOURCE_HIERARCHY_AND_CONTRACT_INDEX.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6bdb6cb298ad5fb3ad23e9b628ef1f3c7dff7ac0",
+      "size": 8270,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/6bdb6cb298ad5fb3ad23e9b628ef1f3c7dff7ac0"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/NORMATIVE/02_FORMAL_CORRECTIONS_AND_LIMITS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c12f6422394fc2001187c39e5e9d3322d50dc5f8",
+      "size": 11668,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/c12f6422394fc2001187c39e5e9d3322d50dc5f8"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/NORMATIVE/03_CONSOLIDATED_SUBSYSTEM_CONTRACTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e0781e5ed40573887d67b435b19b912dc7c7790c",
+      "size": 5217,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/e0781e5ed40573887d67b435b19b912dc7c7790c"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/NORMATIVE/04_ALL_GATES_D_X_B_M.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "69a7b204d6e23413279c818dfb6b7826681efaa5",
+      "size": 13025,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/69a7b204d6e23413279c818dfb6b7826681efaa5"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/NORMATIVE/05_OWNER_DECISIONS_AND_FUTURE_EVIDENCE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c730ef990573f085c946430f1b86c00b1747d717",
+      "size": 6593,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/c730ef990573f085c946430f1b86c00b1747d717"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/NORMATIVE/06_VERIFICATION_BOUNDARIES.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2002ae3358abcbc3026cc34a4a1b26c90a7b937b",
+      "size": 4636,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/2002ae3358abcbc3026cc34a4a1b26c90a7b937b"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/NORMATIVE/07_EXPLANATION_FOR_OWNER.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "943763e31b1f719c6c9e842fe492d85304fcf267",
+      "size": 3736,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/943763e31b1f719c6c9e842fe492d85304fcf267"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SHA256_MANIFEST.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0363d557fa7f54492058bafc3ff724203ce45556",
+      "size": 11502,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/0363d557fa7f54492058bafc3ff724203ce45556"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "f277062fad57b6a43406fe6446e6e71783497d48",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/f277062fad57b6a43406fe6446e6e71783497d48"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "60a5ef89d57ed9063671b28220f55be546fd33b0",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/60a5ef89d57ed9063671b28220f55be546fd33b0"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "31441a7c61a10f89da165ef607233a54e1982fe7",
+      "size": 9832,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/31441a7c61a10f89da165ef607233a54e1982fe7"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f2c945ab63bb6175913c4cee0fd37301c82b1025",
+      "size": 26820,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/f2c945ab63bb6175913c4cee0fd37301c82b1025"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "57a1dbb15cfe94091ae37fa2f465f0a89a18161f",
+      "size": 17474,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/57a1dbb15cfe94091ae37fa2f465f0a89a18161f"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cf0528f00036a676d399b04bf9361863a45132b8",
+      "size": 27425,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/cf0528f00036a676d399b04bf9361863a45132b8"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f94481323437546ee01788114f744610f56560d",
+      "size": 13624,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/0f94481323437546ee01788114f744610f56560d"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "429603fdf8348ff3dfaf83623fe681e3f09dfb98",
+      "size": 28652,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/429603fdf8348ff3dfaf83623fe681e3f09dfb98"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c03653724a3f6ae532fe6f54ff8156fcb65de76",
+      "size": 22056,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/7c03653724a3f6ae532fe6f54ff8156fcb65de76"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "610d0cb7cbc0e25e4fb97f71257aec11196ed6b0",
+      "size": 22258,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/610d0cb7cbc0e25e4fb97f71257aec11196ed6b0"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "69196f17fed6ee658f5420b17fad0e0feb467222",
+      "size": 15527,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/69196f17fed6ee658f5420b17fad0e0feb467222"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0051a3df3465e7463d99bbc9cca0fe3c6c500e11",
+      "size": 14541,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/0051a3df3465e7463d99bbc9cca0fe3c6c500e11"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9fa36b8945cfdcbf29c112839a2cf29302e0dffa",
+      "size": 6521,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/9fa36b8945cfdcbf29c112839a2cf29302e0dffa"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "91858e6a141f55df44e2c84f1bb9a70f01229668",
+      "size": 11905,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/91858e6a141f55df44e2c84f1bb9a70f01229668"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b92c1b60add3d823bff447ae2f3b3ef2caaeb97",
+      "size": 10420,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/8b92c1b60add3d823bff447ae2f3b3ef2caaeb97"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_FINAL_README_AND_DECISION.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8485914dec1838275812d584332af3f80500dce2",
+      "size": 7168,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/8485914dec1838275812d584332af3f80500dce2"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_REVISION_LOG.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6d73149b6f0a0f3ac392cfeab07bd7c1c98991a0",
+      "size": 4818,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/6d73149b6f0a0f3ac392cfeab07bd7c1c98991a0"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_FINAL_UNMODIFIED.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f67e3f4b6f905fd90f3d9da190afc885ad257ca",
+      "size": 681255,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/0f67e3f4b6f905fd90f3d9da190afc885ad257ca"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "dc49e6f1e07fd29b85d41a743f6de177bbc319e4",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/dc49e6f1e07fd29b85d41a743f6de177bbc319e4"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/FINAL_PACKAGE_MANIFEST.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "667e230fd56318c8398ff08444bbacb7ee899408",
+      "size": 21566,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/667e230fd56318c8398ff08444bbacb7ee899408"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/audit",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "7a2d2164473af21f467dc5f135801d36f61a3d96",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/7a2d2164473af21f467dc5f135801d36f61a3d96"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/audit/R1_REVIEW.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d1a8be5d9f0b72d79e05f55f1955a226bfd8a49",
+      "size": 19779,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/2d1a8be5d9f0b72d79e05f55f1955a226bfd8a49"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/audit/R2_REVIEW.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dcd0825c27a2b2658cd9f802b949430103943db7",
+      "size": 14242,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/dcd0825c27a2b2658cd9f802b949430103943db7"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/audit/R3_FINAL_REVIEW.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "39bef957d3a651db3d3272712cf1298cc62c5af5",
+      "size": 9582,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/39bef957d3a651db3d3272712cf1298cc62c5af5"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/evidence",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c7db1f67f2a527908fee8ebe6f7c96d1bfbdd881",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/c7db1f67f2a527908fee8ebe6f7c96d1bfbdd881"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/evidence/arithmetic_v2.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a016c6c41164c7a3b7aa732bc03b333c7e722cc5",
+      "size": 5898,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/a016c6c41164c7a3b7aa732bc03b333c7e722cc5"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/evidence/recompute.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "687cdc838df2f1bdf601c37eb89a63b239a9d18b",
+      "size": 5599,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/687cdc838df2f1bdf601c37eb89a63b239a9d18b"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/evidence/tensor_manifest_d1024.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6b23581abbdc354ffe7325349a74c1eb86125963",
+      "size": 43480,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/6b23581abbdc354ffe7325349a74c1eb86125963"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/GROK_R53_ORIGINAL_UNMODIFIED.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2eaa4b138a2f7f96e8c3ea52b37ef5c383c4f426",
+      "size": 5722,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/2eaa4b138a2f7f96e8c3ea52b37ef5c383c4f426"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/GROK_R53_SPEC_ORIGINAL.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b139c753bc415f2b9e14b5210b96265a6e69276b",
+      "size": 8952,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/b139c753bc415f2b9e14b5210b96265a6e69276b"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/GROK_STAGE1.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bca1036dc15768ee5220fb8d426136613215ef60",
+      "size": 5491,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/bca1036dc15768ee5220fb8d426136613215ef60"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/GROK_STAGE2.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1dd8f268ef4634e0738c9b278f9a7690cf682b10",
+      "size": 10445,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/1dd8f268ef4634e0738c9b278f9a7690cf682b10"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/INDEPENDENT_INTAKE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "690fc09d3e1fbc34653b34b1902515ad7a45f3a5",
+      "size": 11227,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/690fc09d3e1fbc34653b34b1902515ad7a45f3a5"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/INDEPENDENT_REAUDIT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "479694fc845e9a29ac85e195c53fd52ec6c0e655",
+      "size": 14403,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/479694fc845e9a29ac85e195c53fd52ec6c0e655"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5fa3a7e4959d3c0fc455a36aaef867c44263a9df",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/5fa3a7e4959d3c0fc455a36aaef867c44263a9df"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/00_READ_FIRST.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "85d1677108058afd6eb7ac4e0737a22eef6adee5",
+      "size": 3744,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/85d1677108058afd6eb7ac4e0737a22eef6adee5"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/01_PROVENANCE_AND_INTEGRITY.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d853c92f8516950c6d8538be2c6e6d4cdc9d5876",
+      "size": 2368,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/d853c92f8516950c6d8538be2c6e6d4cdc9d5876"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/02_INDEPENDENT_ARITHMETIC_RECHECK.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "56fae30b5d30fdeaa0cd5d5a76ca2b7a2509002a",
+      "size": 4062,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/56fae30b5d30fdeaa0cd5d5a76ca2b7a2509002a"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/03_D01_D10_STATUS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7cef62008cb2c910192e1a08cbdea7bb7ace5d9b",
+      "size": 3278,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/7cef62008cb2c910192e1a08cbdea7bb7ace5d9b"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/04_X01_X12_STATUS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5012fb1153f1b517637a891c293c02cb13e233e8",
+      "size": 2933,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/5012fb1153f1b517637a891c293c02cb13e233e8"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/05_ADVERSARIAL_FINDINGS_IR01_IR08.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6f2f165f6ef49730316e04d5c06f920fe9232c62",
+      "size": 5773,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/6f2f165f6ef49730316e04d5c06f920fe9232c62"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/06_END_TO_END_CONSISTENCY.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fcb37fdc5dcab0e3b62b3bb1e02c574025b68e32",
+      "size": 2838,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/fcb37fdc5dcab0e3b62b3bb1e02c574025b68e32"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/07_BLOCKERS_AND_NEXT_CONTROL_POINT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "49702d8bbadb9f7665fb63eb9d2e33e0a352859c",
+      "size": 3347,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/49702d8bbadb9f7665fb63eb9d2e33e0a352859c"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R4/08_DIALOGUE_CONTEXT_UPDATE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1f7fefcca85026a7a80d3027c9aaffe690239fbd",
+      "size": 1715,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/1f7fefcca85026a7a80d3027c9aaffe690239fbd"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "a70000b9a8927f776dcf3fba1db07042d6170b63",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/a70000b9a8927f776dcf3fba1db07042d6170b63"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/00_START_HERE_AND_VERDICT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7bcfadf21974183811dd553e3707340a8536ca69",
+      "size": 4127,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/7bcfadf21974183811dd553e3707340a8536ca69"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/01_GROK_R1_R2_EVIDENCE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d03852958f61f62607a4aea95f3da548d5709251",
+      "size": 3675,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/d03852958f61f62607a4aea95f3da548d5709251"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/02_W4_CORRECTION_AND_PROOF.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ab265d580e7ad5319592081360576469813d3d94",
+      "size": 4809,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/ab265d580e7ad5319592081360576469813d3d94"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/03_MEMORY_EXACT_CONTRACT_DRAFT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "656b5b15ab669e7ed2a5e9d4438b32c78e3ea0bf",
+      "size": 7165,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/656b5b15ab669e7ed2a5e9d4438b32c78e3ea0bf"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/04_IR03_IR08_NOTES.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "959449d834d192d37d30c992d974057a1b634229",
+      "size": 3938,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/959449d834d192d37d30c992d974057a1b634229"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/05_D_X_B_GATE_MATRIX.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d9dffe3d01f39371581e8bb22be8e36ed59148da",
+      "size": 4143,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/d9dffe3d01f39371581e8bb22be8e36ed59148da"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/06_CRITICAL_AUDIT_AND_TESTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8255511fc5c44f21991ae4e148ff8913c357bf7",
+      "size": 6255,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/d8255511fc5c44f21991ae4e148ff8913c357bf7"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R51/07_NEXT_CHECKPOINT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0464356c783b742597a0500bc0f9185b4d7c7567",
+      "size": 3242,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/0464356c783b742597a0500bc0f9185b4d7c7567"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R52",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e2f2e8d4b68cf4cce64868d8fb056bb7625163e5",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/e2f2e8d4b68cf4cce64868d8fb056bb7625163e5"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R52/01_W4_ERRATUM.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a8f7e6f838e737c5cd2f174354dfc8a964b0f45e",
+      "size": 3866,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/a8f7e6f838e737c5cd2f174354dfc8a964b0f45e"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R52/02_MEMORY_CONTRACT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "afd93640f3831344821cec921b273ee72ff9f358",
+      "size": 5946,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/afd93640f3831344821cec921b273ee72ff9f358"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R52/03_WAKE_SENSOR_REQUIREMENTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "09200a0c3ee37788dd06e38b9c470e98c434059f",
+      "size": 7173,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/09200a0c3ee37788dd06e38b9c470e98c434059f"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R52/04_POLICIES_AND_DECISIONS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "22b8181a9985aa4479677e560482b455863d85f4",
+      "size": 5420,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/22b8181a9985aa4479677e560482b455863d85f4"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/R52/05_VERIFICATION_AND_GATE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "acdf44ac1f9868d83f80d2c3428874f7f0c620d4",
+      "size": 4207,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/acdf44ac1f9868d83f80d2c3428874f7f0c620d4"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/SELF_REAUDIT_EVIDENCE.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "062106f2f8ca01363fde2b3256075c2b699f55f1",
+      "size": 2763,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/062106f2f8ca01363fde2b3256075c2b699f55f1"
+    },
+    {
+      "path": "docs/precode/r5.3/source-package/SOURCES/WORK_V22_ORIGINAL.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3be368a9b7f13f0ae194fe19a72ca5bed56991ef",
+      "size": 1793119,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/3be368a9b7f13f0ae194fe19a72ca5bed56991ef"
+    },
+    {
+      "path": "docs/precode/r5.3/sources",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5d854f41945a699da84ebf7441b83bedf8f35b8a",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/5d854f41945a699da84ebf7441b83bedf8f35b8a"
+    },
+    {
+      "path": "docs/precode/r5.3/sources/astra",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "42e0c7f0d631f34e5c6f8e8f12bbeb7fb4aee993",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/42e0c7f0d631f34e5c6f8e8f12bbeb7fb4aee993"
+    },
+    {
+      "path": "docs/precode/r5.3/sources/astra/ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "31441a7c61a10f89da165ef607233a54e1982fe7",
+      "size": 9832,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/31441a7c61a10f89da165ef607233a54e1982fe7"
+    },
+    {
+      "path": "docs/precode/r5.3/sources/astra/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f2c945ab63bb6175913c4cee0fd37301c82b1025",
+      "size": 26820,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/f2c945ab63bb6175913c4cee0fd37301c82b1025"
+    },
+    {
+      "path": "docs/precode/r5.3/sources/astra/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "57a1dbb15cfe94091ae37fa2f465f0a89a18161f",
+      "size": 17474,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/57a1dbb15cfe94091ae37fa2f465f0a89a18161f"
+    },
+    {
+      "path": "docs/precode/r5.3/sources/astra/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cf0528f00036a676d399b04bf9361863a45132b8",
+      "size": 27425,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/cf0528f00036a676d399b04bf9361863a45132b8"
+    },
+    {
+      "path": "docs/precode/r5.3/sources/astra/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f94481323437546ee01788114f744610f56560d",
+      "size": 13624,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/0f94481323437546ee01788114f744610f56560d"
+    },
+    {
+      "path": "docs/precode/r5.3/sources/astra/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "429603fdf8348ff3dfaf83623fe681e3f09dfb98",
+      "size": 28652,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/429603fdf8348ff3dfaf83623fe681e3f09dfb98"
+    },
+    {
+      "path": "docs/precode/r5.3/sources/astra/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c03653724a3f6ae532fe6f54ff8156fcb65de76",
+      "size": 22056,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/7c03653724a3f6ae532fe6f54ff8156fcb65de76"
+    },
+    {
+      "path": "docs/precode/r5.3/sources/astra/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "610d0cb7cbc0e25e4fb97f71257aec11196ed6b0",
+      "size": 22258,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/610d0cb7cbc0e25e4fb97f71257aec11196ed6b0"
+    },
+    {
+      "path": "docs/precode/r5.3/sources/astra/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "69196f17fed6ee658f5420b17fad0e0feb467222",
+      "size": 15527,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/69196f17fed6ee658f5420b17fad0e0feb467222"
+    },
+    {
+      "path": "docs/precode/r5.3/sources/astra/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "91858e6a141f55df44e2c84f1bb9a70f01229668",
+      "size": 11905,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/91858e6a141f55df44e2c84f1bb9a70f01229668"
+    },
+    {
+      "path": "docs/precode/r5.3/sources/astra/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b92c1b60add3d823bff447ae2f3b3ef2caaeb97",
+      "size": 10420,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/8b92c1b60add3d823bff447ae2f3b3ef2caaeb97"
+    },
+    {
+      "path": "docs/precode/r5.3/verify_source_package.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "41ad4644322f7277910828457cbb963f3ff42858",
+      "size": 3250,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/41ad4644322f7277910828457cbb963f3ff42858"
+    },
+    {
+      "path": "docs/research",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "95945bd9fe5bb29176d6fb2324a35f701c8afab0",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/95945bd9fe5bb29176d6fb2324a35f701c8afab0"
+    },
+    {
+      "path": "docs/research/OWNER_TEACHING_AND_ANDROID_EVIDENCE_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "90b2b856759245a632a94959bd95383e05f46330",
+      "size": 5916,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/90b2b856759245a632a94959bd95383e05f46330"
+    },
+    {
+      "path": "docs/research/UNO_ASSISTANT_RELIABILITY_PROTOCOL_20261106.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "142a414d24479440434b34f5c3fd4d1236b3c072",
+      "size": 10726,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/142a414d24479440434b34f5c3fd4d1236b3c072"
+    },
+    {
+      "path": "research",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "fa6fb7e6e0e1a126f88f0179ce37f6d4c9b91d58",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/fa6fb7e6e0e1a126f88f0179ce37f6d4c9b91d58"
+    },
+    {
+      "path": "research/legacy-jno",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d8a0052d078494715ecc2db07644ff1bc4c1ebbd",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/d8a0052d078494715ecc2db07644ff1bc4c1ebbd"
+    },
+    {
+      "path": "research/legacy-jno/PROVENANCE.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b6dfeb4e555e04ddc584d3f29fa290dea73d624",
+      "size": 2789,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/4b6dfeb4e555e04ddc584d3f29fa290dea73d624"
+    },
+    {
+      "path": "research/legacy-jno/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cdabdf846bbe231004663ab9a343c8f2caae3b24",
+      "size": 2727,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/cdabdf846bbe231004663ab9a343c8f2caae3b24"
+    },
+    {
+      "path": "research/legacy-jno/assets",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "07045fc8e2847fd4542da2b3397c7edf9882c4af",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/07045fc8e2847fd4542da2b3397c7edf9882c4af"
+    },
+    {
+      "path": "research/legacy-jno/assets/jno2-w64-int8.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "67c6899a7db41976f2fc8ae8fd035f44f588eb9d",
+      "size": 6956,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/67c6899a7db41976f2fc8ae8fd035f44f588eb9d"
+    },
+    {
+      "path": "research/legacy-jno/docs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "97340112bbf3fd505a03e97fa7df3cb6b8ec2016",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/97340112bbf3fd505a03e97fa7df3cb6b8ec2016"
+    },
+    {
+      "path": "research/legacy-jno/docs/JARVIS_LAB_FOUNDATIONAL_NEURAL_LINK_PRINCIPLES.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8f22856c887345d8d2aa1fe818592f42648b7611",
+      "size": 3780,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/8f22856c887345d8d2aa1fe818592f42648b7611"
+    },
+    {
+      "path": "research/legacy-jno/docs/V21_ARCHITECTURE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dfe67a1c2430805c782487483be25304e7aeebdb",
+      "size": 3991,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/dfe67a1c2430805c782487483be25304e7aeebdb"
+    },
+    {
+      "path": "research/legacy-jno/docs/V21_MIGRATION.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b4da1500e5ba452506d957a3e01e181afced4e09",
+      "size": 3280,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/b4da1500e5ba452506d957a3e01e181afced4e09"
+    },
+    {
+      "path": "research/legacy-jno/docs/V21_MODELS_AND_EVOLUTION.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0e93e98ef3d0513853015e88296b35d97e69fb9f",
+      "size": 3398,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/0e93e98ef3d0513853015e88296b35d97e69fb9f"
+    },
+    {
+      "path": "research/legacy-jno/docs/V21_NATIVE_FEEDBACK_INTEGRATION.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "894ec0b07bca6d98b39eccae9538ab192d99dd14",
+      "size": 2983,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/894ec0b07bca6d98b39eccae9538ab192d99dd14"
+    },
+    {
+      "path": "research/legacy-jno/docs/V21_OFFLINE_CONTRACT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce21117356b758e28de940702ccf597eb6c80c43",
+      "size": 3572,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/ce21117356b758e28de940702ccf597eb6c80c43"
+    },
+    {
+      "path": "research/legacy-jno/docs/V21_VERIFICATION.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4ec8054f4612034a2410073d016065882b808604",
+      "size": 2831,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/4ec8054f4612034a2410073d016065882b808604"
+    },
+    {
+      "path": "research/legacy-jno/kotlin",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "f8ee036808dcdbda456a6b31ae5902eb2730363b",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/f8ee036808dcdbda456a6b31ae5902eb2730363b"
+    },
+    {
+      "path": "research/legacy-jno/kotlin/io",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d9cd8fabfaabcc3b7a5636234782611ce2570357",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/d9cd8fabfaabcc3b7a5636234782611ce2570357"
+    },
+    {
+      "path": "research/legacy-jno/kotlin/io/jarvis",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "21c4021c98137ea194fd64d3a4215191802fc31b",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/21c4021c98137ea194fd64d3a4215191802fc31b"
+    },
+    {
+      "path": "research/legacy-jno/kotlin/io/jarvis/mobile",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "3d676a612f526e5180fa0ffeef133f385a606246",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/3d676a612f526e5180fa0ffeef133f385a606246"
+    },
+    {
+      "path": "research/legacy-jno/kotlin/io/jarvis/mobile/v21",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2cd80ccd9140d122c729836e6b9fdefb78161415",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/2cd80ccd9140d122c729836e6b9fdefb78161415"
+    },
+    {
+      "path": "research/legacy-jno/kotlin/io/jarvis/mobile/v21/NeuralCore.kt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e51bc013356d26479de815ce0ab7c94c8b45539",
+      "size": 10731,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/7e51bc013356d26479de815ce0ab7c94c8b45539"
+    },
+    {
+      "path": "research/legacy-jno/test_legacy_core.sh",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5250f78d96bbe9bb0e3ad5e809b26c258e81985e",
+      "size": 531,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/5250f78d96bbe9bb0e3ad5e809b26c258e81985e"
+    },
+    {
+      "path": "research/legacy-jno/tests",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "3bd83e4c389aefb61dc3ba27eca9bfae78d73222",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/3bd83e4c389aefb61dc3ba27eca9bfae78d73222"
+    },
+    {
+      "path": "research/legacy-jno/tests/V21CoreRepositorySmoke.kt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5f67f5569869b8ec983ab7723701165a9487fb8c",
+      "size": 1466,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/5f67f5569869b8ec983ab7723701165a9487fb8c"
+    },
+    {
+      "path": "research/owner-archive-20261106",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "71899d695da5209a7dd738244efe2bf681f2d961",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/71899d695da5209a7dd738244efe2bf681f2d961"
+    },
+    {
+      "path": "research/owner-archive-20261106/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "be7652490ab76d4bc6f67df65c9897503f7d3798",
+      "size": 4252,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/be7652490ab76d4bc6f67df65c9897503f7d3798"
+    },
+    {
+      "path": "research/owner-archive-20261106/UNO_GROK_CORRECTED_MINIMAL_ORGANISM_20261103.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "90f073fc13b4f5640a9e46106b7fb99d2f39f50c",
+      "size": 4266,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/90f073fc13b4f5640a9e46106b7fb99d2f39f50c"
+    },
+    {
+      "path": "research/owner-archive-20261106/UNO_GROK_CORRECTED_MINIMAL_ORGANISM_PAPER_FOR_OWNER_REVIEW.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b0827de42e53fe8af1f8a91938038fa6a4082e3",
+      "size": 7745,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/8b0827de42e53fe8af1f8a91938038fa6a4082e3"
+    },
+    {
+      "path": "research/owner-archive-20261106/UNO_LIVING_RELATION_R01_RESEARCH_20261105.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0dae26db6a3076ff1dc7ac5be88b1f6b1c2a143b",
+      "size": 14105,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/0dae26db6a3076ff1dc7ac5be88b1f6b1c2a143b"
+    },
+    {
+      "path": "research/owner-archive-20261106/UNO_MINIMAL_ORGANISM_PAPER_FINAL_FOR_OWNER_REVIEW_20261103.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a143cfd1a863a89bbc30f2f11b8d310e31118410",
+      "size": 148311,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/a143cfd1a863a89bbc30f2f11b8d310e31118410"
+    },
+    {
+      "path": "research/owner-archive-20261106/UNO_N0_01_RESEARCH_TRAINED_2026-11-05.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7687da014018575c319e8f2f2741bd28a948f807",
+      "size": 21008,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/7687da014018575c319e8f2f2741bd28a948f807"
+    },
+    {
+      "path": "research/owner-archive-20261106/UNO_N0_02_LOCAL_PLASTICITY_RESEARCH_2026-11-05.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f26be48fff04b09ed58e8885141cbb78a9a5aff8",
+      "size": 23747,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/f26be48fff04b09ed58e8885141cbb78a9a5aff8"
+    },
+    {
+      "path": "research/owner-archive-20261106/UNO_R41_A52_V01_V20_INDEXED_TEXT_RECONSTRUCTED_20261106.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3a3dac41734ef96eb6e24dc49b60c07ce824c7ef",
+      "size": 479305,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/3a3dac41734ef96eb6e24dc49b60c07ce824c7ef"
+    },
+    {
+      "path": "research/owner-archive-20261106/UNO_R53_HISTORICAL_SHORT_PACKAGE_20261102.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2eaa4b138a2f7f96e8c3ea52b37ef5c383c4f426",
+      "size": 5722,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/2eaa4b138a2f7f96e8c3ea52b37ef5c383c4f426"
+    },
+    {
+      "path": "research/owner-archive-20261106/UNO_UNOVYRA_COMPLETE_PRECODE_PAPER_R3_20261103.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7a0aaa157b45eddac044128fd0973ef231924aee",
+      "size": 198941,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/7a0aaa157b45eddac044128fd0973ef231924aee"
+    },
+    {
+      "path": "research/uno-lab-001",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "aeaf060e0c431bc9ade1c3fdaf881c88483ba19a",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/aeaf060e0c431bc9ade1c3fdaf881c88483ba19a"
+    },
+    {
+      "path": "research/uno-lab-001/BENCH.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4f54d5b22c5f7618e123815e451b722207a33ffb",
+      "size": 17875,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/4f54d5b22c5f7618e123815e451b722207a33ffb"
+    },
+    {
+      "path": "research/uno-lab-001/CLAIMS_VS_GIT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0ed4a252e4018fffae1779cdf4a4e8fe0b068d1c",
+      "size": 4690,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/0ed4a252e4018fffae1779cdf4a4e8fe0b068d1c"
+    },
+    {
+      "path": "research/uno-lab-001/NOTION_MAP.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a321b77e5898d67990a0acd69a53efa1150956ce",
+      "size": 1406,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/a321b77e5898d67990a0acd69a53efa1150956ce"
+    },
+    {
+      "path": "research/uno-lab-001/TRANSFER_MEMORY_FIXTURE_GPT6_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a1bce101aa4774c120d5cf0bf3854b4f92f430e2",
+      "size": 2340,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/a1bce101aa4774c120d5cf0bf3854b4f92f430e2"
+    },
+    {
+      "path": "research/uno-lab-001/UNO_LAB_001_MEMORY_FIXTURE_AUDIT_GPT6_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b6f8be217f1731f72cba557a288a4dafb64bd778",
+      "size": 6449,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/b6f8be217f1731f72cba557a288a4dafb64bd778"
+    },
+    {
+      "path": "research/uno-lab-001/bench_check.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "063bd9d8fa0a0f951a65c181699e645853a9af5a",
+      "size": 909,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/063bd9d8fa0a0f951a65c181699e645853a9af5a"
+    },
+    {
+      "path": "research/uno-lab-001/claude_lab001_checks.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6c26a61b0f3e53a666687d5312284166daa1552d",
+      "size": 8426,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/6c26a61b0f3e53a666687d5312284166daa1552d"
+    },
+    {
+      "path": "research/uno-lab-001/claude_lab001_output.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bcedf002833c601d2b2e7f62a9d7121cf433d592",
+      "size": 4720,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/bcedf002833c601d2b2e7f62a9d7121cf433d592"
+    },
+    {
+      "path": "research/uno-lab-001/gpt6_independent_sequential_replay.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1db53363f972acadb0042c04e7675405f3484527",
+      "size": 4124,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/1db53363f972acadb0042c04e7675405f3484527"
+    },
+    {
+      "path": "research/uno-lab-001/gpt6_independent_sequential_replay_CARD_FROZEN.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9fa6db509d15b9533ce24c4d91fbb35e4a52a1c6",
+      "size": 1376,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/9fa6db509d15b9533ce24c4d91fbb35e4a52a1c6"
+    },
+    {
+      "path": "research/uno-lab-001/gpt6_independent_sequential_replay_run.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b39a159a3b6c174df4db73b2730e07fb919d2635",
+      "size": 1048,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/b39a159a3b6c174df4db73b2730e07fb919d2635"
+    },
+    {
+      "path": "research/uno-lab-001/gpt_assignment_20261105.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8d28878bb0230ac89b425e7a57d1655cd3e57f7a",
+      "size": 19972,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/8d28878bb0230ac89b425e7a57d1655cd3e57f7a"
+    },
+    {
+      "path": "research/uno-lab-001/gpt_g4_learn001.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b2fd2ab5d9c7601f08f49ed6099f70cb523799fa",
+      "size": 9539,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/b2fd2ab5d9c7601f08f49ed6099f70cb523799fa"
+    },
+    {
+      "path": "research/uno-lab-001/grok_lab001_checks.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bfce98930711ab5a0108adb20b0f33af37565173",
+      "size": 3694,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/bfce98930711ab5a0108adb20b0f33af37565173"
+    },
+    {
+      "path": "research/uno-lab-001/grok_lab001_hfix.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "264ec74b26f5ec7240beca708ed0e6f59321afc6",
+      "size": 9810,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/264ec74b26f5ec7240beca708ed0e6f59321afc6"
+    },
+    {
+      "path": "research/uno-lab-001/grok_lab001_hfix_output.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "724e6bbb5520146a128debe27282cf2a2358215c",
+      "size": 2687,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/724e6bbb5520146a128debe27282cf2a2358215c"
+    },
+    {
+      "path": "research/uno-lab-001/grok_lab001_output.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "820ada496fc50e57a46972bea439feae5507aa6d",
+      "size": 1289,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/820ada496fc50e57a46972bea439feae5507aa6d"
+    },
+    {
+      "path": "research/uno-lab-001/grok_local_rule.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4023ce05c974e0c564933b4107004b6007238650",
+      "size": 2914,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/4023ce05c974e0c564933b4107004b6007238650"
+    },
+    {
+      "path": "research/uno-lab-001/grok_local_rule_output.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "13e2df11636566d65016317dda205bae2dde8b5d",
+      "size": 580,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/13e2df11636566d65016317dda205bae2dde8b5d"
+    },
+    {
+      "path": "research/uno-lab-001/grok_memory_gate.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e182bb02d969f6203dbad9bd96d3905e4d935ea8",
+      "size": 2143,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/e182bb02d969f6203dbad9bd96d3905e4d935ea8"
+    },
+    {
+      "path": "research/uno-lab-001/grok_memory_gate_output.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9eace5df5c46b22b6ee107001c03fe142f01ec1f",
+      "size": 229,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/9eace5df5c46b22b6ee107001c03fe142f01ec1f"
+    },
+    {
+      "path": "research/uno-lab-001/grok_protocol_card_run.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b45001578773b0a53036364f0ceaf5a53e3668f8",
+      "size": 2921,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/b45001578773b0a53036364f0ceaf5a53e3668f8"
+    },
+    {
+      "path": "research/uno-lab-001/grok_protocol_card_run.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b566cf7ca5fbf6c7aa3cc0cf3049dded5e6c13ac",
+      "size": 8530,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/b566cf7ca5fbf6c7aa3cc0cf3049dded5e6c13ac"
+    },
+    {
+      "path": "research/uno-lab-001/grok_sequential_organism.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0fd75bf902cf6e74263359005e2e2bb53ccd09b7",
+      "size": 2847,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/0fd75bf902cf6e74263359005e2e2bb53ccd09b7"
+    },
+    {
+      "path": "research/uno-lab-001/grok_sequential_organism.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "48ed286707a07917a785fa812b36c8044f1b1234",
+      "size": 9161,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/48ed286707a07917a785fa812b36c8044f1b1234"
+    },
+    {
+      "path": "research/uno-lab-001/grok_three_test_counterexample.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e5be450e9acf9086a12eea82836248a6409ec630",
+      "size": 1380,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/e5be450e9acf9086a12eea82836248a6409ec630"
+    },
+    {
+      "path": "research/uno-lab-001/grok_three_test_counterexample_output.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "16fac6d35924f06c6b8a5c0706c4d3962a462fbc",
+      "size": 204,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/16fac6d35924f06c6b8a5c0706c4d3962a462fbc"
+    },
+    {
+      "path": "research/uno-lab-001/skill_gate.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3bc740fa0b6e9af4f6926316ec3c6f57d1f0cb39",
+      "size": 1935,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/3bc740fa0b6e9af4f6926316ec3c6f57d1f0cb39"
+    },
+    {
+      "path": "research/uno-lab-001/test_uno_lab_verify.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fbc13640018efa8e0c876f53333d70dc3fc6bef6",
+      "size": 6054,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/fbc13640018efa8e0c876f53333d70dc3fc6bef6"
+    },
+    {
+      "path": "research/uno-lab-001/uno_exact_zero_feature_witness_gpt6.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "261fc7d5360fc9007d95cc4032dfd1401e140268",
+      "size": 1014,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/261fc7d5360fc9007d95cc4032dfd1401e140268"
+    },
+    {
+      "path": "research/uno-lab-001/uno_g1_peer_verifier_gpt6.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a7a8b02ec797579f508c296cd91ba64f052f03a2",
+      "size": 8824,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/a7a8b02ec797579f508c296cd91ba64f052f03a2"
+    },
+    {
+      "path": "research/uno-lab-001/uno_gate_false_positive_gpt6.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "615b4903e6b2b65a7c5696ae748bf85d51006bd9",
+      "size": 2988,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/615b4903e6b2b65a7c5696ae748bf85d51006bd9"
+    },
+    {
+      "path": "research/uno-lab-001/uno_grok_T_old_retention_oracle_gpt6.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e27e25e304d82c06356ebeb0d5bb8d001ba559fd",
+      "size": 1172,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/e27e25e304d82c06356ebeb0d5bb8d001ba559fd"
+    },
+    {
+      "path": "research/uno-lab-001/uno_grok_T_old_retention_oracle_gpt6_run.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1dec65f9bf2b1385883b03c751c7ddfecd6bfe00",
+      "size": 412,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/1dec65f9bf2b1385883b03c751c7ddfecd6bfe00"
+    },
+    {
+      "path": "research/uno-lab-001/uno_grok_T_oracle_spec_gpt6.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bb63b627f1f179c00636c430bc0d3d74c7687866",
+      "size": 2439,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/bb63b627f1f179c00636c430bc0d3d74c7687866"
+    },
+    {
+      "path": "research/uno-lab-001/uno_grok_T_oracle_spec_gpt6_run.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f60710e2f3ee149b9d9d0266de0d385b161d1e63",
+      "size": 650,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/f60710e2f3ee149b9d9d0266de0d385b161d1e63"
+    },
+    {
+      "path": "research/uno-lab-001/uno_lab_verifier.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4855bbe3160b1ac2593a5bb62ecdfe5e7251b359",
+      "size": 14001,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/4855bbe3160b1ac2593a5bb62ecdfe5e7251b359"
+    },
+    {
+      "path": "research/uno-lab-001/uno_lab_verify.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1d8ed23c39e48388f069565fd2ebabfa25e3e7ed",
+      "size": 26801,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/1d8ed23c39e48388f069565fd2ebabfa25e3e7ed"
+    },
+    {
+      "path": "research/uno-lab-001/uno_memory_dilution_gpt6.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1e34454e3370fa6e9877378ef6704931e4d7d531",
+      "size": 380,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/1e34454e3370fa6e9877378ef6704931e4d7d531"
+    },
+    {
+      "path": "research/uno-lab-001/uno_memory_flip_ambiguity_gpt6.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4e2f37468af255d2063b752e30491af90771e60f",
+      "size": 2970,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/4e2f37468af255d2063b752e30491af90771e60f"
+    },
+    {
+      "path": "research/uno-lab-001/uno_memory_flip_ambiguity_gpt6_run.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "76452c5d55182f5ff728c49ab8d3ce75700f6f26",
+      "size": 1319,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/76452c5d55182f5ff728c49ab8d3ce75700f6f26"
+    },
+    {
+      "path": "research/uno-lab-001/uno_pairwise_no_go_gpt6.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "874a024fca304fa78e65bc9159bf56f2991e56bf",
+      "size": 3381,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/874a024fca304fa78e65bc9159bf56f2991e56bf"
+    },
+    {
+      "path": "research/uno-lab-001/uno_pairwise_no_go_gpt6_run.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b98b212156421dc54b2796862be36399f5aaaf2c",
+      "size": 727,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/b98b212156421dc54b2796862be36399f5aaaf2c"
+    },
+    {
+      "path": "research/uno-lab-001/uno_projected_gradient_paper_gpt6.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4e4cd2de5246e502cb2804fee9484c172187e0e0",
+      "size": 997,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/4e4cd2de5246e502cb2804fee9484c172187e0e0"
+    },
+    {
+      "path": "research/uno-lab-001/uno_r53_memory_finite_bound_audit_gpt6.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6a8c48920fdc4f378c0795d6a9558acbb48d7c21",
+      "size": 3480,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/6a8c48920fdc4f378c0795d6a9558acbb48d7c21"
+    },
+    {
+      "path": "research/uno-lab-001/uno_r53_memory_finite_bound_audit_gpt6_run.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "19347b931a4a14ecf7b921df481536e2dd485b4a",
+      "size": 1608,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/19347b931a4a14ecf7b921df481536e2dd485b4a"
+    },
+    {
+      "path": "research/uno-lab-001/uno_scalar_bound_gpt6.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5818cabc22e22b676dfeada86615f009fa24da01",
+      "size": 888,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/5818cabc22e22b676dfeada86615f009fa24da01"
+    },
+    {
+      "path": "research/uno-lab-001/uno_shared_conflict_nogo_gpt6.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b2bc2274ffbac7afc0d9ad642645c4f092581673",
+      "size": 484,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/b2bc2274ffbac7afc0d9ad642645c4f092581673"
+    },
+    {
+      "path": "research/uno-lab-001/uno_sparse_witness_gpt6.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "738155b9cbd7552c5f12e8c1d20ac16bd24f5b79",
+      "size": 3645,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/738155b9cbd7552c5f12e8c1d20ac16bd24f5b79"
+    },
+    {
+      "path": "research/uno-lab-001/uno_sparse_witness_gpt6_run.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "31a10a84b998b812b7af3de9c9dd86b1073588de",
+      "size": 1789,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/31a10a84b998b812b7af3de9c9dd86b1073588de"
+    },
+    {
+      "path": "research/uno-lab-001/verifier_run.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "890959d6c6ea6a2b944be9d39800e779aceaf3d4",
+      "size": 8371,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/890959d6c6ea6a2b944be9d39800e779aceaf3d4"
+    },
+    {
+      "path": "research/uno-lr-01",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c4416137e83b3973ce30318c4fd81b676e5c8ee3",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/c4416137e83b3973ce30318c4fd81b676e5c8ee3"
+    },
+    {
+      "path": "research/uno-lr-01/EXPERIMENT_CARD_PRE_REGISTERED.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "30ff9f5bd59f57e8ec8223e5fc9648d5489f58fc",
+      "size": 4244,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/30ff9f5bd59f57e8ec8223e5fc9648d5489f58fc"
+    },
+    {
+      "path": "research/uno-lr-01/UNO_LR01_CANDIDATE_AND_RESULT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3bb32d189441e8edddc0ee326dadcf9ace142ab",
+      "size": 16131,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/f3bb32d189441e8edddc0ee326dadcf9ace142ab"
+    },
+    {
+      "path": "research/uno-n0-01",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "8b173dbb15faee441555475b6d370ead6aa3a50e",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/8b173dbb15faee441555475b6d370ead6aa3a50e"
+    },
+    {
+      "path": "research/uno-n0-01/EXPERIMENT_CARD_PRE_REGISTERED.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3d1a94dd4bd526c7e9ce2cb00620116c4d28669",
+      "size": 6747,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/f3d1a94dd4bd526c7e9ce2cb00620116c4d28669"
+    },
+    {
+      "path": "research/uno-n0-01/RESULTS_AND_LIMITS_RU.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cfd1b97c4a11559aa0c85d2abdd502bdfab2b1a8",
+      "size": 13450,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/cfd1b97c4a11559aa0c85d2abdd502bdfab2b1a8"
+    },
+    {
+      "path": "research/uno-n0-01/uno_n0_event_graph.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "97b06c796b99b6141c1ebceb6c959fdc62c15fbf",
+      "size": 19460,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/97b06c796b99b6141c1ebceb6c959fdc62c15fbf"
+    },
+    {
+      "path": "research/uno-n0-02",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "385eabf6d1809e6788dc07caebe924d25d69bcfd",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/385eabf6d1809e6788dc07caebe924d25d69bcfd"
+    },
+    {
+      "path": "research/uno-n0-02/FROZEN_CARD.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1bc176567c309108e56f633bcd331dfeefe69bb3",
+      "size": 5729,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/1bc176567c309108e56f633bcd331dfeefe69bb3"
+    },
+    {
+      "path": "research/uno-n0-02/RESULTS_AND_LIMITS_RU.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4ec6b3b87c1afe50f44a9ac12561b03e8ece2d1c",
+      "size": 13533,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/4ec6b3b87c1afe50f44a9ac12561b03e8ece2d1c"
+    },
+    {
+      "path": "research/uno-n0-03",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "400ce0cba3e80bb7732a0fa379cac1602bd4fb2f",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/400ce0cba3e80bb7732a0fa379cac1602bd4fb2f"
+    },
+    {
+      "path": "research/uno-n0-03/android",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "f769346e88097179b38a3c5c7c8ceb66e03a46da",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/f769346e88097179b38a3c5c7c8ceb66e03a46da"
+    },
+    {
+      "path": "research/uno-n0-03/android/AndroidManifest.xml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b57befa33bcd3146bb214637a208b6d4b0b6317e",
+      "size": 782,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/b57befa33bcd3146bb214637a208b6d4b0b6317e"
+    },
+    {
+      "path": "research/uno-n0-03/android/BUILD_EVIDENCE_RU.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1b52ce9470c000a7a45b03d3c1f42bdb68540965",
+      "size": 1868,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/1b52ce9470c000a7a45b03d3c1f42bdb68540965"
+    },
+    {
+      "path": "research/uno-n0-03/android/OWNER_A52_TEST_REPORT_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "85e2d6d936b98b8bf5972e106873c17d758cefc9",
+      "size": 3913,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/85e2d6d936b98b8bf5972e106873c17d758cefc9"
+    },
+    {
+      "path": "research/uno-n0-03/android/PHONE_INSTRUCTIONS_RU.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b78fe728b114be751a982b6a18e36fffa44e5896",
+      "size": 1688,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/b78fe728b114be751a982b6a18e36fffa44e5896"
+    },
+    {
+      "path": "research/uno-n0-03/android/RESEARCH_CARD_FROZEN_BEFORE_DEVICE_RUN.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6fef98c5b5ff4b74113c4ec1bba60fb0bf073e96",
+      "size": 4921,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/6fef98c5b5ff4b74113c4ec1bba60fb0bf073e96"
+    },
+    {
+      "path": "research/uno-n0-03/android/UNO_N0_03_RESEARCH_ANDROID_DEBUG.apk",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e6747a042557502fa0237902dccfb5d4144923cf",
+      "size": 29099,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/e6747a042557502fa0237902dccfb5d4144923cf"
+    },
+    {
+      "path": "research/uno-n0-03/android/res",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "0bf33722a5350fe19d12231d60178c1602f842aa",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/0bf33722a5350fe19d12231d60178c1602f842aa"
+    },
+    {
+      "path": "research/uno-n0-03/android/res/values",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e2b7d31839d95d95b7d25d2c7de554ea1e0a5529",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/e2b7d31839d95d95b7d25d2c7de554ea1e0a5529"
+    },
+    {
+      "path": "research/uno-n0-03/android/res/values/strings.xml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "84d05cda0fd0d2ca510eeace47a7cd6dbc05d3c1",
+      "size": 117,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/84d05cda0fd0d2ca510eeace47a7cd6dbc05d3c1"
+    },
+    {
+      "path": "research/uno-n0-03/android/src",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "fca6a6348eaad6ad6818553a7e28f18f60f36f68",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/fca6a6348eaad6ad6818553a7e28f18f60f36f68"
+    },
+    {
+      "path": "research/uno-n0-03/android/src/org",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "0873ade0f98c3e7b2e7002aef6467403204444d4",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/0873ade0f98c3e7b2e7002aef6467403204444d4"
+    },
+    {
+      "path": "research/uno-n0-03/android/src/org/unovyra",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "a70af0547c7319cea8c42d8b388601f50c9bd248",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/a70af0547c7319cea8c42d8b388601f50c9bd248"
+    },
+    {
+      "path": "research/uno-n0-03/android/src/org/unovyra/n0research",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b14a549e826d4ee81824b8942b56f80fcbc364d6",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/b14a549e826d4ee81824b8942b56f80fcbc364d6"
+    },
+    {
+      "path": "research/uno-n0-03/android/src/org/unovyra/n0research/MainActivity.java",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "61cba59925100691dd0c9d2c41c1b682d0fa8e99",
+      "size": 18176,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/61cba59925100691dd0c9d2c41c1b682d0fa8e99"
+    },
+    {
+      "path": "research/uno-n0-04-results",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "f2813c05db815b9994cb29492bc356250875db28",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/f2813c05db815b9994cb29492bc356250875db28"
+    },
+    {
+      "path": "research/uno-n0-04-results/BUILD_EVIDENCE_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c1049a28847ea9de0aea387609cf13bacf2d1b29",
+      "size": 3135,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/c1049a28847ea9de0aea387609cf13bacf2d1b29"
+    },
+    {
+      "path": "research/uno-n0-04-results/OWNER_A52_FINAL_ABA_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e033f0a0ec271c7c4aa27da39167e8f9e96ec73f",
+      "size": 3037,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/e033f0a0ec271c7c4aa27da39167e8f9e96ec73f"
+    },
+    {
+      "path": "research/uno-n0-04-results/OWNER_A52_TEST_A_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "917998899163986d2b8c9c8f83647d0f3d10abfe",
+      "size": 2768,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/917998899163986d2b8c9c8f83647d0f3d10abfe"
+    },
+    {
+      "path": "research/uno-n0-04-results/OWNER_A52_TEST_B_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5c19deaea33d13652c717d8269b0e3539deefc40",
+      "size": 3966,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/5c19deaea33d13652c717d8269b0e3539deefc40"
+    },
+    {
+      "path": "research/uno-n0-04-results/OWNER_A52_TRAIN_B_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1fa4674d9e047c7b7edd020e954abc8b31e01398",
+      "size": 3521,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/1fa4674d9e047c7b7edd020e954abc8b31e01398"
+    },
+    {
+      "path": "research/uno-n0-04",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c50413770ff6342d251323624ed72beb092b7839",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/c50413770ff6342d251323624ed72beb092b7839"
+    },
+    {
+      "path": "research/uno-n0-04/PHONE_TEST_RU.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "45625f9541adb8a67ad0f3939e8a4108bef2de81",
+      "size": 3319,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/45625f9541adb8a67ad0f3939e8a4108bef2de81"
+    },
+    {
+      "path": "research/uno-n0-04/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b5790c12e522f5b674e1236e4664d0f9c56e270b",
+      "size": 1575,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/b5790c12e522f5b674e1236e4664d0f9c56e270b"
+    },
+    {
+      "path": "research/uno-n0-04/RESEARCH_CARD_FROZEN_BEFORE_DEVICE_RUN.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dfd477dce5713b8b31deb303afd83670c02ab007",
+      "size": 6278,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/dfd477dce5713b8b31deb303afd83670c02ab007"
+    },
+    {
+      "path": "research/uno-n0-04/source_bundle.tar.xz",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a21b8cb7730e81950c221496e46f3301e517284",
+      "size": 13076,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/8a21b8cb7730e81950c221496e46f3301e517284"
+    },
+    {
+      "path": "research/uno-n0-05-results",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "3c2c6f1dba8e5ee9e182e2d1d4e0b1282336ef61",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/3c2c6f1dba8e5ee9e182e2d1d4e0b1282336ef61"
+    },
+    {
+      "path": "research/uno-n0-05-results/BUILD_EVIDENCE_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4710955ed070cfa4b819732c1f14bf37504f4caf",
+      "size": 2715,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/4710955ed070cfa4b819732c1f14bf37504f4caf"
+    },
+    {
+      "path": "research/uno-n0-05-results/OWNER_A52_FINAL_ABA_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7b43f453fe56e2648528275b04f44f182d7b23f9",
+      "size": 7219,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/7b43f453fe56e2648528275b04f44f182d7b23f9"
+    },
+    {
+      "path": "research/uno-n0-05-results/OWNER_A52_FIRST_FOUR_STAGES_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3e3b9d42c7f088329b0ee65a195f577927a0e3f1",
+      "size": 5715,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/3e3b9d42c7f088329b0ee65a195f577927a0e3f1"
+    },
+    {
+      "path": "research/uno-n0-05",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e73996af87da28af8db86762a222b6c97f5fc496",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/e73996af87da28af8db86762a222b6c97f5fc496"
+    },
+    {
+      "path": "research/uno-n0-05/PHONE_TEST_RU.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5a7e4dae2b1622a31cfa57a2f0b172ab20121906",
+      "size": 2664,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/5a7e4dae2b1622a31cfa57a2f0b172ab20121906"
+    },
+    {
+      "path": "research/uno-n0-05/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "64d8a549b60bd979eecf6b3e0686f643c4b88071",
+      "size": 1411,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/64d8a549b60bd979eecf6b3e0686f643c4b88071"
+    },
+    {
+      "path": "research/uno-n0-05/RESEARCH_CARD_FROZEN_BEFORE_DEVICE_RUN.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c304f5663297a99cf2669f713a77ae558063260e",
+      "size": 5567,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/c304f5663297a99cf2669f713a77ae558063260e"
+    },
+    {
+      "path": "research/uno-n0-05/source_bundle.tar.xz",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "533ac084bc6ea1c44f7a941f31ff1859dd56e477",
+      "size": 16768,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/533ac084bc6ea1c44f7a941f31ff1859dd56e477"
+    },
+    {
+      "path": "research/uno-n0-06",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "22e421c43e84f68d5d71450130aca9f4540c8fe0",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/22e421c43e84f68d5d71450130aca9f4540c8fe0"
+    },
+    {
+      "path": "research/uno-n0-06/PILOT_FIXTURE_FROZEN_BEFORE_RUN_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cab96c2b05d43547ce6b4816ff26eaa634c923a0",
+      "size": 4191,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/cab96c2b05d43547ce6b4816ff26eaa634c923a0"
+    },
+    {
+      "path": "research/uno-n0-06/RESEARCH_CARD_CANDIDATE_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fd7d4068c0ce85fe9daa78d1a44e57f36adee4a6",
+      "size": 4565,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/fd7d4068c0ce85fe9daa78d1a44e57f36adee4a6"
+    },
+    {
+      "path": "research/uno-n0-06/host-pilot",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "130a428f502805ebe25db94859127850776e2d30",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/130a428f502805ebe25db94859127850776e2d30"
+    },
+    {
+      "path": "research/uno-n0-06/host-pilot/HOST_PILOT_RESULT_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a1272d048ceae7ecec4cc24697375c56ab5639be",
+      "size": 4424,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/a1272d048ceae7ecec4cc24697375c56ab5639be"
+    },
+    {
+      "path": "research/uno-n0-06/host-pilot/HOST_TEST_RESULT.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "183150cdca43a88d75db67aaffe9bb3e6018a6f6",
+      "size": 5172,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/183150cdca43a88d75db67aaffe9bb3e6018a6f6"
+    },
+    {
+      "path": "research/uno-n0-06/host-pilot/N006HostPilot.java",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "464ca5c4fde7bb79a4b2bcf97ec33c4b14608ebb",
+      "size": 11089,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/464ca5c4fde7bb79a4b2bcf97ec33c4b14608ebb"
+    },
+    {
+      "path": "research/uno-n0-06/host-pilot/UNO_N0_06_HOST_PILOT_20261105.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "85bb38b873a999e7f2b3311870134f3ac43a751e",
+      "size": 19940,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/85bb38b873a999e7f2b3311870134f3ac43a751e"
+    },
+    {
+      "path": "research/uno-n0-06/host-pilot/run.sh",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "62493d92d41b8d9a90141796d57a50434ec6f6c5",
+      "size": 516,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/62493d92d41b8d9a90141796d57a50434ec6f6c5"
+    },
+    {
+      "path": "research/uno-n0-07",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "aa711fb6d1dfac7619fd6d388d6bec7d7f874bd9",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/aa711fb6d1dfac7619fd6d388d6bec7d7f874bd9"
+    },
+    {
+      "path": "research/uno-n0-07/FROZEN_RESEARCH_CARD_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9b2e54f8f071880b034a0bbc839b841f454d8804",
+      "size": 3361,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/9b2e54f8f071880b034a0bbc839b841f454d8804"
+    },
+    {
+      "path": "research/uno-n0-07/MATH_MAPPING.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1373bcfb328b5dd063e6065311fd1197a3c99209",
+      "size": 3485,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/1373bcfb328b5dd063e6065311fd1197a3c99209"
+    },
+    {
+      "path": "research/uno-n0-07/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1de5cb57a8ee23040a20a0fca47111000aa0d5be",
+      "size": 6120,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/1de5cb57a8ee23040a20a0fca47111000aa0d5be"
+    },
+    {
+      "path": "research/uno-n0-07/RESULTS_AND_LIMITATIONS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7577d8f74c8eb9f0aeb1cb06c529b8dcc60db555",
+      "size": 2321,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/7577d8f74c8eb9f0aeb1cb06c529b8dcc60db555"
+    },
+    {
+      "path": "research/uno-n0-07/SOURCE_MANIFEST_SHA256.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "06fbb098e3ef0109602a008c0b741478432ac290",
+      "size": 2203,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/06fbb098e3ef0109602a008c0b741478432ac290"
+    },
+    {
+      "path": "research/uno-n0-07/android",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "42afc2d8f80b666825715ff66478f39867edbc87",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/42afc2d8f80b666825715ff66478f39867edbc87"
+    },
+    {
+      "path": "research/uno-n0-07/android/AndroidManifest.xml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "217dc4d903ea581c6728944222f6f21ac3eda7c2",
+      "size": 880,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/217dc4d903ea581c6728944222f6f21ac3eda7c2"
+    },
+    {
+      "path": "research/uno-n0-07/android/MainActivity.java",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0385093317bbacd6297802e79ad72ae8165527f8",
+      "size": 19274,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/0385093317bbacd6297802e79ad72ae8165527f8"
+    },
+    {
+      "path": "research/uno-n0-07/core",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "85fa90440744882e37207ec7592aadd63e1b64a1",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/85fa90440744882e37207ec7592aadd63e1b64a1"
+    },
+    {
+      "path": "research/uno-n0-07/core/TinyOrganism.java",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1afc241535e2ed0c24720505131440b6700aa21d",
+      "size": 21190,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/1afc241535e2ed0c24720505131440b6700aa21d"
+    },
+    {
+      "path": "research/uno-n0-07/results",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "053c988e7015e25c7b08897c338b2698b0f28ecf",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/053c988e7015e25c7b08897c338b2698b0f28ecf"
+    },
+    {
+      "path": "research/uno-n0-07/results/ANDROID_BUILD_EVIDENCE_20261105.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ca3c4dd00ea25edfe30985a0c8ff1990a6374bd8",
+      "size": 3620,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/ca3c4dd00ea25edfe30985a0c8ff1990a6374bd8"
+    },
+    {
+      "path": "research/uno-n0-07/results/HOST_TEST_RESULT.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4dc30949ded06ea252767d81761c68002ae335b1",
+      "size": 1122,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/4dc30949ded06ea252767d81761c68002ae335b1"
+    },
+    {
+      "path": "research/uno-n0-07/results/OWNER_A52_FIRST_FOUR_STAGES_20261106.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "29059447a017f45414a56f7a0b4d5e0abb2ae1ac",
+      "size": 5851,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/29059447a017f45414a56f7a0b4d5e0abb2ae1ac"
+    },
+    {
+      "path": "research/uno-n0-07/results/OWNER_A52_FULL_400_REVIEW_20261106.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ac58243697e900679f2a54cc7b192f4434c769d1",
+      "size": 6849,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/ac58243697e900679f2a54cc7b192f4434c769d1"
+    },
+    {
+      "path": "research/uno-n0-07/results/OWNER_A52_STAGE5_CATEGORICAL_TRACE_RECONSTRUCTED_20261106.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9c8ad6d9e90c9abc13e4f54ddb9ec3f7ae5f3cac",
+      "size": 3371,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/9c8ad6d9e90c9abc13e4f54ddb9ec3f7ae5f3cac"
+    },
+    {
+      "path": "research/uno-n0-07/source_bundle.tar.xz",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e408d7e9074e115d5aaa351f8fd2bc8e411faec2",
+      "size": 54968,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/e408d7e9074e115d5aaa351f8fd2bc8e411faec2"
+    },
+    {
+      "path": "tools",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "4e9eab1f6c539d224499e2461b0483552a47c39b",
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/trees/4e9eab1f6c539d224499e2461b0483552a47c39b"
+    },
+    {
+      "path": "tools/backup_gitflic.sh",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0b2d7fe2db1a698a87600f658d6e73951d720e32",
+      "size": 3747,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/0b2d7fe2db1a698a87600f658d6e73951d720e32"
+    },
+    {
+      "path": "tools/sync-gitflic.ps1",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e44be8de24f10fe3db868366d9a216c9f96c19a",
+      "size": 4392,
+      "url": "https://api.github.com/repos/ivankondral1998-dot/UNO-android-AI-Agent/git/blobs/7e44be8de24f10fe3db868366d9a216c9f96c19a"
+    }
+  ],
+  "truncated": false
+}

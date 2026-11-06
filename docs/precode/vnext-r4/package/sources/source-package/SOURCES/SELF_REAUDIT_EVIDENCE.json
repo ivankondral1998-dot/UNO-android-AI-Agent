@@ -1,0 +1,121 @@
+{
+  "r53": {
+    "outer_bytes": 5722,
+    "outer_sha256": "55ee7134c8e84a809ed463d671f209e0c25caa407e993be6bf09316211ad9299",
+    "crc": true,
+    "files": {
+      "uno_r53_full/README.md": {
+        "bytes": 866,
+        "sha256": "96a98d926ca33c2c7353e438a20dd3d785d83c41157fef9f1a0cd6db19388bec"
+      },
+      "uno_r53_full/SHA256_MANIFEST.txt": {
+        "bytes": 279,
+        "sha256": "396b837d1c3415e89a042f3afa734cb7124a83691314c0fc5b82e3422c6c5cf3"
+      },
+      "uno_r53_full/SPEC/UNO_R53_FULL_NORMATIVE_SPECIFICATION.md": {
+        "bytes": 8952,
+        "sha256": "f530aed4377a6dd5e2882620f28233f21867fd5f9f2ccd73c83bf6cad768d265"
+      }
+    },
+    "internal_sha_ok": [
+      "uno_r53_full/README.md",
+      "uno_r53_full/SPEC/UNO_R53_FULL_NORMATIVE_SPECIFICATION.md"
+    ],
+    "internal_sha_bad": [
+      "uno_r53_full/SHA256_MANIFEST.txt"
+    ],
+    "r53_chars": 7240,
+    "omits_exact_l3a": true,
+    "omits_mu_j": true,
+    "omits_198_tensor_descriptors": true,
+    "grouped_x_entries": true,
+    "grouped_b_entries": true,
+    "has_undefined_nb_symbol": true,
+    "has_undefined_qj": true
+  },
+  "astra": {
+    "zip_files": 117,
+    "manifest_count": 116,
+    "manifest_missing": [],
+    "manifest_bad": [],
+    "tensor_count": 198,
+    "slow_alloc": 55451639,
+    "slow_free": 55125689
+  },
+  "r52": {
+    "file_count": 12,
+    "hash_bad": [],
+    "quick_check_lines": 17,
+    "distinct_check_labels": 13,
+    "duplicated_labels": [
+      "W4_(0, 0)",
+      "W4_(0, 1)",
+      "W4_(1, 0)",
+      "W4_(1, 1)"
+    ]
+  },
+  "arithmetic": {
+    "b2": {
+      "512": {
+        "allocated": 23015887,
+        "free": 22852753,
+        "frozen": 163134,
+        "F_MAC": 4456448
+      },
+      "1024": {
+        "allocated": 55451639,
+        "free": 55125689,
+        "frozen": 325950,
+        "F_MAC": 17301504
+      },
+      "1536": {
+        "allocated": 97340959,
+        "free": 96852193,
+        "frozen": 488766,
+        "F_MAC": 38535168
+      },
+      "2048": {
+        "allocated": 148683847,
+        "free": 148032265,
+        "frozen": 651582,
+        "F_MAC": 68157440
+      }
+    },
+    "mask_cyclic_prefix": 241,
+    "mask_arbitrary": 65535,
+    "selector_counterexamples": [
+      {
+        "epsilon": 0.01,
+        "input_inf": 0.02,
+        "output_inf": 0.5,
+        "ratio": 25.0
+      },
+      {
+        "epsilon": 0.0001,
+        "input_inf": 0.0002,
+        "output_inf": 0.5,
+        "ratio": 2500.0
+      },
+      {
+        "epsilon": 1e-07,
+        "input_inf": 2e-07,
+        "output_inf": 0.5,
+        "ratio": 2500000.0
+      }
+    ],
+    "memory_counterexample": {
+      "v": [
+        1,
+        -2
+      ],
+      "neg_v": [
+        -1,
+        2
+      ],
+      "average": [
+        0,
+        0
+      ]
+    }
+  }
+}

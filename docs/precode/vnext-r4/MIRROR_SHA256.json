@@ -1,0 +1,1078 @@
+{
+  "as_of": "2026-11-06",
+  "files": [
+    {
+      "bytes": 1635,
+      "path": "docs/precode/vnext-r4/package/00_START_HERE.md",
+      "sha256": "da2e3f8b1aefd5d7ce41d64d30d7d67c8d23ad58fe430330899443f7b1ead037",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 10469,
+      "path": "docs/precode/vnext-r4/package/ERRATA_R4.md",
+      "sha256": "291bc52f81075a4b0def6ab092a3f4488c65ce5cef9400a5d0c8c58ab8ccdfc9",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 184036,
+      "path": "docs/precode/vnext-r4/package/R4_1_INHERITED_BASE.md",
+      "sha256": "a57aa0973b99552e9849ad49222339cea3a5711f66f62aa5f1dbebf9fd89cf07",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 13025,
+      "path": "docs/precode/vnext-r4/package/R53_ORIGINAL_INDIVIDUAL_GATES.md",
+      "sha256": "80f8d6c644af2b73843fe79dffdc1de9d116e80faf9b119c3bcce22773cc4867",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 20656,
+      "path": "docs/precode/vnext-r4/package/SHA256_MANIFEST.json",
+      "sha256": "44cd55415d930eef07519e7f3a5cb6d72c49343e03402c0e70857da964ec9afe",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 10348,
+      "path": "docs/precode/vnext-r4/package/SOURCE_AUDIT.md",
+      "sha256": "4076d27869b9812cea108141b8a3887b791243520d820fb400ff156ced358533",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 12594,
+      "path": "docs/precode/vnext-r4/package/UNO_ARCHITECTURE_ALTERNATIVES_AND_COUNTEREXAMPLES.md",
+      "sha256": "b4d1936b6a4590381d19af87ebe1c2c8fdecbe168fca68f6aa3cb1b11262bff7",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 6475,
+      "path": "docs/precode/vnext-r4/package/UNO_EVIDENCE_TRACEABILITY_AND_TEST_GATES.md",
+      "sha256": "692b414a614036654afab3dfb9165ed0a1b11d40dd8f7fc59c18400ca0757259",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 53354,
+      "path": "docs/precode/vnext-r4/package/UNO_INTEGRATED_NEURAL_ORGANISM_PRECODE_CANDIDATE_vNEXT.md",
+      "sha256": "67b9ec23aa73a41d5a607faddd450579d6a29633e379f7999384e3e4f10b9b01",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 4742,
+      "path": "docs/precode/vnext-r4/package/UNO_OWNER_DECISION_OPTIONS_O01_O08.md",
+      "sha256": "4fb3b4853d63ba647e72101b9bd546fdd9002911150172e2431353f2e98787d5",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 2756,
+      "path": "docs/precode/vnext-r4/package/evidence/FROZEN_CARD.md",
+      "sha256": "9f3b76694df44b1ded673a0efea5968f2657afc0fb2f1925d24dd4d43c15f342",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 3371,
+      "path": "docs/precode/vnext-r4/package/evidence/OWNER_A52_STAGE5_CATEGORICAL_TRACE_RECONSTRUCTED_20261106.csv",
+      "sha256": "96f5db394bde747234d3914a4094697cb4ba9321313e4fc85012d87e48547f5a",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 349,
+      "path": "docs/precode/vnext-r4/package/evidence/PRE_RUN_SHA256.txt",
+      "sha256": "c88a3c00e539f6f8b9701ae3f156d73a0e4efbdfbaa369044eb66e3e80bb1f91",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 1777,
+      "path": "docs/precode/vnext-r4/package/evidence/PROFILE_RESOURCES_R41.csv",
+      "sha256": "58b9fc6fe76b42d5a2ba8334b5b8e55dd981a81ff1cf9b5e74d2baabe787a6f0",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 103473,
+      "path": "docs/precode/vnext-r4/package/evidence/REMOTE_TREE_EFDB1767.json",
+      "sha256": "47049c6b215610d9773fa69de50344d316b846378b372a7d7d6e7180275fb669",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 18402,
+      "path": "docs/precode/vnext-r4/package/evidence/SOURCE_VERIFICATION.json",
+      "sha256": "b5d1fface47cb1eaa000dbaaf2febf96e4241a496907de0fa46905a55078946d",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/precode/vnext-r4/package/evidence/STDERR.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 3186,
+      "path": "docs/precode/vnext-r4/package/evidence/STDOUT.json",
+      "sha256": "df7420ae0b4b8a5857e40cc6b334907141dfdaf2dc10c8d7d5de4e27232748aa",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 6982,
+      "path": "docs/precode/vnext-r4/package/evidence/V01_V20_INTEGRITY.json",
+      "sha256": "2a854297c991742494fcf12ef7ff0e2cc8af82aad0b721732c87278db488625a",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 6654,
+      "path": "docs/precode/vnext-r4/package/evidence/recheck.py",
+      "sha256": "0e268fb000059f518e550d17c7ccf2e774230fa2cadc5ee75823bc0432c5bcc6",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 20458,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V01_UNO_A52_R41_S5_STOP_CONCURRENCY_STRESS_LAB.py",
+      "sha256": "57aa5fc07ecde854cb0ea13658c801aba3e25ccb00feeebb5eaa7c3374de20df",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 21320,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V02_UNO_A52_R41_S5_STOP_PRECOMMIT_RACE_STRESS_V2.py",
+      "sha256": "b9002badfcfebd44bc04a5c1ae31428353a6bc90161e2fe5a9c20201a73fca65",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 22529,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V03_UNO_A52_R41_S5_DURABLE_STOP_ORDER_STRESS_V3.py",
+      "sha256": "d62753ede9550e9270324e730e0894c65e2aceb7b8426f2f0b0d4a6245e11ac1",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 22537,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V04_UNO_A52_R41_S5_STOP_INGRESS_DURABILITY_STRESS_V4.py",
+      "sha256": "e785f57acaa935e0f6a2eaecb024001c1511bcf4007301f26539977b0c35b906",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 20958,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V05_UNO_A52_R41_S5_FAILCLOSED_RESTART_WATCHDOG_STRESS_V5.py",
+      "sha256": "7dc32d822f3e131e98a895a551617314857bcf14fb2e3fec272f5294df75fa54",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 21442,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V06_UNO_A52_R41_S5_DUAL_FAILURE_AND_BYPASS_STRESS_V6.py",
+      "sha256": "8cb5323a56e4184a681964566d240335fc4391808c0be7a6c7f3c22abaab1d35",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 23468,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V07_UNO_A52_R41_NATIVE_S5_EVENT_BACKPRESSURE_STRESS_V7.py",
+      "sha256": "675e8d74fa027a39c41b414942324e071f202b63ee5ad0cb1975977e641c4e93",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 21065,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V08_UNO_A52_R41_NATIVE_S5_SENSOR_FRESHNESS_BACKPRESSURE_V8.py",
+      "sha256": "0e1edbcfe1b207832356714524ffa03bfbb970b329ba99afeefbccdc1ee18330",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 16772,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V09_UNO_A52_R41_NATIVE_S5_TRUE_MASK_GATE_STRESS_V9.py",
+      "sha256": "b23977eeeba8f783f830307735bcd03c35a143f2a663e55bdf125237d25a5090",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 18945,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V10_UNO_A52_R41_NATIVE_S5_PREFIX_BUDGET_STRESS_V10.py",
+      "sha256": "c75412df42f00412aa3166dcf99febcf4523136c6c56cbd633f03d0ce81a3808",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 20923,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V11_UNO_A52_R41_NATIVE_S5_S6_SAMPLER_HAZARD_STRESS_V11.py",
+      "sha256": "c06ec6f16154761cdf9a29688e02061d449391f3c2bb074c08fc4b54ef88853d",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 23611,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V12_UNO_A52_R41_NATIVE_S5_AFTER_STEP_STATE_HAZARD_STRESS_V12.py",
+      "sha256": "fa7484eaeae5ebf3aeb8d421a07d4132a234ecc8839b16812f7032be3e569221",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 24962,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V13_UNO_A52_R41_NATIVE_S5_FULL_CYCLE_RESOURCE_ADMISSION_V13.py",
+      "sha256": "71309ef19710f0509b9a818ca7851330acb3c1b1f09569188a34e35c65dd1c3d",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 26692,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V14_UNO_A52_R41_NATIVE_S5_EXACT_MEMORY_INTEGRITY_V14.py",
+      "sha256": "6be1dabe8a0e678e7b36affbec999f15b2fd1fd48d91c5c5e2ae2a18494a8875",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 26240,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V15_UNO_A52_R41_NATIVE_S5_RECOVERY_PROVENANCE_ATOMICITY_V15.py",
+      "sha256": "044fd1b5d44b0a09396567435235948f2bd328ce7e5e3d1144da12c2620b12d4",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 27033,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V16_UNO_A52_R41_NATIVE_S5_SEMANTIC_EXACT_BOUNDARY_V16.py",
+      "sha256": "02639bef01d7fa83f833b02ca4e92cf1433d119d4823cf453b3428e5ce2daf59",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 23335,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V17_UNO_A52_R41_NATIVE_S5_SHARED_4096_MEMORY_CAPACITY_V17.py",
+      "sha256": "7936b97d6ddd83aa7a3944fdcd232067cd13db8bd0f6bd28bd0e26cfdfee7695",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 27047,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V18_UNO_A52_R41_NATIVE_S5_WAL_CONCURRENT_MEMORY_STRESS_V18.py",
+      "sha256": "bff8adf243c85a845ec25b255d9e2023add65885020e070333b3ce20190c434c",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 19294,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V19_UNO_A52_R41_NATIVE_S5_CAUSAL_CLOCK_TIMER_RACE_V19.py",
+      "sha256": "ecdda2259b21fbe84aa2051cfe6e3f896f753443b37bbfbd39fa8203d8b66374",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 21210,
+      "path": "docs/precode/vnext-r4/package/evidence/v_sources/V20_UNO_A52_R41_NATIVE_S5_LIVE_STOP_TIMER_EPOCH_V20.py",
+      "sha256": "7a5792f1e3cf4d5a27078a3198965f7ff1b933ab7364a005b171e3663febd310",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 1226,
+      "path": "docs/precode/vnext-r4/package/sources/AGENT_PHASE_GATE.json",
+      "sha256": "9d1bcc21e7ab6ff1a24dcbb18453797ac5e7f9253b3daa12cc8d08a6917479e4",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 21841,
+      "path": "docs/precode/vnext-r4/package/sources/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md",
+      "sha256": "60bb31db6c663b4c78ea3182c1593b94ceb2b3259f690edc6ccc1792b28c6547",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 9207,
+      "path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/AGENTS.md",
+      "sha256": "989630fddc17aa9832ed15417b0c45a247ffa658c289515261a6cb4ff0536a3b",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 17794,
+      "path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/README.md",
+      "sha256": "0cd44bcc903c168ef56225c096870f8d2a62c5ae810aa0d5d7078e49be063d0f",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 4904,
+      "path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/docs/AGENT_START_HERE.md",
+      "sha256": "60907b5c7a665d4d2b029c645e70ce24550551e3201e44662336a4fb75153fc0",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 5024,
+      "path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/docs/CURRENT_TASK.md",
+      "sha256": "ae76293ae8587c053d1b241957be19264f224a224982664e706cb48931d80acc",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 5093,
+      "path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/docs/STATUS.md",
+      "sha256": "84cf3eb4651885864f5eefefa8f40ec00e029df8a448ac19b9082b69c894353d",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 5916,
+      "path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/docs/research/OWNER_TEACHING_AND_ANDROID_EVIDENCE_20261105.md",
+      "sha256": "83c6e2b731415db186e066fda391a31ca960c356523f37662359c9432d2700ce",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 6849,
+      "path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/research/uno-n0-07/results/OWNER_A52_FULL_400_REVIEW_20261106.md",
+      "sha256": "daf3c388cc68232f5aceee0f741ad9d642a170cdf880c2309e5fd7f902f5c457",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 3371,
+      "path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/research/uno-n0-07/results/OWNER_A52_STAGE5_CATEGORICAL_TRACE_RECONSTRUCTED_20261106.csv",
+      "sha256": "96f5db394bde747234d3914a4094697cb4ba9321313e4fc85012d87e48547f5a",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 6681,
+      "path": "docs/precode/vnext-r4/package/sources/PRIOR_WORK_CHECKPOINT.md",
+      "sha256": "7076a2d57c18936aa2d7f60e6631ba888aed08a5bd6984b08d0a317b96317968",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 27819,
+      "path": "docs/precode/vnext-r4/package/sources/SOURCE_PACKAGE_IMPORT_MANIFEST.json",
+      "sha256": "ff6b099d062ddb0c1df519391d5d7e6393848a02242206deabaa4cce91a48287",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 17875,
+      "path": "docs/precode/vnext-r4/package/sources/repo_controls/BENCH.txt",
+      "sha256": "c74cd9e4a8570cb5cb7a74557764dabf41b8408bf2985fa0ad975c25c015e031",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 4565,
+      "path": "docs/precode/vnext-r4/package/sources/repo_controls/RESEARCH_CARD_CANDIDATE_20261105.md",
+      "sha256": "a60336f8886c92a51b98817accfe928973d48c4dfc9bdee04530e406455fa3b4",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 10347,
+      "path": "docs/precode/vnext-r4/package/sources/repo_controls/UNO_LAB_AGENTS.md",
+      "sha256": "9604180c1388653ed8f833c47eae68dfbef94f3796092ca12b23db66721120ce",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 3442,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/00_START_HERE.md",
+      "sha256": "f67a7caf169a1a51f106274a00321340cada5e3870b387acb7c67f9d7b858abf",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 213,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/EVIDENCE/arithmetic_run_output.txt",
+      "sha256": "e1fbd6d7557e5d1dd752f8599d6f1f3e14e50f11b065df37bd88e581d2767919",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 1537,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/EVIDENCE/recheck_arithmetic.py",
+      "sha256": "6aec027d2a3ab6a3657673aa3276edd58656a45c63c729847b6b3562494fe7f6",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 8270,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/NORMATIVE/01_SOURCE_HIERARCHY_AND_CONTRACT_INDEX.md",
+      "sha256": "98a837fa8ce45c3c34e23274f118afc243c67b261f688c1d8846e5454e6792d6",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 11668,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/NORMATIVE/02_FORMAL_CORRECTIONS_AND_LIMITS.md",
+      "sha256": "6260310750aacfdd5326f91d6251d5649a1ca88855760110c3783fae29fade11",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 5217,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/NORMATIVE/03_CONSOLIDATED_SUBSYSTEM_CONTRACTS.md",
+      "sha256": "69afb7138ada0188251cdbf381b03d34bc44963a080bbb63ae064da5c71953f7",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 13025,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/NORMATIVE/04_ALL_GATES_D_X_B_M.md",
+      "sha256": "80f8d6c644af2b73843fe79dffdc1de9d116e80faf9b119c3bcce22773cc4867",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 6593,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/NORMATIVE/05_OWNER_DECISIONS_AND_FUTURE_EVIDENCE.md",
+      "sha256": "9a01bd2be0fcc024e3c8f61a87c422a777ae443cbc014519424ceb7e5f3210d2",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 4636,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/NORMATIVE/06_VERIFICATION_BOUNDARIES.md",
+      "sha256": "72a54778f26ce1b928785a02c56b8c86c807ea3b38b685560d973f163b52b711",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 3736,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/NORMATIVE/07_EXPLANATION_FOR_OWNER.md",
+      "sha256": "7d7b745f2d585f31d344ecec020465e542d552536d50ea13a475d35d38b5f23a",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 11502,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SHA256_MANIFEST.json",
+      "sha256": "da6832458698117c946b73e09fc618b286fe8396e61d031ae854f66cc49f35e7",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 9832,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+      "sha256": "4332225c501caf15628fa8e293895382501526c6540400e9d421c0ab712dca3c",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 26820,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+      "sha256": "6bd6f68989972d183b6750711dca223355a026dfcf11461275d25406319853fe",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 17474,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+      "sha256": "4b9186bb19d71f88aed989b33ef8a40f5a699535e645c79f5eb97d5d97098a4c",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 27425,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "sha256": "52b1eab23c977d253625b98de20bee6e5802c652973cf96403037118b5fbe4be",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 13624,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+      "sha256": "737654965c75e83e10a2705656af0f49ff9bf2c2bb0a4f359c67f0f426c6b0c8",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 28652,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+      "sha256": "37754c2d980838e13877ed014f870a14a879cb32b08d6e19e78c5668a06fe817",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 22056,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+      "sha256": "dc99d2e043ffff4abb28d8f9a99458cb8e2382dfe2ff920e68f1b0b67a23b9c7",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 22258,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+      "sha256": "2602f04c049fc721e9c6ecc79f73d5e01400429315f05744f5ed00faa5b3f857",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 15527,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+      "sha256": "4129290d9ef08c86e3aaf186fcb4d830a764c514beaca33aae61b4eae698ed69",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 14541,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+      "sha256": "dea19182304bd8784030fe6d7b7570bdc4ffbc2bc5dafd68c8f7e772a726aa90",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 6521,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md",
+      "sha256": "c2fd8de591472c52f0d206b361f6a61fc857f9ae989751ad11ce9bd0603f95c5",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 11905,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+      "sha256": "dbcba73af110f6725183693b2dc3a67e1b310b3c6833787985325864986cf691",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 10420,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+      "sha256": "bebaf4a52b8c39f32da6725a9216fc782e022c1f75067889c7a39ab780694879",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 7168,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_FINAL_README_AND_DECISION.md",
+      "sha256": "5b933376c6a162ddbb03925b705bc2787b1c497b9a635d36b951ba9415aa5765",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 4818,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_REVISION_LOG.md",
+      "sha256": "3fc6c8c0024382a590a8f53ee8d41a34c24b16429f83d266238b0966714849fc",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 681255,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_FINAL_UNMODIFIED.zip",
+      "sha256": "3420edf9cb7b2170b5c5e0938d43fc3ab896061a5c5fb16229d9587c2ea27987",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 21566,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/FINAL_PACKAGE_MANIFEST.json",
+      "sha256": "a64d92b291b47b69584b0721a27b127105b072aeed064c83a3977cce58b8568b",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 19779,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/audit/R1_REVIEW.md",
+      "sha256": "fb1e3c5534b3ea02c8c8c4e2642f1662e06453bbc2a51d4115feb470104626d5",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 14242,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/audit/R2_REVIEW.md",
+      "sha256": "9d3949bd323adbe2ac3b1c12ec624c4ba1edcf5f02866cdefd3ac6ef7b381eff",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 9582,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/audit/R3_FINAL_REVIEW.md",
+      "sha256": "f87bd23cea22deba5218f960bbcfc87552210678fb2fa676968b8660ec8f6bba",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 5898,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/arithmetic_v2.json",
+      "sha256": "9fb83b81489bfc9cd543b9e774d2c7047aff11a99db9c5b2daa62f3fd95041d6",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 5599,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/recompute.py",
+      "sha256": "ccdb8c2006a9794376829afc7ca7f792d7c899191b4ec202644cbcfbf1807d0a",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 43480,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/tensor_manifest_d1024.json",
+      "sha256": "569f839f3cc557fed734d41d65311b46743fbc77e4c3e11037aaf9fcc2326b32",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 5722,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/GROK_R53_ORIGINAL_UNMODIFIED.zip",
+      "sha256": "55ee7134c8e84a809ed463d671f209e0c25caa407e993be6bf09316211ad9299",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 8952,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/GROK_R53_SPEC_ORIGINAL.md",
+      "sha256": "f530aed4377a6dd5e2882620f28233f21867fd5f9f2ccd73c83bf6cad768d265",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 5491,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/GROK_STAGE1.md",
+      "sha256": "268fa9b45ca181b4b0e41fba7f16e370b9f194be10e6b4cd9404ded8ce7f2b58",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 10445,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/GROK_STAGE2.md",
+      "sha256": "1928e9c03ad2edbb81ca52937c60f416edc4747ec387626c3e8e88693ade0e63",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 11227,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/INDEPENDENT_INTAKE.md",
+      "sha256": "bbb373ca0cbdc865d330a0a59aa7e1501c42276911c82b7af5e2621e53aebb90",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 14403,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/INDEPENDENT_REAUDIT.md",
+      "sha256": "6f3bdc4d11ae92f189718a3ca77e28bdc0da17cfeec7fa252a48982f5085ccdf",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 3744,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/00_READ_FIRST.md",
+      "sha256": "566f041a5a3348a1a95b7cc46d90b787630cd797e88b7ba8d04a0c4ec698db86",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 2368,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/01_PROVENANCE_AND_INTEGRITY.md",
+      "sha256": "fedd042a7fdc28256a589a9bc510a996eb05d65a7d4a5c3e6eff669ce4fd5937",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 4062,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/02_INDEPENDENT_ARITHMETIC_RECHECK.md",
+      "sha256": "e56c87b272428d15949c0cfe329be76cae74fa2951a7a48dd030a644d676a9be",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 3278,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/03_D01_D10_STATUS.md",
+      "sha256": "f5571b798f100650aab66b14ea22d86721c11eaa152b7753550ee1afd060d318",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 2933,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/04_X01_X12_STATUS.md",
+      "sha256": "4aad1871ae5eb5b3e4724d017c27d7d50a3fe83ce905822f9eb6151b84dda094",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 5773,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/05_ADVERSARIAL_FINDINGS_IR01_IR08.md",
+      "sha256": "d2145f6318b5ae5db6d6e0cdb27f4cd69c8200cfc4b0db2ec96513e5c90fe2b9",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 2838,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/06_END_TO_END_CONSISTENCY.md",
+      "sha256": "af471788890010dfcd3ae5fa5cf3ebac7350beb371515f56715335f566d66a03",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 3347,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/07_BLOCKERS_AND_NEXT_CONTROL_POINT.md",
+      "sha256": "96c49af55510f54396a53e4c92c147a918c42e092672d6119953d17d2f2a99f5",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 1715,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/08_DIALOGUE_CONTEXT_UPDATE.md",
+      "sha256": "1dcf66302a6b2c1a26dc0ffcd4963caa5bc57571ddcdf3a7416eaa6685edd302",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 4127,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/00_START_HERE_AND_VERDICT.md",
+      "sha256": "aef792f7958478f5e0151e8947498c389096e4473280374b5a7062909bd0d664",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 3675,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/01_GROK_R1_R2_EVIDENCE.md",
+      "sha256": "04ab7cb233cb1b6340ca53dcb2242ff59cb7f152f83d4f3b3a6940aee7990ada",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 4809,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/02_W4_CORRECTION_AND_PROOF.md",
+      "sha256": "a6764047ace8eb5ab03bd9e92f7bb8d53feebc2f22f51b3482c03ea26f623e44",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 7165,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/03_MEMORY_EXACT_CONTRACT_DRAFT.md",
+      "sha256": "0fe412ca52be5cada3c59a3e036399ba12e08826055074910a1ff067772b1e76",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 3938,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/04_IR03_IR08_NOTES.md",
+      "sha256": "8282b00eded5f2eb23071daca61150e8631424e1e90b77ab83f98b715dc444b6",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 4143,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/05_D_X_B_GATE_MATRIX.md",
+      "sha256": "aee21424b55a9ec5a03d36e484ca84ded0b494025aef0542af95ffcb23de9a5b",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 6255,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/06_CRITICAL_AUDIT_AND_TESTS.md",
+      "sha256": "84a6945f97fe9f4a1ee29eb8414afb7affb64af2945bced4f4d3493c5cc7482c",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 3242,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/07_NEXT_CHECKPOINT.md",
+      "sha256": "2fc8c562f3ceedb361a0485f3402a57a17f202ae5a1e1326359a127a205c6bc9",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 3866,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R52/01_W4_ERRATUM.md",
+      "sha256": "f1260b8ee3346d41a2aa16463c248771277a3ade9f55e0bfb0ce64bc24b03167",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 5946,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R52/02_MEMORY_CONTRACT.md",
+      "sha256": "42ec11748a2cb6cbe85cd82fac1adbb6195f0e17cd6e9a50bfdea007e4073d6f",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 7173,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R52/03_WAKE_SENSOR_REQUIREMENTS.md",
+      "sha256": "b9d795ad76ed173937c93e2c74abe2e1cdb990d8b396be8cbdac64891fd69b99",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 5420,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R52/04_POLICIES_AND_DECISIONS.md",
+      "sha256": "208f0713e0fb9e6327b504437d5f925c9fdbf595d253674b39f58d813ba94b57",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 4207,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R52/05_VERIFICATION_AND_GATE.md",
+      "sha256": "d25663258a93fc38eec71d2598d206eb72be4bffb3304e9c3f3e56f0407d1f7e",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 2763,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/SELF_REAUDIT_EVIDENCE.json",
+      "sha256": "d9355fc37886b943134ce0ef15bda0eb6d471ea8a300a41b5fc3f95955b16ffc",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 1793119,
+      "path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/WORK_V22_ORIGINAL.zip",
+      "sha256": "639708aff644f562c98564b20311262c96105345637e5f3a6566d55c418ca50d",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 3075,
+      "path": "docs/precode/vnext-r4/package/verify_package.py",
+      "sha256": "59637930e3963da574cf118b81aa150d8b831c6197d639ccae84a16edc7e8928",
+      "source": "R4_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 23827,
+      "path": "docs/audit/astra-20261102/BLIND_AUDIT.md",
+      "sha256": "c6ef0243e337ced7bfd3c1b5d983f7d207d923d6ef07b537b33376961413510a",
+      "source": "ASTRA_AUDIT_HISTORY"
+    },
+    {
+      "bytes": 6855,
+      "path": "docs/audit/astra-20261102/CROSSCHECK_PRIOR_AUDIT.md",
+      "sha256": "88dcf54a4d4c8919093ad8043d687a3c89a9daff51505fe8e442e8d624f220a2",
+      "source": "ASTRA_AUDIT_HISTORY"
+    },
+    {
+      "bytes": 3995,
+      "path": "docs/audit/astra-20261102/FINAL_SIGNOFF.md",
+      "sha256": "9a93c7d113b83ba61aca87dba7a41834b81f4686faeafd8ca713f44556ba5a29",
+      "source": "ASTRA_AUDIT_HISTORY"
+    },
+    {
+      "bytes": 19779,
+      "path": "docs/audit/astra-20261102/R1_REVIEW.md",
+      "sha256": "fb1e3c5534b3ea02c8c8c4e2642f1662e06453bbc2a51d4115feb470104626d5",
+      "source": "ASTRA_AUDIT_HISTORY"
+    },
+    {
+      "bytes": 14242,
+      "path": "docs/audit/astra-20261102/R2_REVIEW.md",
+      "sha256": "9d3949bd323adbe2ac3b1c12ec624c4ba1edcf5f02866cdefd3ac6ef7b381eff",
+      "source": "ASTRA_AUDIT_HISTORY"
+    },
+    {
+      "bytes": 3537,
+      "path": "docs/audit/astra-20261102/R3_AUDITED_MANIFEST.json",
+      "sha256": "a2ca62b8c76c7f11667e53c7fef0c68a77789783c4a5fb8a802a6970abae63d2",
+      "source": "ASTRA_AUDIT_HISTORY"
+    },
+    {
+      "bytes": 9582,
+      "path": "docs/audit/astra-20261102/R3_FINAL_REVIEW.md",
+      "sha256": "f87bd23cea22deba5218f960bbcfc87552210678fb2fa676968b8660ec8f6bba",
+      "source": "ASTRA_AUDIT_HISTORY"
+    },
+    {
+      "bytes": 27425,
+      "path": "docs/audit/astra-20261102/R3_PATCH_INPUT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "sha256": "52b1eab23c977d253625b98de20bee6e5802c652973cf96403037118b5fbe4be",
+      "source": "ASTRA_AUDIT_HISTORY"
+    },
+    {
+      "bytes": 174,
+      "path": "docs/audit/astra-20261102/R3_PATCH_INPUT/MANIFEST.json",
+      "sha256": "6c3c8dc4f5de2e128259393d6e28fac5f7cf7bb8cadcdd97bbace467cff80945",
+      "source": "ASTRA_AUDIT_HISTORY"
+    },
+    {
+      "bytes": 1717,
+      "path": "docs/audit/r41-engineering-20261104/00_START_HERE.md",
+      "sha256": "401a1c6a5590c8f580b7c333d5a752b66eac00ab9befa946406050c6cebaee17",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 7559,
+      "path": "docs/audit/r41-engineering-20261104/ERRATA_AND_REAUDIT.md",
+      "sha256": "f6952e00e1114ecfe3a465e8c8c281af197e8376061099e888a12961b24b5603",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 2460,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/README.md",
+      "sha256": "ddb0265f79609730e0d9959682a80eb603ab5e5d037a6e74e9264be896d0e1b3",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 3251,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/check_original.py",
+      "sha256": "908ce5087a40def4b60ca50eacc70af1952ba4f21eadf55ec87465899a720997",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 10347,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/checks.json",
+      "sha256": "0a48160d4f3e4d5fcd9f77a7f719912ca0f7397afcbd07283011826465487af9",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 98,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/environment.json",
+      "sha256": "b5dc7de752eb9fd21d67c588106b0c9891b0d1480ffd1d535334a7be6946d3d4",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 3497,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/original_check_stdout.txt",
+      "sha256": "143310878620d7e3e9a9e94421b2b3db59b6ecfb1a561e66d8808087d6e53de9",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 10600,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/recheck.py",
+      "sha256": "ae69abc7d4fcba4a246016591a03a1e8dfa6b02c299b3086ff45483ccf8d73d2",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 219,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/recheck_stdout.txt",
+      "sha256": "8bf1faca609503f30493a9868a0d39a930bc3967121f70207a4810f36d903559",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 1777,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/resources.csv",
+      "sha256": "58b9fc6fe76b42d5a2ba8334b5b8e55dd981a81ff1cf9b5e74d2baabe787a6f0",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 5365,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/resources.json",
+      "sha256": "4bc6541bc88f123d490316f267f94173d6eb64542360c0ebf5d55e1ce60765d9",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 18685,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/source_inventory.json",
+      "sha256": "4059245d9c232751e6c4af734944760da4aa5782fbf6c8ce6de05e79601538dd",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 51717,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/tensors_B2-1024.json",
+      "sha256": "69817cb551a372f987c88386da065ddc9f86a0bba2d38bb303cbf1cc465e71ce",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 72649,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/tensors_B2-1536.json",
+      "sha256": "f0e90f5126965b2b7f8be63f9949986038c089ece9eed4c2794c2d4e3a67bbbc",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 94227,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/tensors_B2-2048.json",
+      "sha256": "b555cad418f1efecff88bd819546c2405ffd8b26adc052df974fb237a11a9e62",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 30665,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/tensors_B2-512.json",
+      "sha256": "83b5fceedf2ccc5507377b3b5c4169a7e88e1555c1adeae54c25efeb1dddd04a",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 19976,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/tensors_C256.json",
+      "sha256": "d2d626d917a118db8e4f0a03d4acf0e7330ab87355ceab52a8e6a7ba4f427f8b",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 24632,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/tensors_C256R32.json",
+      "sha256": "66d972a489060f8ec97288839fb131b0b0051d423f27d381df321933ca066c78",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 17461,
+      "path": "docs/audit/r41-engineering-20261104/EVIDENCE/tensors_C384.json",
+      "sha256": "d0bd3022d1df95efdf2f0a167e2cbd17b659491c80541f9c3f00f69f6f2b6c3b",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 2306,
+      "path": "docs/audit/r41-engineering-20261104/OWNER_DECISION_BRIEF.md",
+      "sha256": "27486117c64a949ba91729c8868bd8544b2807ffe77e8784b1ce5767341faedd",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 82471,
+      "path": "docs/audit/r41-engineering-20261104/R3_TO_R41.diff",
+      "sha256": "de17df621a7cd83d3a32f2e2a027f43c718929cf257b29dc0a0a87399b0874c8",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 83359,
+      "path": "docs/audit/r41-engineering-20261104/R4_TO_R41.diff",
+      "sha256": "13ffffd2071d78d7283d982bae77243add949b2de9045be1e0049226f7b5aaeb",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 5296,
+      "path": "docs/audit/r41-engineering-20261104/SHA256_MANIFEST.json",
+      "sha256": "79df4c799a6d3a0680a28ef995b510944d232226c814b7c88098c5717068aa5b",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 21841,
+      "path": "docs/audit/r41-engineering-20261104/SOURCES/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md",
+      "sha256": "60bb31db6c663b4c78ea3182c1593b94ceb2b3259f690edc6ccc1792b28c6547",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 138691,
+      "path": "docs/audit/r41-engineering-20261104/SOURCES/PREVIOUS_R3.md",
+      "sha256": "fe9627eb57facf74c77f8241aada4f282c377bc4fc86dee156ee3347566b64b4",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 145376,
+      "path": "docs/audit/r41-engineering-20261104/SOURCES/PREVIOUS_R4.md",
+      "sha256": "dbaae4a4f11ce3a8ac5a2859f8aac3b9a0935bbe1f3dfde6654549332436b5c8",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 45448,
+      "path": "docs/audit/r41-engineering-20261104/SOURCE_TRACEABILITY_AND_MATRIX.csv",
+      "sha256": "7f15b1b759b88b93bf444857ea71826f048351fd77cfb324222820c5a38c39f4",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 1370,
+      "path": "docs/audit/r41-engineering-20261104/SOURCE_TRACEABILITY_AND_MATRIX.md",
+      "sha256": "4baf077c6c89ab0360c052d644f9d366593894e7666c675a926f187dc1ec05e8",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 184036,
+      "path": "docs/audit/r41-engineering-20261104/UNO_MINIMAL_ORGANISM_PAPER_FINAL_FOR_OWNER_REVIEW.md",
+      "sha256": "a57aa0973b99552e9849ad49222339cea3a5711f66f62aa5f1dbebf9fd89cf07",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 16695,
+      "path": "docs/audit/r41-engineering-20261104/edit_records.json",
+      "sha256": "cd56a0e61e1feb5a5aa7ea4d96451175495dbde5c2eedc6c7c7a21d3582c4975",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 315,
+      "path": "docs/audit/r41-engineering-20261104/verify_package.py",
+      "sha256": "e1a4acf2dcc74131116b072d33330c72d139e29de7b0987b6b52d5d49f105a14",
+      "source": "R41_ENGINEERING_RECHECK"
+    },
+    {
+      "bytes": 942,
+      "path": "docs/precode/vnext-r3/package/00_READ_ME.md",
+      "sha256": "c96cb2a321f2568f49b4e19c680286eab3ad7c9b06bd8eb560f5a3ed551d575f",
+      "source": "R3_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 15152,
+      "path": "docs/precode/vnext-r3/package/ERRATA_R2.md",
+      "sha256": "09ee78099dd177176a1b2502b8119a4cd56ac5701f062f9cc1643b5404e07176",
+      "source": "R3_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 3947,
+      "path": "docs/precode/vnext-r3/package/ERRATA_R3.md",
+      "sha256": "eee5ce70ee09a90910f1569fe2d335d62a2812b678b177bfa99cbe506d05cbac",
+      "source": "R3_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 184036,
+      "path": "docs/precode/vnext-r3/package/R4_1_INHERITED_BASE.md",
+      "sha256": "a57aa0973b99552e9849ad49222339cea3a5711f66f62aa5f1dbebf9fd89cf07",
+      "source": "R3_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 13025,
+      "path": "docs/precode/vnext-r3/package/R53_ORIGINAL_INDIVIDUAL_GATES.md",
+      "sha256": "80f8d6c644af2b73843fe79dffdc1de9d116e80faf9b119c3bcce22773cc4867",
+      "source": "R3_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 1230,
+      "path": "docs/precode/vnext-r3/package/SHA256_MANIFEST.json",
+      "sha256": "8ef426d2850076cc342e8a7b67f8e29b7edc55c7d6d3104904e205111f7dec3d",
+      "source": "R3_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 7738,
+      "path": "docs/precode/vnext-r3/package/UNO_ARCHITECTURE_ALTERNATIVES_AND_COUNTEREXAMPLES.md",
+      "sha256": "8861e150ac214f8250f64d58d194a2a492ae4c1ffc3b10c42c1dc86a7d0e46bf",
+      "source": "R3_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 5394,
+      "path": "docs/precode/vnext-r3/package/UNO_EVIDENCE_TRACEABILITY_AND_TEST_GATES.md",
+      "sha256": "8232935681bd9ebc5479e789bc2ec729d89f883f0abf47caf05401104fc04cbc",
+      "source": "R3_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 21402,
+      "path": "docs/precode/vnext-r3/package/UNO_INTEGRATED_NEURAL_ORGANISM_PRECODE_CANDIDATE_vNEXT.md",
+      "sha256": "01fde9e8d50783275722ad533121abb0d8e24ce998a01709abec3a267265a222",
+      "source": "R3_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 3459,
+      "path": "docs/precode/vnext-r3/package/UNO_OWNER_DECISION_OPTIONS_O01_O08.md",
+      "sha256": "e8c9ca6ecaa090e83d9b60cd743a0712cde6962a101d361c719063fbb81b95df",
+      "source": "R3_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 1553,
+      "path": "docs/precode/vnext-r3/package/VERIFICATION_RESULTS.json",
+      "sha256": "bf287e08edcdf9ed9ffb4f45e5a972b40ccee4994ed4760226fdaa3367827df6",
+      "source": "R3_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 1191,
+      "path": "docs/precode/vnext-r3/package/verify_package.py",
+      "sha256": "160defd4d32a8316e59ba0abcf8e167ef3e48cd09f8f760db956549864ccfb5f",
+      "source": "R3_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 1644,
+      "path": "docs/precode/vnext-r3/package/verify_revision.py",
+      "sha256": "eb0aad9524cd3c0286c3505bd8ee2d116e8bc61d4ba9cef09e1a9ffd808ba409",
+      "source": "R3_ORIGINAL_MEMBER"
+    },
+    {
+      "bytes": 5018,
+      "path": "docs/agent/00_START_HERE_CURRENT.md",
+      "sha256": "6b6acd972e980157cb0313fda37a4ae26ac634833a9fc4f3adc8d26ddb1cd820",
+      "source": "NEW_AGENT_ENTRY"
+    },
+    {
+      "bytes": 2306,
+      "path": "docs/precode/vnext-r4/README.md",
+      "sha256": "25500ce05f02d3fe9501d27a7ceaa5f0e39799530556181b0afa8cca56cd1dc0",
+      "source": "NEW_WORKING_INDEX"
+    },
+    {
+      "bytes": 4114,
+      "path": "docs/precode/vnext-r4/FILE_AND_EVIDENCE_REGISTER.md",
+      "sha256": "60bb3291445d36a60cece7dc05ea18201f2ad28191bd6a7e46ff67cc2c3554a4",
+      "source": "NEW_RECOVERY_REGISTER"
+    },
+    {
+      "bytes": 3511,
+      "path": "docs/precode/vnext-r4/CLAIM_CORRECTIONS.md",
+      "sha256": "96c0d9fab7a95fa01f9f737d5375a9c9aa42ece93145c2b93f755226fb69ecb4",
+      "source": "NEW_ERRATA_INDEX"
+    },
+    {
+      "bytes": 1599,
+      "path": "docs/precode/vnext-r4/INTEGRATION_RECHECK.md",
+      "sha256": "2390c9e5df6acec915c816cf9c4e70760aca51d235a3846dd3133b78a3cfe601",
+      "source": "NEW_PROVENANCE"
+    }
+  ],
+  "schema": "UNO_RECOVERY_MIRROR_SHA256_V1",
+  "source_zip": {
+    "UNO_ALL_WORK_AND_SOURCES_2026-11-06.zip": "8c87ebec317f9acd8398a1ff239edfccb193c0e182e0f91ef447bcb3b26ac02b",
+    "UNO_WORK_RETURN_PACKAGE_R4.zip": "85f203bbe6cd4f584ef70e9fd4cd77f4b2e11a6a0076c6607d946c5d82637ba6"
+  }
+}

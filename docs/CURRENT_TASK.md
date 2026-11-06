@@ -1,3 +1,9 @@
+> **OWNER REQUIREMENT / Source recovery 2026-11-06:** 275 imported source files are now separately mirrored on this integration branch, with an exhaustive 396-member earlier archive index at [ALL AVAILABLE SOURCES](agent/01_ALL_AVAILABLE_SOURCES_AND_KNOWN_GAPS_20261106.md). Next work is scoped gate/evidence review and owner O01–O08 decisions, not re-creation of existing Astra/R4.1/R3/R4 papers. Do not claim archived private APKs or chats are Git-accessible; request them with the index's exact path/sha as needed.
+
+> **MOST RECENT WORKING HANDOFF (2026-11-06, DOCUMENTS BRANCH):** The owner supplied vNEXT-R4 after R3; all 120 R4 package members, prior 13 R3 members, additional Astra and R4.1 evidence are preserved under [docs/precode/vnext-r4](precode/vnext-r4/README.md) and indexed by [current agent entry](agent/00_START_HERE_CURRENT.md). New agents must read full originals and `ERRATA_R4.md`, reproduce verification, review conflicts V14/V19/V20 and the O01–O08 decision record. Do NOT silently substitute this historical task body for the newest branch work. No G4 approval, production code, main merge, Actions or destructive operations.
+
+---
+
 > **CURRENT OWNER REQUIREMENT / 2026-11-05:** Future UNO research must preserve a single learning organism with provenance-aware OWNER_TEACHING + SENSOR_OBSERVATION + VERIFIED_ANDROID_OUTCOME, rather than reducing the target to N0-04/N0-05 motion classification. Read [canonical owner/evidence record](research/OWNER_TEACHING_AND_ANDROID_EVIDENCE_20261105.md) and [N0-06 candidate task](../research/uno-n0-06/RESEARCH_CARD_CANDIDATE_20261105.md). Current N0-06 is pre-registered research-only; original R5.3 source and prior N0-05 FAIL remain intact. The previous UNO-LAB-001 task below is a historical/current parallel research queue, not a superseding permission to ignore the owner requirement.
 
 # ACTIVE LAB TASK UPDATE — 2026-11-05

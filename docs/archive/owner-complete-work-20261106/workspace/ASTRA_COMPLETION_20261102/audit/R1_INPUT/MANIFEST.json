@@ -1,0 +1,50 @@
+[
+  {
+    "path": "ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+    "sha256": "6b29712a73ce66b900ebe7c61a1fbf0d5d7abafaa19aad52fea3b200f3543a3c"
+  },
+  {
+    "path": "ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+    "sha256": "1d39ef99fe4bda9d06637f38474674758e8bd1f87e07ca7b5dd480ae6b9dcfe9"
+  },
+  {
+    "path": "ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+    "sha256": "6ddd9f72e8a7532c5f3b64528c44d916c7a0aab502d2a86682c9942f5454691e"
+  },
+  {
+    "path": "ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+    "sha256": "258cd885df68578c03442a08b0a09e187ef6f87037de81192f8ce3d9c7e1d199"
+  },
+  {
+    "path": "ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+    "sha256": "959af3cc8fff6c99ea3f91bcb5b9125aaba672ad387b2624568cb663e140ca64"
+  },
+  {
+    "path": "ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+    "sha256": "bf5a1ed663bd7ec857ae77c9fb4ef36c7854c13e862d73ede77b48de0757d01f"
+  },
+  {
+    "path": "ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+    "sha256": "7d6239ae82713920b27198228c07b806538cffb7f15006a1a293764212c8b417"
+  },
+  {
+    "path": "ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+    "sha256": "27cb97a3efea3856fd5fb4ce68dff33e84993d3acfd112fff77f9587f95efe39"
+  },
+  {
+    "path": "ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+    "sha256": "7bd29d66cedc69e297e864edc138d87cf6779af8b92e3b257486eedc9413fffe"
+  },
+  {
+    "path": "ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+    "sha256": "819a8645e7357e1d4104483b5eb2d3de49899b968a39255a45bfdcfe17ceb60f"
+  },
+  {
+    "path": "ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+    "sha256": "887fedfeaf471ef76ebab662763163271536502691843ca30002200a959154ac"
+  },
+  {
+    "path": "ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+    "sha256": "a1c889b255685bfdae4759675ed8eb9db4073e0160eda7fc5ad0bb8d9281eb5b"
+  }
+]

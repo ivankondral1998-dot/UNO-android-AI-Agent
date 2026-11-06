@@ -1,0 +1,152 @@
+[
+  {
+    "path": "00_READ_ME_FIRST_ASTRA_MATH_COMPLETION_MANDATE.md",
+    "bytes": 15629,
+    "sha256": "ff2969559db9ec4e40cf91aa2658a9115d412a3289fa579be208489b30acde95"
+  },
+  {
+    "path": "01_UNO_PRECODE_ENGINEERING_MASTERPLAN_2026-11-02.md",
+    "bytes": 30586,
+    "sha256": "66e31f2940398b24987403da87d64c6c3baf11a5bbde73a168801e526bfb160f"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/00_SCOPE_AND_EVIDENCE.md",
+    "bytes": 10372,
+    "sha256": "e615c5ed580c026eac2d6015e7e2bc178a6ad332be3bcdd65a3256c9d5258633"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/01_SYMBOLS_AND_STATE_SPACES.md",
+    "bytes": 12743,
+    "sha256": "09461946eff24c93d8ad2a29ee99f8012cc4290e3b7c02dff480591393d9cf87"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/02_UNO_GLOBAL_DYNAMICS.md",
+    "bytes": 25295,
+    "sha256": "edb9f3d109b78db70d2d1c117c6222758ee513ff2f12f6ee5914ac91c51aef88"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/03_NEURAL_GRAPH_AND_WEIGHTS.md",
+    "bytes": 13036,
+    "sha256": "f61f0d5f7a0a7fb23d613b7c9bb2f2f9bdafa2d2f5ffd4fcf087de0dacf0bd5c"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/04_LEARNING_AND_PLASTICITY.md",
+    "bytes": 22004,
+    "sha256": "e2845a43efa41f7460295e9584d68f7bea3e29e5b01bf8f813ca397237c0ec6b"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/05_RESOURCE_AND_SAFETY_PROOFS.md",
+    "bytes": 19203,
+    "sha256": "6ad9483e28389cfc65b1529f11f7062526b12cba6217a1e99e14dcae89bae83a"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/06_ASTRA_NCR_EVO_FORMAL.md",
+    "bytes": 25397,
+    "sha256": "4c8b9f2a3519bccc30e8debbe77300f53aae7eb27f02e0735f08b2d48c5a6d58"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/07_CRITICAL_REVIEW_AND_COUNTEREXAMPLES.md",
+    "bytes": 15705,
+    "sha256": "a5927c2fcd86e7ecb7a29021902419fbc414d04d0a911fe725932bfe38a2c28f"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/08_MATH_ACCEPTANCE_MATRIX.md",
+    "bytes": 8370,
+    "sha256": "8d35a9d6801a0f2748773d2d6dfe2509b29cc1dabe2fb908327eb431d71da118"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/09_CODEX_IMPLEMENTATION_CONTRACT_LATER.md",
+    "bytes": 8084,
+    "sha256": "3930276e7ddf3a989452c1e0cd635c246d4057f583085b12669b8184095568aa"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/INDEPENDENT_REVIEW.md",
+    "bytes": 35480,
+    "sha256": "a1d60b98dbbf2b3a1d7a345189e7ba486b047a166a04d01cf28b2b5f4b0ec107"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/OPEN_QUESTIONS_AND_DECISIONS.md",
+    "bytes": 5965,
+    "sha256": "c84b55a04066e0cc4c4084d0c6a051474870b32ae638320d0cfeceda4505f6d4"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+    "bytes": 4589,
+    "sha256": "47dda9e53d4d24366d97abe968a45056ff0c156068ff0b34c96b8c7da1a57fc4"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/README.md",
+    "bytes": 5765,
+    "sha256": "650a6bc80556f6cd800d9defce06fef77a6d74ce557a460c13419a9882ce17bb"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/SOURCES_AND_REPRODUCIBILITY.md",
+    "bytes": 5522,
+    "sha256": "586ba3e99af16feebb1f08967d7513f8dab65008bb15a01ca115164b585fdd3a"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/evidence/DELIVERY_VALIDATION.json",
+    "bytes": 273,
+    "sha256": "ce0d98e7d126b0d1bbebe9721c4f67c52e01321ae9dce9e658b0dafc56547d84"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/evidence/PR3_formula.md",
+    "bytes": 13785,
+    "sha256": "b7e1b4cfbd2447cc7e4afaab7e38e8c0bd17cb936e78197f20639994357db704"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/evidence/PR3_reference.py.txt",
+    "bytes": 16971,
+    "sha256": "f1d5d6c2f97b5e8bfc15a84459a0a0fb5c3761c8070b2c558a8390b98946fcfc"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/evidence/REVISION_LOG.md",
+    "bytes": 1957,
+    "sha256": "94a36ab1f39bbe824c68a6171409f23d062bb45af8159620eedfc458cceb50c4"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/evidence/arithmetic.json",
+    "bytes": 2358,
+    "sha256": "86bc04de2bb9a30c514cdd3ba8abebe17c71c85f89827d1738ea34bdafdb590c"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/evidence/github_AGENTS.md",
+    "bytes": 6665,
+    "sha256": "648ddb44ac8a3028d1da72e8625309c9ce32cdb382c01ce892cc2a7e4cac7845"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/evidence/github_PR3_metadata.json",
+    "bytes": 24766,
+    "sha256": "309bc2e5ccf6b9450c07180be27f0a948c8fe068debf1e556f12581c33430794"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/evidence/github_README.md",
+    "bytes": 16198,
+    "sha256": "fdef04c2dd6300b7ebc1f732b3afd98b531e2a54368083322708549b9ed2cb53"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/evidence/github_UNO_SYSTEM_FORMULA.md",
+    "bytes": 5588,
+    "sha256": "ac642b92fe07a40191b5eef0a3f947357b2df3d297055cef49dfc878c754f244"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/originals/MANIFEST_SHA256.json",
+    "bytes": 746,
+    "sha256": "7187ca7e313fe184f52308720e1eaf8b9d414365941206f26a315e399314d3f5"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/originals/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md",
+    "bytes": 21841,
+    "sha256": "60bb31db6c663b4c78ea3182c1593b94ceb2b3259f690edc6ccc1792b28c6547"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/originals/UNO_MATH_HOST_V0_1_REFERENCE_NOT_CANONICAL.md",
+    "bytes": 13784,
+    "sha256": "abe61311b62f39cf176648aa6315d21e05fe471ab77d710e566774847a059b7b"
+  },
+  {
+    "path": "02_ORIGINAL_WORK_V1_1/originals/WORK_START_HERE_UNO_MATHEMATICAL_DESIGN_2026-11-01.md",
+    "bytes": 44026,
+    "sha256": "5dce811ff071b0654dfe58716424d5f6aead7fc09a1f40a6b97cdad85017f6f3"
+  }
+]

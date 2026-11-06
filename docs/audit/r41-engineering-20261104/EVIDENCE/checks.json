@@ -1,0 +1,516 @@
+[
+  {
+    "id": "repository_snapshot_64",
+    "status": "PASS",
+    "evidence": 64,
+    "scope": "byte equality with bundled commit snapshot; not live HEAD"
+  },
+  {
+    "id": "B2-512_tensor_count",
+    "status": "PASS",
+    "evidence": 118,
+    "scope": "enumeration vs separate aggregate script"
+  },
+  {
+    "id": "B2-512_W2",
+    "status": "PASS",
+    "evidence": 23015887,
+    "scope": "enumeration vs closed formula"
+  },
+  {
+    "id": "B2-512_ABI",
+    "status": "PASS",
+    "evidence": 23350592,
+    "scope": "explicit offsets vs packed aggregate"
+  },
+  {
+    "id": "B2-512_frozen",
+    "status": "PASS",
+    "evidence": 163134,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "B2-1024_tensor_count",
+    "status": "PASS",
+    "evidence": 198,
+    "scope": "enumeration vs separate aggregate script"
+  },
+  {
+    "id": "B2-1024_W2",
+    "status": "PASS",
+    "evidence": 55451639,
+    "scope": "enumeration vs closed formula"
+  },
+  {
+    "id": "B2-1024_ABI",
+    "status": "PASS",
+    "evidence": 55873984,
+    "scope": "explicit offsets vs packed aggregate"
+  },
+  {
+    "id": "B2-1024_frozen",
+    "status": "PASS",
+    "evidence": 325950,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "B2-1536_tensor_count",
+    "status": "PASS",
+    "evidence": 278,
+    "scope": "enumeration vs separate aggregate script"
+  },
+  {
+    "id": "B2-1536_W2",
+    "status": "PASS",
+    "evidence": 97340959,
+    "scope": "enumeration vs closed formula"
+  },
+  {
+    "id": "B2-1536_ABI",
+    "status": "PASS",
+    "evidence": 97851072,
+    "scope": "explicit offsets vs packed aggregate"
+  },
+  {
+    "id": "B2-1536_frozen",
+    "status": "PASS",
+    "evidence": 488766,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "B2-2048_tensor_count",
+    "status": "PASS",
+    "evidence": 358,
+    "scope": "enumeration vs separate aggregate script"
+  },
+  {
+    "id": "B2-2048_W2",
+    "status": "PASS",
+    "evidence": 148683847,
+    "scope": "enumeration vs closed formula"
+  },
+  {
+    "id": "B2-2048_ABI",
+    "status": "PASS",
+    "evidence": 149281600,
+    "scope": "explicit offsets vs packed aggregate"
+  },
+  {
+    "id": "B2-2048_frozen",
+    "status": "PASS",
+    "evidence": 651582,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "C384_tensor_count",
+    "status": "PASS",
+    "evidence": 68,
+    "scope": "enumeration vs separate aggregate script"
+  },
+  {
+    "id": "C384_W2",
+    "status": "PASS",
+    "evidence": 8698053,
+    "scope": "enumeration vs closed formula"
+  },
+  {
+    "id": "C384_ABI",
+    "status": "PASS",
+    "evidence": 8872000,
+    "scope": "explicit offsets vs packed aggregate"
+  },
+  {
+    "id": "C384_frozen",
+    "status": "PASS",
+    "evidence": 122430,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "C256_tensor_count",
+    "status": "PASS",
+    "evidence": 78,
+    "scope": "enumeration vs separate aggregate script"
+  },
+  {
+    "id": "C256_W2",
+    "status": "PASS",
+    "evidence": 3339727,
+    "scope": "enumeration vs closed formula"
+  },
+  {
+    "id": "C256_ABI",
+    "status": "PASS",
+    "evidence": 3444800,
+    "scope": "explicit offsets vs packed aggregate"
+  },
+  {
+    "id": "C256_frozen",
+    "status": "PASS",
+    "evidence": 81726,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "C256R32_tensor_count",
+    "status": "PASS",
+    "evidence": 94,
+    "scope": "enumeration vs separate aggregate script"
+  },
+  {
+    "id": "C256R32_W2",
+    "status": "PASS",
+    "evidence": 3012047,
+    "scope": "enumeration vs closed formula"
+  },
+  {
+    "id": "C256R32_ABI",
+    "status": "PASS",
+    "evidence": 3121216,
+    "scope": "explicit offsets vs packed aggregate"
+  },
+  {
+    "id": "C256R32_frozen",
+    "status": "PASS",
+    "evidence": 81726,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "sparse_integer_domain",
+    "status": "PASS",
+    "evidence": {
+      "B2-512": 2,
+      "B2-1024": 4,
+      "B2-1536": 6,
+      "B2-2048": 8,
+      "C384": 1,
+      "C256": 2,
+      "C256R32": 2
+    },
+    "scope": "no fractional active blocks for C384"
+  },
+  {
+    "id": "W3_512",
+    "status": "PASS",
+    "evidence": {
+      "LR": 20394447,
+      "H2": 24064463
+    },
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "W3_1024",
+    "status": "PASS",
+    "evidence": {
+      "LR": 43917303,
+      "H2": 59645943
+    },
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "W3_1536",
+    "status": "PASS",
+    "evidence": {
+      "LR": 70602271,
+      "H2": 106778143
+    },
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "W3_2048",
+    "status": "PASS",
+    "evidence": {
+      "LR": 100449351,
+      "H2": 165461063
+    },
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "selector_0.01",
+    "status": "PASS",
+    "evidence": 25.0,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "selector_0.0001",
+    "status": "PASS",
+    "evidence": 2500.0,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "selector_1e-07",
+    "status": "PASS",
+    "evidence": 2500000.0,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "exact_memory_noninjective",
+    "status": "PASS",
+    "evidence": "distinct raw pairs collapse to zero",
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "compact_evidence_shape",
+    "status": "PASS",
+    "evidence": "old sum R64 + R128 undefined; fixed encoding retains all 48 used coordinates",
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "event_not_contractive",
+    "status": "PASS",
+    "evidence": 1.3999999999970612,
+    "scope": "counterexample satisfying A=0,B=.9,C=2,U_s=1"
+  },
+  {
+    "id": "fullmask_residual",
+    "status": "PASS",
+    "evidence": {
+      "eight": 0.6634204312890623,
+      "steps": 90
+    },
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "L4_finite_difference",
+    "status": "PASS",
+    "evidence": {
+      "coordinates": 44,
+      "max_abs_error": 5.1651070573366376e-12
+    },
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "P2_descent_500",
+    "status": "PASS",
+    "evidence": -3.282848793154103e-09,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "P3_regret_fixture",
+    "status": "PASS",
+    "evidence": -7.591501479028001,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "STOP_commit_interleavings",
+    "status": "PASS",
+    "evidence": [
+      {
+        "order": "DECS",
+        "P_updates": 1,
+        "dispatched": true,
+        "evidence": true
+      },
+      {
+        "order": "DESC",
+        "P_updates": 0,
+        "dispatched": true,
+        "evidence": true
+      },
+      {
+        "order": "DSEC",
+        "P_updates": 0,
+        "dispatched": true,
+        "evidence": true
+      },
+      {
+        "order": "SDEC",
+        "P_updates": 0,
+        "dispatched": false,
+        "evidence": false
+      }
+    ],
+    "scope": "abstract atomic model; not Android verification"
+  },
+  {
+    "id": "exact_status_16",
+    "status": "PASS",
+    "evidence": [
+      {
+        "flags": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "result": "COMPLETE"
+      },
+      {
+        "flags": [
+          false,
+          false,
+          false,
+          true
+        ],
+        "result": "CONFLICT"
+      },
+      {
+        "flags": [
+          false,
+          false,
+          true,
+          false
+        ],
+        "result": "TRUNCATED"
+      },
+      {
+        "flags": [
+          false,
+          false,
+          true,
+          true
+        ],
+        "result": "TRUNCATED"
+      },
+      {
+        "flags": [
+          false,
+          true,
+          false,
+          false
+        ],
+        "result": "UNKNOWN"
+      },
+      {
+        "flags": [
+          false,
+          true,
+          false,
+          true
+        ],
+        "result": "UNKNOWN"
+      },
+      {
+        "flags": [
+          false,
+          true,
+          true,
+          false
+        ],
+        "result": "UNKNOWN"
+      },
+      {
+        "flags": [
+          false,
+          true,
+          true,
+          true
+        ],
+        "result": "UNKNOWN"
+      },
+      {
+        "flags": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "result": "DENIED"
+      },
+      {
+        "flags": [
+          true,
+          false,
+          false,
+          true
+        ],
+        "result": "DENIED"
+      },
+      {
+        "flags": [
+          true,
+          false,
+          true,
+          false
+        ],
+        "result": "DENIED"
+      },
+      {
+        "flags": [
+          true,
+          false,
+          true,
+          true
+        ],
+        "result": "DENIED"
+      },
+      {
+        "flags": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "result": "DENIED"
+      },
+      {
+        "flags": [
+          true,
+          true,
+          false,
+          true
+        ],
+        "result": "DENIED"
+      },
+      {
+        "flags": [
+          true,
+          true,
+          true,
+          false
+        ],
+        "result": "DENIED"
+      },
+      {
+        "flags": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "result": "DENIED"
+      }
+    ],
+    "scope": "specification truth table, not store implementation"
+  },
+  {
+    "id": "L3a_sampling",
+    "status": "PASS",
+    "evidence": "conditional abort=1; unweighted joint abort=.2",
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "L5_score",
+    "status": "PASS",
+    "evidence": 0.21,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "E4_exact_enumeration",
+    "status": "PASS",
+    "evidence": 0.6333333333333333,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "E6_0",
+    "status": "PASS",
+    "evidence": 9457,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "E6_0.02",
+    "status": "PASS",
+    "evidence": 26268,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "L7_original",
+    "status": "PASS",
+    "evidence": 542113792,
+    "scope": "finite mathematical fixture"
+  },
+  {
+    "id": "PRNG_endpoint_old_failure",
+    "status": "PASS",
+    "evidence": "floating endpoint rounds to 1; integer CDF avoids no-category outcome",
+    "scope": "finite mathematical fixture"
+  }
+]

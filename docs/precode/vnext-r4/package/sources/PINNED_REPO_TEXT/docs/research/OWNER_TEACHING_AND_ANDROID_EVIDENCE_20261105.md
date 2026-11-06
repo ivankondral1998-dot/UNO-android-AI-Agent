@@ -1,0 +1,29 @@
+# UNO owner teaching + Android evidence: mandatory research constraint (2026-11-05)
+
+**Provenance / status:** Explicit owner clarification in the UNO conversation on 2026-11-05: UNO must be able to learn not only from its own sensor observations but also from the owner's explanations/corrections and from Android-provided, independently verified outcomes. This restores an intended full-organism requirement that N0-04/N0-05 narrow motion prediction did not test. **OWNER INTENT CONFIRMED; detailed runtime ABI, learning algorithm and authority scheme NOT APPROVED.** R5.3 G4 PRECODE_CANDIDATE, `OWNER_APPROVED_PRECODE=FALSE`, `PRODUCTION_CODE_AUTHORIZED=FALSE`, G5/G6 not authorized.
+
+## Apply to every future UNO design, review and research card
+
+UNO is ONE local learning organism with one shared computational state; distinguish evidence provenance and target semantics, not three independent reasoning engines.
+
+1. **SENSOR_OBSERVATION:** measurements/events from Android hardware and app state. Sensor categories are observations of an aspect of the physical environment, *not* proof of user intent or an external action's result. Store sensor, timestamp/window, quality/missingness, mode and uncertainty. Independently test prediction against the subsequently observed sensor event where applicable.
+2. **OWNER_TEACHING:** explicit human-provided label, explanation, correction, goal or confirmation, with link to the observation/decision it addresses. It is evidence of what the user *meant/intended or asserted*, not automatically evidence that an OS action occurred or that an objective physical claim is true. Require user control over revisions, retention and consent. Human-supplied MODE=A/B in N0-04/N0-05 is only an experiment context hint, **not a demonstrated owner-teaching/feedback system**.
+3. **ANDROID_OUTCOME:** independently captured native readback of a requested/authorized Android effect, with receipt, operation identity, time, observed postcondition, authority/permission state and ambiguous outcomes. An OS signal only establishes what its source actually measures; a successful dispatch/API return is not an independent effect. `UNKNOWN`/`MAY_HAVE_EXECUTED` is not success and is not safe to replay blindly.
+
+## Mandatory learning/permission separation
+
+- Memory is not permission. The human may explain/correct, but past explanations do not authorize future OS actions. Consent, identity, capability scope, STOP-before-dispatch, confirmations and fresh system permissions are separately enforced OUTSIDE the neural policy.
+- On any proposed learning update, preserve traceable `observation -> candidate decision -> user correction (if any) -> authorized action (if any) -> independent outcome (if any) -> admitted update` provenance. Missing labels/receipts yield `UNVERIFIED/UNKNOWN`, not invented reward or demonstrated skill.
+- Contradictions are **information about model uncertainty or missing context**, not a command to erase experience and not automatically evidence of failure. A future candidate may compare contextual refinement, multiple hypotheses, qualitative reliability and review with the user. Do not silently rewrite historical records or make `CONTESTED` a one-error permanent veto without separately testing its consequences. No particular resolution algorithm or numeric threshold is approved by this note.
+- Preserve exact memories separately from lossy summaries; owner edits, deletions, conflicts and forgetting require explicit semantics. Trusted OS boundaries apply to learning, plasticity and NCR-EVO too.
+- Avoid required cloud, OAuth, server or network sources. Offline includes untrusted SAF providers potentially backed by network, not merely absence of `INTERNET` manifest permission.
+
+## What the finished experiments actually establish
+
+N0-04 and N0-05 are **isolated categorical motion-forecast research**, not the complete perception -> intention -> action -> verification -> learning loop. On N0-05 A52 owner-reported 5x80 windows, the graph was responsible for only 25/240 frozen forecasts; 194/240 were `CONTESTED` fallback, 21/240 `NO_MATCH`. Seven neural overrides produced 2 wins and 2 losses versus persistence. B train and B test had only 5 physical class changes each vs frozen minimum 8. It shows a major usefulness limitation of the current coarse feature/conflict mechanism, **not** a negative test of owner teaching or Android verified-result learning, which were not implemented. Post-restart `PASS_SHA256` verifies application checkpoint integrity as reported, **not** whether an Android action happened.
+
+## Required next investigation (candidate N0-06, not adopted product)
+
+Before any Android rollout, freeze a separate N0-06 research card for (a) how an uncertain/contradictory cue should be handled, (b) how explicit owner corrections are represented without overriding physical truth, (c) how independently verified Android readback admits learning but does not grant authority, and (d) how a **single** organism carries all three provenance streams. Compare to unchanged N0-05, persistence and numeric Markov where applicable; use exact common inputs, explicit provenance, disagreement diagnostics, unrecoverable/unknown OS effect cases and holdouts. Do not claim phone validation from host simulation. Real 400-row N0-05 categorical trace was posted in the owner conversation, but the GitHub final report contains aggregates and representative evidence only; **do not pretend to have a full replay fixture until the exact 400 rows are stored and verified.**
+
+**Traceability:** Owner clarification, 2026-11-05; `research/uno-n0-05-results/OWNER_A52_FINAL_ABA_20261105.md`; `research/uno-n0-05/RESEARCH_CARD_FROZEN_BEFORE_DEVICE_RUN.md`; original R5.3/Astra contracts stay intact. This is a research/handoff constraint, not a retroactive R5.3 normative rewrite, owner choice O01–O08, production permit, or evidence of AGI.

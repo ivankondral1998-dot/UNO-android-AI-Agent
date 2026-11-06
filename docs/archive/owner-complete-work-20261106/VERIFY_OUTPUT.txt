@@ -1,0 +1,103 @@
+V01–V20: 20/20 embedded SHA-256 matches; 20 blocks.
+uno_vnext_r3/verify_package.py: exit=0
+SELF_MANIFEST_PASS 12
+BASELINE_COUNTEREXAMPLE_PASS 4 distributions
+LOGISTIC_GRADIENT_PASS 8 cases
+DOCUMENT_CONSISTENCY_PASS
+
+
+uno_vnext_r3/verify_revision.py: exit=0
+[
+  {
+    "check": "original_hash:R4_1_INHERITED_BASE.md",
+    "result": "PASS"
+  },
+  {
+    "check": "original_hash:R53_ORIGINAL_INDIVIDUAL_GATES.md",
+    "result": "PASS"
+  },
+  {
+    "check": "original_hash:UNO_ARCHITECTURE_ALTERNATIVES_AND_COUNTEREXAMPLES.md",
+    "result": "PASS"
+  },
+  {
+    "check": "original_hash:UNO_EVIDENCE_TRACEABILITY_AND_TEST_GATES.md",
+    "result": "PASS"
+  },
+  {
+    "check": "original_hash:UNO_INTEGRATED_NEURAL_ORGANISM_PRECODE_CANDIDATE_vNEXT.md",
+    "result": "PASS"
+  },
+  {
+    "check": "original_hash:UNO_OWNER_DECISION_OPTIONS_O01_O08.md",
+    "result": "PASS"
+  },
+  {
+    "check": "parameter_sum:(256, 32)",
+    "result": "PASS"
+  },
+  {
+    "check": "parameter_sum:(256, 0)",
+    "result": "PASS"
+  },
+  {
+    "check": "parameter_sum:(384, 0)",
+    "result": "PASS"
+  },
+  {
+    "check": "parameter_sum:(512, 0)",
+    "result": "PASS"
+  },
+  {
+    "check": "parameter_sum:(1024, 0)",
+    "result": "PASS"
+  },
+  {
+    "check": "record_prefix_104",
+    "result": "PASS"
+  },
+  {
+    "check": "record_p32_232",
+    "result": "PASS"
+  },
+  {
+    "check": "record_capacity_4096",
+    "result": "PASS"
+  },
+  {
+    "check": "norm_budget_counterexample",
+    "result": "PASS"
+  },
+  {
+    "check": "new_bound",
+    "result": "PASS"
+  },
+  {
+    "check": "alpha_zero_not_contraction",
+    "result": "PASS"
+  },
+  {
+    "check": "one_label_descent",
+    "result": "PASS"
+  },
+  {
+    "check": "opposite_label_forgetting",
+    "result": "PASS"
+  },
+  {
+    "check": "summary_collision",
+    "result": "PASS"
+  }
+]
+
+
+R4.1 EVIDENCE/recheck.py (scratch copy): exit=0
+{
+  "checks": 53,
+  "PASS": 53,
+  "FAIL": 0,
+  "gradient_max_error": 5.1651070573366376e-12,
+  "rows": 7,
+  "limitations": "No production implementation, no training, no device, no independent reviewer certification"
+}
+
