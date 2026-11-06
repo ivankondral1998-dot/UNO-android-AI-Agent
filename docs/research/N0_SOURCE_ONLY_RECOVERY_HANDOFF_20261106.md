@@ -11,3 +11,7 @@
 **Доступность:** source-only ZIP передан владельцу как отдельный артефакт чата. **Байты 83 файлов пока не загружены в GitHub**, поэтому этот документ — точный handoff, а не ложное заявление о Git mirror. Чтобы завершить репозиторную передачу, разместить 83 файла под `research/uno-n0-originals/`, сверить SHA-256 и Git readback, затем обновить [полный реестр](../archive/OWNER_COMPLETE_WORK_ARCHIVE_INDEX_20261106.json). Не считать внешние исходные ZIP исчезнувшими: их происхождение и хеши указаны в реестре.
 
 **Границы:** исследовательские N0-01…N0-07 не являются production UNO, G4 остаётся PRECODE_CANDIDATE, G5 и production training не разрешены. Android/phone reports не подменяют raw trace, native readback или устройство под тестом.
+
+## Independent package audit and Git-ready staging
+
+A second local verification read the actual `SOURCE_MANIFEST.json` and **all 83 source payloads**, confirming `83/83` byte lengths and SHA-256, ZIP CRC `PASS`; four `.py` files passed Python AST parsing (no execution). Original source-only ZIP SHA-256: `a653c2820aabae78188f0eaf4780015ddeeddde8cc6cbc486149428e46dc7867`. A Git-ready source tree was separately packaged as `UNO_N0_GIT_READY_VERIFIED_20261106.zip`, SHA-256 `f7bc26a718bea2ad905253fad44aa48e219328994deafd5c8de61de1ac96ba0c`, with verified originals, `SOURCE_MANIFEST.json`, and manual safe-import instructions. This is a local handoff artifact, **not a completed remote Git upload**. No training, builds or Actions were run.
