@@ -1,3 +1,5 @@
+> **ACTIVE OWNER COMMUNICATION RULE — 2026-11-06:** Отвечать владельцу по-русски, **максимально просто, коротко и содержательно**. Начинать с результата; сложное объяснять обычными словами без снисходительности. Не повторять отчёты; экономить объём чата. Факты, проверки и пробелы не скрывать. Полные логи — в артефактах. См. [решение владельца](docs/decisions/2026-11-06_OWNER_COMMUNICATION_RULES_V1.md).
+
 # ACTIVE OVERRIDE — 2026-11-06
 
 **READ FIRST:** [docs/decisions/2026-11-06_ACTIVE_AGENT_RULES_V2.md](docs/decisions/2026-11-06_ACTIVE_AGENT_RULES_V2.md). Owner has authorized production code. O01–O08 are revisitable, not blockers. Weight families must be compared with matched evidence. The historical prohibition below is SUPERSEDED only for production-code authorization; training, main merge, Actions, deletion and releases remain unauthorized.
