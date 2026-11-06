@@ -1,0 +1,1195 @@
+@@ -1,50 +1,128 @@
+-# UNO Core — исследовательская формула и критерии новой реализации
++# UNO — формальная спецификация математического эталона v0.1
+ 
+-**Статус: новая исследовательская программа, код рабочего UNO Core ещё не написан.** Источник концепции — исходная идея UNO и первичный Jarvis V21/JNO, но это **не копия старого JNO**. Не путать гипотезы с подтверждённой функциональностью.
++**Дата:** 2026-11-01  
++**Статус:** `HOST_MATH_REFERENCE`. Это конкретная проверяемая реализация формулы, **не окончательно доказанная универсальная архитектура, не Android-приложение и не общий интеллект**.
+ 
+-## Единая организация всего агента
++Исследовательская формула UNO охватывает **весь агент**: восприятие, отбор вычисления, общую рекуррентную динамику, прогноз/решение, внешнее разрешение, независимую проверку и локальную пластичность. Здесь первая математическая конкретизация с точными конечномерными условиями. Граф и веса фиксированы для этой версии; рост структуры NCR-EVO не реализован. Исторические веса JNO не импортированы.
+ 
+-Динамический организм `G=(V,E,Θ,S)` связывает восприятие, состояние, нейроноподобные связи, бюджеты, вычисления, гипотезу решения, безопасное действие, внешнее подтверждение последствий и пластичное обновление. Это один агент, а не набор мостов и независимых моделей.
++## 1. Строго определённые объекты
+ 
+-При наблюдении `x_t`, состоянии `S_t` и бюджете энергии/времени `B_t`:
++- `n,d,a ∈ {1,…,64}`: числа входных каналов, скрытых координат, предложений действий.
++- `x_t ∈ R^n`, все компоненты конечны и `|x_i| ≤ 10^6`; `h_t ∈ [-1,1]^d`; `P_t ∈ [-p_max,p_max]^(a×d)`.
++- Новые веса `Θ=(W_e,W_h,W_z,W_o,b_e,b_h,b_o)`, формы соответственно `(d,n), (d,d), (d,d), (a,d), d,d,a`. Все параметры конечны по модулю не более 10.
++- `B_t ∈ {0,…,1_000_000}` — бюджет *посчитанных матрично-векторных MAC*, **не джоулей**. Дробные бюджеты и `bool` отклоняются.
++- `ρ∈[0,1]`, `δ∈(0,1]`, `τ∈[0,1)`, `η∈(0,1]`, `λ∈[0,1)`, `p_max∈(0,10]`, `K_max ∈ {0,…,16}`, `ε=10^-8`.
++- `Π_c(u)=min(c,max(-c,u))` поэлементно; `σ(v)=1/(1+exp(-v))`; `⊙` — поэлементное произведение.
+ 
+-`I_t = π_B(x_t,S_t,B_t)`
++## 2. Вычислительная политика и событие
+ 
+-Здесь `I_t` — какие вычисления или локальные функции вообще активировать; допустимы нулевые тяжёлые вычисления в покое. Реализация должна действительно пропускать ненужные операции.
++При нулевом наблюдении `x_t=0` либо `B_t<C_0` вычислительный путь *не исполняется*, предложение отсутствует, состояние `h,P` неизменно. При любой новой валидной записи наблюдения старое предложение отзывается. Устройство/ОС могут расходовать энергию на фоне — эта модель это не учитывает.
+ 
+-`z_t=E_θ(x_t,S_t,I_t)`
++Для ненулевого входа и бюджета `B_t≥C_0`:
+ 
+-`h_t^(k+1)=h_t^k + M_(t,k) ⊙ R_(φ,G)(h_t^k,z_t,S_t)`
++```text
++C_0 = d*n + 2*a*d                                    (1)
++z_t[j] = tanh(Σ_i W_e[j,i]*x_t[i] + b_e[j])           (2)
++m_t[j] = 1[ |z_t[j]| > τ ]                            (3)
++q = Σ_j m_t[j]
++C_step = 2*d*q
++K_t = min(K_max, floor((B_t - C_0) / C_step))        (4), если q>0
++K_t = 0                                               (4'), если q=0
++h_t^0 = Π_1(ρ*h_(t-1) + (1-ρ)*z_t)                    (5)
++```
+ 
+-Оператор `R` использует **общие новые обучаемые веса**, `M` — вычислительную маску, `k` — ограниченное число циклов, ограничиваемое реальной выгодой и энергобюджетом, а не фиксированным бесконечным процессом.
++`C_0`: матричные MAC кодировщика и двух считываний `(W_o, P)` для каждого действия. `C_step`: MAC только реально выбранных рекуррентных строк: `W_h h + W_z z`. Скалярные операции, функции `tanh`, создание объектов, проверка прав и системные вызовы **не входят в MAC-прокси**. Важное условие: маска должна физически исключать вычисление неактивных строк.
+ 
+-`(â_t,S'_t)=D_(θ,G)(h_t^(K_t),z_t,S_t)`
++## 3. Один разделяемый рекуррентный оператор
+ 
+-`a_t=Authorize(â_t,Owner,AndroidPermissions,STOP,Confirmation)`
++Для каждого `k=0,…,K_t-1` и координаты `j`:
+ 
+-`e_t=Verify(NativeReadback(a_t),ExpectedOutcome_t)`
++```text
++u_(k,j) = Σ_l W_h[j,l] h_t^k[l] + Σ_l W_z[j,l] z_t[l] + b_h[j]
++h_t^(k+1)[j] = Π_1(h_t^k[j] + δ*tanh(u_(k,j)))      если m_t[j]=1
++h_t^(k+1)[j] = h_t^k[j]                                если m_t[j]=0
++```
+ 
+-`(S_(t+1),P_(t+1))=PlasticUpdate(S'_t,P_t,e_t,observation_t)`
++Это одна разделяемая `R_φ` для повторных шагов, **не** отдельные «мозги» или мосты. В текущем эталоне фиксированный граф `G=(V,E,Θ,h,P)`; исследуемая эволюция топологии отдельно. Формула ограничивает число повторений `K_t` и амплитуду состояния, но **не доказывает сходимость рекуррентной динамики**.
+ 
+-Android OS authority/STOP/native readback — **доверенная внешняя граница**. Отдельный вычислитель не может учиться обходить их. Ядро получает подтверждённый результат, но не объявляет подтверждение самостоятельно.
++## 4. Решение и полномочия
+ 
+-## Исследовательский рост
++```text
++ℓ_t[i] = (W_o[i,:] + P_t[i,:]) ⋅ h_t^K + b_o[i]
++q_t[i] = σ(ℓ_t[i])
++â_t = argmax_i q_t[i]                                 (устойчивый tie: минимальный индекс)
++a_t = Authorize(â_t, owner, permission, confirm, unlocked, !STOP, epoch)
++```
+ 
+-`A_(n+1)=QDArchive(A_n ∪ Evaluate_B(Select_ξ(Mutate_G(A_n))))` — гипотеза NCR-EVO, **не реализованная самоэволюция**. Новые структуры тестируются изолированно; исполнение изменённого кода на телефоне пользователя не может происходить самопроизвольно.
++`â_t` — *предложение*, не исполненная команда. `Authorize` — внешняя доверенная системная граница. Эталон `TrustedBoundary` лишь **симулятор** независимой границы (в одном Python-процессе он не может служить защитой от злонамеренного кода). Для реального Android она должна отдельно проверять текущее permission/STOP/epoch/подтверждение непосредственно перед выполнением.
+ 
+-## Как измерять
++## 5. Проверенный исход и пластичные связи
+ 
+-Минимальный ориентир: энергия на **подтверждённую полезную задачу** вместе с проверенным качеством и показателями CPU/PSS/температуры/задержек/idle. Сравнение с фиксированной сетью и табличной памятью обязательно. Демонстрация на симуляторе, число параметров или изменение state не доказывают появления нового навыка.
++Эталонная наблюдаемая метка `y∈{0,1,UNKNOWN}` появляется только из *независимого* native readback, привязанного к однократному ticket, соответствующим action/epoch/предложению. `UNKNOWN`, отказ авторизации, STOP, устаревшая задача или повторное предъявление ticket **не обучают**.
+ 
+-## Что именно даёт Jarvis/JNO
++Если `y∈{0,1}` и получено свежее подтверждение:
+ 
+-Исторические документы и код — в `research/legacy-jno/`. Они подтверждают только старые исследовательские ограничения: JNO G2 (2×6×6, 6 818 параметров) и локальная экспериментальная обработка native feedback. `JNO 0.1` с языковыми классами — **отдельный эксперимент**, не объединённый с G2. Android интеграция JNO на A52 не доказана. Прежние веса нельзя объявлять новыми UNO weights.
++```text
++P_(t+1)[â_t,:] = Π_pmax [ (1-λ)*P_t[â_t,:]
++                            + η*(y-q_t[â_t])*h_t^K / (ε+||h_t^K||_2²) ]
++P_(t+1)[i,:] = P_t[i,:]                   для остальных i
++```
+ 
+-Не переносить старую агентную цепочку, cloud planner, ручной veto, старые классификаторы, Jarvis UI и CELL. При необходимости повторного использования Android executor/слуха/STOP/authority сначала провести отдельную проверку и legal provenance.
++Только `P` обновляется online; новые параметры `W_o` в этой версии можно обучить отдельно градиентным спуском (см. раздел 7). Нет скрытого утверждения об обучении **всех** начальных весов при реальном использовании.
+ 
+-## Порядок следующей реализации
++## 6. Доказуемые инварианты (в идеальной арифметике)
+ 
+-1. Новый собственный обучаемый модуль UNO (цели, обобщающие представления, общий оператор), воспроизводимое обучение и контрольные baselines.
+-2. Новое единое состояние и пластичность на подтверждённых исходах; проверка качества после checkpoint/reboot, устойчивость к corruption и забыванию.
+-3. Локальный Android runtime и безопасный native readback, работа в авиарежиме.
+-4. На A52: самостоятельная осмысленная полезная задача, голос и ресурсы устройства; независимый набор испытаний.
++**I1. Ограничение состояния.** Из `h^0=Π_1(…)` и `h^(k+1)=Π_1(…)` для активных строк, индукцией по `k` получаем `||h_t^k||_∞≤1` при любом конечном `K_t`. Инактивные строки сохраняют уже ограниченное значение.
++
++**I2. Ограничение пластичности.** Каждое обновление проходит через `Π_pmax`; остальные строки остаются прежними, следовательно `||P_t||_∞≤p_max` по индукции, если `P_0=0`.
++
++**I3. Лимит MAC.** Если `B<C_0`, расход 0. Иначе при `q>0`, `K_t≤⌊(B-C_0)/(2dq)⌋`, значит `C_0+K_t*2dq≤B`. При `q=0` имеем `K=0`, расход `C_0≤B`.
++
++**I4. Раздельные полномочия.** В интерфейсе эталона `Organism.step` возвращает предложение, не вызывает ОС. Обновление через `TrustedBoundary` возможно только после свежего ticket и readback; эта структура является **проверенным программным контрактом**, а не криптографическим или Android-доказательством безопасности.
++
++**I5. Корректность сохранения.** Полный снимок валидируется до замены каких-либо полей; сверяются SHA-256 полезной нагрузки, параметры модели/конфигурации, размерности, границы, счётчики. Восстановление не возвращает незавершённый ticket. SHA-256 обеспечивает выявление случайных изменений, **но не аутентичность против атакующего**, способного пересчитать SHA. Атомарную запись в ФС реализовывать отдельно.
++
++**I6. Верхняя оценка чувствительности одного шага.** `tanh` и `Π_1` являются 1-липшицевыми, поэтому при одинаковых `z,M`, `||T(h)-T(h')||_∞ ≤ (1+δ ||W_h||_∞) ||h-h'||_∞`, где `||W_h||_∞=max_j Σ_l|W_h[j,l]|`. Оценка **не даёт контракции**, потому что коэффициент может быть ≥1. В области без клиппинга для активных j: `∂h'_j/∂h_l=1[j=l]+δ(1-tanh²(u_j)) W_h[j,l]`, а для неактивных строк — тождественная матрица. На границе клиппинга производная не определена.
++
++**I7. Эффект одного пластичного обновления.** При `λ=0`, отсутствии клиппинга и том же `h`, изменение логита выбранного действия:
++
++`Δℓ = η*(y-q)*||h||²/(ε+||h||²)`.
++
++Для `y=1` оно неотрицательно, для `y=0` неположительно. Это утверждение **об одном входе/действии**, не о переносе навыка, глобальной обучаемости или улучшении всех задач.
++
++## 7. Производная офлайн-обучения новых весов
++
++На задаче размеченных признаков `f∈R^d` обучаем `W_o` из **новой случайной инициализации** по softmax CE:
++
++```text
++p_i=softmax(W_o f)_i
++L=-log(p_target)
++∂L/∂W_o[i,j]=(p_i-1[i=target]) * f_j
++W_o ← W_o - learning_rate * ∂L/∂W_o
++```
++
++Эта производная проверяется центральными конечными разностями. Эталонный датасет — **искусственная разделимая 2D-классификация**, не речь, планирование, смартфон и не «обучение полного организма». Архитектура полного обучения `W_e,W_h,W_z` и результатов Android пока не разработана.
++
++## 8. Воспроизводимые критерии PASS
++
++Команда (Python ≥3.10, без внешних библиотек):
++
++```sh
++cd research/uno-math-reference
++python -m unittest discover -s tests -p 'test_*.py' -v
++python run_acceptance.py
++```
++
++Проверяем: корректность размерностей, маски/реально пропускаемые строки, MAC-бюджет на исчерпывающем малом диапазоне, численную формулу рекурренции, производную и якобиан по конечным разностям, ограниченность состояния, отрицательные полномочия, подтверждение/отказ/UNKNOWN/STOP/stale/replay, математическое пластичное обновление, несовместимые и повреждённые снимки, детерминизм и holdout отдельного искусственного обучения.
++
++`MATH_REFERENCE_PASS=100%` значит **все сформулированные в этом документе машинные проверки выполнены** в указанной среде. Это не вероятность правильности, не математическая сертификация всех реализаций и не `ANDROID_PASS`.
++
++## 9. Не закрыто этим PASS
++
++- Функциональное качество языкового понимания, ASR/TTS и автономных задач.
++- Реальная нейроэволюция, полезное изменение структуры, длительная память, предотвращение забывания.
++- Производительность Kotlin/Android, энергопотребление в джоулях, реальная работа на Samsung A52, отсутствие интернета внутри APK.
++- OS-grade trust boundary, устойчивая атомарная запись снимков на Android, устойчивость к злонамеренному процессу.
++- Проверка актуальной лицензии и прав на обучающие данные, коммерческий выпуск.
++
++До закрытия этих пунктов маркировать результат `HOST_MATH_REFERENCE_PASS` / `CORE_SIMULATION_PASS`; `FULL_UNO_PASS` **не установлен**.
+@@ -0,0 +1,20 @@
++# UNO Mathematical Reference v0.1 — HOST-MATH GATE
++
++**Status at 2026-11-01: 46/46 unit tests PASS (37 parameterized subcases), 99% Python statement coverage, 600 budget checks without violation, 147/147 synthetic holdout, maximum numerical gradient error 1.9244e-10.**
++
++This is an independent research reference for the unified UNO mathematical control loop. It is **not** an Android application, an LLM, proof of general intelligence, proof of real-world energy efficiency, or an implementation of structural neural evolution.
++
++Prerequisite: Python 3.10+; no external dependencies for acceptance.
++
++```bash
++python -m unittest discover -s tests -p 'test_*.py' -v
++python run_acceptance.py
++```
++
++The second command prints a JSON summary and updates `reports/UNO_MATH_ACCEPTANCE_V0_1.json`.
++
++`docs/UNO_SYSTEM_FORMULA.md` contains the equations, seven mathematical invariants/derivations and precise boundaries of the PASS claim. `uno_core/reference.py` is the executable finite-dimensional reference. `tests/test_math_contract.py` exercises the contract. `pyproject.toml` is for optional pytest users.
++
++New readout weights are trained from new random initialization **only on an artificial 2D classification benchmark**; the full UNO core neural weights are not yet trained. No old Jarvis/JNO weights or Android authority are imported.
++
++The Android authority `TrustedBoundary` is a **host simulation**; it is not a secure component inside a Python process and must be implemented independently with OS-backed checks in a production Android app.
+@@ -0,0 +1,8 @@
++[project]
++name = "uno-math-reference"
++version = "0.1.0"
++requires-python = ">=3.10"
++description = "UNO mathematical reference and executable acceptance gates; host-only research"
++
++[tool.pytest.ini_options]
++testpaths = ["tests"]
+@@ -0,0 +1,38 @@
++{
++  "file_sha256": {
++    "UNO_SYSTEM_FORMULA.md": "abe61311b62f39cf176648aa6315d21e05fe471ab77d710e566774847a059b7b",
++    "reference.py": "2a542df647639af36e014eec16f0f84ce248ed11fad7c3b30a673e01b826040c",
++    "test_math_contract.py": "83ab4aa82d9ce6904f4fa21bbc5bc88597b3b137cc16ef04023e7ef2ec3eb86c"
++  },
++  "not_proven": [
++    "Android device",
++    "energy joules",
++    "end-to-end language",
++    "full neural weights training",
++    "evolution",
++    "adversarial security"
++  ],
++  "numeric_checks": {
++    "budget_violations": 0,
++    "budgets_exercised": 600,
++    "holdout_accuracy": 1.0,
++    "holdout_correct": 147,
++    "holdout_count": 147,
++    "max_central_difference_gradient_error": 1.9243739934893256e-10,
++    "minimum_holdout_accuracy": 0.96,
++    "threshold": 1e-08
++  },
++  "pass_percentage_of_declared_gates": 100,
++  "platform": "Linux x86_64",
++  "python_version": "3.13.5",
++  "report_schema": "UNO_MATH_ACCEPTANCE_V0_1",
++  "scope": "finite-dimensional host reference; no Android, general intelligence or physical energy proof",
++  "status": "HOST_MATH_REFERENCE_PASS",
++  "unit_tests": {
++    "discovered": 46,
++    "parameterized_subcases_note": "37 verified by pytest separate run",
++    "passed": 46,
++    "return_code": 0,
++    "status": "PASS"
++  }
++}
+@@ -0,0 +1,77 @@
++#!/usr/bin/env python3
++"""Offline reproducible host formula acceptance; JSON artifact with explicit scope."""
++from __future__ import annotations
++import hashlib
++import json
++import math
++from pathlib import Path
++import platform
++import random
++import re
++import subprocess
++import sys
++
++BASE = Path(__file__).resolve().parent
++sys.path.insert(0, str(BASE))
++from uno_core.reference import Weights, Organism, readout_loss_and_gradient, train_new_readout
++
++
++def acceptance():
++    run = subprocess.run([sys.executable, "-m", "unittest", "discover", "-s", str(BASE / "tests"), "-p", "test_*.py", "-v"], cwd=BASE, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
++    test_log = run.stdout + run.stderr
++    match = re.search(r"Ran (\d+) tests", test_log)
++    num = int(match.group(1)) if match else 0
++    test_ok = run.returncode == 0 and num >= 46 and "FAILED" not in test_log
++
++    rng = random.Random(100)
++    train = []; held = []
++    for idx in range(500):
++        x0, x1 = rng.uniform(-1, 1), rng.uniform(-1, 1)
++        if abs(x0-x1) < 0.1:
++            continue
++        features = (math.tanh(x0), math.tanh(x1))
++        (train if idx < 330 else held).append((features, int(x0 < x1)))
++    weights = train_new_readout(train, dim=2, n_actions=2, epochs=35, learning_rate=0.1)
++    correct = sum(int(max(range(2), key=lambda a: sum(weights[a][j]*x[j] for j in range(2))) == y) for x,y in held)
++    acc = correct / len(held)
++
++    wg = [[0.25, -0.5], [0.43, 0.29], [-0.11, 0.71]]
++    f = [0.7, -0.6]
++    _, grad = readout_loss_and_gradient(wg, f, 2)
++    errs=[]; eps=1e-6
++    for i in range(3):
++        for j in range(2):
++            plus=[row[:] for row in wg]; minus=[row[:] for row in wg]
++            plus[i][j]+=eps; minus[i][j]-=eps
++            fd=(readout_loss_and_gradient(plus,f,2)[0]-readout_loss_and_gradient(minus,f,2)[0])/(2*eps)
++            errs.append(abs(fd-grad[i][j]))
++
++    budgets=0; violations=0
++    for size in range(1,6):
++        for budget in range(120):
++            core=Organism(Weights.initial(size,size,size,seed=71))
++            core.step(tuple(1/(i+1) for i in range(size)),budget_units=budget)
++            budgets+=1
++            violations+=int(core.last_units>budget)
++
++    formula_path = BASE/"docs"/"UNO_SYSTEM_FORMULA.md"
++    if not formula_path.is_file():
++        formula_path = BASE.parent.parent/"docs"/"UNO_SYSTEM_FORMULA.md"
++    digests={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [BASE/"uno_core"/"reference.py", BASE/"tests"/"test_math_contract.py", formula_path]}
++    passed = test_ok and acc>=0.96 and max(errs)<1e-8 and violations==0
++    return {"report_schema":"UNO_MATH_ACCEPTANCE_V0_1", "status":"HOST_MATH_REFERENCE_PASS" if passed else "FAIL", "pass_percentage_of_declared_gates":100 if passed else 0,
++        "scope":"finite-dimensional host reference; no Android, general intelligence or physical energy proof",
++        "unit_tests":{"passed":num if test_ok else 0,"discovered":num,"return_code":run.returncode,"status":"PASS" if test_ok else "FAIL", "parameterized_subcases_note":"37 verified by pytest separate run"},
++        "numeric_checks":{"max_central_difference_gradient_error":max(errs), "threshold":1e-8,"holdout_accuracy":acc,"holdout_count":len(held),"holdout_correct":correct,"minimum_holdout_accuracy":0.96,"budgets_exercised":budgets,"budget_violations":violations},
++        "python_version":platform.python_version(),"platform":platform.system()+" "+platform.machine(),
++        "file_sha256":digests,
++        "not_proven":["Android device", "energy joules", "end-to-end language", "full neural weights training", "evolution", "adversarial security"]}
++
++
++if __name__=="__main__":
++    report=acceptance()
++    print(json.dumps(report,ensure_ascii=False,indent=2,sort_keys=True))
++    out=BASE/"reports"/"UNO_MATH_ACCEPTANCE_V0_1.json"
++    out.parent.mkdir(parents=True,exist_ok=True)
++    out.write_text(json.dumps(report,ensure_ascii=False,indent=2,sort_keys=True)+"\n")
++    raise SystemExit(0 if report["status"]=="HOST_MATH_REFERENCE_PASS" else 1)
+@@ -0,0 +1,519 @@
++"""Independent numerical and safety reference tests for UNO math v0.1.
++
++No Android runtime, API, network, old Jarvis weights or third-party imports.
++"""
++import itertools
++import json
++import math
++import random
++import unittest
++from hashlib import sha256
++
++from uno_core.reference import (
++    Organism, Policy, TrustedBoundary, Weights,
++    readout_loss_and_gradient, train_new_readout,
++)
++
++
++def sample_core(seed=73, n=3, d=4, a=3, **config):
++    return Organism(Weights.initial(n, d, a, seed), **config)
++
++
++def policy(core, **kw):
++    return Policy(owner=True, permission=True, confirmed=True, unlocked=True,
++                  stopped=False, epoch=core.epoch,
++                  permitted_actions=tuple(range(core.weights.a)), **kw)
++
++
++def fixed_logit(core, action, h):
++    return math.fsum(x*y for x, y in zip(core.weights.w_out[action], h)) + \
++        math.fsum(x*y for x, y in zip(core.p[action], h)) + core.weights.b_out[action]
++
++
++def sigmoid(z):
++    return 1 / (1 + math.exp(-z))
++
++
++class Mathematics(unittest.TestCase):
++    def test_parameter_shape_fail_closed(self):
++        w = Weights.initial(2, 3, 2)
++        d = dict(w.__dict__)
++        d["w_enc"] = ((0.0, 0.0),)
++        with self.assertRaisesRegex(ValueError, "matrix shape"):
++            Weights(**d)
++
++    def test_all_nonfinite_weights_rejected(self):
++        w = Weights.initial(2, 2, 2)
++        for bad in [float("nan"), float("inf"), -float("inf")]:
++            d = dict(w.__dict__)
++            d["b_enc"] = (bad, 0.0)
++            with self.subTest(bad=str(bad)), self.assertRaises(ValueError):
++                Weights(**d)
++
++    def test_deterministic_weights_without_old_JNO(self):
++        a, b, c = Weights.initial(3, 4, 3, 17), Weights.initial(3, 4, 3, 17), Weights.initial(3, 4, 3, 18)
++        self.assertEqual(a.digest(), b.digest())
++        self.assertNotEqual(a.digest(), c.digest())
++
++    def test_zero_input_true_skip(self):
++        c = sample_core()
++        h, p = c.h[:], [row[:] for row in c.p]
++        self.assertIsNone(c.step((0.0, 0.0, 0.0), budget_units=1000))
++        self.assertEqual(c.last_units, 0)
++        self.assertEqual((h, p), (c.h, c.p))
++
++    def test_budget_below_base_true_skip(self):
++        c = sample_core()
++        self.assertIsNone(c.step((1.0, 0.2, -0.1), budget_units=c.minimum_units-1))
++        self.assertEqual(c.serial, 0)
++        self.assertEqual(c.last_units, 0)
++
++    def test_budget_no_recurrence_when_exact_base(self):
++        c = sample_core()
++        p = c.step((1.0, 0.2, -0.1), budget_units=c.minimum_units)
++        self.assertIsNotNone(p)
++        self.assertEqual(p.iterations, 0)
++        self.assertEqual(p.used_units, c.minimum_units)
++
++    def test_sparse_mask_row_skipping_and_cost(self):
++        w = Weights.initial(3, 3, 2).identity_encoder()
++        c = Organism(w, rho=0.0, delta=0.3, tau=0.1, max_steps=6)
++        p = c.step((0.9, 0.0, 0.0), budget_units=10_000)
++        self.assertEqual(p.active_rows, (0,))
++        self.assertEqual(p.iterations, 6)
++        self.assertEqual(p.used_units, c.minimum_units + 6 * (2 * w.d))
++        self.assertEqual(p.trace[1], 0.0)
++        self.assertEqual(p.trace[2], 0.0)
++
++    def test_manual_reference_recurrence_matches(self):
++        w = Weights.initial(2, 3, 2, 31)
++        c = Organism(w, rho=0.4, delta=0.17, tau=0.08, max_steps=3)
++        x = (0.8, -0.3)
++        z = [math.tanh(sum(w.w_enc[j][i]*x[i] for i in range(w.n)) + w.b_enc[j]) for j in range(w.d)]
++        mask = [j for j in range(w.d) if abs(z[j]) > c.tau]
++        h = [max(-1, min(1, (1-c.rho)*val)) for val in z]
++        for _ in range(3):
++            nxt = list(h)
++            for j in mask:
++                value = sum(w.w_h[j][i]*h[i] for i in range(w.d)) + sum(w.w_z[j][i]*z[i] for i in range(w.d)) + w.b_h[j]
++                nxt[j] = max(-1, min(1, h[j] + c.delta*math.tanh(value)))
++            h = nxt
++        prop = c.step(x, budget_units=1000)
++        self.assertEqual(prop.iterations, 3)
++        for got, expected in zip(prop.trace, h):
++            self.assertAlmostEqual(got, expected, places=13)
++        for i, got in enumerate(prop.probabilities):
++            self.assertAlmostEqual(got, sigmoid(sum(w.w_out[i][j]*h[j] for j in range(w.d)) + w.b_out[i]), places=13)
++
++    def test_all_small_budgets_obey_cap(self):
++        for budget in range(0, 200):
++            c = sample_core(seed=5)
++            p = c.step((0.7, 0.3, -0.5), budget_units=budget)
++            self.assertLessEqual(c.last_units, budget)
++            if p:
++                self.assertEqual(p.used_units, c.last_units)
++                self.assertLessEqual(p.iterations, c.max_steps)
++
++    def test_all_state_and_plastic_values_bounded_under_many_steps(self):
++        c = sample_core()
++        rng = random.Random(102)
++        for _ in range(500):
++            p = c.step(tuple(rng.uniform(-1, 1) for _ in range(c.weights.n)), budget_units=1000)
++            self.assertTrue(p is None or all(-1 <= x <= 1 for x in p.trace))
++            self.assertTrue(all(-c.plastic_cap <= v <= c.plastic_cap for row in c.p for v in row))
++
++    def test_max_steps_and_zero_steps(self):
++        c = sample_core(max_steps=0)
++        p = c.step((0.5, 0.3, -0.3), budget_units=1000)
++        self.assertEqual(p.iterations, 0)
++
++    def test_malformed_inputs_do_not_mutate(self):
++        c = sample_core()
++        original = c.snapshot()
++        cases = [((math.nan, 0, 0), 100), ((math.inf, 0, 0), 100), ((1, 2), 100), ((1, 0, 0), -1), ((1, 0, 0), True)]
++        for x, budget in cases:
++            with self.subTest(x=x, budget=budget), self.assertRaises(ValueError):
++                c.step(x, budget_units=budget)
++            self.assertEqual(c.snapshot(), original)
++
++    def test_spend_monotone_and_bounded(self):
++        costs = []
++        for b in range(200):
++            c = sample_core()
++            c.step((0.7, -0.2, 0.3), budget_units=b)
++            costs.append(c.last_units)
++        self.assertEqual(costs, sorted(costs))
++        self.assertLessEqual(max(costs), 200)
++
++
++class TrustAndPlasticity(unittest.TestCase):
++    def test_default_policy_denies(self):
++        c = sample_core(); b = TrustedBoundary(c)
++        prop = c.step((1.0, 0.2, 0.1), budget_units=1000)
++        self.assertIsNone(b.authorize(prop, Policy()))
++        self.assertEqual(c.learning_events, 0)
++
++    def test_each_authority_gate_essential(self):
++        c = sample_core(); b = TrustedBoundary(c)
++        prop = c.step((1.0, 0.2, 0.1), budget_units=1000)
++        good = policy(c)
++        from dataclasses import replace
++        for item, value in [("owner", False), ("permission", False), ("confirmed", False), ("unlocked", False), ("stopped", True), ("epoch", 2), ("permitted_actions", ())]:
++            with self.subTest(field=item):
++                self.assertIsNone(b.authorize(prop, replace(good, **{item: value})))
++        self.assertIsNotNone(b.authorize(prop, good))
++
++    def test_confirmed_success_updates_only_selected_plastic_row(self):
++        c = sample_core(); b = TrustedBoundary(c)
++        prop = c.step((1.0, 0.2, 0.1), budget_units=1000)
++        before = sigmoid(fixed_logit(c, prop.action, prop.trace))
++        old = [row[:] for row in c.p]
++        ticket = b.authorize(prop, policy(c))
++        self.assertEqual(b.finish(ticket, expected=17, native_readback=lambda: 17), "CONFIRMED")
++        after = sigmoid(fixed_logit(c, prop.action, prop.trace))
++        self.assertGreater(after, before)
++        for i in range(c.weights.a):
++            if i != prop.action:
++                self.assertEqual(c.p[i], old[i])
++        self.assertEqual(c.learning_events, 1)
++
++    def test_contradiction_reduces_selected_outcome_prediction(self):
++        c = sample_core(); b = TrustedBoundary(c)
++        prop = c.step((0.5, 0.2, 0.3), budget_units=1000)
++        before = sigmoid(fixed_logit(c, prop.action, prop.trace))
++        ticket = b.authorize(prop, policy(c))
++        self.assertEqual(b.finish(ticket, expected="ON", native_readback=lambda: "OFF"), "CONTRADICTED")
++        self.assertLess(sigmoid(fixed_logit(c, prop.action, prop.trace)), before)
++
++    def test_unknown_observation_never_teaches(self):
++        for observed in (None, 17.0):
++            c = sample_core(); b = TrustedBoundary(c)
++            prop = c.step((1, 0, 0), budget_units=1000)
++            ticket = b.authorize(prop, policy(c))
++            old = c.snapshot()
++            self.assertEqual(b.finish(ticket, expected=17, native_readback=lambda: observed), "UNKNOWN")
++            self.assertEqual(c.snapshot(), old)
++
++    def test_native_readback_exception_never_teaches(self):
++        c = sample_core(); b = TrustedBoundary(c)
++        prop = c.step((1, 0, 0), budget_units=1000)
++        ticket = b.authorize(prop, policy(c)); old = c.snapshot()
++        def bad(): raise RuntimeError("device read failed")
++        self.assertEqual(b.finish(ticket, expected="ON", native_readback=bad), "UNKNOWN")
++        self.assertEqual(c.snapshot(), old)
++
++    def test_replay_ticket_rejected(self):
++        c = sample_core(); b = TrustedBoundary(c)
++        p = c.step((1, 0, 0), budget_units=1000); ticket = b.authorize(p, policy(c))
++        self.assertEqual(b.finish(ticket, expected=True, native_readback=lambda: True), "CONFIRMED")
++        after = c.snapshot()
++        self.assertEqual(b.finish(ticket, expected=True, native_readback=lambda: True), "REJECTED_TICKET")
++        self.assertEqual(c.snapshot(), after)
++
++    def test_stop_epoch_stales_old_ticket(self):
++        c = sample_core(); b = TrustedBoundary(c)
++        p = c.step((1, 0, 0), budget_units=1000); ticket = b.authorize(p, policy(c))
++        c.epoch_stop()
++        after = c.snapshot()
++        self.assertEqual(b.finish(ticket, expected=True, native_readback=lambda: True), "STALE")
++        self.assertEqual(c.snapshot(), after)
++
++    def test_new_proposal_stales_old_ticket(self):
++        c = sample_core(); b = TrustedBoundary(c)
++        p = c.step((1, 0, 0), budget_units=1000); ticket = b.authorize(p, policy(c))
++        c.step((0, 1, 0), budget_units=1000)
++        after = c.snapshot()
++        self.assertEqual(b.finish(ticket, expected=True, native_readback=lambda: True), "STALE")
++        self.assertEqual(c.snapshot(), after)
++
++    def test_no_training_on_denial(self):
++        c = sample_core(); b = TrustedBoundary(c)
++        p = c.step((1, 0, 0), budget_units=1000)
++        before = c.snapshot()
++        self.assertIsNone(b.authorize(p, Policy()))
++        self.assertEqual(c.snapshot(), before)
++
++    def test_plasticity_math_independent_delta_oracle(self):
++        c = sample_core(eta=0.5, forgetting=0.05)
++        b = TrustedBoundary(c)
++        p = c.step((0.8, 0.4, -0.2), budget_units=1000)
++        baseline = c.p[p.action][:]
++        expected = [max(-c.plastic_cap, min(c.plastic_cap, (1-c.forgetting)*a + c.eta*(1-p.probabilities[p.action])*h/(sum(v*v for v in p.trace)+1e-8))) for a,h in zip(baseline,p.trace)]
++        ticket = b.authorize(p, policy(c))
++        b.finish(ticket, expected="ON", native_readback=lambda: "ON")
++        for actual, calc in zip(c.p[p.action], expected):
++            self.assertAlmostEqual(actual, calc, places=14)
++
++    def test_plastic_projection_bound_after_repeated_adaptations(self):
++        c = sample_core(plastic_cap=0.1, eta=1)
++        b = TrustedBoundary(c)
++        for _ in range(250):
++            p = c.step((1, 0.5, -0.1), budget_units=1000)
++            ticket = b.authorize(p, policy(c))
++            b.finish(ticket, expected=True, native_readback=lambda: True)
++            self.assertTrue(all(-0.1 <= val <= 0.1 for row in c.p for val in row))
++
++
++class AdditionalSafety(unittest.TestCase):
++    def test_new_idle_stimulus_invalidates_old_ticket(self):
++        c = sample_core(); boundary = TrustedBoundary(c)
++        p = c.step((1.0, 0.0, 0.0), budget_units=1000)
++        ticket = boundary.authorize(p, policy(c))
++        c.step((0.0, 0.0, 0.0), budget_units=1000)
++        self.assertEqual(boundary.finish(ticket, expected=True, native_readback=lambda: True), "STALE")
++        self.assertEqual(c.learning_events, 0)
++
++    def test_new_budget_exhausted_stimulus_invalidates_old_ticket(self):
++        c = sample_core(); boundary = TrustedBoundary(c)
++        p = c.step((1.0, 0.0, 0.0), budget_units=1000)
++        ticket = boundary.authorize(p, policy(c))
++        c.step((1.0, 0.0, 0.0), budget_units=0)
++        self.assertEqual(boundary.finish(ticket, expected=True, native_readback=lambda: True), "STALE")
++
++    def test_random_budget_model_seed_properties(self):
++        rng = random.Random(8)
++        for _ in range(500):
++            n, d, a = (rng.randint(1, 6) for _ in range(3))
++            budget = rng.randint(0, 500)
++            c = Organism(Weights.initial(n, d, a, rng.randrange(100000)),
++                         rho=rng.random(), delta=rng.random()*0.99 + 0.01,
++                         tau=rng.random()*0.7, max_steps=rng.randint(0, 8))
++            x = tuple(rng.uniform(-1, 1) for _ in range(n))
++            p = c.step(x, budget_units=budget)
++            self.assertLessEqual(c.last_units, budget)
++            self.assertTrue(all(-1 <= v <= 1 for v in c.h))
++            if p:
++                self.assertTrue(0 <= p.iterations <= c.max_steps)
++                self.assertTrue(all(-1 <= v <= 1 for v in p.trace))
++                self.assertTrue(all(0 <= v <= 1 for v in p.probabilities))
++                self.assertEqual(p.used_units, c.minimum_units +
++                                 p.iterations * len(p.active_rows) * (2 * d))
++
++
++class Snapshots(unittest.TestCase):
++    def test_snapshot_roundtrip_and_model_binding(self):
++        c = sample_core(); b = TrustedBoundary(c)
++        p = c.step((0.7, -0.2, 1), budget_units=1000)
++        ticket = b.authorize(p, policy(c))
++        b.finish(ticket, expected=2, native_readback=lambda: 2)
++        data = c.snapshot()
++        fresh = Organism(c.weights)
++        fresh.restore(data)
++        self.assertEqual(fresh.snapshot(), data)
++        self.assertEqual(fresh.learning_events, 1)
++        other = sample_core(seed=92)
++        with self.assertRaisesRegex(ValueError, "incompatible model"):
++            other.restore(data)
++
++    def test_snapshot_bound_to_hyperparameters(self):
++        c = sample_core()
++        data = c.snapshot()
++        changed = Organism(c.weights, rho=0.1)
++        with self.assertRaisesRegex(ValueError, "incompatible model"):
++            changed.restore(data)
++
++    def test_corruption_fails_atomically(self):
++        c = sample_core(); c.step((1, 0, 0), budget_units=1000)
++        good = c.snapshot()
++        for pos in (0, 13, len(good)//2, len(good)-2):
++            bad = bytearray(good)
++            bad[pos] ^= 1
++            with self.subTest(pos=pos), self.assertRaises((ValueError, TypeError, UnicodeError, json.JSONDecodeError)):
++                c.restore(bytes(bad))
++            self.assertEqual(c.snapshot(), good)
++
++    def test_even_rehashed_invalid_bounds_and_shape_rejected(self):
++        c = sample_core(); before = c.snapshot()
++        for mutate in (lambda p: p.update({"h": [3.0] + p["h"][1:]}),
++                       lambda p: p.update({"h": [0.0]}),
++                       lambda p: p.update({"serial": -1}),
++                       lambda p: p.update({"epoch": 0.1})):
++            o = json.loads(before)
++            mutate(o["payload"])
++            o["sha256"] = sha256(json.dumps(o["payload"], sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest()
++            with self.assertRaises(ValueError):
++                c.restore(json.dumps(o).encode())
++            self.assertEqual(c.snapshot(), before)
++
++    def test_inflight_ticket_is_not_restored(self):
++        c = sample_core(); b = TrustedBoundary(c)
++        p = c.step((1, 0, 0), budget_units=1000)
++        ticket = b.authorize(p, policy(c))
++        data = c.snapshot()
++        c.restore(data)
++        self.assertEqual(b.finish(ticket, expected=True, native_readback=lambda: True), "STALE")
++        self.assertEqual(c.learning_events, 0)
++
++
++class GradientAndTraining(unittest.TestCase):
++    def test_cross_entropy_analytic_vs_central_difference(self):
++        w = [[0.25, -0.5], [0.43, 0.29], [-0.11, 0.71]]
++        f = [0.7, -0.6]
++        _, grad = readout_loss_and_gradient(w, f, 2)
++        eps = 1e-6
++        for a, d in itertools.product(range(3), range(2)):
++            plus = [row[:] for row in w]; minus = [row[:] for row in w]
++            plus[a][d] += eps; minus[a][d] -= eps
++            approx = (readout_loss_and_gradient(plus, f, 2)[0] - readout_loss_and_gradient(minus, f, 2)[0]) / (2*eps)
++            self.assertAlmostEqual(grad[a][d], approx, delta=1e-8)
++
++    def test_new_readout_training_and_holdout(self):
++        rng = random.Random(100)
++        train = []
++        test = []
++        for idx in range(500):
++            x = (rng.uniform(-1, 1), rng.uniform(-1, 1))
++            if abs(x[0]-x[1]) < 0.1:
++                continue
++            feat = (math.tanh(x[0]), math.tanh(x[1]))
++            target = int(x[0] < x[1])
++            (train if idx < 330 else test).append((feat, target))
++        weights = train_new_readout(train, dim=2, n_actions=2, epochs=35, learning_rate=0.1)
++        acc = sum(max(range(2), key=lambda a: sum(weights[a][j]*f[j] for j in range(2))) == y for f,y in test)/len(test)
++        self.assertGreaterEqual(acc, 0.96, f"Holdout accuracy: {acc}")
++
++    def test_training_is_deterministic_new_weights(self):
++        samples = [((1.0, -1.0), 0), ((-1.0, 1.0), 1)]
++        self.assertEqual(train_new_readout(samples, dim=2, n_actions=2),
++                         train_new_readout(samples, dim=2, n_actions=2))
++
++
++if __name__ == "__main__":
++    unittest.main()
++
++
++class RecurrenceDerivatives(unittest.TestCase):
++    def test_masked_jacobian_against_finite_difference(self):
++        from uno_core.reference import masked_recurrence_jacobian
++        rng = random.Random(224)
++        eps = 1e-6
++        for _ in range(120):
++            w = Weights.initial(3, 3, 2, rng.randrange(10000))
++            h = [rng.uniform(-0.6, 0.6) for i in range(3)]
++            z = [rng.uniform(-0.4, 0.4) for i in range(3)]
++            active = (0, 2)
++            delta = 0.15
++            analytic = masked_recurrence_jacobian(w, h, z, active, delta)
++            self.assertIsNotNone(analytic)
++            def evolve(hv):
++                nxt = hv[:]
++                for i in active:
++                    u = sum(w.w_h[i][j] * hv[j] for j in range(3)) + sum(w.w_z[i][j]*z[j] for j in range(3)) + w.b_h[i]
++                    nxt[i] = max(-1, min(1, hv[i]+delta*math.tanh(u)))
++                return nxt
++            for i, j in itertools.product(range(3), repeat=2):
++                pos = h[:]; neg = h[:]
++                pos[j] += eps; neg[j] -= eps
++                approx = (evolve(pos)[i] - evolve(neg)[i])/(2*eps)
++                self.assertAlmostEqual(analytic[i][j], approx, delta=2e-9)
++
++    def test_masked_recurrence_has_finite_lipschitz_bound(self):
++        rng = random.Random(90)
++        for _ in range(250):
++            w = Weights.initial(3, 4, 2, rng.randrange(50000))
++            h1 = [rng.uniform(-0.8, 0.8) for _ in range(4)]
++            h2 = [rng.uniform(-0.8, 0.8) for _ in range(4)]
++            z = [rng.uniform(-0.7, 0.7) for _ in range(4)]
++            active = (1, 3)
++            delta = 0.2
++            bound = 1+delta*max(sum(abs(v) for v in row) for row in w.w_h)
++            def evolve(h):
++                out = h[:]
++                for i in active:
++                    y = sum(w.w_h[i][j]*h[j] for j in range(4)) + sum(w.w_z[i][j]*z[j] for j in range(4)) + w.b_h[i]
++                    out[i] = max(-1, min(1, h[i]+delta*math.tanh(y)))
++                return out
++            inp = max(abs(a-b) for a,b in zip(h1,h2))
++            diff = max(abs(a-b) for a,b in zip(evolve(h1),evolve(h2)))
++            self.assertLessEqual(diff, bound*inp+1e-12)
++
++    def test_stop_during_native_readback_fails_closed(self):
++        c = sample_core(); b = TrustedBoundary(c)
++        p = c.step((1.0, 0.0, 0.0), budget_units=1000)
++        ticket = b.authorize(p, policy(c))
++        def device_callback():
++            c.epoch_stop()  # STOP arrives during external readback
++            return True
++        self.assertEqual(b.finish(ticket, expected=True, native_readback=device_callback), "STALE")
++        self.assertEqual(c.learning_events, 0)
++
++class InvalidConfigurationAndBounds(unittest.TestCase):
++    def test_bad_dimension_and_weight_values(self):
++        from dataclasses import replace
++        w = Weights.initial(2, 2, 2)
++        with self.assertRaises(ValueError):
++            replace(w, n=0)
++        with self.assertRaises(ValueError):
++            Weights.initial(65, 2, 2)
++        with self.assertRaises(ValueError):
++            replace(w, w_h=((float('nan'), 0.0), (0.0, 0.0)))
++        with self.assertRaises(ValueError):
++            w.identity_encoder() if w.n != w.d else Weights.initial(2, 3, 2).identity_encoder()
++
++    def test_bad_hyperparameters_and_step_limit(self):
++        w = Weights.initial(2,2,2)
++        for config in ({'rho': float('nan')}, {'rho': -0.1}, {'eta': 0.0},
++                       {'plastic_cap': 11.0}, {'delta': 1.01}, {'forgetting': 1.0}):
++            with self.subTest(config=config), self.assertRaises(ValueError):
++                Organism(w, **config)
++        for limit in (-1, 17, True):
++            with self.subTest(limit=limit), self.assertRaises(ValueError):
++                Organism(w, max_steps=limit)
++
++    def test_reject_invalid_outcome_and_training_samples(self):
++        c = sample_core(); p = c.step((1,0,0), budget_units=1000)
++        for value in (True, 2, -1, 0.1):
++            with self.assertRaises(ValueError):
++                c._learn_from_authority(p, value)
++        with self.assertRaises(ValueError):
++            readout_loss_and_gradient(((0.0, 0.0),), (0.0, 0.0), 2)
++        for bad in ([], [((math.inf, 0), 1)], [((1,), 0)], [((1,0), 3)]):
++            with self.assertRaises(ValueError):
++                train_new_readout(bad, dim=2, n_actions=2)
++
++    def test_invalid_snapshot_envelopes_and_schema(self):
++        c = sample_core(); baseline = c.snapshot()
++        for blob in ("not bytes", b"[]", b"{}", b"\"abc\"", b"0"*1_000_001):
++            with self.subTest(blob=str(blob)[:30]), self.assertRaises((ValueError, TypeError)):
++                c.restore(blob)
++            self.assertEqual(c.snapshot(), baseline)
++        obj = json.loads(baseline)
++        del obj['payload']['serial']
++        obj['sha256'] = sha256(json.dumps(obj['payload'], sort_keys=True, separators=(',', ':')).encode()).hexdigest()
++        with self.assertRaises(ValueError):
++            c.restore(json.dumps(obj).encode())
++        self.assertEqual(c.snapshot(), baseline)
++
++    def test_derivative_rejects_bad_shapes_and_clip_nondifferentiability(self):
++        from uno_core.reference import masked_recurrence_jacobian
++        w = Weights.initial(2, 2, 2)
++        for h, z, mask in [((0,), (0,0), (0,)), ((float('nan'), 0), (0,0), (0,)),
++                           ((0,0), (0,0), (0,0)), ((0,0), (0,0), (3,))]:
++            with self.subTest(h=h, mask=mask), self.assertRaises(ValueError):
++                masked_recurrence_jacobian(w, h, z, mask, 0.2)
++        self.assertIsNone(masked_recurrence_jacobian(w, (1.0, 0.0), (0.0, 0.0), (0,), 0.2))
++
++    def test_snapshot_finite_invalid_internal_readout_does_not_commit(self):
++        c = sample_core()
++        c.p[0][0] = float('inf')  # deliberate internal corruption, bypassing normal storage validators
++        h_before = c.h[:]
++        with self.assertRaises(ArithmeticError):
++            c.step((1,0,0), budget_units=1000)
++        self.assertEqual(c.h, h_before)
++
++
++class TrainedWeightsIntegration(unittest.TestCase):
++    def test_newly_trained_readout_is_used_by_same_core(self):
++        from dataclasses import replace
++        train = []
++        for v in [0.3, 0.5, 0.7, 0.9]:
++            train.extend([((math.tanh(v), math.tanh(-v)), 0),
++                          ((math.tanh(-v), math.tanh(v)), 1)])
++        learned = train_new_readout(train, dim=2, n_actions=2, epochs=70, learning_rate=0.2)
++        core_weights = replace(Weights.initial(2,2,2, seed=123).identity_encoder(), w_out=learned)
++        core = Organism(core_weights, rho=0, max_steps=0)
++        proposal = core.step((0.75, -0.65), budget_units=core.minimum_units)
++        self.assertEqual(proposal.action, 0)
++        reverse = Organism(core_weights, rho=0, max_steps=0)
++        proposal2 = reverse.step((-0.65, 0.75), budget_units=reverse.minimum_units)
++        self.assertEqual(proposal2.action, 1)
+@@ -0,0 +1,2 @@
++from .reference import Organism, Policy, Proposal, Ticket, TrustedBoundary, Weights, readout_loss_and_gradient, train_new_readout
++__all__ = ["Organism", "Policy", "Proposal", "Ticket", "TrustedBoundary", "Weights", "readout_loss_and_gradient", "train_new_readout"]
+@@ -0,0 +1,368 @@
++"""UNO mathematical reference v0.1: bounded unified recurrent state and evidence-gated plasticity.
++
++This is a HOST REFERENCE, not an Android runtime, LLM or trusted OS security boundary.
++Only standard Python library. A compute-unit count is an algorithmic proxy, NOT joules.
++"""
++from __future__ import annotations
++
++from dataclasses import dataclass, replace
++from hashlib import sha256
++import json
++import math
++import random
++import secrets
++from typing import Callable, Optional, Sequence
++
++
++MAX_DIM = 64
++MAX_BUDGET = 1_000_000
++
++
++def _finite(x: float) -> bool:
++    return type(x) in (int, float) and math.isfinite(x)
++
++
++def _sigmoid(x: float) -> float:
++    if x >= 0.0:
++        return 1.0 / (1.0 + math.exp(-x))
++    v = math.exp(x)
++    return v / (1.0 + v)
++
++
++def _clip(x: float, limit: float = 1.0) -> float:
++    return min(limit, max(-limit, x))
++
++
++def _dot(a: Sequence[float], b: Sequence[float]) -> float:
++    return math.fsum(x * y for x, y in zip(a, b))
++
++
++def _encode_json(data: object) -> bytes:
++    return json.dumps(data, sort_keys=True, separators=(",", ":"), allow_nan=False).encode("utf-8")
++
++
++@dataclass(frozen=True)
++class Weights:
++    """Finite bounded trainable parameters. Rows W_enc[d,n], W_h[d,d], W_z[d,d], W_out[a,d]."""
++    n: int
++    d: int
++    a: int
++    w_enc: tuple[tuple[float, ...], ...]
++    w_h: tuple[tuple[float, ...], ...]
++    w_z: tuple[tuple[float, ...], ...]
++    w_out: tuple[tuple[float, ...], ...]
++    b_enc: tuple[float, ...]
++    b_h: tuple[float, ...]
++    b_out: tuple[float, ...]
++
++    def __post_init__(self) -> None:
++        if any(type(v) is not int or not 1 <= v <= MAX_DIM for v in (self.n, self.d, self.a)):
++            raise ValueError("invalid dimensions")
++        for matrix, rows, cols in (
++            (self.w_enc, self.d, self.n),
++            (self.w_h, self.d, self.d),
++            (self.w_z, self.d, self.d),
++            (self.w_out, self.a, self.d),
++        ):
++            if not isinstance(matrix, tuple) or len(matrix) != rows or any(not isinstance(row, tuple) or len(row) != cols for row in matrix):
++                raise ValueError("matrix shape")
++            if any(not _finite(x) or abs(x) > 10 for row in matrix for x in row):
++                raise ValueError("invalid matrix weights")
++        for vector, size in ((self.b_enc, self.d), (self.b_h, self.d), (self.b_out, self.a)):
++            if not isinstance(vector, tuple) or len(vector) != size or any(not _finite(x) or abs(x) > 10 for x in vector):
++                raise ValueError("invalid bias")
++
++    @classmethod
++    def initial(cls, n: int, d: int, a: int, seed: int = 73) -> "Weights":
++        if any(type(x) is not int or not 1 <= x <= MAX_DIM for x in (n, d, a)):
++            raise ValueError("invalid dimensions")
++        r = random.Random(seed)
++        mat = lambda rows, cols: tuple(tuple(r.uniform(-0.3, 0.3) for _ in range(cols)) for _ in range(rows))
++        return cls(n, d, a, mat(d, n), mat(d, d), mat(d, d), mat(a, d),
++                   (0.0,) * d, (0.0,) * d, (0.0,) * a)
++
++    def identity_encoder(self) -> "Weights":
++        if self.n != self.d:
++            raise ValueError("identity encoder requires n == d")
++        return replace(self, w_enc=tuple(tuple(float(i == j) for j in range(self.n)) for i in range(self.d)))
++
++    def digest(self) -> str:
++        return sha256(_encode_json(self.__dict__)).hexdigest()
++
++
++@dataclass(frozen=True)
++class Proposal:
++    ident: int
++    epoch: int
++    action: int
++    probabilities: tuple[float, ...]
++    trace: tuple[float, ...]
++    used_units: int
++    iterations: int
++    active_rows: tuple[int, ...]
++
++
++@dataclass(frozen=True)
++class Policy:
++    """External authority snapshot. Default DENY; the neural model cannot grant privileges."""
++    owner: bool = False
++    permission: bool = False
++    confirmed: bool = False
++    unlocked: bool = False
++    stopped: bool = True
++    epoch: int = 0
++    permitted_actions: tuple[int, ...] = ()
++
++
++@dataclass(frozen=True)
++class Ticket:
++    """Transient ticket issued by trusted boundary, not by neural output."""
++    nonce: str
++    proposal_id: int
++    epoch: int
++    action: int
++
++
++class Organism:
++    """Stateful mathematical reference. No Android, network or device-authority methods."""
++
++    def __init__(self, weights: Weights, *, rho: float = 0.5, delta: float = 0.2,
++                 tau: float = 0.15, eta: float = 0.8, forgetting: float = 0.0,
++                 plastic_cap: float = 4.0, max_steps: int = 4):
++        vals = (rho, delta, tau, eta, forgetting, plastic_cap)
++        if any(not _finite(x) for x in vals) or not 0 <= rho <= 1 or not 0 < delta <= 1 or not 0 <= tau < 1 or not 0 < eta <= 1 or not 0 <= forgetting < 1 or not 0 < plastic_cap <= 10:
++            raise ValueError("invalid hyperparameters")
++        if type(max_steps) is not int or not 0 <= max_steps <= 16:
++            raise ValueError("invalid max_steps")
++        self.weights = weights
++        self.rho, self.delta, self.tau = rho, delta, tau
++        self.eta, self.forgetting, self.plastic_cap = eta, forgetting, plastic_cap
++        self.max_steps = max_steps
++        self.h = [0.0] * weights.d
++        self.p = [[0.0] * weights.d for _ in range(weights.a)]
++        self.epoch = 0
++        self.serial = 0
++        self.learning_events = 0
++        self.last_units = 0
++        self._proposal: Optional[Proposal] = None
++
++    def epoch_stop(self) -> None:
++        self.epoch += 1
++        self._proposal = None
++
++    @property
++    def minimum_units(self) -> int:
++        # Matrix-vector multiply-accumulates only: encoder + base readout + plastic readout.
++        # Not a measurement of CPU cycles, wall time, total FLOPs or joules.
++        w = self.weights
++        return w.d * w.n + 2 * w.a * w.d
++
++    def step(self, stimulus: Sequence[float], *, budget_units: int) -> Optional[Proposal]:
++        """Return a PROPOSAL only. No permission, actuator, readback or learning here."""
++        w = self.weights
++        if len(stimulus) != w.n or any(not _finite(x) or abs(x) > 1e6 for x in stimulus):
++            raise ValueError("invalid stimulus")
++        if type(budget_units) is not int or not 0 <= budget_units <= MAX_BUDGET:
++            raise ValueError("invalid budget")
++        self.last_units = 0
++        self._proposal = None  # any newer observation, including IDLE, invalidates past pending action
++        if budget_units < self.minimum_units or all(x == 0 for x in stimulus):
++            return None  # truly skip encoder/readout/recurrent multiply
++        z = []
++        for j in range(w.d):
++            z.append(math.tanh(_dot(w.w_enc[j], stimulus) + w.b_enc[j]))
++        active = tuple(i for i, val in enumerate(z) if abs(val) > self.tau)
++        # Projected leaky state. This and every recurrent step are bounded in [-1,1].
++        h = [_clip(self.rho * prev + (1.0 - self.rho) * enc) for prev, enc in zip(self.h, z)]
++        units = self.minimum_units
++        per_iter = len(active) * (2 * w.d)
++        k = min(self.max_steps, (budget_units - units) // per_iter) if per_iter else 0
++        for _ in range(k):
++            next_h = h.copy()
++            for j in active:  # no matrix rows computed for masked-out channels
++                r = math.tanh(_dot(w.w_h[j], h) + _dot(w.w_z[j], z) + w.b_h[j])
++                next_h[j] = _clip(h[j] + self.delta * r)
++            h = next_h
++            units += per_iter
++        logits = [_dot(w.w_out[i], h) + _dot(self.p[i], h) + w.b_out[i] for i in range(w.a)]
++        if any(not _finite(x) for x in logits):
++            raise ArithmeticError("nonfinite logits")
++        probabilities = tuple(_sigmoid(val) for val in logits)
++        action = max(range(w.a), key=lambda i: probabilities[i])
++        if units > budget_units:
++            raise ArithmeticError("compute budget exceeded")
++        self.serial += 1
++        self.h = h
++        self.last_units = units
++        proposal = Proposal(self.serial, self.epoch, action, probabilities,
++                            tuple(h), units, k, active)
++        self._proposal = proposal
++        return proposal
++
++    def _learn_from_authority(self, proposal: Proposal, outcome: int) -> bool:
++        """Called only by the trusted boundary after a fresh readback; one-time update."""
++        if outcome not in (0, 1) or type(outcome) is not int:
++            raise ValueError("binary observed outcome required")
++        if self._proposal != proposal or proposal.epoch != self.epoch:
++            return False
++        row = proposal.action
++        h = proposal.trace
++        denominator = math.fsum(x*x for x in h) + 1e-8
++        old = self.p[row]
++        prediction = proposal.probabilities[row]
++        scale = self.eta * (float(outcome) - prediction) / denominator
++        new = [_clip((1 - self.forgetting) * p + scale * v, self.plastic_cap) for p, v in zip(old, h)]
++        if any(not _finite(x) for x in new):
++            raise ArithmeticError("nonfinite plastic update")
++        self.p[row] = new
++        self.learning_events += 1
++        self._proposal = None
++        return True
++
++    def config_digest(self) -> str:
++        return sha256(_encode_json({"weights": self.weights.digest(),
++            "rho": self.rho, "delta": self.delta, "tau": self.tau,
++            "eta": self.eta, "forgetting": self.forgetting,
++            "plastic_cap": self.plastic_cap, "max_steps": self.max_steps})).hexdigest()
++
++    def snapshot(self) -> bytes:
++        value = {"format": "UNO_SNAPSHOT_1", "weights": self.config_digest(),
++                 "h": self.h, "p": self.p, "epoch": self.epoch,
++                 "serial": self.serial, "learning_events": self.learning_events}
++        raw = _encode_json(value)
++        return _encode_json({"payload": value, "sha256": sha256(raw).hexdigest()})
++
++    def restore(self, blob: bytes) -> None:
++        """Validate entire snapshot before mutating any state (fail-closed)."""
++        if not isinstance(blob, bytes) or len(blob) > 1_000_000:
++            raise ValueError("invalid snapshot bytes")
++        outer = json.loads(blob.decode("utf-8"))
++        if not isinstance(outer, dict) or set(outer) != {"payload", "sha256"}:
++            raise ValueError("invalid snapshot envelope")
++        value = outer["payload"]
++        if sha256(_encode_json(value)).hexdigest() != outer["sha256"]:
++            raise ValueError("snapshot checksum")
++        if not isinstance(value, dict) or set(value) != {"format", "weights", "h", "p", "epoch", "serial", "learning_events"}:
++            raise ValueError("snapshot schema")
++        if value["format"] != "UNO_SNAPSHOT_1" or value["weights"] != self.config_digest():
++            raise ValueError("incompatible model")
++        h, p = value["h"], value["p"]
++        if not isinstance(h, list) or len(h) != self.weights.d or not isinstance(p, list) or len(p) != self.weights.a or any(not isinstance(row, list) or len(row) != self.weights.d for row in p):
++            raise ValueError("snapshot shape")
++        if any(not _finite(v) or abs(v) > 1 for v in h) or any(not _finite(v) or abs(v) > self.plastic_cap for row in p for v in row):
++            raise ValueError("snapshot bounds")
++        for key in ("epoch", "serial", "learning_events"):
++            if type(value[key]) is not int or not 0 <= value[key] <= 2**63 - 1:
++                raise ValueError("snapshot counters")
++        # The only state mutations happen after full validation.
++        self.h, self.p = h[:], [row[:] for row in p]
++        self.epoch = value["epoch"]
++        self.serial = value["serial"]
++        self.learning_events = value["learning_events"]
++        self._proposal = None  # never resurrect an in-flight device operation
++        self.last_units = 0
++
++
++class TrustedBoundary:
++    """HOST SIMULATION of OS authority + native readback; NOT a device security boundary.
++
++    In Android this must be implemented by OS-backed permissions/confirmation and
++    a native independently sourced readback. Never accept model text as evidence.
++    """
++
++    def __init__(self, core: Organism):
++        self.core = core
++        self._pending: dict[str, Ticket] = {}
++
++    def authorize(self, proposal: Proposal, policy: Policy) -> Optional[Ticket]:
++        c = self.core
++        valid = (policy.owner and policy.permission and policy.confirmed and policy.unlocked
++                 and not policy.stopped and policy.epoch == c.epoch
++                 and proposal.epoch == c.epoch and c._proposal == proposal
++                 and proposal.action in policy.permitted_actions)
++        if not valid:
++            return None
++        ticket = Ticket(secrets.token_hex(16), proposal.ident, proposal.epoch, proposal.action)
++        self._pending[ticket.nonce] = ticket
++        return ticket
++
++    def finish(self, ticket: Ticket, *, expected: object,
++               native_readback: Callable[[], object]) -> str:
++        """Only a fresh one-time ticket can learn; unknown observations are never learned."""
++        if self._pending.get(ticket.nonce) != ticket:
++            return "REJECTED_TICKET"
++        del self._pending[ticket.nonce]
++        proposal = self.core._proposal
++        if proposal is None or proposal.ident != ticket.proposal_id or proposal.epoch != ticket.epoch or self.core.epoch != ticket.epoch or proposal.action != ticket.action:
++            return "STALE"
++        try:
++            actual = native_readback()
++        except Exception:
++            return "UNKNOWN"
++        if actual is None or expected is None:
++            return "UNKNOWN"
++        # Reject 0/False ambiguity in Python for explicitly typed native states.
++        if type(actual) is not type(expected):
++            return "UNKNOWN"
++        result = 1 if actual == expected else 0
++        if not self.core._learn_from_authority(proposal, result):
++            return "STALE"
++        return "CONFIRMED" if result == 1 else "CONTRADICTED"
++
++
++# Offline mini-experiment: learn newly initialized UNO readout weights using
++# analytic softmax cross-entropy gradient. This is NOT general-language training.
++def readout_loss_and_gradient(w_out: Sequence[Sequence[float]], features: Sequence[float], target: int):
++    n_actions = len(w_out)
++    if not n_actions or not 0 <= target < n_actions or any(len(row) != len(features) for row in w_out):
++        raise ValueError("shape/target")
++    logits = [_dot(row, features) for row in w_out]
++    high = max(logits)
++    ex = [math.exp(t - high) for t in logits]
++    total = sum(ex)
++    probs = [v / total for v in ex]
++    loss = high + math.log(total) - logits[target]  # stable log-sum-exp even for tiny probabilities
++    gradient = [[(probs[i] - float(i == target)) * f for f in features] for i in range(n_actions)]
++    return loss, gradient
++
++
++def train_new_readout(samples: Sequence[tuple[Sequence[float], int]], *, dim: int,
++                      n_actions: int, epochs: int = 80, learning_rate: float = 0.2, seed: int = 11):
++    """Fresh weights trained from random initialization; deterministic SGD."""
++    if not samples or not 1 <= dim <= MAX_DIM or not 1 <= n_actions <= MAX_DIM or not 1 <= epochs <= 1000 or not 0 < learning_rate <= 1:
++        raise ValueError("invalid training configuration")
++    rand = random.Random(seed)
++    w = [[rand.uniform(-0.05, 0.05) for _ in range(dim)] for _ in range(n_actions)]
++    for _ in range(epochs):
++        for features, target in samples:
++            if len(features) != dim or any(not _finite(v) or abs(v) > 10 for v in features) or not 0 <= target < n_actions:
++                raise ValueError("invalid training sample")
++            _, grad = readout_loss_and_gradient(w, features, target)
++            for i in range(n_actions):
++                for j in range(dim):
++                    w[i][j] -= learning_rate * grad[i][j]
++    return tuple(tuple(row) for row in w)
++
++
++def masked_recurrence_jacobian(weights: Weights, h: Sequence[float], z: Sequence[float],
++                               active_rows: Sequence[int], delta: float):
++    """Analytic d(h_next)/d(h) for one projected masked recurrence step.
++
++    Valid only away from the nondifferentiable clipping boundary. Returns None
++    if projection hits +/-1 on any active row. Not used to train UNO yet.
++    """
++    if len(h) != weights.d or len(z) != weights.d or not _finite(delta) or not 0 < delta <= 1:
++        raise ValueError("jacobian shape or delta")
++    if any(not _finite(x) or abs(x) > 1 for x in h) or any(not _finite(x) for x in z):
++        raise ValueError("jacobian nonfinite")
++    if len(set(active_rows)) != len(active_rows) or any(type(j) is not int or not 0 <= j < weights.d for j in active_rows):
++        raise ValueError("invalid active rows")
++    jmat = [[float(i == j) for j in range(weights.d)] for i in range(weights.d)]
++    for i in active_rows:
++        u = _dot(weights.w_h[i], h) + _dot(weights.w_z[i], z) + weights.b_h[i]
++        r = math.tanh(u)
++        if abs(h[i] + delta*r) >= 1.0:
++            return None  # derivative of clip at boundary is not defined
++        factor = delta * (1.0 - r*r)
++        jmat[i] = [float(i == j) + factor*weights.w_h[i][j] for j in range(weights.d)]
++    return tuple(tuple(row) for row in jmat)
