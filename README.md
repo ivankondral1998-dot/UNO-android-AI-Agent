@@ -1,3 +1,5 @@
+> **Current communication instruction (2026-11-06):** For all UNO agents, see [owner communication rules](docs/decisions/2026-11-06_OWNER_COMMUNICATION_RULES_V1.md): кратко, простыми словами, по делу, на русском; не терять факты и границы проверки. See also [active permission overrides](docs/decisions/2026-11-06_ACTIVE_AGENT_RULES_V2.md) rather than assuming the historical pre-code note below is the current permission state.
+
 > **Current pre-code candidate R5.3 (NOT OWNER APPROVED).** Agents must start from [docs/AGENT_START_HERE.md](docs/AGENT_START_HERE.md), [docs/CURRENT_TASK.md](docs/CURRENT_TASK.md), and the [R5.3 source map](docs/precode/r5.3/README.md). The original README below predates the candidate. Do not infer trained weights, code permission, or Android test status.
 
 # UNO — Unified Neural Organism
