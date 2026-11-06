@@ -31,9 +31,9 @@
       "source_archive_member": "VERIFY_OUTPUT.txt",
       "bytes": 2082,
       "sha256": "c8527978398b1f3b879df3ae50db67b969bf8a3afa79e41c4928a882baf9741a",
-      "status": "INDEXED_NOT_MIRRORED",
-      "repo_path": null,
-      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/VERIFY_OUTPUT.txt",
+      "reason": "Original 2082-byte output preserved, exact Git blob SHA1 2373bab75e52ba16c57e8d7da2b141dd13e893a5 after trailing-newline fix."
     },
     {
       "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
@@ -2803,5 +2803,5 @@
       "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
     }
   ],
-  "revision_note_20261106": "Correction: exact original minimal-organism paper is mirrored at project_sources/04... (SHA256 b4a657...; Git blob a143cfd1...). Counts now 262 exact mirrored, 94 archive provenance, 24 indexed only, 16 private/research. Original prior manifest remains in Git history. Second correction: original outer 00_START_HERE.md uploaded byte-for-byte; counts now 262 identical, 95 archive provenance, 23 indexed-only, 16 private/research."
+  "revision_note_20261106": "Correction: exact original minimal-organism paper is mirrored at project_sources/04... (SHA256 b4a657...; Git blob a143cfd1...). Counts now 262 exact mirrored, 94 archive provenance, 24 indexed only, 16 private/research. Original prior manifest remains in Git history. Second correction: original outer 00_START_HERE.md uploaded byte-for-byte; counts now 262 identical, 95 archive provenance, 23 indexed-only, 16 private/research. Third correction: original VERIFY_OUTPUT.txt exact copy uploaded; 262 identical, 96 provenance, 22 indexed-only, 16 private/research."
 }
