@@ -1,0 +1,2806 @@
+{
+  "schema": "UNO_COMPLETE_AVAILABLE_ARCHIVE_INVENTORY_V1",
+  "source_zip_filename": "UNO_ALL_WORK_AND_SOURCES_2026-11-06.zip",
+  "source_zip_sha256": "8c87ebec317f9acd8398a1ff239edfccb193c0e182e0f91ef447bcb3b26ac02b",
+  "source_zip_members": 396,
+  "scope": "A metadata index of the 2026-11-06 owner-provided entire Work archive. Not all private source bytes are mirrored in GitHub.",
+  "member_entries": [
+    {
+      "source_archive_member": "00_START_HERE.md",
+      "bytes": 2274,
+      "sha256": "e7c4d4457ade1b5e53ed1ece714ae2d5b905895860762c43b8d6bd477c3962e8",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "FINAL_RECHECK.md",
+      "bytes": 6681,
+      "sha256": "7076a2d57c18936aa2d7f60e6631ba888aed08a5bd6984b08d0a317b96317968",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/PRIOR_WORK_CHECKPOINT.md"
+    },
+    {
+      "source_archive_member": "V01_V20_INTEGRITY.json",
+      "bytes": 6982,
+      "sha256": "2a854297c991742494fcf12ef7ff0e2cc8af82aad0b721732c87278db488625a",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/evidence/V01_V20_INTEGRITY.json"
+    },
+    {
+      "source_archive_member": "VERIFY_OUTPUT.txt",
+      "bytes": 2082,
+      "sha256": "c8527978398b1f3b879df3ae50db67b969bf8a3afa79e41c4928a882baf9741a",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+      "bytes": 9832,
+      "sha256": "4332225c501caf15628fa8e293895382501526c6540400e9d421c0ab712dca3c",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+      "bytes": 26820,
+      "sha256": "6bd6f68989972d183b6750711dca223355a026dfcf11461275d25406319853fe",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+      "bytes": 17474,
+      "sha256": "4b9186bb19d71f88aed989b33ef8a40f5a699535e645c79f5eb97d5d97098a4c",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "bytes": 27425,
+      "sha256": "52b1eab23c977d253625b98de20bee6e5802c652973cf96403037118b5fbe4be",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+      "bytes": 13624,
+      "sha256": "737654965c75e83e10a2705656af0f49ff9bf2c2bb0a4f359c67f0f426c6b0c8",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+      "bytes": 28652,
+      "sha256": "37754c2d980838e13877ed014f870a14a879cb32b08d6e19e78c5668a06fe817",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+      "bytes": 22056,
+      "sha256": "dc99d2e043ffff4abb28d8f9a99458cb8e2382dfe2ff920e68f1b0b67a23b9c7",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+      "bytes": 22258,
+      "sha256": "2602f04c049fc721e9c6ecc79f73d5e01400429315f05744f5ed00faa5b3f857",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+      "bytes": 15527,
+      "sha256": "4129290d9ef08c86e3aaf186fcb4d830a764c514beaca33aae61b4eae698ed69",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+      "bytes": 14541,
+      "sha256": "dea19182304bd8784030fe6d7b7570bdc4ffbc2bc5dafd68c8f7e772a726aa90",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md",
+      "bytes": 6521,
+      "sha256": "c2fd8de591472c52f0d206b361f6a61fc857f9ae989751ad11ce9bd0603f95c5",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+      "bytes": 11905,
+      "sha256": "dbcba73af110f6725183693b2dc3a67e1b310b3c6833787985325864986cf691",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+      "bytes": 10420,
+      "sha256": "bebaf4a52b8c39f32da6725a9216fc782e022c1f75067889c7a39ab780694879",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_FINAL_README_AND_DECISION.md",
+      "bytes": 7168,
+      "sha256": "5b933376c6a162ddbb03925b705bc2787b1c497b9a635d36b951ba9415aa5765",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_FINAL_README_AND_DECISION.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/ASTRA_REVISION_LOG.md",
+      "bytes": 4818,
+      "sha256": "3fc6c8c0024382a590a8f53ee8d41a34c24b16429f83d266238b0966714849fc",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_REVISION_LOG.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/FINAL_PACKAGE_MANIFEST.json",
+      "bytes": 21566,
+      "sha256": "a64d92b291b47b69584b0721a27b127105b072aeed064c83a3977cce58b8568b",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/FINAL_PACKAGE_MANIFEST.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/BLIND_AUDIT.md",
+      "bytes": 23827,
+      "sha256": "c6ef0243e337ced7bfd3c1b5d983f7d207d923d6ef07b537b33376961413510a",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/astra-20261102/BLIND_AUDIT.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/CROSSCHECK_PRIOR_AUDIT.md",
+      "bytes": 6855,
+      "sha256": "88dcf54a4d4c8919093ad8043d687a3c89a9daff51505fe8e442e8d624f220a2",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/astra-20261102/CROSSCHECK_PRIOR_AUDIT.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/FINAL_SIGNOFF.md",
+      "bytes": 3995,
+      "sha256": "9a93c7d113b83ba61aca87dba7a41834b81f4686faeafd8ca713f44556ba5a29",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/astra-20261102/FINAL_SIGNOFF.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+      "bytes": 9760,
+      "sha256": "6b29712a73ce66b900ebe7c61a1fbf0d5d7abafaa19aad52fea3b200f3543a3c",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+      "bytes": 22634,
+      "sha256": "1d39ef99fe4bda9d06637f38474674758e8bd1f87e07ca7b5dd480ae6b9dcfe9",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+      "bytes": 14734,
+      "sha256": "6ddd9f72e8a7532c5f3b64528c44d916c7a0aab502d2a86682c9942f5454691e",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "bytes": 21840,
+      "sha256": "258cd885df68578c03442a08b0a09e187ef6f87037de81192f8ce3d9c7e1d199",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+      "bytes": 13445,
+      "sha256": "959af3cc8fff6c99ea3f91bcb5b9125aaba672ad387b2624568cb663e140ca64",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+      "bytes": 22755,
+      "sha256": "bf5a1ed663bd7ec857ae77c9fb4ef36c7854c13e862d73ede77b48de0757d01f",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+      "bytes": 16804,
+      "sha256": "7d6239ae82713920b27198228c07b806538cffb7f15006a1a293764212c8b417",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+      "bytes": 18100,
+      "sha256": "27cb97a3efea3856fd5fb4ce68dff33e84993d3acfd112fff77f9587f95efe39",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+      "bytes": 11248,
+      "sha256": "7bd29d66cedc69e297e864edc138d87cf6779af8b92e3b257486eedc9413fffe",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+      "bytes": 12295,
+      "sha256": "819a8645e7357e1d4104483b5eb2d3de49899b968a39255a45bfdcfe17ceb60f",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+      "bytes": 10353,
+      "sha256": "887fedfeaf471ef76ebab662763163271536502691843ca30002200a959154ac",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+      "bytes": 10349,
+      "sha256": "a1c889b255685bfdae4759675ed8eb9db4073e0160eda7fc5ad0bb8d9281eb5b",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/MANIFEST.json",
+      "bytes": 1797,
+      "sha256": "db90c01c34c1750c75034a7f79fee11b14bdd6483a73f042c3592490dba9e042",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/MANIFEST.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/arithmetic_v2.json",
+      "bytes": 4579,
+      "sha256": "e688c8070e4f6ea9e8dbbae6fb6b9d59c35cce9d06269d807ada93e825ac6192",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/arithmetic_v2.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/recompute.py",
+      "bytes": 4439,
+      "sha256": "79c3c0e5dc1e81b70a216b502f1e1a34ff2b244b6b9a8b9aa88326443e16feda",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/recompute.py"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/tensor_manifest_d1024.json",
+      "bytes": 25857,
+      "sha256": "2c781795eacb9bc9d0c2a76fca90728d7b24b917025d1ba5acada2bb00fade65",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R1_INPUT/tensor_manifest_d1024.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R1_REVIEW.md",
+      "bytes": 19779,
+      "sha256": "fb1e3c5534b3ea02c8c8c4e2642f1662e06453bbc2a51d4115feb470104626d5",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/audit/R1_REVIEW.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+      "bytes": 9832,
+      "sha256": "4332225c501caf15628fa8e293895382501526c6540400e9d421c0ab712dca3c",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+      "bytes": 23851,
+      "sha256": "f5c0e27c387cc5eff895794fd2a5ee6794ac10adbd5301eafb072b89550d2bd8",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+      "bytes": 17474,
+      "sha256": "4b9186bb19d71f88aed989b33ef8a40f5a699535e645c79f5eb97d5d97098a4c",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "bytes": 25108,
+      "sha256": "05ab4f8cda159021110850941ba65c96764bdab82cf6da463576f5794671b9b6",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+      "bytes": 13624,
+      "sha256": "737654965c75e83e10a2705656af0f49ff9bf2c2bb0a4f359c67f0f426c6b0c8",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+      "bytes": 26887,
+      "sha256": "15ccce7a48f13d915d54d84b640b52aaa8c8ef42f6db318af9c2b555fd62cc20",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+      "bytes": 22056,
+      "sha256": "dc99d2e043ffff4abb28d8f9a99458cb8e2382dfe2ff920e68f1b0b67a23b9c7",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+      "bytes": 21030,
+      "sha256": "933f658b4bca075dc67231884ccdefb8c94c662d026eeeae026c1eef788f0d3a",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+      "bytes": 14514,
+      "sha256": "51d5ccbe7bd47303996d47d3a69b35c9b25f42165c1e6ece81e100b7cd51ad15",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+      "bytes": 13700,
+      "sha256": "00010c53e07ec96c5c71a7567ed5d7bd63eb9c56420c416aec87d72e3d4556d8",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md",
+      "bytes": 4144,
+      "sha256": "a93c257343f9bac00526127ed7f5d8ef0f617685185ec3bff8533d155ea8d387",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+      "bytes": 11905,
+      "sha256": "dbcba73af110f6725183693b2dc3a67e1b310b3c6833787985325864986cf691",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+      "bytes": 10420,
+      "sha256": "bebaf4a52b8c39f32da6725a9216fc782e022c1f75067889c7a39ab780694879",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_FINAL_README_AND_DECISION.md",
+      "bytes": 6414,
+      "sha256": "fd685b159b15bebbd32769573daf87ebe0daa4e912af4edd6454804210012b91",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_FINAL_README_AND_DECISION.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_REVISION_LOG.md",
+      "bytes": 2132,
+      "sha256": "f2231412995cc6c2192badce21c30ed0b4aced2d078c4b4f34ffed8eeeca4e91",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/ASTRA_REVISION_LOG.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/MANIFEST.json",
+      "bytes": 2936,
+      "sha256": "f77357d5fa71b7b239205d763f685bf899068735bf27e619ce2028751c1a8c3c",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/MANIFEST.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/arithmetic_v2.json",
+      "bytes": 5898,
+      "sha256": "9fb83b81489bfc9cd543b9e774d2c7047aff11a99db9c5b2daa62f3fd95041d6",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/arithmetic_v2.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/recompute.py",
+      "bytes": 5599,
+      "sha256": "ccdb8c2006a9794376829afc7ca7f792d7c899191b4ec202644cbcfbf1807d0a",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/recompute.py"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_INPUT/tensor_manifest_d1024.json",
+      "bytes": 43480,
+      "sha256": "569f839f3cc557fed734d41d65311b46743fbc77e4c3e11037aaf9fcc2326b32",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/tensor_manifest_d1024.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R2_REVIEW.md",
+      "bytes": 14242,
+      "sha256": "9d3949bd323adbe2ac3b1c12ec624c4ba1edcf5f02866cdefd3ac6ef7b381eff",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/audit/R2_REVIEW.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_AUDITED_MANIFEST.json",
+      "bytes": 3537,
+      "sha256": "a2ca62b8c76c7f11667e53c7fef0c68a77789783c4a5fb8a802a6970abae63d2",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/astra-20261102/R3_AUDITED_MANIFEST.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_FINAL_REVIEW.md",
+      "bytes": 9582,
+      "sha256": "f87bd23cea22deba5218f960bbcfc87552210678fb2fa676968b8660ec8f6bba",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/audit/R3_FINAL_REVIEW.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+      "bytes": 9832,
+      "sha256": "4332225c501caf15628fa8e293895382501526c6540400e9d421c0ab712dca3c",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+      "bytes": 26820,
+      "sha256": "6bd6f68989972d183b6750711dca223355a026dfcf11461275d25406319853fe",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+      "bytes": 17474,
+      "sha256": "4b9186bb19d71f88aed989b33ef8a40f5a699535e645c79f5eb97d5d97098a4c",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "bytes": 27399,
+      "sha256": "28771231ace38382a54e3ba04fd438feb7ab6ba5f8c779f6ee23cb19c35974a1",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+      "bytes": 13624,
+      "sha256": "737654965c75e83e10a2705656af0f49ff9bf2c2bb0a4f359c67f0f426c6b0c8",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+      "bytes": 28652,
+      "sha256": "37754c2d980838e13877ed014f870a14a879cb32b08d6e19e78c5668a06fe817",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+      "bytes": 22056,
+      "sha256": "dc99d2e043ffff4abb28d8f9a99458cb8e2382dfe2ff920e68f1b0b67a23b9c7",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+      "bytes": 22258,
+      "sha256": "2602f04c049fc721e9c6ecc79f73d5e01400429315f05744f5ed00faa5b3f857",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+      "bytes": 15527,
+      "sha256": "4129290d9ef08c86e3aaf186fcb4d830a764c514beaca33aae61b4eae698ed69",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+      "bytes": 14467,
+      "sha256": "bbb6f6bce4f63eee163e900d4fca7a44f0d8230e397bb832db65802747856944",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md",
+      "bytes": 4942,
+      "sha256": "df269c690577792ff6c378bafa804c61bb72deb363f8ebf7808ff46d31ee4cfe",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+      "bytes": 11905,
+      "sha256": "dbcba73af110f6725183693b2dc3a67e1b310b3c6833787985325864986cf691",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+      "bytes": 10420,
+      "sha256": "bebaf4a52b8c39f32da6725a9216fc782e022c1f75067889c7a39ab780694879",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_FINAL_README_AND_DECISION.md",
+      "bytes": 6617,
+      "sha256": "ac51c57389bc25b529317674bc5f00ef01028d8778e845f99d465de5bdd74fb2",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_FINAL_README_AND_DECISION.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_REVISION_LOG.md",
+      "bytes": 3876,
+      "sha256": "1b7a447a7672d6704730bb037bb50846b158cba4a891d0a4a63375c7bf984998",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/ASTRA_REVISION_LOG.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/MANIFEST.json",
+      "bytes": 2936,
+      "sha256": "437a32fe9e14aa6dee3d5a1e01a7d4f31ede556ebfaeb68a261e8650261adcc5",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/MANIFEST.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/arithmetic_v2.json",
+      "bytes": 5898,
+      "sha256": "9fb83b81489bfc9cd543b9e774d2c7047aff11a99db9c5b2daa62f3fd95041d6",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/arithmetic_v2.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/recompute.py",
+      "bytes": 5599,
+      "sha256": "ccdb8c2006a9794376829afc7ca7f792d7c899191b4ec202644cbcfbf1807d0a",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/recompute.py"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_INPUT/tensor_manifest_d1024.json",
+      "bytes": 43480,
+      "sha256": "569f839f3cc557fed734d41d65311b46743fbc77e4c3e11037aaf9fcc2326b32",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/tensor_manifest_d1024.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_PATCH_INPUT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "bytes": 27425,
+      "sha256": "52b1eab23c977d253625b98de20bee6e5802c652973cf96403037118b5fbe4be",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/audit/R3_PATCH_INPUT/MANIFEST.json",
+      "bytes": 174,
+      "sha256": "6c3c8dc4f5de2e128259393d6e28fac5f7cf7bb8cadcdd97bbace467cff80945",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/astra-20261102/R3_PATCH_INPUT/MANIFEST.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/evidence/FINAL_AUTHOR_MANIFEST.json",
+      "bytes": 2963,
+      "sha256": "a6c35cc759db57f6057117bb3040644ad53874410616049bf885b9ea605723dc",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/evidence/FINAL_AUTHOR_MANIFEST.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/evidence/FINAL_VALIDATION.json",
+      "bytes": 535,
+      "sha256": "5f9ea71fe951861f69cc5c10ce716f4b5115edfd0c51936eb84721b824e8b17a",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/evidence/FINAL_VALIDATION.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/evidence/PROSE_SPACING_CHANGES.json",
+      "bytes": 5190,
+      "sha256": "ba44ece2acd015dc7bdc74b642d547321c1162fee7f7331e6ba65b85a25f5bc9",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/evidence/PROSE_SPACING_CHANGES.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/evidence/SOURCE_HASHES.json",
+      "bytes": 5362,
+      "sha256": "2e178d70eea79e55f602640d404cece2d0f2eef41f81050115dc12f9d21e28be",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/evidence/SOURCE_HASHES.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/evidence/SOURCE_MANIFEST_VERIFICATION.json",
+      "bytes": 5078,
+      "sha256": "11d4ebdb45414f0a152d78314af41beb88bdb505f4af4596d6fa8d875972bec6",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/evidence/SOURCE_MANIFEST_VERIFICATION.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/evidence/arithmetic_v2.json",
+      "bytes": 5898,
+      "sha256": "9fb83b81489bfc9cd543b9e774d2c7047aff11a99db9c5b2daa62f3fd95041d6",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/arithmetic_v2.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/evidence/recompute.py",
+      "bytes": 5599,
+      "sha256": "ccdb8c2006a9794376829afc7ca7f792d7c899191b4ec202644cbcfbf1807d0a",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/recompute.py"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/evidence/tensor_manifest_d1024.json",
+      "bytes": 43480,
+      "sha256": "569f839f3cc557fed734d41d65311b46743fbc77e4c3e11037aaf9fcc2326b32",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/tensor_manifest_d1024.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/00_READ_ME_FIRST_ASTRA_MATH_COMPLETION_MANDATE.md",
+      "bytes": 15629,
+      "sha256": "ff2969559db9ec4e40cf91aa2658a9115d412a3289fa579be208489b30acde95",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/00_READ_ME_FIRST_ASTRA_MATH_COMPLETION_MANDATE.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/01_UNO_PRECODE_ENGINEERING_MASTERPLAN_2026-11-02.md",
+      "bytes": 30586,
+      "sha256": "66e31f2940398b24987403da87d64c6c3baf11a5bbde73a168801e526bfb160f",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/01_UNO_PRECODE_ENGINEERING_MASTERPLAN_2026-11-02.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/00_SCOPE_AND_EVIDENCE.md",
+      "bytes": 10372,
+      "sha256": "e615c5ed580c026eac2d6015e7e2bc178a6ad332be3bcdd65a3256c9d5258633",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/00_SCOPE_AND_EVIDENCE.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/01_SYMBOLS_AND_STATE_SPACES.md",
+      "bytes": 12743,
+      "sha256": "09461946eff24c93d8ad2a29ee99f8012cc4290e3b7c02dff480591393d9cf87",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/01_SYMBOLS_AND_STATE_SPACES.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/02_UNO_GLOBAL_DYNAMICS.md",
+      "bytes": 25295,
+      "sha256": "edb9f3d109b78db70d2d1c117c6222758ee513ff2f12f6ee5914ac91c51aef88",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/02_UNO_GLOBAL_DYNAMICS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/03_NEURAL_GRAPH_AND_WEIGHTS.md",
+      "bytes": 13036,
+      "sha256": "f61f0d5f7a0a7fb23d613b7c9bb2f2f9bdafa2d2f5ffd4fcf087de0dacf0bd5c",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/03_NEURAL_GRAPH_AND_WEIGHTS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/04_LEARNING_AND_PLASTICITY.md",
+      "bytes": 22004,
+      "sha256": "e2845a43efa41f7460295e9584d68f7bea3e29e5b01bf8f813ca397237c0ec6b",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/04_LEARNING_AND_PLASTICITY.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/05_RESOURCE_AND_SAFETY_PROOFS.md",
+      "bytes": 19203,
+      "sha256": "6ad9483e28389cfc65b1529f11f7062526b12cba6217a1e99e14dcae89bae83a",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/05_RESOURCE_AND_SAFETY_PROOFS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/06_ASTRA_NCR_EVO_FORMAL.md",
+      "bytes": 25397,
+      "sha256": "4c8b9f2a3519bccc30e8debbe77300f53aae7eb27f02e0735f08b2d48c5a6d58",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/06_ASTRA_NCR_EVO_FORMAL.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/07_CRITICAL_REVIEW_AND_COUNTEREXAMPLES.md",
+      "bytes": 15705,
+      "sha256": "a5927c2fcd86e7ecb7a29021902419fbc414d04d0a911fe725932bfe38a2c28f",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/07_CRITICAL_REVIEW_AND_COUNTEREXAMPLES.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/08_MATH_ACCEPTANCE_MATRIX.md",
+      "bytes": 8370,
+      "sha256": "8d35a9d6801a0f2748773d2d6dfe2509b29cc1dabe2fb908327eb431d71da118",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/08_MATH_ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/09_CODEX_IMPLEMENTATION_CONTRACT_LATER.md",
+      "bytes": 8084,
+      "sha256": "3930276e7ddf3a989452c1e0cd635c246d4057f583085b12669b8184095568aa",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/09_CODEX_IMPLEMENTATION_CONTRACT_LATER.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/INDEPENDENT_REVIEW.md",
+      "bytes": 35480,
+      "sha256": "a1d60b98dbbf2b3a1d7a345189e7ba486b047a166a04d01cf28b2b5f4b0ec107",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/INDEPENDENT_REVIEW.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/OPEN_QUESTIONS_AND_DECISIONS.md",
+      "bytes": 5965,
+      "sha256": "c84b55a04066e0cc4c4084d0c6a051474870b32ae638320d0cfeceda4505f6d4",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/OPEN_QUESTIONS_AND_DECISIONS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+      "bytes": 4589,
+      "sha256": "47dda9e53d4d24366d97abe968a45056ff0c156068ff0b34c96b8c7da1a57fc4",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/README.md",
+      "bytes": 5765,
+      "sha256": "650a6bc80556f6cd800d9defce06fef77a6d74ce557a460c13419a9882ce17bb",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/README.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/SOURCES_AND_REPRODUCIBILITY.md",
+      "bytes": 5522,
+      "sha256": "586ba3e99af16feebb1f08967d7513f8dab65008bb15a01ca115164b585fdd3a",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/SOURCES_AND_REPRODUCIBILITY.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/DELIVERY_VALIDATION.json",
+      "bytes": 273,
+      "sha256": "ce0d98e7d126b0d1bbebe9721c4f67c52e01321ae9dce9e658b0dafc56547d84",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/DELIVERY_VALIDATION.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/PR3_formula.md",
+      "bytes": 13785,
+      "sha256": "b7e1b4cfbd2447cc7e4afaab7e38e8c0bd17cb936e78197f20639994357db704",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/PR3_formula.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/PR3_reference.py.txt",
+      "bytes": 16971,
+      "sha256": "f1d5d6c2f97b5e8bfc15a84459a0a0fb5c3761c8070b2c558a8390b98946fcfc",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/PR3_reference.py.txt"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/REVISION_LOG.md",
+      "bytes": 1957,
+      "sha256": "94a36ab1f39bbe824c68a6171409f23d062bb45af8159620eedfc458cceb50c4",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/REVISION_LOG.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/arithmetic.json",
+      "bytes": 2358,
+      "sha256": "86bc04de2bb9a30c514cdd3ba8abebe17c71c85f89827d1738ea34bdafdb590c",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/arithmetic.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_AGENTS.md",
+      "bytes": 6665,
+      "sha256": "648ddb44ac8a3028d1da72e8625309c9ce32cdb382c01ce892cc2a7e4cac7845",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_AGENTS.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_PR3_metadata.json",
+      "bytes": 24766,
+      "sha256": "309bc2e5ccf6b9450c07180be27f0a948c8fe068debf1e556f12581c33430794",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_PR3_metadata.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_README.md",
+      "bytes": 16198,
+      "sha256": "fdef04c2dd6300b7ebc1f732b3afd98b531e2a54368083322708549b9ed2cb53",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_README.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_UNO_SYSTEM_FORMULA.md",
+      "bytes": 5588,
+      "sha256": "ac642b92fe07a40191b5eef0a3f947357b2df3d297055cef49dfc878c754f244",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_UNO_SYSTEM_FORMULA.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/MANIFEST_SHA256.json",
+      "bytes": 746,
+      "sha256": "7187ca7e313fe184f52308720e1eaf8b9d414365941206f26a315e399314d3f5",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/MANIFEST_SHA256.json"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md",
+      "bytes": 21841,
+      "sha256": "60bb31db6c663b4c78ea3182c1593b94ceb2b3259f690edc6ccc1792b28c6547",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/UNO_MATH_HOST_V0_1_REFERENCE_NOT_CANONICAL.md",
+      "bytes": 13784,
+      "sha256": "abe61311b62f39cf176648aa6315d21e05fe471ab77d710e566774847a059b7b",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/UNO_MATH_HOST_V0_1_REFERENCE_NOT_CANONICAL.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/WORK_START_HERE_UNO_MATHEMATICAL_DESIGN_2026-11-01.md",
+      "bytes": 44026,
+      "sha256": "5dce811ff071b0654dfe58716424d5f6aead7fc09a1f40a6b97cdad85017f6f3",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/WORK_START_HERE_UNO_MATHEMATICAL_DESIGN_2026-11-01.md"
+    },
+    {
+      "source_archive_member": "workspace/ASTRA_UNO_MATH_DESIGN_AND_AUDIT_2026-11-02.zip",
+      "bytes": 681255,
+      "sha256": "3420edf9cb7b2170b5c5e0938d43fc3ab896061a5c5fb16229d9587c2ea27987",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_FINAL_UNMODIFIED.zip"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/00_START_HERE.md",
+      "bytes": 1717,
+      "sha256": "401a1c6a5590c8f580b7c333d5a752b66eac00ab9befa946406050c6cebaee17",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/00_START_HERE.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/ERRATA_AND_REAUDIT.md",
+      "bytes": 7559,
+      "sha256": "f6952e00e1114ecfe3a465e8c8c281af197e8376061099e888a12961b24b5603",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/ERRATA_AND_REAUDIT.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/README.md",
+      "bytes": 2460,
+      "sha256": "ddb0265f79609730e0d9959682a80eb603ab5e5d037a6e74e9264be896d0e1b3",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/README.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/check_original.py",
+      "bytes": 3251,
+      "sha256": "908ce5087a40def4b60ca50eacc70af1952ba4f21eadf55ec87465899a720997",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/check_original.py"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/checks.json",
+      "bytes": 10347,
+      "sha256": "0a48160d4f3e4d5fcd9f77a7f719912ca0f7397afcbd07283011826465487af9",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/checks.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/environment.json",
+      "bytes": 98,
+      "sha256": "b5dc7de752eb9fd21d67c588106b0c9891b0d1480ffd1d535334a7be6946d3d4",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/environment.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/original_check_stdout.txt",
+      "bytes": 3497,
+      "sha256": "143310878620d7e3e9a9e94421b2b3db59b6ecfb1a561e66d8808087d6e53de9",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/original_check_stdout.txt"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/recheck.py",
+      "bytes": 10600,
+      "sha256": "ae69abc7d4fcba4a246016591a03a1e8dfa6b02c299b3086ff45483ccf8d73d2",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/recheck.py"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/recheck_stdout.txt",
+      "bytes": 219,
+      "sha256": "8bf1faca609503f30493a9868a0d39a930bc3967121f70207a4810f36d903559",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/recheck_stdout.txt"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/resources.csv",
+      "bytes": 1777,
+      "sha256": "58b9fc6fe76b42d5a2ba8334b5b8e55dd981a81ff1cf9b5e74d2baabe787a6f0",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/evidence/PROFILE_RESOURCES_R41.csv"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/resources.json",
+      "bytes": 5365,
+      "sha256": "4bc6541bc88f123d490316f267f94173d6eb64542360c0ebf5d55e1ce60765d9",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/resources.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/source_inventory.json",
+      "bytes": 18685,
+      "sha256": "4059245d9c232751e6c4af734944760da4aa5782fbf6c8ce6de05e79601538dd",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/source_inventory.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/tensors_B2-1024.json",
+      "bytes": 51717,
+      "sha256": "69817cb551a372f987c88386da065ddc9f86a0bba2d38bb303cbf1cc465e71ce",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/tensors_B2-1024.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/tensors_B2-1536.json",
+      "bytes": 72649,
+      "sha256": "f0e90f5126965b2b7f8be63f9949986038c089ece9eed4c2794c2d4e3a67bbbc",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/tensors_B2-1536.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/tensors_B2-2048.json",
+      "bytes": 94227,
+      "sha256": "b555cad418f1efecff88bd819546c2405ffd8b26adc052df974fb237a11a9e62",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/tensors_B2-2048.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/tensors_B2-512.json",
+      "bytes": 30665,
+      "sha256": "83b5fceedf2ccc5507377b3b5c4169a7e88e1555c1adeae54c25efeb1dddd04a",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/tensors_B2-512.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/tensors_C256.json",
+      "bytes": 19976,
+      "sha256": "d2d626d917a118db8e4f0a03d4acf0e7330ab87355ceab52a8e6a7ba4f427f8b",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/tensors_C256.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/tensors_C256R32.json",
+      "bytes": 24632,
+      "sha256": "66d972a489060f8ec97288839fb131b0b0051d423f27d381df321933ca066c78",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/tensors_C256R32.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/EVIDENCE/tensors_C384.json",
+      "bytes": 17461,
+      "sha256": "d0bd3022d1df95efdf2f0a167e2cbd17b659491c80541f9c3f00f69f6f2b6c3b",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/EVIDENCE/tensors_C384.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/OWNER_DECISION_BRIEF.md",
+      "bytes": 2306,
+      "sha256": "27486117c64a949ba91729c8868bd8544b2807ffe77e8784b1ce5767341faedd",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/OWNER_DECISION_BRIEF.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/R3_TO_R41.diff",
+      "bytes": 82471,
+      "sha256": "de17df621a7cd83d3a32f2e2a027f43c718929cf257b29dc0a0a87399b0874c8",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/R3_TO_R41.diff"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/R4_TO_R41.diff",
+      "bytes": 83359,
+      "sha256": "13ffffd2071d78d7283d982bae77243add949b2de9045be1e0049226f7b5aaeb",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/R4_TO_R41.diff"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/SHA256_MANIFEST.json",
+      "bytes": 5296,
+      "sha256": "79df4c799a6d3a0680a28ef995b510944d232226c814b7c88098c5717068aa5b",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/SHA256_MANIFEST.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/SOURCES/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md",
+      "bytes": 21841,
+      "sha256": "60bb31db6c663b4c78ea3182c1593b94ceb2b3259f690edc6ccc1792b28c6547",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/SOURCES/PREVIOUS_R3.md",
+      "bytes": 138691,
+      "sha256": "fe9627eb57facf74c77f8241aada4f282c377bc4fc86dee156ee3347566b64b4",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/SOURCES/PREVIOUS_R3.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/SOURCES/PREVIOUS_R4.md",
+      "bytes": 145376,
+      "sha256": "dbaae4a4f11ce3a8ac5a2859f8aac3b9a0935bbe1f3dfde6654549332436b5c8",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/SOURCES/PREVIOUS_R4.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/SOURCES/REPAIR_INPUT.zip",
+      "bytes": 6779248,
+      "sha256": "90b597134421f796d82a8f10f10ee1ee483d1d854a4ddca820e5cf12527add2c",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/SOURCES/UNO_GITHUB_COMMIT_fcddf0f_SOURCE.zip",
+      "bytes": 2901171,
+      "sha256": "183f40a4d0ba2ee4b75bee530c20e93e1a0fb03258424e8b5184dceb323730d9",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/SOURCE_TRACEABILITY_AND_MATRIX.csv",
+      "bytes": 45448,
+      "sha256": "7f15b1b759b88b93bf444857ea71826f048351fd77cfb324222820c5a38c39f4",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/SOURCE_TRACEABILITY_AND_MATRIX.csv"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/SOURCE_TRACEABILITY_AND_MATRIX.md",
+      "bytes": 1370,
+      "sha256": "4baf077c6c89ab0360c052d644f9d366593894e7666c675a926f187dc1ec05e8",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/SOURCE_TRACEABILITY_AND_MATRIX.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/UNO_MINIMAL_ORGANISM_PAPER_FINAL_FOR_OWNER_REVIEW.md",
+      "bytes": 184036,
+      "sha256": "a57aa0973b99552e9849ad49222339cea3a5711f66f62aa5f1dbebf9fd89cf07",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/R4_1_INHERITED_BASE.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/edit_records.json",
+      "bytes": 16695,
+      "sha256": "cd56a0e61e1feb5a5aa7ea4d96451175495dbde5c2eedc6c7c7a21d3582c4975",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/edit_records.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_ENGINEERING_RECHECK/verify_package.py",
+      "bytes": 315,
+      "sha256": "e1a4acf2dcc74131116b072d33330c72d139e29de7b0987b6b52d5d49f105a14",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/audit/r41-engineering-20261104/verify_package.py"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATHEMATICAL_DESIGN_AUDITED_2026-11-01.zip",
+      "bytes": 150063,
+      "sha256": "72609211e79b312586bace29e5d53643a0dc7af422f450febd5770b5d211f86c",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/00_SCOPE_AND_EVIDENCE.md",
+      "bytes": 10372,
+      "sha256": "e615c5ed580c026eac2d6015e7e2bc178a6ad332be3bcdd65a3256c9d5258633",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/00_SCOPE_AND_EVIDENCE.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/01_SYMBOLS_AND_STATE_SPACES.md",
+      "bytes": 12743,
+      "sha256": "09461946eff24c93d8ad2a29ee99f8012cc4290e3b7c02dff480591393d9cf87",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/01_SYMBOLS_AND_STATE_SPACES.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/02_UNO_GLOBAL_DYNAMICS.md",
+      "bytes": 25295,
+      "sha256": "edb9f3d109b78db70d2d1c117c6222758ee513ff2f12f6ee5914ac91c51aef88",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/02_UNO_GLOBAL_DYNAMICS.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/03_NEURAL_GRAPH_AND_WEIGHTS.md",
+      "bytes": 13036,
+      "sha256": "f61f0d5f7a0a7fb23d613b7c9bb2f2f9bdafa2d2f5ffd4fcf087de0dacf0bd5c",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/03_NEURAL_GRAPH_AND_WEIGHTS.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/04_LEARNING_AND_PLASTICITY.md",
+      "bytes": 22004,
+      "sha256": "e2845a43efa41f7460295e9584d68f7bea3e29e5b01bf8f813ca397237c0ec6b",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/04_LEARNING_AND_PLASTICITY.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/05_RESOURCE_AND_SAFETY_PROOFS.md",
+      "bytes": 19203,
+      "sha256": "6ad9483e28389cfc65b1529f11f7062526b12cba6217a1e99e14dcae89bae83a",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/05_RESOURCE_AND_SAFETY_PROOFS.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/06_ASTRA_NCR_EVO_FORMAL.md",
+      "bytes": 25397,
+      "sha256": "4c8b9f2a3519bccc30e8debbe77300f53aae7eb27f02e0735f08b2d48c5a6d58",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/06_ASTRA_NCR_EVO_FORMAL.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/07_CRITICAL_REVIEW_AND_COUNTEREXAMPLES.md",
+      "bytes": 15705,
+      "sha256": "a5927c2fcd86e7ecb7a29021902419fbc414d04d0a911fe725932bfe38a2c28f",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/07_CRITICAL_REVIEW_AND_COUNTEREXAMPLES.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/08_MATH_ACCEPTANCE_MATRIX.md",
+      "bytes": 8370,
+      "sha256": "8d35a9d6801a0f2748773d2d6dfe2509b29cc1dabe2fb908327eb431d71da118",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/08_MATH_ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/09_CODEX_IMPLEMENTATION_CONTRACT_LATER.md",
+      "bytes": 8084,
+      "sha256": "3930276e7ddf3a989452c1e0cd635c246d4057f583085b12669b8184095568aa",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/09_CODEX_IMPLEMENTATION_CONTRACT_LATER.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/INDEPENDENT_REVIEW.md",
+      "bytes": 35480,
+      "sha256": "a1d60b98dbbf2b3a1d7a345189e7ba486b047a166a04d01cf28b2b5f4b0ec107",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/INDEPENDENT_REVIEW.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/OPEN_QUESTIONS_AND_DECISIONS.md",
+      "bytes": 5965,
+      "sha256": "c84b55a04066e0cc4c4084d0c6a051474870b32ae638320d0cfeceda4505f6d4",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/OPEN_QUESTIONS_AND_DECISIONS.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/PACKAGE_MANIFEST_SHA256.json",
+      "bytes": 4589,
+      "sha256": "47dda9e53d4d24366d97abe968a45056ff0c156068ff0b34c96b8c7da1a57fc4",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/README.md",
+      "bytes": 5765,
+      "sha256": "650a6bc80556f6cd800d9defce06fef77a6d74ce557a460c13419a9882ce17bb",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/README.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/SOURCES_AND_REPRODUCIBILITY.md",
+      "bytes": 5522,
+      "sha256": "586ba3e99af16feebb1f08967d7513f8dab65008bb15a01ca115164b585fdd3a",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/SOURCES_AND_REPRODUCIBILITY.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/evidence/DELIVERY_VALIDATION.json",
+      "bytes": 273,
+      "sha256": "ce0d98e7d126b0d1bbebe9721c4f67c52e01321ae9dce9e658b0dafc56547d84",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/DELIVERY_VALIDATION.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/evidence/PR3_formula.md",
+      "bytes": 13785,
+      "sha256": "b7e1b4cfbd2447cc7e4afaab7e38e8c0bd17cb936e78197f20639994357db704",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/PR3_formula.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/evidence/PR3_reference.py.txt",
+      "bytes": 16971,
+      "sha256": "f1d5d6c2f97b5e8bfc15a84459a0a0fb5c3761c8070b2c558a8390b98946fcfc",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/PR3_reference.py.txt"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/evidence/REVISION_LOG.md",
+      "bytes": 1957,
+      "sha256": "94a36ab1f39bbe824c68a6171409f23d062bb45af8159620eedfc458cceb50c4",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/REVISION_LOG.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/evidence/arithmetic.json",
+      "bytes": 2358,
+      "sha256": "86bc04de2bb9a30c514cdd3ba8abebe17c71c85f89827d1738ea34bdafdb590c",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/arithmetic.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/evidence/github_AGENTS.md",
+      "bytes": 6665,
+      "sha256": "648ddb44ac8a3028d1da72e8625309c9ce32cdb382c01ce892cc2a7e4cac7845",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_AGENTS.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/evidence/github_PR3_metadata.json",
+      "bytes": 24766,
+      "sha256": "309bc2e5ccf6b9450c07180be27f0a948c8fe068debf1e556f12581c33430794",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_PR3_metadata.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/evidence/github_README.md",
+      "bytes": 16198,
+      "sha256": "fdef04c2dd6300b7ebc1f732b3afd98b531e2a54368083322708549b9ed2cb53",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_README.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/evidence/github_UNO_SYSTEM_FORMULA.md",
+      "bytes": 5588,
+      "sha256": "ac642b92fe07a40191b5eef0a3f947357b2df3d297055cef49dfc878c754f244",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_UNO_SYSTEM_FORMULA.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/originals/MANIFEST_SHA256.json",
+      "bytes": 746,
+      "sha256": "7187ca7e313fe184f52308720e1eaf8b9d414365941206f26a315e399314d3f5",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/MANIFEST_SHA256.json"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/originals/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md",
+      "bytes": 21841,
+      "sha256": "60bb31db6c663b4c78ea3182c1593b94ceb2b3259f690edc6ccc1792b28c6547",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/originals/UNO_MATH_HOST_V0_1_REFERENCE_NOT_CANONICAL.md",
+      "bytes": 13784,
+      "sha256": "abe61311b62f39cf176648aa6315d21e05fe471ab77d710e566774847a059b7b",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/UNO_MATH_HOST_V0_1_REFERENCE_NOT_CANONICAL.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MATH_DESIGN_2026-11-01/originals/WORK_START_HERE_UNO_MATHEMATICAL_DESIGN_2026-11-01.md",
+      "bytes": 44026,
+      "sha256": "5dce811ff071b0654dfe58716424d5f6aead7fc09a1f40a6b97cdad85017f6f3",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/WORK_START_HERE_UNO_MATHEMATICAL_DESIGN_2026-11-01.md"
+    },
+    {
+      "source_archive_member": "workspace/UNO_MINIMAL_ORGANISM_PAPER_FINAL_FOR_OWNER_REVIEW.md",
+      "bytes": 148311,
+      "sha256": "b4a65751806d96573d21e727f817582db62764862b19131ca892ddece39affb2",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/UNO_R3_RECHECK_OUTPUT.txt",
+      "bytes": 137,
+      "sha256": "aaee20dd0c5b401ebfadbd43156920199fb03379f3b30d130e55f9bdfe8bff08",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/UNO_R3_RECHECK_OUTPUT.txt"
+    },
+    {
+      "source_archive_member": "workspace/UNO_R4_1_ENGINEERING_RECHECK_2026-11-04.sha256",
+      "bytes": 110,
+      "sha256": "54f9f82e135f283d5152fb7a3870ec3ea744b15ccdc7c32aca9de439a08918d9",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/UNO_R4_1_ENGINEERING_RECHECK_2026-11-04.zip",
+      "bytes": 9914479,
+      "sha256": "19b8eb60db0515acd28ceb2de4c348e9c01e5ad979c4f58898df1f9f2f65553a",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/UNO_R4_REVIEW_CANDIDATE_2026-11-04.zip",
+      "bytes": 61970,
+      "sha256": "8284d4b4358f7cd46a92a44c818da34dde26d7a03b47399e8996403e6ad3b298",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/UNO_WORK_RETURN_PACKAGE.zip",
+      "bytes": 85379,
+      "sha256": "061807f800d668883910021ac953295529c6782b6d272320cbfd014ecc99de58",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/UNO_WORK_RETURN_PACKAGE_R2.zip",
+      "bytes": 94686,
+      "sha256": "4bbf09105f447825ec7f43c4eec22a96ca4b95bf192870b6a82ab098c1cfbe61",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/UNO_WORK_RETURN_PACKAGE_R3.zip",
+      "bytes": 97615,
+      "sha256": "494383efdcde31f1186b4e4c39745dbc394f381d9658211ebaaaa5f1da38c42a",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/astra_lab_review/uno_memory_flip_ambiguity_gpt6.py",
+      "bytes": 2970,
+      "sha256": "4bac52f4038093f691c2451170e0c678fd92ae5d6731efd185b7be39466fc7a2",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/astra_lab_review/uno_memory_flip_ambiguity_gpt6.py"
+    },
+    {
+      "source_archive_member": "workspace/astra_lab_review/uno_memory_flip_ambiguity_gpt6_astra_stdout.json",
+      "bytes": 1319,
+      "sha256": "27fd07515e20c25d6a3c0592d27f2abb01d821085990f352059bb3e0d3995a4d",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/astra_lab_review/uno_memory_flip_ambiguity_gpt6_astra_stdout.json"
+    },
+    {
+      "source_archive_member": "workspace/astra_lab_review/uno_memory_flip_ambiguity_gpt6_run.json",
+      "bytes": 1319,
+      "sha256": "27fd07515e20c25d6a3c0592d27f2abb01d821085990f352059bb3e0d3995a4d",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/astra_lab_review/uno_memory_flip_ambiguity_gpt6_astra_stdout.json"
+    },
+    {
+      "source_archive_member": "workspace/astra_lab_review/uno_r53_memory_finite_bound_audit_gpt6.py",
+      "bytes": 3480,
+      "sha256": "0f16580dee7ba25c618dfd69d40b656062b7a2f74f61a207fc8abe7a1cf80b93",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/astra_lab_review/uno_r53_memory_finite_bound_audit_gpt6.py"
+    },
+    {
+      "source_archive_member": "workspace/astra_lab_review/uno_r53_memory_finite_bound_audit_gpt6_astra_stdout.json",
+      "bytes": 1608,
+      "sha256": "53be06d958de4ad4654c89d1df24c8b62b82cda5ac50781a5578acaa75a3d03b",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/astra_lab_review/uno_r53_memory_finite_bound_audit_gpt6_astra_stdout.json"
+    },
+    {
+      "source_archive_member": "workspace/astra_lab_review/uno_r53_memory_finite_bound_audit_gpt6_run.json",
+      "bytes": 1608,
+      "sha256": "53be06d958de4ad4654c89d1df24c8b62b82cda5ac50781a5578acaa75a3d03b",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/astra_lab_review/uno_r53_memory_finite_bound_audit_gpt6_astra_stdout.json"
+    },
+    {
+      "source_archive_member": "workspace/completion_source_download/UNOVYRA AI Agent Adaptive Neural Organism/ASTRA_FULL_MATH_COMPLETION_PACKAGE_2026-11-02.zip",
+      "bytes": 169216,
+      "sha256": "8caa1dd02a22716a64c130785d0f07510028059d83426e017ff39fd72359877a",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/00_READ_ME_FIRST_ASTRA_MATH_COMPLETION_MANDATE.md",
+      "bytes": 15629,
+      "sha256": "ff2969559db9ec4e40cf91aa2658a9115d412a3289fa579be208489b30acde95",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/00_READ_ME_FIRST_ASTRA_MATH_COMPLETION_MANDATE.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/01_UNO_PRECODE_ENGINEERING_MASTERPLAN_2026-11-02.md",
+      "bytes": 30586,
+      "sha256": "66e31f2940398b24987403da87d64c6c3baf11a5bbde73a168801e526bfb160f",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/01_UNO_PRECODE_ENGINEERING_MASTERPLAN_2026-11-02.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/00_SCOPE_AND_EVIDENCE.md",
+      "bytes": 10372,
+      "sha256": "e615c5ed580c026eac2d6015e7e2bc178a6ad332be3bcdd65a3256c9d5258633",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/00_SCOPE_AND_EVIDENCE.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/01_SYMBOLS_AND_STATE_SPACES.md",
+      "bytes": 12743,
+      "sha256": "09461946eff24c93d8ad2a29ee99f8012cc4290e3b7c02dff480591393d9cf87",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/01_SYMBOLS_AND_STATE_SPACES.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/02_UNO_GLOBAL_DYNAMICS.md",
+      "bytes": 25295,
+      "sha256": "edb9f3d109b78db70d2d1c117c6222758ee513ff2f12f6ee5914ac91c51aef88",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/02_UNO_GLOBAL_DYNAMICS.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/03_NEURAL_GRAPH_AND_WEIGHTS.md",
+      "bytes": 13036,
+      "sha256": "f61f0d5f7a0a7fb23d613b7c9bb2f2f9bdafa2d2f5ffd4fcf087de0dacf0bd5c",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/03_NEURAL_GRAPH_AND_WEIGHTS.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/04_LEARNING_AND_PLASTICITY.md",
+      "bytes": 22004,
+      "sha256": "e2845a43efa41f7460295e9584d68f7bea3e29e5b01bf8f813ca397237c0ec6b",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/04_LEARNING_AND_PLASTICITY.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/05_RESOURCE_AND_SAFETY_PROOFS.md",
+      "bytes": 19203,
+      "sha256": "6ad9483e28389cfc65b1529f11f7062526b12cba6217a1e99e14dcae89bae83a",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/05_RESOURCE_AND_SAFETY_PROOFS.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/06_ASTRA_NCR_EVO_FORMAL.md",
+      "bytes": 25397,
+      "sha256": "4c8b9f2a3519bccc30e8debbe77300f53aae7eb27f02e0735f08b2d48c5a6d58",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/06_ASTRA_NCR_EVO_FORMAL.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/07_CRITICAL_REVIEW_AND_COUNTEREXAMPLES.md",
+      "bytes": 15705,
+      "sha256": "a5927c2fcd86e7ecb7a29021902419fbc414d04d0a911fe725932bfe38a2c28f",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/07_CRITICAL_REVIEW_AND_COUNTEREXAMPLES.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/08_MATH_ACCEPTANCE_MATRIX.md",
+      "bytes": 8370,
+      "sha256": "8d35a9d6801a0f2748773d2d6dfe2509b29cc1dabe2fb908327eb431d71da118",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/08_MATH_ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/09_CODEX_IMPLEMENTATION_CONTRACT_LATER.md",
+      "bytes": 8084,
+      "sha256": "3930276e7ddf3a989452c1e0cd635c246d4057f583085b12669b8184095568aa",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/09_CODEX_IMPLEMENTATION_CONTRACT_LATER.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/INDEPENDENT_REVIEW.md",
+      "bytes": 35480,
+      "sha256": "a1d60b98dbbf2b3a1d7a345189e7ba486b047a166a04d01cf28b2b5f4b0ec107",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/INDEPENDENT_REVIEW.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/OPEN_QUESTIONS_AND_DECISIONS.md",
+      "bytes": 5965,
+      "sha256": "c84b55a04066e0cc4c4084d0c6a051474870b32ae638320d0cfeceda4505f6d4",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/OPEN_QUESTIONS_AND_DECISIONS.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+      "bytes": 4589,
+      "sha256": "47dda9e53d4d24366d97abe968a45056ff0c156068ff0b34c96b8c7da1a57fc4",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/README.md",
+      "bytes": 5765,
+      "sha256": "650a6bc80556f6cd800d9defce06fef77a6d74ce557a460c13419a9882ce17bb",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/README.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/SOURCES_AND_REPRODUCIBILITY.md",
+      "bytes": 5522,
+      "sha256": "586ba3e99af16feebb1f08967d7513f8dab65008bb15a01ca115164b585fdd3a",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/SOURCES_AND_REPRODUCIBILITY.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/evidence/DELIVERY_VALIDATION.json",
+      "bytes": 273,
+      "sha256": "ce0d98e7d126b0d1bbebe9721c4f67c52e01321ae9dce9e658b0dafc56547d84",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/DELIVERY_VALIDATION.json"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/evidence/PR3_formula.md",
+      "bytes": 13785,
+      "sha256": "b7e1b4cfbd2447cc7e4afaab7e38e8c0bd17cb936e78197f20639994357db704",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/PR3_formula.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/evidence/PR3_reference.py.txt",
+      "bytes": 16971,
+      "sha256": "f1d5d6c2f97b5e8bfc15a84459a0a0fb5c3761c8070b2c558a8390b98946fcfc",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/PR3_reference.py.txt"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/evidence/REVISION_LOG.md",
+      "bytes": 1957,
+      "sha256": "94a36ab1f39bbe824c68a6171409f23d062bb45af8159620eedfc458cceb50c4",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/REVISION_LOG.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/evidence/arithmetic.json",
+      "bytes": 2358,
+      "sha256": "86bc04de2bb9a30c514cdd3ba8abebe17c71c85f89827d1738ea34bdafdb590c",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/arithmetic.json"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/evidence/github_AGENTS.md",
+      "bytes": 6665,
+      "sha256": "648ddb44ac8a3028d1da72e8625309c9ce32cdb382c01ce892cc2a7e4cac7845",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_AGENTS.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/evidence/github_PR3_metadata.json",
+      "bytes": 24766,
+      "sha256": "309bc2e5ccf6b9450c07180be27f0a948c8fe068debf1e556f12581c33430794",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_PR3_metadata.json"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/evidence/github_README.md",
+      "bytes": 16198,
+      "sha256": "fdef04c2dd6300b7ebc1f732b3afd98b531e2a54368083322708549b9ed2cb53",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_README.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/evidence/github_UNO_SYSTEM_FORMULA.md",
+      "bytes": 5588,
+      "sha256": "ac642b92fe07a40191b5eef0a3f947357b2df3d297055cef49dfc878c754f244",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_UNO_SYSTEM_FORMULA.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/originals/MANIFEST_SHA256.json",
+      "bytes": 746,
+      "sha256": "7187ca7e313fe184f52308720e1eaf8b9d414365941206f26a315e399314d3f5",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/MANIFEST_SHA256.json"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/originals/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md",
+      "bytes": 21841,
+      "sha256": "60bb31db6c663b4c78ea3182c1593b94ceb2b3259f690edc6ccc1792b28c6547",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/originals/UNO_MATH_HOST_V0_1_REFERENCE_NOT_CANONICAL.md",
+      "bytes": 13784,
+      "sha256": "abe61311b62f39cf176648aa6315d21e05fe471ab77d710e566774847a059b7b",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/UNO_MATH_HOST_V0_1_REFERENCE_NOT_CANONICAL.md"
+    },
+    {
+      "source_archive_member": "workspace/completion_sources_20261102/02_ORIGINAL_WORK_V1_1/originals/WORK_START_HERE_UNO_MATHEMATICAL_DESIGN_2026-11-01.md",
+      "bytes": 44026,
+      "sha256": "5dce811ff071b0654dfe58716424d5f6aead7fc09a1f40a6b97cdad85017f6f3",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/WORK_START_HERE_UNO_MATHEMATICAL_DESIGN_2026-11-01.md"
+    },
+    {
+      "source_archive_member": "workspace/project_sources/01-UNO_R53_FULL_NORMATIVE_PACKAGE_2026-11-02.zip",
+      "bytes": 5722,
+      "sha256": "55ee7134c8e84a809ed463d671f209e0c25caa407e993be6bf09316211ad9299",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/GROK_R53_ORIGINAL_UNMODIFIED.zip"
+    },
+    {
+      "source_archive_member": "workspace/project_sources/02-UNO_GROK_CORRECTED_MINIMAL_ORGANISM_2026-11-03.zip",
+      "bytes": 4266,
+      "sha256": "1b6eaf63c731313bf0c7840bda22c3b53269cf7195f4688ee5feef9f1cb1a523",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/project_sources/03-UNO_GROK_CORRECTED_MINIMAL_ORGANISM_PAPER_FOR_OWNER_REVIEW.md",
+      "bytes": 7745,
+      "sha256": "7d762c32aa533e8ce4bfd4f42a8f60b2de4c1b4e8d6999ed6cf8b696c491dd1b",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/project_sources/03-UNO_GROK_CORRECTED_MINIMAL_ORGANISM_PAPER_FOR_OWNER_REVIEW.md"
+    },
+    {
+      "source_archive_member": "workspace/project_sources/04-UNO_MINIMAL_ORGANISM_PAPER_FINAL_FOR_OWNER_REVIEW-1-.md",
+      "bytes": 148311,
+      "sha256": "b4a65751806d96573d21e727f817582db62764862b19131ca892ddece39affb2",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/project_sources/04-UNO_MINIMAL_ORGANISM_PAPER_FINAL_FOR_OWNER_REVIEW-1-.md"
+    },
+    {
+      "source_archive_member": "workspace/project_sources/05-UNO_WORK_TASK-1-.txt",
+      "bytes": 26688,
+      "sha256": "887b51096a17c8560a546d68a6cfded818dfaca81fb4375a33cadc25c45b0838",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/project_sources/05-UNO_WORK_TASK-1-.txt"
+    },
+    {
+      "source_archive_member": "workspace/project_sources/06-UNO_WORK_COMPLETE_PAPER_HANDOFF_2026-11-03-1-.zip",
+      "bytes": 841121,
+      "sha256": "4f9f59123b40a47a4bc2783f3633f0314a69fbac8c7cdb638dad3b3a1efc59b1",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/project_sources/07-UNO_WORK_TASK_FINAL-2-.txt",
+      "bytes": 247278,
+      "sha256": "c192423297937870aaf6f43ae18af479b7e923d38ab1d0c098e0d35f9d0924c8",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/project_sources/07-UNO_WORK_TASK_FINAL-2-.txt"
+    },
+    {
+      "source_archive_member": "workspace/project_sources/08-CHATGPT_HISTORY_10_OF_10_AGENT_MEMORY_2026-11-03-1-.zip",
+      "bytes": 101750,
+      "sha256": "77abdaaeb35436f231a33662a965a671f8a6565f4bdfb90fd0884a60b85a520f",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/project_sources/09-MASTER_CHATGPT_DIALOGUE_MEMORY-1-.md",
+      "bytes": 127063,
+      "sha256": "2e588fada97369977e751e0d44d5dd5f3b4c46aecc33ed67a465163085f79e84",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/source/MANIFEST_SHA256.json",
+      "bytes": 746,
+      "sha256": "7187ca7e313fe184f52308720e1eaf8b9d414365941206f26a315e399314d3f5",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/MANIFEST_SHA256.json"
+    },
+    {
+      "source_archive_member": "workspace/source/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md",
+      "bytes": 21841,
+      "sha256": "60bb31db6c663b4c78ea3182c1593b94ceb2b3259f690edc6ccc1792b28c6547",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md"
+    },
+    {
+      "source_archive_member": "workspace/source/PR3_formula.md",
+      "bytes": 13785,
+      "sha256": "b7e1b4cfbd2447cc7e4afaab7e38e8c0bd17cb936e78197f20639994357db704",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/PR3_formula.md"
+    },
+    {
+      "source_archive_member": "workspace/source/PR3_reference.py.txt",
+      "bytes": 16971,
+      "sha256": "f1d5d6c2f97b5e8bfc15a84459a0a0fb5c3761c8070b2c558a8390b98946fcfc",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/PR3_reference.py.txt"
+    },
+    {
+      "source_archive_member": "workspace/source/UNO_MATH_HOST_V0_1_REFERENCE_NOT_CANONICAL.md",
+      "bytes": 13784,
+      "sha256": "abe61311b62f39cf176648aa6315d21e05fe471ab77d710e566774847a059b7b",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/UNO_MATH_HOST_V0_1_REFERENCE_NOT_CANONICAL.md"
+    },
+    {
+      "source_archive_member": "workspace/source/WORK_START_HERE_UNO_MATHEMATICAL_DESIGN_2026-11-01.md",
+      "bytes": 44026,
+      "sha256": "5dce811ff071b0654dfe58716424d5f6aead7fc09a1f40a6b97cdad85017f6f3",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/WORK_START_HERE_UNO_MATHEMATICAL_DESIGN_2026-11-01.md"
+    },
+    {
+      "source_archive_member": "workspace/source/github_AGENTS.md",
+      "bytes": 6665,
+      "sha256": "648ddb44ac8a3028d1da72e8625309c9ce32cdb382c01ce892cc2a7e4cac7845",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_AGENTS.md"
+    },
+    {
+      "source_archive_member": "workspace/source/github_PR3.diff",
+      "bytes": 69342,
+      "sha256": "a857f2d114e39dd7b024d0b7355a12edc3a8a758c05f7f461e1c96daba5cb8d5",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/source/github_PR3.diff"
+    },
+    {
+      "source_archive_member": "workspace/source/github_PR3_metadata.json",
+      "bytes": 24766,
+      "sha256": "309bc2e5ccf6b9450c07180be27f0a948c8fe068debf1e556f12581c33430794",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_PR3_metadata.json"
+    },
+    {
+      "source_archive_member": "workspace/source/github_README.md",
+      "bytes": 16198,
+      "sha256": "fdef04c2dd6300b7ebc1f732b3afd98b531e2a54368083322708549b9ed2cb53",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_README.md"
+    },
+    {
+      "source_archive_member": "workspace/source/github_UNO_SYSTEM_FORMULA.md",
+      "bytes": 5588,
+      "sha256": "ac642b92fe07a40191b5eef0a3f947357b2df3d297055cef49dfc878c754f244",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/evidence/github_UNO_SYSTEM_FORMULA.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/LIVE/AGENTS.md",
+      "bytes": 9207,
+      "sha256": "989630fddc17aa9832ed15417b0c45a247ffa658c289515261a6cb4ff0536a3b",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/AGENTS.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/LIVE/README.md",
+      "bytes": 17794,
+      "sha256": "0cd44bcc903c168ef56225c096870f8d2a62c5ae810aa0d5d7078e49be063d0f",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/README.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/LIVE/docs/AGENT_START_HERE.md",
+      "bytes": 4904,
+      "sha256": "60907b5c7a665d4d2b029c645e70ce24550551e3201e44662336a4fb75153fc0",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/docs/AGENT_START_HERE.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/LIVE/docs/CURRENT_TASK.md",
+      "bytes": 5024,
+      "sha256": "ae76293ae8587c053d1b241957be19264f224a224982664e706cb48931d80acc",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/docs/CURRENT_TASK.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/LIVE/docs/STATUS.md",
+      "bytes": 5093,
+      "sha256": "84cf3eb4651885864f5eefefa8f40ec00e029df8a448ac19b9082b69c894353d",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/docs/STATUS.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/LIVE/docs/research/OWNER_TEACHING_AND_ANDROID_EVIDENCE_20261105.md",
+      "bytes": 5916,
+      "sha256": "83c6e2b731415db186e066fda391a31ca960c356523f37662359c9432d2700ce",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/docs/research/OWNER_TEACHING_AND_ANDROID_EVIDENCE_20261105.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/LIVE/research/uno-n0-07/results/OWNER_A52_FULL_400_REVIEW_20261106.md",
+      "bytes": 6849,
+      "sha256": "daf3c388cc68232f5aceee0f741ad9d642a170cdf880c2309e5fd7f902f5c457",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/research/uno-n0-07/results/OWNER_A52_FULL_400_REVIEW_20261106.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/LIVE/research/uno-n0-07/results/OWNER_A52_STAGE5_CATEGORICAL_TRACE_RECONSTRUCTED_20261106.csv",
+      "bytes": 3371,
+      "sha256": "96f5db394bde747234d3914a4094697cb4ba9321313e4fc85012d87e48547f5a",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/PINNED_REPO_TEXT/research/uno-n0-07/results/OWNER_A52_STAGE5_CATEGORICAL_TRACE_RECONSTRUCTED_20261106.csv"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/REMOTE_TREE_EFDB1767.json",
+      "bytes": 103473,
+      "sha256": "47049c6b215610d9773fa69de50344d316b846378b372a7d7d6e7180275fb669",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/evidence/REMOTE_TREE_EFDB1767.json"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/SOURCE_VERIFICATION.json",
+      "bytes": 18402,
+      "sha256": "b5d1fface47cb1eaa000dbaaf2febf96e4241a496907de0fa46905a55078946d",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/evidence/SOURCE_VERIFICATION.json"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/AGENT_PHASE_GATE.json",
+      "bytes": 1226,
+      "sha256": "9d1bcc21e7ab6ff1a24dcbb18453797ac5e7f9253b3daa12cc8d08a6917479e4",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/AGENT_PHASE_GATE.json"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/SOURCE_PACKAGE_IMPORT_MANIFEST.json",
+      "bytes": 27819,
+      "sha256": "ff6b099d062ddb0c1df519391d5d7e6393848a02242206deabaa4cce91a48287",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/SOURCE_PACKAGE_IMPORT_MANIFEST.json"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/00_START_HERE.md",
+      "bytes": 3442,
+      "sha256": "f67a7caf169a1a51f106274a00321340cada5e3870b387acb7c67f9d7b858abf",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/00_START_HERE.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/EVIDENCE/arithmetic_run_output.txt",
+      "bytes": 213,
+      "sha256": "e1fbd6d7557e5d1dd752f8599d6f1f3e14e50f11b065df37bd88e581d2767919",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/EVIDENCE/arithmetic_run_output.txt"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/EVIDENCE/recheck_arithmetic.py",
+      "bytes": 1537,
+      "sha256": "6aec027d2a3ab6a3657673aa3276edd58656a45c63c729847b6b3562494fe7f6",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/EVIDENCE/recheck_arithmetic.py"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/NORMATIVE/01_SOURCE_HIERARCHY_AND_CONTRACT_INDEX.md",
+      "bytes": 8270,
+      "sha256": "98a837fa8ce45c3c34e23274f118afc243c67b261f688c1d8846e5454e6792d6",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/NORMATIVE/01_SOURCE_HIERARCHY_AND_CONTRACT_INDEX.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/NORMATIVE/02_FORMAL_CORRECTIONS_AND_LIMITS.md",
+      "bytes": 11668,
+      "sha256": "6260310750aacfdd5326f91d6251d5649a1ca88855760110c3783fae29fade11",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/NORMATIVE/02_FORMAL_CORRECTIONS_AND_LIMITS.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/NORMATIVE/03_CONSOLIDATED_SUBSYSTEM_CONTRACTS.md",
+      "bytes": 5217,
+      "sha256": "69afb7138ada0188251cdbf381b03d34bc44963a080bbb63ae064da5c71953f7",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/NORMATIVE/03_CONSOLIDATED_SUBSYSTEM_CONTRACTS.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/NORMATIVE/04_ALL_GATES_D_X_B_M.md",
+      "bytes": 13025,
+      "sha256": "80f8d6c644af2b73843fe79dffdc1de9d116e80faf9b119c3bcce22773cc4867",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/R53_ORIGINAL_INDIVIDUAL_GATES.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/NORMATIVE/05_OWNER_DECISIONS_AND_FUTURE_EVIDENCE.md",
+      "bytes": 6593,
+      "sha256": "9a01bd2be0fcc024e3c8f61a87c422a777ae443cbc014519424ceb7e5f3210d2",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/NORMATIVE/05_OWNER_DECISIONS_AND_FUTURE_EVIDENCE.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/NORMATIVE/06_VERIFICATION_BOUNDARIES.md",
+      "bytes": 4636,
+      "sha256": "72a54778f26ce1b928785a02c56b8c86c807ea3b38b685560d973f163b52b711",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/NORMATIVE/06_VERIFICATION_BOUNDARIES.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/NORMATIVE/07_EXPLANATION_FOR_OWNER.md",
+      "bytes": 3736,
+      "sha256": "7d7b745f2d585f31d344ecec020465e542d552536d50ea13a475d35d38b5f23a",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/NORMATIVE/07_EXPLANATION_FOR_OWNER.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SHA256_MANIFEST.json",
+      "bytes": 11502,
+      "sha256": "da6832458698117c946b73e09fc618b286fe8396e61d031ae854f66cc49f35e7",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SHA256_MANIFEST.json"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+      "bytes": 9832,
+      "sha256": "4332225c501caf15628fa8e293895382501526c6540400e9d421c0ab712dca3c",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+      "bytes": 26820,
+      "sha256": "6bd6f68989972d183b6750711dca223355a026dfcf11461275d25406319853fe",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+      "bytes": 17474,
+      "sha256": "4b9186bb19d71f88aed989b33ef8a40f5a699535e645c79f5eb97d5d97098a4c",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "bytes": 27425,
+      "sha256": "52b1eab23c977d253625b98de20bee6e5802c652973cf96403037118b5fbe4be",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+      "bytes": 13624,
+      "sha256": "737654965c75e83e10a2705656af0f49ff9bf2c2bb0a4f359c67f0f426c6b0c8",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+      "bytes": 28652,
+      "sha256": "37754c2d980838e13877ed014f870a14a879cb32b08d6e19e78c5668a06fe817",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+      "bytes": 22056,
+      "sha256": "dc99d2e043ffff4abb28d8f9a99458cb8e2382dfe2ff920e68f1b0b67a23b9c7",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+      "bytes": 22258,
+      "sha256": "2602f04c049fc721e9c6ecc79f73d5e01400429315f05744f5ed00faa5b3f857",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+      "bytes": 15527,
+      "sha256": "4129290d9ef08c86e3aaf186fcb4d830a764c514beaca33aae61b4eae698ed69",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+      "bytes": 14541,
+      "sha256": "dea19182304bd8784030fe6d7b7570bdc4ffbc2bc5dafd68c8f7e772a726aa90",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md",
+      "bytes": 6521,
+      "sha256": "c2fd8de591472c52f0d206b361f6a61fc857f9ae989751ad11ce9bd0603f95c5",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+      "bytes": 11905,
+      "sha256": "dbcba73af110f6725183693b2dc3a67e1b310b3c6833787985325864986cf691",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+      "bytes": 10420,
+      "sha256": "bebaf4a52b8c39f32da6725a9216fc782e022c1f75067889c7a39ab780694879",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_FINAL_README_AND_DECISION.md",
+      "bytes": 7168,
+      "sha256": "5b933376c6a162ddbb03925b705bc2787b1c497b9a635d36b951ba9415aa5765",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_FINAL_README_AND_DECISION.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_REVISION_LOG.md",
+      "bytes": 4818,
+      "sha256": "3fc6c8c0024382a590a8f53ee8d41a34c24b16429f83d266238b0966714849fc",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_CURRENT/ASTRA_REVISION_LOG.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_FINAL_UNMODIFIED.zip",
+      "bytes": 681255,
+      "sha256": "3420edf9cb7b2170b5c5e0938d43fc3ab896061a5c5fb16229d9587c2ea27987",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_FINAL_UNMODIFIED.zip"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/FINAL_PACKAGE_MANIFEST.json",
+      "bytes": 21566,
+      "sha256": "a64d92b291b47b69584b0721a27b127105b072aeed064c83a3977cce58b8568b",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/FINAL_PACKAGE_MANIFEST.json"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/audit/R1_REVIEW.md",
+      "bytes": 19779,
+      "sha256": "fb1e3c5534b3ea02c8c8c4e2642f1662e06453bbc2a51d4115feb470104626d5",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/audit/R1_REVIEW.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/audit/R2_REVIEW.md",
+      "bytes": 14242,
+      "sha256": "9d3949bd323adbe2ac3b1c12ec624c4ba1edcf5f02866cdefd3ac6ef7b381eff",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/audit/R2_REVIEW.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/audit/R3_FINAL_REVIEW.md",
+      "bytes": 9582,
+      "sha256": "f87bd23cea22deba5218f960bbcfc87552210678fb2fa676968b8660ec8f6bba",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/audit/R3_FINAL_REVIEW.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/evidence/arithmetic_v2.json",
+      "bytes": 5898,
+      "sha256": "9fb83b81489bfc9cd543b9e774d2c7047aff11a99db9c5b2daa62f3fd95041d6",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/arithmetic_v2.json"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/evidence/recompute.py",
+      "bytes": 5599,
+      "sha256": "ccdb8c2006a9794376829afc7ca7f792d7c899191b4ec202644cbcfbf1807d0a",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/recompute.py"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/evidence/tensor_manifest_d1024.json",
+      "bytes": 43480,
+      "sha256": "569f839f3cc557fed734d41d65311b46743fbc77e4c3e11037aaf9fcc2326b32",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/ASTRA_SUPPORT/evidence/tensor_manifest_d1024.json"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/GROK_R53_ORIGINAL_UNMODIFIED.zip",
+      "bytes": 5722,
+      "sha256": "55ee7134c8e84a809ed463d671f209e0c25caa407e993be6bf09316211ad9299",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/GROK_R53_ORIGINAL_UNMODIFIED.zip"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/GROK_R53_SPEC_ORIGINAL.md",
+      "bytes": 8952,
+      "sha256": "f530aed4377a6dd5e2882620f28233f21867fd5f9f2ccd73c83bf6cad768d265",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/GROK_R53_SPEC_ORIGINAL.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/GROK_STAGE1.md",
+      "bytes": 5491,
+      "sha256": "268fa9b45ca181b4b0e41fba7f16e370b9f194be10e6b4cd9404ded8ce7f2b58",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/GROK_STAGE1.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/GROK_STAGE2.md",
+      "bytes": 10445,
+      "sha256": "1928e9c03ad2edbb81ca52937c60f416edc4747ec387626c3e8e88693ade0e63",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/GROK_STAGE2.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/INDEPENDENT_INTAKE.md",
+      "bytes": 11227,
+      "sha256": "bbb373ca0cbdc865d330a0a59aa7e1501c42276911c82b7af5e2621e53aebb90",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/INDEPENDENT_INTAKE.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/INDEPENDENT_REAUDIT.md",
+      "bytes": 14403,
+      "sha256": "6f3bdc4d11ae92f189718a3ca77e28bdc0da17cfeec7fa252a48982f5085ccdf",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/INDEPENDENT_REAUDIT.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R4/00_READ_FIRST.md",
+      "bytes": 3744,
+      "sha256": "566f041a5a3348a1a95b7cc46d90b787630cd797e88b7ba8d04a0c4ec698db86",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/00_READ_FIRST.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R4/01_PROVENANCE_AND_INTEGRITY.md",
+      "bytes": 2368,
+      "sha256": "fedd042a7fdc28256a589a9bc510a996eb05d65a7d4a5c3e6eff669ce4fd5937",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/01_PROVENANCE_AND_INTEGRITY.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R4/02_INDEPENDENT_ARITHMETIC_RECHECK.md",
+      "bytes": 4062,
+      "sha256": "e56c87b272428d15949c0cfe329be76cae74fa2951a7a48dd030a644d676a9be",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/02_INDEPENDENT_ARITHMETIC_RECHECK.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R4/03_D01_D10_STATUS.md",
+      "bytes": 3278,
+      "sha256": "f5571b798f100650aab66b14ea22d86721c11eaa152b7753550ee1afd060d318",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/03_D01_D10_STATUS.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R4/04_X01_X12_STATUS.md",
+      "bytes": 2933,
+      "sha256": "4aad1871ae5eb5b3e4724d017c27d7d50a3fe83ce905822f9eb6151b84dda094",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/04_X01_X12_STATUS.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R4/05_ADVERSARIAL_FINDINGS_IR01_IR08.md",
+      "bytes": 5773,
+      "sha256": "d2145f6318b5ae5db6d6e0cdb27f4cd69c8200cfc4b0db2ec96513e5c90fe2b9",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/05_ADVERSARIAL_FINDINGS_IR01_IR08.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R4/06_END_TO_END_CONSISTENCY.md",
+      "bytes": 2838,
+      "sha256": "af471788890010dfcd3ae5fa5cf3ebac7350beb371515f56715335f566d66a03",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/06_END_TO_END_CONSISTENCY.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R4/07_BLOCKERS_AND_NEXT_CONTROL_POINT.md",
+      "bytes": 3347,
+      "sha256": "96c49af55510f54396a53e4c92c147a918c42e092672d6119953d17d2f2a99f5",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/07_BLOCKERS_AND_NEXT_CONTROL_POINT.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R4/08_DIALOGUE_CONTEXT_UPDATE.md",
+      "bytes": 1715,
+      "sha256": "1dcf66302a6b2c1a26dc0ffcd4963caa5bc57571ddcdf3a7416eaa6685edd302",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R4/08_DIALOGUE_CONTEXT_UPDATE.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R51/00_START_HERE_AND_VERDICT.md",
+      "bytes": 4127,
+      "sha256": "aef792f7958478f5e0151e8947498c389096e4473280374b5a7062909bd0d664",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/00_START_HERE_AND_VERDICT.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R51/01_GROK_R1_R2_EVIDENCE.md",
+      "bytes": 3675,
+      "sha256": "04ab7cb233cb1b6340ca53dcb2242ff59cb7f152f83d4f3b3a6940aee7990ada",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/01_GROK_R1_R2_EVIDENCE.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R51/02_W4_CORRECTION_AND_PROOF.md",
+      "bytes": 4809,
+      "sha256": "a6764047ace8eb5ab03bd9e92f7bb8d53feebc2f22f51b3482c03ea26f623e44",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/02_W4_CORRECTION_AND_PROOF.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R51/03_MEMORY_EXACT_CONTRACT_DRAFT.md",
+      "bytes": 7165,
+      "sha256": "0fe412ca52be5cada3c59a3e036399ba12e08826055074910a1ff067772b1e76",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/03_MEMORY_EXACT_CONTRACT_DRAFT.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R51/04_IR03_IR08_NOTES.md",
+      "bytes": 3938,
+      "sha256": "8282b00eded5f2eb23071daca61150e8631424e1e90b77ab83f98b715dc444b6",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/04_IR03_IR08_NOTES.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R51/05_D_X_B_GATE_MATRIX.md",
+      "bytes": 4143,
+      "sha256": "aee21424b55a9ec5a03d36e484ca84ded0b494025aef0542af95ffcb23de9a5b",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/05_D_X_B_GATE_MATRIX.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R51/06_CRITICAL_AUDIT_AND_TESTS.md",
+      "bytes": 6255,
+      "sha256": "84a6945f97fe9f4a1ee29eb8414afb7affb64af2945bced4f4d3493c5cc7482c",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/06_CRITICAL_AUDIT_AND_TESTS.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R51/07_NEXT_CHECKPOINT.md",
+      "bytes": 3242,
+      "sha256": "2fc8c562f3ceedb361a0485f3402a57a17f202ae5a1e1326359a127a205c6bc9",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R51/07_NEXT_CHECKPOINT.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R52/01_W4_ERRATUM.md",
+      "bytes": 3866,
+      "sha256": "f1260b8ee3346d41a2aa16463c248771277a3ade9f55e0bfb0ce64bc24b03167",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R52/01_W4_ERRATUM.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R52/02_MEMORY_CONTRACT.md",
+      "bytes": 5946,
+      "sha256": "42ec11748a2cb6cbe85cd82fac1adbb6195f0e17cd6e9a50bfdea007e4073d6f",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R52/02_MEMORY_CONTRACT.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R52/03_WAKE_SENSOR_REQUIREMENTS.md",
+      "bytes": 7173,
+      "sha256": "b9d795ad76ed173937c93e2c74abe2e1cdb990d8b396be8cbdac64891fd69b99",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R52/03_WAKE_SENSOR_REQUIREMENTS.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R52/04_POLICIES_AND_DECISIONS.md",
+      "bytes": 5420,
+      "sha256": "208f0713e0fb9e6327b504437d5f925c9fdbf595d253674b39f58d813ba94b57",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R52/04_POLICIES_AND_DECISIONS.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/R52/05_VERIFICATION_AND_GATE.md",
+      "bytes": 4207,
+      "sha256": "d25663258a93fc38eec71d2598d206eb72be4bffb3304e9c3f3e56f0407d1f7e",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/R52/05_VERIFICATION_AND_GATE.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/SELF_REAUDIT_EVIDENCE.json",
+      "bytes": 2763,
+      "sha256": "d9355fc37886b943134ce0ef15bda0eb6d471ea8a300a41b5fc3f95955b16ffc",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/SELF_REAUDIT_EVIDENCE.json"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/docs/precode/r5.3/source-package/SOURCES/WORK_V22_ORIGINAL.zip",
+      "bytes": 1793119,
+      "sha256": "639708aff644f562c98564b20311262c96105345637e5f3a6566d55c418ca50d",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/WORK_V22_ORIGINAL.zip"
+    },
+    {
+      "source_archive_member": "workspace/uno_r4_audit_inputs/raw_v/UNOVYRA AI Agent Adaptive Neural Organism/UNO_R41_A52_V01_V20_ALL_TESTS_AND_RESULTS_REV2_2026-11-04.txt",
+      "bytes": 479306,
+      "sha256": "e881d6029227bf6b7e2586409b51540d8ce0596c56609978d40b697f09ad16e7",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/uno_r4_audit_inputs/raw_v/UNOVYRA AI Agent Adaptive Neural Organism/UNO_R41_A52_V01_V20_ALL_TESTS_AND_RESULTS_REV2_2026-11-04.txt"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext/R4_1_INHERITED_BASE.md",
+      "bytes": 184036,
+      "sha256": "a57aa0973b99552e9849ad49222339cea3a5711f66f62aa5f1dbebf9fd89cf07",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/R4_1_INHERITED_BASE.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext/R53_ORIGINAL_INDIVIDUAL_GATES.md",
+      "bytes": 13025,
+      "sha256": "80f8d6c644af2b73843fe79dffdc1de9d116e80faf9b119c3bcce22773cc4867",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/R53_ORIGINAL_INDIVIDUAL_GATES.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext/SHA256_MANIFEST.json",
+      "bytes": 690,
+      "sha256": "3fc31128aaf92be049518a0540b55886c18221c46628ce3235a5f882ec93078e",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/uno_vnext/SHA256_MANIFEST.json"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext/UNO_ARCHITECTURE_ALTERNATIVES_AND_COUNTEREXAMPLES.md",
+      "bytes": 7572,
+      "sha256": "6d3157a785279e8478999f6d42ab661d4f6aa3dc3af95bbcd01b4d0580adc9c5",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/uno_vnext/UNO_ARCHITECTURE_ALTERNATIVES_AND_COUNTEREXAMPLES.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext/UNO_EVIDENCE_TRACEABILITY_AND_TEST_GATES.md",
+      "bytes": 5228,
+      "sha256": "e115fd74799d65fcf432f6480f6c640991479e44b9de34fe69d1376ac85ee767",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/uno_vnext/UNO_EVIDENCE_TRACEABILITY_AND_TEST_GATES.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext/UNO_INTEGRATED_NEURAL_ORGANISM_PRECODE_CANDIDATE_vNEXT.md",
+      "bytes": 19618,
+      "sha256": "b81fd9ffbfe2ef8a7ea738ef3b41f082b450787c8e572ad874311e429f05a17a",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/uno_vnext/UNO_INTEGRATED_NEURAL_ORGANISM_PRECODE_CANDIDATE_vNEXT.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext/UNO_OWNER_DECISION_OPTIONS_O01_O08.md",
+      "bytes": 3457,
+      "sha256": "32ba66764bcbfa61e99094609c07c323f1c5f063e2de3d24360a8abd679c27d8",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/uno_vnext/UNO_OWNER_DECISION_OPTIONS_O01_O08.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r2/00_READ_ME.md",
+      "bytes": 1135,
+      "sha256": "9e631637e3f74135b110c58e7bc0bbaa03c752dab38e2565e9debfc1bf4ca22a",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/uno_vnext_r2/00_READ_ME.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r2/ERRATA_R2.md",
+      "bytes": 15152,
+      "sha256": "09ee78099dd177176a1b2502b8119a4cd56ac5701f062f9cc1643b5404e07176",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/ERRATA_R2.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r2/R4_1_INHERITED_BASE.md",
+      "bytes": 184036,
+      "sha256": "a57aa0973b99552e9849ad49222339cea3a5711f66f62aa5f1dbebf9fd89cf07",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/R4_1_INHERITED_BASE.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r2/R53_ORIGINAL_INDIVIDUAL_GATES.md",
+      "bytes": 13025,
+      "sha256": "80f8d6c644af2b73843fe79dffdc1de9d116e80faf9b119c3bcce22773cc4867",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/R53_ORIGINAL_INDIVIDUAL_GATES.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r2/SHA256_MANIFEST.json",
+      "bytes": 1053,
+      "sha256": "5a6fac0d88a88d7f5ad3899af17614d416b4c581f97c942b268ddd2435f24679",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/uno_vnext_r2/SHA256_MANIFEST.json"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r2/UNO_ARCHITECTURE_ALTERNATIVES_AND_COUNTEREXAMPLES.md",
+      "bytes": 7738,
+      "sha256": "8861e150ac214f8250f64d58d194a2a492ae4c1ffc3b10c42c1dc86a7d0e46bf",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/UNO_ARCHITECTURE_ALTERNATIVES_AND_COUNTEREXAMPLES.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r2/UNO_EVIDENCE_TRACEABILITY_AND_TEST_GATES.md",
+      "bytes": 5394,
+      "sha256": "8232935681bd9ebc5479e789bc2ec729d89f883f0abf47caf05401104fc04cbc",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/UNO_EVIDENCE_TRACEABILITY_AND_TEST_GATES.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r2/UNO_INTEGRATED_NEURAL_ORGANISM_PRECODE_CANDIDATE_vNEXT.md",
+      "bytes": 20428,
+      "sha256": "d047ef4c175783bb7dc064a1dc36a0523f3f15a3dea7795467fa61cc60ba5cce",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/uno_vnext_r2/UNO_INTEGRATED_NEURAL_ORGANISM_PRECODE_CANDIDATE_vNEXT.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r2/UNO_OWNER_DECISION_OPTIONS_O01_O08.md",
+      "bytes": 3459,
+      "sha256": "e8c9ca6ecaa090e83d9b60cd743a0712cde6962a101d361c719063fbb81b95df",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/UNO_OWNER_DECISION_OPTIONS_O01_O08.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r2/VERIFICATION_RESULTS.json",
+      "bytes": 1553,
+      "sha256": "bf287e08edcdf9ed9ffb4f45e5a972b40ccee4994ed4760226fdaa3367827df6",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/VERIFICATION_RESULTS.json"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r2/verify_revision.py",
+      "bytes": 1644,
+      "sha256": "eb0aad9524cd3c0286c3505bd8ee2d116e8bc61d4ba9cef09e1a9ffd808ba409",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/verify_revision.py"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r3/00_READ_ME.md",
+      "bytes": 942,
+      "sha256": "c96cb2a321f2568f49b4e19c680286eab3ad7c9b06bd8eb560f5a3ed551d575f",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/00_READ_ME.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r3/ERRATA_R2.md",
+      "bytes": 15152,
+      "sha256": "09ee78099dd177176a1b2502b8119a4cd56ac5701f062f9cc1643b5404e07176",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/ERRATA_R2.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r3/ERRATA_R3.md",
+      "bytes": 3947,
+      "sha256": "eee5ce70ee09a90910f1569fe2d335d62a2812b678b177bfa99cbe506d05cbac",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/ERRATA_R3.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r3/R4_1_INHERITED_BASE.md",
+      "bytes": 184036,
+      "sha256": "a57aa0973b99552e9849ad49222339cea3a5711f66f62aa5f1dbebf9fd89cf07",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/R4_1_INHERITED_BASE.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r3/R53_ORIGINAL_INDIVIDUAL_GATES.md",
+      "bytes": 13025,
+      "sha256": "80f8d6c644af2b73843fe79dffdc1de9d116e80faf9b119c3bcce22773cc4867",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/R53_ORIGINAL_INDIVIDUAL_GATES.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r3/SHA256_MANIFEST.json",
+      "bytes": 1230,
+      "sha256": "8ef426d2850076cc342e8a7b67f8e29b7edc55c7d6d3104904e205111f7dec3d",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/SHA256_MANIFEST.json"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r3/UNO_ARCHITECTURE_ALTERNATIVES_AND_COUNTEREXAMPLES.md",
+      "bytes": 7738,
+      "sha256": "8861e150ac214f8250f64d58d194a2a492ae4c1ffc3b10c42c1dc86a7d0e46bf",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/UNO_ARCHITECTURE_ALTERNATIVES_AND_COUNTEREXAMPLES.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r3/UNO_EVIDENCE_TRACEABILITY_AND_TEST_GATES.md",
+      "bytes": 5394,
+      "sha256": "8232935681bd9ebc5479e789bc2ec729d89f883f0abf47caf05401104fc04cbc",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/UNO_EVIDENCE_TRACEABILITY_AND_TEST_GATES.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r3/UNO_INTEGRATED_NEURAL_ORGANISM_PRECODE_CANDIDATE_vNEXT.md",
+      "bytes": 21402,
+      "sha256": "01fde9e8d50783275722ad533121abb0d8e24ce998a01709abec3a267265a222",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/UNO_INTEGRATED_NEURAL_ORGANISM_PRECODE_CANDIDATE_vNEXT.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r3/UNO_OWNER_DECISION_OPTIONS_O01_O08.md",
+      "bytes": 3459,
+      "sha256": "e8c9ca6ecaa090e83d9b60cd743a0712cde6962a101d361c719063fbb81b95df",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/UNO_OWNER_DECISION_OPTIONS_O01_O08.md"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r3/VERIFICATION_RESULTS.json",
+      "bytes": 1553,
+      "sha256": "bf287e08edcdf9ed9ffb4f45e5a972b40ccee4994ed4760226fdaa3367827df6",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/VERIFICATION_RESULTS.json"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r3/verify_package.py",
+      "bytes": 1191,
+      "sha256": "160defd4d32a8316e59ba0abcf8e167ef3e48cd09f8f760db956549864ccfb5f",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/verify_package.py"
+    },
+    {
+      "source_archive_member": "workspace/uno_vnext_r3/verify_revision.py",
+      "bytes": 1644,
+      "sha256": "eb0aad9524cd3c0286c3505bd8ee2d116e8bc61d4ba9cef09e1a9ffd808ba409",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r3/package/verify_revision.py"
+    },
+    {
+      "source_archive_member": "workspace/upload/01-1793954615763.jpeg",
+      "bytes": 159905,
+      "sha256": "0d6c2ab6e8ac4bbfc66f687d6b0dbff34c8a874a3c7802a66a0619822e0a7ffd",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/upload/UNO_COMPLETE_RESEARCH_HANDOFF_FOR_WORK_2026-11-06.zip",
+      "bytes": 1460218,
+      "sha256": "01edce3dbea39a8a169f27cc85da1ad2e4e815a6f3ada198761bd0b8b5273fed",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/upload/UNO_TO_WORK_R3_FULL_SOURCE_REPAIR_2026-11-04.zip",
+      "bytes": 6779248,
+      "sha256": "90b597134421f796d82a8f10f10ee1ee483d1d854a4ddca820e5cf12527add2c",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/upload/UNO_WORKFLOW_RECOVERY_VERIFIED_V2_20261106.zip",
+      "bytes": 18451,
+      "sha256": "8df81f4ba8fc30d27260504ed90412f37a11698b9857281426a142cb7507ca73",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/upload/UNO_WORK_COMPLETE_PAPER_HANDOFF_2026-11-03.zip",
+      "bytes": 841121,
+      "sha256": "4f9f59123b40a47a4bc2783f3633f0314a69fbac8c7cdb638dad3b3a1efc59b1",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/upload/UNO_WORK_MATHEMATICAL_HANDOFF_2026-11-01.zip",
+      "bytes": 29224,
+      "sha256": "dd54ae37928b1b9f4b97386c7b255740bdf55dfbce3b9aea0b6e4651fd880737",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/upload/WORK_START_HERE_UNO_MATHEMATICAL_DESIGN_2026-11-01.md",
+      "bytes": 44026,
+      "sha256": "5dce811ff071b0654dfe58716424d5f6aead7fc09a1f40a6b97cdad85017f6f3",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/ASTRA_COMPLETION_20261102/sources/02_ORIGINAL_WORK_V1_1/originals/WORK_START_HERE_UNO_MATHEMATICAL_DESIGN_2026-11-01.md"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/guides/00_READ_ME_FIRST_RU.md",
+      "bytes": 4220,
+      "sha256": "f22e41baf3db462fb1a688a6f6ae6bb9d56bba97c3f5a1f36a0ec632ebec4f3a",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/upload/uno_handoff/guides/00_READ_ME_FIRST_RU.md"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/guides/01_OWNER_INTENT_AND_GATES.md",
+      "bytes": 3847,
+      "sha256": "f9578cb27c37a9e477d3b11b3efb2814ad469205f80f8b49a19c5c597844b33e",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/upload/uno_handoff/guides/01_OWNER_INTENT_AND_GATES.md"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/guides/02_EVIDENCE_LEDGER.md",
+      "bytes": 7888,
+      "sha256": "c2f731a4436781e8133646002719040698a72fe122f5230ec50c3b1d854fc41d",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/upload/uno_handoff/guides/02_EVIDENCE_LEDGER.md"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/guides/03_CORRECTED_INTERPRETATION.md",
+      "bytes": 7067,
+      "sha256": "dc80124f474bc7eb1411faea7e0452191737cfa42c7004e449306bf2b205a2f5",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/upload/uno_handoff/guides/03_CORRECTED_INTERPRETATION.md"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/guides/04_GITHUB_ORIGINALS_AND_MISSING.md",
+      "bytes": 2850,
+      "sha256": "81f5e3839cdb8ed94159c1b76cfbf520ab042fdfd3ac46621ecd2d9b53e6bb64",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/upload/uno_handoff/guides/04_GITHUB_ORIGINALS_AND_MISSING.md"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/guides/05_WORK_MANDATE.md",
+      "bytes": 6947,
+      "sha256": "1d0f752b9e28285c0fd525ac622021209f7d32b401fb3933ec1bdac5e35a6905",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/upload/uno_handoff/guides/05_WORK_MANDATE.md"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/guides/06_STATUS_TRANSMITTAL.md",
+      "bytes": 1372,
+      "sha256": "1989d627b1f6c966307d81f03bd2d8689eae28a5b35ac3c4a27c76af878a6b3d",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/upload/uno_handoff/guides/06_STATUS_TRANSMITTAL.md"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_GROK_CORRECTED_MINIMAL_ORGANISM_2026-11-03.zip",
+      "bytes": 4266,
+      "sha256": "1b6eaf63c731313bf0c7840bda22c3b53269cf7195f4688ee5feef9f1cb1a523",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_GROK_CORRECTED_MINIMAL_ORGANISM_PAPER_FOR_OWNER_REVIEW.md",
+      "bytes": 7745,
+      "sha256": "7d762c32aa533e8ce4bfd4f42a8f60b2de4c1b4e8d6999ed6cf8b696c491dd1b",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/project_sources/03-UNO_GROK_CORRECTED_MINIMAL_ORGANISM_PAPER_FOR_OWNER_REVIEW.md"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_LIVING_RELATION_R01_RESEARCH_20261105.zip",
+      "bytes": 14105,
+      "sha256": "046e576a7cc001030214ea24aa1e4d871d952015431eedf728f57d0dde3830d1",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_MINIMAL_ORGANISM_PAPER_FINAL_FOR_OWNER_REVIEW(1).md",
+      "bytes": 148311,
+      "sha256": "b4a65751806d96573d21e727f817582db62764862b19131ca892ddece39affb2",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/project_sources/04-UNO_MINIMAL_ORGANISM_PAPER_FINAL_FOR_OWNER_REVIEW-1-.md"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_N006_PILOT_FROZEN_BEFORE_RUN_20261105.md",
+      "bytes": 4192,
+      "sha256": "db0c8a46a18b4c989e83865d7ea2ab512ca932f87d14aa464099a832f8326695",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/upload/uno_handoff/original_assets/UNO_N006_PILOT_FROZEN_BEFORE_RUN_20261105.md"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_N0_01_RESEARCH_TRAINED_2026-11-05.zip",
+      "bytes": 21008,
+      "sha256": "0abbaafcafe8912be75f7bc0b36d43f6d0f715bda8884af81d89594909c49226",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_N0_02_LOCAL_PLASTICITY_RESEARCH_2026-11-05.zip",
+      "bytes": 23747,
+      "sha256": "8a94fe5e9b82e5732691967e47170e2bbe9a85ba7f83ca0f1c713538a889a1fe",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_N0_03_ANDROID_SOURCE_2026-11-05.zip",
+      "bytes": 12375,
+      "sha256": "fd65678d489977a614a74b93198c0f216f4a608b1473eb7ea125e36316709c79",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_N0_04_ANDROID_RESEARCH.apk",
+      "bytes": 41387,
+      "sha256": "791b171351c600eb6f493767ecdfe16efbc4b608e21a07fe22dffd9c4fb905c9",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_N0_04_ANDROID_RESEARCH_ARTIFACT.zip",
+      "bytes": 21835,
+      "sha256": "b6c7360f0138d2380d28c1c44b37d66c00430c272ab09c08a58f89dc9b3382ce",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_N0_04_ANDROID_SOURCE_FINAL_2026-11-05.zip",
+      "bytes": 20825,
+      "sha256": "defda9ac135c8b6ba02834c50cacbf628327850b73eee0011f42447ece22d76c",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_N0_05_DIAGNOSTIC_20261105_SOURCE.zip",
+      "bytes": 27565,
+      "sha256": "b32100e58ee79b7f5a30d0a5530c9e95936550d6ec7bbea0b78f31b16cfbf5f2",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_N0_05_NEURAL_AUDIT.apk",
+      "bytes": 45483,
+      "sha256": "052335fadd1c81d9ddf47488ac05ec4cb911d3ab527a265d6a8b637b364fe511",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_N0_05_NEURAL_AUDIT_CI_ARTIFACT.zip",
+      "bytes": 25236,
+      "sha256": "138dbe7ec4a2fb7613f2937c8b72a06f47d75f59fd1e3f6969373e106e1152da",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_N0_06_HOST_PILOT_20261105.zip",
+      "bytes": 19940,
+      "sha256": "d0679dedef983935078b0a1c4b435eeda72763a632cf80a4a7338da926f5ac35",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_N0_07_APK_FOR_PHONE.zip",
+      "bytes": 27414,
+      "sha256": "6b9495f535e103d7d0f4a8e05ad27c375f39394431ab382f57790c5658861e5d",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_N0_07_TINY_F_CI_ARTIFACT.zip",
+      "bytes": 30749,
+      "sha256": "edb93e1611d8dc1a9cc416ec15db3dece4fd789468d0c526d529dd7336641698",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_N0_07_TINY_F_ORGANISM_20261105.zip",
+      "bytes": 67585,
+      "sha256": "5469dbd65d1df53bac3314b00135ea35693d7c6e5cae465bcc5faedd310d1531",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_N0_07_TINY_F_RESEARCH.apk",
+      "bytes": 53675,
+      "sha256": "642d17365e3f5d40baf90450800da5b626735cec5e1ef92a51e5ffc0334ecf2e",
+      "status": "OWNER_PRIVATE_OR_RESEARCH_BINARY_NOT_MIRRORED",
+      "repo_path": null
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_R53_FULL_NORMATIVE_PACKAGE_2026-11-02.zip",
+      "bytes": 5722,
+      "sha256": "55ee7134c8e84a809ed463d671f209e0c25caa407e993be6bf09316211ad9299",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/precode/vnext-r4/package/sources/source-package/SOURCES/GROK_R53_ORIGINAL_UNMODIFIED.zip"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_UNOVYRA_COMPLETE_PRECODE_PAPER_R3_2026-11-03.md",
+      "bytes": 198941,
+      "sha256": "bde7a1b2e7b6756169f12343581ed9bff36c1ef99a0a4ac0e6e91b71b58a0412",
+      "status": "MIRRORED_ARCHIVE_PROVENANCE",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/upload/uno_handoff/original_assets/UNO_UNOVYRA_COMPLETE_PRECODE_PAPER_R3_2026-11-03.md"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_WORK_COMPLETE_PAPER_HANDOFF_2026-11-03(1).zip",
+      "bytes": 841121,
+      "sha256": "4f9f59123b40a47a4bc2783f3633f0314a69fbac8c7cdb638dad3b3a1efc59b1",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_WORK_TASK(1).txt",
+      "bytes": 26688,
+      "sha256": "887b51096a17c8560a546d68a6cfded818dfaca81fb4375a33cadc25c45b0838",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/project_sources/05-UNO_WORK_TASK-1-.txt"
+    },
+    {
+      "source_archive_member": "workspace/upload/uno_handoff/original_assets/UNO_WORK_TASK_FINAL(2).txt",
+      "bytes": 247278,
+      "sha256": "c192423297937870aaf6f43ae18af479b7e923d38ab1d0c098e0d35f9d0924c8",
+      "status": "MIRRORED_IDENTICAL_CONTENT",
+      "repo_path": "docs/archive/owner-complete-work-20261106/workspace/project_sources/07-UNO_WORK_TASK_FINAL-2-.txt"
+    },
+    {
+      "source_archive_member": "SHA256SUMS.json",
+      "bytes": 76050,
+      "sha256": "2b8c4c41e4aaa03fc409fbf84de97c405a6ecb8aec7f0001ef6552423251e40d",
+      "status": "INDEXED_NOT_MIRRORED",
+      "repo_path": null,
+      "reason": "binary archive, duplicate location or unselected historical snapshot; consult original private owner ZIP"
+    }
+  ]
+}
