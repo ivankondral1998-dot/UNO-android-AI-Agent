@@ -25,6 +25,21 @@ data class Percept(
 }
 
 enum class NativeEndpoint { TRUE, FALSE, UNKNOWN }
+
+/** Admission is not an OS observation. Never train a success/outcome label from Rejected. */
+enum class DispatchRejection {
+    NOT_ISSUED, WRONG_TICKET, CLOSED_TICKET, STOP_OR_EXPIRED, DIGEST_MISMATCH, JOURNAL_UNAVAILABLE
+}
+
+/** Typed result of this *reference* dispatch boundary, not an independent native readback. */
+sealed class DispatchAttempt {
+    /** Native was not called by this attempt. This says nothing about older OS effects. */
+    data class Rejected(val reason: DispatchRejection) : DispatchAttempt()
+    /** Native was called once; a returned status is NOT a trusted observation of OS state. */
+    data class Invoked(val nativeReturn: NativeEndpoint) : DispatchAttempt()
+    /** This ticket was previously dispatched or its disposition is no longer locally known. */
+    object Unresolved : DispatchAttempt()
+}
 enum class Phase { PREPARED, MAY_HAVE_EXECUTED, WAIT_READBACK, COMMITTED, CANCELLED, DENIED, UNKNOWN }
 
 data class Proposal(
