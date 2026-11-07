@@ -6,6 +6,8 @@ import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
 import android.graphics.Color
+import android.content.res.ColorStateList
+import android.widget.CheckBox
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ScrollView
@@ -26,6 +28,49 @@ class UnoActivity : Activity() {
     @Volatile private var labStop = LabStop()
     private lateinit var status: TextView
     private lateinit var report: TextView
+    private lateinit var uiRoot: LinearLayout
+    private val labels = ArrayList<TextView>()
+    private val themeButtons = ArrayList<Button>()
+    private var styleCheckbox: CheckBox? = null
+    private val themeGate = UnoThemeGate()
+
+    private fun restoreTheme() {
+        val preferences = getSharedPreferences("uno_ui_theme", MODE_PRIVATE)
+        val rgb = preferences.getInt("accent_rgb", UnoThemeColors.ORANGE) and 0xFFFFFF
+        val tone = if (preferences.getString("tone", "DARK") == "LIGHT") ThemeTone.LIGHT else ThemeTone.DARK
+        themeGate.setManually(UnoTheme(tone, rgb))
+        themeGate.setConversationStyleConsent(preferences.getBoolean("style_consent", false))
+    }
+
+    private fun applyTheme() {
+        val theme = themeGate.current
+        val back = UnoThemeColors.background(theme.tone)
+        uiRoot.setBackgroundColor(Color.rgb((back shr 16) and 255, (back shr 8) and 255, back and 255))
+        val fg = if (theme.tone == ThemeTone.DARK) Color.WHITE else Color.rgb(22, 29, 42)
+        labels.forEach { it.setTextColor(fg) }
+        styleCheckbox?.setTextColor(fg)
+        val accent = theme.accentRgb
+        val tint = Color.rgb((accent shr 16) and 255, (accent shr 8) and 255, accent and 255)
+        val ink = if (UnoThemeColors.contrast(accent, 0x000000) >= 4.5) Color.BLACK else Color.WHITE
+        for (button in themeButtons) {
+            if (button.tag == "critical_stop") {
+                button.backgroundTintList = ColorStateList.valueOf(Color.rgb(184, 55, 65))
+                button.setTextColor(Color.WHITE)
+            } else {
+                button.backgroundTintList = ColorStateList.valueOf(tint)
+                button.setTextColor(ink)
+            }
+        }
+    }
+
+    private fun chooseManualTheme(rgb: Int, tone: ThemeTone) {
+        themeGate.setManually(UnoTheme(tone, rgb))
+        getSharedPreferences("uno_ui_theme", MODE_PRIVATE).edit()
+            .putInt("accent_rgb", themeGate.current.accentRgb)
+            .putString("tone", themeGate.current.tone.name).apply()
+        applyTheme()
+        status.text = "Тема выбрана владельцем · офлайн · сохранена на устройстве"
+    }
     private val mainHandler = Handler(Looper.getMainLooper())
     private val heartbeatLateCount = AtomicLong(0)
     private val heartbeatMaxDelayMs = AtomicLong(0)
@@ -46,13 +91,16 @@ class UnoActivity : Activity() {
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
+        restoreTheme()
         val root=LinearLayout(this).apply {
             orientation=LinearLayout.VERTICAL
             setPadding(24,38,24,38)
             setBackgroundColor(Color.rgb(12,18,27))
         }
+        uiRoot = root
         fun label(s:String, size:Float=15f)=TextView(this).apply {
             text=s;textSize=size;setTextColor(Color.WHITE);setPadding(0,8,0,8)
+            labels.add(this)
         }
         root.addView(label("UNOVYRA / UNO 1.0 LAB",25f))
         status=label("Офлайн-лаборатория WP-01 · действий ОС нет · модель не загружена")
@@ -61,7 +109,32 @@ class UnoActivity : Activity() {
         report=label("Исследования: https://uno-research.pages.dev/\nСайт не используется приложением. \nДля сохранённых JSON: adb run-as org.unovyra.uno.scaffold")
         root.addView(report)
         fun button(text:String,onClick:()->Unit) {
-            root.addView(Button(this).apply { this.text=text;setOnClickListener{onClick()} })
+            root.addView(Button(this).apply {
+                this.text=text
+                if (text.startsWith("СТОП")) tag="critical_stop"
+                themeButtons.add(this)
+                setOnClickListener{onClick()}
+            })
+        }
+        root.addView(label("ОФОРМЛЕНИЕ · ручной выбор; нейровыбор пока недоступен", 17f))
+        button("🟠 Оранжевый · тёмная тема") { chooseManualTheme(UnoThemeColors.ORANGE, ThemeTone.DARK) }
+        button("🟡 Жёлтый · тёмная тема") { chooseManualTheme(UnoThemeColors.YELLOW, ThemeTone.DARK) }
+        button("🩷🩵 Розово-голубой · тёмная тема") { chooseManualTheme(UnoThemeColors.ROSE, ThemeTone.DARK) }
+        button("Светлая тема · оранжевый") { chooseManualTheme(UnoThemeColors.ORANGE, ThemeTone.LIGHT) }
+        val consent = CheckBox(this).apply {
+            text = "Разрешить в будущем локальный подбор по стилю общения"
+            setTextColor(Color.WHITE)
+            isChecked = themeGate.conversationStyleConsent
+            setOnCheckedChangeListener { _, checked ->
+                themeGate.setConversationStyleConsent(checked)
+                getSharedPreferences("uno_ui_theme", MODE_PRIVATE).edit().putBoolean("style_consent", checked).apply()
+                status.text = if (checked) "Согласие сохранено; анализа общения сейчас нет" else "Анализ общения отключён"
+            }
+        }
+        root.addView(consent)
+        styleCheckbox = consent
+        button("Спросить UNO, какую тему он предложит") {
+            status.text="Нейромодель ещё не подключена. Выбор по общению недоступен — тема не изменена."
         }
         button("Снимок состояния: RAM / CPU / батарея / тепло") { runSimple(false) }
         button("Каталог сенсоров и их характеристики") { runSensorInventory() }
@@ -79,6 +152,7 @@ class UnoActivity : Activity() {
             status.text="STOP · тесты отменены · trusted epoch=${controller.epoch}"
         }
         setContentView(ScrollView(this).apply {addView(root)})
+        applyTheme()
         mainHandler.post(heartbeat)
         reportFullyDrawn() // For full launch timing use separate physical-device Macrobenchmark.
     }
