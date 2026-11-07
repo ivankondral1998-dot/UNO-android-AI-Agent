@@ -8,5 +8,6 @@ fun main() {
     ThemePersonalizationTest.run()
     FoundationHardeningTest.run()
     ComputeBudgetGateTest.run()
-    println("UNO_WP01_HOST_PASS=${CoreSelfTest.pass + ProbeMathTest.pass + MeasurementTest.pass + LabProtocolTest.pass + ThemePersonalizationTest.pass + FoundationHardeningTest.pass + ComputeBudgetGateTest.pass}")
+    ActionIntentJournalTest.run()
+    println("UNO_WP01_HOST_PASS=${CoreSelfTest.pass + ProbeMathTest.pass + MeasurementTest.pass + LabProtocolTest.pass + ThemePersonalizationTest.pass + FoundationHardeningTest.pass + ComputeBudgetGateTest.pass + ActionIntentJournalTest.pass}")
 }
