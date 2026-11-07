@@ -186,7 +186,7 @@ object LabWorkloads {
         val acceptedCount = accepted.get()
         val bounded = acceptedCount <= 64 && queue.size() <= 64
         val stop = queue.enqueue(Priority.STOP, "STOP", 0)
-        val noAfterStop = !queue.enqueue(Priority.OWNER,"after-stop", Long.MAX_VALUE) && queue.poll()==null
+        val noAfterStop = !queue.enqueue(Priority.OWNER,"after-stop", Long.MAX_VALUE) && queue.poll(0L)==null
         val status = when {
             cancelled() -> LabStatus.ABORTED
             !joined -> LabStatus.INCONCLUSIVE
