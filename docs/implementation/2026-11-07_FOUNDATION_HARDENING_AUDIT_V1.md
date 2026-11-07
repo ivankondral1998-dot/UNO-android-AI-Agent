@@ -30,10 +30,11 @@
 ## Выполненные проверки и точные границы
 
 1. Локальная Kotlin/JVM-проверка с `kotlinc 1.9.0` / JRE 21: 10 базовых CoreSelfTest + 14 новых FoundationHardeningTest = **24 PASS**, 0 зафиксированных падений. Прогон включает повторное предъявление ticket, подмену аргументов во время dispatch, отрицательный и неопределённый readback, one-way STOP, нарушения изоляции памяти, TTL очереди.
-2. Проверены SHA Git blob исправленных `Controller.kt` (`5ca9296cd55ebd0311d5f002a14a108a7943d609`), `Memory.kt` (`08e259985ff5fa3f8da10292aac0cfba026df951`), `Scheduler.kt` (`2c6830916e6b4ffe218e8fe5bb5806200304ac22`), `FoundationHardeningTest.kt` (`75bd26ff9b3b02c4bad271486467abcc6d140bc5`). Этим подтверждается, что проверенный локально код соответствующих файлов перенесён без побайтового расхождения.
+2. Проверены SHA Git blob исправленных `Controller.kt` (`5ca9296cd55ebd0311d5f002a14a108a7943d609`), `Memory.kt` (`08e259985ff5fa3f8da10292aac0cfba026df951`), `Scheduler.kt` (`2c6830916e6b4ffe218e8fe5bb5806200304ac22`), `FoundationHardeningTest.kt` (`90874128e4cf7cdeafb7b26597963884117c6369`). Этим подтверждается, что проверенный локально код соответствующих файлов перенесён без побайтового расхождения.
 3. Локальные Python unit-тесты мутаций манифеста/источников: **8 PASS**. Локальные тесты чистой функции выбора ADB serial: **4 PASS**. Они проверяют **только** фикстуры/логику, не работающий Android и не настоящее подключение USB.
 4. Новый suite включён в `android/core/src/test/kotlin/.../AllHostTests.kt`, Python проверки — в `android/scripts/test_lab_tools.py`. **Полный** совокупный прогон репозитория после изменений, Gradle `:core:unoHostTests`, `:app:assembleDebug` и `:app:lintDebug` в этой сессии **не запускались**. Предыдущий Android APK из другого commit не является APK этой ветки.
 5. GitHub Actions **не запускались**; workflow-файл не менялся; ветка для hardening не входит в разрешённый ранее push trigger.
+6. Локальный пакет доказательств: `UNO_FOUNDATION_HOST_EVIDENCE_20261107_V2.zip`, SHA-256 `b833ebdf4b42a31b9a216ebf994976aad770b13ad5c45a67154201d21e897b58`. Включает тестируемое **подмножество** исходников, host-логи 24 Kotlin и 12 Python проверок; **не** полный Android-проект. V1 архив сохранён отдельно.
 
 ## Нерешённые критические границы
 
