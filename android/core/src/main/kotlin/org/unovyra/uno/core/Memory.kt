@@ -32,6 +32,9 @@ class ExactMemory(private val limit: Int = UnoAbi.MAX_MEMORY) {
 
     @Synchronized fun write(scope:String, factKey:String, raw:ByteArray, expiry:Long,consentEpoch:Long,kind:EntryKind,source:String): ExactEntry {
         require(scope.isNotEmpty() && source.isNotEmpty() && factKey.isNotEmpty() && expiry>=0)
+        // No verified OS outcome can originate from a free-form memory write.
+        // Production needs a controller-bound native readback receipt and durable journal.
+        require(kind != EntryKind.VERIFIED_COMPLETION) { "VERIFIED_COMPLETION_REQUIRES_NATIVE_READBACK" }
         require(raw.size<=4096 && rows.size<limit && !revoked.contains(scope))
         val copy=raw.copyOf()
         val r=ExactEntry(++seq,++generation,scope,factKey,copy,sha(copy),expiry,consentEpoch,kind,source)
