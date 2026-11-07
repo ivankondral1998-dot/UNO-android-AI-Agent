@@ -1,0 +1,20 @@
+{
+  "schema": "UNO_WP01_EVIDENCE_1",
+  "date": "2026-11-07",
+  "source_zip": "UNO_WORK_COMPLETE_PAPER_HANDOFF_2026-11-03(1).zip",
+  "source_zip_sha256": "4f9f59123b40a47a4bc2783f3633f0314a69fbac8c7cdb638dad3b3a1efc59b1",
+  "old_scaffold_files_compared": 67,
+  "old_scaffold_bytes_mismatched": 0,
+  "archived_kotlin_jvm_checks": 10,
+  "archived_python_pytest_passed": 61,
+  "new_kotlin_jvm_checks": 15,
+  "manifest_uses_permission_count": 0,
+  "android_sdk": "NOT_AVAILABLE",
+  "android_apk": "NOT_BUILT",
+  "device_verified": false,
+  "trained_model": false,
+  "android_native_dispatch": "DENY_ALL",
+  "github_actions": "NOT_USED",
+  "site_url_owner_supplied": "https://uno-research.pages.dev/",
+  "site_live_verified": false
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Intentionally NO INTERNET, RECORD_AUDIO, Accessibility, screen-capture or storage privileges. -->
+    <application
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:usesCleartextTraffic="false"
+        android:label="UNOVYRA UNO · Scaffold"
+        android:supportsRtl="true">
+        <activity
+            android:name=".UnoActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service
+            android:name=".NeuralWorkerService"
+            android:isolatedProcess="true"
+            android:exported="false" />
+    </application>
+</manifest>
