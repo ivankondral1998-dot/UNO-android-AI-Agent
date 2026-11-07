@@ -9,5 +9,6 @@ fun main() {
     FoundationHardeningTest.run()
     ComputeBudgetGateTest.run()
     ActionIntentJournalTest.run()
-    println("UNO_WP01_HOST_PASS=${CoreSelfTest.pass + ProbeMathTest.pass + MeasurementTest.pass + LabProtocolTest.pass + ThemePersonalizationTest.pass + FoundationHardeningTest.pass + ComputeBudgetGateTest.pass + ActionIntentJournalTest.pass}")
+    ActionJournalControllerIntegrationTest.run()
+    println("UNO_WP01_HOST_PASS=${CoreSelfTest.pass + ProbeMathTest.pass + MeasurementTest.pass + LabProtocolTest.pass + ThemePersonalizationTest.pass + FoundationHardeningTest.pass + ComputeBudgetGateTest.pass + ActionIntentJournalTest.pass + ActionJournalControllerIntegrationTest.pass}")
 }
