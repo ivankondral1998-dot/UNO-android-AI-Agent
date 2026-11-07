@@ -6,6 +6,9 @@ import sys
 import tempfile
 import unittest
 
+# Also test the guards themselves by mutating synthetic manifest/source fixtures.
+from test_static_contract_check import GuardTests
+
 ROOT=Path(__file__).resolve().parent
 
 def mod(name):
