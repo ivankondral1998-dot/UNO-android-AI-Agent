@@ -12,7 +12,9 @@ import java.nio.ByteOrder
 class TrustController(
     private val native: NativePort,
     private val ledger: DurableLedger,
-    private val allowedEffects: Map<Int, String> = emptyMap()
+    private val allowedEffects: Map<Int, String> = emptyMap(),
+    // Opt-in host/reference outbox bridge. The real Android path still requires owner/OS authority.
+    private val intentJournal: ActionIntentJournal? = null
 ) {
     // Reference gate only. Production dispatch still requires Android owner auth and a durable WAL.
     // A ticket is valid only if this trusted controller issued it; caller-mutable Ticket is not authority.
@@ -55,7 +57,10 @@ class TrustController(
             consent.expiresAtNanos < 0 || deadline <= 0) return null
         if (serial == Long.MAX_VALUE) { stop(); return null }
         val t = Ticket("$nonce:$epoch:${++serial}",frozen,d,epoch,nonce,deadline,allowedEffects[p.verb]!!,Phase.PREPARED)
-        if (!ledger.prepare(t)) return null
+        // Persist immutable intent BEFORE making the ticket dispatchable. An orphan PREPARED
+        // record if the next step fails is deliberately safe: recovery never auto-dispatches.
+        if (intentJournal != null && !intentJournal.prepare(t.id, d)) return null
+        if (stopLatch.get() || !ledger.prepare(t)) return null
         issued[t.id] = Issued(t)
         return t
     }
@@ -69,7 +74,10 @@ class TrustController(
             Phase.CANCELLED, Phase.DENIED -> NativeEndpoint.FALSE
             else -> NativeEndpoint.UNKNOWN
         }
-        if (record.ticket !== t || record.dispatched || t.phase != Phase.PREPARED || t.used) return NativeEndpoint.UNKNOWN
+        // Wrong object identity means this forged presentation did NOT reach native.
+        if (record.ticket !== t) return NativeEndpoint.FALSE
+        if (record.dispatched) return NativeEndpoint.UNKNOWN // never retry an in-flight effect
+        if (t.phase != Phase.PREPARED || t.used) return NativeEndpoint.FALSE
         // Blocked before any native call: the effect was NOT sent.
         // FALSE, not UNKNOWN. UNKNOWN means the effect may already have happened.
         if (stopLatch.get() || t.epoch != epoch || t.nonce != nonce || now < 0 || now >= t.deadlineNanos) {
@@ -80,6 +88,19 @@ class TrustController(
         val forNative = t.copy(proposal = t.proposal.copy(canonicalArgs = t.proposal.canonicalArgs.copyOf()))
         if (proposalDigest(forNative.proposal) != t.proposalDigest) {
             t.phase = Phase.DENIED
+            issued.remove(t.id)
+            return NativeEndpoint.FALSE
+        }
+        // Persistent MAY_HAVE_EXECUTED must reach stable storage BEFORE the native boundary.
+        // No ability to arm => no native call; journal is NOT owner permission.
+        if (intentJournal != null && !intentJournal.arm(t.id, t.proposalDigest)) {
+            t.phase = Phase.CANCELLED
+            issued.remove(t.id)
+            return NativeEndpoint.FALSE
+        }
+        if (stopLatch.get()) {
+            // STOP raced with the durable arm; safe over-reporting in the journal is intentional.
+            t.phase = Phase.CANCELLED
             issued.remove(t.id)
             return NativeEndpoint.FALSE
         }
