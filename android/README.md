@@ -33,3 +33,9 @@ The Android debug APK was **built** successfully by [GitHub Actions run 42391092
 ## UI-01: themes and later model-driven personalization
 
 UI uses orange by default; manual local choices: orange, yellow, rose (rose/cyan preset incomplete), light orange. Only UI theme token and opt-in flag are persisted in app-private `SharedPreferences`. STOP stays red. `UnoThemeGate` in `:core` accepts a future neural proposal **only on explicit user request** and applies it **only after owner confirmation**; interaction-style input requires separate opt-in, default OFF. The current APP has **no model**, so its "Ask UNO for a theme" button reports unavailable instead of faking intelligence. See `docs/implementation/2026-11-07_UI_THEME_PERSONALIZATION_FOUNDATION.md`. Host coverage is `UNO_WP01_HOST_PASS=100`; Android build/device remains unverified.
+
+## WP-01 hardening follow-up — compute admission, 2026-11-07
+
+The Grok/Work B2 Python reference contains a reproduced multi-resource-budget gap: a TEXT tick completed with a positive MAC allowance but zero bytes/tokens/time allowance. **This is not fixed in the preserved historical Python reference.**
+
+A new Kotlin-only `ComputeBudgetGate` is available in `:core` as a **fail-closed pre-admission primitive** (MAC, tokens, peak concurrent scratch bytes, monotonic deadline and STOP). Its 17 host negative tests passed, including 10 repeated runs and an 8-thread contention check. It is registered in the standard host runner but the **full runner has not been executed on this updated branch**, and no Android APK was built for the update. The gate is **not wired to a trained neural model or Android effects**. For exact source attribution, limitations and pending gates see `docs/implementation/2026-11-07_COMPUTE_BUDGET_CONTRACT_R1.md` and `docs/audits/2026-11-07/GROK_WORK_B2_PROVENANCE_AND_MATH_AUDIT_R1.md`. Do not treat arithmetic/host PASS as mobile resource or inference proof.
