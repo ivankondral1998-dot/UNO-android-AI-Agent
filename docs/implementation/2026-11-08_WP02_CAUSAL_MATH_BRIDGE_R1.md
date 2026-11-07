@@ -43,7 +43,7 @@ ConsentDigestCheck(t) ∧ active(epoch,STOP) →
 - `android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt`: обновлён ожидаемый pre-native denial для поддельного issued ticket.
 - `android/core/src/test/kotlin/org/unovyra/uno/core/AllHostTests.kt`: добавлен integration test runner.
 
-**Тестовые свидетельства:** `kotlinc-jvm 1.9.0`, OpenJDK 21, 13/13 новых controller/journal integration тестов + 12/12 существующих standalone journal тестов = **25/25 HOST PASS**. Для этого прогона **все четыре core/test файла**, реально подаваемые в компилятор, должны быть побайтово проверены с GitHub; SHA Git blobs:
+**Тестовые свидетельства:** `kotlinc-jvm 1.9.0`, OpenJDK 21, 13/13 новых controller/journal integration тестов + 12/12 существующих standalone journal тестов = **25/25 HOST PASS**. Для этого прогона **все пять core/test файлов**, реально подаваемые в компилятор, должны быть побайтово проверены с GitHub; SHA Git blobs:
 
 - `Controller.kt`: `619c5e33c19594c782444cd99e27dd7e64379d5e`.
 - `ActionIntentJournal.kt`: `5dd300ae5b7a30a9c577eb218153d2453dd6a534`.
