@@ -182,7 +182,7 @@ object LabWorkloads {
             }.apply { isDaemon=true; start() }
         }
         val joined = completed.await(4,TimeUnit.SECONDS)
-        if (!joined) { queue.stopLatch.set(true);workers.forEach(Thread::interrupt) }
+        if (!joined) { queue.stop();workers.forEach(Thread::interrupt) }
         val acceptedCount = accepted.get()
         val bounded = acceptedCount <= 64 && queue.size() <= 64
         val stop = queue.enqueue(Priority.STOP, "STOP", 0)
