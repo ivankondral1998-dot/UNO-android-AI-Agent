@@ -69,43 +69,54 @@ class TrustController(
      * Admission/dispatch and STOP use the same monitor. A call admitted before STOP may already
      * be in flight; STOP blocks new calls but cannot undo native effects.
      */
-    @Synchronized fun dispatch(t: Ticket, now: Long): NativeEndpoint {
+    /**
+     * Legacy adapter for existing host-only call sites. This intentionally loses the difference
+     * between pre-dispatch refusal and a native endpoint FALSE. Never use its return as a label.
+     */
+    @Deprecated("Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback")
+    fun dispatch(t: Ticket, now: Long): NativeEndpoint = when (val outcome = dispatchOutcome(t, now)) {
+        is DispatchAttempt.Rejected -> NativeEndpoint.FALSE
+        is DispatchAttempt.Invoked -> outcome.nativeReturn
+        DispatchAttempt.Unresolved -> NativeEndpoint.UNKNOWN
+    }
+
+    /**
+     * Explicit causal status. No OS observation or independent endpoint evidence is created here.
+     * Reference-only: synchronized callback still has an OS linearization/STOP race. Keep deny-all
+     * Android wiring until a separately audited trusted Android dispatcher is implemented.
+     */
+    @Synchronized fun dispatchOutcome(t: Ticket, now: Long): DispatchAttempt {
         val record = issued[t.id] ?: return when (t.phase) {
-            // No issued record and no evidence of dispatch: definitely no native call here.
-            Phase.PREPARED, Phase.CANCELLED, Phase.DENIED -> NativeEndpoint.FALSE
-            else -> NativeEndpoint.UNKNOWN
+            Phase.PREPARED, Phase.CANCELLED, Phase.DENIED ->
+                DispatchAttempt.Rejected(DispatchRejection.NOT_ISSUED)
+            else -> DispatchAttempt.Unresolved // unknown older disposition, no call in this attempt
         }
-        // Wrong object identity means this forged presentation did NOT reach native.
-        if (record.ticket !== t) return NativeEndpoint.FALSE
-        if (record.dispatched) return NativeEndpoint.UNKNOWN // never retry an in-flight effect
-        if (t.phase != Phase.PREPARED || t.used) return NativeEndpoint.FALSE
-        // Blocked before any native call: the effect was NOT sent.
-        // FALSE, not UNKNOWN. UNKNOWN means the effect may already have happened.
+        if (record.ticket !== t) return DispatchAttempt.Rejected(DispatchRejection.WRONG_TICKET)
+        if (record.dispatched) return DispatchAttempt.Unresolved // one-shot; never redispatch
+        if (t.phase != Phase.PREPARED || t.used)
+            return DispatchAttempt.Rejected(DispatchRejection.CLOSED_TICKET)
         if (stopLatch.get() || t.epoch != epoch || t.nonce != nonce || now < 0 || now >= t.deadlineNanos) {
             t.phase = Phase.CANCELLED
             issued.remove(t.id)
-            return NativeEndpoint.FALSE
+            return DispatchAttempt.Rejected(DispatchRejection.STOP_OR_EXPIRED)
         }
         val forNative = t.copy(proposal = t.proposal.copy(canonicalArgs = t.proposal.canonicalArgs.copyOf()))
         if (proposalDigest(forNative.proposal) != t.proposalDigest) {
             t.phase = Phase.DENIED
             issued.remove(t.id)
-            return NativeEndpoint.FALSE
+            return DispatchAttempt.Rejected(DispatchRejection.DIGEST_MISMATCH)
         }
-        // Persistent MAY_HAVE_EXECUTED must reach stable storage BEFORE the native boundary.
-        // No ability to arm => no native call; journal is NOT owner permission.
+        // A durable intent must be synced before any native call. The journal is not permission.
         if (intentJournal != null && !intentJournal.arm(t.id, t.proposalDigest)) {
             t.phase = Phase.CANCELLED
             issued.remove(t.id)
-            return NativeEndpoint.FALSE
+            return DispatchAttempt.Rejected(DispatchRejection.JOURNAL_UNAVAILABLE)
         }
         if (stopLatch.get()) {
-            // STOP raced with the durable arm; safe over-reporting in the journal is intentional.
             t.phase = Phase.CANCELLED
             issued.remove(t.id)
-            return NativeEndpoint.FALSE
+            return DispatchAttempt.Rejected(DispatchRejection.STOP_OR_EXPIRED)
         }
-        // From here the call may reach native. One-shot: a second dispatch must not call native again.
         record.dispatched = true
         t.phase = Phase.MAY_HAVE_EXECUTED
         val result = try { native.dispatch(forNative) } catch (_: Exception) { NativeEndpoint.UNKNOWN }
@@ -114,7 +125,7 @@ class TrustController(
         } else if (!stopLatch.get()) {
             t.phase = Phase.WAIT_READBACK
         }
-        return result
+        return DispatchAttempt.Invoked(result)
     }
 
     @Synchronized fun readbackAndCommit(t: Ticket, now: Long): Boolean {
