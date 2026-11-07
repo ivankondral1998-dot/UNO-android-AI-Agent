@@ -1,3 +1,9 @@
+> **ДЕЙСТВУЮЩИЕ ПРАВИЛА — 07.11.2026:** [**/AGENTS.md**](AGENTS.md) — единый обязательный источник для всех агентов. **UNO 1.0: полнофункциональный локальный Android ИИ-агент без самообучения и изменения весов при работе.** Память, интеллект, действия, безопасность и независимый readback обязательны. Более ранние описания ниже — исторические. Производственный код разрешён на отдельной feature-ветке; выпуск приложения, обучение весов, GitHub Actions, удаление и публикация требуют отдельного разрешения.
+
+> **РАБОЧАЯ ВЕТКА ДЛЯ КОДА И ИССЛЕДОВАНИЙ:** [feat/uno-production-foundation-20261106](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/tree/feat/uno-production-foundation-20261106). `main` содержит документы входа и историческую основу; новые исследования и код не переносить сюда без отдельного поручения.
+
+---
+
 # UNO — Unified Neural Organism
 
 > UNO — Unified Neural Organism. A commercial, fully offline Android AI agent built around a unified adaptive neural architecture, new trainable weights, plastic connections, and verified experience-based learning.
