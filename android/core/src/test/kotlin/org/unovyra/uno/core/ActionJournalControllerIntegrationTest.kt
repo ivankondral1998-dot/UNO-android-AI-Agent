@@ -140,6 +140,42 @@ object ActionJournalControllerIntegrationTest {
             val consent = Consent(c.proposalDigest(p), effect.getValue(15), 100, c.epoch, c.nonce, true)
             check(c.prepare(p, consent, 0, 100) == null)
         }
+        verify("native exception stays MAY_HAVE_EXECUTED without retry") {
+            ActionIntentJournal(file()).use { j ->
+                val calls = AtomicInteger()
+                val native = object : NativePort {
+                    override val trustedSourceTag = "EXCEPTION_FIXTURE"
+                    override fun dispatch(ticket: Ticket): NativeEndpoint {
+                        calls.incrementAndGet()
+                        throw IllegalStateException("may have acted before throwing")
+                    }
+                    override fun readback(ticket: Ticket, nowNanos: Long) =
+                        NativeEvidence(ticket.id, NativeEndpoint.UNKNOWN, 0, nowNanos, trustedSourceTag)
+                }
+                val c = TrustController(native, InMemoryLedger(), effect, j)
+                val t = prepare(c)
+                check(c.dispatch(t, 1) == NativeEndpoint.UNKNOWN)
+                check(t.phase == Phase.MAY_HAVE_EXECUTED)
+                check(c.dispatch(t, 2) == NativeEndpoint.UNKNOWN && calls.get() == 1)
+                check(j.snapshot().single().phase == ActionIntentJournal.Phase.MAY_HAVE_EXECUTED)
+            }
+        }
+        verify("rejected ledger leaves safe orphan PREPARED, no native") {
+            ActionIntentJournal(file()).use { j ->
+                val rejected = object : DurableLedger {
+                    override fun prepare(ticket: Ticket) = false
+                    override fun commit(ticket: Ticket, evidence: NativeEvidence) = false
+                    override fun unresolved(): List<Ticket> = emptyList()
+                }
+                val native = ProbeNative { }
+                val c = TrustController(native, rejected, effect, j)
+                val p = proposal()
+                val consent = Consent(c.proposalDigest(p), effect.getValue(15), 100, c.epoch, c.nonce, true)
+                check(c.prepare(p, consent, 0, 100) == null)
+                check(native.calls == 0)
+                check(j.snapshot().single().phase == ActionIntentJournal.Phase.PREPARED)
+            }
+        }
         println("ACTION_JOURNAL_CONTROLLER_INTEGRATION_PASS=$pass")
     }
 }
