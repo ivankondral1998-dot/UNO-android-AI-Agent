@@ -3,6 +3,7 @@ package org.unovyra.uno.core
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
 
 /** Host-only tests for a resource ADMISSION contract, not the Android/kernel implementation. */
 object ComputeBudgetGateTest {
@@ -103,6 +104,7 @@ object ComputeBudgetGateTest {
         t("race_cannot_overspend_MAC_allowance") {
             val g=gate(mac=20_000,tokens=0,scratch=0,concurrent=100)
             val started=CountDownLatch(1);val done=CountDownLatch(8);val granted=AtomicInteger()
+            val failure=AtomicReference<Throwable?>(null)
             repeat(8) {
                 Thread {
                     try {
@@ -111,11 +113,12 @@ object ComputeBudgetGateTest {
                             val p=g.admit(ComputeEstimate(1,0,0),1)
                             if(p!=null){granted.incrementAndGet();g.release(p)}
                         }
-                    } finally {done.countDown()}
+                    } catch (error: Throwable) { failure.compareAndSet(null, error) }
+                    finally {done.countDown()}
                 }.start()
             }
             started.countDown();check(done.await(8,TimeUnit.SECONDS))
-            check(granted.get()==20_000 && g.remaining().mac==0L)
+            check(failure.get()==null && granted.get()==20_000 && g.remaining().mac==0L)
         }
         println("COMPUTE_GATE_HOST_PASS=$pass")
     }
