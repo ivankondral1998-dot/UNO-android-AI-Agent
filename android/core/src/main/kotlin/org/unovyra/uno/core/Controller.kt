@@ -71,7 +71,8 @@ class TrustController(
      */
     @Synchronized fun dispatch(t: Ticket, now: Long): NativeEndpoint {
         val record = issued[t.id] ?: return when (t.phase) {
-            Phase.CANCELLED, Phase.DENIED -> NativeEndpoint.FALSE
+            // No issued record and no evidence of dispatch: definitely no native call here.
+            Phase.PREPARED, Phase.CANCELLED, Phase.DENIED -> NativeEndpoint.FALSE
             else -> NativeEndpoint.UNKNOWN
         }
         // Wrong object identity means this forged presentation did NOT reach native.
