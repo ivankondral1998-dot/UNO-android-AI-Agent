@@ -36,20 +36,45 @@ def save(dst, cmd, proc):
     }
 
 
-def collect(out, serial=None, restart=False):
+def select_authorized_serial(raw: bytes, requested: str | None = None) -> str:
+    """Never silently select a different phone when multiple USB/ADB devices are attached."""
+    devices = {}
+    for line in raw.decode("utf-8", "replace").splitlines():
+        fields = line.strip().split()
+        if len(fields) >= 2 and fields[0] != "List" and fields[0] != "*":
+            devices[fields[0]] = fields[1]
+    authorized = [key for key, state in devices.items() if state == "device"]
+    if requested is not None:
+        if requested not in authorized:
+            raise RuntimeError("Requested ADB serial is not connected and authorized")
+        return requested
+    if len(authorized) != 1:
+        raise RuntimeError(f"Expected exactly one authorized ADB device, found {len(authorized)}; specify --serial")
+    return authorized[0]
+
+
+def collect(out, serial=None, restart=False, expected_model=None):
     adb = shutil.which("adb")
     if not adb:
         raise RuntimeError("adb not found. Install Android Platform Tools first.")
-    common = ["-s", serial] if serial else []
     devices = run(adb, ["devices", "-l"])
-    if devices.returncode or b"\tdevice" not in devices.stdout:
-        raise RuntimeError("No authorized ADB device; enable USB debugging and approve on phone")
+    if devices.returncode:
+        raise RuntimeError("ADB device enumeration failed")
+    selected = select_authorized_serial(devices.stdout, serial)
+    common = ["-s", selected]
+    model_probe = run(adb, common + ["shell", "getprop", "ro.product.model"])
+    model = model_probe.stdout.decode("utf-8", "replace").strip()
+    if model_probe.returncode != 0 or not model:
+        raise RuntimeError("Cannot confirm selected Android device identity")
+    if expected_model and model.casefold() != expected_model.casefold():
+        raise RuntimeError("Selected Android device model differs from --expect-model")
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     dest = out / f"UNO_A52_LAB_{stamp}"
     dest.mkdir(parents=True, exist_ok=False)
     manifest = {"schema": "UNO_LAB_ADB_CAPTURE_1", "utc": stamp,
                 "package": PKG, "serial_recorded": bool(serial),
-                "restart_own_package": restart, "records": {}}
+                "restart_own_package": restart, "device_model": model,
+                "model_gate_applied": bool(expected_model), "records": {}}
     cmds = {
         "android_version.txt": ["shell", "getprop", "ro.build.version.release"],
         "android_api.txt": ["shell", "getprop", "ro.build.version.sdk"],
@@ -104,9 +129,10 @@ if __name__ == "__main__":
     ap.add_argument("--out",default="uno_lab_results",type=pathlib.Path)
     ap.add_argument("--serial",help="ADB device serial if multiple devices")
     ap.add_argument("--restart-uno",action="store_true",help="Explicitly force-stop/restart ONLY UNO")
+    ap.add_argument("--expect-model",help="Abort if ro.product.model differs (for example SM-A525F)")
     args=ap.parse_args()
     try:
-        collect(args.out,args.serial,args.restart_uno)
+        collect(args.out,args.serial,args.restart_uno,args.expect_model)
     except Exception as e:
         print("ABORT:",e,file=sys.stderr)
         sys.exit(2)
