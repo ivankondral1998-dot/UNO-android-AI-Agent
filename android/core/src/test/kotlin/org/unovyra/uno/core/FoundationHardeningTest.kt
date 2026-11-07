@@ -128,7 +128,7 @@ object FoundationHardeningTest {
             val q=BoundedScheduler(3)
             check(q.enqueue(Priority.OWNER,"old",100L))
             check(q.enqueue(Priority.REVOKE,"revoke",0L))
-            check(q.isStopped() && q.size()==0 && q.poll()==null)
+            check(q.isStopped() && q.size()==0 && q.poll(0L)==null)
             check(!q.enqueue(Priority.OWNER,"new",100L))
         }
         println("FOUNDATION_HARDENING_PASS=$pass")
