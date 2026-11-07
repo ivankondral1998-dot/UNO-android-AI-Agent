@@ -21,8 +21,9 @@
 | FND-05 | `ExactMemory.write/read` отдавали mutable `ByteArray`, через которые можно повредить внутренний объект | Defensive copy на запись/чтение; синхронизированные операции; отдельный `NOT_FOUND` | `HOST_TESTED` in-memory |
 | FND-06 | Публичный `BoundedScheduler.stopLatch` можно было перевести обратно в false; старая очередь сохраняла работу после STOP | Private latch, `stop()` очищает очередь; `poll(nowNanos)` требует явного монотонного времени, отбрасывает просроченное | `HOST_TESTED` |
 | FND-07 | Статический preflight можно было обойти добавлением permissions, exported-компонентов или заменой deny-all | Проверка XML и фактической wiring-строки, ограничение сетевых/effect API; восемь негативных мутационных тестов | `HOST_TESTED` фикстуры |
-| FND-09 | Любой вызывающий мог записать `EntryKind.VERIFIED_COMPLETION` без Android readback | Generic write теперь отказывает с `VERIFIED_COMPLETION_REQUIRES_NATIVE_READBACK`; тест на подделку provenance | `HOST_TESTED`, настоящий trusted writer ещё отсутствует |
 | FND-08 | ADB-скрипт без `--serial` мог попасть не на тот телефон при нескольких устройствах | Требуется ровно одно авторизованное устройство либо явный serial; добавлен `--expect-model`; четыре unit-теста | `HOST_TESTED` фикстуры |
+| FND-09 | Любой вызывающий мог записать `EntryKind.VERIFIED_COMPLETION` без Android readback | Generic write теперь отказывает с `VERIFIED_COMPLETION_REQUIRES_NATIVE_READBACK`; тест на подделку provenance | `HOST_TESTED`, настоящий trusted writer ещё отсутствует |
+| FND-10 | UI лаборатории заявлял 45 секунд для STRESS при фактическом лимите 60 секунд | Подпись UI приведена к лимитам 12/60 секунд; Android UI после правки не пересобран | `IMPLEMENTED_UNBUILT` |
 
 Изменения FND-01–06 **не превращают** `TrustController` в production Android authority: current adapter имеет временный `InMemoryLedger`, симуляторный `NativePort` и тестовую булеву модель согласия. Настоящая доверенная Android-граница НЕ реализована.
 
