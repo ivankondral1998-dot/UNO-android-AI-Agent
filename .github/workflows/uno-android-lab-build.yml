@@ -1,0 +1,76 @@
+# One-time push-triggered CI build at owner request (2026-11-07).
+# Subsequent source pushes do NOT trigger this job; manual dispatch is retained
+# for a future explicit owner-approved execution where supported.
+name: UNO Android WP-01 Debug APK (owner-approved)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feat/uno-production-foundation-20261106
+    paths:
+      - .github/workflows/uno-android-lab-build.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: uno-android-lab-build-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-debug-apk:
+    name: Kotlin host tests + Android debug APK
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: android
+    steps:
+      - name: Checkout exact revision
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Configure Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Configure Gradle 8.7 (no wrapper in this repo)
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.7'
+      - name: Configure Android SDK
+        uses: android-actions/setup-android@v4
+      - name: Install compile SDK and build tools
+        run: sdkmanager --install 'platforms;android-35' 'build-tools;35.0.0'
+      - name: Run security/static contract preflight
+        run: |
+          python3 scripts/static_contract_check.py
+          python3 scripts/test_lab_tools.py
+      - name: Compile and execute Kotlin self-tests (not JUnit)
+        run: gradle --no-daemon --stacktrace :core:unoHostTests
+      - name: Build debug APK
+        run: gradle --no-daemon --stacktrace :app:assembleDebug
+      - name: Android lint
+        run: gradle --no-daemon --stacktrace :app:lintDebug
+      - name: Record APK identity and SHA-256
+        run: |
+          set -euo pipefail
+          test -s app/build/outputs/apk/debug/app-debug.apk
+          mkdir -p ci-evidence
+          sha256sum app/build/outputs/apk/debug/app-debug.apk | tee ci-evidence/APK_SHA256SUMS.txt
+          "${ANDROID_HOME}/build-tools/35.0.0/aapt" dump badging app/build/outputs/apk/debug/app-debug.apk > ci-evidence/APK_BADGING.txt
+          grep -E '^package:|^sdkVersion:|^targetSdkVersion:' ci-evidence/APK_BADGING.txt
+          printf 'commit=%s\nbranch=%s\n' "${GITHUB_SHA}" "${GITHUB_REF_NAME}" > ci-evidence/BUILD_PROVENANCE.txt
+          grep -q "org.unovyra.uno.scaffold" ci-evidence/APK_BADGING.txt
+      - name: Store APK and validation metadata in private Actions artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: UNO-WP01-debug-apk-${{ github.run_number }}
+          path: |
+            android/app/build/outputs/apk/debug/app-debug.apk
+            android/ci-evidence/*.txt
+            android/app/build/reports/lint-results-debug.html
+          if-no-files-found: warn
+          retention-days: 14
