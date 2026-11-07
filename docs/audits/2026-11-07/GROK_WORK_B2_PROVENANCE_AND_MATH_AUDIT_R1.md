@@ -51,4 +51,4 @@
 
 Без нового решения владельца не обучать веса, не включать в UNO 1.0 runtime-пластичность, не объявлять R5.3 approved и не запускать GitHub Actions. `main` не изменять.
 
-**Граница аудита:** source bytes и host math подтверждены; отдельные байты Grok R3 и невыложенные исходные ZIP 6–7 ноября не удостоверены; Android Gradle-сборка **после hardening** и испытание на A52 не выполнялись. Исходный полный Work scaffold остаётся в своем ZIP, не является нынешним product runtime.
+**Воспроизводимый счётчик:** `python3 docs/audits/2026-11-07/verify_b2_geometry_v1.py` (Python stdlib only). Его 5 конфигураций и условные границы пересчитаны локально; новый APK, training или Android benchmark этот инструмент не проверяет.\n\n**Граница аудита:** source bytes и host math подтверждены; отдельные байты Grok R3 и невыложенные исходные ZIP 6–7 ноября не удостоверены; Android Gradle-сборка **после hardening** и испытание на A52 не выполнялись. Исходный полный Work scaffold остаётся в своем ZIP, не является нынешним product runtime.
