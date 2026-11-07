@@ -65,7 +65,7 @@ object CoreSelfTest {
             check(!q.enqueue(Priority.INTERNAL,"overflow",100))
             check(q.enqueue(Priority.STOP,"STOP",0))
             check(q.isStopped())
-            check(q.poll()==null) // STOP suppresses pending lower-priority events; old assertion was unsafe
+            check(q.poll(0L)==null) // STOP suppresses pending lower-priority events; old assertion was unsafe
         }
         checkCase("unknown OS verbs denied") {
             val t=TrustController(FakeNotesPort(),InMemoryLedger(),mapOf(15 to "LOCAL_NOTE_CREATE_TEST_ONLY"))
