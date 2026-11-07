@@ -1,5 +1,18 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-08 — новейший WP-02 causal bridge (после Grok `bfb9acdad6b7bff30c9fae31ff9b3da043b2c665`)
+
+**Действующий HEAD перепроверять непосредственно в GitHub.** После исправлений Grok дополнительно подключён `ActionIntentJournal` к **опциональному reference** `TrustController`, чтобы успешный журнал `PREPARED` предшествовал выдаче билета, а синхронизированный `MAY_HAVE_EXECUTED` предшествовал fake-native dispatch. Если долговечная запись не удалась, вызова native нет. Forged/невыданный `PREPARED` теперь означает pre-dispatch `FALSE`, а не видимость неопределённого OS-эффекта. Старый host-only конструктор без журнала сохранён для совместимости; **реальная Android Activity использует DenyAll Port, интеграции с Android-native по-прежнему нет**.
+
+**Новые испытания:** 13/13 controller+outbox host integration и 12/12 standalone journal host — **25/25 PASS** с побайтово сверенными пятью файлами источников/тестов. Новые integration-тесты зарегистрированы в `AllHostTests.kt`; **полный suite после этих коммитов заново не выполнялся**, Android APK и A52 не проверены. [Математическая трассировка и границы испытаний](implementation/2026-11-08_WP02_CAUSAL_MATH_BRIDGE_R1.md).
+
+**Критическая граница из Astra/R5.3:** `MAY_HAVE_EXECUTED` и полученное `TRUE` от fake port не доказывают независимый результат или causation. `A_cap/A_tx/A_fs`, STOP/OS linearization, атомарное `used+receipt+memory`, owner permissions, boot identity и физическое хранилище ещё не доказаны. Текущий `NativeEndpoint.FALSE` используется также для отказа до native — **до production-интеграции разделить статус допуска и независимый endpoint sample**, чтобы не обучать по отказам как по отрицательным исходам.
+
+**Ядро F, веса и обучение не изменялись**; действующее решение владельца — разрабатывать Android-фундамент без вмешательства в параллельную работу над интеллектуальным ядром. Старые R5.3/Astra/Grok документы и исследования сохранены. `FOUNDATION_INCOMPLETE`.
+
+---
+
+
 ## UPDATE 2026-11-08 — WP-02, текущая инженерная контрольная точка
 
 **Сверяйте живой HEAD**, а не SHA вчерашнего снимка ниже. Изменения после исходной карты: новый `ActionIntentJournal.kt` + `ActionIntentJournalTest.kt`, зарегистрированный в `AllHostTests.kt`; документ `docs/implementation/2026-11-08_WP02_ACTION_INTENT_JOURNAL_HOST_R1.md`. Компонент отдельно HOST_TESTED (12/12), а ограниченный объединённый JVM набор 53/53 PASS, **не полный Gradle/preflight**. Journal фиксирует PREPARED и MAY_HAVE_EXECUTED с append + fd.sync и на восстановлении запрещает автоматический rearm. Он **НЕ подключён** к Android-порту и не предоставляет permissions, consent, native readback, trusted outcomes, Keystore, power-cut proof или работающий нейроинференс. `DenyAllAndroidPort` остаётся обязательным.
