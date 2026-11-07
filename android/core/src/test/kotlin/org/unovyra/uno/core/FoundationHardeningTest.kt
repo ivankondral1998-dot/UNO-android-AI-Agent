@@ -56,7 +56,7 @@ object FoundationHardeningTest {
         case("forged never-issued ticket rejected") {
             val (c,t)=prepared()
             val fake=t.copy()
-            check(c.dispatch(fake,1L)==NativeEndpoint.UNKNOWN)
+            check(c.dispatch(fake,1L)==NativeEndpoint.FALSE)
         }
         case("ticket cannot redispatch after mutable phase reset") {
             val (c,t)=prepared()
