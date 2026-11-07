@@ -10,10 +10,13 @@ class BoundedScheduler(private val maxEvents:Int=UnoAbi.MAX_QUEUE) {
     private var serial=0L
     val stopLatch=java.util.concurrent.atomic.AtomicBoolean(false)
     fun enqueue(priority:Priority,payload:Any,deadlineNanos:Long):Boolean {
-        if (priority==Priority.STOP) { stopLatch.set(true);return true }
+        if (priority==Priority.STOP || priority==Priority.REVOKE || priority==Priority.PROCESS_DEATH) { stopLatch.set(true);return true }
+        synchronized(this) {
+        if (stopLatch.get()) return false
         if (q.size>=maxEvents || serial==Long.MAX_VALUE) return false
         q.add(QueuedEvent(priority,++serial,deadlineNanos,payload));return true
+        }
     }
-    fun poll():QueuedEvent?=q.poll()
-    fun size():Int=q.size
+    @Synchronized fun poll():QueuedEvent?=if(stopLatch.get()) null else q.poll()
+    @Synchronized fun size():Int=q.size
 }

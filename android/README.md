@@ -14,3 +14,18 @@ Host checks (requires `kotlinc` + Java): `bash scripts/host_verify.sh` (15 check
 After install on Samsung A52 Android14: open app, inspect device record, run CPU sample, use `adb shell run-as org.unovyra.uno.scaffold cat files/diagnostics/probe_latest.json` for debug app JSON; capture device/build identity, logs, and battery/thermal traces separately. Only then `DEVICE_VERIFIED` may be claimed.
 
 Limitations: naive matmul is diagnostic only, not a calibrated NN-performance benchmark; PSS reflects this process, not whole future organism. No energy Joule measurement. Strict offline use requires checking OS integrations/SAF when later enabled. Site `https://uno-research.pages.dev/` was supplied by owner and is merely displayed as text; live availability was not independently confirmed in this environment.
+
+## Offline Diagnostic Laboratory v2 — 2026-11-07 (WP-01 continuing)
+
+The foundational Android app now includes a manually activated read-only sandbox laboratory. No model weights, native action dispatch, root, Accessibility, network, SAF, audio, camera or permissions are enabled. The service remains an isolated placeholder. **Do not mistake diagnostic PASS for finished UNO intelligence.**
+
+- `LabSystemMetrics.kt`: battery current/charge/temperature/voltage (when the OEM reports them), thermal status/headroom, PSS/RSS, native/Java heap, GC, uptime, CPU usage, readable CPU clocks.
+- `DeviceLab.kt`: bounded, cancellable QUICK/STRESS scenarios and JSON reports saved in app-private storage. App-owned storage integrity fixture only; no deletion of user files.
+- `SensorLab.kt`: foreground-only, bounded event timestamps for ordinary motion/environment sensors, explicit missing/unsupported. No physical accuracy claims.
+- `core/LabProtocol.kt` and `Measurement.kt`: executable host workloads, percentiles, STOP/queue stress, corruption detection, semantic evidence verdicts. Unavailable metrics are null or UNSUPPORTED, never silently zero.
+- `scripts/run_all_preflight.sh`: JVM, static manifest and Python test suite; no SDK required.
+- `scripts/adb_collect.py`: offline evidence capture from **this debug package only**, outputs checksummed raw ADB files. `--restart-uno` is an opt-in force-stop/restart of **UNO only**.
+- `scripts/validate_lab.py`, `scripts/compare_lab.py`: validate report semantics and compare two profiles without declaring statistical significance.
+- [Full Russian protocol](LAB_PROTOCOL_RU.md): what is measured, interpretations, STOP/thermal limits, A52 procedure, unsupported/future tests.
+
+The Android app has **not** been built or installed here (SDK unavailable). Host tests do not validate Android APIs. There is no physical-energy Joule instrument; `BatteryManager` counters may be unavailable and are not a calibrated Watt-meter. There is no auto-upload or remote dependency.
