@@ -1,3 +1,5 @@
+> **АКТУАЛЬНЫЙ КОНТЕКСТ ДЛЯ GROK / НОВОГО РАЗРАБОТЧИКА:** [инженерная карта UNO 1.0](../docs/ENGINEERING_HANDOFF.md) + [правила](../AGENTS.md). Этот README описывает исторические WP-01 этапы; после hardening новый APK ещё не собран и не испытан на A52. Не путать старый CI APK с текущим кодом.
+
 # UNO 1.0 Android Foundation — WP-01, debug APK Android-built (2026-11-07)
 
 Derived from preserved November 3 `UNO B2 Scaffold 0.1.0` as research implementation, not a release-ready brain. Original 67 files matched `UNO_WORK_COMPLETE_PAPER_HANDOFF_2026-11-03(1).zip` by exact bytes before copying; this directory is a new work tree. Root `AGENTS.md` is the only operative rules file.
