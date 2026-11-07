@@ -1,4 +1,4 @@
-# UNO 1.0 Android Foundation — WP-01, source only
+# UNO 1.0 Android Foundation — WP-01, debug APK Android-built (2026-11-07)
 
 Derived from preserved November 3 `UNO B2 Scaffold 0.1.0` as research implementation, not a release-ready brain. Original 67 files matched `UNO_WORK_COMPLETE_PAPER_HANDOFF_2026-11-03(1).zip` by exact bytes before copying; this directory is a new work tree. Root `AGENTS.md` is the only operative rules file.
 
@@ -7,9 +7,9 @@ Components:
 - `:app`: minimal Android shell; explicit STOP; read-only battery, memory/PSS, thermal, OS and CPU workload measurements, saved app-private `files/diagnostics/probe_latest.json`. No network request or model inference. Empty real action catalog. No advertised intelligence.
 - Isolated neural service is still a placeholder with no Binder. Fully offline trained neural runtime is NOT integrated.
 
-Build requirements, not fulfilled here: JDK17, Android SDK platform35/build-tools35, Gradle8.7+ with Google AGP8.6.1 and Kotlin1.9.24 available in the environment. Run `gradle :app:assembleDebug`. Do NOT run GitHub Actions. APK only valid after an actual build succeeds.
+CI-verified build requirements on 2026-11-07: JDK17, Android SDK platform35/build-tools35, Gradle8.7+ with Google AGP8.6.1 and Kotlin1.9.24 available in the environment. Run `gradle :app:assembleDebug`. Owner explicitly authorized this single GitHub Actions build; subsequent Actions executions need specific authorization. APK is real, signed with temporary CI debug key.
 
-Host checks (requires `kotlinc` + Java): `bash scripts/host_verify.sh` (15 checks total). These do not compile the Android portion or prove actual hardware behavior.
+Host checks (requires `kotlinc` + Java): `bash scripts/host_verify.sh` (100 checks in current suite). These do not compile the Android portion or prove actual hardware behavior.
 
 After install on Samsung A52 Android14: open app, inspect device record, run CPU sample, use `adb shell run-as org.unovyra.uno.scaffold cat files/diagnostics/probe_latest.json` for debug app JSON; capture device/build identity, logs, and battery/thermal traces separately. Only then `DEVICE_VERIFIED` may be claimed.
 
@@ -28,7 +28,7 @@ The foundational Android app now includes a manually activated read-only sandbox
 - `scripts/validate_lab.py`, `scripts/compare_lab.py`: validate report semantics and compare two profiles without declaring statistical significance.
 - [Full Russian protocol](LAB_PROTOCOL_RU.md): what is measured, interpretations, STOP/thermal limits, A52 procedure, unsupported/future tests.
 
-The Android app has **not** been built or installed here (SDK unavailable). Host tests do not validate Android APIs. There is no physical-energy Joule instrument; `BatteryManager` counters may be unavailable and are not a calibrated Watt-meter. There is no auto-upload or remote dependency.
+The Android debug APK was **built** successfully by [GitHub Actions run 42391092683](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42391092683); SHA-256 `fb49afa67cbb4cc3591d72728da5ae8b649e5560e6d3c754b65ad58c610a728f`. It has **not** been installed or tested on A52. Host tests do not validate Android APIs. There is no physical-energy Joule instrument; `BatteryManager` counters may be unavailable and are not a calibrated Watt-meter. There is no auto-upload or remote dependency.
 
 ## UI-01: themes and later model-driven personalization
 

@@ -1,7 +1,7 @@
 {
   "schema": "uno-progress-v1",
   "planVersion": "R10-EXEC-2026-11-07-01",
-  "updatedAt": "2026-11-07T14:22:22Z",
+  "updatedAt": "2026-11-07T16:27:30Z",
   "tasks": {
     "WP-00-T01": {
       "status": "ACCEPTED",
@@ -12,28 +12,28 @@
       "updatedAt": "2026-11-07T14:22:22Z"
     },
     "WP-01-T01": {
-      "status": "IN_PROGRESS",
-      "level": "HOST_TESTED",
-      "evidence": "Source committed android/; 15/15 Kotlin JVM tests, 0 Android permissions in manifest; real Gradle SDK environment unavailable, no APK SHA or Android build log.",
-      "ref": "commit:4d271e2df3787dd6c9e129d62eeb7fe5dce53902",
-      "note": "Acceptance BLOCKED until actual local Android build and APK hash.",
-      "updatedAt": "2026-11-07T14:22:22Z"
+      "status": "READY_REVIEW",
+      "level": "ANDROID_BUILT",
+      "evidence": "CI https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42391092683: Gradle :core:unoHostTests 100/100, Python 6/6, static policy checks, :app:assembleDebug PASS, :app:lintDebug PASS (0 errors, 7 warnings). APK 880638 bytes; SHA256=fb49afa67cbb4cc3591d72728da5ae8b649e5560e6d3c754b65ad58c610a728f. Package org.unovyra.uno.scaffold, minSdk26, targetSdk35.",
+      "ref": "https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42391092683",
+      "note": "GitHub Actions cloud build, not local PC build. Debug signing is ephemeral; not yet installed or device-verified on Samsung A52. Await owner review.",
+      "updatedAt": "2026-11-07T16:27:30Z"
     },
     "WP-01-T02": {
       "status": "IN_PROGRESS",
-      "level": "IMPLEMENTED",
-      "evidence": "Source android/app/src/main/kotlin/org/unovyra/uno/UnoActivity.kt; visible STOP and read-only diagnostic UI. No Android lifecycle device tests.",
-      "ref": "commit:4d271e2df3787dd6c9e129d62eeb7fe5dce53902",
-      "note": "Need Android build and device trial.",
-      "updatedAt": "2026-11-07T14:22:22Z"
+      "level": "ANDROID_BUILT",
+      "evidence": "Source android/app/src/main/kotlin/org/unovyra/uno/UnoActivity.kt; visible STOP and read-only diagnostic UI. No Android lifecycle device tests. CI build https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42391092683 contains these sources and passes Android compile/lint; does NOT prove runtime measurements or device behavior.",
+      "ref": "https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42391092683",
+      "note": "Still IN_PROGRESS. A52 device logs and actual measurements absent.",
+      "updatedAt": "2026-11-07T16:27:30Z"
     },
     "WP-01-T03": {
       "status": "IN_PROGRESS",
-      "level": "HOST_TESTED",
-      "evidence": "Source DeviceProbe.kt and ProbeMath.kt; 5 host statistic tests PASS. No actual A52 readings, latency/PSS/energy.",
-      "ref": "commit:4d271e2df3787dd6c9e129d62eeb7fe5dce53902",
-      "note": "Wait for APK and raw A52 records; MAC not joules.",
-      "updatedAt": "2026-11-07T14:22:22Z"
+      "level": "ANDROID_BUILT",
+      "evidence": "Source DeviceProbe.kt and ProbeMath.kt; 5 host statistic tests PASS. No actual A52 readings, latency/PSS/energy. CI build https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42391092683 contains these sources and passes Android compile/lint; does NOT prove runtime measurements or device behavior.",
+      "ref": "https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42391092683",
+      "note": "Still IN_PROGRESS. A52 device logs and actual measurements absent.",
+      "updatedAt": "2026-11-07T16:27:30Z"
     },
     "WEB-01-T02": {
       "status": "IN_PROGRESS",
@@ -66,8 +66,12 @@
     {
       "at": "2026-11-07T14:22:22Z",
       "text": "WEB-01-T02: IN_PROGRESS (PLANNED) — commit:4d271e2df3787dd6c9e129d62eeb7fe5dce53902"
+    },
+    {
+      "at": "2026-11-07T16:27:30Z",
+      "text": "CI ANDROID_BUILT: 42391092683, APK sha256 fb49afa67cbb4cc3591d72728da5ae8b649e5560e6d3c754b65ad58c610a728f. WP-01-T01 READY_REVIEW; WP-01-T02/T03 IN_PROGRESS. DEVICE_VERIFIED=false."
     }
   ],
-  "exportedAt": "2026-11-07T14:22:22Z",
+  "exportedAt": "2026-11-07T16:27:30Z",
   "tasksTotal": 54
 }
