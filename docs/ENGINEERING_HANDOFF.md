@@ -1,5 +1,15 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-08 — WP-02, текущая инженерная контрольная точка
+
+**Сверяйте живой HEAD**, а не SHA вчерашнего снимка ниже. Изменения после исходной карты: новый `ActionIntentJournal.kt` + `ActionIntentJournalTest.kt`, зарегистрированный в `AllHostTests.kt`; документ `docs/implementation/2026-11-08_WP02_ACTION_INTENT_JOURNAL_HOST_R1.md`. Компонент отдельно HOST_TESTED (12/12), а ограниченный объединённый JVM набор 53/53 PASS, **не полный Gradle/preflight**. Journal фиксирует PREPARED и MAY_HAVE_EXECUTED с append + fd.sync и на восстановлении запрещает автоматический rearm. Он **НЕ подключён** к Android-порту и не предоставляет permissions, consent, native readback, trusted outcomes, Keystore, power-cut proof или работающий нейроинференс. `DenyAllAndroidPort` остаётся обязательным.
+
+**Текущий фронт работ:** вручную собрать и запустить все host/Android checks без GitHub Actions; завершить WP-02 trust boundary и интеграцию journal через настоящий Android owner + permission + STOP + readback; отдельно WP-05 persistent memory. Интеллектуальное ядро/веса **не менять в этой ветке без отдельного решения владельца**. Не объявлять foundation завершённым по этим JVM проверкам.
+
+[Подробный акт WP-02](implementation/2026-11-08_WP02_ACTION_INTENT_JOURNAL_HOST_R1.md).
+
+---
+
 **Снимок:** 2026-11-07, состояние исходников перед созданием этой карты: `f4bc0bd12f8f7b476682a4ff07da85ef419fd6fa`. **ЭТО НЕ ВЕЧНЫЙ HEAD.** Перед работой проверьте свежий SHA рабочей ветки. Этот файл — **маршрут и проверяемый снимок состояния, НЕ отдельный набор действующих правил**. Единственный нормативный источник полномочий — [корневой AGENTS.md](../AGENTS.md) (V3 или более позднее явное решение владельца).
 
 ## 0. Если вы только что вошли в проект — прочитайте это прежде, чем писать код
