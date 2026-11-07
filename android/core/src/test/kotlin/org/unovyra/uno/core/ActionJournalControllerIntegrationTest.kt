@@ -187,6 +187,130 @@ object ActionJournalControllerIntegrationTest {
                 check(j.snapshot().single().phase == ActionIntentJournal.Phase.PREPARED)
             }
         }
+        verify("typed PREPARED without issuance is REJECTED not observed FALSE") {
+            ActionIntentJournal(file()).use { j ->
+                val n = ProbeNative { }
+                val c = TrustController(n, InMemoryLedger(), effect, j)
+                val real = prepare(c)
+                val fake = real.copy(id = "unissued")
+                check(c.dispatchOutcome(fake, 1) ==
+                    DispatchAttempt.Rejected(DispatchRejection.NOT_ISSUED))
+                check(n.calls == 0)
+            }
+        }
+        verify("typed forged existing ticket is rejected before native") {
+            ActionIntentJournal(file()).use { j ->
+                val n = ProbeNative { }
+                val c = TrustController(n, InMemoryLedger(), effect, j)
+                val ticket = prepare(c)
+                check(c.dispatchOutcome(ticket.copy(), 1) ==
+                    DispatchAttempt.Rejected(DispatchRejection.WRONG_TICKET))
+                check(n.calls == 0)
+            }
+        }
+        verify("typed STOP refusal is distinct from native FALSE") {
+            ActionIntentJournal(file()).use { j ->
+                val n = ProbeNative { }
+                val c = TrustController(n, InMemoryLedger(), effect, j)
+                val ticket = prepare(c)
+                c.stop()
+                check(c.dispatchOutcome(ticket, 1) ==
+                    DispatchAttempt.Rejected(DispatchRejection.NOT_ISSUED))
+                check(n.calls == 0)
+            }
+        }
+        verify("typed journal refusal is distinct from native UNKNOWN") {
+            ActionIntentJournal(file()).use { j ->
+                val n = ProbeNative { }
+                val c = TrustController(n, InMemoryLedger(), effect, j)
+                val ticket = prepare(c)
+                j.stop()
+                check(c.dispatchOutcome(ticket, 1) ==
+                    DispatchAttempt.Rejected(DispatchRejection.JOURNAL_UNAVAILABLE))
+                check(n.calls == 0)
+            }
+        }
+        verify("typed bad digest never becomes a native negative sample") {
+            ActionIntentJournal(file()).use { j ->
+                val n = ProbeNative { }
+                val c = TrustController(n, InMemoryLedger(), effect, j)
+                val ticket = prepare(c)
+                ticket.proposal.canonicalArgs[0] = 0
+                check(c.dispatchOutcome(ticket, 1) ==
+                    DispatchAttempt.Rejected(DispatchRejection.DIGEST_MISMATCH))
+                check(n.calls == 0)
+            }
+        }
+        verify("typed native FALSE is INVOKED not REJECTED and not verified") {
+            ActionIntentJournal(file()).use { j ->
+                val calls = AtomicInteger()
+                val native = object : NativePort {
+                    override val trustedSourceTag = "FALSE_NATIVE_FIXTURE"
+                    override fun dispatch(ticket: Ticket): NativeEndpoint {
+                        calls.incrementAndGet(); return NativeEndpoint.FALSE
+                    }
+                    override fun readback(ticket: Ticket, nowNanos: Long) =
+                        NativeEvidence(ticket.id, NativeEndpoint.FALSE, 1, nowNanos, trustedSourceTag)
+                }
+                val c = TrustController(native, InMemoryLedger(), effect, j)
+                val ticket = prepare(c)
+                check(c.dispatchOutcome(ticket, 1) == DispatchAttempt.Invoked(NativeEndpoint.FALSE))
+                check(ticket.phase == Phase.WAIT_READBACK && !ticket.used)
+                check(calls.get() == 1)
+                check(!c.readbackAndCommit(ticket, 2))
+                check(ticket.phase == Phase.DENIED)
+            }
+        }
+        verify("typed native TRUE is not independent readback success") {
+            ActionIntentJournal(file()).use { j ->
+                val n = ProbeNative { }
+                val c = TrustController(n, InMemoryLedger(), effect, j)
+                val ticket = prepare(c)
+                check(c.dispatchOutcome(ticket, 1) == DispatchAttempt.Invoked(NativeEndpoint.TRUE))
+                check(!ticket.used && ticket.readback == null && ticket.phase == Phase.WAIT_READBACK)
+                check(n.calls == 1)
+                check(c.readbackAndCommit(ticket, 2) && ticket.used)
+            }
+        }
+        verify("typed UNKNOWN is invoked only once; following result is unresolved") {
+            ActionIntentJournal(file()).use { j ->
+                val calls = AtomicInteger()
+                val native = object : NativePort {
+                    override val trustedSourceTag = "UNKNOWN_NATIVE_FIXTURE"
+                    override fun dispatch(ticket: Ticket): NativeEndpoint {
+                        calls.incrementAndGet(); return NativeEndpoint.UNKNOWN
+                    }
+                    override fun readback(ticket: Ticket, nowNanos: Long) =
+                        NativeEvidence(ticket.id, NativeEndpoint.UNKNOWN, 1, nowNanos, trustedSourceTag)
+                }
+                val c = TrustController(native, InMemoryLedger(), effect, j)
+                val ticket = prepare(c)
+                check(c.dispatchOutcome(ticket, 1) == DispatchAttempt.Invoked(NativeEndpoint.UNKNOWN))
+                check(c.dispatchOutcome(ticket, 2) === DispatchAttempt.Unresolved)
+                check(calls.get() == 1 && ticket.phase == Phase.MAY_HAVE_EXECUTED)
+            }
+        }
+        verify("typed expired ticket is pre-native refusal") {
+            ActionIntentJournal(file()).use { j ->
+                val n = ProbeNative { }
+                val c = TrustController(n, InMemoryLedger(), effect, j)
+                val ticket = prepare(c)
+                check(c.dispatchOutcome(ticket, 100) ==
+                    DispatchAttempt.Rejected(DispatchRejection.STOP_OR_EXPIRED))
+                check(n.calls == 0)
+            }
+        }
+        verify("typed crash-recovered ticket remains unresolved without native") {
+            ActionIntentJournal(file()).use { j ->
+                val n = ProbeNative { }
+                val c = TrustController(n, InMemoryLedger(), effect, j)
+                val ticket = prepare(c)
+                check(c.dispatchOutcome(ticket, 1) == DispatchAttempt.Invoked(NativeEndpoint.TRUE))
+                c.recoverAfterProcessDeath()
+                check(c.dispatchOutcome(ticket, 2) === DispatchAttempt.Unresolved)
+                check(n.calls == 1)
+            }
+        }
         println("ACTION_JOURNAL_CONTROLLER_INTEGRATION_PASS=$pass")
     }
 }
