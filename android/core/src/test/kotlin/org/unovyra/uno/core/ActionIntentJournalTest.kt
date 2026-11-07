@@ -55,7 +55,7 @@ object ActionIntentJournalTest {
             }
         }
         test("a second writer cannot open a locked journal") {
-            val f=temp(); ActionIntentJournal(f).use { j ->
+            val f=temp(); ActionIntentJournal(f).use { _ ->
                 var rejected=false
                 try { ActionIntentJournal(f).close() }
                 catch (e: IllegalStateException) { rejected=e.message=="OUTBOX_ALREADY_OPEN" }
@@ -66,7 +66,7 @@ object ActionIntentJournalTest {
         test("tampered tail fails closed without destructive repair") {
             val f=temp(); ActionIntentJournal(f).use { check(it.prepare("t6",digest)) }
             val len=f.length();java.io.RandomAccessFile(f,"rw").use { r ->
-                r.seek(len-1);r.writeByte(0)
+                r.seek(len-1);val previous=r.readUnsignedByte();r.seek(len-1);r.writeByte(previous xor 0xff)
             }
             check(refusedOpen(f) && f.length()==len)
         }
