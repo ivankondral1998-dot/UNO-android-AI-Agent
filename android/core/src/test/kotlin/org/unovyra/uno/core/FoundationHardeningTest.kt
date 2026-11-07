@@ -37,11 +37,15 @@ object FoundationHardeningTest {
                 override fun readback(ticket:Ticket,nowNanos:Long)=NativeEvidence(ticket.id,NativeEndpoint.TRUE,1,nowNanos,trustedSourceTag)
             }
             val (c,t)=prepared(native)
-            val worker=Thread { check(c.dispatch(t,1L)==NativeEndpoint.TRUE) }
+            val failure=java.util.concurrent.atomic.AtomicReference<Throwable?>(null)
+            val worker=Thread {
+                try { check(c.dispatch(t,1L)==NativeEndpoint.TRUE) }
+                catch (error:Throwable) { failure.set(error) }
+            }
             worker.start();check(entered.await(2,TimeUnit.SECONDS))
             t.proposal.canonicalArgs.fill(42)
             proceed.countDown();worker.join(2000)
-            check(!worker.isAlive && observed=="note|approved")
+            check(!worker.isAlive && failure.get()==null && observed=="note|approved")
         }
         case("mutated issued ticket rejected") {
             val (c,t)=prepared()
