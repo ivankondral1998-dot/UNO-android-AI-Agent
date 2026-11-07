@@ -1,5 +1,16 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-08 — typed DispatchAttempt / causal outcome (после WP02 causal bridge)
+
+**Проверять текущий HEAD GitHub; не использовать snapshot SHA из старых разделов.** Новый тип `DispatchAttempt` в `Contracts.kt` и метод `TrustController.dispatchOutcome()` **разделили отказ до native**, однократный **вызов native** (с результатом TRUE/FALSE/UNKNOWN без readback) и **неразрешённое состояние после прошлой попытки**. Прежний `dispatch(): NativeEndpoint` сохранён только как deprecated legacy adapter и всё ещё теряет семантику: его `FALSE` не является достоверным отрицательным OS sample. Новые пути `Verify/L/M` должны использовать типизированную причинную семантику; никакого обучения по отказам до native.
+
+**Изменения:** `Contracts.kt`, `Controller.kt`, 10 новых сценариев в `ActionJournalControllerIntegrationTest.kt`. **Проверка:** совпавшие Git blobs пяти реально компилировавшихся Kotlin-файлов; `kotlinc` + JVM **23/23 integration и 12/12 journal PASS (35/35), 5 повторов**, полный Gradle/Android не проверен. [Подробные формулы, источник Astra/R5.3, тесты и блокеры](implementation/2026-11-08_WP02_TYPED_DISPATCH_OUTCOME_R1.md).
+
+**Важное ограничение:** это **reference-only**, `A_cap/A_tx/A_fs` и реальный Android linearization/owner/permissions/native readback не подтверждены. В приложении по-прежнему `DenyAllAndroidPort`. `FOUNDATION_INCOMPLETE`. Ядро F/веса не менялись.
+
+---
+
+
 ## UPDATE 2026-11-08 — новейший WP-02 causal bridge (после Grok `bfb9acdad6b7bff30c9fae31ff9b3da043b2c665`)
 
 **Действующий HEAD перепроверять непосредственно в GitHub.** После исправлений Grok дополнительно подключён `ActionIntentJournal` к **опциональному reference** `TrustController`, чтобы успешный журнал `PREPARED` предшествовал выдаче билета, а синхронизированный `MAY_HAVE_EXECUTED` предшествовал fake-native dispatch. Если долговечная запись не удалась, вызова native нет. Forged/невыданный `PREPARED` теперь означает pre-dispatch `FALSE`, а не видимость неопределённого OS-эффекта. Старый host-only конструктор без журнала сохранён для совместимости; **реальная Android Activity использует DenyAll Port, интеграции с Android-native по-прежнему нет**.
