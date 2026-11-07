@@ -63,7 +63,7 @@ object LabSystemMetrics {
             .put("self_private_dirty_kib",self.totalPrivateDirty)
             .put("self_dalvik_pss_kib",self.dalvikPss)
             .put("self_native_pss_kib",self.nativePss)
-            .put("self_rss_kib", if(Build.VERSION.SDK_INT>=29) opt(runCatching{Debug.getRss()}.getOrNull()) else JSONObject.NULL)
+            .put("self_rss_kib", if(Build.VERSION.SDK_INT>=35) opt(runCatching{Debug.getRss()}.getOrNull()) else JSONObject.NULL)
             .put("native_heap_allocated_bytes",Debug.getNativeHeapAllocatedSize())
             .put("native_heap_free_bytes",Debug.getNativeHeapFreeSize())
             .put("java_heap_used_bytes",runtime.totalMemory()-runtime.freeMemory())

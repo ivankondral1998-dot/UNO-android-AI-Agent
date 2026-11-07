@@ -1,6 +1,7 @@
 # One-time push-triggered CI build at owner request (2026-11-07).
 # Subsequent source pushes do NOT trigger this job; manual dispatch is retained
 # for a future explicit owner-approved execution where supported.
+# Rerun after first CI caught Android 14 incompatible RSS API guard.
 name: UNO Android WP-01 Debug APK (owner-approved)
 on:
   workflow_dispatch:
