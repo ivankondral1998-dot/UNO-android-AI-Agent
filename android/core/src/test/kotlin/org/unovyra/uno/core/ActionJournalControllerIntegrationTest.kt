@@ -113,6 +113,17 @@ object ActionJournalControllerIntegrationTest {
                 check(j.snapshot().single().phase == ActionIntentJournal.Phase.PREPARED)
             }
         }
+        verify("never-issued PREPARED id is pre-native FALSE, not UNKNOWN") {
+            ActionIntentJournal(file()).use { j ->
+                val native = ProbeNative { }
+                val c = TrustController(native, InMemoryLedger(), effect, j)
+                val prepared = prepare(c)
+                val forgedId = prepared.copy(id = "never-issued-ticket")
+                check(c.dispatch(forgedId, 1) == NativeEndpoint.FALSE)
+                check(native.calls == 0)
+                check(j.snapshot().single().phase == ActionIntentJournal.Phase.PREPARED)
+            }
+        }
         verify("duplicate dispatch never arms or calls native twice") {
             ActionIntentJournal(file()).use { j ->
                 val n = ProbeNative { }
