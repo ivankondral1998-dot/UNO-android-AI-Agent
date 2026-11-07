@@ -27,11 +27,12 @@ class BoundedScheduler(private val maxEvents:Int=UnoAbi.MAX_QUEUE) {
         }
     }
     /** Expired events are discarded, not delivered. Caller still must check STOP before any effect. */
-    @Synchronized fun poll(nowNanos:Long=Long.MIN_VALUE):QueuedEvent? {
+    @Synchronized fun poll(nowNanos:Long):QueuedEvent? {
+        require(nowNanos>=0) { "poll requires a monotonic clock value" }
         if(stopLatch.get())return null
         while(q.isNotEmpty()) {
             val event=q.poll()
-            if(nowNanos>=0 && event.deadlineNanos<=nowNanos)continue
+            if(event.deadlineNanos<=nowNanos)continue
             if(stopLatch.get())return null
             return event
         }
