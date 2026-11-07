@@ -38,7 +38,7 @@ object CoreSelfTest {
             val p=Proposal(15,"n|text".toByteArray(),"fixture",1,"h")
             val c=Consent(t.proposalDigest(p),"LOCAL_NOTE_CREATE_TEST_ONLY",10,t.epoch,t.nonce,true)
             val ticket=t.prepare(p,c,0,20)!!
-            t.stop();check(t.dispatch(ticket,1)==NativeEndpoint.UNKNOWN);check(ticket.phase==Phase.CANCELLED)
+            t.stop();check(t.dispatch(ticket,1)==NativeEndpoint.FALSE);check(ticket.phase==Phase.CANCELLED)
         }
         checkCase("crash never autocommits") {
             val n=FakeNotesPort();val t=TrustController(n,InMemoryLedger(),mapOf(15 to "LOCAL_NOTE_CREATE_TEST_ONLY"))

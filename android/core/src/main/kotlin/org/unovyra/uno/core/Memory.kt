@@ -3,7 +3,7 @@ package org.unovyra.uno.core
 import java.security.MessageDigest
 
 enum class ExactStatus { DENIED, UNKNOWN, TRUNCATED, CONFLICT, COMPLETE, NOT_FOUND }
-enum class EntryKind { OBSERVED, USER_DECLARATION, VERIFIED_COMPLETION, HYPOTHESIS }
+enum class EntryKind { OBSERVED, USER_DECLARATION, VERIFIED_COMPLETION, HYPOTHESIS, SEMANTIC_SUMMARY }
 
 data class ExactEntry(
     val id: Long,
@@ -53,7 +53,7 @@ class ExactMemory(private val limit: Int = UnoAbi.MAX_MEMORY) {
         // A real store requires a controller-held snapshot lock/revision guarantee.
         val snapshot=rows.values.toList()
         if (scanBudget<snapshot.size) return ExactRead(ExactStatus.TRUNCATED,emptyList(),0)
-        val matches=snapshot.filter { it.scope==scope && it.factKey==factKey && now<it.expiryMonotonicNanos }
+        val matches=snapshot.filter { it.scope==scope && it.factKey==factKey && now<it.expiryMonotonicNanos && it.kind!=EntryKind.SEMANTIC_SUMMARY }
         if (matches.any { it.consentEpoch!=consentEpoch || sha(it.raw)!=it.sha256 }) return ExactRead(ExactStatus.UNKNOWN,emptyList(),0)
         if (matches.size>k) return ExactRead(ExactStatus.TRUNCATED,matches.take(k).map { it.copy(raw = it.raw.copyOf()) },matches.size)
         if (matches.isEmpty()) return ExactRead(ExactStatus.NOT_FOUND, emptyList(), 0)

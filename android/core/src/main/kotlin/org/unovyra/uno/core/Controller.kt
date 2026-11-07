@@ -65,26 +65,33 @@ class TrustController(
      * be in flight; STOP blocks new calls but cannot undo native effects.
      */
     @Synchronized fun dispatch(t: Ticket, now: Long): NativeEndpoint {
-        val record = issued[t.id] ?: return NativeEndpoint.UNKNOWN
+        val record = issued[t.id] ?: return when (t.phase) {
+            Phase.CANCELLED, Phase.DENIED -> NativeEndpoint.FALSE
+            else -> NativeEndpoint.UNKNOWN
+        }
         if (record.ticket !== t || record.dispatched || t.phase != Phase.PREPARED || t.used) return NativeEndpoint.UNKNOWN
+        // Blocked before any native call: the effect was NOT sent.
+        // FALSE, not UNKNOWN. UNKNOWN means the effect may already have happened.
         if (stopLatch.get() || t.epoch != epoch || t.nonce != nonce || now < 0 || now >= t.deadlineNanos) {
             t.phase = Phase.CANCELLED
             issued.remove(t.id)
-            return NativeEndpoint.UNKNOWN
+            return NativeEndpoint.FALSE
         }
-        // Deep-copy the ticket BEFORE checking its digest. Native code must NEVER see
-        // caller-mutable Proposal bytes, even if they change in another thread.
         val forNative = t.copy(proposal = t.proposal.copy(canonicalArgs = t.proposal.canonicalArgs.copyOf()))
         if (proposalDigest(forNative.proposal) != t.proposalDigest) {
             t.phase = Phase.DENIED
             issued.remove(t.id)
-            return NativeEndpoint.UNKNOWN
+            return NativeEndpoint.FALSE
         }
-        record.dispatched = true  // one-shot independent of caller-mutable ticket fields
+        // From here the call may reach native. One-shot: a second dispatch must not call native again.
+        record.dispatched = true
         t.phase = Phase.MAY_HAVE_EXECUTED
         val result = try { native.dispatch(forNative) } catch (_: Exception) { NativeEndpoint.UNKNOWN }
-        if (!stopLatch.get() && result != NativeEndpoint.UNKNOWN) t.phase = Phase.WAIT_READBACK
-        // UNKNOWN is deliberately unresolved: an OS effect MAY_HAVE_EXECUTED.
+        if (result == NativeEndpoint.UNKNOWN) {
+            t.phase = Phase.MAY_HAVE_EXECUTED
+        } else if (!stopLatch.get()) {
+            t.phase = Phase.WAIT_READBACK
+        }
         return result
     }
 

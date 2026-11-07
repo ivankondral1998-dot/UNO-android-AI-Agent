@@ -116,4 +116,16 @@ class ComputeBudgetGate(private val limits: ComputeLimits) {
             release(permit)
         }
     }
+
+    /**
+     * Inactive mask skips the body. The expensive kernel is not admitted and not called.
+     * A zero mask is not a post-hoc multiply by zero.
+     */
+    fun <T> runIfActive(
+        active: Boolean, cost: ComputeEstimate, clockElapsedNanos: () -> Long, body: (ComputePermit) -> T
+    ): ComputeAttempt<T> {
+        if (!active) return ComputeAttempt.Rejected
+        return tryRun(cost, clockElapsedNanos, body)
+    }
 }
+

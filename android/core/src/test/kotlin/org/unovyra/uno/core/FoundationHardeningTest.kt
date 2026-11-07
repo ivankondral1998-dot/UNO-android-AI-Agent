@@ -50,7 +50,7 @@ object FoundationHardeningTest {
         case("mutated issued ticket rejected") {
             val (c,t)=prepared()
             t.proposal.canonicalArgs[0]=42
-            check(c.dispatch(t,1L)==NativeEndpoint.UNKNOWN)
+            check(c.dispatch(t,1L)==NativeEndpoint.FALSE)
             check(t.phase==Phase.DENIED)
         }
         case("forged never-issued ticket rejected") {
@@ -97,7 +97,8 @@ object FoundationHardeningTest {
             val (c,t)=prepared(native)
             c.stop()
             check(c.stopped)
-            check(c.dispatch(t,1L)==NativeEndpoint.UNKNOWN)
+            check(c.dispatch(t,1L)==NativeEndpoint.FALSE)
+            check(t.phase==Phase.CANCELLED)
             check(calls.get()==0)
         }
         case("memory write return cannot mutate stored bytes") {
@@ -145,6 +146,39 @@ object FoundationHardeningTest {
             check(q.enqueue(Priority.REVOKE,"revoke",0L))
             check(q.isStopped() && q.size()==0 && q.poll(0L)==null)
             check(!q.enqueue(Priority.OWNER,"new",100L))
+        }
+        case("UNKNOWN after native call is not retried") {
+            val calls=java.util.concurrent.atomic.AtomicInteger()
+            val native=object:NativePort{
+                override val trustedSourceTag="UNKNOWN_TEST"
+                override fun dispatch(ticket:Ticket):NativeEndpoint { calls.incrementAndGet(); return NativeEndpoint.UNKNOWN }
+                override fun readback(ticket:Ticket,nowNanos:Long)=NativeEvidence(ticket.id,NativeEndpoint.UNKNOWN,1,nowNanos,trustedSourceTag)
+            }
+            val (c,t)=prepared(native)
+            check(c.dispatch(t,1L)==NativeEndpoint.UNKNOWN)
+            check(t.phase==Phase.MAY_HAVE_EXECUTED)
+            check(c.dispatch(t,2L)==NativeEndpoint.UNKNOWN)
+            check(calls.get()==1)
+            check(!c.readbackAndCommit(t,2L))
+        }
+        case("boot does not redispatch unresolved") {
+            val calls=java.util.concurrent.atomic.AtomicInteger()
+            val native=object:NativePort{
+                override val trustedSourceTag="FAKE_JVM_NOTE"
+                override fun dispatch(ticket:Ticket):NativeEndpoint { calls.incrementAndGet(); return NativeEndpoint.UNKNOWN }
+                override fun readback(ticket:Ticket,nowNanos:Long)=NativeEvidence(ticket.id,NativeEndpoint.UNKNOWN,1,nowNanos,trustedSourceTag)
+            }
+            val (c,t)=prepared(native)
+            check(c.dispatch(t,1L)==NativeEndpoint.UNKNOWN)
+            c.recoverAfterProcessDeath()
+            check(t.phase==Phase.MAY_HAVE_EXECUTED)
+            check(c.dispatch(t,2L)==NativeEndpoint.UNKNOWN)
+            check(calls.get()==1)
+        }
+        case("semantic summary is not an exact fact") {
+            val m=ExactMemory()
+            m.write("owner","key","guess".toByteArray(),100L,0,EntryKind.SEMANTIC_SUMMARY,"model")
+            check(m.read("owner","key",5,10,1L,0).status==ExactStatus.NOT_FOUND)
         }
         println("FOUNDATION_HARDENING_PASS=$pass")
     }

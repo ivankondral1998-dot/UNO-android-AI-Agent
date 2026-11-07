@@ -13,6 +13,13 @@ object ComputeBudgetGateTest {
                      deadline: Long = 1000, concurrent: Int = 2) =
         ComputeBudgetGate(ComputeLimits(mac, tokens, scratch, deadline, concurrent))
     fun run() {
+        t("inactive_mask_skips_body") {
+            val g=gate(); var called=false
+            val x=g.runIfActive(false, ComputeEstimate(1,0,0), {1L}) { called=true; 1 }
+            check(x is ComputeAttempt.Rejected && !called)
+            val y=g.runIfActive(true, ComputeEstimate(1,0,0), {1L}) { called=true; 7 }
+            check(y is ComputeAttempt.Finished && y.value==7 && called)
+        }
         t("MAC_zero_denies_and_skips_expensive_body") {
             val g=gate(mac=0); var called=false
             val x=g.tryRun(ComputeEstimate(1,0,0),{1L}) { called=true }
