@@ -113,6 +113,17 @@ object FoundationHardeningTest {
             check(b.status==ExactStatus.COMPLETE)
             check(b.entries.single().raw.decodeToString()=="fixed")
         }
+        case("unverified memory writer cannot forge verified Android completion") {
+            val m=ExactMemory()
+            var rejected=false
+            try {
+                m.write("owner","action","success".toByteArray(),100L,0,
+                    EntryKind.VERIFIED_COMPLETION,"untrusted")
+            } catch (e:IllegalArgumentException) {
+                rejected=e.message=="VERIFIED_COMPLETION_REQUIRES_NATIVE_READBACK"
+            }
+            check(rejected)
+        }
         case("missing exact key explicitly NOT_FOUND") {
             val m=ExactMemory()
             check(m.read("owner","missing",1,1,1L,0).status==ExactStatus.NOT_FOUND)
