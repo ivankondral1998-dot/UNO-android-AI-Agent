@@ -8,6 +8,7 @@ import unittest
 
 # Also test the guards themselves by mutating synthetic manifest/source fixtures.
 from test_static_contract_check import GuardTests
+from test_adb_selection import AdbSelectionTests
 
 ROOT=Path(__file__).resolve().parent
 
