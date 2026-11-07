@@ -46,7 +46,7 @@ object LabProtocolTest {
         t("stopped scheduler refuses future owner events") {
             val q=BoundedScheduler(2)
             check(q.enqueue(Priority.OWNER, "a",1));check(q.enqueue(Priority.OWNER, "b",2))
-            check(q.enqueue(Priority.STOP,"c",3));check(q.poll()==null)
+            check(q.enqueue(Priority.STOP,"c",3));check(q.poll(0L)==null)
             check(!q.enqueue(Priority.OWNER,"d",4))
         }
         t("lab stop cannot undo a stop") {
