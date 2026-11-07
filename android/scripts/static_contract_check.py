@@ -1,30 +1,90 @@
 #!/usr/bin/env python3
-"""Minimal static security and architecture preflight (does not compile Android)."""
+"""Static fail-closed guard for the WP-01 offline diagnostic APK.
+Not an Android build, runtime network monitor, authority proof, or model quality test.
+"""
 from pathlib import Path
 import re
 import sys
 import xml.etree.ElementTree as ET
 
-root=Path(__file__).resolve().parents[1]
-manifest=ET.parse(root/'app/src/main/AndroidManifest.xml').getroot()
-ns='{http://schemas.android.com/apk/res/android}'
-permissions=[x.get(ns+'name') for x in manifest.findall('uses-permission')]
-errors=[]
-if permissions: errors.append(f"unexpected manifest privileges: {permissions}")
-activity=manifest.find('application/activity')
-service=manifest.find('application/service')
-if service is None or service.get(ns+'isolatedProcess')!='true' or service.get(ns+'exported')!='false':
-    errors.append('worker service isolation missing')
-if activity is None or activity.get(ns+'exported')!='true':
-    errors.append('launcher activity mismatch')
-code='\n'.join(x.read_text() for x in (root/'app/src/main/kotlin/org/unovyra/uno').glob('*.kt'))
-for text in ('java.net.URL(', 'HttpURLConnection', 'OkHttpClient', 'WebView(', 'ACTION_SEND', 'AccessibilityService('):
-    if text in code:errors.append('unexpected potential outbound/effect API '+text)
-if 'DenyAllAndroidPort' not in code:errors.append('deny-all port missing')
-if 'LabProfile.STRESS' not in code:errors.append('manual stress UI missing')
-if 'labStop.stop()' not in code:errors.append('abort integration missing')
-if errors:
-    print('STATIC_PREFLIGHT_FAIL')
-    for e in errors:print('FAIL',e)
-    sys.exit(1)
-print('STATIC_PREFLIGHT_PASS=7 ; NOT android compile, APK, offline proof or device verification')
+ANDROID = '{http://schemas.android.com/apk/res/android}'
+REQUIRED_FALSE = ('allowBackup', 'fullBackupContent', 'usesCleartextTraffic')
+FORBIDDEN_SOURCE = (
+    (r'\bjava\.net\.', 'java.net'),
+    (r'\bokhttp3\.', 'OkHttp'),
+    (r'\bio\.ktor\.client\.', 'Ktor client'),
+    (r'\bHttpURLConnection\b', 'HttpURLConnection'),
+    (r'\bWebView\s*\(', 'WebView constructor'),
+    (r'\bACTION_SEND(?:TO|_MULTIPLE)?\b', 'outbound intent'),
+    (r'\bAccessibilityService\b', 'AccessibilityService'),
+)
+
+
+def scan(root: Path) -> list[str]:
+    errors: list[str] = []
+    manifest_path = root / 'app/src/main/AndroidManifest.xml'
+    try:
+        manifest = ET.parse(manifest_path).getroot()
+    except (OSError, ET.ParseError) as exc:
+        return [f'manifest_unreadable:{type(exc).__name__}']
+
+    for node in manifest:
+        if node.tag in ('uses-permission', 'uses-permission-sdk-23', 'permission'):
+            errors.append(f'unexpected_permission:{node.get(ANDROID + "name", "?")}')
+
+    app = manifest.find('application')
+    if app is None:
+        return errors + ['missing_application']
+    for attr in REQUIRED_FALSE:
+        if app.get(ANDROID + attr) != 'false':
+            errors.append(f'app_{attr}_not_false')
+
+    activities = app.findall('activity')
+    services = app.findall('service')
+    if len(activities) != 1 or activities[0].get(ANDROID + 'name') != '.UnoActivity':
+        errors.append('unexpected_activity_catalog')
+    elif activities[0].get(ANDROID + 'exported') != 'true':
+        errors.append('missing_launcher_export')
+    if len(services) != 1 or services[0].get(ANDROID + 'name') != '.NeuralWorkerService':
+        errors.append('unexpected_service_catalog')
+    elif services[0].get(ANDROID + 'isolatedProcess') != 'true' or services[0].get(ANDROID + 'exported') != 'false':
+        errors.append('unsafe_neural_worker')
+    for component in app:
+        if component.tag in ('receiver', 'provider', 'activity-alias'):
+            errors.append(f'unreviewed_component:{component.tag}')
+
+    code_dir = root / 'app/src/main/kotlin/org/unovyra/uno'
+    sources = sorted(code_dir.rglob('*.kt'))
+    if not sources:
+        return errors + ['app_kotlin_source_missing']
+    code = '\n'.join(source.read_text(encoding='utf-8') for source in sources)
+    for pattern, label in FORBIDDEN_SOURCE:
+        if re.search(pattern, code):
+            errors.append(f'unexpected_api:{label}')
+    # These positive checks are intentionally narrow: strings in comments are not sufficient.
+    activity = next((s.read_text(encoding='utf-8') for s in sources if s.name == 'UnoActivity.kt'), '')
+    if not re.search(r'TrustController\s*\(\s*DenyAllAndroidPort\s*\(\s*\)\s*,\s*DenyAllLedger\s*\(\s*\)', activity):
+        errors.append('missing_fail_closed_controller_wiring')
+    if not re.search(r'NoWeightsNeuralPort\s*\(\s*\)', activity):
+        errors.append('neural_placeholder_not_fail_closed')
+    if 'labStop.stop()' not in activity or 'controller.stop()' not in activity:
+        errors.append('missing_activity_abort_integration')
+    if 'LabProfile.STRESS' not in activity:
+        errors.append('manual_lab_control_missing')
+    return errors
+
+
+def main() -> int:
+    root = Path(__file__).resolve().parents[1]
+    errors = scan(root)
+    if errors:
+        print('STATIC_PREFLIGHT_FAIL')
+        for error in errors:
+            print('FAIL', error)
+        return 1
+    print('STATIC_PREFLIGHT_PASS=GUARDS_OK (static only; NOT an Android build or runtime proof)')
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
