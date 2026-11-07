@@ -14,7 +14,12 @@ class TrustController(
     private val ledger: DurableLedger,
     private val allowedEffects: Map<Int, String> = emptyMap()
 ) {
-    val stopLatch = AtomicBoolean(false)
+    // Reference gate only. Production dispatch still requires Android owner auth and a durable WAL.
+    // A ticket is valid only if this trusted controller issued it; caller-mutable Ticket is not authority.
+    private data class Issued(val ticket: Ticket, var dispatched: Boolean = false)
+    private val issued = linkedMapOf<String, Issued>()
+    private val stopLatch = AtomicBoolean(false)
+    val stopped: Boolean get() = stopLatch.get()
     private val rng = SecureRandom()
     private fun freshNonce(): String = ByteArray(16).also(rng::nextBytes).joinToString("") { "%02x".format(it) }
     var epoch = 0L
@@ -38,57 +43,96 @@ class TrustController(
         return md.digest().joinToString("") { "%02x".format(it) }
     }
 
-    fun prepare(p: Proposal, consent: Consent, now: Long, deadline: Long): Ticket? {
-        if (stopLatch.get() || p.verb !in 3..23 || !allowedEffects.containsKey(p.verb)) return null
-        val d = proposalDigest(p)
+    @Synchronized fun prepare(p: Proposal, consent: Consent, now: Long, deadline: Long): Ticket? {
+        if (stopLatch.get() || now < 0 || deadline <= now || issued.size >= UnoAbi.MAX_PENDING ||
+            p.verb !in 3..23 || !allowedEffects.containsKey(p.verb)) return null
+        // Snapshot mutable bytes BEFORE binding consent. Caller may mutate its Proposal after prepare().
+        val frozen = p.copy(canonicalArgs = p.canonicalArgs.copyOf())
+        val d = proposalDigest(frozen)
         if (!consent.ownerUnlocked || consent.proposalDigest != d ||
             consent.effectName != allowedEffects[p.verb] || consent.epoch != epoch ||
             consent.nonce != nonce || now >= consent.expiresAtNanos || now >= deadline ||
             consent.expiresAtNanos < 0 || deadline <= 0) return null
         if (serial == Long.MAX_VALUE) { stop(); return null }
-        val t = Ticket("$nonce:$epoch:${++serial}",p,d,epoch,nonce,deadline,allowedEffects[p.verb]!!,Phase.PREPARED)
-        return if (ledger.prepare(t)) t else null
+        val t = Ticket("$nonce:$epoch:${++serial}",frozen,d,epoch,nonce,deadline,allowedEffects[p.verb]!!,Phase.PREPARED)
+        if (!ledger.prepare(t)) return null
+        issued[t.id] = Issued(t)
+        return t
     }
 
-    /** Only this function may call native.dispatch; STOP and current epoch gated. */
-    fun dispatch(t: Ticket, now: Long): NativeEndpoint {
-        if (t.phase != Phase.PREPARED || t.used) return NativeEndpoint.UNKNOWN
-        if (stopLatch.get() || t.epoch != epoch || t.nonce != nonce || now >= t.deadlineNanos) {
+    /** This is an in-memory, host-only state machine; never wire a privileged Android port here.
+     * Admission/dispatch and STOP use the same monitor. A call admitted before STOP may already
+     * be in flight; STOP blocks new calls but cannot undo native effects.
+     */
+    @Synchronized fun dispatch(t: Ticket, now: Long): NativeEndpoint {
+        val record = issued[t.id] ?: return NativeEndpoint.UNKNOWN
+        if (record.ticket !== t || record.dispatched || t.phase != Phase.PREPARED || t.used) return NativeEndpoint.UNKNOWN
+        if (stopLatch.get() || t.epoch != epoch || t.nonce != nonce || now < 0 || now >= t.deadlineNanos) {
             t.phase = Phase.CANCELLED
+            issued.remove(t.id)
             return NativeEndpoint.UNKNOWN
         }
-        // A crash after this point is MAY_HAVE_EXECUTED, never blindly retry.
+        // Deep-copy the ticket BEFORE checking its digest. Native code must NEVER see
+        // caller-mutable Proposal bytes, even if they change in another thread.
+        val forNative = t.copy(proposal = t.proposal.copy(canonicalArgs = t.proposal.canonicalArgs.copyOf()))
+        if (proposalDigest(forNative.proposal) != t.proposalDigest) {
+            t.phase = Phase.DENIED
+            issued.remove(t.id)
+            return NativeEndpoint.UNKNOWN
+        }
+        record.dispatched = true  // one-shot independent of caller-mutable ticket fields
         t.phase = Phase.MAY_HAVE_EXECUTED
-        val response = native.dispatch(t)
-        t.phase = Phase.WAIT_READBACK
-        return response
+        val result = try { native.dispatch(forNative) } catch (_: Exception) { NativeEndpoint.UNKNOWN }
+        if (!stopLatch.get() && result != NativeEndpoint.UNKNOWN) t.phase = Phase.WAIT_READBACK
+        // UNKNOWN is deliberately unresolved: an OS effect MAY_HAVE_EXECUTED.
+        return result
     }
 
-    fun readbackAndCommit(t: Ticket, now: Long): Boolean {
-        // Evidence originates in native port only. Untrusted worker cannot pass a receipt.
-        if (stopLatch.get() || t.phase != Phase.WAIT_READBACK || t.used) return false
-        val e = native.readback(t, now)
-        if (stopLatch.get() || t.phase != Phase.WAIT_READBACK || t.used || t.epoch != epoch || t.nonce != nonce || now >= t.deadlineNanos) return false
-        if (e.ticketId != t.id || e.source != native.trustedSourceTag ||
-            e.nativeGeneration <= 0 || e.observedAtNanos > now || e.observedAtNanos < 0 ||
-            e.endpoint == NativeEndpoint.UNKNOWN) return false
-        if (!ledger.commit(t,e)) return false
-        t.readback = e;t.used = true;t.phase=Phase.COMMITTED
+    @Synchronized fun readbackAndCommit(t: Ticket, now: Long): Boolean {
+        val record = issued[t.id] ?: return false
+        if (record.ticket !== t || !record.dispatched || stopLatch.get() ||
+            t.phase != Phase.WAIT_READBACK || t.used || now < 0) return false
+        val forNative = t.copy(proposal = t.proposal.copy(canonicalArgs = t.proposal.canonicalArgs.copyOf()))
+        if (proposalDigest(forNative.proposal) != t.proposalDigest) return false
+        val evidence = try { native.readback(forNative, now) } catch (_: Exception) { return false }
+        if (stopLatch.get() || t.epoch != epoch || t.nonce != nonce || now >= t.deadlineNanos ||
+            evidence.ticketId != t.id || evidence.source != native.trustedSourceTag ||
+            evidence.nativeGeneration <= 0 || evidence.observedAtNanos > now ||
+            evidence.observedAtNanos < 0) return false
+        // FALSE is verified NON-success, and UNKNOWN is not evidence of completion.
+        if (evidence.endpoint != NativeEndpoint.TRUE) {
+            if (evidence.endpoint == NativeEndpoint.FALSE) t.phase = Phase.DENIED
+            return false
+        }
+        if (!ledger.commit(t, evidence)) return false
+        t.readback = evidence
+        t.used = true
+        t.phase = Phase.COMMITTED
+        issued.remove(t.id)
         return true
     }
 
     fun stop() {
-        stopLatch.set(true)
-        epoch++
+        stopLatch.set(true) // signal immediately, even while native.dispatch() is in flight
+        synchronized(this) {
+            if (epoch != Long.MAX_VALUE) epoch++
+            issued.values.forEach { record ->
+                if (!record.dispatched) record.ticket.phase = Phase.CANCELLED
+                else if (record.ticket.phase != Phase.COMMITTED) record.ticket.phase = Phase.MAY_HAVE_EXECUTED
+            }
+            issued.clear()
+        }
     }
 
-    fun recoverAfterProcessDeath() {
+    @Synchronized fun recoverAfterProcessDeath() {
         stopLatch.set(true)
-        epoch++
-        nonce=freshNonce()
-        // ledger.unresolved() is for reconciliation ONLY, never automatic dispatch.
+        if (epoch != Long.MAX_VALUE) epoch++
+        nonce = freshNonce()
+        issued.clear()
+        // Persistent implementation MUST reconcile durable records; never automatically redispatch.
         ledger.unresolved().forEach { if (it.phase != Phase.COMMITTED) it.phase = Phase.MAY_HAVE_EXECUTED }
     }
+
 }
 
 /** Explicitly transient test double; NO claim of transaction durability. */
