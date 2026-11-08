@@ -48,6 +48,8 @@ jobs:
         run: |
           set -euo pipefail
           python3 scripts/static_contract_check.py
+          # Includes negative UI fixture regressions for SQLite/owner/copy controls.
+          python3 scripts/test_static_contract_check.py
           python3 scripts/test_sqlite_outcome_schema.py
           python3 scripts/test_lab_tools.py
       - name: Run all existing Kotlin host checks if standalone compiler is present
