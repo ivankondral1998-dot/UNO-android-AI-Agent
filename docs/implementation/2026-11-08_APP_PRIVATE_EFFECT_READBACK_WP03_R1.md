@@ -1,0 +1,30 @@
+# UNO WP-03 — app-private local marker + independently reopened file, R1
+
+**Status at document creation:** IMPLEMENTED; build and device verification are separate gates. **Not** a neural action or a fully trusted Android NativePort. Branch `feat/uno-foundation-hardening-20261107`. Active authority: root `/AGENTS.md` V3 and owner 08.11.2026 approval for necessary CI. Do not alter `main`, publish, train weights, or grant broad Android effects.
+
+## Why this is the next narrow integration fixture
+
+On Galaxy A52, owner supplied two screenshots for `UNO TEST ci42509757092`: first diagnostic NOOP was accepted/consumed, second rejected. That verifies a limited one-use diagnostic UI path, **not** a privileged Android action. A local file marker now exercises an actual effect **only within this app's private `filesDir`** and reads it back via a newly opened file descriptor. It does not use or inherit NOOP authorization. The owner's button tap is the explicit trigger; no neural worker can call this code, and `DenyAllAndroidPort` remains the controller's NativePort.
+
+The one effect is a **vertical integration fixture**, not the final feature set or a substitute for the complete UNO offline neural organism. Future verb 15 `CREATE_LOCAL_NOTE` will require typed owner scope, epoch, permission/STOP linearization, durable transaction and independently checked outcome; this fixture must **not** be mislabelled as verb 15.
+
+## Source and provenance reviewed
+
+- [Astra R5.3 Android trust/resources](../precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md): blob `429603fdf8348ff3dfaf83623fe681e3f09dfb98`; describes verb 15 exact app-private note transaction and readback, plus STOP before native dispatch and UNKNOWN on ambiguous effects.
+- [Astra formal corrections](../precode/r5.3/source-package/NORMATIVE/02_FORMAL_CORRECTIONS_AND_LIMITS.md): blob `c12f6422394fc2001187c39e5e9d3322d50dc5f8`; history != current permission, readback match != causation, no blind retry.
+- [Grok provenance/math audit](../audits/2026-11-07/GROK_WORK_B2_PROVENANCE_AND_MATH_AUDIT_R1.md): blob `1270517d4c8281c6f5acc4e72fc56e616c00826c`; B2 paper not production weights, trust boundary incomplete.
+- Jarvis read-only comparative sources: `AndroidOperationAuthority.kt` blob `41e464d921d3f4d5c1497b36498d56d333f9135f` and `ConfirmationTicketGate.kt` blob `51a4ff33f0da78113c5fe672982ffb561a7097c7` from `kolakbro5995-cpu/JarvisLab` branch `feature/v21-local-offline-runtime-20261101`. Reused **requirements** (one-shot, owner, STOP, epoch, independent authority), not Jarvis classes or architecture.
+
+## Implemented files and bounds
+
+- `android/app/src/main/kotlin/org/unovyra/uno/AppPrivateReadbackProbe.kt`: app-private `uno_local_effect_probe_v1/probe_<128-bit-random>.txt`; fixed ASCII payload `UNO_APP_PRIVATE_EFFECT/1` and exact generated ID, `createNewFile()` without overwrite, `FileDescriptor.sync()`, new `FileInputStream` with content + SHA-256 comparison; read-only `inspect(filesDir,id)` with strict identifier regex and fresh descriptor. Max 16 markers, no cleanup/deletion in Android. No arbitrary path, permissions, network, external intent, model-generated text, SAF provider or access to user files.
+- STOP before creation prevents the write; after creation, STOP/error produces `UNKNOWN_MAY_HAVE_WRITTEN` rather than a success claim. STOP cannot undo a file already created; unknown marker is not blindly replayed. Symlink check uses `Files.isSymbolicLink` rather than rejecting legitimate Android `/data/user/0` path aliases.
+- `UnoActivity.kt`: two owner-tapped buttons: create + first readback, and **separate read-only reopen** (including after app restart); persists only opaque last marker ID in private preferences, records whether commit succeeded; reports JSON with explicit `native_os_action_executed=false`, `owner_credential_used=false`, `scope=APP_PRIVATE_FILE_ONLY`. The latter button does not create or replay the effect.
+- `android/scripts/app_private_host/AppPrivateReadbackProbeHostTest.kt` and runner: STOP-before-write, unique create, fresh read, independent reopen, invalid ID, tamper, limit, missing root and missing ID. Wired into `run_all_preflight.sh`; static guard and negative regressions ensure UI path isn't silently removed.
+- Existing SQLite outcome store is **not** wired to this fixture. It remains empty; marker file is not a privileged operation receipt or a persisted transaction in the action journal.
+
+## Critical boundaries
+
+`VERIFIED_LOCAL_BYTES` means only that the app observed the expected bytes through a fresh descriptor. It is **not independent OS attestation**, proof of fsync crash durability, proof that UNO caused a state change rather than a competing writer, an owner identity assertion, permission grant, native dispatch or complete neural cycle. An error after file creation may leave a marker; no deletion or retry is performed. A separately triggered reopen is a stronger observation than trusting the write return but still shares the same app process and trust boundary.
+
+**Future gates:** (1) SDK35 build + static/host tests; (2) install separate debug package on A52 and test both buttons, including reopen after relaunch; (3) separately design trusted action authority with exact verb 15 scope and native evidence + STOP/crash tests; (4) choose/licence/test actual offline neural model before any claim of intelligent product. No 60-second stress test required for this fixture.
