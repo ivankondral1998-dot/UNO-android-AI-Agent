@@ -3,6 +3,7 @@ package org.unovyra.uno
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import java.nio.file.Files
 import java.security.MessageDigest
 import java.security.SecureRandom
 import java.util.concurrent.atomic.AtomicBoolean
@@ -89,7 +90,7 @@ internal object AppPrivateReadbackProbe {
     }
 
     private fun File.isSymbolicLink(): Boolean =
-        try { canonicalFile != absoluteFile } catch (_: Exception) { true }
+        try { Files.isSymbolicLink(toPath()) } catch (_: Exception) { true }
 
     private fun sha256(bytes: ByteArray): String =
         MessageDigest.getInstance("SHA-256").digest(bytes)
