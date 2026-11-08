@@ -16,7 +16,8 @@ import java.util.concurrent.atomic.AtomicBoolean
 /**
  * Single-writer persistent *intent* journal, independent of the neural model and Android APIs.
  *
- * This is NOT authorization, encryption, verified completion, native dispatch, or power-cut proof.
+ * This is NOT authorization, encryption, native dispatch, independent readback, or power-cut proof.
+ * A recorded receipt is a source-tagged *claim* from the reference controller, not OS proof.
  * In particular, no code here calls Android OS actions or grants a permission. Callers must never
  * infer successful execution from an ARMED record. A recovery of ARMED means MAY_HAVE_EXECUTED.
  *
@@ -24,8 +25,14 @@ import java.util.concurrent.atomic.AtomicBoolean
  * transactions. No automatic trimming/repair is allowed: damaged files fail closed.
  */
 class ActionIntentJournal(file: File) : Closeable {
-    enum class Phase { PREPARED, MAY_HAVE_EXECUTED }
-    data class Row(val id: String, val proposalSha256: String, val phase: Phase, val recovered: Boolean)
+    enum class Phase { PREPARED, MAY_HAVE_EXECUTED, RECEIPT_RECORDED }
+    data class Row(
+        val id: String,
+        val proposalSha256: String,
+        val phase: Phase,
+        val recovered: Boolean,
+        val receipt: NativeEvidence? = null
+    )
 
     private val stop = AtomicBoolean(false)
     private val rows = LinkedHashMap<String, Row>()
@@ -84,6 +91,24 @@ class ActionIntentJournal(file: File) : Closeable {
         return !stop.get()
     }
 
+    /**
+     * Persist an already-controller-validated positive readback claim in the SAME hash chain.
+     * An arbitrary caller can fabricate a NativeEvidence; this method is NOT a trusted verifier.
+     * No P-version, memory references, or cross-file transaction exists in this reference store.
+     */
+    @Synchronized internal fun recordReadbackClaim(
+        id: String, proposalSha256: String, evidence: NativeEvidence
+    ): Boolean {
+        val old = rows[id] ?: return false
+        if (!usable() || old.recovered || old.phase != Phase.MAY_HAVE_EXECUTED ||
+            old.proposalSha256 != proposalSha256 || evidence.ticketId != id ||
+            evidence.endpoint != NativeEndpoint.TRUE || evidence.nativeGeneration <= 0 ||
+            evidence.observedAtNanos < 0 || !validSource(evidence.source)) return false
+        if (!append(id, proposalSha256, 3, evidence)) return false
+        rows[id] = old.copy(phase = Phase.RECEIPT_RECORDED, receipt = evidence)
+        return !stop.get()
+    }
+
     /** One-way STOP for this journal instance. Does not interrupt an in-flight OS operation. */
     fun stop() { stop.set(true) }
 
@@ -98,8 +123,12 @@ class ActionIntentJournal(file: File) : Closeable {
     private fun validId(s: String) = s.length in 1..128 && s.all { it in 'a'..'z' ||
         it in 'A'..'Z' || it in '0'..'9' || it in "_-:." }
     private fun validDigest(s: String) = s.length == 64 && s.all { it in '0'..'9' || it in 'a'..'f' }
+    private fun validSource(s: String) = s.length in 1..96 && s.all { it in 'a'..'z' ||
+        it in 'A'..'Z' || it in '0'..'9' || it in "_-:." }
 
-    private fun body(id: String, digest: String, phase: Int, number: Long): ByteArray {
+    private fun body(
+        id: String, digest: String, phase: Int, number: Long, evidence: NativeEvidence?
+    ): ByteArray {
         val bytes = ByteArrayOutputStream()
         DataOutputStream(bytes).use { out ->
             out.writeByte(1) // format version
@@ -107,15 +136,24 @@ class ActionIntentJournal(file: File) : Closeable {
             out.writeByte(phase)
             out.writeUTF(id)
             out.writeUTF(digest)
+            if (phase == 3) {
+                val receipt = evidence ?: error("RECEIPT_REQUIRED")
+                out.writeUTF(receipt.source)
+                out.writeLong(receipt.nativeGeneration)
+                out.writeLong(receipt.observedAtNanos)
+                out.writeByte(1) // Only independently checked TRUE claims may be recorded.
+            }
         }
         return bytes.toByteArray()
     }
     private fun sha(last: ByteArray, record: ByteArray): ByteArray =
         MessageDigest.getInstance("SHA-256").digest(last + record)
 
-    private fun append(id: String, digest: String, phase: Int): Boolean {
+    private fun append(
+        id: String, digest: String, phase: Int, evidence: NativeEvidence? = null
+    ): Boolean {
         try {
-            val payload = body(id, digest, phase, sequence + 1)
+            val payload = body(id, digest, phase, sequence + 1, evidence)
             val next = sha(checksum, payload)
             stream.seek(stream.length())
             stream.writeInt(payload.size)
@@ -150,8 +188,18 @@ class ActionIntentJournal(file: File) : Closeable {
             val phase = input.readUnsignedByte()
             val id = input.readUTF()
             val digest = input.readUTF()
-            if (input.available() != 0 || ver != 1 || counter != sequence + 1 ||
-                !validId(id) || !validDigest(digest)) throw IOException("OUTBOX_PAYLOAD_INVALID")
+            if (ver != 1 || counter != sequence + 1 || !validId(id) || !validDigest(digest))
+                throw IOException("OUTBOX_PAYLOAD_INVALID")
+            val receipt = if (phase == 3) {
+                val source = input.readUTF()
+                val generation = input.readLong()
+                val observed = input.readLong()
+                val endpointCode = input.readUnsignedByte()
+                if (!validSource(source) || generation <= 0 || observed < 0 || endpointCode != 1)
+                    throw IOException("OUTBOX_RECEIPT_INVALID")
+                NativeEvidence(id, NativeEndpoint.TRUE, generation, observed, source)
+            } else null
+            if (input.available() != 0) throw IOException("OUTBOX_TRAILING_PAYLOAD")
             when (phase) {
                 1 -> {
                     if (rows.size >= 4096 || rows.containsKey(id)) throw IOException("OUTBOX_DUPLICATE_PREPARE")
@@ -162,6 +210,13 @@ class ActionIntentJournal(file: File) : Closeable {
                     if (old == null || old.proposalSha256 != digest || old.phase != Phase.PREPARED)
                         throw IOException("OUTBOX_INVALID_TRANSITION")
                     rows[id] = old.copy(phase = Phase.MAY_HAVE_EXECUTED)
+                }
+                3 -> {
+                    val old = rows[id]
+                    if (old == null || old.proposalSha256 != digest ||
+                        old.phase != Phase.MAY_HAVE_EXECUTED || receipt == null)
+                        throw IOException("OUTBOX_INVALID_RECEIPT_TRANSITION")
+                    rows[id] = old.copy(phase = Phase.RECEIPT_RECORDED, receipt = receipt)
                 }
                 else -> throw IOException("OUTBOX_PHASE_UNKNOWN")
             }
