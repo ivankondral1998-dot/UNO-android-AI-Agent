@@ -16,7 +16,6 @@ import android.widget.TextView
 import org.unovyra.uno.core.*
 import org.json.JSONObject
 import java.util.concurrent.Executors
-import java.security.MessageDigest
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicLong
 
@@ -26,11 +25,8 @@ class UnoActivity : Activity() {
     private val neural: NeuralPort = NoWeightsNeuralPort()
     // Owner-initiated OS credential probe only; never a ticket to native dispatch.
     private val ownerGate by lazy { OwnerConsentState(AndroidDeviceCredentialPlatform(this)) }
-    private val ownerDiagnosticScope by lazy {
-        val raw = MessageDigest.getInstance("SHA-256")
-            .digest("UNO_OWNER_CREDENTIAL_NOOP/1".toByteArray(Charsets.UTF_8))
-        OwnerConsentState.Scope(2, raw.joinToString("") { "%02x".format(it) }, emptySet())
-    }
+    // Closed diagnostic scope is defined once in OwnerConsentState (R5.3 NOOP verb=2).
+    private val ownerDiagnosticScope by lazy { OwnerConsentState.diagnosticNoopScope() }
     private val worker = Executors.newSingleThreadExecutor()
     private val alive = AtomicBoolean(true)
     private val busy = AtomicBoolean(false)
