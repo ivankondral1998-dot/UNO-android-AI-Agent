@@ -1,5 +1,18 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-08 — readback receipt R1 (latest)
+
+**Всегда сверить свежий SHA ветки.** Reference `TrustController` теперь отклоняет stale TRUE, если `observedAtNanos` предшествует `nativeAdmittedAtNanos`. В `ActionIntentJournal` добавлена новая append-only фаза `RECEIPT_RECORDED`: после положительного reference readback записываются ID билета, digest предложения, источник, nativeGeneration и время наблюдения; после crash такие байты можно восстановить, а ticket никогда не пересылается автоматически. Сбой sync receipt переводит текущий reference ticket в `MAY_HAVE_EXECUTED`, не в успех. Формат старых двухфазных журналов остаётся читаемым.
+
+**HOST_TESTED:** ровно проверенные Git blobs двух core-файлов и нового теста; `11/11` новых recovery/receipt тестов + `23/23` предыдущих controller integration + `12/12` journal = **46/46 PASS**, ещё 3 повторных прогона тоже PASS. Тест добавлен в общий runner, однако **полный preflight текущей ветки и Android assembly не выполнены**. [Подробности, математика, исходники и доказательные границы](implementation/2026-11-08_WP02_READBACK_RECEIPT_REPLAY_R1.md).
+
+**НЕ считать доверенным OS-результатом:** `RECEIPT_RECORDED` — только записанное source-tagged утверждение fake-native. Нет реального Android owner/permission/readback, `A_tx/A_fs` и единых атомарных `used + receipt + memory`; journal и ledger пока разные хранилища. STOP/OS linearization, boot identity, authentication/anti-rollback и device-gate остаются открыты. `FOUNDATION_INCOMPLETE`.
+
+**Neural Language — самостоятельный проект, его код/веса/ABI не менялись и не переносились в UNO.** Действующее руководство этого репозитория — только `/AGENTS.md`; исторические Astra/R5.3 сохраняются и применяются как математические ограничения, не как утверждённый trained model.
+
+---
+
+
 ## UPDATE 2026-11-08 — typed DispatchAttempt / causal outcome (после WP02 causal bridge)
 
 **Проверять текущий HEAD GitHub; не использовать snapshot SHA из старых разделов.** Новый тип `DispatchAttempt` в `Contracts.kt` и метод `TrustController.dispatchOutcome()` **разделили отказ до native**, однократный **вызов native** (с результатом TRUE/FALSE/UNKNOWN без readback) и **неразрешённое состояние после прошлой попытки**. Прежний `dispatch(): NativeEndpoint` сохранён только как deprecated legacy adapter и всё ещё теряет семантику: его `FALSE` не является достоверным отрицательным OS sample. Новые пути `Verify/L/M` должны использовать типизированную причинную семантику; никакого обучения по отказам до native.
