@@ -1,5 +1,18 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE — ANDROID SQLITE BACKEND / WP-02 (2026-11-08)
+
+**Сверяй живой HEAD перед следующей правкой.** Добавлен `android/app/src/main/kotlin/org/unovyra/uno/AndroidOutcomeStore.kt`: настоящий Android `SQLiteOpenHelper` / WAL / `beginTransactionNonExclusive`; одна БД фиксирует `operations.used + source-tagged readback claim + bounded memory_ref/payload` в одном SQL COMMIT. После process restart `inspectAfterRestart()` возвращает **неисполнимую** историю либо явный `Inspection.Unavailable`, но **не выдаёт** старых tickets и никогда не делает retry. Есть SHA-256 validation raw bytes на открытии; schema upgrade fail closed, никаких удалений или автоматической конверсии старых journal-файлов. Никакие модельные/OS действия новый store самостоятельно не выполняет.
+
+**Границы проверки:** `android/scripts/test_sqlite_outcome_schema.py` содержит **14/14 PASS** на настоящей host SQLite из *непосредственно извлечённых Kotlin SQL-констант*, 3 повтора; Kotlin класс компилировался только с Android test stubs (не SDK/API35); предыдущий core reference host JAR повторно **58/58 PASS**. Новый SQL тест включён в `android/scripts/run_all_preflight.sh`, но **полный preflight с текущей веткой ещё не запускался**. Android Gradle APK, A52, crash-power-cut, ОС readback НЕ проверены. [Исходный технический акт](implementation/2026-11-08_WP02_ANDROID_SQLITE_TRANSACTIONAL_STORE_R1.md).
+
+**Главный незакрытый переход:** backend `IMPLEMENTED_UNWIRED`: `UnoActivity` всё ещё использует `DenyAllAndroidPort/DenyAllLedger`, neural worker изолирован, реальной Android owner auth, live permissions, consent, native linearization/readback ещё нет. SQLite `REFERENCE_READBACK_CLAIM` **не** `VERIFIED_COMPLETION`. До будущей доверенной Android интеграции этот класс не производит действия и не доказывает A_cap/A_tx всей UNO, A_fs или antirollback. RAM/energy/thermal — `REQUIRES_DATA`. **FOUNDATION_INCOMPLETE**.
+
+**Обязательно помнить Jarvis и весь прошлый UNO:** по исходникам `kolakbro5995-cpu/JarvisLab` V21 сверены `AndroidOperationAuthority`, `ConfirmationTicketGate`, STOP/revalidation; переносить только доказанные контрактные требования, не cloud OwnerGate, lab bypass, старые веса, Jarvis BrainPort. Astra R5.3, Grok/Work, LAB/FR/TR, N0 и старые reference журналы сохранены. Neural Language — отдельный проект; ядро/веса UNO не тронуты. `main` и Jarvis не менять.
+
+---
+
+
 ## UPDATE 2026-11-08 — WP-02 atomic reference used+receipt / Jarvis review (current)
 
 **HEAD проверять заново**, snapshot этой записи не фиксирует будущие изменения. Текущий `ActionIntentJournal` получил append-only **v2 phase4 `REFERENCE_USED_RECEIPT`**: reference `used=true` и положительная source-tagged readback-запись лежат в **одном** sync-record; после reopen это восстанавливается без retry. Старый v1 `RECEIPT_RECORDED` всё ещё читается, но `used=false` (не исправлять историю задним числом). `TrustController` в reference+intentJournal режиме отвергает `DurableLedger`, отличный от тестового `InMemoryLedger`, чтобы не прятать вторую независимую дисковую транзакцию.
