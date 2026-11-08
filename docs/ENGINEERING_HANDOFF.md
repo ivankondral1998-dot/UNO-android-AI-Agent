@@ -1,5 +1,18 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-08 — A52 STRESS PHYSICAL EVIDENCE (LATEST)
+
+**РЕАЛЬНЫЙ DEVICE-ОТЧЁТ ОТ ВЛАДЕЛЬЦА:** Samsung Galaxy A52 `SM-A525F` / Android 14 (API34), установленный `UNO TEST · ci42504842750` / package `org.unovyra.uno.scaffold.ci42504842750`, owner-copied full `UNO_OFFLINE_LAB_REPORT_1`: **`STRESS`, 30256 ms, 8/8 sandbox scenarios `PASS`, `abort_reason_or_null=null`**. Это первое реальное device-подтверждение выбранного диагностического APK, его запуска и копирования JSON, но **НЕ** подтверждение готовности интеллекта, `AndroidOutcomeStore`, owner-credential или native readback.
+
+**Наблюдения:** `CPU_FP32` 48 раундов 128³ FP32 naive, p50 ≈3.866 ms, p95 ≈3.907 ms; 25.008 s `CPU_SUSTAINED` 2919 batches, p95 ≈8.142 ms (по исходнику каждый batch — два раунда); 2/2 parallel; synthetic queue STOP 64/16000 accepted, real Android STOP race **не проверялся**; heap 64 MiB, measured process PSS 108.8→103.8 MiB, sampled 161.3 MiB under pressure; app-private `fsync`+2 MiB SHA readback PASS, **не power-cut proof**; 34 enumerated Android sensors (fused/vendor included), 7 selected, 6 streams delivered events, proximity type8 0 samples. UI heartbeat 0 delays ≥350 ms, max174 ms; **не Android frame pacing**. Батарея 28→27%, 28.2→28.4°C, thermal status0; **не физические joules/thermal limits**. No loaded weights or native actions.
+
+**Статус:** `DEVICE_VERIFIED` **только для этих восьми диагностических сценариев** как owner-produced telemetry; не экстраполировать на neural runtime/OTA/recovery. Один пользовательский сырой JSON без hash/independent collection. Никаких дополнительных стресс-циклов без конкретного нового вопроса. Полный [версионированный физический отчёт и трассировка к реализации](implementation/2026-11-08_A52_STRESS_DEVICE_EVIDENCE_R1.md).
+
+**Следующая проверка именно установленного APK:** (1) ручной `Проверить SQLite (без создания базы)` → copy full JSON, (2) явная инициализация пустой SQLite и её read-only повторное чтение **после перезапуска**, (3) device-credential NOOP и одноразовое consume, затем реальный STOP в активном лабораторном тесте. **Прежняя `DenyAllAndroidPort` и `NoWeightsNeuralPort` остаются; модель/веса/Neuron Language без правок.**
+
+---
+
+
 ## UPDATE 2026-11-08 — UI COPY + IDENTIFIABLE TEST APK (LATEST)
 
 **OWNER SCREENSHOT/ISSUE:** Отображалась лаборатория со старым одинаковым заголовком «UNOVYRA UNO · Scaffold», без SQLite/owner/copy-кнопок. При сравнении с текущим `UnoActivity` (кнопки SQLite и owner **есть между темами и RAM**) наиболее вероятно, что пользователь открыл старую отдельно установленную сборку, а не новый APK. Это **гипотеза**, пока нет on-device package identity/log. Отдельный дефект UX: отсутствовала кнопка копирования полного JSON, UI показывал только первые 14k символов.
