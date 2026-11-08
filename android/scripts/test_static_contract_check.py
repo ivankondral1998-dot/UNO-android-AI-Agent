@@ -24,6 +24,10 @@ fun copyFullReport() = ClipData.newPlainText("UNO", copyableReport)
 button("Проверить SQLite (без создания базы)") { }
 button("Проверить владельца через экран Android") { }
 val identity = "УСТАНОВЛЕННЫЙ ПАКЕТ: $packageName"
+// Fixture markers: both OS callback and one-shot button update nearby feedback.
+root.addView(ownerFeedback)
+showOwnerFeedback(if (consumed) "one-use" else "NOOP denied")
+showOwnerFeedback(if (accepted) "OS OK" else "OS cancelled")
 '''
 
 class GuardTests(unittest.TestCase):
@@ -65,6 +69,12 @@ class GuardTests(unittest.TestCase):
     def test_reject_missing_package_identity(self):
         self.code.write_text(CODE.replace("УСТАНОВЛЕННЫЙ ПАКЕТ: $packageName", "No identity"))
         self.assertIn('package_identity_not_displayed', guard.scan(self.root))
+    def test_reject_hidden_owner_result_feedback(self):
+        self.code.write_text(CODE.replace("root.addView(ownerFeedback)", "globalStatusOnly"))
+        self.assertIn('owner_local_result_feedback_missing', guard.scan(self.root))
+    def test_reject_hidden_owner_os_callback(self):
+        self.code.write_text(CODE.replace("showOwnerFeedback(if (accepted)", "status.text = if (accepted)"))
+        self.assertIn('owner_local_result_feedback_missing', guard.scan(self.root))
     def test_reject_socket_api(self):
         self.code.write_text(CODE + '\nval socket = java.net.Socket("localhost",443)\n')
         self.assertIn('unexpected_api:java.net', guard.scan(self.root))
