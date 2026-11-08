@@ -2,6 +2,7 @@
 # Path-filtered push is permitted for necessary builds; keep previous app/data intact.
 # The CI-only app label and the in-app package ID must distinguish it from all prior UNO builds.
 # UI gate also verifies that Android credential outcomes appear locally below the owner controls.
+# This run also verifies the bounded app-private marker and separate descriptor readback.
 # Never publishes releases, writes to main, uploads personal data or accesses repository secrets.
 name: UNO feature Android SDK verification (private debug)
 
