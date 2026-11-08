@@ -1,5 +1,20 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-08 — UI COPY + IDENTIFIABLE TEST APK (LATEST)
+
+**OWNER SCREENSHOT/ISSUE:** Отображалась лаборатория со старым одинаковым заголовком «UNOVYRA UNO · Scaffold», без SQLite/owner/copy-кнопок. При сравнении с текущим `UnoActivity` (кнопки SQLite и owner **есть между темами и RAM**) наиболее вероятно, что пользователь открыл старую отдельно установленную сборку, а не новый APK. Это **гипотеза**, пока нет on-device package identity/log. Отдельный дефект UX: отсутствовала кнопка копирования полного JSON, UI показывал только первые 14k символов.
+
+**ИСПРАВЛЕНО И СОБРАНО:** `UnoActivity` теперь показывает `УСТАНОВЛЕННЫЙ ПАКЕТ: $packageName` сверху, предоставляет **ручную кнопку копирования полного последнего JSON** в системный clipboard без 14k truncation (при новом запуске старый payload очищается). CI-only изолированный пакет получает отдельный resource-backed launcher label, видимый `aapt`: **`UNO TEST · ci42504842750`**. В `static_contract_check.py` добавлены положительные проверки элементов, в фикстурах — отрицательные регрессии. `DenyAllAndroidPort`, `NoWeightsNeuralPort`, offline и STOP не ослаблены.
+
+**ANDROID_BUILT:** [GitHub Actions #42504842750](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42504842750) **SUCCESS** для exact SHA `a1410895ef3fe2f748ba3f6e70cf8e45f70a022e`. `aapt dump badging` подтвердил package **`org.unovyra.uno.scaffold.ci42504842750`** и label **`UNO TEST · ci42504842750`**; APK **924526 B**, SHA-256 **`cfb8f3de6df47a25e709563117f33d829f0445054a9919846d937e0d10a51f6a`**, проверен повторным хешированием и ZIP integrity. Private Google Drive APK https://drive.google.com/file/d/1YsPRCW5wL-_EYx2flCAdJN393kW6NEpf/view?usp=drivesdk (readback size/MIME/visibility OK). GitHub artifact ID `13627416075`.
+
+**СОХРАНЁННЫЕ FAIL:** CI #42504065211 — clean fixture после новых положительных guard; CI #42504217888 — `aapt` не видел inline label. Оба устранены, не замаскированы. См. [полный версионированный акт с SHA/исходниками](implementation/2026-11-08_UI_DIAGNOSTIC_COPY_AND_BUILD_IDENTITY_R1.md).
+
+**GATE:** сборка, host и lint прошли, но **на A52 новый APK ещё не проверен**. Следующий пользовательский шаг: открыть именно **UNO TEST** с идентификатором `...ci42504842750`, проверить SQLite, затем кнопку копирования и прислать JSON; после — owner NOOP, STOP и recovery. Исторический Jarvis V21, Grok, Astra/R5.3, UNO-N0/FR/TR не изменялись; Neural Language отдельно. `FOUNDATION_INCOMPLETE`.
+
+---
+
+
 ## UPDATE 2026-11-08 — SIDE-BY-SIDE APK, INSTALL CONFLICT
 
 Владелец сообщил Android install отказ: конфликт с другим установленным пакетом. **Подпись как причина — гипотеза, на A52 `INSTALL_FAILED_UPDATE_INCOMPATIBLE`/cert пока не собраны.** Старое приложение и данные **НЕ удалять**. Исправление на feature branch: только CI debug получает уникальный суффикс `-PunoIsolatedDebugSuffix=ci${GITHUB_RUN_ID}`; обычные debug/release applicationId неизменны. ADB-подсказка в UI использует фактический `packageName`. Никаких изменений Jarvis/Neural Language/Astra/Grok.
