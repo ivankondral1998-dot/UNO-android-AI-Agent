@@ -87,7 +87,9 @@ def scan(root: Path) -> list[str]:
         errors.append('owner_local_result_feedback_missing')
     if ('runAppPrivateEffectProbe()' not in activity or
             'AppPrivateReadbackProbe.run(filesDir)' not in activity or
-            'AppPrivateReadbackProbe.inspect(filesDir, outcome.id)' not in activity):
+            'AppPrivateReadbackProbe.inspect(filesDir, outcome.id)' not in activity or
+            'inspectLastAppPrivateEffect()' not in activity or
+            'AppPrivateReadbackProbe.inspect(filesDir, id)' not in activity):
         errors.append('app_private_effect_readback_ui_missing')
     return errors
 
