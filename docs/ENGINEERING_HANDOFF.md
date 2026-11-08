@@ -1,5 +1,18 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-08 — ANDROID SDK35 BUILT — RUN 42488780925 (CURRENT)
+
+**ФАКТ `ANDROID_BUILT`** (но `DEVICE_VERIFIED=FALSE`): первое успешно собранное APK с **реальным Android SDK35** для текущего feature-кода UNO, exact built SHA `de7d3e9c3e9634daa6ec20e7741d24546d088569`; private GitHub Actions [run #42488780925](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42488780925) **SUCCESS**. Debug APK `org.unovyra.uno.scaffold`, `0.1.0-skeleton`, min26/target35, **922662 bytes**, SHA256 `2c5285ea277acc11a8925900a66013a0ad4585946e84c13ef8cb09e72365ed37`. GitHub private artifact ID `13620288108` (ZIP SHA `5d0cb1cd1d5d35ef1fba89fb197a84a531d662f3a2e70eeedc7c741b06251424`; expires 11 Nov). Artifact privately downloaded, ZIP/APK checked, SHA rechecked.
+
+**EXECUTED TESTS:** полный `bash android/scripts/run_all_preflight.sh` с реальным standalone kotlinc (НЕ skip): core aggregate `193` checks, SQLite schema `14/14`, Kotlin inspector `11/11`, owner state `31/31`, credential adapter stubs `11/11`, static/diagnostic Python PASS; независимый `gradle :core:unoHostTests` SUCCESS, `gradle :app:assembleDebug` SUCCESS, `gradle :app:lintDebug` SUCCESS **с 7 предупреждениями** (4 локализация, target SDK, data-extraction rules, иконка). `aapt dump permissions`: permission-запросов нет, включая INTERNET/RECORD_AUDIO/CAMERA. Полная [проверяемая ведомость и SHA](implementation/2026-11-08_WP02_ANDROID_SDK35_CI_BUILD_R1.md).
+
+**НОВЫЕ ПОЛНОМОЧИЯ**: владелец 08.11.2026 разрешил **GitHub Actions при объективной необходимости, без повторных согласований**. Новое правило зафиксировано **в единственном действующем корневом `/AGENTS.md`**. Для данного случая локального SDK не было, так что запущен один адресный `uno-feature-android-verify.yml` в feature-ветке, workflow path-filtered; **ни `main`, ни releases, ни секреты, ни Jarvis/Neural Language не изменены**.
+
+**НЕ ОБЪЯВЛЯТЬ ГОТОВНОСТЬ UNO:** APK представляет диагностический каркас, `DenyAllAndroidPort` и `NoWeightsNeuralPort` не заменены; A52-устройство не тестировалось, реальные права/owner identity/native dispatch/readback отсутствуют. `FOUNDATION_INCOMPLETE`. Следующий физический gate — установка именно этого APK на A52, проверка Android device-credential, STOP, SQLite read-only и lifecycle; затем адресная реализация app-private verified effect. Из R5.3/Astra и Grok остаются `A_cap/A_tx/A_fs` условными, Grok MATH-C01/MATH-C05 открыты, Jarvis — изученный источник контрактов, не скопированный OwnerGate.
+
+---
+
+
 ## UPDATE 2026-11-08 — AUDIT R2: OWNER CONSENT BUGFIX (MOST RECENT)
 
 **READ ROOT `/AGENTS.md`, CHECK GITHUB HEAD BEFORE CHANGES.** Самостоятельный аудит обнаружил и воспроизвёл **три ошибки текущего `OwnerConsentState`** (не Android device exploit): (SEC-01) диагностический экран принимал scope verb15 и произвольный SHA; (SEC-02) requestCode `0x4100` повторялся при пересоздании gate, из-за чего старый тестовый RESULT_OK мог быть принят новым pending challenge; (SEC-03) произвольное описание системного подтверждения принималось с семантикой NOOP. Все три исправлены: **строгий единственный `diagnosticNoopScope()` (verb2, fixed digest, empty permissions)**, единый фиксированный `DIAGNOSTIC_DESCRIPTION` из того же класса, process-wide `AtomicInteger` + random start modulo 16 112 request codes (без reuse в одном процессе до исчерпания диапазона). `UnoActivity` использует только централизованные значения. **Старые исходники/математика сохранены; правки только на feature-ветке.**
