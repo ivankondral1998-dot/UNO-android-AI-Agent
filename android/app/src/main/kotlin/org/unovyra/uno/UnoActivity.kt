@@ -148,7 +148,7 @@ class UnoActivity : Activity() {
         button("Проверить владельца через экран Android") {
             val code = ownerGate.begin(
                 ownerDiagnosticScope,
-                "Подтвердите локальный диагностический NOOP. Действия ОС запрещены."
+                OwnerConsentState.DIAGNOSTIC_DESCRIPTION
             )
             status.text = if (code != null) {
                 "Системная проверка открыта · это НЕ разрешение выполнять действие"
