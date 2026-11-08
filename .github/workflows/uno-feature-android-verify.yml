@@ -1,5 +1,6 @@
 # Owner approval 2026-11-08: necessary GitHub Actions for this feature-branch Android SDK build.
 # Path-filtered push is permitted for necessary builds; keep previous app/data intact.
+# The CI-only app label and the in-app package ID must distinguish it from all prior UNO builds.
 # Never publishes releases, writes to main, uploads personal data or accesses repository secrets.
 name: UNO feature Android SDK verification (private debug)
 
@@ -75,6 +76,8 @@ jobs:
           grep -E '^package:|^sdkVersion:|^targetSdkVersion:' ci-evidence/APK_BADGING.txt
           grep -Fq "package: name='org.unovyra.uno.scaffold.ci${GITHUB_RUN_ID}'" ci-evidence/APK_BADGING.txt
           ! grep -Fq "package: name='org.unovyra.uno.scaffold'" ci-evidence/APK_BADGING.txt
+          grep -Fq "application-label:'UNO TEST · ci${GITHUB_RUN_ID}'" ci-evidence/APK_BADGING.txt
+          grep -E '^application-label:' ci-evidence/APK_BADGING.txt
           if grep -E 'android.permission.(INTERNET|RECORD_AUDIO|CAMERA)' ci-evidence/APK_PERMISSIONS.txt; then
             echo "FAIL: forbidden capability found in diagnostic APK" >&2
             exit 1
