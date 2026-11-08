@@ -71,6 +71,14 @@ def scan(root: Path) -> list[str]:
         errors.append('missing_activity_abort_integration')
     if 'LabProfile.STRESS' not in activity:
         errors.append('manual_lab_control_missing')
+    # These checks prevent regression to the old UI with no manual JSON export.
+    # Source markers alone do not establish Android runtime/clipboard behavior.
+    if 'Проверить SQLite (без создания базы)' not in activity or 'Проверить владельца через экран Android' not in activity:
+        errors.append('owner_and_sqlite_diagnostics_missing')
+    if 'ClipData.newPlainText' not in activity or 'copyableReport' not in activity or 'copyFullReport()' not in activity:
+        errors.append('full_report_clipboard_export_missing')
+    if 'УСТАНОВЛЕННЫЙ ПАКЕТ: $packageName' not in activity:
+        errors.append('package_identity_not_displayed')
     return errors
 
 
