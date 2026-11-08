@@ -160,6 +160,10 @@ class UnoActivity : Activity() {
         root.addView(label("ЖУРНАЛ ДЕЙСТВИЙ · только диагностика, не разрешение ОС", 17f))
         button("Проверить SQLite (без создания базы)") { runOutcomeStoreInspection(false) }
         button("Создать пустую SQLite-базу и проверить") { runOutcomeStoreInspection(true) }
+        root.addView(label("ЛОКАЛЬНОЕ ДЕЙСТВИЕ · только файл внутри UNO; не Android-полномочие", 17f))
+        button("СОЗДАТЬ ТЕСТОВЫЙ ЛОКАЛЬНЫЙ МАРКЕР И ПРОЧИТАТЬ ОБРАТНО") {
+            runAppPrivateEffectProbe()
+        }
         root.addView(label("ВЛАДЕЛЕЦ · системное подтверждение (только NOOP, без Android-действия)", 17f))
         button("Проверить владельца через экран Android") {
             val code = ownerGate.begin(
@@ -265,6 +269,34 @@ class UnoActivity : Activity() {
                 .put("native_actions_enabled", false)
                 .put("verified_os_outcomes", false)
                 .put("note", "App-private inspection; no ticket replay and no owner authorization")
+            json to DeviceProbe.persist(applicationContext, json).absolutePath
+        }
+    }
+    /** A bounded owner-tapped local fixture. Not a credential grant or native Android dispatch. */
+    private fun runAppPrivateEffectProbe() {
+        if (busy.get()) { status.text = "Заверши текущую операцию"; return }
+        labStop = LabStop()
+        val stop = labStop
+        execute("Локальный тест: создание файла и повторное открытие") {
+            val outcome = AppPrivateReadbackProbe.run(filesDir) {
+                stop.isStopped() || Thread.currentThread().isInterrupted
+            }
+            val independentlyReopened = if (outcome.id != null &&
+                outcome.status == AppPrivateReadbackProbe.Status.VERIFIED_LOCAL_BYTES &&
+                !stop.isStopped()) AppPrivateReadbackProbe.inspect(filesDir, outcome.id)
+                else null
+            val json = JSONObject()
+                .put("schema", "UNO_APP_PRIVATE_EFFECT_PROBE/1")
+                .put("status", outcome.status.name)
+                .put("id", outcome.id)
+                .put("sha256", outcome.digest)
+                .put("write_readback", outcome.detail)
+                .put("independent_reopen_status", independentlyReopened?.status?.name)
+                .put("independent_reopen_detail", independentlyReopened?.detail)
+                .put("native_os_action_executed", false)
+                .put("owner_credential_used", false)
+                .put("scope", "APP_PRIVATE_FILE_ONLY")
+                .put("limitations", "Local bytes readback, not OS attestation, crash durability or neural autonomy")
             json to DeviceProbe.persist(applicationContext, json).absolutePath
         }
     }
