@@ -34,6 +34,8 @@ class UnoActivity : Activity() {
     private val busy = AtomicBoolean(false)
     @Volatile private var labStop = LabStop()
     private lateinit var status: TextView
+    // Credential result is shown next to the owner buttons, not only off-screen at top.
+    private lateinit var ownerFeedback: TextView
     private lateinit var report: TextView
     // Contains the full last JSON, not the truncated on-screen preview. UI-thread only.
     private var copyableReport: String? = null
@@ -69,6 +71,14 @@ class UnoActivity : Activity() {
                 button.backgroundTintList = ColorStateList.valueOf(tint)
                 button.setTextColor(ink)
             }
+        }
+    }
+
+    /** In-app owner diagnostic feedback. UI-thread only; NOOP cannot grant native authority. */
+    private fun showOwnerFeedback(message: String) {
+        status.text = message
+        if (::ownerFeedback.isInitialized) {
+            ownerFeedback.text = "РЕЗУЛЬТАТ ПРОВЕРКИ ВЛАДЕЛЬЦА: $message"
         }
     }
 
@@ -156,20 +166,22 @@ class UnoActivity : Activity() {
                 ownerDiagnosticScope,
                 OwnerConsentState.DIAGNOSTIC_DESCRIPTION
             )
-            status.text = if (code != null) {
-                "Системная проверка открыта · это НЕ разрешение выполнять действие"
+            showOwnerFeedback(if (code != null) {
+                "Ожидается системный ответ Android · действий ОС нет"
             } else {
-                "Подтверждение недоступно: требуется защищённая блокировка и активный экран UNO"
-            }
+                "Подтверждение недоступно или уже ожидается ответ · действий ОС нет"
+            })
         }
         button("Проверить одноразовое согласие · без действия") {
             val consumed = ownerGate.consume(ownerDiagnosticScope)
-            status.text = if (consumed) {
-                "Личность подтверждена для NOOP · согласие погашено · действий ОС нет"
+            showOwnerFeedback(if (consumed) {
+                "NOOP: одноразовое подтверждение принято и погашено · действий ОС нет"
             } else {
-                "Нет действующего одноразового подтверждения · действий ОС нет"
-            }
+                "NOOP: подтверждение отсутствует, истекло или уже использовано · действий ОС нет"
+            })
         }
+        ownerFeedback = label("РЕЗУЛЬТАТ ПРОВЕРКИ ВЛАДЕЛЬЦА: пока нет результата", 15f)
+        root.addView(ownerFeedback)
         button("Снимок состояния: RAM / CPU / батарея / тепло") { runSimple(false) }
         button("Каталог сенсоров и их характеристики") { runSensorInventory() }
         button("📋 СКОПИРОВАТЬ ВЕСЬ ПОСЛЕДНИЙ ОТЧЁТ") { copyFullReport() }
@@ -288,11 +300,11 @@ class UnoActivity : Activity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode in 0x4100..0x7fef) {
             val accepted = ownerGate.credentialResult(requestCode, resultCode == RESULT_OK)
-            status.text = if (accepted) {
-                "Android подтвердил владельца · нажми проверку одноразового согласия · действий ОС нет"
+            showOwnerFeedback(if (accepted) {
+                "Android вернул успешное подтверждение NOOP · нажми одноразовую проверку · действий ОС нет"
             } else {
-                "Подтверждение отменено или недействительно · действий ОС нет"
-            }
+                "Android не подтвердил NOOP: отменено, устарело или результат недействителен · действий ОС нет"
+            })
         }
     }
     override fun onPause() {
