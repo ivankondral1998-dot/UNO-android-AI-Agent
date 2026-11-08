@@ -1,5 +1,18 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-08 — WP-02 atomic reference used+receipt / Jarvis review (current)
+
+**HEAD проверять заново**, snapshot этой записи не фиксирует будущие изменения. Текущий `ActionIntentJournal` получил append-only **v2 phase4 `REFERENCE_USED_RECEIPT`**: reference `used=true` и положительная source-tagged readback-запись лежат в **одном** sync-record; после reopen это восстанавливается без retry. Старый v1 `RECEIPT_RECORDED` всё ещё читается, но `used=false` (не исправлять историю задним числом). `TrustController` в reference+intentJournal режиме отвергает `DurableLedger`, отличный от тестового `InMemoryLedger`, чтобы не прятать вторую независимую дисковую транзакцию.
+
+**HOST_TESTED (точные Git blobs):** 12 прежних journal + 23 typed controller integration + 11 receipt recovery + **12 новых atomic reference regressions** = **58/58 JVM PASS**, повторено три раза. Прогон ограничен 7 исходными Kotlin файлами; full Gradle/preflight после коммитов **НЕ** проводился. Все изменённые Git blob SHA и негативные тесты описаны в [WP-02 атомарная reference запись + проверенный Jarvis источник](implementation/2026-11-08_WP02_ATOMIC_REFERENCE_RECEIPT_JARVIS_REVIEW_R1.md).
+
+**Jarvis учтён строго по исходникам:** только чтение `kolakbro5995-cpu/JarvisLab` `feature/v21-local-offline-runtime-20261101`; просмотрены `AndroidOperationAuthority.kt`, `ConfirmationTicketGate.kt`, `ActionEngine.kt`, `AndroidOperationAuthorityHostTest.kt`. Переносить автоматически их OwnerGate, облачную авторизацию, special lab security, старые веса и многомозговую архитектуру запрещено. В будущий Android trust port учесть one-use ticket/epoch/permission/owner/context revision, STOP и native preflight+readback **после отдельного ревью лицензий и совместимости**. Jarvis НЕ модифицирован.
+
+**Блокеры:** одна reference journal запись **не** даёт полного `A_tx/A_fs` (нет `L,D,P-version,M-ref` transaction), нет реальной trust boundary Android / независимого native OS sample / безопасного local persistent memory / A52 device validation / trained weights. `DenyAllAndroidPort` остаётся. **FOUNDATION_INCOMPLETE**. Neural-Language, UNO F и веса не затронуты.
+
+---
+
+
 ## UPDATE 2026-11-08 — readback receipt R1 (latest)
 
 **Всегда сверить свежий SHA ветки.** Reference `TrustController` теперь отклоняет stale TRUE, если `observedAtNanos` предшествует `nativeAdmittedAtNanos`. В `ActionIntentJournal` добавлена новая append-only фаза `RECEIPT_RECORDED`: после положительного reference readback записываются ID билета, digest предложения, источник, nativeGeneration и время наблюдения; после crash такие байты можно восстановить, а ticket никогда не пересылается автоматически. Сбой sync receipt переводит текущий reference ticket в `MAY_HAVE_EXECUTED`, не в успех. Формат старых двухфазных журналов остаётся читаемым.
