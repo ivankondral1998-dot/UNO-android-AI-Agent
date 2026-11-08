@@ -164,6 +164,9 @@ class UnoActivity : Activity() {
         button("СОЗДАТЬ ТЕСТОВЫЙ ЛОКАЛЬНЫЙ МАРКЕР И ПРОЧИТАТЬ ОБРАТНО") {
             runAppPrivateEffectProbe()
         }
+        button("ПОВТОРНО ПРОЧИТАТЬ ПОСЛЕДНИЙ ЛОКАЛЬНЫЙ МАРКЕР") {
+            inspectLastAppPrivateEffect()
+        }
         root.addView(label("ВЛАДЕЛЕЦ · системное подтверждение (только NOOP, без Android-действия)", 17f))
         button("Проверить владельца через экран Android") {
             val code = ownerGate.begin(
@@ -281,6 +284,11 @@ class UnoActivity : Activity() {
             val outcome = AppPrivateReadbackProbe.run(filesDir) {
                 stop.isStopped() || Thread.currentThread().isInterrupted
             }
+            // Persist only the opaque app-generated ID. This is a locator, never a receipt.
+            if (outcome.id != null) {
+                getSharedPreferences("uno_private_probe", MODE_PRIVATE).edit()
+                    .putString("last_id", outcome.id).commit()
+            }
             val independentlyReopened = if (outcome.id != null &&
                 outcome.status == AppPrivateReadbackProbe.Status.VERIFIED_LOCAL_BYTES &&
                 !stop.isStopped()) AppPrivateReadbackProbe.inspect(filesDir, outcome.id)
@@ -297,6 +305,24 @@ class UnoActivity : Activity() {
                 .put("owner_credential_used", false)
                 .put("scope", "APP_PRIVATE_FILE_ONLY")
                 .put("limitations", "Local bytes readback, not OS attestation, crash durability or neural autonomy")
+            json to DeviceProbe.persist(applicationContext, json).absolutePath
+        }
+    }
+    /** Separate owner-tapped readback, including after Activity/process restart. */
+    private fun inspectLastAppPrivateEffect() {
+        execute("Повторное открытие локального файла без новой записи") {
+            val id = getSharedPreferences("uno_private_probe", MODE_PRIVATE)
+                .getString("last_id", null)
+            val outcome = if (id == null) null else AppPrivateReadbackProbe.inspect(filesDir, id)
+            val json = JSONObject()
+                .put("schema", "UNO_APP_PRIVATE_REOPEN/1")
+                .put("status", outcome?.status?.name ?: "NOT_INITIALIZED")
+                .put("id", id)
+                .put("sha256", outcome?.digest)
+                .put("detail", outcome?.detail ?: "NO_PRIOR_MARKER")
+                .put("new_write_performed", false)
+                .put("native_os_action_executed", false)
+                .put("limitations", "Fresh app-private file read, not external OS authority or durability attestation")
             json to DeviceProbe.persist(applicationContext, json).absolutePath
         }
     }
