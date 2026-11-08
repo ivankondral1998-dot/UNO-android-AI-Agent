@@ -25,7 +25,7 @@ object OwnerConsentStateTest {
         }
     }
     private val dig = "a".repeat(64)
-    private val scope = OwnerConsentState.Scope(2, dig, emptySet())
+    private val scope = OwnerConsentState.diagnosticNoopScope()
     private fun make() = Fake().let { it to OwnerConsentState(it) }
     fun run() {
         test("one OS result permits one local consumption, never two") {
@@ -40,7 +40,7 @@ object OwnerConsentStateTest {
             val (f,g)=make();f.foreground=false
             check(g.begin(scope,"Diagnostic NOOP")==null);check(f.launched==0)
         }
-        test("missing permission blocks admission before prompt") {
+        test("fake platform refusal before prompt blocks NOOP") {
             val (f,g)=make();f.permission=false
             check(g.begin(scope,"Diagnostic NOOP")==null);check(f.launched==0)
         }
@@ -96,7 +96,7 @@ object OwnerConsentStateTest {
             val (f,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
             check(g.credentialResult(code,true));f.foreground=false;check(!g.consume(scope))
         }
-        test("permission revoked after confirmation refuses consumption") {
+        test("fake platform post-confirmation refusal blocks NOOP") {
             val (f,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
             check(g.credentialResult(code,true));f.permission=false;check(!g.consume(scope))
         }
@@ -137,6 +137,31 @@ object OwnerConsentStateTest {
         test("empty or excessive UI description is rejected") {
             val (f,g)=make()
             check(g.begin(scope," ")==null);check(g.begin(scope,"x".repeat(241))==null);check(f.launched==0)
+        }
+        test("privileged verb15 cannot request diagnostic credential") {
+            val (f,g)=make()
+            check(g.begin(scope.copy(verb=15),"Create local note")==null)
+            check(f.launched==0)
+        }
+        test("arbitrary digest cannot masquerade as diagnostic scope") {
+            val (f,g)=make()
+            check(g.begin(scope.copy(proposalDigest="b".repeat(64)),"Diagnostic NOOP")==null)
+            check(f.launched==0)
+        }
+        test("additional permission cannot masquerade as diagnostic scope") {
+            val (f,g)=make()
+            check(g.begin(scope.copy(permissions=setOf("android.permission.CAMERA")),"Diagnostic NOOP")==null)
+            check(f.launched==0)
+        }
+        test("request codes never repeat across recreated gate instances in process") {
+            val (f,old)=make()
+            val codeOld=old.begin(scope,"Diagnostic NOOP")!!
+            val fresh=OwnerConsentState(f)
+            val codeNew=fresh.begin(scope,"Diagnostic NOOP")!!
+            check(codeOld!=codeNew)
+            check(!fresh.credentialResult(codeOld,true))
+            check(fresh.credentialResult(codeNew,true))
+            check(fresh.consume(scope))
         }
         println("UNO_OWNER_CONSENT_HOST_PASS=$passed")
     }
