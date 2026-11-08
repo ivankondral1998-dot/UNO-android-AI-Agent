@@ -29,109 +29,109 @@ object OwnerConsentStateTest {
     private fun make() = Fake().let { it to OwnerConsentState(it) }
     fun run() {
         test("one OS result permits one local consumption, never two") {
-            val (f,g)=make(); val code=g.begin(scope,"Diagnostic NOOP")!!
+            val (f,g)=make(); val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             check(g.credentialResult(code,true));check(g.consume(scope));check(!g.consume(scope));check(f.launched==1)
         }
         test("without device secure state challenge never starts") {
             val (f,g)=make();f.secure=false
-            check(g.begin(scope,"Diagnostic NOOP")==null);check(f.launched==0)
+            check(g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)==null);check(f.launched==0)
         }
         test("without owner foreground no prompt") {
             val (f,g)=make();f.foreground=false
-            check(g.begin(scope,"Diagnostic NOOP")==null);check(f.launched==0)
+            check(g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)==null);check(f.launched==0)
         }
         test("fake platform refusal before prompt blocks NOOP") {
             val (f,g)=make();f.permission=false
-            check(g.begin(scope,"Diagnostic NOOP")==null);check(f.launched==0)
+            check(g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)==null);check(f.launched==0)
         }
         test("failed OS prompt launch leaves no ticket") {
             val (f,g)=make();f.launch=false
-            check(g.begin(scope,"Diagnostic NOOP")==null);check(!g.credentialResult(f.lastCode,true))
+            check(g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)==null);check(!g.credentialResult(f.lastCode,true))
         }
         test("cancelled credential result cannot be consumed") {
-            val (_,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
+            val (_,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             check(!g.credentialResult(code,false));check(!g.consume(scope))
         }
         test("stale result requestCode cannot approve a new challenge") {
-            val (_,g)=make();val first=g.begin(scope,"Diagnostic NOOP")!!
+            val (_,g)=make();val first=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             check(!g.credentialResult(first,false))
-            val second=g.begin(scope,"Diagnostic NOOP")!!
+            val second=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             check(first!=second);check(!g.credentialResult(first,true));check(!g.consume(scope))
             check(g.credentialResult(second,true));check(g.consume(scope))
         }
         test("OS result can arrive before keyguard unlock state refresh") {
-            val (f,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
+            val (f,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             f.secure=false // temporary KeyguardManager locked state in result callback
             check(g.credentialResult(code,true))
             f.secure=true
             check(g.consume(scope))
         }
         test("duplicate result callback never creates new permission") {
-            val (_,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
+            val (_,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             check(g.credentialResult(code,true));check(!g.credentialResult(code,true));check(g.consume(scope))
         }
         test("STOP before result permanently refuses current and future request") {
-            val (_,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
-            g.stop();check(!g.credentialResult(code,true));check(g.begin(scope,"Diagnostic NOOP")==null)
+            val (_,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
+            g.stop();check(!g.credentialResult(code,true));check(g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)==null)
         }
         test("STOP after result before consumption revokes it") {
-            val (_,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
+            val (_,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             check(g.credentialResult(code,true));g.stop();check(!g.consume(scope))
         }
         test("changed proposal digest burns grant") {
-            val (_,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
+            val (_,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             check(g.credentialResult(code,true));check(!g.consume(scope.copy(proposalDigest="b".repeat(64))))
             check(!g.consume(scope))
         }
         test("changed permission set burns grant") {
-            val (_,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
+            val (_,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             check(g.credentialResult(code,true));check(!g.consume(scope.copy(permissions=setOf("android.permission.CAMERA"))))
             check(!g.consume(scope))
         }
         test("owner locks after OS confirmation then consumption refuses") {
-            val (f,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
+            val (f,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             check(g.credentialResult(code,true));f.secure=false;check(!g.consume(scope))
         }
         test("foreground loss after result refuses consumption") {
-            val (f,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
+            val (f,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             check(g.credentialResult(code,true));f.foreground=false;check(!g.consume(scope))
         }
         test("fake platform post-confirmation refusal blocks NOOP") {
-            val (f,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
+            val (f,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             check(g.credentialResult(code,true));f.permission=false;check(!g.consume(scope))
         }
         test("timeout refuses result and consumption") {
-            val (f,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
+            val (f,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             f.now=100+OwnerConsentState.TTL_NANOS
             check(!g.credentialResult(code,true));check(!g.consume(scope))
         }
         test("timeout after success refuses consumption") {
-            val (f,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
+            val (f,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             check(g.credentialResult(code,true));f.now=100+OwnerConsentState.TTL_NANOS
             check(!g.consume(scope))
         }
         test("monotonic clock regression refuses result") {
-            val (f,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
+            val (f,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             f.now=99;check(!g.credentialResult(code,true))
         }
         test("second request while pending and ready is denied") {
-            val (_,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
-            check(g.begin(scope,"Diagnostic NOOP")==null)
-            check(g.credentialResult(code,true));check(g.begin(scope,"Diagnostic NOOP")==null)
+            val (_,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
+            check(g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)==null)
+            check(g.credentialResult(code,true));check(g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)==null)
             check(g.consume(scope))
         }
         test("revoke ready on background refuses old approval") {
-            val (_,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
+            val (_,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             check(g.credentialResult(code,true));g.revokeReadyForBackground();check(!g.consume(scope))
         }
         test("bad digest and reserved action IDs never start prompt") {
             val (f,g)=make()
-            check(g.begin(scope.copy(verb=24),"Diagnostic NOOP")==null)
-            check(g.begin(scope.copy(proposalDigest="not-sha"),"Diagnostic NOOP")==null)
+            check(g.begin(scope.copy(verb=24),OwnerConsentState.DIAGNOSTIC_DESCRIPTION)==null)
+            check(g.begin(scope.copy(proposalDigest="not-sha"),OwnerConsentState.DIAGNOSTIC_DESCRIPTION)==null)
             check(f.launched==0)
         }
         test("an incorrect requestCode leaves actual pending challenge intact") {
-            val (_,g)=make();val code=g.begin(scope,"Diagnostic NOOP")!!
+            val (_,g)=make();val code=g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             check(!g.credentialResult(code+1,true));check(g.credentialResult(code,true));check(g.consume(scope))
         }
         test("empty or excessive UI description is rejected") {
@@ -145,23 +145,33 @@ object OwnerConsentStateTest {
         }
         test("arbitrary digest cannot masquerade as diagnostic scope") {
             val (f,g)=make()
-            check(g.begin(scope.copy(proposalDigest="b".repeat(64)),"Diagnostic NOOP")==null)
+            check(g.begin(scope.copy(proposalDigest="b".repeat(64)),OwnerConsentState.DIAGNOSTIC_DESCRIPTION)==null)
             check(f.launched==0)
         }
         test("additional permission cannot masquerade as diagnostic scope") {
             val (f,g)=make()
-            check(g.begin(scope.copy(permissions=setOf("android.permission.CAMERA")),"Diagnostic NOOP")==null)
+            check(g.begin(scope.copy(permissions=setOf("android.permission.CAMERA")),OwnerConsentState.DIAGNOSTIC_DESCRIPTION)==null)
             check(f.launched==0)
         }
         test("request codes never repeat across recreated gate instances in process") {
             val (f,old)=make()
-            val codeOld=old.begin(scope,"Diagnostic NOOP")!!
+            val codeOld=old.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             val fresh=OwnerConsentState(f)
-            val codeNew=fresh.begin(scope,"Diagnostic NOOP")!!
+            val codeNew=fresh.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!!
             check(codeOld!=codeNew)
             check(!fresh.credentialResult(codeOld,true))
             check(fresh.credentialResult(codeNew,true))
             check(fresh.consume(scope))
+        }
+        test("misleading prompt cannot be paired with diagnostic NOOP") {
+            val (f,g)=make()
+            check(g.begin(scope,"Разрешить удаление чужого файла?")==null)
+            check(f.launched==0)
+        }
+        test("exact diagnostic description is accepted") {
+            val (f,g)=make()
+            check(g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!=null)
+            check(f.launched==1)
         }
         println("UNO_OWNER_CONSENT_HOST_PASS=$passed")
     }
