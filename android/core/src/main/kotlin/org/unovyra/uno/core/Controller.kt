@@ -18,7 +18,11 @@ class TrustController(
 ) {
     // Reference gate only. Production dispatch still requires Android owner auth and a durable WAL.
     // A ticket is valid only if this trusted controller issued it; caller-mutable Ticket is not authority.
-    private data class Issued(val ticket: Ticket, var dispatched: Boolean = false)
+    private data class Issued(
+        val ticket: Ticket,
+        var dispatched: Boolean = false,
+        var nativeAdmittedAtNanos: Long = -1L
+    )
     private val issued = linkedMapOf<String, Issued>()
     private val stopLatch = AtomicBoolean(false)
     val stopped: Boolean get() = stopLatch.get()
@@ -118,6 +122,7 @@ class TrustController(
             return DispatchAttempt.Rejected(DispatchRejection.STOP_OR_EXPIRED)
         }
         record.dispatched = true
+        record.nativeAdmittedAtNanos = now
         t.phase = Phase.MAY_HAVE_EXECUTED
         val result = try { native.dispatch(forNative) } catch (_: Exception) { NativeEndpoint.UNKNOWN }
         if (result == NativeEndpoint.UNKNOWN) {
@@ -131,20 +136,28 @@ class TrustController(
     @Synchronized fun readbackAndCommit(t: Ticket, now: Long): Boolean {
         val record = issued[t.id] ?: return false
         if (record.ticket !== t || !record.dispatched || stopLatch.get() ||
-            t.phase != Phase.WAIT_READBACK || t.used || now < 0) return false
+            t.phase != Phase.WAIT_READBACK || t.used || now < 0 ||
+            record.nativeAdmittedAtNanos < 0 || now < record.nativeAdmittedAtNanos) return false
         val forNative = t.copy(proposal = t.proposal.copy(canonicalArgs = t.proposal.canonicalArgs.copyOf()))
         if (proposalDigest(forNative.proposal) != t.proposalDigest) return false
         val evidence = try { native.readback(forNative, now) } catch (_: Exception) { return false }
         if (stopLatch.get() || t.epoch != epoch || t.nonce != nonce || now >= t.deadlineNanos ||
             evidence.ticketId != t.id || evidence.source != native.trustedSourceTag ||
             evidence.nativeGeneration <= 0 || evidence.observedAtNanos > now ||
-            evidence.observedAtNanos < 0) return false
+            evidence.observedAtNanos < record.nativeAdmittedAtNanos) return false
         // FALSE is verified NON-success, and UNKNOWN is not evidence of completion.
         if (evidence.endpoint != NativeEndpoint.TRUE) {
             if (evidence.endpoint == NativeEndpoint.FALSE) t.phase = Phase.DENIED
             return false
         }
         if (!ledger.commit(t, evidence)) return false
+        // The ledger commit and the intent journal are currently TWO distinct stores.
+        // If the journal cannot sync the readback claim, report unresolved, never success.
+        // This is not the A_tx atomic used+receipt+M-ref transaction from Astra/R5.3.
+        if (intentJournal != null && !intentJournal.recordReadbackClaim(t.id, t.proposalDigest, evidence)) {
+            t.phase = Phase.MAY_HAVE_EXECUTED
+            return false
+        }
         t.readback = evidence
         t.used = true
         t.phase = Phase.COMMITTED
