@@ -18,6 +18,12 @@ val controller = TrustController(DenyAllAndroidPort(), DenyAllLedger())
 val neural = NoWeightsNeuralPort()
 fun onPause() { labStop.stop(); controller.stop() }
 val stress=LabProfile.STRESS
+// Minimal static fixture for the current diagnostic UI markers.
+val copyableReport: String? = "{}"
+fun copyFullReport() = ClipData.newPlainText("UNO", copyableReport)
+button("Проверить SQLite (без создания базы)") { }
+button("Проверить владельца через экран Android") { }
+val identity = "УСТАНОВЛЕННЫЙ ПАКЕТ: $packageName"
 '''
 
 class GuardTests(unittest.TestCase):
@@ -50,6 +56,15 @@ class GuardTests(unittest.TestCase):
     def test_reject_placeholder_not_wired(self):
         self.code.write_text(CODE.replace('TrustController(DenyAllAndroidPort(), DenyAllLedger())', 'TrustController(RealAndroidPort(), RealLedger())'))
         self.assertIn('missing_fail_closed_controller_wiring', guard.scan(self.root))
+    def test_reject_missing_sqlite_button(self):
+        self.code.write_text(CODE.replace("Проверить SQLite (без создания базы)", "Missing SQLite UI"))
+        self.assertIn('owner_and_sqlite_diagnostics_missing', guard.scan(self.root))
+    def test_reject_missing_clipboard(self):
+        self.code.write_text(CODE.replace("ClipData.newPlainText", "MissingClipboardCode"))
+        self.assertIn('full_report_clipboard_export_missing', guard.scan(self.root))
+    def test_reject_missing_package_identity(self):
+        self.code.write_text(CODE.replace("УСТАНОВЛЕННЫЙ ПАКЕТ: $packageName", "No identity"))
+        self.assertIn('package_identity_not_displayed', guard.scan(self.root))
     def test_reject_socket_api(self):
         self.code.write_text(CODE + '\nval socket = java.net.Socket("localhost",443)\n')
         self.assertIn('unexpected_api:java.net', guard.scan(self.root))
