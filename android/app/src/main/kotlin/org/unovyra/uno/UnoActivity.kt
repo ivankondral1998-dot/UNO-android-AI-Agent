@@ -136,6 +136,9 @@ class UnoActivity : Activity() {
         button("Спросить UNO, какую тему он предложит") {
             status.text="Нейромодель ещё не подключена. Выбор по общению недоступен — тема не изменена."
         }
+        root.addView(label("ЖУРНАЛ ДЕЙСТВИЙ · только диагностика, не разрешение ОС", 17f))
+        button("Проверить SQLite (без создания базы)") { runOutcomeStoreInspection(false) }
+        button("Создать пустую SQLite-базу и проверить") { runOutcomeStoreInspection(true) }
         button("Снимок состояния: RAM / CPU / батарея / тепло") { runSimple(false) }
         button("Каталог сенсоров и их характеристики") { runSensorInventory() }
         button("Быстрая лаборатория: CPU, память, IO, STOP, сенсоры") { runLab(LabProfile.QUICK) }
@@ -173,6 +176,29 @@ class UnoActivity : Activity() {
                     } else result.exceptionOrNull()?.javaClass?.simpleName?:"UNKNOWN"
                 }
             }
+        }
+    }
+    /**
+     * Only an owner-tapped app-private storage diagnostic.
+     * Never issues action tickets, calls native dispatch or upgrades a claim to verified OS state.
+     */
+    private fun runOutcomeStoreInspection(initialize: Boolean) {
+        execute(if (initialize) "Создание пустого SQLite-журнала" else "Чтение состояния SQLite-журнала") {
+            val summary = AndroidOutcomeInspection.inspect(applicationContext, initialize)
+            if (summary.status == AndroidOutcomeInspection.Status.UNAVAILABLE) {
+                throw IllegalStateException("OUTCOME_STORE_UNAVAILABLE_FAIL_CLOSED")
+            }
+            val json = JSONObject()
+                .put("schema", "UNO_OUTCOME_INSPECTION/1")
+                .put("status", summary.status.name)
+                .put("total", summary.total)
+                .put("prepared", summary.prepared)
+                .put("may_have_executed", summary.mayHaveExecuted)
+                .put("stored_readback_claims_UNVERIFIED", summary.storedReadbackClaims)
+                .put("native_actions_enabled", false)
+                .put("verified_os_outcomes", false)
+                .put("note", "App-private inspection; no ticket replay and no owner authorization")
+            json to DeviceProbe.persist(applicationContext, json).absolutePath
         }
     }
     private fun runSimple(withCpu:Boolean) {
