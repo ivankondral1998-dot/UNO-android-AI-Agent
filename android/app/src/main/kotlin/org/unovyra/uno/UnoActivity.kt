@@ -285,10 +285,10 @@ class UnoActivity : Activity() {
                 stop.isStopped() || Thread.currentThread().isInterrupted
             }
             // Persist only the opaque app-generated ID. This is a locator, never a receipt.
-            if (outcome.id != null) {
+            val locatorPersisted = if (outcome.id != null) {
                 getSharedPreferences("uno_private_probe", MODE_PRIVATE).edit()
                     .putString("last_id", outcome.id).commit()
-            }
+            } else false
             val independentlyReopened = if (outcome.id != null &&
                 outcome.status == AppPrivateReadbackProbe.Status.VERIFIED_LOCAL_BYTES &&
                 !stop.isStopped()) AppPrivateReadbackProbe.inspect(filesDir, outcome.id)
@@ -299,6 +299,7 @@ class UnoActivity : Activity() {
                 .put("id", outcome.id)
                 .put("sha256", outcome.digest)
                 .put("write_readback", outcome.detail)
+                .put("last_id_locator_persisted", locatorPersisted)
                 .put("independent_reopen_status", independentlyReopened?.status?.name)
                 .put("independent_reopen_detail", independentlyReopened?.detail)
                 .put("native_os_action_executed", false)
