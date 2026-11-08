@@ -34,6 +34,8 @@ internal class OwnerConsentState(private val platform: CredentialPlatform) {
 
     companion object {
         const val TTL_NANOS = 60_000_000_000L
+        const val DIAGNOSTIC_DESCRIPTION =
+            "Подтвердите локальный диагностический NOOP. Действия ОС запрещены."
         private const val CODE_MIN = 0x4100
         private const val CODE_MAX = 0x7fef
         private const val CODE_SPACE = CODE_MAX - CODE_MIN + 1
@@ -62,7 +64,9 @@ internal class OwnerConsentState(private val platform: CredentialPlatform) {
         // all other Android effects must never gain a grant from this NOOP UI.
         if (stopped.get() || pending != null || ready != null || !scope.valid() ||
             scope != diagnosticNoopScope() ||
-            exactDescription.isBlank() || exactDescription.length > 240 ||
+            // The trusted UI prompt must identify exactly the same closed NOOP.
+            // User-supplied or model-generated descriptions are not consent evidence.
+            exactDescription != DIAGNOSTIC_DESCRIPTION ||
             !platform.secureAndUnlocked() || !platform.foreground() ||
             !platform.permissionsGranted(scope.permissions)) return null
         val now = platform.nowNanos()
