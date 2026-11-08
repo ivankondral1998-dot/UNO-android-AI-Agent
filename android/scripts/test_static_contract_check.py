@@ -26,6 +26,11 @@ button("Проверить владельца через экран Android") { 
 val identity = "УСТАНОВЛЕННЫЙ ПАКЕТ: $packageName"
 // Fixture markers: both OS callback and one-shot button update nearby feedback.
 root.addView(ownerFeedback)
+fun runAppPrivateEffectProbe() {
+    val outcome = AppPrivateReadbackProbe.run(filesDir)
+    val inspect = AppPrivateReadbackProbe.inspect(filesDir, outcome.id)
+}
+button("СОЗДАТЬ ТЕСТОВЫЙ ЛОКАЛЬНЫЙ МАРКЕР") { runAppPrivateEffectProbe() }
 showOwnerFeedback(if (consumed) "one-use" else "NOOP denied")
 showOwnerFeedback(if (accepted) "OS OK" else "OS cancelled")
 '''
@@ -75,6 +80,12 @@ class GuardTests(unittest.TestCase):
     def test_reject_hidden_owner_os_callback(self):
         self.code.write_text(CODE.replace("showOwnerFeedback(if (accepted)", "status.text = if (accepted)"))
         self.assertIn('owner_local_result_feedback_missing', guard.scan(self.root))
+    def test_reject_missing_app_private_effect(self):
+        self.code.write_text(CODE.replace("AppPrivateReadbackProbe.run(filesDir)", "UNSAFE_STUB"))
+        self.assertIn('app_private_effect_readback_ui_missing', guard.scan(self.root))
+    def test_reject_missing_independent_reopen(self):
+        self.code.write_text(CODE.replace("AppPrivateReadbackProbe.inspect(filesDir, outcome.id)", "NO_REOPEN"))
+        self.assertIn('app_private_effect_readback_ui_missing', guard.scan(self.root))
     def test_reject_socket_api(self):
         self.code.write_text(CODE + '\nval socket = java.net.Socket("localhost",443)\n')
         self.assertIn('unexpected_api:java.net', guard.scan(self.root))
