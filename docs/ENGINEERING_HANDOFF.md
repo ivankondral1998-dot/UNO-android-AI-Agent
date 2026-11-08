@@ -1,5 +1,16 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE — OWNER CREDENTIAL NOOP / WP-02 (2026-11-08)
+
+**При первом входе сверить текущий HEAD GitHub и `/AGENTS.md`.** Android-лаборатория получила **реальное обращение к системному экрану проверки учётных данных устройства**, пока только для диагностического `NOOP` (verb=**2** по Astra, **не ABSTAIN=0**). Добавлены `OwnerConsentState.kt` (process-only one-use/TTL/session nonce/STOP/permission/foreground binding) и `AndroidDeviceCredentialPlatform.kt` (Android KeyguardManager, actual OS device-credential intent). В `UnoActivity` — два owner-tapped шага запрос→Android RESULT_OK→одноразовое подтверждение без native-effect. Операции не выполняются, `DenyAllAndroidPort` и `NoWeightsNeuralPort` сохранены. Старый OwnerGate Jarvis, его cloud auth, веса, архитектура не переносились.
+
+**HOST_TESTED:** 24/24 Kotlin process-state + 11/11 Android-platform mock tests = **35/35 PASS**, фактические исходники совпадают с GitHub blob SHA. Тест зарегистрирован в `android/scripts/run_all_preflight.sh`. **Это не тест Android OS UI**: настоящий SDK/Gradle, A52, credential callback/lifecycle, STOP/OS linearization не проверены. Старый `KeyguardManager.createConfirmDeviceCredentialIntent` доступен, но deprecated с API29; заменить/подтвердить на целевом Android отдельным решением. [Полный отчёт, R5.3 и provenance Jarvis](implementation/2026-11-08_WP02_DEVICE_CREDENTIAL_NOOP_R1.md).
+
+**Блокеры:** проверка учётных данных Android-профиля ≠ доказательство индивидуального владельца UNO; одноразовый NOOP ≠ trusted dispatch, не соединён с SQLite outcome/verified readback. `A_cap/A_tx/A_fs` **условны**, `FOUNDATION_INCOMPLETE`. Следующий шаг — проверка сборки/устройства, затем ровно один локальный проверяемый effect contract под owner auth + independent readback. `main`, Jarvis, Neural Language, модель и веса не менять без нового допуска.
+
+---
+
+
 ## UPDATE — SQLITE INSPECTION UI / WP-02 (2026-11-08) — CURRENT
 
 **Ветка, SHA и правила:** перед правкой заново прочитать `/AGENTS.md` и HEAD; прошлые SHA ниже — исторические снимки. В `UnoActivity` добавлены две явные диагностические кнопки: чтение существующей SQLite без её создания и создание пустой SQLite для последующей проверки. Фактический `AndroidOutcomeInspection.kt` открывает `AndroidOutcomeStore.inspectAfterRestart()` на текущем background worker, возвращает только агрегированные счётчики, не выдаёт билеты/не делает native. `NOT_INITIALIZED` отличается от `UNAVAILABLE`; осиротевший WAL без основной БД и любой corrupt/executable/unknown row → **UNAVAILABLE**, не пустая история и не успех. UI записывает только app-private JSON с явными `verified_os_outcomes=false`, `native_actions_enabled=false` или FAIL-CLOSED.
