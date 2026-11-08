@@ -243,13 +243,17 @@ BEGIN SELECT RAISE(ABORT,'MISSING_MEMORY_REFERENCE'); END
         return try {
             val db = readableDatabase
             val result = ArrayList<StoredOutcome>()
-            db.rawQuery("SELECT ticket_id,phase,used,outcome,memory_ref FROM operations ORDER BY rowid",null).use { c ->
+            db.rawQuery("SELECT ticket_id,phase,used,outcome,memory_ref,source_tag,generation,observed_ns,dispatch_ns FROM operations ORDER BY rowid",null).use { c ->
                 while (c.moveToNext()) {
                     val id = c.getString(0)
                     val phase = c.getInt(1)
                     val used = c.getInt(2) == 1
                     val outcome = if (c.isNull(3)) null else c.getInt(3)
                     val memoryRef = if (c.isNull(4)) null else c.getString(4)
+                    val sourceTag = if (c.isNull(5)) null else c.getString(5)
+                    val generation = if (c.isNull(6)) null else c.getLong(6)
+                    val observed = if (c.isNull(7)) null else c.getLong(7)
+                    val dispatched = if (c.isNull(8)) null else c.getLong(8)
                     if (phase == READBACK_CLAIM && (!used || memoryRef == null))
                         throw SQLiteException("UNO_OUTCOME_INVALID_COMMIT")
                     if (phase == READBACK_CLAIM) {
@@ -260,7 +264,8 @@ BEGIN SELECT RAISE(ABORT,'MISSING_MEMORY_REFERENCE'); END
                             throw SQLiteException("UNO_OUTCOME_MEMORY_HASH_MISMATCH")
                     }
                     // PREPARED and MAY_HAVE_EXECUTED are always unresolved after process death.
-                    result.add(StoredOutcome(id,phase,used,outcome,memoryRef,executable=false))
+                    result.add(StoredOutcome(id,phase,used,outcome,memoryRef,
+                        sourceTag,generation,observed,dispatched,executable=false))
                 }
             }
             Inspection.Rows(result)
@@ -282,6 +287,9 @@ BEGIN SELECT RAISE(ABORT,'MISSING_MEMORY_REFERENCE'); END
 
     internal data class StoredOutcome(
         val ticketId: String, val phase: Int, val used: Boolean,
-        val endpoint: Int?, val memoryRef: String?, val executable: Boolean
+        val endpoint: Int?, val memoryRef: String?,
+        val sourceTag: String?, val nativeGeneration: Long?,
+        val observedAtNanos: Long?, val dispatchAtNanos: Long?,
+        val executable: Boolean
     )
 }
