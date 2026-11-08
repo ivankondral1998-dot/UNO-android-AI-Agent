@@ -5,7 +5,7 @@
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:usesCleartextTraffic="false"
-        android:label="${unoAppLabel}"
+        android:label="@string/uno_app_label"
         android:supportsRtl="true">
         <activity
             android:name=".UnoActivity"
