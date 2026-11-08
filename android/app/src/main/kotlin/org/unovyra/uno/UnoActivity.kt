@@ -29,7 +29,7 @@ class UnoActivity : Activity() {
     private val ownerDiagnosticScope by lazy {
         val raw = MessageDigest.getInstance("SHA-256")
             .digest("UNO_OWNER_CREDENTIAL_NOOP/1".toByteArray(Charsets.UTF_8))
-        OwnerConsentState.Scope(0, raw.joinToString("") { "%02x".format(it) }, emptySet())
+        OwnerConsentState.Scope(2, raw.joinToString("") { "%02x".format(it) }, emptySet())
     }
     private val worker = Executors.newSingleThreadExecutor()
     private val alive = AtomicBoolean(true)
