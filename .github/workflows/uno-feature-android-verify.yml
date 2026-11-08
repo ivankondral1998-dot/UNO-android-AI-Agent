@@ -1,5 +1,5 @@
 # Owner approval 2026-11-08: necessary GitHub Actions for this feature-branch Android SDK build.
-# One path-filtered push is used because workflow_dispatch is not exposed by this chat connector.
+# Path-filtered push is permitted for necessary builds; keep previous app/data intact.
 # Never publishes releases, writes to main, uploads personal data or accesses repository secrets.
 name: UNO feature Android SDK verification (private debug)
 
@@ -60,10 +60,10 @@ jobs:
           fi
       - name: Run complete Gradle core JVM suite
         run: gradle --no-daemon --stacktrace :core:unoHostTests
-      - name: Compile current Android app with SDK 35
-        run: gradle --no-daemon --stacktrace :app:assembleDebug
+      - name: Compile isolated side-by-side Android debug app with SDK 35
+        run: gradle --no-daemon --stacktrace -PunoIsolatedDebugSuffix=ci${GITHUB_RUN_ID} :app:assembleDebug
       - name: Android lint current APK sources
-        run: gradle --no-daemon --stacktrace :app:lintDebug
+        run: gradle --no-daemon --stacktrace -PunoIsolatedDebugSuffix=ci${GITHUB_RUN_ID} :app:lintDebug
       - name: Validate debug APK and record source SHA
         run: |
           set -euo pipefail
@@ -73,17 +73,18 @@ jobs:
           "${ANDROID_HOME}/build-tools/35.0.0/aapt" dump badging app/build/outputs/apk/debug/app-debug.apk > ci-evidence/APK_BADGING.txt
           "${ANDROID_HOME}/build-tools/35.0.0/aapt" dump permissions app/build/outputs/apk/debug/app-debug.apk > ci-evidence/APK_PERMISSIONS.txt
           grep -E '^package:|^sdkVersion:|^targetSdkVersion:' ci-evidence/APK_BADGING.txt
-          grep -q "org.unovyra.uno.scaffold" ci-evidence/APK_BADGING.txt
+          grep -Fq "package: name='org.unovyra.uno.scaffold.ci${GITHUB_RUN_ID}'" ci-evidence/APK_BADGING.txt
+          ! grep -Fq "package: name='org.unovyra.uno.scaffold'" ci-evidence/APK_BADGING.txt
           if grep -E 'android.permission.(INTERNET|RECORD_AUDIO|CAMERA)' ci-evidence/APK_PERMISSIONS.txt; then
             echo "FAIL: forbidden capability found in diagnostic APK" >&2
             exit 1
           fi
-          printf 'SHA=%s\nREF=%s\n' "${GITHUB_SHA}" "${GITHUB_REF_NAME}" > ci-evidence/BUILD_PROVENANCE.txt
+          printf 'SHA=%s\nREF=%s\nRUN_ID=%s\nPACKAGE=%s\nINSTALL_MODE=SIDE_BY_SIDE_NO_UNINSTALL\n' "${GITHUB_SHA}" "${GITHUB_REF_NAME}" "${GITHUB_RUN_ID}" "org.unovyra.uno.scaffold.ci${GITHUB_RUN_ID}" > ci-evidence/BUILD_PROVENANCE.txt
       - name: Private debug artifact for owner (not a release)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: uno-feature-debug-${{ github.run_number }}
+          name: uno-side-by-side-debug-${{ github.run_number }}
           path: |
             android/app/build/outputs/apk/debug/app-debug.apk
             android/ci-evidence/*.txt
