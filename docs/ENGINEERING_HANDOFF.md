@@ -1,5 +1,18 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-08 — WP-03 APP-PRIVATE EFFECT / READBACK (LATEST)
+
+**Owner-device milestone already closed:** A52 `UNO TEST ci42509757092` first NOOP one-use accepted and consumed; second denied; two screenshots. See [A52 one-use evidence](implementation/2026-11-08_A52_OWNER_NOOP_ONE_USE_DEVICE_EVIDENCE_R1.md). This does not authorize native effects or establish unique UNO owner identity.
+
+**New IMPLEMENTED scope:** `AppPrivateReadbackProbe.kt` creates one **fixed, bounded, random-ID marker** inside UNO's private files, fsyncs, reopens through fresh descriptor and checks exact bytes/SHA-256. Max 16 markers, no delete/overwrite. STOP before create denies; after create returns `UNKNOWN_MAY_HAVE_WRITTEN` if uncertain. `UnoActivity.kt` adds owner-tapped create/read and separate read-only reopen (including after restart) with opaque locator in app-private preferences. `DenyAllAndroidPort`, `NoWeightsNeuralPort`, owner NOOP credential logic, old SQLite action journal, and Jarvis architecture remain unchanged. **Not** a trusted NativePort, not verb 15, not an intelligent model, not an Android external effect. See [WP03 contract, source provenance, test limits](implementation/2026-11-08_APP_PRIVATE_EFFECT_READBACK_WP03_R1.md).
+
+**Verification pending at this handoff update:** host Kotlin regressions, static guard, SDK35 APK and A52 device proof must be evaluated on exact new SHA before marking `HOST_TESTED`, `ANDROID_BUILT`, `DEVICE_VERIFIED`. Earlier successful APK `ci42509757092` does not include this feature. Don't ask owner to install a new APK until build and package SHA are verified. Owner already supplied A52 battery 19%, no new STRESS repeats.
+
+**Sources cross-checked:** active root AGENTS V3, Astra R5.3 Android trust/STOP/verb15, Grok B2 provenance audit, Jarvis AndroidOperationAuthority/ConfirmationTicketGate read-only. Future full UNO requires a real licensed offline neural model, memory, trusted Android action boundary and native readback; this local fixture does not close those gates.
+
+---
+
+
 ## UPDATE 2026-11-08 — A52 CREDENTIAL NOOP ONE-USE: DEVICE OBSERVED (LATEST)
 
 **РЕЗУЛЬТАТ С УСТРОЙСТВА, ДВА СКРИНШОТА ВЛАДЕЛЬЦА:** на точно идентифицированной сборке **`UNO TEST · ci42509757092`** после системного экрана отпечатка Android 14 первый `Проверить одноразовое согласие · без действия` показал **«NOOP: одноразовое подтверждение принято и погашено · действий ОС нет»** (часы на телефоне ~21:33), второе нажатие — **«NOOP: подтверждение отсутствует, истекло или уже использовано · действий ОС нет»** (~21:34). Отображение результата непосредственно под кнопками также **DEVICE_OBSERVED**: исправление UX от GitHub Actions #42509757092 заработало на A52.
