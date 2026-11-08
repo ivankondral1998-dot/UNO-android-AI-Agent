@@ -111,7 +111,7 @@ class UnoActivity : Activity() {
         status=label("Офлайн-лаборатория WP-01 · действий ОС нет · модель не загружена")
         root.addView(status)
         root.addView(label("Сценарии запускаются вручную. Режим STRESS ограничен 60 секундами, QUICK — 12. STOP блокирует новые шаги.",13f))
-        report=label("Исследования: https://uno-research.pages.dev/\nСайт не используется приложением. \nДля сохранённых JSON: adb run-as org.unovyra.uno.scaffold")
+        report=label("Исследования: https://uno-research.pages.dev/\nСайт не используется приложением. \nДля сохранённых JSON: adb run-as ${packageName}")
         root.addView(report)
         fun button(text:String,onClick:()->Unit) {
             root.addView(Button(this).apply {
