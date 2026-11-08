@@ -5,7 +5,7 @@
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:usesCleartextTraffic="false"
-        android:label="UNOVYRA UNO · Scaffold"
+        android:label="${unoAppLabel}"
         android:supportsRtl="true">
         <activity
             android:name=".UnoActivity"
