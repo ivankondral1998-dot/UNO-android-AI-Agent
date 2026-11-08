@@ -25,7 +25,7 @@ object OwnerConsentStateTest {
         }
     }
     private val dig = "a".repeat(64)
-    private val scope = OwnerConsentState.Scope(0, dig, emptySet())
+    private val scope = OwnerConsentState.Scope(2, dig, emptySet())
     private fun make() = Fake().let { it to OwnerConsentState(it) }
     fun run() {
         test("one OS result permits one local consumption, never two") {
