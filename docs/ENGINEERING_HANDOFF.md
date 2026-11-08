@@ -1,5 +1,14 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-08 — A52 SQLITE INSPECTION — OWNER REPORT (LATEST)
+
+**Физическое испытание владельцем:** установленная сборка `org.unovyra.uno.scaffold.ci42504842750`; получен скопированный JSON `UNO_OUTCOME_INSPECTION/1`: `status=INSPECTED`, `total=0`, `prepared=0`, `may_have_executed=0`, `stored_readback_claims_UNVERIFIED=0`, `native_actions_enabled=false`, `verified_os_outcomes=false`. По коду `AndroidOutcomeInspection.inspect(false)` статус `INSPECTED` означает, что main DB **существует и доступна** в момент обращения, иначе был бы `NOT_INITIALIZED` или `UNAVAILABLE` (при обнаружении sidecars). **Когда возникла база — неизвестно; нет доказательства персистентности непустых записей, authority, native readback.** Никакой ошибочный `PASS` о действиях/модели не присваивать.
+
+[Точный owner-evidence и границы](implementation/2026-11-08_A52_SQLITE_INSPECTION_DEVICE_EVIDENCE_R1.md). Следующая информативная проверка без новой сборки: owner `Android` credential **NOOP** и погашение one-use (дважды), затем отдельный ручной STOP на QUICK во время выполнения; пустая SQLite с повторным нулевым счётчиком только проверяет доступность после нового запуска, не запись/восстановление данных. Повторять STRESS без оснований не нужно. Кода/весов/Jarvis/Grok/main не меняли.
+
+---
+
+
 ## UPDATE 2026-11-08 — A52 STRESS PHYSICAL EVIDENCE (LATEST)
 
 **РЕАЛЬНЫЙ DEVICE-ОТЧЁТ ОТ ВЛАДЕЛЬЦА:** Samsung Galaxy A52 `SM-A525F` / Android 14 (API34), установленный `UNO TEST · ci42504842750` / package `org.unovyra.uno.scaffold.ci42504842750`, owner-copied full `UNO_OFFLINE_LAB_REPORT_1`: **`STRESS`, 30256 ms, 8/8 sandbox scenarios `PASS`, `abort_reason_or_null=null`**. Это первое реальное device-подтверждение выбранного диагностического APK, его запуска и копирования JSON, но **НЕ** подтверждение готовности интеллекта, `AndroidOutcomeStore`, owner-credential или native readback.
