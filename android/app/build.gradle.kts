@@ -19,6 +19,22 @@ android {
     kotlinOptions { jvmTarget = "17" }
     buildTypes {
         getByName("release") { isMinifyEnabled = false }
+        getByName("debug") {
+            // CI runners normally generate a fresh debug signing certificate. Using the
+            // ordinary applicationId would conflict with an installed build signed by
+            // an earlier runner and Android would refuse installation.
+            //
+            // Only an explicit CI-only suffix creates a side-by-side test application.
+            // Default debug and release identities are unchanged.
+            val isolatedSuffix = providers.gradleProperty("unoIsolatedDebugSuffix").orNull
+            if (isolatedSuffix != null) {
+                require(Regex("ci[0-9]{5,20}").matches(isolatedSuffix)) {
+                    "unoIsolatedDebugSuffix must be a CI run ID, e.g. ci42488780925"
+                }
+                applicationIdSuffix = ".$isolatedSuffix"
+                versionNameSuffix = "-$isolatedSuffix"
+            }
+        }
     }
 }
 dependencies { implementation(project(":core")) }
