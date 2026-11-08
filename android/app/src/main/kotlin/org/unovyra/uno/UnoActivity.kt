@@ -1,6 +1,7 @@
 package org.unovyra.uno
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -15,6 +16,7 @@ import android.widget.TextView
 import org.unovyra.uno.core.*
 import org.json.JSONObject
 import java.util.concurrent.Executors
+import java.security.MessageDigest
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicLong
 
@@ -22,6 +24,13 @@ import java.util.concurrent.atomic.AtomicLong
 class UnoActivity : Activity() {
     private val controller by lazy { TrustController(DenyAllAndroidPort(), DenyAllLedger()) }
     private val neural: NeuralPort = NoWeightsNeuralPort()
+    // Owner-initiated OS credential probe only; never a ticket to native dispatch.
+    private val ownerGate by lazy { OwnerConsentState(AndroidDeviceCredentialPlatform(this)) }
+    private val ownerDiagnosticScope by lazy {
+        val raw = MessageDigest.getInstance("SHA-256")
+            .digest("UNO_OWNER_CREDENTIAL_NOOP/1".toByteArray(Charsets.UTF_8))
+        OwnerConsentState.Scope(0, raw.joinToString("") { "%02x".format(it) }, emptySet())
+    }
     private val worker = Executors.newSingleThreadExecutor()
     private val alive = AtomicBoolean(true)
     private val busy = AtomicBoolean(false)
@@ -139,6 +148,26 @@ class UnoActivity : Activity() {
         root.addView(label("ЖУРНАЛ ДЕЙСТВИЙ · только диагностика, не разрешение ОС", 17f))
         button("Проверить SQLite (без создания базы)") { runOutcomeStoreInspection(false) }
         button("Создать пустую SQLite-базу и проверить") { runOutcomeStoreInspection(true) }
+        root.addView(label("ВЛАДЕЛЕЦ · системное подтверждение (только NOOP, без Android-действия)", 17f))
+        button("Проверить владельца через экран Android") {
+            val code = ownerGate.begin(
+                ownerDiagnosticScope,
+                "Подтвердите локальный диагностический NOOP. Действия ОС запрещены."
+            )
+            status.text = if (code != null) {
+                "Системная проверка открыта · это НЕ разрешение выполнять действие"
+            } else {
+                "Подтверждение недоступно: требуется защищённая блокировка и активный экран UNO"
+            }
+        }
+        button("Проверить одноразовое согласие · без действия") {
+            val consumed = ownerGate.consume(ownerDiagnosticScope)
+            status.text = if (consumed) {
+                "Личность подтверждена для NOOP · согласие погашено · действий ОС нет"
+            } else {
+                "Нет действующего одноразового подтверждения · действий ОС нет"
+            }
+        }
         button("Снимок состояния: RAM / CPU / батарея / тепло") { runSimple(false) }
         button("Каталог сенсоров и их характеристики") { runSensorInventory() }
         button("Быстрая лаборатория: CPU, память, IO, STOP, сенсоры") { runLab(LabProfile.QUICK) }
@@ -151,7 +180,7 @@ class UnoActivity : Activity() {
             } catch (e:IllegalStateException) {e.message?:"MODEL_UNAVAILABLE"}
         }
         button("СТОП: прервать все тесты и запретить действия") {
-            labStop.stop();controller.stop()
+            labStop.stop();controller.stop();ownerGate.stop()
             status.text="STOP · тесты отменены · trusted epoch=${controller.epoch}"
         }
         setContentView(ScrollView(this).apply {addView(root)})
@@ -229,9 +258,23 @@ class UnoActivity : Activity() {
             json to DeviceLab.save(applicationContext,json).absolutePath
         }
     }
-    override fun onPause(){labStop.stop();controller.stop();super.onPause()}
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode in 0x4100..0x7fef) {
+            val accepted = ownerGate.credentialResult(requestCode, resultCode == RESULT_OK)
+            status.text = if (accepted) {
+                "Android подтвердил владельца · нажми проверку одноразового согласия · действий ОС нет"
+            } else {
+                "Подтверждение отменено или недействительно · действий ОС нет"
+            }
+        }
+    }
+    override fun onPause() {
+        ownerGate.revokeReadyForBackground()
+        labStop.stop();controller.stop();super.onPause()
+    }
     override fun onDestroy(){alive.set(false);labStop.stop();mainHandler.removeCallbacks(heartbeat)
-        worker.shutdownNow();controller.stop();super.onDestroy()}
+        worker.shutdownNow();controller.stop();ownerGate.stop();super.onDestroy()}
 }
 
 /** The foundation app has no capability to perform native actions, even with consent. */
