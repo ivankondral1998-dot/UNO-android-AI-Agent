@@ -43,13 +43,13 @@ object ActionReceiptRecoveryTest {
                 check(j.snapshot().single().phase == ActionIntentJournal.Phase.MAY_HAVE_EXECUTED)
                 check(c.readbackAndCommit(t, 7) && t.used && t.phase == Phase.COMMITTED)
                 val row = j.snapshot().single()
-                check(row.phase == ActionIntentJournal.Phase.RECEIPT_RECORDED)
+                check(row.phase == ActionIntentJournal.Phase.REFERENCE_USED_RECEIPT)
                 val receipt = row.receipt ?: error("receipt missing")
                 check(receipt.ticketId == tid && receipt.observedAtNanos == 7L)
             }
             ActionIntentJournal(f).use { j ->
                 val row = j.snapshot().single()
-                check(row.recovered && row.phase == ActionIntentJournal.Phase.RECEIPT_RECORDED)
+                check(row.recovered && row.phase == ActionIntentJournal.Phase.REFERENCE_USED_RECEIPT)
                 val receipt = row.receipt ?: error("receipt missing after replay")
                 check(receipt.ticketId == tid && receipt.endpoint == NativeEndpoint.TRUE)
                 check(!j.arm(row.id, row.proposalSha256))
