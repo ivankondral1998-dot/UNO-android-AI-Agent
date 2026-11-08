@@ -31,6 +31,8 @@ fun runAppPrivateEffectProbe() {
     val inspect = AppPrivateReadbackProbe.inspect(filesDir, outcome.id)
 }
 button("СОЗДАТЬ ТЕСТОВЫЙ ЛОКАЛЬНЫЙ МАРКЕР") { runAppPrivateEffectProbe() }
+fun inspectLastAppPrivateEffect() = AppPrivateReadbackProbe.inspect(filesDir, id)
+button("ПОВТОРНО ПРОЧИТАТЬ ПОСЛЕДНИЙ ЛОКАЛЬНЫЙ МАРКЕР") { inspectLastAppPrivateEffect() }
 showOwnerFeedback(if (consumed) "one-use" else "NOOP denied")
 showOwnerFeedback(if (accepted) "OS OK" else "OS cancelled")
 '''
