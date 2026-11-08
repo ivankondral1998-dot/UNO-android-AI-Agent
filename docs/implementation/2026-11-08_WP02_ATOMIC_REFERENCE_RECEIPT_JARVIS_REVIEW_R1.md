@@ -42,7 +42,7 @@
 - `ActionEngine.kt` (Git blob `7d3f8ee715d916b9baef9ea8e82e95766349cb3e`) — Android API + ad hoc native readback для отдельных эффектов. Возвращаемый текст `request sent` и callback не должны автоматически означать `VERIFIED_COMPLETION` в UNO.
 - `tests/kotlin/AndroidOperationAuthorityHostTest.kt` (Git blob `5d8a8424655ed085976bcd5f7c90f1801b67e179`) — адресные негативные сценарии revoked permissions, changed target, STOP after consent, native revalidation. Это host fixtures Jarvis, **не** пройденные UNO тесты.
 
-Применён **только принцип:** explicit owner/permission/consent/STOP должен жить в доверенном Android-контуре и повторно проверяться непосредственно перед действием. Этот этап WP-02 **не** добавлял Android 권 полномочий, не менял Jarvis и не переносил его веса.
+Применён **только принцип:** explicit owner/permission/consent/STOP должен жить в доверенном Android-контуре и повторно проверяться непосредственно перед действием. Этот этап WP-02 **не** добавлял Android-полномочий, не менял Jarvis и не переносил его веса.
 
 ## 5. Воспроизводимость именно изменённых файлов
 
