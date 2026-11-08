@@ -173,6 +173,19 @@ object OwnerConsentStateTest {
             check(g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)!=null)
             check(f.launched==1)
         }
+        test("concurrent recreated gates never reuse a request code within process") {
+            val codes = java.util.Collections.synchronizedList(mutableListOf<Int>())
+            val threads = (0 until 64).map {
+                kotlin.concurrent.thread(start = true) {
+                    val (_,g) = make()
+                    val code = g.begin(scope,OwnerConsentState.DIAGNOSTIC_DESCRIPTION)
+                    if (code != null) codes.add(code)
+                }
+            }
+            threads.forEach { it.join() }
+            check(codes.size == 64 && codes.toSet().size == 64)
+            check(codes.all { it in 0x4100..0x7fef })
+        }
         println("UNO_OWNER_CONSENT_HOST_PASS=$passed")
     }
 }
