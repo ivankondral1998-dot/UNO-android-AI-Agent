@@ -25,13 +25,14 @@ import java.util.concurrent.atomic.AtomicBoolean
  * transactions. No automatic trimming/repair is allowed: damaged files fail closed.
  */
 class ActionIntentJournal(file: File) : Closeable {
-    enum class Phase { PREPARED, MAY_HAVE_EXECUTED, RECEIPT_RECORDED }
+    enum class Phase { PREPARED, MAY_HAVE_EXECUTED, RECEIPT_RECORDED, REFERENCE_USED_RECEIPT }
     data class Row(
         val id: String,
         val proposalSha256: String,
         val phase: Phase,
         val recovered: Boolean,
-        val receipt: NativeEvidence? = null
+        val receipt: NativeEvidence? = null,
+        val used: Boolean = false
     )
 
     private val stop = AtomicBoolean(false)
@@ -109,6 +110,25 @@ class ActionIntentJournal(file: File) : Closeable {
         return !stop.get()
     }
 
+    /**
+     * Reference-only atomic terminal marker: used=true and a positive source-tagged
+     * receipt are written in ONE v2 append+fsync record. Not A_cap/A_tx for Android,
+     * not atomic with external memory files or P versions, and not an OS proof.
+     * Old v1 RECEIPT_RECORDED records never imply a durable used bit.
+     */
+    @Synchronized internal fun recordReferenceUsedReceipt(
+        id: String, proposalSha256: String, evidence: NativeEvidence
+    ): Boolean {
+        val old = rows[id] ?: return false
+        if (!usable() || old.recovered || old.phase != Phase.MAY_HAVE_EXECUTED ||
+            old.proposalSha256 != proposalSha256 || evidence.ticketId != id ||
+            evidence.endpoint != NativeEndpoint.TRUE || evidence.nativeGeneration <= 0 ||
+            evidence.observedAtNanos < 0 || !validSource(evidence.source)) return false
+        if (!append(id, proposalSha256, 4, evidence)) return false
+        rows[id] = old.copy(phase = Phase.REFERENCE_USED_RECEIPT, receipt = evidence, used = true)
+        return !stop.get()
+    }
+
     /** One-way STOP for this journal instance. Does not interrupt an in-flight OS operation. */
     fun stop() { stop.set(true) }
 
@@ -131,17 +151,18 @@ class ActionIntentJournal(file: File) : Closeable {
     ): ByteArray {
         val bytes = ByteArrayOutputStream()
         DataOutputStream(bytes).use { out ->
-            out.writeByte(1) // format version
+            out.writeByte(if (phase == 4) 2 else 1) // v2 atomic reference used+receipt; v1 stays readable
             out.writeLong(number)
             out.writeByte(phase)
             out.writeUTF(id)
             out.writeUTF(digest)
-            if (phase == 3) {
+            if (phase == 3 || phase == 4) {
                 val receipt = evidence ?: error("RECEIPT_REQUIRED")
                 out.writeUTF(receipt.source)
                 out.writeLong(receipt.nativeGeneration)
                 out.writeLong(receipt.observedAtNanos)
-                out.writeByte(1) // Only independently checked TRUE claims may be recorded.
+                out.writeByte(1) // Only controller-checked TRUE claims may be recorded.
+                if (phase == 4) out.writeByte(1) // used=true in the SAME synced record
             }
         }
         return bytes.toByteArray()
@@ -188,9 +209,10 @@ class ActionIntentJournal(file: File) : Closeable {
             val phase = input.readUnsignedByte()
             val id = input.readUTF()
             val digest = input.readUTF()
-            if (ver != 1 || counter != sequence + 1 || !validId(id) || !validDigest(digest))
+            if (!((ver == 1 && phase in 1..3) || (ver == 2 && phase == 4)) ||
+                counter != sequence + 1 || !validId(id) || !validDigest(digest))
                 throw IOException("OUTBOX_PAYLOAD_INVALID")
-            val receipt = if (phase == 3) {
+            val receipt = if (phase == 3 || phase == 4) {
                 val source = input.readUTF()
                 val generation = input.readLong()
                 val observed = input.readLong()
@@ -199,6 +221,8 @@ class ActionIntentJournal(file: File) : Closeable {
                     throw IOException("OUTBOX_RECEIPT_INVALID")
                 NativeEvidence(id, NativeEndpoint.TRUE, generation, observed, source)
             } else null
+            if (phase == 4 && input.readUnsignedByte() != 1)
+                throw IOException("OUTBOX_USED_MARKER_INVALID")
             if (input.available() != 0) throw IOException("OUTBOX_TRAILING_PAYLOAD")
             when (phase) {
                 1 -> {
@@ -217,6 +241,15 @@ class ActionIntentJournal(file: File) : Closeable {
                         old.phase != Phase.MAY_HAVE_EXECUTED || receipt == null)
                         throw IOException("OUTBOX_INVALID_RECEIPT_TRANSITION")
                     rows[id] = old.copy(phase = Phase.RECEIPT_RECORDED, receipt = receipt)
+                }
+                4 -> {
+                    val old = rows[id]
+                    if (old == null || old.proposalSha256 != digest ||
+                        old.phase != Phase.MAY_HAVE_EXECUTED || receipt == null)
+                        throw IOException("OUTBOX_INVALID_ATOMIC_REFERENCE_COMMIT")
+                    rows[id] = old.copy(
+                        phase = Phase.REFERENCE_USED_RECEIPT, receipt = receipt, used = true
+                    )
                 }
                 else -> throw IOException("OUTBOX_PHASE_UNKNOWN")
             }
