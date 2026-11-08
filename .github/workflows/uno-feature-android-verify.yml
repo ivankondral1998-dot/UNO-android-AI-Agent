@@ -78,8 +78,9 @@ jobs:
           grep -E '^package:|^sdkVersion:|^targetSdkVersion:' ci-evidence/APK_BADGING.txt
           grep -Fq "package: name='org.unovyra.uno.scaffold.ci${GITHUB_RUN_ID}'" ci-evidence/APK_BADGING.txt
           ! grep -Fq "package: name='org.unovyra.uno.scaffold'" ci-evidence/APK_BADGING.txt
+          # Labels must be resource-backed: inline manifest labels are omitted by aapt badging.
+          grep -E '^application(-label)?:' ci-evidence/APK_BADGING.txt
           grep -Fq "application-label:'UNO TEST · ci${GITHUB_RUN_ID}'" ci-evidence/APK_BADGING.txt
-          grep -E '^application-label:' ci-evidence/APK_BADGING.txt
           if grep -E 'android.permission.(INTERNET|RECORD_AUDIO|CAMERA)' ci-evidence/APK_PERMISSIONS.txt; then
             echo "FAIL: forbidden capability found in diagnostic APK" >&2
             exit 1
