@@ -1,5 +1,16 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-08 — A52 OWNER BIOMETRIC / INVISIBLE OUTCOME (LATEST)
+
+**ФАКТ ОТ ВЛАДЕЛЬЦА:** в `UNO TEST ci42504842750` после нажатия «Проверить владельца через экран Android» открылся системный **отпечаток пальца**. После нажатия «Проверить одноразовое согласие» пользователь сообщил «ничего вообще не произошло». **НЕЛЬЗЯ** считать Android `RESULT_OK` или успешный `consume` установленным фактом: не получены тексты статуса/OS callback logs. По исходнику воспроизведён дефект UX: обе операции обновляли только `status` **вверху** длинного ScrollView, тогда как кнопки находятся ниже.
+
+**IMPLEMENTED + ANDROID_BUILT:** добавлен `ownerFeedback` прямо под кнопками и общий `showOwnerFeedback` для OS callback/one-use результата; статический регрессионный guard + две отрицательные проверки. `OwnerConsentState`, STOP, модель и `DenyAllAndroidPort` **не менялись**. [GitHub Actions #42509757092](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42509757092) SUCCESS, built SHA `502088cadbbfec603bd52e8dc46be150afe3e41e`, package `org.unovyra.uno.scaffold.ci42509757092`, launcher `UNO TEST · ci42509757092`, APK 924794 B, SHA256 `a26d12d94d690afb6f5176a5ad682e8bed2c1f6205e48377274999603d4b7f6c`, приватный Google Drive APK https://drive.google.com/file/d/13z9r0_195niHfEwo1QHi9jabp-fRlx6-/view?usp=drivesdk. ZIP/APK и SHA проверены. Инженерный отчёт: [A52 fingerprint feedback R1](implementation/2026-11-08_OWNER_CREDENTIAL_A52_UI_FEEDBACK_R1.md).
+
+**GATE:** новая сборка `ANDROID_BUILT`, но `DEVICE_VERIFIED_FOR_THIS_APK=FALSE`; одноразовое согласие ещё `REQUIRES_DATA`, security logic unchanged. В уже установленной старой версии можно просто прокрутить **наверх** после нажатия, где текст статуса изменится. В новой версии ответ будет непосредственно под кнопками; OS результат и факт one-time consume должны быть проверены на A52. Никаких повторов STRESS и продвижения к Android native actions до этой проверки не требовать.
+
+---
+
+
 ## UPDATE 2026-11-08 — A52 SQLITE INSPECTION — OWNER REPORT (LATEST)
 
 **Физическое испытание владельцем:** установленная сборка `org.unovyra.uno.scaffold.ci42504842750`; получен скопированный JSON `UNO_OUTCOME_INSPECTION/1`: `status=INSPECTED`, `total=0`, `prepared=0`, `may_have_executed=0`, `stored_readback_claims_UNVERIFIED=0`, `native_actions_enabled=false`, `verified_os_outcomes=false`. По коду `AndroidOutcomeInspection.inspect(false)` статус `INSPECTED` означает, что main DB **существует и доступна** в момент обращения, иначе был бы `NOT_INITIALIZED` или `UNAVAILABLE` (при обнаружении sidecars). **Когда возникла база — неизвестно; нет доказательства персистентности непустых записей, authority, native readback.** Никакой ошибочный `PASS` о действиях/модели не присваивать.
