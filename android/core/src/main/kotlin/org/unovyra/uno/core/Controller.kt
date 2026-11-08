@@ -150,14 +150,17 @@ class TrustController(
             if (evidence.endpoint == NativeEndpoint.FALSE) t.phase = Phase.DENIED
             return false
         }
-        if (!ledger.commit(t, evidence)) return false
-        // The ledger commit and the intent journal are currently TWO distinct stores.
-        // If the journal cannot sync the readback claim, report unresolved, never success.
-        // This is not the A_tx atomic used+receipt+M-ref transaction from Astra/R5.3.
-        if (intentJournal != null && !intentJournal.recordReadbackClaim(t.id, t.proposalDigest, evidence)) {
-            t.phase = Phase.MAY_HAVE_EXECUTED
-            return false
-        }
+        if (intentJournal != null) {
+            // For the reference path only: the legacy ledger must be demonstrably transient.
+            // Never silently split a future durable ledger and this journal into two commits.
+            // This single fsynced v2 record binds reference used=true + positive receipt;
+            // it does NOT bind P-version, semantic memory, Android trust or OS causality.
+            if (ledger !is InMemoryLedger || !ledger.commit(t, evidence) ||
+                !intentJournal.recordReferenceUsedReceipt(t.id, t.proposalDigest, evidence)) {
+                t.phase = Phase.MAY_HAVE_EXECUTED
+                return false
+            }
+        } else if (!ledger.commit(t, evidence)) return false
         t.readback = evidence
         t.used = true
         t.phase = Phase.COMMITTED
