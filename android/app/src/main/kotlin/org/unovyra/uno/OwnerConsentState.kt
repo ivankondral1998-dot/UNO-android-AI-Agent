@@ -1,7 +1,9 @@
 package org.unovyra.uno
 
 import java.security.SecureRandom
+import java.security.MessageDigest
 import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
 
 /**
  * One-shot process-local consent state. This is NOT OS authority or a dispatch capability.
@@ -27,21 +29,45 @@ internal class OwnerConsentState(private val platform: CredentialPlatform) {
     private val stopped = AtomicBoolean(false)
     private val session = ByteArray(16).also { SecureRandom().nextBytes(it) }
         .joinToString("") { "%02x".format(it) }
-    private var nextCode = 0x4100
     private var pending: Pending? = null
     private var ready: Ready? = null
 
-    companion object { const val TTL_NANOS = 60_000_000_000L }
+    companion object {
+        const val TTL_NANOS = 60_000_000_000L
+        private const val CODE_MIN = 0x4100
+        private const val CODE_MAX = 0x7fef
+        private const val CODE_SPACE = CODE_MAX - CODE_MIN + 1
+        // Android request codes carry no cryptographic challenge. Do not reuse a code
+        // across recreated OwnerConsentState instances *within the same process*.
+        // Across process death, codes are randomized but stale OS callback collision
+        // is not proven impossible. OS/device tests remain mandatory.
+        private val codeSeed = SecureRandom().nextInt(CODE_SPACE)
+        private val issuedCodes = AtomicInteger(0)
+        private fun issueCode(): Int? {
+            val n = issuedCodes.getAndIncrement()
+            if (n !in 0 until CODE_SPACE) return null
+            return CODE_MIN + (codeSeed + n) % CODE_SPACE
+        }
+        private val diagnosticDigest = MessageDigest.getInstance("SHA-256")
+            .digest("UNO_OWNER_CREDENTIAL_NOOP/1".toByteArray(Charsets.UTF_8))
+            .joinToString("") { "%02x".format(it) }
+
+        /** Only the R5.3 verb 2 NOOP is authorized to request this diagnostic proof. */
+        fun diagnosticNoopScope() = Scope(2, diagnosticDigest, emptySet())
+    }
 
     /** Only the owner's foreground UI may call this. A model-supplied description is forbidden. */
     @Synchronized fun begin(scope: Scope, exactDescription: String): Int? {
+        // Exact closed diagnostic catalogue. In particular verb 15 local notes and
+        // all other Android effects must never gain a grant from this NOOP UI.
         if (stopped.get() || pending != null || ready != null || !scope.valid() ||
+            scope != diagnosticNoopScope() ||
             exactDescription.isBlank() || exactDescription.length > 240 ||
-            nextCode > 0x7fef || !platform.secureAndUnlocked() || !platform.foreground() ||
+            !platform.secureAndUnlocked() || !platform.foreground() ||
             !platform.permissionsGranted(scope.permissions)) return null
         val now = platform.nowNanos()
         if (now < 0 || now > Long.MAX_VALUE - TTL_NANOS) return null
-        val code = nextCode++ // never reuse a request code within this Activity instance
+        val code = issueCode() ?: return null // no reuse across instances in this process
         val immutable = scope.copy(permissions = scope.permissions.toSet())
         pending = Pending(code, session, immutable, now)
         val launched = try { platform.launchCredentialPrompt(code, exactDescription) }
@@ -73,7 +99,8 @@ internal class OwnerConsentState(private val platform: CredentialPlatform) {
     @Synchronized fun consume(scope: Scope): Boolean {
         val r = ready ?: return false
         ready = null
-        return !stopped.get() && r.session == session && r.scope == scope && scope.valid() &&
+        return !stopped.get() && r.session == session && r.scope == scope &&
+            scope == diagnosticNoopScope() && scope.valid() &&
             withinTtl(r.at) && platform.secureAndUnlocked() && platform.foreground() &&
             platform.permissionsGranted(scope.permissions)
     }
