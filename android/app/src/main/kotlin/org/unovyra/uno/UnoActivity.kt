@@ -2,6 +2,8 @@ package org.unovyra.uno
 
 import android.app.Activity
 import android.content.Intent
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -33,6 +35,8 @@ class UnoActivity : Activity() {
     @Volatile private var labStop = LabStop()
     private lateinit var status: TextView
     private lateinit var report: TextView
+    // Contains the full last JSON, not the truncated on-screen preview. UI-thread only.
+    private var copyableReport: String? = null
     private lateinit var uiRoot: LinearLayout
     private val labels = ArrayList<TextView>()
     private val themeButtons = ArrayList<Button>()
@@ -108,6 +112,8 @@ class UnoActivity : Activity() {
             labels.add(this)
         }
         root.addView(label("UNOVYRA / UNO 1.0 LAB",25f))
+        root.addView(label("УСТАНОВЛЕННЫЙ ПАКЕТ: $packageName", 13f))
+        root.addView(label("Если кнопок SQLite ниже нет — открыта другая версия UNO.", 13f))
         status=label("Офлайн-лаборатория WP-01 · действий ОС нет · модель не загружена")
         root.addView(status)
         root.addView(label("Сценарии запускаются вручную. Режим STRESS ограничен 60 секундами, QUICK — 12. STOP блокирует новые шаги.",13f))
@@ -166,6 +172,7 @@ class UnoActivity : Activity() {
         }
         button("Снимок состояния: RAM / CPU / батарея / тепло") { runSimple(false) }
         button("Каталог сенсоров и их характеристики") { runSensorInventory() }
+        button("📋 СКОПИРОВАТЬ ВЕСЬ ПОСЛЕДНИЙ ОТЧЁТ") { copyFullReport() }
         button("Быстрая лаборатория: CPU, память, IO, STOP, сенсоры") { runLab(LabProfile.QUICK) }
         button("ЖЁСТКАЯ лаборатория: нагрузки до 60 сек") { runLab(LabProfile.STRESS) }
         button("Нет обученной модели — проверить fail-closed") {
@@ -185,9 +192,27 @@ class UnoActivity : Activity() {
         reportFullyDrawn() // For full launch timing use separate physical-device Macrobenchmark.
     }
 
+    /** Manual clipboard export only. No network, SAF, generic external intents or write access. */
+    private fun copyFullReport() {
+        val text = copyableReport
+        if (text.isNullOrEmpty()) {
+            status.text = "Сначала выполните проверку, затем нажмите «Скопировать весь отчёт»."
+            return
+        }
+        try {
+            val manager = getSystemService(CLIPBOARD_SERVICE) as? ClipboardManager
+                ?: throw IllegalStateException("CLIPBOARD_UNAVAILABLE")
+            manager.setPrimaryClip(ClipData.newPlainText("UNO offline diagnostic report", text))
+            status.text = "Скопировано ${text.length} символов. Буфер обмена доступен другим приложениям."
+        } catch (_: Exception) {
+            status.text = "Не удалось скопировать отчёт. Локальный JSON остался сохранён."
+        }
+    }
+
     private fun execute(label:String,action:()->Pair<JSONObject,String>) {
         if(!busy.compareAndSet(false,true)) { status.text="Уже запущен тест. Используй STOP.";return }
         status.text=label
+        copyableReport = null // Never copy a stale result after a failed new test.
         worker.execute {
             val result=runCatching{action()}
             busy.set(false)
@@ -196,8 +221,13 @@ class UnoActivity : Activity() {
                     status.text=if(result.isSuccess) "Лаборатория: JSON сохранён в телефоне" else "Ошибка: тест не завершён"
                     report.text=if(result.isSuccess) {
                         val (json,path)=result.getOrThrow()
+                        val rawJson = json.toString(2)
+                        copyableReport = "UNO_OFFLINE_DIAGNOSTIC\npackage=$packageName\npath=$path\n" + rawJson
+                        val cropped = if (rawJson.length > 14000) {
+                            "\n[На экране только первые 14000 символов; кнопка копирует полный JSON.]"
+                        } else ""
                         "Локально: $path\nUI late >=350ms: ${heartbeatLateCount.get()} " +
-                        "max=${heartbeatMaxDelayMs.get()}ms\n" + json.toString(2).take(14000)
+                            "max=${heartbeatMaxDelayMs.get()}ms\n" + rawJson.take(14000) + cropped
                     } else result.exceptionOrNull()?.javaClass?.simpleName?:"UNKNOWN"
                 }
             }
