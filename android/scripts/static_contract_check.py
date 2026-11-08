@@ -85,6 +85,10 @@ def scan(root: Path) -> list[str]:
             'showOwnerFeedback(if (consumed)' not in activity or
             'showOwnerFeedback(if (accepted)' not in activity):
         errors.append('owner_local_result_feedback_missing')
+    if ('runAppPrivateEffectProbe()' not in activity or
+            'AppPrivateReadbackProbe.run(filesDir)' not in activity or
+            'AppPrivateReadbackProbe.inspect(filesDir, outcome.id)' not in activity):
+        errors.append('app_private_effect_readback_ui_missing')
     return errors
 
 
