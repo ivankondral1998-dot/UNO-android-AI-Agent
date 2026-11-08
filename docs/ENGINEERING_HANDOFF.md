@@ -1,5 +1,16 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-08 — SIDE-BY-SIDE APK, INSTALL CONFLICT
+
+Владелец сообщил Android install отказ: конфликт с другим установленным пакетом. **Подпись как причина — гипотеза, на A52 `INSTALL_FAILED_UPDATE_INCOMPATIBLE`/cert пока не собраны.** Старое приложение и данные **НЕ удалять**. Исправление на feature branch: только CI debug получает уникальный суффикс `-PunoIsolatedDebugSuffix=ci${GITHUB_RUN_ID}`; обычные debug/release applicationId неизменны. ADB-подсказка в UI использует фактический `packageName`. Никаких изменений Jarvis/Neural Language/Astra/Grok.
+
+**Реальный новый APK собран:** GitHub Actions [run #42493602248](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42493602248), **SUCCESS**, exact built source SHA `0afa6cb9850faee68abea0e93be98794db41b930`; `aapt dump badging` проверил **`org.unovyra.uno.scaffold.ci42493602248`** (не прежний `org.unovyra.uno.scaffold`). Размер **922678**, SHA-256 **`63b46afedb03641c189e7f9c71ede28b8e16b426878ab924952d16f69bc776c1`**, ZIP/APK checks integrity PASS. Отдельный приватный APK на Google Drive: https://drive.google.com/file/d/1M_Pzo19E9eVDSwFo8OmHYMOrXJWIbjgP/view?usp=drivesdk ; Drive подтвердил точный size и MIME. Подробный [акт исправления установки](implementation/2026-11-08_WP02_APK_INSTALL_CONFLICT_SIDE_BY_SIDE_R1.md).
+
+**Это тестовая side-by-side сборка, не upgrade старого пакета**. Система создаёт новый sandbox, не импортирует существующие данные. Для обновлений в будущем понадобится фиксированный production/debug signer, не очередное изменение package ID. `DEVICE_VERIFIED=FALSE` до установки и реального test на A52, `FOUNDATION_INCOMPLETE` — нет ядра, весов и native readback. GitHub Actions и Google Drive приватная доставка авторизованы на выполнение задачи; публикации релиза нет.
+
+---
+
+
 ## UPDATE 2026-11-08 — ANDROID SDK35 BUILT — RUN 42488780925 (CURRENT)
 
 **ФАКТ `ANDROID_BUILT`** (но `DEVICE_VERIFIED=FALSE`): первое успешно собранное APK с **реальным Android SDK35** для текущего feature-кода UNO, exact built SHA `de7d3e9c3e9634daa6ec20e7741d24546d088569`; private GitHub Actions [run #42488780925](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42488780925) **SUCCESS**. Debug APK `org.unovyra.uno.scaffold`, `0.1.0-skeleton`, min26/target35, **922662 bytes**, SHA256 `2c5285ea277acc11a8925900a66013a0ad4585946e84c13ef8cb09e72365ed37`. GitHub private artifact ID `13620288108` (ZIP SHA `5d0cb1cd1d5d35ef1fba89fb197a84a531d662f3a2e70eeedc7c741b06251424`; expires 11 Nov). Artifact privately downloaded, ZIP/APK checked, SHA rechecked.
