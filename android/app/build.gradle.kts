@@ -11,7 +11,7 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "0.1.0-skeleton"
-        manifestPlaceholders["unoAppLabel"] = "UNOVYRA UNO · Scaffold"
+        resValue("string", "uno_app_label", "UNOVYRA UNO · Scaffold")
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -35,7 +35,7 @@ android {
                 applicationIdSuffix = ".$isolatedSuffix"
                 versionNameSuffix = "-$isolatedSuffix"
                 // Launcher/app-switcher label must visibly differ from older APKs.
-                manifestPlaceholders["unoAppLabel"] = "UNO TEST · $isolatedSuffix"
+                resValue("string", "uno_app_label", "UNO TEST · $isolatedSuffix")
             }
         }
     }
