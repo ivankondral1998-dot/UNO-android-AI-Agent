@@ -1,5 +1,16 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE — SQLITE INSPECTION UI / WP-02 (2026-11-08) — CURRENT
+
+**Ветка, SHA и правила:** перед правкой заново прочитать `/AGENTS.md` и HEAD; прошлые SHA ниже — исторические снимки. В `UnoActivity` добавлены две явные диагностические кнопки: чтение существующей SQLite без её создания и создание пустой SQLite для последующей проверки. Фактический `AndroidOutcomeInspection.kt` открывает `AndroidOutcomeStore.inspectAfterRestart()` на текущем background worker, возвращает только агрегированные счётчики, не выдаёт билеты/не делает native. `NOT_INITIALIZED` отличается от `UNAVAILABLE`; осиротевший WAL без основной БД и любой corrupt/executable/unknown row → **UNAVAILABLE**, не пустая история и не успех. UI записывает только app-private JSON с явными `verified_os_outcomes=false`, `native_actions_enabled=false` или FAIL-CLOSED.
+
+**Код/проверка:** добавлены `android/app/src/main/kotlin/org/unovyra/uno/AndroidOutcomeInspection.kt`, Kotlin host fixtures `android/scripts/inspection_host/*`, запускаемый `android/scripts/test_outcome_inspection_host.sh`, добавлен запуск в `run_all_preflight.sh`; подробности в [WP-02 Android inspection UI R1](implementation/2026-11-08_WP02_ANDROID_INSPECTION_UI_R1.md). **11/11 новых Kotlin inspector host**, **14/14 прежних host SQLite** и **58/58 reference controller/journal JVM** PASS отдельно (разные уровни, не Android integration). Полный preflight на текущем HEAD, Android Gradle, UI/device тесты пока НЕ запускались.
+
+**НЕ ЗАКРЫТО:** Ни один privileged native action не разрешён — `UnoActivity` всё ещё `DenyAllAndroidPort()+DenyAllLedger()`, веса отсутствуют. Конкретный action-authority, owner identification, one-use consent, Android permission revalidation, STOP/OS linearization, independent native readback и device transactional proof остаются `SPECIFIED_UNTESTED`. Jarvis V21 `AndroidOperationAuthority` и `ConfirmationTicketGate` проверены как источники требований (не код для слепого переноса). R5.3/Astra/Grok, N0/FR/TR, Jarvis, Neural Language и старые источники сохранены. `FOUNDATION_INCOMPLETE`.
+
+---
+
+
 ## UPDATE — ANDROID SQLITE BACKEND / WP-02 (2026-11-08)
 
 **Сверяй живой HEAD перед следующей правкой.** Добавлен `android/app/src/main/kotlin/org/unovyra/uno/AndroidOutcomeStore.kt`: настоящий Android `SQLiteOpenHelper` / WAL / `beginTransactionNonExclusive`; одна БД фиксирует `operations.used + source-tagged readback claim + bounded memory_ref/payload` в одном SQL COMMIT. После process restart `inspectAfterRestart()` возвращает **неисполнимую** историю либо явный `Inspection.Unavailable`, но **не выдаёт** старых tickets и никогда не делает retry. Есть SHA-256 validation raw bytes на открытии; schema upgrade fail closed, никаких удалений или автоматической конверсии старых journal-файлов. Никакие модельные/OS действия новый store самостоятельно не выполняет.
