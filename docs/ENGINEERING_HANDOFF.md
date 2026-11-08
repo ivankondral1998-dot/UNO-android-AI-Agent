@@ -1,5 +1,18 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-08 — AUDIT R2: OWNER CONSENT BUGFIX (MOST RECENT)
+
+**READ ROOT `/AGENTS.md`, CHECK GITHUB HEAD BEFORE CHANGES.** Самостоятельный аудит обнаружил и воспроизвёл **три ошибки текущего `OwnerConsentState`** (не Android device exploit): (SEC-01) диагностический экран принимал scope verb15 и произвольный SHA; (SEC-02) requestCode `0x4100` повторялся при пересоздании gate, из-за чего старый тестовый RESULT_OK мог быть принят новым pending challenge; (SEC-03) произвольное описание системного подтверждения принималось с семантикой NOOP. Все три исправлены: **строгий единственный `diagnosticNoopScope()` (verb2, fixed digest, empty permissions)**, единый фиксированный `DIAGNOSTIC_DESCRIPTION` из того же класса, process-wide `AtomicInteger` + random start modulo 16 112 request codes (без reuse в одном процессе до исчерпания диапазона). `UnoActivity` использует только централизованные значения. **Старые исходники/математика сохранены; правки только на feature-ветке.**
+
+**Проверено на реально выполненных host тестах:** `31/31` owner state и `11/11` Android platform-stub (**42/42**, 5 отдельных повторных JVM запусков); дополнительно `58/58` prior core reference host, `14/14` настоящая host SQLite SQL, `11/11` inspector stub. **125 сценариев разного уровня, НЕ 125 Android device tests.** Исправлены имена прежних fake-permission тестов: NOOP не требует Android permissions, поэтому они *не* были доказательством реального permission revocation. [Полное версионированное erratum R2 и точные Git blobs](implementation/2026-11-08_WP02_OWNER_CONSENT_SECURITY_ERRATUM_R2.md). Прежний R1 не переписывался.
+
+**Jarvis актуально сверен, только read:** `kolakbro5995-cpu/JarvisLab` `feature/v21-local-offline-runtime-20261101` @ `9c60f81d81d11a0977be1d36d928a3b5d273bbef`, `AndroidOperationAuthority`, `ConfirmationTicketGate`, негативные host-тесты. Сохраняем one-use, STOP, permissions/context/native preflight; не переносим Cloud OwnerGate, special lab bypass, старые веса. Аудит Grok `MATH-C01` и `MATH-C05` остаются открыты; Astra `A_cap/A_tx/A_fs` — CONDITIONAL, не «PASS».
+
+**Границы:** requestCode уникален **только внутри процесса**; после смерти процесса случайная коллизия и OS callback routing ещё не исключены испытаниями на A52. Deprecation `KeyguardManager.createConfirmDeviceCredentialIntent` API29 подтверждена Android reference; возможный `BiometricPrompt` требует отдельной SDK/device проверки. Android SDK/Gradle и Galaxy A52 здесь не проверялись; полный `run_all_preflight.sh` текущей ветки не выполнялся; `DenyAllAndroidPort` и `NoWeightsNeuralPort` не заменены. **`FOUNDATION_INCOMPLETE`.**
+
+---
+
+
 ## UPDATE — OWNER CREDENTIAL NOOP / WP-02 (2026-11-08)
 
 **При первом входе сверить текущий HEAD GitHub и `/AGENTS.md`.** Android-лаборатория получила **реальное обращение к системному экрану проверки учётных данных устройства**, пока только для диагностического `NOOP` (verb=**2** по Astra, **не ABSTAIN=0**). Добавлены `OwnerConsentState.kt` (process-only one-use/TTL/session nonce/STOP/permission/foreground binding) и `AndroidDeviceCredentialPlatform.kt` (Android KeyguardManager, actual OS device-credential intent). В `UnoActivity` — два owner-tapped шага запрос→Android RESULT_OK→одноразовое подтверждение без native-effect. Операции не выполняются, `DenyAllAndroidPort` и `NoWeightsNeuralPort` сохранены. Старый OwnerGate Jarvis, его cloud auth, веса, архитектура не переносились.
