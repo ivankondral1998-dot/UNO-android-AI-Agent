@@ -17,6 +17,10 @@ import android.widget.ScrollView
 import android.widget.TextView
 import org.unovyra.uno.core.UnoChatTurn
 import org.unovyra.uno.core.UnoPromptWindow
+import org.unovyra.uno.core.UnoTextCycle
+import org.unovyra.uno.core.UnoTextInput
+import org.unovyra.uno.core.UnoTextStatus
+import org.unovyra.uno.core.UnoProcessStop
 import java.io.File
 import java.io.FileOutputStream
 import java.security.MessageDigest
@@ -41,7 +45,7 @@ class UnoChatActivity : Activity() {
     private lateinit var stop: Button
     private var currentUser = ""
     private var partial = ""
-    private val history by lazy { UnoChatHistoryStore(applicationContext) }
+    private val history by lazy { UnoSecureChatHistoryStore(applicationContext) }
 
     private fun line(text: String, size: Float = 15f) = TextView(this).apply {
         this.text = text; textSize = size; setTextColor(0xfff5f5f5.toInt())
@@ -95,15 +99,26 @@ class UnoChatActivity : Activity() {
         controls.addView(send, LinearLayout.LayoutParams(0, -2, 1f))
         controls.addView(stop, LinearLayout.LayoutParams(0, -2, 1f))
         root.addView(controls)
-        root.addView(line("Только текст. История хранится в приватном хранилище приложения БЕЗ шифрования. " +
-            "Не вводите секреты. Оператор F, семантическая память и Android-действия не подключены.", 12f))
+        root.addView(Button(this).apply {
+            text = "СТОП UNO · запретить новые операции до перезапуска процесса"
+            setOnClickListener {
+                UnoProcessStop.stop()
+                cancelled.set(true)
+                textCycle?.stop()
+                try { UnoNativeEngine.cancel() } catch (_: Throwable) {}
+                lockUi(false)
+                status.text = "STOP UNO: новые вычисления этого процесса закрыты; Android-действия и так запрещены"
+            }
+        })
+        root.addView(line("Только текст. История текущего чата шифруется AndroidKeyStore (AES-GCM). " +
+            "Не вводите секреты: старая v1-история может остаться на устройстве без шифрования. Оператор F и Android-действия не подключены.", 12f))
         setContentView(root)
         lockUi(false)
         startLoadHistory()
     }
 
     private fun lockUi(on: Boolean) {
-        send.isEnabled = !on && loaded
+        send.isEnabled = !on && loaded && !UnoProcessStop.isStopped()
         stop.isEnabled = on
     }
     private fun render() {
@@ -126,7 +141,7 @@ class UnoChatActivity : Activity() {
                     status.text = "История загружена: ${restored.size} реплик · модель не загружена"
                     busy.set(false)
                     val name = getPreferences(MODE_PRIVATE).getString("model_name", null)
-                    if (name != null && Regex("sha256-[0-9a-f]{64}\\.gguf").matches(name)) {
+                    if (!UnoProcessStop.isStopped() && name != null && Regex("sha256-[0-9a-f]{64}\\.gguf").matches(name)) {
                         val modelFile = File(File(filesDir, "models"), name)
                         if (modelFile.isFile) loadModel(modelFile)
                     }
@@ -143,6 +158,7 @@ class UnoChatActivity : Activity() {
     }
 
     private fun selectModel() {
+        if (UnoProcessStop.isStopped()) { status.text = "STOP · импорт модели запрещён"; return }
         if (busy.get()) return
         val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)
@@ -156,6 +172,7 @@ class UnoChatActivity : Activity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode != 51 || resultCode != RESULT_OK) return
+        if (UnoProcessStop.isStopped()) { status.text = "STOP · импорт заблокирован"; return }
         val uri = data?.data ?: return
         // Even an app with no INTERNET permission could read via a networked SAF provider.
         // Allow only Android's well-known local document providers. Others FAIL CLOSED.
@@ -229,18 +246,20 @@ class UnoChatActivity : Activity() {
         }
     }
     private fun loadModel(file: File) {
+        if (UnoProcessStop.isStopped()) return
         if (!busy.compareAndSet(false, true)) return
         lockUi(true)
         status.text = "Загружаю модель · CPU, контекст 2048"
         worker.execute { performLoad(file) }
     }
     private fun performLoad(file: File) {
+        if (UnoProcessStop.isStopped()) return
         try {
             check(UnoNativeEngine.load(file.absolutePath)) { "MODEL_LOAD_RETURNED_FALSE" }
             main.post {
                 if (active) {
-                    loaded = true
-                    status.text = "GGUF загружен · CPU · без Android-действий · offline"
+                    loaded = !UnoProcessStop.isStopped()
+                    status.text = if (loaded) "GGUF загружен · CPU · без Android-действий · offline" else "STOP · модель загружена, но использование запрещено"
                     busy.set(false); lockUi(false)
                 }
             }
@@ -257,6 +276,7 @@ class UnoChatActivity : Activity() {
     private fun submit() {
         val user = input.text.toString().trim()
         val cycle = textCycle ?: run { status.text = "Состояние диалога недоступно"; return }
+        if (UnoProcessStop.isStopped()) { status.text = "STOP · генерация запрещена"; return }
         if (!loaded || !busy.compareAndSet(false, true)) return
         currentUser = user; partial = ""; cancelled.set(false)
         try { UnoNativeEngine.resetCancel() } catch (e: Throwable) {
@@ -271,7 +291,7 @@ class UnoChatActivity : Activity() {
             val tokens = AtomicInteger(0)
             var lastUi = 0L
             try {
-                val receipt = cycle.run(UnoTextInput(user, stamp, "LOCAL_UI_TEXT"), { cancelled.get() }) { prompt, shouldStop ->
+                val receipt = cycle.run(UnoTextInput(user, stamp, "LOCAL_UI_TEXT"), { cancelled.get() || UnoProcessStop.isStopped() }) { prompt, shouldStop ->
                     val data = UnoNativeEngine.generate(
                         prompt.map { it.first }.toTypedArray(),
                         prompt.map { it.second }.toTypedArray(),
@@ -329,6 +349,7 @@ class UnoChatActivity : Activity() {
     }
 
     private fun confirmNewChat() {
+        if (UnoProcessStop.isStopped()) { status.text = "STOP · запись и очистка заблокированы"; return }
         if (busy.get()) return
         AlertDialog.Builder(this)
             .setTitle("Новый чат")

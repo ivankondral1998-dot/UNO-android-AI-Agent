@@ -206,6 +206,7 @@ class UnoActivity : Activity() {
             } catch (e:IllegalStateException) {e.message?:"MODEL_UNAVAILABLE"}
         }
         button("СТОП: прервать все тесты и запретить действия") {
+            UnoProcessStop.stop()
             explicitStopLatched.set(true)
             AppPrivateReadbackProbe.stop()
             labStop.stop();controller.stop();ownerGate.stop()
