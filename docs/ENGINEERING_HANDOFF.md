@@ -1,5 +1,14 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-10 — ORIGINAL WP-05 DURABLE EXACT MEMORY CANDIDATE
+
+**Working feature:** new `UnoExactMemoryPort` + `UnoEncryptedExactMemory` + `UnoAndroidExactMemory`. Versioned AES-256-GCM authenticated snapshots, AndroidKeyStore/AtomicFile, source/epoch/boot-bound exact bytes, fail-closed corrupt/key-missing input, monotonic read clock, durable revocation tombstones. Existing original end-to-end reference can now accept an injected persistent exact-memory port. Tests explicitly forbid arbitrary `VERIFIED_COMPLETION` and do not treat semantic summaries as exact facts.
+
+**Limits:** adapter is not yet wired to the production Activity; Android device key/boot compatibility NOT tested, same-boot restart NOT device verified, no rollback protection against old valid ciphertext and no fully semantic retrieval/owner auth. Original WP-05 remains **PARTIAL**. [Source, limits, tests](implementation/2026-11-10_ORIGINAL_WP05_ENCRYPTED_EXACT_MEMORY_R1.md). No changes to F/weights/main and no new permissions.
+
+---
+
+
 ## UPDATE 2026-11-09 — ROADMAP CORRECTION / ORIGINAL END-TO-END REFERENCE
 
 **SOURCE COMMIT:** `34b4dd3131406795a7db7c2030b975139e630927`, feature branch. [CI #42698868434](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42698868434) **SUCCESS**: full preflight, 258 host checks (including 23 new original-roadmap WP-06-T01 reference tests), Android SDK/NDK debug build, lint, aapt/source binding. New APK SHA-256 `58cecea663a9c459e4fd33899feb57771a8e5f967b771dba3c271973c9fe0814`. Exact SHA **not device tested**, no download requested.

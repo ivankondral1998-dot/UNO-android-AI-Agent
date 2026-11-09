@@ -28,7 +28,7 @@ data class FoundationReferenceResult(
  */
 class UnoFoundationReferenceCycle(
     private val neural: NeuralPort,
-    private val memory: ExactMemory,
+    private val memory: UnoExactMemoryPort,
     private val controller: TrustController,
     private val owner: AuthenticatedOwnerUi,
     private val scheduler: BoundedScheduler = BoundedScheduler(32)
