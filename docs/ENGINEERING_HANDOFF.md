@@ -1,5 +1,19 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-09 — WP-04 EXPERIMENTAL ON-DEVICE NEURAL CHAT (ANDROID BUILT; NOT DEVICE VERIFIED)
+
+**Current product goal:** owner's release-first decision (07.11) remains in force; own F/new weights research remains separate, not displaced by Qwen. New experimental text-only chat uses pinned MIT llama.cpp and owner-supplied GGUF, never authorizes Android actions.
+
+**EXACT BUILT SOURCE:** feature branch `feat/uno-foundation-hardening-20261107`, source commit `7990bc8af5cc58a6c195d42c957be6dc0e75f412`. Earlier precode WP03 commit `912b1f7aee03ab6071ad7823802d9ac2811ee02c` preserved as ancestor. `main` untouched.
+
+**CI EVIDENCE:** GitHub Actions [run 42670625565](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42670625565) `SUCCESS`; standalone `run_all_preflight.sh`, Gradle `:core:unoHostTests`, Android NDK arm64 + `:app:assembleDebug`, `:app:lintDebug`, aapt package and permission validation, and native-lib presence. Host harness prints `UNO_CHAT_WINDOW_HOST_PASS=10`, total `UNO_WP01_HOST_PASS=203`. The first WP-04 CI [42670096975](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42670096975) **FAIL**: old static guard disallowed second Activity; resolved with exactly-one-local-non-exported-chat-Activity guard plus 4 negative tests, not by disabling protection.
+
+**PRIVATE SIDE-BY-SIDE APK:** GitHub artifact `13698867287` (name `uno-side-by-side-debug-10`), package `org.unovyra.uno.scaffold.ci42670625565`, label `UNO TEST · ci42670625565`, minSdk26, targetSdk35, size **7,910,771 bytes**, SHA-256 `af331736d568a14a1b8b9e05e1ce5ccfee626cd847a67780da5eba7801fcf6b5`. Artifact archive integrity and APK zip integrity independently checked in ChatGPT runtime. APK contains `libuno_llama.so`, `libllama.so`, `libggml.so`, `libggml-cpu.so`, `libggml-base.so`, all arm64-v8a; `readelf` confirms JNI exports `load/generate/cancel/resetCancel/unload`. Manifest aapt check shows no INTERNET/RECORD_AUDIO/CAMERA. No trained weights bundled; owner explicitly imports local GGUF via allowed local SAF provider.
+
+**DEVICE STATUS:** `ANDROID_BUILT=TRUE` for built source; `DEVICE_VERIFIED_WP04=FALSE`, `RELEASE_READY=FALSE`. Huawei nova 10 SE / Android12 / 8GB RAM demonstrated Qwen3-0.6B in PocketPal, **not** this UNO APK; Samsung A52 results similarly belong to PocketPal. No claim of real UNO inference, phone battery/RAM or true offline network isolation yet. Chat history app-private exact JSON is **unencrypted**, separate from future exact/semantic long-lived memory. Neural JNI currently runs in the app process, not in isolated NeuralWorkerService. Android trust/STOP/real action/readback remain **deny-all**. See [WP04 R2 build evidence](implementation/2026-11-09_WP04_OFFLINE_NEURAL_CHAT_BUILD_EVIDENCE_R2.md).
+
+---
+
 ## UPDATE 2026-11-08 — WP-03 APP-PRIVATE EFFECT / READBACK (LATEST)
 
 **Owner-device milestone already closed:** A52 `UNO TEST ci42509757092` first NOOP one-use accepted and consumed; second denied; two screenshots. See [A52 one-use evidence](implementation/2026-11-08_A52_OWNER_NOOP_ONE_USE_DEVICE_EVIDENCE_R1.md). This does not authorize native effects or establish unique UNO owner identity.
