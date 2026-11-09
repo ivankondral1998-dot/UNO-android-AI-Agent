@@ -138,6 +138,9 @@ class UnoActivity : Activity() {
                 setOnClickListener{onClick()}
             })
         }
+        button("ОТКРЫТЬ ЭКСПЕРИМЕНТАЛЬНЫЙ ОФЛАЙН-ЧАТ UNO") {
+            startActivity(Intent(this, UnoChatActivity::class.java))
+        }
         root.addView(label("ОФОРМЛЕНИЕ · ручной выбор; нейровыбор пока недоступен", 17f))
         button("🟠 Оранжевый · тёмная тема") { chooseManualTheme(UnoThemeColors.ORANGE, ThemeTone.DARK) }
         button("🟡 Жёлтый · тёмная тема") { chooseManualTheme(UnoThemeColors.YELLOW, ThemeTone.DARK) }

@@ -5,6 +5,7 @@ plugins {
 android {
     namespace = "org.unovyra.uno"
     compileSdk = 35
+    ndkVersion = "27.2.12479018"
     defaultConfig {
         applicationId = "org.unovyra.uno.scaffold"
         minSdk = 26
@@ -12,6 +13,33 @@ android {
         versionCode = 1
         versionName = "0.1.0-skeleton"
         resValue("string", "uno_app_label", "UNOVYRA UNO · Scaffold")
+        ndk { abiFilters += listOf("arm64-v8a") }
+        externalNativeBuild {
+            cmake {
+                arguments += listOf(
+                    "-DCMAKE_BUILD_TYPE=Release",
+                    "-DGGML_NATIVE=OFF",
+                    "-DGGML_OPENMP=OFF",
+                    "-DGGML_LLAMAFILE=OFF",
+                    "-DGGML_CPU_KLEIDIAI=OFF",
+                    "-DGGML_BACKEND_DL=OFF",
+                    "-DGGML_CPU_ALL_VARIANTS=OFF",
+                    "-DLLAMA_CURL=OFF",
+                    "-DLLAMA_OPENSSL=OFF",
+                    "-DLLAMA_BUILD_TESTS=OFF",
+                    "-DLLAMA_BUILD_EXAMPLES=OFF",
+                    "-DLLAMA_BUILD_SERVER=OFF",
+                    "-DLLAMA_BUILD_COMMON=OFF",
+                    "-DBUILD_SHARED_LIBS=ON"
+                )
+            }
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+            version = "3.22.1"
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -21,12 +49,6 @@ android {
     buildTypes {
         getByName("release") { isMinifyEnabled = false }
         getByName("debug") {
-            // CI runners normally generate a fresh debug signing certificate. Using the
-            // ordinary applicationId would conflict with an installed build signed by
-            // an earlier runner and Android would refuse installation.
-            //
-            // Only an explicit CI-only suffix creates a side-by-side test application.
-            // Default debug and release identities are unchanged.
             val isolatedSuffix = providers.gradleProperty("unoIsolatedDebugSuffix").orNull
             if (isolatedSuffix != null) {
                 require(Regex("ci[0-9]{5,20}").matches(isolatedSuffix)) {
@@ -34,7 +56,6 @@ android {
                 }
                 applicationIdSuffix = ".$isolatedSuffix"
                 versionNameSuffix = "-$isolatedSuffix"
-                // Launcher/app-switcher label must visibly differ from older APKs.
                 resValue("string", "uno_app_label", "UNO TEST · $isolatedSuffix")
             }
         }
