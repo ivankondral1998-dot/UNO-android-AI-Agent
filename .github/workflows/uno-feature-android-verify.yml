@@ -1,4 +1,5 @@
 # Owner approval 2026-11-08: necessary GitHub Actions for this feature-branch Android SDK build.
+# WP-06 storage-safe model picker verification: native direct SAF FD path, no implicit copy.
 # WP-05 text-cycle + AES-GCM/STOP verification:
 # Scoped second foundation pass, no new Android permissions.
 # WP-04/WP-05 integrated text-cycle verification:

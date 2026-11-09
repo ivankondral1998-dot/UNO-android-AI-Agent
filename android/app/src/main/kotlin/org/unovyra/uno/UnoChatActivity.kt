@@ -45,6 +45,7 @@ class UnoChatActivity : Activity() {
     private lateinit var stop: Button
     private var currentUser = ""
     private var partial = ""
+    private var copyModelOnPick = false
     private val history by lazy { UnoSecureChatHistoryStore(applicationContext) }
 
     private fun line(text: String, size: Float = 15f) = TextView(this).apply {
@@ -70,9 +71,13 @@ class UnoChatActivity : Activity() {
                 setOnClickListener { action() }
             })
         }
-        tool("Выбрать GGUF") { selectModel() }
+        tool("GGUF без копии") { selectModel(false) }
         tool("Новый чат") { confirmNewChat() }
         root.addView(tools)
+        root.addView(Button(this).apply {
+            text = "Резервный импорт GGUF с копированием (занимает сотни МБ)"
+            setOnClickListener { selectModel(true) }
+        })
         val scroller = ScrollView(this).apply { isFillViewport = true }
         transcript = line("История ещё не загружена.")
         scroller.addView(transcript)
@@ -140,7 +145,9 @@ class UnoChatActivity : Activity() {
                     render()
                     status.text = "История загружена: ${restored.size} реплик · модель не загружена"
                     busy.set(false)
-                    val name = getPreferences(MODE_PRIVATE).getString("model_name", null)
+                    val preferences = getPreferences(MODE_PRIVATE)
+                    val name = if (preferences.getString("model_mode", "COPY") == "COPY")
+                        preferences.getString("model_name", null) else null
                     if (!UnoProcessStop.isStopped() && name != null && Regex("sha256-[0-9a-f]{64}\\.gguf").matches(name)) {
                         val modelFile = File(File(filesDir, "models"), name)
                         if (modelFile.isFile) loadModel(modelFile)
@@ -157,9 +164,10 @@ class UnoChatActivity : Activity() {
         }
     }
 
-    private fun selectModel() {
+    private fun selectModel(copyIntoApp: Boolean) {
         if (UnoProcessStop.isStopped()) { status.text = "STOP · импорт модели запрещён"; return }
         if (busy.get()) return
+        copyModelOnPick = copyIntoApp
         val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)
             type = "*/*"
@@ -185,20 +193,66 @@ class UnoChatActivity : Activity() {
         }
         if (!busy.compareAndSet(false, true)) return
         lockUi(true)
-        status.text = "Импорт GGUF в приватное хранилище · без сети"
+        val copy = copyModelOnPick
+        status.text = if (copy) "Импорт GGUF: будет создана отдельная копия" else
+            "Открываю GGUF без копирования · источник остаётся в Downloads"
         worker.execute {
-            try {
-                val model = importModel(uri)
-                val prefs = getPreferences(MODE_PRIVATE)
-                if (!prefs.edit().putString("model_name", model.name).commit())
-                    error("MODEL_LOCATOR_SAVE_FAILED")
-                performLoad(model)
-            } catch (e: Exception) {
-                main.post {
-                    if (active) {
-                        busy.set(false); lockUi(false)
-                        status.text = "Ошибка импорта: ${e.message}"
+            if (!copy) {
+                performDirectLoad(uri)
+            } else {
+                try {
+                    val model = importModel(uri)
+                    val prefs = getPreferences(MODE_PRIVATE)
+                    if (!prefs.edit().putString("model_mode", "COPY")
+                            .putString("model_name", model.name).commit())
+                        error("MODEL_LOCATOR_SAVE_FAILED")
+                    performLoad(model)
+                } catch (e: Exception) {
+                    main.post {
+                        if (active) {
+                            busy.set(false); lockUi(false)
+                            status.text = "Ошибка импорта: ${e.message}"
+                        }
                     }
+                }
+            }
+        }
+    }
+
+    /**
+     * Experimental SAF descriptor path. The user-selected GGUF is read in place,
+     * never copied by this path. Backend may reject /proc/self/fd on some devices:
+     * failure is explicit; NO silent fallback to a large private duplicate.
+     */
+    private fun performDirectLoad(uri: Uri) {
+        try {
+            check(!UnoProcessStop.isStopped()) { "STOP" }
+            val handle = contentResolver.openFileDescriptor(uri, "r")
+                ?: error("GGUF_DESCRIPTOR_UNAVAILABLE")
+            handle.use { descriptor ->
+                val path = "/proc/self/fd/${descriptor.fd}"
+                check(UnoNativeEngine.load(path)) { "DIRECT_GGUF_LOAD_UNSUPPORTED" }
+            }
+            // Session-only by design: no persisted SAF grant, no stale source after restart.
+            val saved = getPreferences(MODE_PRIVATE).edit()
+                .putString("model_mode", "DIRECT_RESELECT").commit()
+            check(saved) { "MODEL_MODE_WRITE_FAILED" }
+            main.post {
+                if (active) {
+                    loaded = !UnoProcessStop.isStopped()
+                    busy.set(false); lockUi(false)
+                    status.text = if (loaded)
+                        "GGUF открыт без копирования · при следующем запуске выбери файл снова" else
+                        "STOP · модель заблокирована"
+                }
+            }
+        } catch (e: Throwable) {
+            main.post {
+                if (active) {
+                    loaded = false
+                    busy.set(false); lockUi(false)
+                    status.text = "Прямая загрузка GGUF не удалась (${e.message ?: e.javaClass.simpleName}). " +
+                        "Копирование не выполнено. Резервный импорт — только по твоему выбору."
                 }
             }
         }
