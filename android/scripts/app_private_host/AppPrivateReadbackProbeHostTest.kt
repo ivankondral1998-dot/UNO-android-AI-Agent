@@ -55,6 +55,27 @@ object AppPrivateReadbackProbeHostTest {
                 check(AppPrivateReadbackProbe.inspect(root,"probe_"+"0".repeat(32)).status ==
                     AppPrivateReadbackProbe.Status.UNAVAILABLE)
             }
+            // Owner STOP is sticky for new writes but never prevents a read-only recovery.
+            val stoppedRoot = File(root, "stop_scope").also { check(it.mkdir()) }
+            val stored = AppPrivateReadbackProbe.run(stoppedRoot) { false }
+            check(stored.status == AppPrivateReadbackProbe.Status.VERIFIED_LOCAL_BYTES)
+            val storedId = stored.id!!
+            AppPrivateReadbackProbe.stop()
+            checkCase("owner STOP blocks fresh writes even with an unstopped callback") {
+                val prior = File(stoppedRoot, "uno_local_effect_probe_v1").listFiles()!!.size
+                val denied = AppPrivateReadbackProbe.run(stoppedRoot) { false }
+                check(denied.status == AppPrivateReadbackProbe.Status.DENIED)
+                check(denied.detail == "STOP_BEFORE_CREATE")
+                check(File(stoppedRoot, "uno_local_effect_probe_v1").listFiles()!!.size == prior)
+            }
+            checkCase("owner STOP stays latched across a subsequent call") {
+                check(AppPrivateReadbackProbe.run(stoppedRoot) { false }.status ==
+                    AppPrivateReadbackProbe.Status.DENIED)
+            }
+            checkCase("read-only reopen remains possible after owner STOP") {
+                check(AppPrivateReadbackProbe.inspect(stoppedRoot, storedId).status ==
+                    AppPrivateReadbackProbe.Status.VERIFIED_LOCAL_BYTES)
+            }
             println("UNO_APP_PRIVATE_EFFECT_HOST_PASS=$passed")
         } finally {
             // Only temporary host-test fixtures; never Android owner data.

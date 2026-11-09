@@ -31,6 +31,7 @@ class UnoActivity : Activity() {
     private val ownerDiagnosticScope by lazy { OwnerConsentState.diagnosticNoopScope() }
     private val worker = Executors.newSingleThreadExecutor()
     private val alive = AtomicBoolean(true)
+    private val explicitStopLatched = AtomicBoolean(false)
     private val busy = AtomicBoolean(false)
     @Volatile private var labStop = LabStop()
     private lateinit var status: TextView
@@ -202,8 +203,10 @@ class UnoActivity : Activity() {
             } catch (e:IllegalStateException) {e.message?:"MODEL_UNAVAILABLE"}
         }
         button("СТОП: прервать все тесты и запретить действия") {
+            explicitStopLatched.set(true)
+            AppPrivateReadbackProbe.stop()
             labStop.stop();controller.stop();ownerGate.stop()
-            status.text="STOP · тесты отменены · trusted epoch=${controller.epoch}"
+            status.text="STOP · новые лабораторные операции запрещены · уже начатый эффект не отменяется · epoch=${controller.epoch}"
         }
         setContentView(ScrollView(this).apply {addView(root)})
         applyTheme()
@@ -228,12 +231,19 @@ class UnoActivity : Activity() {
         }
     }
 
-    private fun execute(label:String,action:()->Pair<JSONObject,String>) {
+    private fun execute(label:String,allowAfterStop:Boolean=false,action:()->Pair<JSONObject,String>) {
+        if (explicitStopLatched.get() && !allowAfterStop) {
+            status.text="STOP · новые лабораторные операции запрещены"
+            return
+        }
         if(!busy.compareAndSet(false,true)) { status.text="Уже запущен тест. Используй STOP.";return }
         status.text=label
         copyableReport = null // Never copy a stale result after a failed new test.
         worker.execute {
-            val result=runCatching{action()}
+            val result=runCatching{
+                if (explicitStopLatched.get() && !allowAfterStop) throw IllegalStateException("STOP_LATCHED")
+                action()
+            }
             busy.set(false)
             runOnUiThread {
                 if(alive.get()) {
@@ -277,12 +287,13 @@ class UnoActivity : Activity() {
     }
     /** A bounded owner-tapped local fixture. Not a credential grant or native Android dispatch. */
     private fun runAppPrivateEffectProbe() {
+        if (explicitStopLatched.get()) { status.text="STOP · новая запись локального маркера запрещена"; return }
         if (busy.get()) { status.text = "Заверши текущую операцию"; return }
         labStop = LabStop()
         val stop = labStop
         execute("Локальный тест: создание файла и повторное открытие") {
             val outcome = AppPrivateReadbackProbe.run(filesDir) {
-                stop.isStopped() || Thread.currentThread().isInterrupted
+                explicitStopLatched.get() || stop.isStopped() || Thread.currentThread().isInterrupted
             }
             // Persist only the opaque app-generated ID. This is a locator, never a receipt.
             val locatorPersisted = if (outcome.id != null) {
@@ -311,7 +322,7 @@ class UnoActivity : Activity() {
     }
     /** Separate owner-tapped readback, including after Activity/process restart. */
     private fun inspectLastAppPrivateEffect() {
-        execute("Повторное открытие локального файла без новой записи") {
+        execute("Повторное открытие локального файла без новой записи", allowAfterStop=true) {
             val id = getSharedPreferences("uno_private_probe", MODE_PRIVATE)
                 .getString("last_id", null)
             val outcome = if (id == null) null else AppPrivateReadbackProbe.inspect(filesDir, id)

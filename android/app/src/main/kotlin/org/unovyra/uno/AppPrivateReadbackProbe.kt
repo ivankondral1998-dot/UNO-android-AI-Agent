@@ -20,12 +20,15 @@ internal object AppPrivateReadbackProbe {
     private const val LIMIT = 16
     private const val DIR = "uno_local_effect_probe_v1"
     private val random = SecureRandom()
+    // Explicit STOP is sticky for this app process. inspect() stays read-only and available.
+    private val stopRequested = AtomicBoolean(false)
+    fun stop() { stopRequested.set(true) }
 
     enum class Status { VERIFIED_LOCAL_BYTES, UNKNOWN_MAY_HAVE_WRITTEN, DENIED, UNAVAILABLE }
     data class Result(val status: Status, val id: String?, val digest: String?, val detail: String)
 
     fun run(appFilesDir: File, stopped: () -> Boolean): Result {
-        if (stopped()) return Result(Status.DENIED, null, null, "STOP_BEFORE_CREATE")
+        if (stopRequested.get() || stopped()) return Result(Status.DENIED, null, null, "STOP_BEFORE_CREATE")
         val directory = File(appFilesDir, DIR)
         // Only trusted app-private filesDir is supplied by the Android Activity.
         if (!appFilesDir.isDirectory || directory.isSymbolicLink() ||
@@ -35,7 +38,7 @@ internal object AppPrivateReadbackProbe {
         }
         val existing = directory.listFiles() ?: return Result(Status.UNAVAILABLE, null, null, "LIST_FAILED")
         if (existing.size >= LIMIT) return Result(Status.DENIED, null, null, "FIXTURE_LIMIT_REACHED")
-        if (stopped()) return Result(Status.DENIED, null, null, "STOP_BEFORE_CREATE")
+        if (stopRequested.get() || stopped()) return Result(Status.DENIED, null, null, "STOP_BEFORE_CREATE")
         val nonce = ByteArray(16).also { random.nextBytes(it) }
             .joinToString("") { "%02x".format(it) }
         val id = "probe_$nonce"
@@ -45,21 +48,22 @@ internal object AppPrivateReadbackProbe {
         var created = false
         try {
             // No overwrite, no delete, no generic path or model-controlled payload.
+            if (stopRequested.get() || stopped()) return Result(Status.DENIED, null, null, "STOP_BEFORE_CREATE")
             if (!file.createNewFile()) return Result(Status.DENIED, id, null, "NAME_COLLISION")
             created = true
             FileOutputStream(file, false).use { output ->
-                if (stopped()) return Result(Status.UNKNOWN_MAY_HAVE_WRITTEN, id, digest, "STOP_AFTER_CREATE")
+                if (stopRequested.get() || stopped()) return Result(Status.UNKNOWN_MAY_HAVE_WRITTEN, id, digest, "STOP_AFTER_CREATE")
                 output.write(bytes)
                 output.fd.sync()
             }
-            if (stopped()) return Result(Status.UNKNOWN_MAY_HAVE_WRITTEN, id, digest, "STOP_BEFORE_READBACK")
+            if (stopRequested.get() || stopped()) return Result(Status.UNKNOWN_MAY_HAVE_WRITTEN, id, digest, "STOP_BEFORE_READBACK")
             // Fresh descriptor and actual bytes; write success is not the readback.
             val read = FileInputStream(file).use { input ->
                 val actual = input.readBytes()
                 if (actual.size > 128) return Result(Status.UNKNOWN_MAY_HAVE_WRITTEN, id, digest, "READBACK_OVERSIZE")
                 actual
             }
-            if (stopped()) return Result(Status.UNKNOWN_MAY_HAVE_WRITTEN, id, digest, "STOP_AFTER_READBACK")
+            if (stopRequested.get() || stopped()) return Result(Status.UNKNOWN_MAY_HAVE_WRITTEN, id, digest, "STOP_AFTER_READBACK")
             if (!read.contentEquals(bytes) || sha256(read) != digest) {
                 return Result(Status.UNKNOWN_MAY_HAVE_WRITTEN, id, digest, "READBACK_MISMATCH")
             }
