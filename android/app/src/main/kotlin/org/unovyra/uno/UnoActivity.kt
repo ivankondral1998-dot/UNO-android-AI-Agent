@@ -173,6 +173,10 @@ class UnoActivity : Activity() {
         }
         root.addView(label("ВЛАДЕЛЕЦ · системное подтверждение (только NOOP, без Android-действия)", 17f))
         button("Проверить владельца через экран Android") {
+            if (UnoProcessStop.isStopped()) {
+                ownerGate.stop(); showOwnerFeedback("STOP · подтверждение заблокировано")
+                return@button
+            }
             val code = ownerGate.begin(
                 ownerDiagnosticScope,
                 OwnerConsentState.DIAGNOSTIC_DESCRIPTION
@@ -184,6 +188,10 @@ class UnoActivity : Activity() {
             })
         }
         button("Проверить одноразовое согласие · без действия") {
+            if (UnoProcessStop.isStopped()) {
+                ownerGate.stop(); showOwnerFeedback("STOP · согласие заблокировано")
+                return@button
+            }
             val consumed = ownerGate.consume(ownerDiagnosticScope)
             showOwnerFeedback(if (consumed) {
                 "NOOP: одноразовое подтверждение принято и погашено · действий ОС нет"
@@ -236,7 +244,7 @@ class UnoActivity : Activity() {
     }
 
     private fun execute(label:String,allowAfterStop:Boolean=false,action:()->Pair<JSONObject,String>) {
-        if (explicitStopLatched.get() && !allowAfterStop) {
+        if ((explicitStopLatched.get() || UnoProcessStop.isStopped()) && !allowAfterStop) {
             status.text="STOP · новые лабораторные операции запрещены"
             return
         }
@@ -245,7 +253,7 @@ class UnoActivity : Activity() {
         copyableReport = null // Never copy a stale result after a failed new test.
         worker.execute {
             val result=runCatching{
-                if (explicitStopLatched.get() && !allowAfterStop) throw IllegalStateException("STOP_LATCHED")
+                if ((explicitStopLatched.get() || UnoProcessStop.isStopped()) && !allowAfterStop) throw IllegalStateException("STOP_LATCHED")
                 action()
             }
             busy.set(false)
@@ -291,13 +299,13 @@ class UnoActivity : Activity() {
     }
     /** A bounded owner-tapped local fixture. Not a credential grant or native Android dispatch. */
     private fun runAppPrivateEffectProbe() {
-        if (explicitStopLatched.get()) { status.text="STOP · новая запись локального маркера запрещена"; return }
+        if (explicitStopLatched.get() || UnoProcessStop.isStopped()) { status.text="STOP · новая запись локального маркера запрещена"; return }
         if (busy.get()) { status.text = "Заверши текущую операцию"; return }
         labStop = LabStop()
         val stop = labStop
         execute("Локальный тест: создание файла и повторное открытие") {
             val outcome = AppPrivateReadbackProbe.run(filesDir) {
-                explicitStopLatched.get() || stop.isStopped() || Thread.currentThread().isInterrupted
+                explicitStopLatched.get() || UnoProcessStop.isStopped() || stop.isStopped() || Thread.currentThread().isInterrupted
             }
             // Persist only the opaque app-generated ID. This is a locator, never a receipt.
             val locatorPersisted = if (outcome.id != null) {
@@ -373,6 +381,11 @@ class UnoActivity : Activity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode in 0x4100..0x7fef) {
+            if (UnoProcessStop.isStopped()) {
+                ownerGate.stop()
+                showOwnerFeedback("STOP · системный ответ не даёт разрешения")
+                return
+            }
             val accepted = ownerGate.credentialResult(requestCode, resultCode == RESULT_OK)
             showOwnerFeedback(if (accepted) {
                 "Android вернул успешное подтверждение NOOP · нажми одноразовую проверку · действий ОС нет"
