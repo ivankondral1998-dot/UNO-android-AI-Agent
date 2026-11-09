@@ -41,10 +41,18 @@ def scan(root: Path) -> list[str]:
 
     activities = app.findall('activity')
     services = app.findall('service')
-    if len(activities) != 1 or activities[0].get(ANDROID + 'name') != '.UnoActivity':
+    # The laboratory launcher remains the only exported Activity. WP-04 adds an
+    # internal-only text chat screen; fail closed for any other Activity or filter.
+    by_name = {node.get(ANDROID + 'name'): node for node in activities}
+    if len(activities) != 2 or set(by_name) != {'.UnoActivity', '.UnoChatActivity'}:
         errors.append('unexpected_activity_catalog')
-    elif activities[0].get(ANDROID + 'exported') != 'true':
-        errors.append('missing_launcher_export')
+    else:
+        lab = by_name['.UnoActivity']
+        chat = by_name['.UnoChatActivity']
+        if lab.get(ANDROID + 'exported') != 'true':
+            errors.append('missing_launcher_export')
+        if chat.get(ANDROID + 'exported') != 'false' or chat.find('intent-filter') is not None:
+            errors.append('unsafe_chat_activity')
     if len(services) != 1 or services[0].get(ANDROID + 'name') != '.NeuralWorkerService':
         errors.append('unexpected_service_catalog')
     elif services[0].get(ANDROID + 'isolatedProcess') != 'true' or services[0].get(ANDROID + 'exported') != 'false':

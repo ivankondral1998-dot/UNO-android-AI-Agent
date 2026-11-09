@@ -11,6 +11,7 @@ spec.loader.exec_module(guard)
 MANIFEST = '''<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 <application android:allowBackup="false" android:fullBackupContent="false" android:usesCleartextTraffic="false">
 <activity android:name=".UnoActivity" android:exported="true"/>
+<activity android:name=".UnoChatActivity" android:exported="false"/>
 <service android:name=".NeuralWorkerService" android:isolatedProcess="true" android:exported="false"/>
 </application></manifest>'''
 CODE = '''package org.unovyra.uno
@@ -55,6 +56,25 @@ class GuardTests(unittest.TestCase):
     def test_reject_sdk23_permission(self):
         self.manifest.write_text(MANIFEST.replace('<application', '<uses-permission-sdk-23 android:name="android.permission.READ_CONTACTS"/><application'))
         self.assertTrue(any(x.startswith('unexpected_permission:') for x in guard.scan(self.root)))
+    def test_reject_exported_chat(self):
+        self.manifest.write_text(MANIFEST.replace(
+            '<activity android:name=".UnoChatActivity" android:exported="false"/>',
+            '<activity android:name=".UnoChatActivity" android:exported="true"/>'))
+        self.assertIn('unsafe_chat_activity', guard.scan(self.root))
+    def test_reject_chat_intent_filter(self):
+        self.manifest.write_text(MANIFEST.replace(
+            '<activity android:name=".UnoChatActivity" android:exported="false"/>',
+            '<activity android:name=".UnoChatActivity" android:exported="false">'
+            '<intent-filter><action android:name="android.intent.action.VIEW"/></intent-filter></activity>'))
+        self.assertIn('unsafe_chat_activity', guard.scan(self.root))
+    def test_reject_extra_activity(self):
+        self.manifest.write_text(MANIFEST.replace(
+            '</application>', '<activity android:name=".Unreviewed" android:exported="true"/></application>'))
+        self.assertIn('unexpected_activity_catalog', guard.scan(self.root))
+    def test_reject_missing_chat_activity(self):
+        self.manifest.write_text(MANIFEST.replace(
+            '<activity android:name=".UnoChatActivity" android:exported="false"/>', ''))
+        self.assertIn('unexpected_activity_catalog', guard.scan(self.root))
     def test_reject_exported_worker(self):
         self.manifest.write_text(MANIFEST.replace('android:exported="false"', 'android:exported="true"'))
         self.assertIn('unsafe_neural_worker', guard.scan(self.root))
