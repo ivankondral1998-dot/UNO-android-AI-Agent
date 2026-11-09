@@ -33,6 +33,7 @@ class UnoChatActivity : Activity() {
     private var active = true
     private var loaded = false
     private var turns = listOf<UnoChatTurn>()
+    private var textCycle: UnoTextCycle? = null
     private lateinit var status: TextView
     private lateinit var transcript: TextView
     private lateinit var input: EditText
@@ -120,6 +121,7 @@ class UnoChatActivity : Activity() {
                 main.post {
                     if (!active) return@post
                     turns = restored
+                    textCycle = UnoTextCycle(restored) { history.save(it) }
                     render()
                     status.text = "История загружена: ${restored.size} реплик · модель не загружена"
                     busy.set(false)
@@ -254,52 +256,60 @@ class UnoChatActivity : Activity() {
 
     private fun submit() {
         val user = input.text.toString().trim()
+        val cycle = textCycle ?: run { status.text = "Состояние диалога недоступно"; return }
         if (!loaded || !busy.compareAndSet(false, true)) return
-        val messages = try { UnoPromptWindow.forInference(turns, user) }
-            catch (e: Exception) { busy.set(false); status.text = "Текст недопустим: ${e.message}"; return }
         currentUser = user; partial = ""; cancelled.set(false)
         try { UnoNativeEngine.resetCancel() } catch (e: Throwable) {
             currentUser = ""; busy.set(false); status.text = "JNI недоступен: ${e.message}"; return
         }
         input.setText(""); render(); lockUi(true)
         status.text = "UNO вычисляет ответ локально"
-        val snapshot = turns
+        val stamp = SystemClock.elapsedRealtimeNanos()
         worker.execute {
             var first = -1L
             val started = SystemClock.elapsedRealtime()
             val tokens = AtomicInteger(0)
             var lastUi = 0L
             try {
-                val data = UnoNativeEngine.generate(
-                    messages.map { it.first }.toTypedArray(),
-                    messages.map { it.second }.toTypedArray(),
-                    UnoPromptWindow.MAX_GENERATION_TOKENS,
-                    UnoTokenReceiver { bytes ->
-                        val now = SystemClock.elapsedRealtime()
-                        if (first < 0) first = now
-                        tokens.incrementAndGet()
-                        if (now - lastUi >= 80) {
-                            lastUi = now
-                            val text = String(bytes, Charsets.UTF_8)
-                            main.post { if (active && !cancelled.get()) { partial = text; render() } }
+                val receipt = cycle.run(UnoTextInput(user, stamp, "LOCAL_UI_TEXT"), { cancelled.get() }) { prompt, shouldStop ->
+                    val data = UnoNativeEngine.generate(
+                        prompt.map { it.first }.toTypedArray(),
+                        prompt.map { it.second }.toTypedArray(),
+                        UnoPromptWindow.MAX_GENERATION_TOKENS,
+                        UnoTokenReceiver { bytes ->
+                            if (shouldStop()) {
+                                UnoNativeEngine.cancel()
+                            } else {
+                                val now = SystemClock.elapsedRealtime()
+                                if (first < 0) first = now
+                                tokens.incrementAndGet()
+                                if (now - lastUi >= 80) {
+                                    lastUi = now
+                                    val text = String(bytes, Charsets.UTF_8)
+                                    main.post { if (active && !cancelled.get()) { partial = text; render() } }
+                                }
+                            }
                         }
-                    }
-                ) ?: error("INFERENCE_RETURNED_NULL")
-                if (cancelled.get()) {
-                    main.post { if (active) finishCancelled() }
-                    return@execute
+                    ) ?: error("INFERENCE_RETURNED_NULL")
+                    String(data, Charsets.UTF_8)
                 }
-                val answer = String(data, Charsets.UTF_8).trim()
-                val committed = UnoPromptWindow.committed(snapshot, user, answer)
-                history.save(committed) // Atomic local record, never claimed as verified OS result.
                 val elapsed = (SystemClock.elapsedRealtime() - started).coerceAtLeast(1)
                 val throughput = tokens.get() * 1000.0 / elapsed
                 val ttft = if (first < 0) -1 else first - started
                 main.post {
                     if (!active) return@post
-                    turns = committed; currentUser = ""; partial = ""
-                    render()
-                    status.text = "Готово · ${tokens.get()} токенов · ${"%.1f".format(throughput)} т/с (общая) · TTFT ${ttft} мс"
+                    turns = receipt.history
+                    currentUser = ""; partial = ""; render()
+                    status.text = when (receipt.status) {
+                        UnoTextStatus.COMMITTED ->
+                            "Диалог записан · rev=${receipt.revision} · ${tokens.get()} токенов · ${"%.1f".format(throughput)} т/с (общая) · TTFT ${ttft} мс"
+                        UnoTextStatus.CANCELLED -> "Ответ отменён · в память ничего не записано"
+                        UnoTextStatus.MODEL_FAILED -> "Модель не вернула допустимый ответ · память сохранена без изменений"
+                        UnoTextStatus.STORAGE_FAILED -> "Ошибка сохранения · ответ не засчитан · проверь память телефона"
+                        UnoTextStatus.INVALID_INPUT -> "Некорректное сообщение или время события"
+                        UnoTextStatus.STOPPED -> "Нейродиалог остановлен"
+                        UnoTextStatus.BUSY -> "Нейродиалог уже выполняется"
+                    }
                     busy.set(false); lockUi(false)
                 }
             } catch (e: Throwable) {
@@ -329,11 +339,17 @@ class UnoChatActivity : Activity() {
                 lockUi(true)
                 worker.execute {
                     try {
-                        history.save(emptyList())
+                        val cycle = textCycle ?: error("CYCLE_UNAVAILABLE")
+                        val receipt = cycle.clear()
                         main.post {
                             if (active) {
-                                turns = emptyList(); currentUser = ""; partial = ""
-                                render(); status.text = "Локальный диалог очищен по запросу владельца"
+                                if (receipt.status == UnoTextStatus.COMMITTED) {
+                                    turns = receipt.history; currentUser = ""; partial = ""
+                                    render()
+                                    status.text = "Локальный диалог очищен по запросу владельца"
+                                } else {
+                                    status.text = "Очистка отклонена: ${receipt.status}"
+                                }
                                 busy.set(false); lockUi(false)
                             }
                         }
@@ -353,6 +369,7 @@ class UnoChatActivity : Activity() {
     override fun onDestroy() {
         active = false
         cancelled.set(true)
+        textCycle?.stop()
         try { UnoNativeEngine.cancel() } catch (_: Throwable) {}
         worker.shutdown()
         super.onDestroy()
