@@ -1,5 +1,18 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-09 — WP-05/06 FOUNDATION HARDENING, VERIFIED ON CI (NOT FINISHED)
+
+**HEAD:** `083e30c0f53921b87003c40f20c64fa1786dce3f` on `feat/uno-foundation-hardening-20261107`. `main` unchanged. Current Android CI [#42686428239](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42686428239) **SUCCESS**: 235 host checks, core Gradle suite, arm64 Android APK, lint and manifest/package/native-library validation. APK package `org.unovyra.uno.scaffold.ci42686428239`, SHA-256 `764d1ceade9d4bd0591bda9a54b02a0240a9e40c780da283f74cb5bd2eaa3ad6`; this private debug APK is **not** distributed for owner testing here. CI artifact `13705910752` is retained temporarily in the private workflow. Earlier [#42684195249](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42684195249) failed on missing `UnoTextCycle` UI imports; corrected in next [#42685394826](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42685394826), which was also SUCCESS. Do not erase the failed run.
+
+**IMPLEMENTED:** app neural chat now routes a local UI text event through `UnoTextCycle` with single bounded state, cancel/STOP checks, safe persistence-on-success and receipt hash (not OS outcome); user-initiated clear goes through the same state. v2 app-private chat saves with AES-256-GCM + AndroidKeyStore key; old v1 plaintext is read for compatibility and retained (no deletion). Root and chat STOP connect through one `UnoProcessStop` **same-process only** latch, with no automatic rearm while process alive. New default model picker is **GGUF без копии**, experimental direct read-only SAF fd path; old private-copy import survives as a clearly labelled manual fallback. New source paths and tests: [WP05 text cycle](implementation/2026-11-09_WP05_TEXT_CYCLE_INTEGRATION_R1.md), [WP05 secure chat / stop](implementation/2026-11-09_WP05_LOCAL_CHAT_PROTECTION_AND_PROCESS_STOP_R1.md), [WP06 disk](implementation/2026-11-09_WP06_DIRECT_GGUF_NO_DUPLICATE_R1.md), [Foundation acceptance](implementation/2026-11-09_FOUNDATION_ACCEPTANCE_REGISTER_R1.md).
+
+**OWNER DEVICE EVIDENCE CORRECTION:** In this chat owner subsequently installed old `ci42670625565` on Samsung Galaxy A52 and sent screenshots of real native GGUF generation at ~2.4 t/s (overall), TTFT ~24.7 s, poor multi-turn behavior with visible `<think>`, with no UI stutters reported. Therefore OLD WP04 source now has `DEVICE_OBSERVED_TEXT_GENERATION` (limited); the previous handoff's blanket `DEVICE_VERIFIED_WP04=FALSE` was true when authored but superseded for this one text path. The new WP05/06 APK has NOT been tested on Samsung or Huawei. **Do not extrapolate performance, quality, offline proof or model F from old screenshots.**
+
+**STATUS:** `FOUNDATION_INCOMPLETE`, `WEIGHTS_TRAINING_AUTHORIZED=FALSE`, `RELEASE_READY=FALSE`. Neural worker isolation, general state/memory, planner, local voice, Android trust/real native effect/readback still open. The next agent should read [Foundation acceptance](implementation/2026-11-09_FOUNDATION_ACCEPTANCE_REGISTER_R1.md) then source, not call this finished.
+
+---
+
+
 ## UPDATE 2026-11-09 — WP-04 EXPERIMENTAL ON-DEVICE NEURAL CHAT (ANDROID BUILT; NOT DEVICE VERIFIED)
 
 **Current product goal:** owner's release-first decision (07.11) remains in force; own F/new weights research remains separate, not displaced by Qwen. New experimental text-only chat uses pinned MIT llama.cpp and owner-supplied GGUF, never authorizes Android actions.
