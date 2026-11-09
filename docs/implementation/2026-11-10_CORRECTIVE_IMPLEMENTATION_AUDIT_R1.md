@@ -6,7 +6,7 @@ November 9–10: experimental Qwen text chat, chat encryption, foundation refere
 cycle, exact-memory vault, Android adapter/single-writer lock, UI diagnostic flow.
 NOT an exhaustive audit of every historical R5.3/LAB dataset or a Samsung device trial.
 Actual code from GitHub was read and corrected; CI result is recorded separately.
-Status until green exact-SHA CI: IMPLEMENTED / NOT VERIFIED for this patch.
+Status: IMPLEMENTED / HOST_TESTED / ANDROID_BUILT, not DEVICE_VERIFIED.
 
 ## Found defects and corrective disposition
 
@@ -80,3 +80,15 @@ agent gates. One necessary private feature-branch CI run checks this
 corrective patch; do not issue another APK to owner absent a meaningful
 physical test. Do not change main, delete prior files, retrain weights,
 publish release, or spend Work/Codex resources unnecessarily.
+
+
+## Exact verification and provenance
+
+**CI VERIFIED:** [exact-source run #42715526164](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42715526164), commit `d9a0791ffe80fb3e3d32b1cd449282d8ac1ff230`: SUCCESS. Static-negative UI/permission checks, 299 core host checks (41 encrypted-exact-memory checks), Android arm64 debug build, Android Lint, APK package and manifest checks PASS. APK SHA-256 `f205056752516d07315d91fec0d994a87cd8234463233c7db8c01d04d0fbf6bf`. **No Samsung device verification or accepted neural F/model/authority**; only the source was built.
+
+New consent/revoke flows and immutable evidence paths have not yet been
+physically exercised on Samsung A52. A successful Gradle build does not
+establish screen behavior, KeyStore persistence, readback across reboot,
+or flash-level resistance to rollback. The only licensed candidate model
+seen in UNO is a separate Qwen text experiment; this audit does not certify
+any production neural intelligence.

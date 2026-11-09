@@ -1,3 +1,5 @@
+> **АКТУАЛЬНО 10.11.2026:** исходный Android код наблюдения/точной памяти исправлен и собран: `d9a0791`, CI #42715526164 (299 core-host, Android build/lint). DEVICE_UNTESTED, ORIGINAL_WP05=PARTIAL, FOUNDATION_INCOMPLETE. В правилах от 08.11.2026 необходимый feature-branch CI разрешён без повторных запросов; исторический текст ниже про разовое разрешение устарел. Не путать этот снимок с проверкой работающего мозга UNO. См. [аудит и открытые дефекты](../docs/implementation/2026-11-10_CORRECTIVE_IMPLEMENTATION_AUDIT_R1.md).
+
 > **АКТУАЛЬНЫЙ КОНТЕКСТ ДЛЯ GROK / НОВОГО РАЗРАБОТЧИКА:** [инженерная карта UNO 1.0](../docs/ENGINEERING_HANDOFF.md) + [правила](../AGENTS.md). Этот README описывает исторические WP-01 этапы; актуальный WP05/06 debug APK собран из `083e30c`, но новая версия на A52 ещё не испытана; старую WP04 генерацию владелец наблюдал на A52. Не путать старый CI APK с текущим кодом.
 
 # UNO 1.0 Android Foundation — WP-01, debug APK Android-built (2026-11-07)

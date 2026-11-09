@@ -2,6 +2,8 @@
 
 ## UPDATE 2026-11-10 — CORRECTIVE AUDIT / CONSENT + PROVENANCE
 
+**CI VERIFIED:** [exact-source run #42715526164](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42715526164), commit `d9a0791ffe80fb3e3d32b1cd449282d8ac1ff230`: SUCCESS. Static-negative UI/permission checks, 299 core host checks (41 encrypted-exact-memory checks), Android arm64 debug build, Android Lint, APK package and manifest checks PASS. APK SHA-256 `f205056752516d07315d91fec0d994a87cd8234463233c7db8c01d04d0fbf6bf`. **No Samsung device verification or accepted neural F/model/authority**; only the source was built.
+
 Source-level review found unannounced durable memory writes in the passive
 Android metrics button, Keystore failure blocking an unrelated read-only
 diagnostic, and mismatched/overwritable diagnostic SHA evidence. These have
@@ -9,7 +11,7 @@ been corrected in the feature branch. Old experimental chat clear now
 truthfully warns that v1 plaintext survives; explicit owner-confirmed
 scoped revocation is available without automatically deleting files.
 Negative static regressions guard consent and provenance.
-**CI of this patch pending; DEVICE_UNTESTED.** This is not memory-stage
+**CI SUCCESS; DEVICE_UNTESTED.** This is not memory-stage
 acceptance or full UNO closure. [Detailed severity, fixes and open
 blockers](implementation/2026-11-10_CORRECTIVE_IMPLEMENTATION_AUDIT_R1.md).
 
