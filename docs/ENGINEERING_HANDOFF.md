@@ -1,6 +1,19 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
-## UPDATE 2026-11-09 — WP-05/06 FOUNDATION HARDENING, VERIFIED ON CI (NOT FINISHED)
+## UPDATE 2026-11-09 — ROADMAP CORRECTION / ORIGINAL END-TO-END REFERENCE
+
+**SOURCE COMMIT:** `34b4dd3131406795a7db7c2030b975139e630927`, feature branch. [CI #42698868434](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42698868434) **SUCCESS**: full preflight, 258 host checks (including 23 new original-roadmap WP-06-T01 reference tests), Android SDK/NDK debug build, lint, aapt/source binding. New APK SHA-256 `58cecea663a9c459e4fd33899feb57771a8e5f967b771dba3c271973c9fe0814`. Exact SHA **not device tested**, no download requested.
+
+**CORRECTION:** Prior patches named WP-05 text cycle/encryption and WP-06 GGUF-without-copy are *experimental chat patch labels*, **NOT stages of the original UNO roadmap**. The actual [roadmap](roadmap/UNO_1_0_MASTER_PLAN.md) says **WP-03 = single F / shared state, WP-04 = own immutable weights (owner-gated), WP-05 = exact/semantic memory, WP-06 = unified end-to-end agent**. Never mark those original stages complete from chat UX or a Qwen APK.
+
+**IMPLEMENTED/HOST_TESTED:** `UnoFoundationReferenceCycle` is a single NeuralPort neutral trace: Percept -> bounded scheduler -> exact in-memory observation -> untrusted model proposal -> owner interface -> TrustController decision -> reference native outcome/readback. All fake JVM readbacks remain `REFERENCE_READBACK_CLAIM`, `verifiedAndroidEffect=false`; `VERIFIED_COMPLETION` memory cannot be fabricated. Unknown outcome is not retried. Cross-screen process STOP was additionally enforced for lab admission, owner NOOP and app-private marker creation. **Android trust remains DENY_ALL**. This is scaffold parity evidence, not real neural cognition or production effect dispatch.
+
+**OPEN:** Still need persistent shared causal state, exact/semantic memory and recovery, neural isolation, accepted offline model selection, planning, speech/sensors, owner-bound Android authority + true native readback, device safety review. Research F and production training NOT authorized by this work. **FOUNDATION_INCOMPLETE**. [Precise source and limitations](implementation/2026-11-09_ORIGINAL_WP06_REFERENCE_R1.md).
+
+---
+
+
+## HISTORICAL EXPERIMENTAL CHAT PATCHES (NOT ORIGINAL ROADMAP WP-05 / WP-06)
 
 **HEAD:** `083e30c0f53921b87003c40f20c64fa1786dce3f` on `feat/uno-foundation-hardening-20261107`. `main` unchanged. Current Android CI [#42686428239](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42686428239) **SUCCESS**: 235 host checks, core Gradle suite, arm64 Android APK, lint and manifest/package/native-library validation. APK package `org.unovyra.uno.scaffold.ci42686428239`, SHA-256 `764d1ceade9d4bd0591bda9a54b02a0240a9e40c780da283f74cb5bd2eaa3ad6`; this private debug APK is **not** distributed for owner testing here. CI artifact `13705910752` is retained temporarily in the private workflow. Earlier [#42684195249](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42684195249) failed on missing `UnoTextCycle` UI imports; corrected in next [#42685394826](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42685394826), which was also SUCCESS. Do not erase the failed run.
 

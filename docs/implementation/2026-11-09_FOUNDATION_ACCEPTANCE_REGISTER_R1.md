@@ -3,19 +3,22 @@
 **Actual source:** `feat/uno-foundation-hardening-20261107` commit `083e30c0f53921b87003c40f20c64fa1786dce3f`. **STATUS: FOUNDATION_INCOMPLETE.**
 All checks are tied to source commits, NOT promises about a model or external Android actions.
 
+**ROADMAP CORRECTION:** Original WP-03 is operator F; WP-04 is own weights; WP-05 is exact/semantic memory; WP-06 is end-to-end agent. The previous "WP-05 text cycle", "WP-05 STOP" and "WP-06 disk usage" rows were misleading labels for separate chat experiments, not evidence that original roadmap stages have been completed. See [corrective source](2026-11-09_ORIGINAL_WP06_REFERENCE_R1.md).
+
 | Gate | Code / concrete evidence | Status | Exact missing proof |
 |---|---|---|---|
 | Environment/build | Android SDK35, NDK, 17 JDK; [CI #42686428239](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42686428239); 235 host checks, Gradle compile, lint, aapt | ANDROID_BUILT | No physical test of this exact SHA |
 | WP-01 platform/diagnostics | battery/PSS/thermal/sensors sandbox, manual STOP | PARTIAL_DEVICE_OBSERVED historically | No full organism performance, quality or energy |
 | WP-02 Android trust | DenyAllAndroidPort, NOOP credential/one-use, independent app-private byte-readback fixture | FAIL_CLOSED_PARTIAL | Trusted real Android dispatcher/permissions/owner binding/native OS readback, crash/UNKNOWN lifecycle |
-| WP-04 model | local GGUF/llama.cpp JNI, Qwen candidate | DEVICE_OBSERVED on old ci42670625565 only | Model quality, resource profiles, long context, new exact APK verification |
-| WP-05 text cycle | `UnoTextCycle` runs local UI event → bounded prompt → model → cancel/STOP check → `AtomicFile` persist → hash/revision; host 19 cases | HOST_TESTED + ANDROID_BUILT | Cross-app state, long term memory, restart causal identity, edge/device instrumentation |
-| WP-05 local encryption | `UnoChatCipher` AES-GCM, `UnoSecureChatHistoryStore` AndroidKeyStore, fail-closed v2; host 10 cases | HOST_TESTED + ANDROID_BUILT | Device Keystore roundtrip, recovery/security review. Old plaintext v1 is preserved and NOT removed |
-| WP-05 STOP | `UnoProcessStop` one-way same-process latch, both UI activities; host 3 cases | HOST_TESTED + ANDROID_BUILT | Persistent stop/re-arm, cross-process isolated service, force-stop/power-loss behavior |
-| WP-06 disk usage | direct SAF `/proc/self/fd/<fd>` GGUF path, separate explicit legacy copy-import option | ANDROID_BUILT / DEVICE_UNTESTED | On-device SELinux, seekability, actual mmap loads, no network provider |
+| EXPERIMENTAL local GGUF (not original WP-04) | local GGUF/llama.cpp JNI, Qwen candidate | DEVICE_OBSERVED on old ci42670625565 only | Model quality, resource profiles, long context, new exact APK verification |
+| EXPERIMENTAL text cycle (not original WP-05) | `UnoTextCycle` runs local UI event → bounded prompt → model → cancel/STOP check → `AtomicFile` persist → hash/revision; host 19 cases | HOST_TESTED + ANDROID_BUILT | Cross-app state, long term memory, restart causal identity, edge/device instrumentation |
+| EXPERIMENTAL chat encryption (not original WP-05) | `UnoChatCipher` AES-GCM, `UnoSecureChatHistoryStore` AndroidKeyStore, fail-closed v2; host 10 cases | HOST_TESTED + ANDROID_BUILT | Device Keystore roundtrip, recovery/security review. Old plaintext v1 is preserved and NOT removed |
+| EXPERIMENTAL process STOP (not original WP-05) | `UnoProcessStop` one-way same-process latch, both UI activities; host 3 cases | HOST_TESTED + ANDROID_BUILT | Persistent stop/re-arm, cross-process isolated service, force-stop/power-loss behavior |
+| EXPERIMENTAL no-copy GGUF (not original WP-06) | direct SAF `/proc/self/fd/<fd>` GGUF path, separate explicit legacy copy-import option | ANDROID_BUILT / DEVICE_UNTESTED | On-device SELinux, seekability, actual mmap loads, no network provider |
+| Original WP-06-T01 neutral integrated reference | `UnoFoundationReferenceCycle`: one Percept, ExactMemory, NeuralPort, untrusted Proposal, separate consent, TrustController + fake readback; CI [#42698868434](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42698868434), 23 new host tests, 258 total | HOST_TESTED + ANDROID_BUILT (not wired to Android) | Real model memory/state, permission/consent, true readback, cross-process STOP, device tests |
 | Product memory | bounded encrypted chat vs exact/semantic memory distinct | INCOMPLETE | Durable exact/semantic memory, provenance, forgetting, consent, recovery, isolation |
 | Product perception/plan/effects | lab sensor inventory, no offline ASR/TTS; no dispatch catalogue | INCOMPLETE | WAKE/ASR/TTS, sensor contracts, planner, authority, native readback |
-| Original R5.3 neural operator F | Research documents retained | NOT IN PRODUCTION | Owner approval and independent mathematics / new weights training gate |
+| Original WP-03 operator F (R5.3 research) | Research documents retained | NOT IN PRODUCTION | Owner approval and independent mathematics / new weights training gate |
 | Commercial release | NO actions/publishing | NOT_AUTHORIZED | Owner decisions, licensing, threat model, full device tests, signing and distribution |
 
 ## Owner's existing Samsung A52 evidence (old WP04 source)
