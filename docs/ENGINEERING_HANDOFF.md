@@ -2,6 +2,8 @@
 
 ## UPDATE 2026-11-10 — ORIGINAL WP-05 DURABLE EXACT MEMORY CANDIDATE
 
+**CI VERIFIED:** [Run #42704791187](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42704791187) for exact source `85be43e55775daaa2d17207577a7f4785b6e3ba0` completed SUCCESS: full preflight, 292 host checks including 34 encrypted exact-memory cases, Android debug APK, lint, manifest/permissions check; APK SHA-256 `2a5576370f3d9299a51fe644b5f95e432f8dc124ee1485eb284de020e13e114c`. New APK not distributed or device-tested.
+
 **Working feature:** new `UnoExactMemoryPort` + `UnoEncryptedExactMemory` + `UnoAndroidExactMemory`. Versioned AES-256-GCM authenticated snapshots, AndroidKeyStore/AtomicFile, source/epoch/boot-bound exact bytes, fail-closed corrupt/key-missing input, monotonic read clock, durable revocation tombstones. Existing original end-to-end reference can now accept an injected persistent exact-memory port. Tests explicitly forbid arbitrary `VERIFIED_COMPLETION` and do not treat semantic summaries as exact facts.
 
 **Limits:** adapter is not yet wired to the production Activity; Android device key/boot compatibility NOT tested, same-boot restart NOT device verified, no rollback protection against old valid ciphertext and no fully semantic retrieval/owner auth. Original WP-05 remains **PARTIAL**. [Source, limits, tests](implementation/2026-11-10_ORIGINAL_WP05_ENCRYPTED_EXACT_MEMORY_R1.md). No changes to F/weights/main and no new permissions.

@@ -49,5 +49,11 @@ copies, old atomic backups or external screenshots.
 - Bounded engineering limits are 256 exact rows, 4096 bytes/row, 1.5 MB serialized
   snapshot. These are initial bounded-store limits, **not** a choice of model weights or F.
 
-**Status:** IMPLEMENTED candidate / HOST_TESTED locally in Kotlin / Android verification
-pending until CI result. `FOUNDATION_INCOMPLETE`; no training or release authorization.
+**Status:** IMPLEMENTED candidate / HOST_TESTED / ANDROID_BUILT. CI #42704791187
+SUCCESS for source `85be43e`; 34 exact vault tests of 292 total, Android
+build/lint, SHA-256 `2a5576370f3d9299a51fe644b5f95e432f8dc124ee1485eb284de020e13e114c`.
+DEVICE_UNTESTED / FOUNDATION_INCOMPLETE; no training or release authorization.
+**Known additional gap:** the JCA/JVM backend expects a single-writer persistence owner.
+The Android adapter does not yet enforce a process-wide or cross-process file lock;
+multiple simultaneous adapter instances could overwrite changes. Do not wire this
+port to concurrent app consumers before adding a real single-writer admission gate.
