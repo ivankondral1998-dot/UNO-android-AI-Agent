@@ -1,5 +1,20 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-10 — ANDROID FOUNDATION OBSERVATION WIRING (PENDING CI)
+
+Actual Android device metrics now enter the existing single UnoFoundationReferenceCycle
+and commit selected exact fields into encrypted UnoAndroidExactMemory.
+UnoAndroidMemoryOwner enforces a process singleton and OS file lock
+against concurrent writers. Persistent generation is used for event keys,
+allocated under a shared memory mutex; the committed key is returned
+in the typed receipt. Android lifecycle/STOP denies new observations.
+Android authority remains deny-all; no verified OS effect or accepted neural
+intelligence or F. **DEVICE_UNTESTED**.
+[Implementation and limits](implementation/2026-11-10_ANDROID_EXACT_OBSERVATION_WIRING_R1.md).
+
+---
+
+
 ## UPDATE 2026-11-10 — ORIGINAL WP-05 DURABLE EXACT MEMORY CANDIDATE
 
 **CI VERIFIED:** [Run #42704791187](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42704791187) for exact source `85be43e55775daaa2d17207577a7f4785b6e3ba0` completed SUCCESS: full preflight, 292 host checks including 34 encrypted exact-memory cases, Android debug APK, lint, manifest/permissions check; APK SHA-256 `2a5576370f3d9299a51fe644b5f95e432f8dc124ee1485eb284de020e13e114c`. New APK not distributed or device-tested.

@@ -17,7 +17,8 @@ data class FoundationReferenceResult(
     val untrustedModelState: String? = null,
     val proposalDigest: String? = null,
     val nativeCalledInReference: Boolean = false,
-    val verifiedAndroidEffect: Boolean = false
+    val verifiedAndroidEffect: Boolean = false,
+    val observedEventKey: String? = null
 )
 
 /**
@@ -42,10 +43,11 @@ class UnoFoundationReferenceCycle(
 
     @Synchronized private fun report(
         status: FoundationReferenceStatus, sha: String? = null, state: String? = null,
-        proposal: String? = null, called: Boolean = false
+        proposal: String? = null, called: Boolean = false,
+        eventKey: String? = null
     ) = FoundationReferenceResult(
         status, revision, memory.generation, sha, state, proposal, called,
-        verifiedAndroidEffect = false
+        verifiedAndroidEffect = false, observedEventKey = eventKey
     )
 
     fun accept(event: Percept, now: Long, deadline: Long, scope: String, consentEpoch: Long):
@@ -57,24 +59,38 @@ class UnoFoundationReferenceCycle(
                 event.data.size > 4096 || now < event.monotonicNanos || deadline <= now ||
                 consentEpoch < 0) return report(FoundationReferenceStatus.INVALID_EVENT)
             val observation: Percept
+            var committedEventKey: String? = null
             synchronized(this) {
                 if (stopped.get()) return report(FoundationReferenceStatus.STOPPED)
                 if (event.monotonicNanos <= lastEventNanos)
                     return report(FoundationReferenceStatus.INVALID_EVENT)
                 observation = event.copy(data = event.data.copyOf())
-                val key = "event:" + (revision + 1L)
-                if (!scheduler.enqueue(
-                    if (event.type == PerceptType.SENSOR) Priority.SENSOR else Priority.INTERNAL,
-                    key, deadline)) return report(
-                        if (stopped.get()) FoundationReferenceStatus.STOPPED
-                        else FoundationReferenceStatus.INVALID_EVENT)
-                if (scheduler.poll(now)?.payload != key)
-                    return report(FoundationReferenceStatus.STOPPED)
-                try {
-                    memory.write(scope, key, observation.data, deadline, consentEpoch,
-                        EntryKind.OBSERVED, event.sourceTag)
-                } catch (_: Exception) {
-                    return report(FoundationReferenceStatus.MEMORY_UNAVAILABLE)
+                // Use persisted generation, not activity-local revision; no key reuse
+                // after recreation or within a shared vault across event sources.
+                val priority = if (event.type == PerceptType.SENSOR) Priority.SENSOR
+                               else Priority.INTERNAL
+                // Lock the shared port over generation allocation and the actual
+                // committed write. Independent cycle instances cannot reuse an
+                // event key merely because their local revisions both start at zero.
+                synchronized(memory) {
+                    val next = memory.generation
+                    if (next == Long.MAX_VALUE)
+                        return report(FoundationReferenceStatus.MEMORY_UNAVAILABLE)
+                    val key = "event:" + (next + 1L)
+                    if (!scheduler.enqueue(priority, key, deadline))
+                        return report(if (stopped.get()) FoundationReferenceStatus.STOPPED
+                            else FoundationReferenceStatus.INVALID_EVENT)
+                    if (scheduler.poll(now)?.payload != key)
+                        return report(FoundationReferenceStatus.STOPPED)
+                    try {
+                        if (stopped.get()) return report(FoundationReferenceStatus.STOPPED)
+                        val entry = memory.write(scope, key, observation.data, deadline,
+                            consentEpoch, EntryKind.OBSERVED, event.sourceTag)
+                        check(entry.factKey == key) { "EXACT_COMMIT_KEY_MISMATCH" }
+                        committedEventKey = entry.factKey
+                    } catch (_: Exception) {
+                        return report(FoundationReferenceStatus.MEMORY_UNAVAILABLE)
+                    }
                 }
                 lastEventNanos = event.monotonicNanos
                 revision++
@@ -84,13 +100,16 @@ class UnoFoundationReferenceCycle(
             if (stopped.get()) return report(FoundationReferenceStatus.STOPPED, sha)
             val output = try { neural.perceive(observation.copy(data = observation.data.copyOf())) }
                          catch (_: Exception) {
-                             return report(FoundationReferenceStatus.MODEL_UNAVAILABLE, sha)
+                             return report(FoundationReferenceStatus.MODEL_UNAVAILABLE, sha,
+                                 eventKey = committedEventKey)
                          }
             if (stopped.get()) return report(FoundationReferenceStatus.STOPPED, sha)
             if (output.stateDigest.isBlank())
-                return report(FoundationReferenceStatus.MODEL_UNAVAILABLE, sha)
+                return report(FoundationReferenceStatus.MODEL_UNAVAILABLE, sha,
+                    eventKey = committedEventKey)
             val proposal = output.action ?: return report(
-                FoundationReferenceStatus.NO_PROPOSAL, sha, output.stateDigest)
+                FoundationReferenceStatus.NO_PROPOSAL, sha, output.stateDigest,
+                eventKey = committedEventKey)
             val digest = controller.proposalDigest(proposal)
             val consent = try { owner.showExactProposalAndObtainConsent(proposal) }
                           catch (_: Exception) { null }

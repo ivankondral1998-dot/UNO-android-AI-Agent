@@ -97,9 +97,10 @@ object UnoEncryptedExactMemoryTest {
         val event = Percept(PerceptType.TEXT, cycleBytes, "UNVERIFIED_INPUT", 100L)
         val observed = reference.accept(event, 100L, 500L, "device-event", 3L)
         verify(observed.status == FoundationReferenceStatus.MODEL_UNAVAILABLE &&
+            observed.observedEventKey == "event:6" &&
             !observed.verifiedAndroidEffect)
         val reopened = UnoEncryptedExactMemory(secret, boot, load, persist) { now }
-        val persisted = reopened.read("device-event", "event:1", 1, 4, now, 3L)
+        val persisted = reopened.read("device-event", "event:6", 1, 4, now, 3L)
         verify(persisted.status == ExactStatus.COMPLETE &&
             persisted.entries.single().raw.contentEquals(cycleBytes))
         verify(persisted.entries.single().kind == EntryKind.OBSERVED)
@@ -108,6 +109,60 @@ object UnoEncryptedExactMemoryTest {
                 EntryKind.VERIFIED_COMPLETION, "FAKE_MODEL")
         }.isFailure)
 
+
+        // Reload the shared vault and start a fresh cycle: persistently unique event key.
+        val afterFirst = UnoEncryptedExactMemory(secret, boot, load, persist) { now }
+        val secondCycle = UnoFoundationReferenceCycle(
+            NoWeightsNeuralPort(), afterFirst,
+            TrustController(FakeNotesPort(), InMemoryLedger()),
+            object : AuthenticatedOwnerUi {
+                override fun showExactProposalAndObtainConsent(proposal: Proposal): Consent? = null
+            }
+        )
+        verify(secondCycle.accept(Percept(PerceptType.OS, byteArrayOf(2),
+            "ANDROID_LOCAL_SNAPSHOT", 101L), 101L, 500L, "device-event", 3L).status ==
+            FoundationReferenceStatus.MODEL_UNAVAILABLE)
+        val newReload = UnoEncryptedExactMemory(secret, boot, load, persist) { now }
+        verify(newReload.read("device-event", "event:7", 1, 8, now, 3L)
+            .entries.single().raw.contentEquals(byteArrayOf(2)))
+        verify(newReload.read("device-event", "event:6", 1, 8, now, 3L)
+            .entries.single().raw.contentEquals(cycleBytes))
+        // Two independent reference cycles share one persistent memory writer.
+        // Their event:keys must be allocated in the same lock as the write.
+        val shared = UnoEncryptedExactMemory(secret, boot, load, persist) { now }
+        fun referenceCycle() = UnoFoundationReferenceCycle(
+            NoWeightsNeuralPort(), shared,
+            TrustController(FakeNotesPort(), InMemoryLedger()),
+            object: AuthenticatedOwnerUi {
+                override fun showExactProposalAndObtainConsent(proposal: Proposal): Consent? = null
+            }
+        )
+        val first = referenceCycle()
+        val second = referenceCycle()
+        val ready = java.util.concurrent.CountDownLatch(1)
+        val finished = java.util.concurrent.CountDownLatch(2)
+        val status = java.util.Collections.synchronizedList(
+            mutableListOf<FoundationReferenceStatus>())
+        listOf(first, second).forEachIndexed { i, cycle ->
+            Thread {
+                try {
+                    ready.await(2, java.util.concurrent.TimeUnit.SECONDS)
+                    status.add(cycle.accept(Percept(PerceptType.OS,
+                        byteArrayOf((i + 10).toByte()), "ANDROID_LOCAL", 102L + i),
+                        105L, 500L, "device-event", 3L).status)
+                } finally { finished.countDown() }
+            }.start()
+        }
+        ready.countDown()
+        verify(finished.await(3, java.util.concurrent.TimeUnit.SECONDS))
+        verify(status.size == 2 && status.all {
+            it == FoundationReferenceStatus.MODEL_UNAVAILABLE
+        })
+        val persistedBoth = UnoEncryptedExactMemory(secret, boot, load, persist) { now }
+        verify(persistedBoth.read("device-event", "event:8", 1, 12, now, 3L).status ==
+            ExactStatus.COMPLETE)
+        verify(persistedBoth.read("device-event", "event:9", 1, 12, now, 3L).status ==
+            ExactStatus.COMPLETE)
         println("UNO_ENCRYPTED_EXACT_MEMORY_HOST_PASS=$pass")
     }
 }

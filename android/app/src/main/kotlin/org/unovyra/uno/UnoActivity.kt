@@ -33,6 +33,8 @@ class UnoActivity : Activity() {
     private val alive = AtomicBoolean(true)
     private val explicitStopLatched = AtomicBoolean(false)
     private val busy = AtomicBoolean(false)
+    private val foreground = AtomicBoolean(false)
+    @Volatile private var foundationCycle: UnoFoundationReferenceCycle? = null
     @Volatile private var labStop = LabStop()
     private lateinit var status: TextView
     // Credential result is shown next to the owner buttons, not only off-screen at top.
@@ -350,12 +352,80 @@ class UnoActivity : Activity() {
             json to DeviceProbe.persist(applicationContext, json).absolutePath
         }
     }
+    /**
+     * An actual Android observation enters the shared UNO foundation path, not
+     * the experimental Qwen transcript. Stores selected measured fields exactly.
+     * The full diagnostic is preserved separately in the existing diagnostics file.
+     */
+    private fun observeDeviceSnapshot(snapshot: JSONObject): FoundationReferenceResult {
+        check(foreground.get() && !UnoProcessStop.isStopped()) { "UNO_NOT_IN_FOREGROUND" }
+        val observedNanos = snapshot.optLong("elapsed_realtime_ns", -1L)
+        val reportBytes = snapshot.toString().toByteArray(Charsets.UTF_8)
+        val reportDigest = java.security.MessageDigest.getInstance("SHA-256")
+            .digest(reportBytes).joinToString("") { "%02x".format(it) }
+        val values = JSONObject()
+            .put("schema", "UNO_DEVICE_METRICS_OBSERVATION/1")
+            .put("observed_elapsed_ns", observedNanos)
+            .put("sdk", snapshot.optInt("sdk", -1))
+            .put("battery_percent_or_null",
+                 snapshot.optJSONObject("battery")?.opt("level_percent") ?: JSONObject.NULL)
+            .put("thermal_status_or_null",
+                 snapshot.optJSONObject("thermal")?.opt("thermal_status_code_or_null") ?: JSONObject.NULL)
+            .put("available_ram_bytes_or_null",
+                 snapshot.optJSONObject("memory")?.opt("available_system_ram_bytes") ?: JSONObject.NULL)
+            .put("full_diagnostic_sha256", reportDigest)
+        val observedBytes = values.toString().toByteArray(Charsets.UTF_8)
+        check(observedBytes.size in 1..4096) { "UNO_OBSERVATION_TOO_LARGE" }
+        val now = SystemClock.elapsedRealtimeNanos()
+        check(observedNanos >= 0 && observedNanos <= now &&
+            now <= Long.MAX_VALUE - 600_000_000_000L) { "UNO_OBSERVATION_CLOCK_INVALID" }
+        val runtime = synchronized(this) {
+            val existing = foundationCycle
+            if (existing != null && !existing.isStopped()) existing else {
+                UnoFoundationReferenceCycle(
+                    neural, UnoAndroidMemoryOwner.exact(applicationContext), controller,
+                    object : AuthenticatedOwnerUi {
+                        override fun showExactProposalAndObtainConsent(proposal: Proposal): Consent? =
+                            null // No Android effect authorization in the foundation lab.
+                    }
+                ).also { foundationCycle = it }
+            }
+        }
+        if (!foreground.get() || UnoProcessStop.isStopped()) {
+            runtime.stop()
+            error("UNO_STOPPED_BEFORE_OBSERVATION")
+        }
+        val outcome = runtime.accept(
+            Percept(PerceptType.OS, observedBytes, "ANDROID_READONLY_DEVICE_METRICS",
+                observedNanos, authenticatedSource = false),
+            now, now + 600_000_000_000L, "device-observation", 0L
+        )
+        check(outcome.status == FoundationReferenceStatus.MODEL_UNAVAILABLE &&
+            !outcome.verifiedAndroidEffect) { "UNO_FOUNDATION_REJECTED_${outcome.status}" }
+        val exact = UnoAndroidMemoryOwner.exact(applicationContext).read(
+            "device-observation", outcome.observedEventKey
+                ?: error("UNO_FOUNDATION_EVENT_KEY_MISSING"), 1, 256, now, 0L
+        )
+        check(exact.status == ExactStatus.COMPLETE &&
+            exact.entries.single().raw.contentEquals(observedBytes)) {
+            "UNO_FOUNDATION_EXACT_READBACK_FAILED"
+        }
+        return outcome
+    }
+
     private fun runSimple(withCpu:Boolean) {
         execute("Чтение параметров устройства") {
             val json=LabSystemMetrics.snapshot(applicationContext)
             json.put("ui_heartbeat_delay_over_350ms",heartbeatLateCount.get())
             json.put("ui_max_heartbeat_delay_ms",heartbeatMaxDelayMs.get())
             if(withCpu) json.put("cpu",DeviceProbe.benchmark())
+            val observed = observeDeviceSnapshot(json)
+            json.put("uno_exact_observation", JSONObject()
+                .put("status", "LOCAL_EXACT_PERSISTED_AND_RETRIEVED")
+                .put("memory_generation", observed.memoryGeneration)
+                .put("neural_status", observed.status.name)
+                .put("android_action_verified", false)
+                .put("note", "Selected measured fields stored encrypted; no neural decision"))
             json to DeviceProbe.persist(applicationContext,json).absolutePath
         }
     }
@@ -394,11 +464,17 @@ class UnoActivity : Activity() {
             })
         }
     }
+    override fun onResume() {
+        super.onResume()
+        foreground.set(true)
+    }
     override fun onPause() {
+        foreground.set(false)
+        foundationCycle?.stop()
         ownerGate.revokeReadyForBackground()
         labStop.stop();controller.stop();super.onPause()
     }
-    override fun onDestroy(){alive.set(false);labStop.stop();mainHandler.removeCallbacks(heartbeat)
+    override fun onDestroy(){alive.set(false);foundationCycle?.stop();labStop.stop();mainHandler.removeCallbacks(heartbeat)
         worker.shutdownNow();controller.stop();ownerGate.stop();super.onDestroy()}
 }
 
