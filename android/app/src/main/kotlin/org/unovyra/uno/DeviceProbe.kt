@@ -14,6 +14,7 @@ import org.json.JSONObject
 import org.unovyra.uno.core.ProbeMath
 import java.io.File
 import java.io.FileOutputStream
+import java.security.MessageDigest
 
 /** WP-01: read-only hardware diagnostic. No privileged action, no network, no model weights. */
 object DeviceProbe {
@@ -92,6 +93,50 @@ object DeviceProbe {
             .put("max_nanos",stats.maxNanos)
             .put("checksum",checksum)
             .put("not_measured",JSONArray(listOf("joules","neural_quality","native_kernels","device_throttling_causality")))
+    }
+
+    /**
+     * Immutable provenance copy for an explicitly consented UNO memory observation.
+     * Content-addressed file name, no overwrite of any existing diagnostic.
+     * Unlike persist(latest), future diagnostics cannot invalidate the stored hash.
+     */
+    fun persistImmutable(context: Context, json: JSONObject): File {
+        val bytes = json.toString(2).toByteArray(Charsets.UTF_8)
+        require(bytes.isNotEmpty() && bytes.size <= 65_536) { "DIAGNOSTIC_BOUNDS" }
+        val sha = MessageDigest.getInstance("SHA-256").digest(bytes)
+            .joinToString("") { "%02x".format(it) }
+        val dir = File(context.filesDir, "diagnostics")
+        check(dir.isDirectory || dir.mkdirs()) { "DIAGNOSTICS_DIRECTORY_UNAVAILABLE" }
+        val target = File(dir, "observation-$sha.json")
+        if (target.exists()) {
+            check(target.isFile && target.length() == bytes.size.toLong() &&
+                target.readBytes().contentEquals(bytes)) {
+                "DIAGNOSTIC_EXISTING_HASH_MISMATCH"
+            }
+            return target
+        }
+        val temp = File.createTempFile("observation-", ".part", dir)
+        try {
+            FileOutputStream(temp).use { output ->
+                output.write(bytes)
+                output.fd.sync()
+            }
+            if (target.exists()) {
+                check(target.isFile && target.length() == bytes.size.toLong() &&
+                    target.readBytes().contentEquals(bytes)) {
+                    "DIAGNOSTIC_RACE_COLLISION"
+                }
+                return target
+            }
+            check(temp.renameTo(target)) { "DIAGNOSTIC_IMMUTABLE_RENAME_FAILED" }
+            check(target.isFile && target.length() == bytes.size.toLong()) {
+                "DIAGNOSTIC_IMMUTABLE_WRITE_FAILED"
+            }
+            return target
+        } finally {
+            // Only our own temporary file. Never delete the source or any prior report.
+            if (temp.exists()) temp.delete()
+        }
     }
 
     /** Diagnostic-only app-private file; no SAF/network provider. Failure is reported to UI. */

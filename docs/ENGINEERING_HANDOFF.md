@@ -1,5 +1,21 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-10 — CORRECTIVE AUDIT / CONSENT + PROVENANCE
+
+Source-level review found unannounced durable memory writes in the passive
+Android metrics button, Keystore failure blocking an unrelated read-only
+diagnostic, and mismatched/overwritable diagnostic SHA evidence. These have
+been corrected in the feature branch. Old experimental chat clear now
+truthfully warns that v1 plaintext survives; explicit owner-confirmed
+scoped revocation is available without automatically deleting files.
+Negative static regressions guard consent and provenance.
+**CI of this patch pending; DEVICE_UNTESTED.** This is not memory-stage
+acceptance or full UNO closure. [Detailed severity, fixes and open
+blockers](implementation/2026-11-10_CORRECTIVE_IMPLEMENTATION_AUDIT_R1.md).
+
+---
+
+
 ## UPDATE 2026-11-10 — ANDROID FOUNDATION OBSERVATION WIRING (CI SUCCESS)
 
 **CI SUCCESS:** [run #42708637287](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42708637287) on exact code `de7bc300e0b91e00fa84af4bb724cf067b797145`: 299 host checks (41 encrypted exact-memory checks), Android debug APK, lint, static manifest and APK validation. APK SHA-256 `2ad2e48ba841914977a3be6a5e1b35cbb4676677acfa5e922c51689edc798f9b`. **DEVICE_UNTESTED**, no download requested. The source code does not change in this documentation update.

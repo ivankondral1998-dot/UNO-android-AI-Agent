@@ -407,7 +407,8 @@ class UnoChatActivity : Activity() {
         if (busy.get()) return
         AlertDialog.Builder(this)
             .setTitle("Новый чат")
-            .setMessage("Стереть локальную историю только этого экспериментального диалога?")
+            .setMessage("Очистить текущую историю экспериментального диалога? " +
+                "Старая незашифрованная версия v1 и резервные копии НЕ удаляются этой кнопкой.")
             .setNegativeButton("Отмена", null)
             .setPositiveButton("Стереть") { _, _ ->
                 if (!busy.compareAndSet(false, true)) return@setPositiveButton
@@ -421,7 +422,7 @@ class UnoChatActivity : Activity() {
                                 if (receipt.status == UnoTextStatus.COMMITTED) {
                                     turns = receipt.history; currentUser = ""; partial = ""
                                     render()
-                                    status.text = "Локальный диалог очищен по запросу владельца"
+                                    status.text = "Текущий диалог очищен. Старая v1-копия НЕ удалена."
                                 } else {
                                     status.text = "Очистка отклонена: ${receipt.status}"
                                 }

@@ -1,6 +1,7 @@
 package org.unovyra.uno
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -204,6 +205,9 @@ class UnoActivity : Activity() {
         ownerFeedback = label("РЕЗУЛЬТАТ ПРОВЕРКИ ВЛАДЕЛЬЦА: пока нет результата", 15f)
         root.addView(ownerFeedback)
         button("Снимок состояния: RAM / CPU / батарея / тепло") { runSimple(false) }
+        root.addView(label("Точная память UNO: только отдельное подтверждение. Обычный снимок в память не записывается.", 13f))
+        button("ЗАПИСАТЬ СНИМОК В ПАМЯТЬ UNO · отдельное согласие") { confirmExactObservation() }
+        button("ОТОЗВАТЬ ДАННЫЕ ПАМЯТИ СНИМКОВ · отдельное подтверждение") { confirmExactRevocation() }
         button("Каталог сенсоров и их характеристики") { runSensorInventory() }
         button("📋 СКОПИРОВАТЬ ВЕСЬ ПОСЛЕДНИЙ ОТЧЁТ") { copyFullReport() }
         button("Быстрая лаборатория: CPU, память, IO, STOP, сенсоры") { runLab(LabProfile.QUICK) }
@@ -261,7 +265,9 @@ class UnoActivity : Activity() {
             busy.set(false)
             runOnUiThread {
                 if(alive.get()) {
-                    status.text=if(result.isSuccess) "Лаборатория: JSON сохранён в телефоне" else "Ошибка: тест не завершён"
+                    status.text=if(result.isSuccess) "Лаборатория: JSON сохранён в телефоне" else
+                        "Ошибка: ${result.exceptionOrNull()?.javaClass?.simpleName ?: "UNKNOWN"}; " +
+                        "если была запись, её исход проверь отдельно"
                     report.text=if(result.isSuccess) {
                         val (json,path)=result.getOrThrow()
                         val rawJson = json.toString(2)
@@ -360,7 +366,8 @@ class UnoActivity : Activity() {
     private fun observeDeviceSnapshot(snapshot: JSONObject): FoundationReferenceResult {
         check(foreground.get() && !UnoProcessStop.isStopped()) { "UNO_NOT_IN_FOREGROUND" }
         val observedNanos = snapshot.optLong("elapsed_realtime_ns", -1L)
-        val reportBytes = snapshot.toString().toByteArray(Charsets.UTF_8)
+        // Exactly the pretty-printed bytes persisted by DeviceProbe.persistImmutable.
+        val reportBytes = snapshot.toString(2).toByteArray(Charsets.UTF_8)
         val reportDigest = java.security.MessageDigest.getInstance("SHA-256")
             .digest(reportBytes).joinToString("") { "%02x".format(it) }
         val values = JSONObject()
@@ -413,20 +420,92 @@ class UnoActivity : Activity() {
         return outcome
     }
 
+    /** Existing passive diagnostic: NO implicit exact-memory writes or Keystore access. */
     private fun runSimple(withCpu:Boolean) {
-        execute("Чтение параметров устройства") {
+        execute("Чтение параметров устройства · без записи в память UNO") {
             val json=LabSystemMetrics.snapshot(applicationContext)
             json.put("ui_heartbeat_delay_over_350ms",heartbeatLateCount.get())
             json.put("ui_max_heartbeat_delay_ms",heartbeatMaxDelayMs.get())
             if(withCpu) json.put("cpu",DeviceProbe.benchmark())
+            json.put("uno_exact_memory_write_performed", false)
+            json to DeviceProbe.persist(applicationContext,json).absolutePath
+        }
+    }
+
+    /** An explicit owner UI action. This is consent to store observations, NOT OS authority. */
+    private fun confirmExactObservation() {
+        if (!foreground.get() || busy.get() || UnoProcessStop.isStopped()) {
+            status.text = "Память недоступна: STOP, фоновый режим или другая операция"
+            return
+        }
+        AlertDialog.Builder(this)
+            .setTitle("Записать снимок в точную память UNO?")
+            .setMessage("В защищённую память попадут только выбранные показатели батареи, " +
+                "температуры, RAM и SHA-256 отчёта. Доступ к записи — до 10 минут. " +
+                "Шифрованные записи НЕ удаляются автоматически по истечении этого срока. " +
+                "Можно отдельно отозвать весь раздел, но восстановить его запись нельзя. " +
+                "Полный диагностический JSON сохраняется отдельно, как раньше. " +
+                "Это не подтверждение личности Android и не разрешение действий ОС.")
+            .setNegativeButton("Отмена", null)
+            .setPositiveButton("Сохранить") { _, _ -> runExactObservationWithConsent() }
+            .show()
+    }
+
+    private fun runExactObservationWithConsent() {
+        execute("Явно разрешённая запись наблюдения в память UNO") {
+            val json = LabSystemMetrics.snapshot(applicationContext)
+            // Persist the ordinary diagnostic first. If the encrypted memory
+            // step fails, this original read-only report is still available.
+            // No second disk write follows a successful memory commit.
+            val diagnosticPath = DeviceProbe.persistImmutable(applicationContext, json).absolutePath
             val observed = observeDeviceSnapshot(json)
             json.put("uno_exact_observation", JSONObject()
                 .put("status", "LOCAL_EXACT_PERSISTED_AND_RETRIEVED")
+                .put("explicit_user_ui_confirmation", true)
                 .put("memory_generation", observed.memoryGeneration)
+                .put("event_key", observed.observedEventKey)
                 .put("neural_status", observed.status.name)
                 .put("android_action_verified", false)
-                .put("note", "Selected measured fields stored encrypted; no neural decision"))
-            json to DeviceProbe.persist(applicationContext,json).absolutePath
+                .put("note", "Chosen fields stored encrypted; no neural decision. " +
+                    "Saved diagnostic JSON predates this receipt; copy the UI report for receipt details."))
+            json to diagnosticPath
+        }
+    }
+
+    private fun confirmExactRevocation() {
+        if (!foreground.get() || busy.get() || UnoProcessStop.isStopped()) {
+            status.text = "Отзыв сейчас недоступен: STOP, фоновый режим или другая операция"
+            return
+        }
+        AlertDialog.Builder(this)
+            .setTitle("Отозвать память снимков UNO?")
+            .setMessage("Отзыв запрещает чтение всех записей в разделе device-observation " +
+                "и дальнейшую запись в него. Из актуального шифрованного состояния записи " +
+                "исключаются. Старые физические копии и отдельные диагностические JSON " +
+                "этим действием НЕ удаляются. Отмена отзыва сейчас не предусмотрена.")
+            .setNegativeButton("Отмена", null)
+            .setPositiveButton("Отозвать раздел") { _, _ -> revokeExactObservations() }
+            .show()
+    }
+
+    private fun revokeExactObservations() {
+        execute("Отзыв доступа к памяти снимков по подтверждению владельца") {
+            check(foreground.get() && !UnoProcessStop.isStopped()) { "STOP_OR_BACKGROUND" }
+            val exact = UnoAndroidMemoryOwner.exact(applicationContext)
+            exact.revoke("device-observation")
+            check(exact.read("device-observation", "event:1", 1, 256,
+                SystemClock.elapsedRealtimeNanos(), 0L).status == ExactStatus.DENIED) {
+                "EXACT_REVOCATION_NOT_CONFIRMED"
+            }
+            val json = JSONObject()
+                .put("schema", "UNO_EXACT_MEMORY_REVOCATION/1")
+                .put("status", "SCOPE_REVOKED_READ_DENIED")
+                .put("scope", "device-observation")
+                .put("revision", exact.generation)
+                .put("physical_flash_securely_erased", false)
+                .put("legacy_diagnostic_json_deleted", false)
+                .put("new_writes_in_scope_allowed", false)
+            json to DeviceProbe.persist(applicationContext, json).absolutePath
         }
     }
     private fun runSensorInventory() {

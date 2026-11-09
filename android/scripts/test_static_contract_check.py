@@ -36,7 +36,22 @@ fun inspectLastAppPrivateEffect() = AppPrivateReadbackProbe.inspect(filesDir, id
 button("ПОВТОРНО ПРОЧИТАТЬ ПОСЛЕДНИЙ ЛОКАЛЬНЫЙ МАРКЕР") { inspectLastAppPrivateEffect() }
 showOwnerFeedback(if (consumed) "one-use" else "NOOP denied")
 showOwnerFeedback(if (accepted) "OS OK" else "OS cancelled")
+private fun runSimple(withCpu: Boolean) { DeviceProbe.persist(applicationContext, json) }
+button("ЗАПИСАТЬ СНИМОК В ПАМЯТЬ UNO · отдельное согласие") { confirmExactObservation() }
+private fun confirmExactObservation() {
+    AlertDialog.Builder(this).setPositiveButton("Сохранить") { _, _ -> runExactObservationWithConsent() }
+}
+fun runExactObservationWithConsent() {
+    val reportBytes = snapshot.toString(2).toByteArray(Charsets.UTF_8)
+    DeviceProbe.persistImmutable(applicationContext, json)
+    observeDeviceSnapshot(json)
+}
+button("ОТОЗВАТЬ ДАННЫЕ ПАМЯТИ СНИМКОВ · отдельное подтверждение") { confirmExactRevocation() }
+fun confirmExactRevocation() {
+    AlertDialog.Builder(this).setPositiveButton("Отозвать раздел") { _, _ -> revokeExactObservations() }
+}
 '''
+
 
 class GuardTests(unittest.TestCase):
     def setUp(self):
@@ -108,6 +123,31 @@ class GuardTests(unittest.TestCase):
     def test_reject_missing_independent_reopen(self):
         self.code.write_text(CODE.replace("AppPrivateReadbackProbe.inspect(filesDir, outcome.id)", "NO_REOPEN"))
         self.assertIn('app_private_effect_readback_ui_missing', guard.scan(self.root))
+    def test_reject_implicit_exact_memory_recording(self):
+        self.code.write_text(CODE.replace(
+            'DeviceProbe.persist(applicationContext, json)',
+            'observeDeviceSnapshot(json); DeviceProbe.persist(applicationContext, json)'))
+        self.assertIn('implicit_exact_memory_write_in_passive_probe', guard.scan(self.root))
+    def test_reject_missing_exact_memory_consent(self):
+        self.code.write_text(CODE.replace(
+            'button("ЗАПИСАТЬ СНИМОК В ПАМЯТЬ UNO · отдельное согласие") { confirmExactObservation() }',
+            'button("Bad implicit write") { runExactObservationWithConsent() }'))
+        self.assertIn('explicit_exact_observation_consent_missing', guard.scan(self.root))
+    def test_reject_missing_owner_revocation_control(self):
+        self.code.write_text(CODE.replace(
+            '.setPositiveButton("Отозвать раздел") { _, _ -> revokeExactObservations() }',
+            '.setPositiveButton("Отозвать раздел") { _, _ -> Unit }'))
+        self.assertIn('exact_observation_revocation_control_missing', guard.scan(self.root))
+    def test_reject_mismatched_json_digest(self):
+        self.code.write_text(CODE.replace(
+            'snapshot.toString(2).toByteArray(Charsets.UTF_8)',
+            'snapshot.toString().toByteArray(Charsets.UTF_8)'))
+        self.assertIn('exact_observation_digest_mismatch', guard.scan(self.root))
+    def test_reject_overwritable_provenance_file(self):
+        self.code.write_text(CODE.replace(
+            'DeviceProbe.persistImmutable(applicationContext, json)',
+            'DeviceProbe.persist(applicationContext, json)'))
+        self.assertIn('exact_observation_evidence_not_immutable', guard.scan(self.root))
     def test_reject_socket_api(self):
         self.code.write_text(CODE + '\nval socket = java.net.Socket("localhost",443)\n')
         self.assertIn('unexpected_api:java.net', guard.scan(self.root))

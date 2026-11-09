@@ -99,6 +99,30 @@ def scan(root: Path) -> list[str]:
             'inspectLastAppPrivateEffect()' not in activity or
             'AppPrivateReadbackProbe.inspect(filesDir, id)' not in activity):
         errors.append('app_private_effect_readback_ui_missing')
+    # Existing passive device probes must not secretly populate durable memory.
+    start = activity.find('private fun runSimple(')
+    end = activity.find('private fun confirmExactObservation()', start)
+    if start < 0 or end <= start:
+        errors.append('passive_probe_or_consent_section_missing')
+    else:
+        passive = activity[start:end]
+        if ('observeDeviceSnapshot(' in passive or
+                'UnoAndroidMemoryOwner.exact(' in passive or
+                'runExactObservationWithConsent(' in passive):
+            errors.append('implicit_exact_memory_write_in_passive_probe')
+    if ('button("ЗАПИСАТЬ СНИМОК В ПАМЯТЬ UNO · отдельное согласие") { confirmExactObservation() }' not in activity or
+            'AlertDialog.Builder(this)' not in activity or
+            '.setPositiveButton("Сохранить") { _, _ -> runExactObservationWithConsent() }' not in activity):
+        errors.append('explicit_exact_observation_consent_missing')
+    if ('button("ОТОЗВАТЬ ДАННЫЕ ПАМЯТИ СНИМКОВ · отдельное подтверждение") { confirmExactRevocation() }' not in activity or
+            '.setPositiveButton("Отозвать раздел") { _, _ -> revokeExactObservations() }' not in activity):
+        errors.append('exact_observation_revocation_control_missing')
+    # The authenticated exact observation references an independently retained
+    # diagnostic file. A digest of compact JSON does not match its pretty form.
+    if 'snapshot.toString(2).toByteArray(Charsets.UTF_8)' not in activity:
+        errors.append('exact_observation_digest_mismatch')
+    if 'DeviceProbe.persistImmutable(applicationContext, json)' not in activity:
+        errors.append('exact_observation_evidence_not_immutable')
     return errors
 
 
