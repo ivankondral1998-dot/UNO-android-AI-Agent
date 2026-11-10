@@ -9,7 +9,7 @@ immutable source bytes and encrypted payload digest must match. The
 owner's locator is stored separately and never treated as authority.
 Existing device-reboot data still fails closed with UNKNOWN; no temporal
 policy silently invented. Negative static checks added.
-**CI pending; device untested**. [Source, tests, and physical acceptance](implementation/2026-11-10_EXACT_REOPEN_DIAGNOSTIC_R1.md).
+**CI VERIFIED:** source `a095ae796b236db71fd0fc2d534f86a0d4107daf`; private [run #42729419491](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42729419491) SUCCESS. 305 core host checks (47 encrypted memory), static negative regressions, Android SDK35 build, lint, APK/badging/manifest gates PASS. APK SHA-256 `f50b26425f310b493adb4c8bd6e1a8202650bd42e5bc8f35eeb7de3cc1824f57`. **DEVICE_UNTESTED**. [Source, tests, and physical acceptance](implementation/2026-11-10_EXACT_REOPEN_DIAGNOSTIC_R1.md).
 
 ---
 

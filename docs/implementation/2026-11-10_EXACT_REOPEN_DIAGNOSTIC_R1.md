@@ -75,5 +75,6 @@ operations or independent OS effect readback is asserted.
 
 ## Build evidence
 
-**PENDING**: exact source CI; update after GitHub Actions completes.
-Status before CI: IMPLEMENTED / NOT_VERIFIED.
+**CI VERIFIED:** source `a095ae796b236db71fd0fc2d534f86a0d4107daf`; private [run #42729419491](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42729419491) SUCCESS. 305 core host checks (47 encrypted memory), static negative regressions, Android SDK35 build, lint, APK/badging/manifest gates PASS. APK SHA-256 `f50b26425f310b493adb4c8bd6e1a8202650bd42e5bc8f35eeb7de3cc1824f57`. **DEVICE_UNTESTED**.
+
+Status: IMPLEMENTED / HOST_TESTED / ANDROID_BUILT; **not** DEVICE_VERIFIED.
