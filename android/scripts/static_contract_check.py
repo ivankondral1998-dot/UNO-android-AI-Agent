@@ -155,6 +155,12 @@ def scan(root: Path) -> list[str]:
                 'revokeExactObservations(', 'UnoAndroidMemoryOwner.exact(')):
             errors.append('unified_diagnostic_implicit_privileged_write')
 
+    # An attempted read returning NOT_FOUND can be expired; do not claim no test ran.
+    if (single_start >= 0 and single_end > single_start and
+            ('"EXACT_DENIED" -> "DENIED"' not in single or
+             '"EXACT_NOT_FOUND", "EXACT_UNKNOWN", "EXACT_TRUNCATED", "EXACT_CONFLICT" -> "UNKNOWN"' not in single)):
+        errors.append('unified_exact_memory_status_overclaimed')
+
     adapter = (code_dir / 'UnoAndroidExactMemory.kt').read_text(encoding='utf-8') if (code_dir / 'UnoAndroidExactMemory.kt').exists() else ''
     if ('readOnly: Boolean = false' not in adapter or
             'EXACT_READONLY_SNAPSHOT_UNAVAILABLE' not in adapter or

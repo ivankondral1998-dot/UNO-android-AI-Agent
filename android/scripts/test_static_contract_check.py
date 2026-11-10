@@ -71,6 +71,11 @@ button("ПРОВЕРИТЬ UNO · ОДИН ТЕСТ") { runUnifiedSelfTest() }
 private fun runUnifiedSelfTest() {
     val lab = DeviceLab.run(applicationContext, LabProfile.QUICK, stop)
     val exact = buildExactObservationReadback()
+    val classified = when (code) {
+        "EXACT_DENIED" -> "DENIED"
+        "EXACT_NOT_FOUND", "EXACT_UNKNOWN", "EXACT_TRUNCATED", "EXACT_CONFLICT" -> "UNKNOWN"
+        else -> "NOT_RUN"
+    }
 }
 private fun runSensorInventory() {}
 fun saveLocator() {
@@ -239,6 +244,14 @@ class GuardTests(unittest.TestCase):
     def test_reject_unified_missing_quick_profile(self):
         self.code.write_text(CODE.replace('DeviceLab.run(applicationContext, LabProfile.QUICK, stop)', 'DeviceLab.fake()'))
         self.assertIn('unified_one_tap_diagnostic_missing', guard.scan(self.root))
+    def test_reject_expired_memory_as_not_run(self):
+        self.code.write_text(CODE.replace(
+            '"EXACT_NOT_FOUND", "EXACT_UNKNOWN", "EXACT_TRUNCATED", "EXACT_CONFLICT" -> "UNKNOWN"',
+            '"EXACT_NOT_FOUND", "EXACT_UNKNOWN", "EXACT_TRUNCATED", "EXACT_CONFLICT" -> "NOT_RUN"'))
+        self.assertIn('unified_exact_memory_status_overclaimed', guard.scan(self.root))
+    def test_reject_revocation_denial_as_not_run(self):
+        self.code.write_text(CODE.replace('"EXACT_DENIED" -> "DENIED"', '"EXACT_DENIED" -> "NOT_RUN"'))
+        self.assertIn('unified_exact_memory_status_overclaimed', guard.scan(self.root))
     def test_reject_socket_api(self):
         self.code.write_text(CODE + '\nval socket = java.net.Socket("localhost",443)\n')
         self.assertIn('unexpected_api:java.net', guard.scan(self.root))

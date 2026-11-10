@@ -668,8 +668,9 @@ class UnoActivity : Activity() {
                     .getOrElse { JSONObject().put("status", "VAULT_UNAVAILABLE_FAIL_CLOSED") }
                 val exactVerdict = when (exact.optString("status")) {
                     "SAME_BOOT_EXACT_AND_SOURCE_MATCH" -> "PASS"
-                    "NO_DURABLE_LOCATOR", "EXACT_NOT_FOUND", "EXACT_DENIED" -> "NOT_RUN"
-                    "EXACT_UNKNOWN", "EXACT_TRUNCATED", "EXACT_CONFLICT" -> "UNKNOWN"
+                    "NO_DURABLE_LOCATOR" -> "NOT_RUN"
+                    "EXACT_DENIED" -> "DENIED"
+                    "EXACT_NOT_FOUND", "EXACT_UNKNOWN", "EXACT_TRUNCATED", "EXACT_CONFLICT" -> "UNKNOWN"
                     else -> "FAIL"
                 }
                 if (exactVerdict == "FAIL") failed = true

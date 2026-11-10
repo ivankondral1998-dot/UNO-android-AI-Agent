@@ -1,6 +1,7 @@
 # Owner approval 2026-11-08: necessary GitHub Actions for this feature-branch Android SDK build.
 # 2026-11-10: compile check of compact lab; first run failed due to static fixture missing new markers.
 # 2026-11-10: repair static fixture and keep owner feedback adjacent to manual controls; rerun once.
+# 2026-11-10: correct expired memory readback UNKNOWN and revoked memory DENIED classifications; scoped verification.
 # 2026-11-10: necessary full SDK build after fresh disk-backed exact-memory readback and read-only source guard.
 # 2026-11-10: compile repair after CI failure #42725562176 (keep Kotlin trailing clock lambda last).
 # 2026-11-10: exact vault first-open genesis regression (single necessary build).
