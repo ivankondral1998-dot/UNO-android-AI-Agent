@@ -5,6 +5,7 @@
 - UNO: `feat/uno-foundation-hardening-20261107`, start-of-review HEAD `64b6a563276e0a7aa1d6474720647d13b2e02532`; authority `/AGENTS.md` V3 (RELEASE FIRST).
 - Jarvis source: private `kolakbro5995-cpu/JarvisLab`, recovered snapshot `recovery/v20-original-baseline-3ab8dd9-20261031`, snapshot commit `b3c19fcae9000defd67efc7dd77d7876e4a3de22`, Git tree `e7c6d41e176395c1428b855b6624419bcbe581cc`. Access must use the **Jarvis owner account**, not the separate UNO GitHub connection.
 - Jarvis V20 supplied APK: `JarvisLab-V20-Sol-Experiment-20261029.apk`, SHA-256 `984fc3f975e5cb38210e49c57bce6ea562f54f5f139e45e2569bd9fd27aeea07`. APK/source identity was not proven byte-for-byte; the recovered snapshot is a source reference, not an APK rebuild.
+- **Important manifest identity mismatch (direct local binary-XML manifest read):** supplied Sol-Experiment APK has `package=io.jarvis.mobile.lab.experiment`, `versionCode=20`, `versionName=0.7.6-lab-experiment`; the recovered source `app/build.gradle.kts` declares `applicationId=io.jarvis.mobile.lab`, `versionCode=20`, `versionName=0.7.6-lab`. The submitted experimental APK cannot be treated as the canonical Lab in-place update or a proven byte-for-byte build of this source. `RuntimeDiagnostics.runUnifiedDetailed()` in recovered source has an exact `io.jarvis.mobile.lab` branch guard, so cognitive Self-Test in the `.experiment` APK is **not proven reachable** from this source alone. The canonical `verify_lab_update.sh` correctly restricts updates to `io.jarvis.mobile.lab`.
 
 ## Verified Jarvis implementation patterns
 
