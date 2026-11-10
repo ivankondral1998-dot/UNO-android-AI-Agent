@@ -1,4 +1,5 @@
 # Owner approval 2026-11-08: necessary GitHub Actions for this feature-branch Android SDK build.
+# 2026-11-10: one scoped R4 SDK build after local-only owner-update pipeline, no owner signing key in CI.
 # 2026-11-10: ONE needed R3 SDK verification after Jarvis-source review; keep CI APK non-installable as update.
 # 2026-11-10: compile check of compact lab; first run failed due to static fixture missing new markers.
 # 2026-11-10: repair static fixture and keep owner feedback adjacent to manual controls; rerun once.
@@ -73,6 +74,8 @@ jobs:
           python3 scripts/test_static_contract_check.py
           python3 scripts/test_sqlite_outcome_schema.py
           python3 scripts/test_lab_tools.py
+          python3 scripts/test_apk_update_gate.py
+          python3 scripts/test_owner_update_build.py
       - name: Run all existing Kotlin host checks if standalone compiler is present
         run: |
           set -euo pipefail
