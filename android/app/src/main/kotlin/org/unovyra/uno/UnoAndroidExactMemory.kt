@@ -14,6 +14,7 @@ import org.unovyra.uno.core.UnoExactMemoryPort
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException
+import java.io.FileInputStream
 import java.security.KeyStore
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
@@ -24,7 +25,7 @@ import javax.crypto.SecretKey
  * unknown boot identity or missing snapshot fails closed; no automatic data deletion.
  * A separate device integration test is needed for AndroidKeystore and boot identity.
  */
-internal class UnoAndroidExactMemory(context: Context) : UnoExactMemoryPort {
+internal class UnoAndroidExactMemory(context: Context, private val readOnly: Boolean = false) : UnoExactMemoryPort {
     private val file = AtomicFile(File(context.filesDir, "uno_exact_memory_v1.aes"))
     private val keyAlias = "uno_exact_memory_aes_v1"
     private val backend: UnoEncryptedExactMemory
@@ -38,12 +39,25 @@ internal class UnoAndroidExactMemory(context: Context) : UnoExactMemoryPort {
         check(existing == null || existing is SecretKey) { "EXACT_KEY_TYPE_UNSUPPORTED" }
         check(!hasSnapshot || existing is SecretKey) { "EXACT_KEY_MISSING" }
         check(hasSnapshot || existing == null) { "EXACT_SNAPSHOT_MISSING" }
+        // Inspection must reopen an EXISTING authenticated snapshot without
+        // generating a key or genesis file. Empty/corrupt state fails closed.
+        check(!readOnly || (hasSnapshot && existing is SecretKey)) {
+            "EXACT_READONLY_SNAPSHOT_UNAVAILABLE"
+        }
         val key = (existing as? SecretKey) ?: generateKey()
         backend = UnoEncryptedExactMemory(
             key, boot,
             load = {
                 try {
-                    file.openRead().use { input ->
+                    // AtomicFile.openRead() may repair a legacy backup by renaming
+                    // files. Read-only inspection must not mutate the vault.
+                    val input = if (readOnly) {
+                        check(!File(base.path + ".bak").exists()) {
+                            "EXACT_READONLY_PENDING_RECOVERY"
+                        }
+                        FileInputStream(base)
+                    } else file.openRead()
+                    input.use { input ->
                         val out = ByteArrayOutputStream()
                         val buffer = ByteArray(8192)
                         while (true) {
@@ -74,7 +88,7 @@ internal class UnoAndroidExactMemory(context: Context) : UnoExactMemoryPort {
             },
             // Fresh AndroidKeystore keys get a durable genesis snapshot,
             // rather than leaving a key-only vault until the first observation.
-            initializeEmptyOnFirstOpen = !hasSnapshot,
+            initializeEmptyOnFirstOpen = !hasSnapshot && !readOnly,
             clockElapsedNanos = SystemClock::elapsedRealtimeNanos
         )
     }
@@ -107,10 +121,15 @@ internal class UnoAndroidExactMemory(context: Context) : UnoExactMemoryPort {
 
     override val generation: Long get() = backend.generation
     override fun write(scope: String, factKey: String, raw: ByteArray, expiry: Long,
-                       consentEpoch: Long, kind: EntryKind, source: String): ExactEntry =
-        backend.write(scope, factKey, raw, expiry, consentEpoch, kind, source)
+                       consentEpoch: Long, kind: EntryKind, source: String): ExactEntry {
+        check(!readOnly) { "EXACT_READONLY_WRITE_DENIED" }
+        return backend.write(scope, factKey, raw, expiry, consentEpoch, kind, source)
+    }
     override fun read(scope: String, factKey: String, k: Int, scanBudget: Int,
                       now: Long, consentEpoch: Long): ExactRead =
         backend.read(scope, factKey, k, scanBudget, now, consentEpoch)
-    override fun revoke(scope: String) = backend.revoke(scope)
+    override fun revoke(scope: String) {
+        check(!readOnly) { "EXACT_READONLY_REVOKE_DENIED" }
+        backend.revoke(scope)
+    }
 }

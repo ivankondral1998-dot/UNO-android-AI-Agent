@@ -123,6 +123,29 @@ def scan(root: Path) -> list[str]:
         errors.append('exact_observation_digest_mismatch')
     if 'DeviceProbe.persistImmutable(applicationContext, json)' not in activity:
         errors.append('exact_observation_evidence_not_immutable')
+    if ('button("ПРОВЕРИТЬ ЗАПИСЬ ПАМЯТИ ПОСЛЕ ПЕРЕЗАПУСКА") { inspectLastExactObservation() }' not in activity or
+            'private fun inspectLastExactObservation()' not in activity or
+            '"SAME_BOOT_EXACT_AND_SOURCE_MATCH"' not in activity or
+            'read.status != ExactStatus.COMPLETE' not in activity or
+            '"EXACT_" + read.status.name' not in activity or
+            '"diagnostics/observation-${digest!!}.json"' not in activity or
+            '.put("new_vault_write_performed", false)' not in activity or
+            'UnoAndroidExactMemory(applicationContext, readOnly = true).read(' not in activity):
+
+        errors.append('exact_restart_readback_missing_or_unbounded')
+    if ('putString("last_event_key", eventKey)' not in activity or
+            '.putString("last_diagnostic_sha256", originalDigest).commit()' not in activity):
+        errors.append('durable_exact_restart_locator_missing')
+    adapter = (code_dir / 'UnoAndroidExactMemory.kt').read_text(encoding='utf-8') if (code_dir / 'UnoAndroidExactMemory.kt').exists() else ''
+    if ('readOnly: Boolean = false' not in adapter or
+            'EXACT_READONLY_SNAPSHOT_UNAVAILABLE' not in adapter or
+            'initializeEmptyOnFirstOpen = !hasSnapshot && !readOnly' not in adapter or
+            'EXACT_READONLY_WRITE_DENIED' not in adapter or
+            'EXACT_READONLY_REVOKE_DENIED' not in adapter or
+            'EXACT_READONLY_PENDING_RECOVERY' not in adapter or
+            'FileInputStream(base)' not in adapter):
+
+        errors.append('exact_readonly_disk_reopen_contract_missing')
     return errors
 
 

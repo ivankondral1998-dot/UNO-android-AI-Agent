@@ -1,5 +1,19 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-10 — FRESH DISK READBACK / OWNER DEVICE GATE
+
+Implemented an explicit diagnostic for reopening persisted exact device
+observations from disk (not the process singleton). The reader refuses key
+creation/genesis, vault mutation and AtomicFile read-side repair; full
+immutable source bytes and encrypted payload digest must match. The
+owner's locator is stored separately and never treated as authority.
+Existing device-reboot data still fails closed with UNKNOWN; no temporal
+policy silently invented. Negative static checks added.
+**CI pending; device untested**. [Source, tests, and physical acceptance](implementation/2026-11-10_EXACT_REOPEN_DIAGNOSTIC_R1.md).
+
+---
+
+
 ## UPDATE 2026-11-10 — FIRST-OPEN EXACT MEMORY GENESIS
 
 **Verified source:** `cf36fa1b4fef2dfbf50421456b09cac00ae42877`.

@@ -14,6 +14,16 @@ MANIFEST = '''<manifest xmlns:android="http://schemas.android.com/apk/res/androi
 <activity android:name=".UnoChatActivity" android:exported="false"/>
 <service android:name=".NeuralWorkerService" android:isolatedProcess="true" android:exported="false"/>
 </application></manifest>'''
+ADAPTER = '''package org.unovyra.uno
+private val readOnly: Boolean = false
+val policy = "EXACT_READONLY_SNAPSHOT_UNAVAILABLE"
+val create = "initializeEmptyOnFirstOpen = !hasSnapshot && !readOnly"
+val rejectWrite = "EXACT_READONLY_WRITE_DENIED"
+val rejectRevoke = "EXACT_READONLY_REVOKE_DENIED"
+val rejectBackup = "EXACT_READONLY_PENDING_RECOVERY"
+val reader = FileInputStream(base)
+'''
+
 CODE = '''package org.unovyra.uno
 val controller = TrustController(DenyAllAndroidPort(), DenyAllLedger())
 val neural = NoWeightsNeuralPort()
@@ -46,6 +56,18 @@ fun runExactObservationWithConsent() {
     DeviceProbe.persistImmutable(applicationContext, json)
     observeDeviceSnapshot(json)
 }
+button("ПРОВЕРИТЬ ЗАПИСЬ ПАМЯТИ ПОСЛЕ ПЕРЕЗАПУСКА") { inspectLastExactObservation() }
+private fun inspectLastExactObservation() {
+    val exactResult = UnoAndroidExactMemory(applicationContext, readOnly = true).read(1)
+    if (read.status != ExactStatus.COMPLETE) "EXACT_" + read.status.name
+    val sourceFile = "diagnostics/observation-${digest!!}.json"
+    val success = "SAME_BOOT_EXACT_AND_SOURCE_MATCH"
+    val json = JSONObject().put("new_vault_write_performed", false)
+}
+fun saveLocator() {
+    prefs.edit().putString("last_event_key", eventKey)
+        .putString("last_diagnostic_sha256", originalDigest).commit()
+}
 button("ОТОЗВАТЬ ДАННЫЕ ПАМЯТИ СНИМКОВ · отдельное подтверждение") { confirmExactRevocation() }
 fun confirmExactRevocation() {
     AlertDialog.Builder(this).setPositiveButton("Отозвать раздел") { _, _ -> revokeExactObservations() }
@@ -64,6 +86,8 @@ class GuardTests(unittest.TestCase):
         self.code.parent.mkdir(parents=True)
         self.manifest.write_text(MANIFEST)
         self.code.write_text(CODE)
+        self.adapter = self.code.with_name("UnoAndroidExactMemory.kt")
+        self.adapter.write_text(ADAPTER)
     def test_clean_fixture(self): self.assertEqual(guard.scan(self.root), [])
     def test_reject_internet_permission(self):
         self.manifest.write_text(MANIFEST.replace('<application', '<uses-permission android:name="android.permission.INTERNET"/><application'))
@@ -148,6 +172,43 @@ class GuardTests(unittest.TestCase):
             'DeviceProbe.persistImmutable(applicationContext, json)',
             'DeviceProbe.persist(applicationContext, json)'))
         self.assertIn('exact_observation_evidence_not_immutable', guard.scan(self.root))
+    def test_reject_missing_exact_restart_readback_ui(self):
+        self.code.write_text(CODE.replace(
+            'button("ПРОВЕРИТЬ ЗАПИСЬ ПАМЯТИ ПОСЛЕ ПЕРЕЗАПУСКА") { inspectLastExactObservation() }',
+            'button("NO_RESTART_READBACK") { Unit }'))
+        self.assertIn('exact_restart_readback_missing_or_unbounded', guard.scan(self.root))
+    def test_reject_unbound_restart_readback_status(self):
+        self.code.write_text(CODE.replace(
+            'read.status != ExactStatus.COMPLETE', 'read.status != ExactStatus.NOT_FOUND'))
+        self.assertIn('exact_restart_readback_missing_or_unbounded', guard.scan(self.root))
+    def test_reject_missing_exact_restart_locator(self):
+        self.code.write_text(CODE.replace(
+            '.putString("last_diagnostic_sha256", originalDigest).commit()',
+            '.apply()'))
+        self.assertIn('durable_exact_restart_locator_missing', guard.scan(self.root))
+    def test_reject_restart_claiming_new_vault_write(self):
+        self.code.write_text(CODE.replace(
+            '.put("new_vault_write_performed", false)',
+            '.put("new_vault_write_performed", true)'))
+        self.assertIn('exact_restart_readback_missing_or_unbounded', guard.scan(self.root))
+    def test_reject_restart_without_source_digest_path(self):
+        self.code.write_text(CODE.replace(
+            'diagnostics/observation-${digest!!}.json',
+            'diagnostics/probe_latest.json'))
+        self.assertIn('exact_restart_readback_missing_or_unbounded', guard.scan(self.root))
+    def test_reject_cached_memory_not_disk_reopen(self):
+        self.code.write_text(CODE.replace(
+            'UnoAndroidExactMemory(applicationContext, readOnly = true).read(',
+            'UnoAndroidMemoryOwner.exact(applicationContext).read('))
+        self.assertIn('exact_restart_readback_missing_or_unbounded', guard.scan(self.root))
+    def test_reject_readonly_adapter_missing(self):
+        self.adapter.write_text(ADAPTER.replace(
+            'initializeEmptyOnFirstOpen = !hasSnapshot && !readOnly',
+            'initializeEmptyOnFirstOpen = !hasSnapshot'))
+        self.assertIn('exact_readonly_disk_reopen_contract_missing', guard.scan(self.root))
+    def test_reject_readonly_disk_repair_mutation(self):
+        self.adapter.write_text(ADAPTER.replace('FileInputStream(base)', 'file.openRead()'))
+        self.assertIn('exact_readonly_disk_reopen_contract_missing', guard.scan(self.root))
     def test_reject_socket_api(self):
         self.code.write_text(CODE + '\nval socket = java.net.Socket("localhost",443)\n')
         self.assertIn('unexpected_api:java.net', guard.scan(self.root))

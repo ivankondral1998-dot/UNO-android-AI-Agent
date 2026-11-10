@@ -207,6 +207,7 @@ class UnoActivity : Activity() {
         button("Снимок состояния: RAM / CPU / батарея / тепло") { runSimple(false) }
         root.addView(label("Точная память UNO: только отдельное подтверждение. Обычный снимок в память не записывается.", 13f))
         button("ЗАПИСАТЬ СНИМОК В ПАМЯТЬ UNO · отдельное согласие") { confirmExactObservation() }
+        button("ПРОВЕРИТЬ ЗАПИСЬ ПАМЯТИ ПОСЛЕ ПЕРЕЗАПУСКА") { inspectLastExactObservation() }
         button("ОТОЗВАТЬ ДАННЫЕ ПАМЯТИ СНИМКОВ · отдельное подтверждение") { confirmExactRevocation() }
         button("Каталог сенсоров и их характеристики") { runSensorInventory() }
         button("📋 СКОПИРОВАТЬ ВЕСЬ ПОСЛЕДНИЙ ОТЧЁТ") { copyFullReport() }
@@ -265,7 +266,12 @@ class UnoActivity : Activity() {
             busy.set(false)
             runOnUiThread {
                 if(alive.get()) {
-                    status.text=if(result.isSuccess) "Лаборатория: JSON сохранён в телефоне" else
+                    status.text=if(result.isSuccess) {
+                        val outcome = result.getOrThrow().first
+                        if (outcome.optString("schema") == "UNO_EXACT_OBSERVATION_REOPEN/1")
+                            "Проверка памяти: ${outcome.optString("status")} · подробности в JSON"
+                        else "Лаборатория: JSON сохранён в телефоне"
+                    } else
                         "Ошибка: ${result.exceptionOrNull()?.javaClass?.simpleName ?: "UNKNOWN"}; " +
                         "если была запись, её исход проверь отдельно"
                     report.text=if(result.isSuccess) {
@@ -459,16 +465,101 @@ class UnoActivity : Activity() {
             // No second disk write follows a successful memory commit.
             val diagnosticPath = DeviceProbe.persistImmutable(applicationContext, json).absolutePath
             val observed = observeDeviceSnapshot(json)
+            // Durable *locator* only: never a receipt, permission, or substitute for vault readback.
+            val eventKey = observed.observedEventKey
+                ?: error("EXACT_OBSERVATION_COMMITTED_KEY_MISSING")
+            val originalDigest = java.io.File(diagnosticPath).name
+                .removePrefix("observation-").removeSuffix(".json")
+            check(originalDigest.matches(Regex("[0-9a-f]{64}"))) {
+                "EXACT_DIAGNOSTIC_DIGEST_NAME_INVALID"
+            }
+            val locatorSaved = getSharedPreferences("uno_exact_observation_locator_v1", MODE_PRIVATE)
+                .edit().putString("last_event_key", eventKey)
+                .putString("last_diagnostic_sha256", originalDigest).commit()
             json.put("uno_exact_observation", JSONObject()
-                .put("status", "LOCAL_EXACT_PERSISTED_AND_RETRIEVED")
+                .put("status", if (locatorSaved) "LOCAL_EXACT_PERSISTED_AND_RETRIEVED" else
+                    "LOCAL_EXACT_PERSISTED_RESTART_LOCATOR_UNAVAILABLE")
+                .put("locator_saved_for_restart", locatorSaved)
                 .put("explicit_user_ui_confirmation", true)
                 .put("memory_generation", observed.memoryGeneration)
-                .put("event_key", observed.observedEventKey)
+                .put("event_key", eventKey)
                 .put("neural_status", observed.status.name)
                 .put("android_action_verified", false)
                 .put("note", "Chosen fields stored encrypted; no neural decision. " +
                     "Saved diagnostic JSON predates this receipt; copy the UI report for receipt details."))
             json to diagnosticPath
+        }
+    }
+
+    /**
+     * Separate owner-invoked vault readback after Activity/process restart.
+     * No model call, no vault mutation, no recreation of lost/expired/denied data.
+     * This is only a same-boot test; the owner locator is NOT an authority token.
+     */
+    private fun inspectLastExactObservation() {
+        execute("Повторное открытие точной памяти без новой записи в хранилище UNO") {
+            val prefs = getSharedPreferences("uno_exact_observation_locator_v1", MODE_PRIVATE)
+            val key = prefs.getString("last_event_key", null)
+            val digest = prefs.getString("last_diagnostic_sha256", null)
+            val json = JSONObject()
+                .put("schema", "UNO_EXACT_OBSERVATION_REOPEN/1")
+                .put("event_key", key)
+                .put("expected_source_sha256", digest)
+                .put("new_vault_write_performed", false)
+                .put("android_os_effect_verified", false)
+                .put("cross_reboot_memory_verified", false)
+            val validKey = key != null && key.matches(Regex("event:[1-9][0-9]*"))
+            val validDigest = digest != null && digest.matches(Regex("[0-9a-f]{64}"))
+            if (!validKey || !validDigest) {
+                json.put("status", if (key == null || digest == null)
+                    "NO_DURABLE_LOCATOR" else "INVALID_LOCATOR")
+            } else {
+                val read = try {
+                    // Fresh disk-backed open: the process singleton would only
+                    // prove RAM state, not persistence across Activity restarts.
+                    UnoAndroidExactMemory(applicationContext, readOnly = true).read(
+                        "device-observation", key!!, 1, 256,
+                        SystemClock.elapsedRealtimeNanos(), 0L
+                    )
+                } catch (_: Exception) { null }
+                if (read == null) {
+                    json.put("status", "VAULT_UNAVAILABLE_FAIL_CLOSED")
+                } else if (read.status != ExactStatus.COMPLETE || read.entries.size != 1) {
+                    // UNKNOWN includes a changed boot token. NOT_FOUND also means TTL expiry;
+                    // neither implies deletion or falsifies an old authenticated record.
+                    json.put("status", "EXACT_" + read.status.name)
+                } else {
+                    val entry = read.entries.single()
+                    val observed = runCatching {
+                        JSONObject(String(entry.raw, Charsets.UTF_8))
+                    }.getOrNull()
+                    val sourceSha = observed?.optString("full_diagnostic_sha256", "") ?: ""
+                    val sourceFile = java.io.File(filesDir,
+                        "diagnostics/observation-${digest!!}.json")
+                    val sourceBytes = if (sourceFile.isFile &&
+                        sourceFile.length() in 1L..65_536L) {
+                        runCatching { sourceFile.readBytes() }.getOrNull()
+                    } else null
+                    val sourceActualSha = sourceBytes?.let { data ->
+                        java.security.MessageDigest.getInstance("SHA-256").digest(data)
+                            .joinToString("") { "%02x".format(it) }
+                    }
+                    val memorySha = java.security.MessageDigest.getInstance("SHA-256")
+                        .digest(entry.raw).joinToString("") { "%02x".format(it) }
+                    val validMemory = entry.factKey == key && entry.scope == "device-observation" &&
+                        entry.kind == EntryKind.OBSERVED &&
+                        entry.source == "ANDROID_READONLY_DEVICE_METRICS" &&
+                        memorySha == entry.sha256 &&
+                        observed?.optString("schema", "") == "UNO_DEVICE_METRICS_OBSERVATION/1"
+                    json.put("status", if (validMemory && sourceSha == digest &&
+                        sourceActualSha == digest) "SAME_BOOT_EXACT_AND_SOURCE_MATCH"
+                        else "EXACT_OR_SOURCE_MISMATCH")
+                        .put("source_file_present", sourceBytes != null)
+                        .put("source_sha256_match", sourceActualSha == digest)
+                        .put("memory_payload_valid", validMemory)
+                }
+            }
+            json to DeviceProbe.persist(applicationContext, json).absolutePath
         }
     }
 
