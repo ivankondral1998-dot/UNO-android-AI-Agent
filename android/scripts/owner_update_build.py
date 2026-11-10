@@ -111,7 +111,8 @@ def main() -> int:
         if not accepted or new.version_code != args.new_version_code:
             raise ValueError("BUILT_APK_UPDATE_GATE_FAIL_" + reason)
 
-        sha256 = hashlib.file_digest(candidate.open("rb"), "sha256").hexdigest()
+        with candidate.open("rb") as apk_stream:
+            sha256 = hashlib.file_digest(apk_stream, "sha256").hexdigest()
         output = args.output_dir.expanduser().resolve()
         output.mkdir(parents=True, exist_ok=True)
         target = output / ("uno-update-" + old.package + "-v" +
