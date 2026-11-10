@@ -1,5 +1,11 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-10 — SINGLE-TAP DIAGNOSTIC / COMPACT OWNER UI
+
+Introduced one bounded owner-triggered QUICK self-test on the same Android applicationId. Old manual lab controls move behind an expandable engineering panel; visible STOP and JSON copy retained. Auto-run reads existing encrypted memory/marker and SQLite only; owner authentication, native Android effect and neural quality are expressly untested. Overall PARTIAL is not device acceptance. See [implementation](implementation/2026-11-10_UNIFIED_OWNER_DIAGNOSTIC_R1.md). **Do not elevate to ANDROID_BUILT/DEVICE_VERIFIED without fresh evidence.**
+
+---
+
 ## UPDATE 2026-11-10 — FRESH DISK READBACK / OWNER DEVICE GATE
 
 Implemented an explicit diagnostic for reopening persisted exact device
