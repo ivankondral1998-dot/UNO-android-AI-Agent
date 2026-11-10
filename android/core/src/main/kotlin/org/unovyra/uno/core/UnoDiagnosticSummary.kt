@@ -15,7 +15,7 @@ data class UnoDiagnosticSummary(
 object UnoDiagnosticEvaluator {
     private val recognized = setOf(
         "PASS", "FAIL", "ABORTED", "UNKNOWN", "INCONCLUSIVE", "UNSUPPORTED",
-        "NOT_RUN", "DENIED", "MANUAL_REQUIRED", "NOT_IMPLEMENTED"
+        "NOT_RUN", "DENIED", "MANUAL_REQUIRED", "NOT_IMPLEMENTED", "NOT_TESTED"
     )
 
     fun summarize(checkStatuses: List<String>, stopped: Boolean): UnoDiagnosticSummary {
