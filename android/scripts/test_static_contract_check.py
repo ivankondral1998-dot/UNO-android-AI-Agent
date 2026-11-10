@@ -64,6 +64,13 @@ private fun inspectLastExactObservation() {
     val success = "SAME_BOOT_EXACT_AND_SOURCE_MATCH"
     val json = JSONObject().put("new_vault_write_performed", false)
 }
+// Single-click read-only consolidated diagnostics, separate from explicit consent.
+val advancedContainer = object { val visibility = 0 }
+button("ПРОВЕРИТЬ UNO · ОДИН ТЕСТ") { runUnifiedSelfTest() }
+private fun runUnifiedSelfTest() {
+    val lab = DeviceLab.run(applicationContext, LabProfile.QUICK, stop)
+    val exact = buildExactObservationReadback()
+}
 fun saveLocator() {
     prefs.edit().putString("last_event_key", eventKey)
         .putString("last_diagnostic_sha256", originalDigest).commit()
@@ -209,6 +216,27 @@ class GuardTests(unittest.TestCase):
     def test_reject_readonly_disk_repair_mutation(self):
         self.adapter.write_text(ADAPTER.replace('FileInputStream(base)', 'file.openRead()'))
         self.assertIn('exact_readonly_disk_reopen_contract_missing', guard.scan(self.root))
+    def test_reject_missing_unified_one_tap_button(self):
+        self.code.write_text(CODE.replace('ПРОВЕРИТЬ UNO · ОДИН ТЕСТ', 'NO TEST'))
+        self.assertIn('unified_one_tap_diagnostic_missing', guard.scan(self.root))
+    def test_reject_unified_implicit_exact_write(self):
+        self.code.write_text(CODE.replace(
+            'val exact = buildExactObservationReadback()',
+            'runExactObservationWithConsent()\n    val exact = buildExactObservationReadback()'))
+        self.assertIn('unified_diagnostic_implicit_privileged_write', guard.scan(self.root))
+    def test_reject_unified_owner_auto_credential(self):
+        self.code.write_text(CODE.replace(
+            'val exact = buildExactObservationReadback()',
+            'ownerGate.begin(scope, description)\n    val exact = buildExactObservationReadback()'))
+        self.assertIn('unified_diagnostic_implicit_privileged_write', guard.scan(self.root))
+    def test_reject_unified_marker_autowrite(self):
+        self.code.write_text(CODE.replace(
+            'val exact = buildExactObservationReadback()',
+            'AppPrivateReadbackProbe.run(filesDir)\n    val exact = buildExactObservationReadback()'))
+        self.assertIn('unified_diagnostic_implicit_privileged_write', guard.scan(self.root))
+    def test_reject_unified_missing_quick_profile(self):
+        self.code.write_text(CODE.replace('DeviceLab.run(applicationContext, LabProfile.QUICK, stop)', 'DeviceLab.fake()'))
+        self.assertIn('unified_one_tap_diagnostic_missing', guard.scan(self.root))
     def test_reject_socket_api(self):
         self.code.write_text(CODE + '\nval socket = java.net.Socket("localhost",443)\n')
         self.assertIn('unexpected_api:java.net', guard.scan(self.root))

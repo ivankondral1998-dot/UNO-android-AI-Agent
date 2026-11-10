@@ -136,6 +136,25 @@ def scan(root: Path) -> list[str]:
     if ('putString("last_event_key", eventKey)' not in activity or
             '.putString("last_diagnostic_sha256", originalDigest).commit()' not in activity):
         errors.append('durable_exact_restart_locator_missing')
+    # One-tap diagnostic must stay explicit and cannot bypass owner consent.
+    if ('button("ПРОВЕРИТЬ UNO · ОДИН ТЕСТ") { runUnifiedSelfTest() }' not in activity or
+            'advancedContainer.visibility' not in activity or
+            'private fun runUnifiedSelfTest()' not in activity or
+            'DeviceLab.run(applicationContext, LabProfile.QUICK, stop)' not in activity or
+            'buildExactObservationReadback()' not in activity):
+        errors.append('unified_one_tap_diagnostic_missing')
+    single_start = activity.find('private fun runUnifiedSelfTest()')
+    single_end = activity.find('private fun runSensorInventory()', single_start)
+    if single_start < 0 or single_end <= single_start:
+        errors.append('unified_diagnostic_scope_missing')
+    else:
+        single = activity[single_start:single_end]
+        if any(x in single for x in (
+                'runExactObservationWithConsent(', 'observeDeviceSnapshot(',
+                'AppPrivateReadbackProbe.run(', 'ownerGate.begin(',
+                'revokeExactObservations(', 'UnoAndroidMemoryOwner.exact(')):
+            errors.append('unified_diagnostic_implicit_privileged_write')
+
     adapter = (code_dir / 'UnoAndroidExactMemory.kt').read_text(encoding='utf-8') if (code_dir / 'UnoAndroidExactMemory.kt').exists() else ''
     if ('readOnly: Boolean = false' not in adapter or
             'EXACT_READONLY_SNAPSHOT_UNAVAILABLE' not in adapter or
