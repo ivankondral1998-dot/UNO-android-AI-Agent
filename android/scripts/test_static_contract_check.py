@@ -71,6 +71,10 @@ button("ПРОВЕРИТЬ UNO · ОДИН ТЕСТ") { runUnifiedSelfTest() }
 private fun runUnifiedSelfTest() {
     val lab = DeviceLab.run(applicationContext, LabProfile.QUICK, stop)
     val exact = buildExactObservationReadback()
+    val verdicts = listOf("PASS")
+    val stoppedNow = stop.isStopped()
+    val summary = UnoDiagnosticEvaluator.summarize(verdicts, stoppedNow)
+    val record = JSONObject().put("status", summary.status).put("stop_requested", stoppedNow)
     val classified = when (code) {
         "EXACT_DENIED" -> "DENIED"
         "EXACT_NOT_FOUND", "EXACT_UNKNOWN", "EXACT_TRUNCATED", "EXACT_CONFLICT" -> "UNKNOWN"
@@ -236,6 +240,11 @@ class GuardTests(unittest.TestCase):
             'val exact = buildExactObservationReadback()',
             'ownerGate.begin(scope, description)\n    val exact = buildExactObservationReadback()'))
         self.assertIn('unified_diagnostic_implicit_privileged_write', guard.scan(self.root))
+    def test_reject_unified_bypassing_verdict_gate(self):
+        self.code.write_text(CODE.replace(
+            'UnoDiagnosticEvaluator.summarize(verdicts, stoppedNow)',
+            'StaleUiStatusAggregator.summarize(verdicts, stoppedNow)'))
+        self.assertIn('unified_diagnostic_verdict_gate_missing', guard.scan(self.root))
     def test_reject_unified_marker_autowrite(self):
         self.code.write_text(CODE.replace(
             'val exact = buildExactObservationReadback()',
