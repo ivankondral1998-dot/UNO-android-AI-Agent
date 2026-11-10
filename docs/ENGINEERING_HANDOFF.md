@@ -1,5 +1,13 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+
+## UPDATE 2026-11-10 — JARVIS V20-BASED ONE-TAP DIAGNOSTICS R2 / UPDATE SAFETY
+
+Source branch `feat/uno-foundation-hardening-20261107`, base `5163aa12793155f610c347a85feb7829fb957465`. Following Jarvis V20 APK method-id verification, added a host-testable strict verdict evaluator (`UnoDiagnosticSummary.kt`), summary counters in `UnoActivity.runUnifiedSelfTest()`, STOP override, zero-check fail-closed, new host/static negative regressions. Added `apk_update_gate.py` to block attempts to replace an installed APK with another applicationId, signing certificate or nonincreasing versionCode. New CI suffix APKs **are not in-place updates** and must not be offered for installation. No prior app is deleted, no new package installed, no weights changed. **Locally unit-tested: 7 Kotlin + 8 Python; full preflight/Android build of R2 HEAD NOT run; DEVICE_VERIFIED=FALSE.** [Exact R2 source scope, Jarvis APK evidence and open delivery gates](implementation/2026-11-10_UNIFIED_JARVIS_TO_UNO_DIAGNOSTIC_R2.md). Existing single-tap R1 and earlier CI successes are historical source-specific evidence only.
+
+---
+
+
 ## UPDATE 2026-11-10 — SINGLE-TAP DIAGNOSTIC / COMPACT OWNER UI
 
 Introduced one bounded owner-triggered QUICK self-test on the same Android applicationId. Old manual lab controls move behind an expandable engineering panel; visible STOP and JSON copy retained. Auto-run reads existing encrypted memory/marker and SQLite only; owner authentication, native Android effect and neural quality are expressly untested. Overall PARTIAL is not device acceptance. See [implementation](implementation/2026-11-10_UNIFIED_OWNER_DIAGNOSTIC_R1.md). **Do not elevate to ANDROID_BUILT/DEVICE_VERIFIED without fresh evidence.**
