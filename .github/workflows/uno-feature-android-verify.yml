@@ -1,4 +1,5 @@
 # Owner approval 2026-11-08: necessary GitHub Actions for this feature-branch Android SDK build.
+# 2026-11-10: compile repair after CI failure #42725562176 (keep Kotlin trailing clock lambda last).
 # 2026-11-10: exact vault first-open genesis regression (single necessary build).
 # 2026-11-10 consent + immutable provenance corrective audit, one necessary APK check.
 # Original WP-05 single writer and on-device foundation event integration.

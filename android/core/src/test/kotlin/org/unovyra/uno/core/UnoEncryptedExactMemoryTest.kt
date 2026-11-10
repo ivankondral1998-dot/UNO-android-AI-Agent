@@ -169,23 +169,23 @@ object UnoEncryptedExactMemoryTest {
         var genesis: ByteArray? = null
         val bootstrapPersist: (ByteArray) -> Unit = { data -> genesis = data.copyOf() }
         val initialized = UnoEncryptedExactMemory(bootstrapKey, boot,
-            { genesis?.copyOf() }, bootstrapPersist, { 100L },
-            initializeEmptyOnFirstOpen = true)
+            { genesis?.copyOf() }, bootstrapPersist,
+            initializeEmptyOnFirstOpen = true) { 100L }
         verify(genesis != null && initialized.generation == 0L)
         val genesisCopy = genesis!!.copyOf()
         val restart = UnoEncryptedExactMemory(bootstrapKey, boot,
-            { genesis?.copyOf() }, bootstrapPersist, { 100L },
-            initializeEmptyOnFirstOpen = true)
+            { genesis?.copyOf() }, bootstrapPersist,
+            initializeEmptyOnFirstOpen = true) { 100L }
         verify(restart.generation == 0L && genesis!!.contentEquals(genesisCopy))
         verify(restart.read("new", "unknown", 1, 0, 100L, 0L).status == ExactStatus.NOT_FOUND)
         verify(runCatching {
             UnoEncryptedExactMemory(bootstrapKey, boot, { null },
-                { _: ByteArray -> error("BOOTSTRAP_IO_ERROR") }, { 100L },
-                initializeEmptyOnFirstOpen = true)
+                { _: ByteArray -> error("BOOTSTRAP_IO_ERROR") },
+                initializeEmptyOnFirstOpen = true) { 100L }
         }.isFailure)
         verify(runCatching {
             UnoEncryptedExactMemory(bootstrapKey, boot, { byteArrayOf(1, 2, 3) },
-                bootstrapPersist, { 100L }, initializeEmptyOnFirstOpen = true)
+                bootstrapPersist, initializeEmptyOnFirstOpen = true) { 100L }
         }.isFailure)
         verify(genesis!!.contentEquals(genesisCopy))
         println("UNO_ENCRYPTED_EXACT_MEMORY_HOST_PASS=$pass")

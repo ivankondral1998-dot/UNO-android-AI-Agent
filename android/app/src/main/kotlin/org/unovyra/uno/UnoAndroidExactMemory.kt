@@ -72,10 +72,10 @@ internal class UnoAndroidExactMemory(context: Context) : UnoExactMemoryPort {
                     throw error
                 }
             },
-            clockElapsedNanos = SystemClock::elapsedRealtimeNanos,
             // Fresh AndroidKeystore keys get a durable genesis snapshot,
             // rather than leaving a key-only vault until the first observation.
-            initializeEmptyOnFirstOpen = !hasSnapshot
+            initializeEmptyOnFirstOpen = !hasSnapshot,
+            clockElapsedNanos = SystemClock::elapsedRealtimeNanos
         )
     }
 
