@@ -138,5 +138,32 @@ class OwnerUpdateBuildTest(unittest.TestCase):
         self.assertEqual(files, [])
 
 
+    def test_existing_artifact_is_preserved_and_update_blocked(self):
+        old = Old("org.unovyra.uno.scaffold", 1, (A,))
+        digest = hashlib.sha256(b"mock signed APK fixture (not real)").hexdigest()
+        name = "uno-update-" + old.package + "-v2-" + digest[:12] + ".apk"
+        with tempfile.TemporaryDirectory() as td:
+            target = Path(td) / name
+            target.write_bytes(b"preserve previous owner's signed file")
+            code, out, files, calls = self.fake_run(
+                old, A, 2, preflight=False, destination=Path(td))
+            self.assertEqual(code, 1)
+            self.assertIn("OUTPUT_ALREADY_EXISTS_NO_OVERWRITE", out)
+            self.assertEqual(target.read_bytes(), b"preserve previous owner's signed file")
+            self.assertEqual(len(files), 1)
+
+    def test_source_blocks_ci_suffix_and_uses_local_signer(self):
+        build = (SOURCE.parents[1] / "app/build.gradle.kts").read_text(encoding="utf-8")
+        for required in (
+            'require(!ownerUpdateRequested || isolatedSuffix == null)',
+            'signingConfigs.create("unoOwnerUpdate")',
+            'signingConfig = signingConfigs.getByName("unoOwnerUpdate")',
+            'providers.environmentVariable("UNO_OWNER_UPDATE_KEYSTORE")',
+            'providers.environmentVariable("GITHUB_ACTIONS")',
+        ):
+            with self.subTest(marker=required):
+                self.assertIn(required, build)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
