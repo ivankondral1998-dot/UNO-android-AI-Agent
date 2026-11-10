@@ -68,9 +68,9 @@ class OwnerUpdateBuildTest(unittest.TestCase):
             output = destination if destination is not None else root / "dist"
             env = {
                 "UNO_OWNER_UPDATE_KEYSTORE": str(key),
-                "UNO_OWNER_UPDATE_STORE_PASSWORD": "dummy",
-                "UNO_OWNER_UPDATE_KEY_ALIAS": "dummy",
-                "UNO_OWNER_UPDATE_KEY_PASSWORD": "dummy",
+                "UNO_OWNER_UPDATE_STORE_PASSWORD": "STORE_SECRET_TEST_NOT_ARG",
+                "UNO_OWNER_UPDATE_KEY_ALIAS": "lab_alias",
+                "UNO_OWNER_UPDATE_KEY_PASSWORD": "KEY_SECRET_TEST_NOT_ARG",
                 "GITHUB_ACTIONS": "true" if is_ci else "false",
             }
             arguments = ["owner_update_build.py",
@@ -124,7 +124,8 @@ class OwnerUpdateBuildTest(unittest.TestCase):
         self.assertTrue(any(x.suffix == ".apk" for x in files))
         self.assertTrue(any(x.suffix == ".json" for x in files))
         combined = " ".join(str(arg) for call in calls for arg in call.args[0])
-        self.assertNotIn("dummy", combined)
+        self.assertNotIn("STORE_SECRET_TEST_NOT_ARG", combined)
+        self.assertNotIn("KEY_SECRET_TEST_NOT_ARG", combined)
         self.assertIn("-storepass:env", combined)
         self.assertIn("-PunoOwnerUpdateApplicationId=org.unovyra.uno.scaffold", combined)
         self.assertNotIn("-PunoIsolatedDebugSuffix", combined)
