@@ -1,5 +1,6 @@
 # Owner approval 2026-11-08: necessary GitHub Actions for this feature-branch Android SDK build.
 # 2026-11-10: one scoped R4 SDK build after local-only owner-update pipeline, no owner signing key in CI.
+# 2026-11-10: rerun exact corrected R4 source after one FAIL in test's public-alias-vs-secret assertion.
 # 2026-11-10: ONE needed R3 SDK verification after Jarvis-source review; keep CI APK non-installable as update.
 # 2026-11-10: compile check of compact lab; first run failed due to static fixture missing new markers.
 # 2026-11-10: repair static fixture and keep owner feedback adjacent to manual controls; rerun once.
