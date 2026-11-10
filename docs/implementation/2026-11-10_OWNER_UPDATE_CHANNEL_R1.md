@@ -45,3 +45,15 @@ python3 scripts/owner_update_build.py \
 - После истинной установки выполнить **один единый Self-Test и один JSON**, а не отдельные stress APK. STOP, AndroidKeyStore, native actions и neural quality требуют независимых evidence. Сам упаковочный контур не завершает продукт UNO.
 
 **Статусы на момент написания:** signing pipeline `IMPLEMENTED`; tests `PENDING`; actual owner signed APK `NOT_BUILT`; A52 `DEVICE_VERIFIED=FALSE`; product `RELEASE_READY=FALSE`. Не повышать статус без логов.
+
+---
+
+## R1 verification — authoritative update (2026-11-10, after implementation)
+
+**Earlier negative run retained:** [CI #42808670634](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42808670634) on `6972f48b1bff9fa8e032b5aad8e7813330cfb9a3` **FAIL**. One new mock test incorrectly treated the public key *alias* string `dummy` as a private secret passed to `keytool -alias`. This was a **fault in the test assertion**, not evidence of a leaked store/key password. Corrected with distinct sentinel password values and alias in `b54a70d044fa9b69a8cc5a3214022330cc965c05`. Do not erase this FAIL.
+
+**Corrected exact-source run:** [CI #42808900944](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42808900944), commit `e3a1f80e1e93d385066703adf05356a888237fc3`, **SUCCESS**. New `test_owner_update_build.py`: **14/14 PASS** (host mock safety checks). Existing standalone and Gradle Kotlin host suites: `UNO_WP01_HOST_PASS=313` on each run. Python static/negative suites passed. Android SDK35 `:app:assembleDebug`, `:app:lintDebug`, aapt/native package and forbidden-permission gates **PASS**.
+
+Exact CI-only APK SHA-256 `a2000e575b21ad4fda888d93de809fdafd1be9fa7eb592227da43762ec1c3a31`, package `org.unovyra.uno.scaffold.ci42808900944`; temporary private artifact `uno-ci-only-not-owner-update-26` ID `13762122715`. **Do not offer/install this as an update**. This proves the default build still compiles with the new Gradle configuration. The alternate **real owner-keystore Gradle signing branch is NOT built or cryptographically tested**, because the private matching key and confirmed currently installed baseline were not available in this session. Local host `keytool -storepass:env` syntax was checked against a throwaway keypair; it is not a production keystore test.
+
+**Final status R1:** `IMPLEMENTED=TRUE`, `HOST_MOCK_TESTED=TRUE`, `ANDROID_BUILT_CI_DIAGNOSTIC=TRUE`, `OWNER_SIGNED_UPDATE_BUILT=FALSE`, `DEVICE_VERIFIED_OWNER_UPDATE=FALSE`, `RELEASE_READY=FALSE`. Neither existing installation nor data was touched. Actual owner update remains **BLOCKED by missing verified installed baseline APK + matching owner-held signing private key**; new signing key cannot preserve an old Android install's private data automatically.
