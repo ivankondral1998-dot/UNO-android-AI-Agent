@@ -1,4 +1,5 @@
 # Owner approval 2026-11-08: necessary GitHub Actions for this feature-branch Android SDK build.
+# 2026-11-10: ONE needed R3 SDK verification after Jarvis-source review; keep CI APK non-installable as update.
 # 2026-11-10: compile check of compact lab; first run failed due to static fixture missing new markers.
 # 2026-11-10: repair static fixture and keep owner feedback adjacent to manual controls; rerun once.
 # 2026-11-10: correct expired memory readback UNKNOWN and revoked memory DENIED classifications; scoped verification.
@@ -107,11 +108,11 @@ jobs:
             exit 1
           fi
           printf 'SHA=%s\nREF=%s\nRUN_ID=%s\nPACKAGE=%s\nINSTALL_MODE=SIDE_BY_SIDE_NO_UNINSTALL\n' "${GITHUB_SHA}" "${GITHUB_REF_NAME}" "${GITHUB_RUN_ID}" "org.unovyra.uno.scaffold.ci${GITHUB_RUN_ID}" > ci-evidence/BUILD_PROVENANCE.txt
-      - name: Private debug artifact for owner (not a release)
+      - name: Private CI debug evidence ONLY (not an owner update or release)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: uno-side-by-side-debug-${{ github.run_number }}
+          name: uno-ci-only-not-owner-update-${{ github.run_number }}
           path: |
             android/app/build/outputs/apk/debug/app-debug.apk
             android/ci-evidence/*.txt
