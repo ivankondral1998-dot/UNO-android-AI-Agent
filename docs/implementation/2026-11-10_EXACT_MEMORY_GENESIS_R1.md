@@ -25,3 +25,22 @@ is NOT verified by JVM tests. Foundation incomplete.
 
 **Status:** IMPLEMENTED candidate, CI verification pending,
 DEVICE_UNTESTED.
+
+## Exact verification
+
+**Verified source:** `cf36fa1b4fef2dfbf50421456b09cac00ae42877`.
+[CI #42725873442](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42725873442)
+SUCCESS: 305 host assertions (47 encrypted exact-memory assertions),
+Android debug APK build and lint PASS; APK SHA-256
+`08815ee393d839553846b2fbfa0b9972b9ba3c16c0d99abbd6fffe035b4bb4fa`.
+
+**Negative history/provenance:** preceding run
+[#42725562176](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42725562176)
+FAIL: opt-in Boolean was placed after `clockElapsedNanos`, breaking existing
+Kotlin trailing-lambda calls. Code fixed by restoring the clock as the
+last constructor parameter, preserving older call sites; the exact
+retest above passed. This FAIL is retained, not renamed as PASS.
+
+**Not verified:** on-device AndroidKeyStore genesis, interrupted first
+commit, missing-key recovery, cross-reboot exact memory, anti-rollback,
+and production unified neural intelligence. **FOUNDATION_INCOMPLETE**.
