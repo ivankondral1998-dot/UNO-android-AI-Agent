@@ -627,6 +627,31 @@ class UnoActivity : Activity() {
      * One bounded, owner-initiated run. Never calls owner consent, native dispatch,
      * neural proposal or encrypted-memory mutation. Missing prior data is NOT_RUN.
      */
+    /** Current installed APK identity; an owner report is NOT cryptographic device attestation. */
+    @Suppress("DEPRECATION")
+    private fun installedApkIdentity(): JSONObject {
+        val flags = if (android.os.Build.VERSION.SDK_INT >= 28)
+            android.content.pm.PackageManager.GET_SIGNING_CERTIFICATES
+        else android.content.pm.PackageManager.GET_SIGNATURES
+        val info = packageManager.getPackageInfo(packageName, flags)
+        val signatures = if (android.os.Build.VERSION.SDK_INT >= 28)
+            info.signingInfo?.apkContentsSigners else info.signatures
+        val digests = (signatures ?: emptyArray()).map { signature ->
+            java.security.MessageDigest.getInstance("SHA-256")
+                .digest(signature.toByteArray()).joinToString("") { "%02x".format(it) }
+        }.sorted()
+        check(digests.isNotEmpty()) { "INSTALLED_SIGNER_MISSING" }
+        val version = if (android.os.Build.VERSION.SDK_INT >= 28)
+            info.longVersionCode else info.versionCode.toLong()
+        return JSONObject()
+            .put("status", "PASS")
+            .put("application_id", packageName)
+            .put("version_code", version)
+            .put("signer_sha256", JSONArray().apply { digests.forEach { put(it) } })
+            .put("source", "PACKAGE_MANAGER_INSTALLED_SELF")
+            .put("device_attested", false)
+    }
+
     private fun runUnifiedSelfTest() {
         if (busy.get()) { status.text = "Уже идёт проверка · доступен STOP"; return }
         labStop = LabStop()
@@ -638,6 +663,14 @@ class UnoActivity : Activity() {
                 verdicts.add(verdict)
                 parts.put(JSONObject().put("id", id).put("status", verdict).put("evidence", evidence))
             }
+            // Identifies the *installed* application so future updates cannot silently
+            // create yet another package or claim signing compatibility without evidence.
+            val identity = runCatching { installedApkIdentity() }.getOrElse { error ->
+                JSONObject().put("status", "FAIL")
+                    .put("error_class", error.javaClass.simpleName)
+                    .put("source", "PACKAGE_MANAGER_INSTALLED_SELF")
+            }
+            add("INSTALLED_APK_IDENTITY", identity.optString("status", "FAIL"), identity)
             val lab = DeviceLab.run(applicationContext, LabProfile.QUICK, stop)
             val scenarios = lab.optJSONArray("results") ?: JSONArray()
             var interrupted = stop.isStopped() || UnoProcessStop.isStopped() ||
