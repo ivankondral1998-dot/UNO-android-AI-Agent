@@ -1,6 +1,19 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
 
+## UPDATE 2026-11-10 — ONE INSTALLED UNO UPDATE CHANNEL / R4
+
+**REAL LIMIT:** Every prior `.ci<RUN_ID>` APK has a distinct applicationId, and historic debug signing certificates are not accompanied by matching private keys in the UNO repo. **No safe data-preserving update APK can be claimed from an arbitrary CI artifact.** Do not offer the owner additional CI side-by-side icons, auto-uninstall or reset app data.
+
+**IMPLEMENTED:** `android/scripts/owner_update_build.py` and explicit local-only Gradle `unoOwnerUpdateApplicationId/unoOwnerUpdateVersionCode` mode. Requires exact prior baseline APK, same locally held signing keystore, strictly greater versionCode and aapt/apksigner verification before producing a **non-overwriting** versioned APK+JSON. Keystore and passwords never enter repository, Actions or command-line values; GitHub Actions refuses owner signing. The code **does not install** anything. [Full source, old WP04 public signer SHA, constraints](implementation/2026-11-10_OWNER_UPDATE_CHANNEL_R1.md).
+
+**CORRECTED CI VERIFIED:** [run #42808900944](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42808900944), built source `e3a1f80e1e93d385066703adf05356a888237fc3` SUCCESS: **14/14** owner-update host mock regressions, **313** Kotlin host assertions, static/negative suites, Android SDK35 build, lint and APK gates PASS. CI-only APK `org.unovyra.uno.scaffold.ci42808900944` SHA-256 `a2000e575b21ad4fda888d93de809fdafd1be9fa7eb592227da43762ec1c3a31`, **NOT an owner-installable update**. Earlier [#42808670634](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42808670634) **FAIL** from an incorrect public-alias test assertion; fixed, not erased. `OWNER_SIGNED_UPDATE_BUILT=FALSE`, `DEVICE_VERIFIED=FALSE`. This CI build does not exercise an actual owner's private signing key.
+
+**NEXT GATE:** independently confirm which package/APK is **currently installed** on A52, then locate **the same signing private key**, or explicitly decide on first-time migration with preservation/export and no implicit removal. Until then, no compatible APK can be delivered. One unified Self-Test and one report remain the owner UX; original UNO 1.0 intelligence, memory, Android actions and native readback remain separate unclosed product gates.
+
+---
+
+
 ## UPDATE 2026-11-10 — REAL JARVIS SOURCE CROSS-CHECK / DIAGNOSTICS R3
 
 **R3 EXACT-SOURCE SDK35 VERIFICATION:** [Actions #42805696859](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42805696859) **SUCCESS**, built SHA `cb87b7edd3e5d4f116a4e913a8b18a750be15f1a`: host Kotlin `UNO_WP01_HOST_PASS=313` (including NOT_TESTED regression), Python negative suites, Android debug build, lint, aapt/native APK gates PASS. CI-only APK SHA-256 `1f6df2427f217cd0285cab3da652573db986faefd48ec99012271aed9f24ed6c`, **package `.ci42805696859`, NOT an upgrade**. `DEVICE_VERIFIED=FALSE`, `RELEASE_READY=FALSE`; no owner installation. R3 source investigation also identified supplied Jarvis APK package `io.jarvis.mobile.lab.experiment`, distinct from canonical Jarvis `io.jarvis.mobile.lab` — do not assume APK/source or update equivalence. [Full R3 evidence](implementation/2026-11-10_JARVIS_SOURCE_CROSSCHECK_AND_DIAGNOSTIC_R3.md).
