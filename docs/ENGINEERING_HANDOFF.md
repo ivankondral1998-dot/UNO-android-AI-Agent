@@ -1,6 +1,12 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
 
+## UPDATE 2026-11-10 — REAL JARVIS SOURCE CROSS-CHECK / DIAGNOSTICS R3
+
+Private Jarvis V20 restored *source* is now accessible under the Jarvis account: `kolakbro5995-cpu/JarvisLab` / `recovery/v20-original-baseline-3ab8dd9-20261031` (`b3c19fcae9000defd67efc7dd77d7876e4a3de22`). Jarvis source confirms one unified passive+bounded cognitive report and the stable package/certificate/versionCode update gate. Existing UNO one-tap R2 contained a concrete `NOT_TESTED` classification bug which forced normal reports to FAIL; reproduced locally and patched with Kotlin regression. One-tap JSON now reads current installed applicationId/versionCode/signing digest from Android PackageManager, to help *identify* the baseline without new installs. It does **not** authorize a compatible APK update, phone installation or OS action. **Local targeted evaluator 8 PASS; full Android build and A52 device verification pending.** [Exact sources, patch and limits](implementation/2026-11-10_JARVIS_SOURCE_CROSSCHECK_AND_DIAGNOSTIC_R3.md). CI debug suffix artifacts remain **NOT** in-place updates.
+
+---
+
 ## UPDATE 2026-11-10 — JARVIS V20-BASED ONE-TAP DIAGNOSTICS R2 / UPDATE SAFETY
 
 Source branch `feat/uno-foundation-hardening-20261107`, base `5163aa12793155f610c347a85feb7829fb957465`. Following Jarvis V20 APK method-id verification, added a host-testable strict verdict evaluator (`UnoDiagnosticSummary.kt`), summary counters in `UnoActivity.runUnifiedSelfTest()`, STOP override, zero-check fail-closed, new host/static negative regressions. Added `apk_update_gate.py` to block attempts to replace an installed APK with another applicationId, signing certificate or nonincreasing versionCode. New CI suffix APKs **are not in-place updates** and must not be offered for installation. No prior app is deleted, no new package installed, no weights changed. **Locally unit-tested: 7 Kotlin + 8 Python; full preflight/Android build of R2 HEAD NOT run; DEVICE_VERIFIED=FALSE.** [Exact R2 source scope, Jarvis APK evidence and open delivery gates](implementation/2026-11-10_UNIFIED_JARVIS_TO_UNO_DIAGNOSTIC_R2.md). Existing single-tap R1 and earlier CI successes are historical source-specific evidence only.
