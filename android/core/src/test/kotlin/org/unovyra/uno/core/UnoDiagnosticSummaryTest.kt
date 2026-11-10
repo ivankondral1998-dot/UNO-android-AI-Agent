@@ -33,5 +33,11 @@ object UnoDiagnosticSummaryTest {
                 listOf("PASS", "UNKNOWN", "DENIED", "NOT_RUN", "MANUAL_REQUIRED", "NOT_IMPLEMENTED"), false)
             check(s.status == "PARTIAL" && s.passed == 1 && s.incomplete == 5)
         }
+        t("declared neural NOT_TESTED is incomplete, never an unknown failure") {
+            val s = UnoDiagnosticEvaluator.summarize(
+                listOf("PASS", "NOT_TESTED", "MANUAL_REQUIRED", "NOT_IMPLEMENTED"), false)
+            check(s.status == "PARTIAL" && s.unrecognized == 0 &&
+                s.incomplete == 3 && s.passed == 1)
+        }
     }
 }
