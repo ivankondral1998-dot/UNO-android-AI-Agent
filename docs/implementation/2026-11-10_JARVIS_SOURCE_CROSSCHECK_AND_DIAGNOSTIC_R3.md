@@ -35,3 +35,13 @@ This supplies an owner-accessible baseline for identifying the installed UNO app
 - **ANDROID_BUILT:** not yet, until exact-new-source SDK35 build succeeds.
 - **DEVICE_VERIFIED:** FALSE, including PackageManager JSON on A52, STOP/report race, and local KeyStore.
 - **PRODUCT:** one trained/accepted offline intelligence, real owner-bound Android action and independent native readback remain open. No release, merge to main, Jarvis copy, weight training, or destructive action was authorized by this work.
+
+
+## R3 EXACT-SOURCE CI VERIFICATION (completed 2026-11-10, supersedes initial pending build)
+
+- **CI exact source commit:** `cb87b7edd3e5d4f116a4e913a8b18a750be15f1a`; private GitHub Actions [run #42805696859](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42805696859), job `129794125073`: **SUCCESS**, every job step passed.
+- **HOST_TESTED:** standalone Kotlin preflight and Gradle `:core:unoHostTests` PASS, final `UNO_WP01_HOST_PASS=313`. Log explicitly contains `PASS declared neural NOT_TESTED is incomplete, never an unknown failure`. Python safety/negative scripts passed (observed 40, 50 and 8-test suite summaries in logs). These are host checks, not device behavioral proof.
+- **ANDROID_BUILT:** Gradle SDK35 `:app:assembleDebug` PASS; `:app:lintDebug` PASS; aapt package/manifest/permission and native `libuno_llama.so` gates PASS.
+- **Exact APK SHA-256 (CI log):** `1f6df2427f217cd0285cab3da652573db986faefd48ec99012271aed9f24ed6c`. CI package `org.unovyra.uno.scaffold.ci42805696859`; **side-by-side test artifact, not owner-installable update**. Private artifact `uno-ci-only-not-owner-update-24`, ID `13757639247`; its archive digest is a different object from APK SHA.
+- **DEVICE_VERIFIED=FALSE:** no installation, real Samsung A52, clipboard, installed signer readback, reboot, owner authority, native effect, independent OS readback or neural quality test was run. **RELEASE_READY=FALSE**. Do not distribute CI-suffixed APK as an update.
+- After this verified code commit, a later **documentation-only** clarification identified the separately packaged Jarvis `.experiment` manifest; this documentation edit was not part of the exact build SHA and does not change app/runtime sources.
