@@ -162,7 +162,6 @@ class UnoActivity : Activity() {
         button("НАСТРОЙКИ И ИНЖЕНЕРНАЯ ЛАБОРАТОРИЯ") {
             val open = advancedContainer.visibility != View.VISIBLE
             advancedContainer.visibility = if (open) View.VISIBLE else View.GONE
-            ownerFeedback.visibility = if (open) View.VISIBLE else View.GONE
         }
         root.addView(advancedContainer)
         buttonTarget = advancedContainer
@@ -225,8 +224,7 @@ class UnoActivity : Activity() {
             })
         }
         ownerFeedback = label("РЕЗУЛЬТАТ ПРОВЕРКИ ВЛАДЕЛЬЦА: пока нет результата", 15f)
-        root.addView(ownerFeedback)
-        ownerFeedback.visibility = View.GONE
+        advancedContainer.addView(ownerFeedback)
         button("Снимок состояния: RAM / CPU / батарея / тепло") { runSimple(false) }
         advancedContainer.addView(label("Точная память UNO: только отдельное подтверждение. Обычный снимок в память не записывается.", 13f))
         button("ЗАПИСАТЬ СНИМОК В ПАМЯТЬ UNO · отдельное согласие") { confirmExactObservation() }

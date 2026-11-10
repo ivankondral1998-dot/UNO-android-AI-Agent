@@ -66,11 +66,13 @@ private fun inspectLastExactObservation() {
 }
 // Single-click read-only consolidated diagnostics, separate from explicit consent.
 val advancedContainer = object { val visibility = 0 }
+val advancedVisible = advancedContainer.visibility
 button("ПРОВЕРИТЬ UNO · ОДИН ТЕСТ") { runUnifiedSelfTest() }
 private fun runUnifiedSelfTest() {
     val lab = DeviceLab.run(applicationContext, LabProfile.QUICK, stop)
     val exact = buildExactObservationReadback()
 }
+private fun runSensorInventory() {}
 fun saveLocator() {
     prefs.edit().putString("last_event_key", eventKey)
         .putString("last_diagnostic_sha256", originalDigest).commit()

@@ -89,7 +89,7 @@ def scan(root: Path) -> list[str]:
         errors.append('package_identity_not_displayed')
     # The owner's credential/one-use outcome must be visible adjacent to buttons.
     # Merely updating the global status at the top creates an apparent no-op.
-    if ('root.addView(ownerFeedback)' not in activity or
+    if (('root.addView(ownerFeedback)' not in activity and 'advancedContainer.addView(ownerFeedback)' not in activity) or
             'showOwnerFeedback(if (consumed)' not in activity or
             'showOwnerFeedback(if (accepted)' not in activity):
         errors.append('owner_local_result_feedback_missing')
