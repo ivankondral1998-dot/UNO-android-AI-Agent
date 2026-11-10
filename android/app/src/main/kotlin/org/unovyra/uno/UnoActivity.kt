@@ -633,32 +633,31 @@ class UnoActivity : Activity() {
         val stop = labStop
         execute("UNO · единая ограниченная проверка QUICK") {
             val parts = JSONArray()
+            val verdicts = ArrayList<String>()
             fun add(id: String, verdict: String, evidence: Any) {
+                verdicts.add(verdict)
                 parts.put(JSONObject().put("id", id).put("status", verdict).put("evidence", evidence))
             }
             val lab = DeviceLab.run(applicationContext, LabProfile.QUICK, stop)
             val scenarios = lab.optJSONArray("results") ?: JSONArray()
-            var failed = false
             var interrupted = stop.isStopped() || UnoProcessStop.isStopped() ||
                 Thread.currentThread().isInterrupted
             for (i in 0 until scenarios.length()) {
                 val scenario = scenarios.optJSONObject(i) ?: continue
                 val verdict = scenario.optString("status", "INCONCLUSIVE")
-                if (verdict == "FAIL") failed = true
                 if (verdict == "ABORTED") interrupted = true
                 add("LAB_" + scenario.optString("scenario", "UNKNOWN"), verdict, scenario)
             }
             if (!lab.isNull("abort_reason_or_null")) interrupted = true
             if (scenarios.length() == 0)
                 add("LAB_SCENARIOS", "UNKNOWN", "No completed checks")
-            if (!interrupted) {
+            if (!interrupted && !stop.isStopped() && !UnoProcessStop.isStopped()) {
                 val journal = AndroidOutcomeInspection.inspect(applicationContext, false)
                 val journalVerdict = when (journal.status) {
                     AndroidOutcomeInspection.Status.INSPECTED -> "PASS"
                     AndroidOutcomeInspection.Status.NOT_INITIALIZED -> "NOT_RUN"
                     AndroidOutcomeInspection.Status.UNAVAILABLE -> "FAIL"
                 }
-                if (journalVerdict == "FAIL") failed = true
                 add("OUTCOME_JOURNAL_READ_ONLY", journalVerdict, JSONObject()
                     .put("status", journal.status.name)
                     .put("total", journal.total)
@@ -673,7 +672,6 @@ class UnoActivity : Activity() {
                     "EXACT_NOT_FOUND", "EXACT_UNKNOWN", "EXACT_TRUNCATED", "EXACT_CONFLICT" -> "UNKNOWN"
                     else -> "FAIL"
                 }
-                if (exactVerdict == "FAIL") failed = true
                 add("EXACT_MEMORY_FRESH_READ_ONLY", exactVerdict, exact)
                 val markerId = getSharedPreferences("uno_private_probe", MODE_PRIVATE)
                     .getString("last_id", null)
@@ -686,7 +684,6 @@ class UnoActivity : Activity() {
                         AppPrivateReadbackProbe.Status.UNKNOWN_MAY_HAVE_WRITTEN -> "UNKNOWN"
                         else -> "FAIL"
                     }
-                    if (markerVerdict == "FAIL") failed = true
                     add("PRIVATE_MARKER_FRESH_READ_ONLY", markerVerdict, JSONObject()
                         .put("status", marker.status.name).put("detail", marker.detail)
                         .put("sha256", marker.digest))
@@ -698,9 +695,20 @@ class UnoActivity : Activity() {
                 "DenyAllAndroidPort; no OS action dispatched")
             add("NEURAL_DIALOGUE_QUALITY", "NOT_TESTED",
                 "Offline neural quality requires a separate real model acceptance")
+            val stoppedNow = interrupted || stop.isStopped() || UnoProcessStop.isStopped() ||
+                Thread.currentThread().isInterrupted
+            val summary = UnoDiagnosticEvaluator.summarize(verdicts, stoppedNow)
             val outcome = JSONObject()
                 .put("schema", "UNO_ONE_TAP_DIAGNOSTIC/1")
-                .put("status", if (interrupted) "ABORTED" else if (failed) "FAIL" else "PARTIAL")
+                .put("status", summary.status)
+                .put("summary", JSONObject()
+                    .put("checks_total", summary.total)
+                    .put("passed", summary.passed)
+                    .put("failed", summary.failed)
+                    .put("incomplete", summary.incomplete)
+                    .put("aborted", summary.aborted)
+                    .put("unrecognized", summary.unrecognized)
+                    .put("stop_requested", stoppedNow))
                 .put("package", packageName)
                 .put("profile", "QUICK")
                 .put("lab", lab)
