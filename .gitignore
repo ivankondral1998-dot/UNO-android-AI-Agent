@@ -33,6 +33,9 @@ venv/
 .ruff_cache/
 .ipynb_checkpoints/
 
+# Owner-update local outputs: signed files and evidence remain outside version control
+android/dist/
+
 # Device / runtime output
 *.apk
 *.aab
