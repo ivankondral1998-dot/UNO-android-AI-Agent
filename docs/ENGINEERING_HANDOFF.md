@@ -1,5 +1,17 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-10 — FIRST-OPEN EXACT MEMORY GENESIS
+
+New keys now receive an authenticated empty snapshot before accepting an
+observation. Existing snapshots are not migrated/replaced; corrupt state or
+existing key with no snapshot still fails closed. This narrows—but does not
+eliminate—the crash window between key creation and a durable snapshot.
+[Patch and remaining blockers](implementation/2026-11-10_EXACT_MEMORY_GENESIS_R1.md).
+Host/Android CI pending; **DEVICE_UNTESTED**.
+
+---
+
+
 ## UPDATE 2026-11-10 — CORRECTIVE AUDIT / CONSENT + PROVENANCE
 
 **CI VERIFIED:** [exact-source run #42715526164](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/actions/runs/42715526164), commit `d9a0791ffe80fb3e3d32b1cd449282d8ac1ff230`: SUCCESS. Static-negative UI/permission checks, 299 core host checks (41 encrypted-exact-memory checks), Android arm64 debug build, Android Lint, APK package and manifest checks PASS. APK SHA-256 `f205056752516d07315d91fec0d994a87cd8234463233c7db8c01d04d0fbf6bf`. **No Samsung device verification or accepted neural F/model/authority**; only the source was built.

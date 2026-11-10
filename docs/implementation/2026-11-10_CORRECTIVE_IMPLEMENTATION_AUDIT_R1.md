@@ -92,3 +92,12 @@ establish screen behavior, KeyStore persistence, readback across reboot,
 or flash-level resistance to rollback. The only licensed candidate model
 seen in UNO is a separate Qwen text experiment; this audit does not certify
 any production neural intelligence.
+
+
+## Follow-up: initial key/snapshot mismatch (R1)
+
+An optional empty encrypted genesis is now persisted on first new key use,
+before returning a memory instance. The existing key without ciphertext
+continues to fail closed and requires explicit recovery policy; old
+snapshots are preserved. See
+[genesis implementation note](2026-11-10_EXACT_MEMORY_GENESIS_R1.md).

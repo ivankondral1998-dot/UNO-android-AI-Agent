@@ -157,11 +157,20 @@ class UnoEncryptedExactMemory(
     private val bootToken: String,
     private val load: () -> ByteArray?,
     private val persist: (ByteArray) -> Unit,
-    private val clockElapsedNanos: () -> Long
+    private val clockElapsedNanos: () -> Long,
+    /**
+     * Android-only first-use bootstrap. Persist an authenticated empty vault
+     * before publishing it as available. Existing nonempty/corrupt snapshots
+     * are NEVER replaced, and a missing snapshot with an existing key must
+     * be rejected by the adapter before invoking this constructor.
+     */
+    private val initializeEmptyOnFirstOpen: Boolean = false
 ): UnoExactMemoryPort {
     init { require(bootToken.length in 1..128 && bootToken.all { it >= ' ' }) }
     private var snapshot = load()?.let { UnoExactVaultCodec.open(it, key) }
-        ?: UnoExactVaultCodec.Snapshot(0L, emptyList(), emptySet())
+        ?: UnoExactVaultCodec.Snapshot(0L, emptyList(), emptySet()).also { empty ->
+            if (initializeEmptyOnFirstOpen) persist(UnoExactVaultCodec.seal(empty, key))
+        }
 
     override val generation: Long @Synchronized get() = snapshot.revision
 

@@ -163,6 +163,31 @@ object UnoEncryptedExactMemoryTest {
             ExactStatus.COMPLETE)
         verify(persistedBoth.read("device-event", "event:9", 1, 12, now, 3L).status ==
             ExactStatus.COMPLETE)
+        // Android first-use mode: the empty authenticated genesis is persisted
+        // before opening; a restart must read the same revision=0 vault.
+        val bootstrapKey = key()
+        var genesis: ByteArray? = null
+        val bootstrapPersist: (ByteArray) -> Unit = { data -> genesis = data.copyOf() }
+        val initialized = UnoEncryptedExactMemory(bootstrapKey, boot,
+            { genesis?.copyOf() }, bootstrapPersist, { 100L },
+            initializeEmptyOnFirstOpen = true)
+        verify(genesis != null && initialized.generation == 0L)
+        val genesisCopy = genesis!!.copyOf()
+        val restart = UnoEncryptedExactMemory(bootstrapKey, boot,
+            { genesis?.copyOf() }, bootstrapPersist, { 100L },
+            initializeEmptyOnFirstOpen = true)
+        verify(restart.generation == 0L && genesis!!.contentEquals(genesisCopy))
+        verify(restart.read("new", "unknown", 1, 0, 100L, 0L).status == ExactStatus.NOT_FOUND)
+        verify(runCatching {
+            UnoEncryptedExactMemory(bootstrapKey, boot, { null },
+                { _: ByteArray -> error("BOOTSTRAP_IO_ERROR") }, { 100L },
+                initializeEmptyOnFirstOpen = true)
+        }.isFailure)
+        verify(runCatching {
+            UnoEncryptedExactMemory(bootstrapKey, boot, { byteArrayOf(1, 2, 3) },
+                bootstrapPersist, { 100L }, initializeEmptyOnFirstOpen = true)
+        }.isFailure)
+        verify(genesis!!.contentEquals(genesisCopy))
         println("UNO_ENCRYPTED_EXACT_MEMORY_HOST_PASS=$pass")
     }
 }
