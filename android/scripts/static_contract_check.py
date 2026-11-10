@@ -155,6 +155,14 @@ def scan(root: Path) -> list[str]:
                 'revokeExactObservations(', 'UnoAndroidMemoryOwner.exact(')):
             errors.append('unified_diagnostic_implicit_privileged_write')
 
+    # Aggregation must be host-testable and cannot silently promote an incomplete
+    # lab (or an unrecognized sub-check status) to whole-agent success.
+    if (single_start >= 0 and single_end > single_start and
+            ('UnoDiagnosticEvaluator.summarize(verdicts, stoppedNow)' not in single or
+             '.put("status", summary.status)' not in single or
+             '.put("stop_requested", stoppedNow)' not in single)):
+        errors.append('unified_diagnostic_verdict_gate_missing')
+
     # An attempted read returning NOT_FOUND can be expired; do not claim no test ran.
     if (single_start >= 0 and single_end > single_start and
             ('"EXACT_DENIED" -> "DENIED"' not in single or
