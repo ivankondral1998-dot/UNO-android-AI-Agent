@@ -649,8 +649,8 @@ class UnoActivity : Activity() {
                 add("LAB_" + scenario.optString("scenario", "UNKNOWN"), verdict, scenario)
             }
             if (!lab.isNull("abort_reason_or_null")) interrupted = true
-            if (scenarios.length() == 0)
-                add("LAB_SCENARIOS", "UNKNOWN", "No completed checks")
+            if (scenarios.length() == 0 && !interrupted)
+                add("LAB_SCENARIOS", "FAIL", "No completed checks and no abort reason")
             if (!interrupted && !stop.isStopped() && !UnoProcessStop.isStopped()) {
                 val journal = AndroidOutcomeInspection.inspect(applicationContext, false)
                 val journalVerdict = when (journal.status) {
