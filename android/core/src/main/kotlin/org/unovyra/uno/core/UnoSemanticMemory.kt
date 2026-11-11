@@ -17,7 +17,8 @@ data class SemanticHit(
     val generation: Long,
     val sha256: String,
     val scope: String,
-    val score: Double
+    val score: Double,
+    val vector: DoubleArray
 )
 
 data class SemanticRead(
@@ -88,7 +89,7 @@ class UnoSemanticMemory(
             if (linkNorm == 0.0) return@mapNotNull null
             val score = dot(query, link.vector) / (queryNorm * linkNorm)
             if (!score.isFinite()) return@mapNotNull null
-            SemanticHit(link.exactId, link.generation, link.sha256, link.scope, score)
+            SemanticHit(link.exactId, link.generation, link.sha256, link.scope, score, link.vector.copyOf())
         }.sortedWith(compareByDescending<SemanticHit> { it.score }.thenBy { it.exactId })
         if (scored.isEmpty()) return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
         if (scored.size > k) {

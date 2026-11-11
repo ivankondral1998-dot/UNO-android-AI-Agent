@@ -1,5 +1,6 @@
 package org.unovyra.uno.core
 
+import javax.crypto.KeyGenerator
 import kotlin.math.abs
 import kotlin.math.tanh
 
@@ -143,6 +144,56 @@ object UnoFReferenceTest {
             val text = cycle.accept(Percept(PerceptType.TEXT, "Привет".toByteArray(), "LOCAL_UI", 6L),
                 6L, 100L, "reference", 0L)
             check(text.status == FoundationReferenceStatus.MODEL_UNAVAILABLE && native.calls == 0)
+        }
+        test("summary_changes_reference_state_without_replacing_the_fact") {
+            val d = 128
+            val hidden = 256
+            val block = 64
+            val w = UnoRefWeights(
+                "SYNTHETIC_S4S5/1",
+                matrix(d, d, 0, 0, 1.0), zero(d, d), zero(d, d), zero(d, 32),
+                DoubleArray(d), DoubleArray(d),
+                matrix(d, d, 0, 0, 1.0), matrix(d, d, 0, 0, 1.0),
+                (0 until 2).map { _ -> (0 until 2).map { _ ->
+                    UnoRefBranch(zero(hidden, d), zero(hidden, d), zero(block, hidden),
+                        DoubleArray(hidden), DoubleArray(block))
+                } }
+            )
+            val exact = ExactMemory()
+            val fact = exact.write("notes", "fact", "plus".toByteArray(), 500L, 0L,
+                EntryKind.OBSERVED, "LOCAL_UI")
+            val query = DoubleArray(d); query[0] = 1.0
+            val secret = KeyGenerator.getInstance("AES").apply { init(256) }.generateKey()
+            var stored: ByteArray? = null
+            val semantic = UnoSemanticMemory(secret, "boot-a", { stored?.copyOf() },
+                { stored = it.copyOf() }, d)
+            semantic.link(fact, query)
+            val packed = ByteArray(d * 8)
+            val bits = 1.0.toRawBits()
+            for (byte in 0 until 8) packed[byte] = ((bits ushr (8 * byte)) and 0xff).toByte()
+            val percept = Percept(PerceptType.SENSOR, packed, "SYNTHETIC_FEATURES", 5L)
+            fun cycle(port: NeuralPort) = UnoFoundationReferenceCycle(port, ExactMemory(),
+                TrustController(object : NativePort {
+                    override val trustedSourceTag = "FAKE_JVM"
+                    var calls = 0
+                    override fun dispatch(ticket: Ticket): NativeEndpoint { calls++; return NativeEndpoint.TRUE }
+                    override fun readback(ticket: Ticket, nowNanos: Long) = NativeEvidence(
+                        ticket.id, NativeEndpoint.TRUE, 1L, nowNanos, trustedSourceTag)
+                }, InMemoryLedger()),
+                object : AuthenticatedOwnerUi {
+                    override fun showExactProposalAndObtainConsent(proposal: Proposal): Consent? = null
+                })
+            val withSummary = cycle(UnoFReferencePort(UnoFReference(w), w,
+                booleanArrayOf(true, false), 1, semantic, "notes"))
+            val without = cycle(UnoFReferencePort(UnoFReference(w), w, booleanArrayOf(true, false), 1))
+            val remembered = withSummary.accept(percept, 5L, 100L, "reference", 0L)
+            val plain = without.accept(percept, 5L, 100L, "reference", 0L)
+            check(remembered.status == FoundationReferenceStatus.NO_PROPOSAL)
+            check(plain.status == FoundationReferenceStatus.NO_PROPOSAL)
+            check(remembered.untrustedModelState != plain.untrustedModelState)
+            check(!remembered.verifiedAndroidEffect)
+            check(exact.read("notes", "fact", 1, 4, 6L, 0L).entries.single()
+                .raw.contentEquals("plus".toByteArray()))
         }
         println("UNO_F_REFERENCE_HOST_PASS=$pass")
     }

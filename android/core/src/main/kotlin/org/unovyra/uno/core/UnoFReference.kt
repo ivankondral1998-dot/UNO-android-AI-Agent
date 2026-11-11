@@ -253,7 +253,9 @@ class UnoFReferencePort(
     private val reference: UnoFReference,
     private val weights: UnoRefWeights,
     private val mask: BooleanArray,
-    private val steps: Int
+    private val steps: Int,
+    private val semantic: UnoSemanticMemory? = null,
+    private val semanticScope: String? = null
 ) : NeuralPort {
     var lastTrace: UnoRefKernelTrace? = null
         private set
@@ -274,7 +276,8 @@ class UnoFReferencePort(
             features[index] = value
         }
         val output = reference.forward(
-            UnoRefEvent(features, DoubleArray(32), DoubleArray(weights.d), DoubleArray(weights.d)),
+            UnoRefEvent(features, DoubleArray(32), DoubleArray(weights.d),
+                DoubleArray(weights.d), recalled(features)),
             mask, steps
         )
         lastTrace = output.trace
@@ -289,5 +292,20 @@ class UnoFReferencePort(
         val digest = java.security.MessageDigest.getInstance("SHA-256").digest(packed)
             .joinToString("") { "%02x".format(it) }
         return NeuralOutput(digest, null)
+    }
+
+    /** Summary vectors only. A dimension mismatch or UNKNOWN read supplies no memory. */
+    private fun recalled(features: DoubleArray): List<UnoRefMemoryVector> {
+        val index = semantic ?: return emptyList()
+        val scope = semanticScope ?: return emptyList()
+        if (features.size != weights.m) return emptyList()
+        val read = index.retrieve(scope, features, 4, 64)
+        if (read.status != SemanticStatus.SUMMARY_ONLY && read.status != SemanticStatus.TRUNCATED) {
+            return emptyList()
+        }
+        return read.hits.mapNotNull { hit ->
+            if (hit.vector.size != weights.m) null
+            else UnoRefMemoryVector(hit.vector, hit.vector.copyOf())
+        }
     }
 }

@@ -1,5 +1,11 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-11 — summary inside F, weight gate, perception bounds
+
+**SOURCE:** this commit. A summary vector of matching width changes the numerical F state and is not the exact fact. `admitWeights` rejects a bad digest, version, shape, or truncated file; admission is not quality and not a model. PCM frames are bounded and stoppable; there is no transcript. A missing sensor is `ABSENT`, not the number zero. Host `UNO_F_REFERENCE_HOST_PASS=12`, `UNO_FRAME_CONTRACT_HOST_PASS=16`, `UNO_WP01_HOST_PASS=398`.
+**NOT ON DEVICE.** No new APK. The chat still has no model. `FOUNDATION_INCOMPLETE`.
+
+
 ## UPDATE 2026-11-11 — semantic index beside exact memory
 
 **SOURCE:** this commit. `UnoSemanticMemory` stores a caller-supplied vector pointing at an exact record. Retrieval is `SUMMARY_ONLY`, `TRUNCATED`, `DENIED`, or `UNKNOWN`. It never returns `COMPLETE` and never returns the raw fact. Equal weights on `v` and `-v` aggregate to zero while both exact records remain. Another boot does not reuse the old index. A corrupt file is rejected and not repaired. Host `UNO_SEMANTIC_MEMORY_HOST_PASS=17`, `UNO_WP01_HOST_PASS=381`.

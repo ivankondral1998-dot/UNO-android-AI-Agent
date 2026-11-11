@@ -22,5 +22,6 @@ fun main() {
     UnoEncryptedExactMemoryTest.run()
     UnoManualFactsTest.run()
     UnoSemanticMemoryTest.run()
-    println("UNO_WP01_HOST_PASS=${UnoChatCipherTest.pass + UnoProcessStopTest.pass + UnoFoundationReferenceCycleTest.pass + UnoEncryptedExactMemoryTest.pass + UnoTextCycleTest.pass + UnoPromptWindowTest.pass + CoreSelfTest.pass + ProbeMathTest.pass + MeasurementTest.pass + LabProtocolTest.pass + UnoDiagnosticSummaryTest.pass + ThemePersonalizationTest.pass + FoundationHardeningTest.pass + ComputeBudgetGateTest.pass + UnoFReferenceTest.pass + ActionIntentJournalTest.pass + ActionJournalControllerIntegrationTest.pass + ActionReceiptRecoveryTest.pass + ActionAtomicReferenceCommitTest.pass + UnoManualFactsTest.pass + UnoSemanticMemoryTest.pass}")
+    UnoFrameContractTest.run()
+    println("UNO_WP01_HOST_PASS=${UnoChatCipherTest.pass + UnoProcessStopTest.pass + UnoFoundationReferenceCycleTest.pass + UnoEncryptedExactMemoryTest.pass + UnoTextCycleTest.pass + UnoPromptWindowTest.pass + CoreSelfTest.pass + ProbeMathTest.pass + MeasurementTest.pass + LabProtocolTest.pass + UnoDiagnosticSummaryTest.pass + ThemePersonalizationTest.pass + FoundationHardeningTest.pass + ComputeBudgetGateTest.pass + UnoFReferenceTest.pass + ActionIntentJournalTest.pass + ActionJournalControllerIntegrationTest.pass + ActionReceiptRecoveryTest.pass + ActionAtomicReferenceCommitTest.pass + UnoManualFactsTest.pass + UnoSemanticMemoryTest.pass + UnoFrameContractTest.pass}")
 }
