@@ -1,6 +1,19 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
 
+## UPDATE 2026-11-11 — FIRST SIGNED org.unovyra.uno APK
+
+**SOURCE:** `feat/uno-permanent-full-foundation-20261111` @ `e90b5211aa072b597527992ba8f91321f7379a60`.
+**APK:** package `org.unovyra.uno`, versionCode `1`, versionName `0.1.0-lab.1`, label `UNOVYRA UNO`.
+SHA-256 `74f7ec1e3be4961dfb4e7d1530d8948bbebcecce7971b00d0dc9b8311f4c8941`.
+Public signer SHA-256 `58c92aec4b4ffe2dda8e1cb481e0216b2f51f3aabe4470b919036e7abdb99f51`.
+Local Gradle assembleDebug + lintDebug `BUILD SUCCESSFUL`. Host preflight `UNO_WP01_HOST_PASS=336`.
+Private key is not in this repo. Backup: private repo `UNO-owner-signing-backup`.
+Does not update `org.unovyra.uno.scaffold.ci42670625565`. `DEVICE_VERIFIED=FALSE`. Not a trained organism.
+Details: [local build note](implementation/2026-11-11_PERMANENT_APK_V1_LOCAL_BUILD.md).
+
+---
+
 ## UPDATE 2026-11-11 — PERMANENT CHANNEL ON FULL FOUNDATION (RESTORED MAP)
 
 Previous commit `57a96b34` accidentally replaced this file with a short prefix. This commit restores the full historical map from `59a89c3` and keeps one current section.
