@@ -1,5 +1,15 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-11 — EXACT_SNAPSHOT_MISSING / versionCode 5
+
+**SOURCE:** `feat/uno-permanent-full-foundation-20261111` @ `b333c6a`.
+**CAUSE:** AndroidKeyStore alias `uno_exact_memory_aes_v1` could exist with no vault file. The adapter then threw `EXACT_SNAPSHOT_MISSING` and never wrote genesis. That matches the A52 fact-save failure. A crash between key creation and `AtomicFile.finishWrite` can also leave only `uno_exact_memory_v1.aes.new`.
+**FIX:** no ciphertext → writable open completes genesis with the existing key. Authentic `.new` is promoted, not replaced. Unreadable `.new` is left in place and still fails closed. A key created in the same call is deleted only if genesis fails and no file remains. Read-only open still does not create a vault.
+**HOST:** `UNO_ENCRYPTED_EXACT_MEMORY_HOST_PASS=57`, `UNO_WP01_HOST_PASS=356`, static guards OK. Gradle lint `BUILD SUCCESSFUL`.
+**APK:** `org.unovyra.uno` versionCode 5, SHA-256 `b6c8f9521af79f6e4a036eac47f81ac0760783cef6f069ea7913d1735ab83d3f`, same signer `58c92aec…db99f51`. `DEVICE_VERIFIED=FALSE`.
+**NOT DONE:** trained F weights, speech, real Android actions, physical reboot proof of this memory fix. S4/S5 remains a numerical oracle. `DenyAllAndroidPort` remains.
+
+
 
 ## UPDATE 2026-11-11 — FIRST SIGNED org.unovyra.uno APK
 
