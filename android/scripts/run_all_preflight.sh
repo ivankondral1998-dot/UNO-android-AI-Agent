@@ -3,6 +3,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 "$ROOT/scripts/host_verify.sh"
 python3 "$ROOT/scripts/static_contract_check.py"
+python3 "$ROOT/scripts/test_static_contract_check.py"
 python3 "$ROOT/scripts/test_sqlite_outcome_schema.py"
 bash "$ROOT/scripts/test_outcome_inspection_host.sh"
 bash "$ROOT/scripts/test_owner_consent_host.sh"
