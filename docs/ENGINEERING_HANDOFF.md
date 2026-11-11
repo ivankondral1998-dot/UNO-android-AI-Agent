@@ -1,5 +1,11 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-12 — two LFM files load, neither is the organism
+
+**SOURCE:** host trial, llama.cpp `a4d4f2f`, no weight change. Both GGUF files are architecture `lfm2`. 700M Q4_0 and LFM2.5-1.2B QAD-Q4_0 both load. Details and hashes: `docs/trials/LFM_HOST_TRIAL_20261112.md`.
+**NOT APPROVED. NOT ON DEVICE.** `DEVICE_UNTESTED`. The 700M file claimed a deletion was finished. The 1.2B file missed a supplied fact. Empty trust catalogue still issues no ticket. `FOUNDATION_INCOMPLETE`.
+
+
 ## UPDATE 2026-11-11 — a plan step is spent once
 
 **SOURCE:** this commit. `take` spends one step. A second open is rejected while steps remain. A reversible mark is rejected unless that effect was named in advance. `restore` drops unspent steps and does not issue them again. Host `UNO_PLANNER_HOST_PASS=28`, `UNO_WP01_HOST_PASS=436`.
