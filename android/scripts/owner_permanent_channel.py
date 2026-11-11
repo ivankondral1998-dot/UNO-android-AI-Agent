@@ -12,9 +12,11 @@ import os
 from pathlib import Path
 import re
 import secrets
+import selectors
 import shutil
 import subprocess
 import sys
+import time
 
 from apk_update_gate import ApkIdentity, evaluate, inspect
 from owner_update_build import keytool_digest
@@ -66,21 +68,59 @@ def command(argv: list[str], *, env: dict[str, str] | None = None,
             cwd: Path | None = None, timeout: int = 900) -> str:
     # argv never includes the password; keytool reads it by environment name.
     # Gradle/NDK cold builds exceed the old 900s cap; callers pass a longer timeout.
-    try:
-        result = subprocess.run(argv, env=env, cwd=cwd, capture_output=True,
-                                text=True, timeout=timeout, check=False)
-    except subprocess.TimeoutExpired as exc:
-        stdout = exc.stdout if isinstance(exc.stdout, str) else ""
-        stderr = exc.stderr if isinstance(exc.stderr, str) else ""
-        tail = "\n".join(_redact(stdout + "\n" + stderr, env).splitlines()[-30:])
+    # UNO_OWNER_BUILD_LOG, when set, receives a redacted live transcript.
+    log_path = os.environ.get("UNO_OWNER_BUILD_LOG")
+    if not log_path:
+        try:
+            result = subprocess.run(argv, env=env, cwd=cwd, capture_output=True,
+                                    text=True, timeout=timeout, check=False)
+        except subprocess.TimeoutExpired as exc:
+            stdout = exc.stdout if isinstance(exc.stdout, str) else ""
+            stderr = exc.stderr if isinstance(exc.stderr, str) else ""
+            tail = "\n".join(_redact(stdout + "\n" + stderr, env).splitlines()[-30:])
+            raise ValueError("COMMAND_FAILED_" + Path(argv[0]).name +
+                             "_TIMEOUT_" + str(timeout) + "\n" + tail)
+        if result.returncode:
+            blob = _redact((result.stdout or "") + "\n" + (result.stderr or ""), env)
+            raise ValueError("COMMAND_FAILED_" + Path(argv[0]).name +
+                             "_EXIT_" + str(result.returncode) + "\n" +
+                             "\n".join(blob.splitlines()[-40:]))
+        return result.stdout
+    start = time.monotonic()
+    proc = subprocess.Popen(argv, env=env, cwd=cwd, stdout=subprocess.PIPE,
+                            stderr=subprocess.STDOUT, text=True)
+    assert proc.stdout is not None
+    lines: list[str] = []
+    watcher = selectors.DefaultSelector()
+    watcher.register(proc.stdout, selectors.EVENT_READ)
+    with open(log_path, "a", encoding="utf-8") as logf:
+        while True:
+            if time.monotonic() - start > timeout:
+                proc.kill()
+                proc.wait(timeout=30)
+                tail = "\n".join("".join(lines).splitlines()[-30:])
+                raise ValueError("COMMAND_FAILED_" + Path(argv[0]).name +
+                                 "_TIMEOUT_" + str(timeout) + "\n" + tail)
+            ready = watcher.select(timeout=5)
+            if not ready:
+                if proc.poll() is not None:
+                    break
+                continue
+            line = proc.stdout.readline()
+            if line == "":
+                break
+            redacted = _redact(line, env)
+            lines.append(redacted)
+            logf.write(redacted)
+            logf.flush()
+    watcher.close()
+    rc = proc.wait(timeout=30)
+    text = "".join(lines)
+    if rc:
         raise ValueError("COMMAND_FAILED_" + Path(argv[0]).name +
-                         "_TIMEOUT_" + str(timeout) + "\n" + tail)
-    if result.returncode:
-        blob = _redact((result.stdout or "") + "\n" + (result.stderr or ""), env)
-        raise ValueError("COMMAND_FAILED_" + Path(argv[0]).name +
-                         "_EXIT_" + str(result.returncode) + "\n" +
-                         "\n".join(blob.splitlines()[-40:]))
-    return result.stdout
+                         "_EXIT_" + str(rc) + "\n" +
+                         "\n".join(text.splitlines()[-40:]))
+    return text
 
 
 def signing_env(folder: Path) -> dict[str, str]:
