@@ -56,6 +56,7 @@ class UnoChatActivity : Activity() {
         val root = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             setBackgroundColor(UnoChrome.BG)
+            fitsSystemWindows = true
             setPadding((16 * density).toInt(), (12 * density).toInt(), (16 * density).toInt(), (12 * density).toInt())
         }
         val header = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; gravity = Gravity.CENTER_VERTICAL }
@@ -72,8 +73,8 @@ class UnoChatActivity : Activity() {
             setOnClickListener { showMore() }
         })
         root.addView(header)
-        status = TextView(this).apply {
-            text = "Выбери модель в меню «Ещё», чтобы получать ответы."
+        status = StatusLine(this).apply {
+            text = ""
             textSize = 13f
             setTextColor(UnoChrome.MUTED)
             setPadding(0, (8 * density).toInt(), 0, (8 * density).toInt())
@@ -130,6 +131,7 @@ class UnoChatActivity : Activity() {
             "Импортировать модель в приложение",
             "Новый чат",
             "Память",
+            "Проверка",
             "Остановить UNO"
         )
         AlertDialog.Builder(this)
@@ -140,7 +142,8 @@ class UnoChatActivity : Activity() {
                     1 -> selectModel(true)
                     2 -> confirmNewChat()
                     3 -> startActivity(Intent(this, UnoFactsActivity::class.java))
-                    4 -> {
+                    4 -> startActivity(Intent(this, UnoActivity::class.java).putExtra("uno_show_lab", true))
+                    5 -> {
                         UnoProcessStop.stop()
                         cancelled.set(true)
                         textCycle?.stop()
@@ -177,7 +180,7 @@ class UnoChatActivity : Activity() {
         thread.removeAllViews()
         if (turns.isEmpty() && currentUser.isEmpty()) {
             thread.addView(TextView(this).apply {
-                text = "Напиши первое сообщение."
+                text = "Напиши сообщение.\nМодель выбирается в меню «Ещё»."
                 setTextColor(UnoChrome.MUTED)
                 textSize = 16f
                 setPadding(0, UnoChrome.dp(this, 24), 0, 0)
@@ -497,5 +500,12 @@ class UnoChatActivity : Activity() {
         try { UnoNativeEngine.cancel() } catch (_: Throwable) {}
         worker.shutdown()
         super.onDestroy()
+    }
+}
+
+private class StatusLine(context: android.content.Context) : TextView(context) {
+    override fun setText(text: CharSequence?, type: BufferType?) {
+        super.setText(text, type)
+        visibility = if (text.isNullOrBlank()) View.GONE else View.VISIBLE
     }
 }

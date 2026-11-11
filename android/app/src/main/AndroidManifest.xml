@@ -8,6 +8,7 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/uno_app_label"
+        android:theme="@style/Uno.Theme"
         android:supportsRtl="true">
         <activity
             android:name=".UnoActivity"
@@ -17,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UnoChatActivity" android:exported="false" />
+        <activity android:name=".UnoChatActivity" android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".UnoFactsActivity" android:exported="false" />
         <service
             android:name=".NeuralWorkerService"

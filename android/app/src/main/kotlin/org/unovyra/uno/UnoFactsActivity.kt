@@ -76,6 +76,7 @@ class UnoFactsActivity : Activity() {
             orientation = LinearLayout.VERTICAL
             setPadding(20, 20, 20, 20)
             setBackgroundColor(UnoChrome.BG)
+            fitsSystemWindows = true
             setPadding(UnoChrome.dp(this, 20), UnoChrome.dp(this, 16), UnoChrome.dp(this, 20), UnoChrome.dp(this, 16))
         }
         fun label(text: String) = TextView(this).apply {

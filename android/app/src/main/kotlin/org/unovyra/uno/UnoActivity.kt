@@ -116,6 +116,11 @@ class UnoActivity : Activity() {
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
+        if (!intent.getBooleanExtra("uno_show_lab", false)) {
+            startActivity(Intent(this, UnoChatActivity::class.java))
+            finish()
+            return
+        }
         restoreTheme()
         val root=LinearLayout(this).apply {
             orientation=LinearLayout.VERTICAL
@@ -262,7 +267,12 @@ class UnoActivity : Activity() {
                 "ERROR_UNEXPECTED_MODEL_OUTPUT"
             } catch (e:IllegalStateException) {e.message?:"MODEL_UNAVAILABLE"}
         }
-        setContentView(ScrollView(this).apply {addView(root)})
+        setContentView(ScrollView(this).apply {
+            setBackgroundColor(UnoChrome.BG)
+            isFillViewport = true
+            fitsSystemWindows = true
+            addView(root)
+        })
         applyTheme()
         ensureEmptyOutcomeJournal()
         mainHandler.post(heartbeat)
