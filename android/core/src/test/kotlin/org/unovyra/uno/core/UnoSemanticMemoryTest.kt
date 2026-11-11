@@ -51,6 +51,21 @@ object UnoSemanticMemoryTest {
             UnoSemanticMemory(secret, "boot-a", { byteArrayOf(1, 2, 3) }, { stored = it.copyOf() })
         }.isFailure)
         verify(stored!!.contentEquals(copy))
+        val portsExact = ExactMemory()
+        val portsSecret = key()
+        var portsBytes: ByteArray? = null
+        val ports = UnoMemoryPorts(portsExact, UnoSemanticMemory(portsSecret, "boot-a",
+            { portsBytes?.copyOf() }, { portsBytes = it.copyOf() }))
+        val remembered = portsExact.write("notes", "city", "Riga".toByteArray(), 500L, 0L,
+            EntryKind.USER_DECLARATION, "OWNER_UI")
+        ports.linkSummary(remembered, vector(1.0))
+        verify(ports.recallSummary("notes", vector(1.0), 4, 16).status == SemanticStatus.SUMMARY_ONLY)
+        verify(ports.recallExact("notes", "city", 1, 4, 1L, 0L).entries.single()
+            .raw.contentEquals("Riga".toByteArray()))
+        ports.revoke("notes")
+        verify(ports.recallSummary("notes", vector(1.0), 4, 16).status == SemanticStatus.DENIED)
+        verify(ports.recallExact("notes", "city", 1, 4, 1L, 0L).status == ExactStatus.DENIED)
+        verify(runCatching { ports.linkSummary(remembered, vector(1.0)) }.isFailure)
         println("UNO_SEMANTIC_MEMORY_HOST_PASS=$pass")
     }
 }

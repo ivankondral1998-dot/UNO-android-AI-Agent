@@ -1,5 +1,10 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-11 — exact and summary revoked together
+
+**SOURCE:** this commit. `UnoMemoryPorts` links a caller-supplied vector to an exact record and revokes the summary before the fact. A revoked scope cannot be linked again. Audio without an accepted PCM frame is `AUDIO_REJECTED` and is not stored. Android can open a separate semantic file with its own key only after the exact vault is owned; a missing file stays UNKNOWN and is not created on startup. Host `UNO_SEMANTIC_MEMORY_HOST_PASS=22`, `UNO_FOUNDATION_REFERENCE_CYCLE_HOST_PASS=31`, `UNO_WP01_HOST_PASS=408`. `:app:compileDebugKotlin` succeeded. No new APK: the phone still has no vector to store. `FOUNDATION_INCOMPLETE`.
+
+
 ## UPDATE 2026-11-11 — summary inside F, weight gate, perception bounds
 
 **SOURCE:** this commit. A summary vector of matching width changes the numerical F state and is not the exact fact. `admitWeights` rejects a bad digest, version, shape, or truncated file; admission is not quality and not a model. PCM frames are bounded and stoppable; there is no transcript. A missing sensor is `ABSENT`, not the number zero. Host `UNO_F_REFERENCE_HOST_PASS=12`, `UNO_FRAME_CONTRACT_HOST_PASS=16`, `UNO_WP01_HOST_PASS=398`.

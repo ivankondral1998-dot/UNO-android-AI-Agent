@@ -55,6 +55,7 @@ class UnoSemanticMemory(
     @Synchronized fun link(entry: ExactEntry, vector: DoubleArray) {
         require(entry.kind != EntryKind.SEMANTIC_SUMMARY &&
             entry.kind != EntryKind.VERIFIED_COMPLETION) { "SEMANTIC_LINK_KIND" }
+        require(entry.scope !in revoked) { "SEMANTIC_SCOPE_REVOKED" }
         require(vector.size == dimension && vector.all(Double::isFinite)) { "SEMANTIC_VECTOR" }
         val kept = links.filterNot { it.exactId == entry.id && it.boot == bootToken }
         require(kept.size < MAX_LINKS) { "SEMANTIC_CAPACITY" }

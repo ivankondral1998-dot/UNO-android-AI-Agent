@@ -48,4 +48,12 @@ internal object UnoAndroidMemoryOwner {
             throw e
         }
     }
+
+    @Synchronized fun semantic(context: Context): UnoAndroidSemanticMemory {
+        check(session?.lock?.isValid == true) { "SEMANTIC_REQUIRES_EXACT_OWNER" }
+        return semanticStore ?: UnoAndroidSemanticMemory(context.applicationContext)
+            .also { semanticStore = it }
+    }
+
+    private var semanticStore: UnoAndroidSemanticMemory? = null
 }

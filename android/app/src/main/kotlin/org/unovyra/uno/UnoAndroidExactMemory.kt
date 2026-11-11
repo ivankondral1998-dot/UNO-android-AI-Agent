@@ -35,7 +35,7 @@ internal class UnoAndroidExactMemory(context: Context, private val readOnly: Boo
     private val backend: UnoEncryptedExactMemory
 
     init {
-        val boot = bootIdentifier(context)
+        val boot = unoDeviceBootIdentifier(context)
         val keystore = KeyStore.getInstance("AndroidKeyStore").apply { load(null) }
         val existing = keystore.getKey(keyAlias, null)
         val base = file.baseFile
@@ -152,19 +152,6 @@ internal class UnoAndroidExactMemory(context: Context, private val readOnly: Boo
             .apply { init(spec) }.generateKey()
     }
 
-    /** Kernel boot UUID, fallback to Android boot_count; otherwise stop, not fabricate time. */
-    private fun bootIdentifier(context: Context): String {
-        val kernelId = runCatching {
-            File("/proc/sys/kernel/random/boot_id").readText(Charsets.US_ASCII).trim()
-        }.getOrNull()
-        if (kernelId != null &&
-            Regex("[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}").matches(kernelId))
-            return "kernel:$kernelId"
-        val count = Settings.Global.getInt(context.contentResolver, "boot_count", -1)
-        check(count >= 0) { "EXACT_BOOT_ID_UNAVAILABLE" }
-        return "android_boot_count:$count"
-    }
-
     override val generation: Long get() = backend.generation
     override fun write(scope: String, factKey: String, raw: ByteArray, expiry: Long,
                        consentEpoch: Long, kind: EntryKind, source: String): ExactEntry {
@@ -183,4 +170,17 @@ internal class UnoAndroidExactMemory(context: Context, private val readOnly: Boo
         check(!readOnly) { "EXACT_READONLY_WRITE_DENIED" }
         backend.noteCausalFloor(eventNanos)
     }
+}
+
+/** Kernel boot UUID, fallback to Android boot_count; otherwise stop, not fabricate time. */
+internal fun unoDeviceBootIdentifier(context: Context): String {
+    val kernelId = runCatching {
+        File("/proc/sys/kernel/random/boot_id").readText(Charsets.US_ASCII).trim()
+    }.getOrNull()
+    if (kernelId != null &&
+        Regex("[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}").matches(kernelId))
+        return "kernel:$kernelId"
+    val count = Settings.Global.getInt(context.contentResolver, "boot_count", -1)
+    check(count >= 0) { "EXACT_BOOT_ID_UNAVAILABLE" }
+    return "android_boot_count:$count"
 }

@@ -145,6 +145,22 @@ object UnoFoundationReferenceCycleTest {
             FoundationReferenceStatus.INVALID_EVENT)
         verify(reopened.accept(input(11), 11, 100, "session", 0).status ==
             FoundationReferenceStatus.NO_PROPOSAL)
+        val quiet = ExactMemory()
+        val before = quiet.generation
+        val noAudio = UnoFoundationReferenceCycle(NoWeightsNeuralPort(), quiet,
+            TrustController(Native(), InMemoryLedger()), decline)
+        verify(noAudio.accept(Percept(PerceptType.AUDIO, byteArrayOf(1, 2), "MIC", 20),
+            20, 100, "session", 0).status == FoundationReferenceStatus.AUDIO_REJECTED)
+        verify(quiet.generation == before)
+        val gate = PcmFrameGate(4)
+        val heard = UnoFoundationReferenceCycle(NoWeightsNeuralPort(), quiet,
+            TrustController(Native(), InMemoryLedger()), decline, audio = gate)
+        verify(heard.accept(Percept(PerceptType.AUDIO, byteArrayOf(1, 2), "MIC", 21),
+            21, 100, "session", 0).status == FoundationReferenceStatus.MODEL_UNAVAILABLE)
+        verify(quiet.generation > before)
+        gate.stop()
+        verify(heard.accept(Percept(PerceptType.AUDIO, byteArrayOf(1, 2), "MIC", 22),
+            22, 100, "session", 0).status == FoundationReferenceStatus.AUDIO_REJECTED)
         println("UNO_FOUNDATION_REFERENCE_CYCLE_HOST_PASS=$pass")
     }
 }

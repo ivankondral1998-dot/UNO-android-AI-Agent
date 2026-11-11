@@ -7,7 +7,8 @@ import java.util.concurrent.atomic.AtomicBoolean
 enum class FoundationReferenceStatus {
     INVALID_EVENT, BUSY, STOPPED, MEMORY_UNAVAILABLE, MODEL_UNAVAILABLE,
     NO_PROPOSAL, OWNER_DECLINED, TRUST_REJECTED, DISPATCH_REJECTED,
-    MAY_HAVE_EXECUTED, READBACK_UNCONFIRMED, REFERENCE_READBACK_CLAIM
+    MAY_HAVE_EXECUTED, READBACK_UNCONFIRMED, REFERENCE_READBACK_CLAIM,
+    AUDIO_REJECTED
 }
 data class FoundationReferenceResult(
     val status: FoundationReferenceStatus,
@@ -32,7 +33,8 @@ class UnoFoundationReferenceCycle(
     private val memory: UnoExactMemoryPort,
     private val controller: TrustController,
     private val owner: AuthenticatedOwnerUi,
-    private val scheduler: BoundedScheduler = BoundedScheduler(32)
+    private val scheduler: BoundedScheduler = BoundedScheduler(32),
+    private val audio: PcmFrameGate? = null
 ) {
     private val stopped = AtomicBoolean(false)
     private val busy = AtomicBoolean(false)
@@ -57,6 +59,12 @@ class UnoFoundationReferenceCycle(
             if (scope.isBlank() || event.sourceTag.isBlank() || event.data.isEmpty() ||
                 event.data.size > 4096 || now < event.monotonicNanos || deadline <= now ||
                 consentEpoch < 0) return report(FoundationReferenceStatus.INVALID_EVENT)
+            if (event.type == PerceptType.AUDIO) {
+                val gate = audio
+                if (gate == null || gate.accept(event.data, true) != PcmStatus.ACCEPTED_FRAME) {
+                    return report(FoundationReferenceStatus.AUDIO_REJECTED)
+                }
+            }
             val observation: Percept
             var committedEventKey: String? = null
             synchronized(this) {
