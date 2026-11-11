@@ -1,5 +1,13 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-11 — A52 memory confirmed / causal floor / versionCode 8
+
+**DEVICE:** Owner, Samsung Galaxy A52. Manual fact saves, reads immediately, and reads again after the app process is closed and opened. `DEVICE_VERIFIED` for that scenario only. Survival across a phone reboot is **not** confirmed.
+**SOURCE:** `8c4dc52`. Reference cycle stores the last accepted event time in the encrypted vault. A new cycle on the same boot rejects an older or equal event. A different boot does not reuse the old clock. Host `UNO_WP01_HOST_PASS=362`. Not device-verified.
+**APK:** versionCode 8, SHA-256 `8c00979693d621a4a06c2efb83394833520bfcde7f5e46938462eece419379a3`, same signer. Not required to re-check the already confirmed fact.
+**STILL OPEN:** trained F weights, semantic retrieval, speech, real Android actions, independent OS readback. `DenyAllAndroidPort` remains. S4/S5 is a numerical oracle, not intelligence. `FOUNDATION_INCOMPLETE`.
+
+
 ## UPDATE 2026-11-11 — More panel / versionCode 7
 
 **SOURCE:** `6a6e8b8`. The chat «Ещё» button stays in the header. The menu scales out of that button and closes into it. It is not a centered dialog. Same actions as before. `DEVICE_VERIFIED=FALSE`.
