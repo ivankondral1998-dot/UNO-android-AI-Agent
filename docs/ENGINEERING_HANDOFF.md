@@ -1,5 +1,14 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-11 — AndroidKeyStore IV / versionCode 6
+
+**SOURCE:** `feat/uno-permanent-full-foundation-20261111` @ `0988465`.
+**DEVICE:** A52 v5 save failed with `Caller-provided IV not permitted`. `UnoExactVaultCodec.seal` passed its own IV into `Cipher.init`. AndroidKeyStore with `setRandomizedEncryptionRequired(true)` rejects that.
+**FIX:** encrypt with `Cipher.init(ENCRYPT_MODE, key)` and store `cipher.iv` in the existing envelope. Decrypt still uses the stored IV. The key requirement stays on. No vault file is deleted. The same IV rule is applied to chat history encryption.
+**TESTS:** host `UNO_WP01_HOST_PASS=356`. `ExactVaultKeystoreTest` compiles (`compileDebugAndroidTestKotlin` SUCCESS) and was not run: no Android device in this environment. `DEVICE_VERIFIED=FALSE`.
+**APK:** versionCode 6, SHA-256 `ae05563671dc2176e680db006fd0f26cb975adea3c077e30712bd809b3cb643b`, same signer. Previous versionCode 5.
+
+
 ## UPDATE 2026-11-11 — EXACT_SNAPSHOT_MISSING / versionCode 5
 
 **SOURCE:** `feat/uno-permanent-full-foundation-20261111` @ `b333c6a`.
