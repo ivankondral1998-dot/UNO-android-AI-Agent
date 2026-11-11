@@ -12,8 +12,25 @@ MANIFEST = '''<manifest xmlns:android="http://schemas.android.com/apk/res/androi
 <application android:allowBackup="false" android:fullBackupContent="false" android:usesCleartextTraffic="false">
 <activity android:name=".UnoActivity" android:exported="true"/>
 <activity android:name=".UnoChatActivity" android:exported="false"/>
+<activity android:name=".UnoFactsActivity" android:exported="false"/>
 <service android:name=".NeuralWorkerService" android:isolatedProcess="true" android:exported="false"/>
 </application></manifest>'''
+FACTS = '''package org.unovyra.uno
+val inspect = UnoAndroidExactMemory(applicationContext, readOnly = true)
+val result = UnoManualFacts.recall(memory, scope, k, SystemClock.elapsedRealtimeNanos())
+fun factsSave() {
+    check(!UnoProcessStop.isStopped())
+    AlertDialog.Builder(this).setPositiveButton("Сохранить") { _, _ ->
+        UnoManualFacts.remember(memory, scope, k, v)
+    }
+}
+fun factsForget() {
+    check(!UnoProcessStop.isStopped())
+    AlertDialog.Builder(this).setPositiveButton("Забыть") { _, _ ->
+        UnoManualFacts.forgetAll(memory, scope)
+    }
+}
+'''
 ADAPTER = '''package org.unovyra.uno
 private val readOnly: Boolean = false
 val policy = "EXACT_READONLY_SNAPSHOT_UNAVAILABLE"
@@ -106,6 +123,8 @@ class GuardTests(unittest.TestCase):
         self.code.write_text(CODE)
         self.adapter = self.code.with_name("UnoAndroidExactMemory.kt")
         self.adapter.write_text(ADAPTER)
+        self.facts = self.code.with_name("UnoFactsActivity.kt")
+        self.facts.write_text(FACTS)
     def test_clean_fixture(self): self.assertEqual(guard.scan(self.root), [])
     def test_reject_internet_permission(self):
         self.manifest.write_text(MANIFEST.replace('<application', '<uses-permission android:name="android.permission.INTERNET"/><application'))
@@ -132,6 +151,26 @@ class GuardTests(unittest.TestCase):
         self.manifest.write_text(MANIFEST.replace(
             '<activity android:name=".UnoChatActivity" android:exported="false"/>', ''))
         self.assertIn('unexpected_activity_catalog', guard.scan(self.root))
+    def test_reject_exported_facts(self):
+        self.manifest.write_text(MANIFEST.replace(
+            '<activity android:name=".UnoFactsActivity" android:exported="false"/>',
+            '<activity android:name=".UnoFactsActivity" android:exported="true"/>'))
+        self.assertIn('unsafe_facts_activity', guard.scan(self.root))
+    def test_reject_facts_intent_filter(self):
+        self.manifest.write_text(MANIFEST.replace(
+            '<activity android:name=".UnoFactsActivity" android:exported="false"/>',
+            '<activity android:name=".UnoFactsActivity" android:exported="false">'
+            '<intent-filter><action android:name="android.intent.action.VIEW"/></intent-filter></activity>'))
+        self.assertIn('unsafe_facts_activity', guard.scan(self.root))
+    def test_reject_facts_without_consent(self):
+        self.facts.write_text(FACTS.replace('.setPositiveButton("Забыть")',
+                                           '.setPositiveButton("Без подтверждения")'))
+        self.assertIn('manual_facts_consent_or_readonly_contract_missing', guard.scan(self.root))
+    def test_reject_facts_without_readonly(self):
+        self.facts.write_text(FACTS.replace(
+            'UnoAndroidExactMemory(applicationContext, readOnly = true)',
+            'UnoAndroidMemoryOwner.exact(applicationContext)'))
+        self.assertIn('manual_facts_consent_or_readonly_contract_missing', guard.scan(self.root))
     def test_reject_exported_worker(self):
         self.manifest.write_text(MANIFEST.replace('android:exported="false"', 'android:exported="true"'))
         self.assertIn('unsafe_neural_worker', guard.scan(self.root))

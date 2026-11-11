@@ -44,15 +44,18 @@ def scan(root: Path) -> list[str]:
     # The laboratory launcher remains the only exported Activity. WP-04 adds an
     # internal-only text chat screen; fail closed for any other Activity or filter.
     by_name = {node.get(ANDROID + 'name'): node for node in activities}
-    if len(activities) != 2 or set(by_name) != {'.UnoActivity', '.UnoChatActivity'}:
+    if len(activities) != 3 or set(by_name) != {'.UnoActivity', '.UnoChatActivity', '.UnoFactsActivity'}:
         errors.append('unexpected_activity_catalog')
     else:
         lab = by_name['.UnoActivity']
         chat = by_name['.UnoChatActivity']
+        facts = by_name['.UnoFactsActivity']
         if lab.get(ANDROID + 'exported') != 'true':
             errors.append('missing_launcher_export')
         if chat.get(ANDROID + 'exported') != 'false' or chat.find('intent-filter') is not None:
             errors.append('unsafe_chat_activity')
+        if facts.get(ANDROID + 'exported') != 'false' or facts.find('intent-filter') is not None:
+            errors.append('unsafe_facts_activity')
     if len(services) != 1 or services[0].get(ANDROID + 'name') != '.NeuralWorkerService':
         errors.append('unexpected_service_catalog')
     elif services[0].get(ANDROID + 'isolatedProcess') != 'true' or services[0].get(ANDROID + 'exported') != 'false':
@@ -69,6 +72,18 @@ def scan(root: Path) -> list[str]:
     for pattern, label in FORBIDDEN_SOURCE:
         if re.search(pattern, code):
             errors.append(f'unexpected_api:{label}')
+    # Manual facts must remain internal and owner-initiated, never a passive write.
+    facts_source = next((s.read_text(encoding='utf-8') for s in sources
+                         if s.name == 'UnoFactsActivity.kt'), '')
+    if not all(marker in facts_source for marker in (
+            'UnoManualFacts.remember(memory, scope, k, v)',
+            'UnoManualFacts.recall(memory, scope, k, SystemClock.elapsedRealtimeNanos())',
+            'UnoManualFacts.forgetAll(memory, scope)',
+            '.setPositiveButton("Сохранить")',
+            '.setPositiveButton("Забыть")',
+            'check(!UnoProcessStop.isStopped())',
+            'UnoAndroidExactMemory(applicationContext, readOnly = true)')):
+        errors.append('manual_facts_consent_or_readonly_contract_missing')
     # These positive checks are intentionally narrow: strings in comments are not sufficient.
     activity = next((s.read_text(encoding='utf-8') for s in sources if s.name == 'UnoActivity.kt'), '')
     if not re.search(r'TrustController\s*\(\s*DenyAllAndroidPort\s*\(\s*\)\s*,\s*DenyAllLedger\s*\(\s*\)', activity):

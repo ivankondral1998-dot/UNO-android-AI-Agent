@@ -30,12 +30,12 @@ class UnoFactsActivity : Activity() {
     private lateinit var recall: Button
     private lateinit var erase: Button
 
-    private fun currentScope(memory: UnoExactMemoryPort): String {
+    private fun currentScope(memory: UnoExactMemoryPort, repair: Boolean): String {
         val preferences = getSharedPreferences("uno_manual_facts_v1", MODE_PRIVATE)
         val previous = preferences.getLong("scope_generation", 0L)
         var scope = UnoManualFacts.scope(previous)
         val probe = UnoManualFacts.recall(memory, scope, "__scope_probe__", SystemClock.elapsedRealtimeNanos())
-        if (probe.status == ExactStatus.DENIED) {
+        if (repair && probe.status == ExactStatus.DENIED) {
             // Recovery after a crash between authenticated revoke and preference update.
             val next = memory.generation
             require(next > previous) { "NOTE_SCOPE_RECOVERY_UNAVAILABLE" }
@@ -47,14 +47,16 @@ class UnoFactsActivity : Activity() {
         return scope
     }
 
-    private fun execute(action: (UnoExactMemoryPort, String) -> String) {
+    private fun execute(readOnly: Boolean = false, action: (UnoExactMemoryPort, String) -> String) {
         save.isEnabled = false
         recall.isEnabled = false
         erase.isEnabled = false
         worker.execute {
             val message = try {
-                val memory = UnoAndroidMemoryOwner.exact(applicationContext)
-                action(memory, currentScope(memory))
+                val memory: UnoExactMemoryPort = if (readOnly)
+                    UnoAndroidExactMemory(applicationContext, readOnly = true)
+                else UnoAndroidMemoryOwner.exact(applicationContext)
+                action(memory, currentScope(memory, repair = !readOnly))
             } catch (e: Exception) {
                 "Операция не подтверждена: ${e.message ?: e.javaClass.simpleName}. Проверь состояние перед повтором."
             }
@@ -126,7 +128,7 @@ class UnoFactsActivity : Activity() {
         }
         recall.setOnClickListener {
             val k = key.text.toString()
-            execute { memory, scope ->
+            execute(readOnly = true) { memory, scope ->
                 val recalled = UnoManualFacts.recall(memory, scope, k, SystemClock.elapsedRealtimeNanos())
                 when (recalled.status) {
                     ExactStatus.COMPLETE, ExactStatus.CONFLICT, ExactStatus.TRUNCATED -> {
