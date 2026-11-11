@@ -5,7 +5,6 @@ import java.io.ByteArrayOutputStream
 import java.io.DataInputStream
 import java.io.DataOutputStream
 import java.security.MessageDigest
-import java.security.SecureRandom
 import javax.crypto.Cipher
 import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
@@ -124,11 +123,14 @@ internal object UnoExactVaultCodec {
             Snapshot(revision, rows, revoked.toSet()).also(::validate)
         }
     }
-    fun seal(snapshot: Snapshot, key: SecretKey, random: SecureRandom = SecureRandom()): ByteArray {
-        val iv = ByteArray(12).also(random::nextBytes)
+    fun seal(snapshot: Snapshot, key: SecretKey): ByteArray {
         val cipher = Cipher.getInstance("AES/GCM/NoPadding")
-        cipher.init(Cipher.ENCRYPT_MODE, key, GCMParameterSpec(128, iv))
+        // AndroidKeyStore rejects a caller-supplied IV when randomized encryption
+        // is required. The provider generates the IV; the file format still stores it.
+        cipher.init(Cipher.ENCRYPT_MODE, key)
         cipher.updateAAD(aad)
+        val iv = cipher.iv
+        require(iv != null && iv.size == 12) { "EXACT_IV_INVALID" }
         return header + iv + cipher.doFinal(encode(snapshot))
     }
     fun open(envelope: ByteArray, key: SecretKey): Snapshot {

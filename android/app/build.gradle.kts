@@ -31,6 +31,7 @@ android {
         versionName = if (ownerUpdateRequested) "0.1.0-lab.$ownerUpdateCode" else "0.1.0-skeleton"
         resValue("string", "uno_app_label", if (ownerUpdateId == "org.unovyra.uno") "UNOVYRA UNO" else if (ownerUpdateRequested) "UNOVYRA UNO · Lab" else "UNOVYRA UNO · Scaffold")
         ndk { abiFilters += listOf("arm64-v8a") }
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
                 arguments += listOf(
@@ -97,4 +98,8 @@ android {
         }
     }
 }
-dependencies { implementation(project(":core")) }
+dependencies {
+    implementation(project(":core"))
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+    androidTestImplementation("androidx.test:runner:1.6.2")
+}
