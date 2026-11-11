@@ -9,11 +9,11 @@ val ownerUpdateCodeText = providers.gradleProperty("unoOwnerUpdateVersionCode").
 val ownerUpdateRequested = ownerUpdateId != null || ownerUpdateCodeText != null
 val ownerUpdateCode = ownerUpdateCodeText?.toIntOrNull()
 if (ownerUpdateRequested) {
-    require(ownerUpdateId != null && ownerUpdateCode != null && ownerUpdateCode in 2..Int.MAX_VALUE) {
-        "Owner update requires applicationId and increasing versionCode (>=2)"
+    require(ownerUpdateId != null && ownerUpdateCode != null && ownerUpdateCode in 1..Int.MAX_VALUE) {
+        "Owner signed build requires stable applicationId and positive versionCode"
     }
-    require(Regex("org\\.unovyra\\.uno\\.scaffold(?:\\.ci[0-9]{5,20})?").matches(ownerUpdateId)) {
-        "Owner update applicationId is not an existing UNO scaffold family package"
+    require(Regex("org\\.unovyra\\.uno(?:\\.scaffold(?:\\.ci[0-9]{5,20})?)?").matches(ownerUpdateId)) {
+        "Owner signed build applicationId is outside the UNO package family"
     }
     require(providers.environmentVariable("GITHUB_ACTIONS").orNull != "true") {
         "Owner update signing is local-only; CI artifacts are never owner updates"
@@ -29,7 +29,7 @@ android {
         targetSdk = 35
         versionCode = ownerUpdateCode ?: 1
         versionName = if (ownerUpdateRequested) "0.1.0-lab.$ownerUpdateCode" else "0.1.0-skeleton"
-        resValue("string", "uno_app_label", if (ownerUpdateRequested) "UNOVYRA UNO · Lab" else "UNOVYRA UNO · Scaffold")
+        resValue("string", "uno_app_label", if (ownerUpdateId == "org.unovyra.uno") "UNOVYRA UNO" else if (ownerUpdateRequested) "UNOVYRA UNO · Lab" else "UNOVYRA UNO · Scaffold")
         ndk { abiFilters += listOf("arm64-v8a") }
         externalNativeBuild {
             cmake {

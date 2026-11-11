@@ -1,5 +1,12 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-11 — OWNER SINGLE APP / FRESH SIGNING CHANNEL
+
+New owner instruction supersedes the hunt for old CI private keys: one stable `org.unovyra.uno` installed package, new owner-held signer allowed, subsequent `versionCode++` and exact signer pin; no further `.ci<run>` APKs offered as installs. [Decision + limits](decisions/2026-11-11_OWNER_SINGLE_APK_CHANNEL_R1.md). `android/scripts/owner_permanent_channel.py` creates new identity only on the owner's local computer; `build` reuses it. Existing old app cannot be upgraded with an unrelated signer and app-private data are not migrated automatically; old app untouched. Isolated local keytool/mock tests 5/5, **NO Android SDK build or A52 installation for this change**. Older R4 remains historically valid for same-signer upgrades; permanent channel is separate. Main untouched. No Actions launched.
+
+---
+
+
 
 ## UPDATE 2026-11-10 — ONE INSTALLED UNO UPDATE CHANNEL / R4
 
