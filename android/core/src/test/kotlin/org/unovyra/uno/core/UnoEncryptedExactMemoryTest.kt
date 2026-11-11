@@ -123,7 +123,7 @@ object UnoEncryptedExactMemoryTest {
             "ANDROID_LOCAL_SNAPSHOT", 101L), 101L, 500L, "device-event", 3L).status ==
             FoundationReferenceStatus.MODEL_UNAVAILABLE)
         val newReload = UnoEncryptedExactMemory(secret, boot, load, persist) { now }
-        verify(newReload.read("device-event", "event:7", 1, 8, now, 3L)
+        verify(newReload.read("device-event", "event:8", 1, 8, now, 3L)
             .entries.single().raw.contentEquals(byteArrayOf(2)))
         verify(newReload.read("device-event", "event:6", 1, 8, now, 3L)
             .entries.single().raw.contentEquals(cycleBytes))
@@ -159,9 +159,9 @@ object UnoEncryptedExactMemoryTest {
             it == FoundationReferenceStatus.MODEL_UNAVAILABLE
         })
         val persistedBoth = UnoEncryptedExactMemory(secret, boot, load, persist) { now }
-        verify(persistedBoth.read("device-event", "event:8", 1, 12, now, 3L).status ==
+        verify(persistedBoth.read("device-event", "event:10", 1, 16, now, 3L).status ==
             ExactStatus.COMPLETE)
-        verify(persistedBoth.read("device-event", "event:9", 1, 12, now, 3L).status ==
+        verify(persistedBoth.read("device-event", "event:12", 1, 16, now, 3L).status ==
             ExactStatus.COMPLETE)
         // Android first-use mode: the empty authenticated genesis is persisted
         // before opening; a restart must read the same revision=0 vault.
@@ -207,6 +207,20 @@ object UnoEncryptedExactMemoryTest {
         }.isFailure)
         verify(exactPartialAuthentic(genesisCopy, bootstrapKey))
         verify(!exactPartialAuthentic(byteArrayOf(9, 9, 9), bootstrapKey))
+        val floorKey = key()
+        var floorVault: ByteArray? = null
+        val floorStore = UnoEncryptedExactMemory(floorKey, "boot-a",
+            { floorVault?.copyOf() }, { floorVault = it.copyOf() },
+            initializeEmptyOnFirstOpen = true) { 1000L }
+        floorStore.noteCausalFloor(50L)
+        val floorRestart = UnoEncryptedExactMemory(floorKey, "boot-a",
+            { floorVault?.copyOf() }, { floorVault = it.copyOf() }) { 1000L }
+        verify(floorRestart.causalFloor() == 50L)
+        verify(runCatching { floorRestart.noteCausalFloor(50L) }.isFailure)
+        floorRestart.noteCausalFloor(51L)
+        val otherBoot = UnoEncryptedExactMemory(floorKey, "boot-b",
+            { floorVault?.copyOf() }, { floorVault = it.copyOf() }) { 1000L }
+        verify(otherBoot.causalFloor() == -1L)
         println("UNO_ENCRYPTED_EXACT_MEMORY_HOST_PASS=$pass")
     }
 }

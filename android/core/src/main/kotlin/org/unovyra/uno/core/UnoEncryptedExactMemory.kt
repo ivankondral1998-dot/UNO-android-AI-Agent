@@ -17,6 +17,10 @@ interface UnoExactMemoryPort {
     fun read(scope: String, factKey: String, k: Int, scanBudget: Int,
              now: Long, consentEpoch: Long): ExactRead
     fun revoke(scope: String)
+    /** Highest accepted event time for this boot, or -1 when this boot has none. */
+    fun causalFloor(): Long
+    /** Records that time after the observation commit. Not an owner fact. */
+    fun noteCausalFloor(eventNanos: Long)
 }
 
 /** All metadata, provenance, revocations, and record ordering are authenticated. */
@@ -171,6 +175,10 @@ class UnoEncryptedExactMemory(
     private val initializeEmptyOnFirstOpen: Boolean = false,
     private val clockElapsedNanos: () -> Long
 ): UnoExactMemoryPort {
+    private companion object {
+        const val CAUSAL_SCOPE = "uno-causal"
+        const val CAUSAL_KEY = "causal-floor"
+    }
     init { require(bootToken.length in 1..128 && bootToken.all { it >= ' ' }) }
     private var snapshot = load()?.let { UnoExactVaultCodec.open(it, key) }
         ?: UnoExactVaultCodec.Snapshot(0L, emptyList(), emptySet()).also { empty ->
@@ -210,6 +218,42 @@ class UnoEncryptedExactMemory(
         val updated = snapshot.copy(revision = snapshot.revision + 1,
             rows = snapshot.rows.filterNot { it.entry.scope == scope },
             revoked = snapshot.revoked + scope)
+        persist(UnoExactVaultCodec.seal(updated, key))
+        snapshot = updated
+    }
+
+    @Synchronized override fun causalFloor(): Long {
+        val raw = snapshot.rows.lastOrNull {
+            it.bootToken == bootToken && it.entry.scope == CAUSAL_SCOPE &&
+                it.entry.factKey == CAUSAL_KEY
+        }?.entry?.raw ?: return -1L
+        if (raw.size != 8) return -1L
+        var value = 0L
+        raw.forEach { value = (value shl 8) or (it.toLong() and 0xff) }
+        return value
+    }
+
+    @Synchronized override fun noteCausalFloor(eventNanos: Long) {
+        val prior = causalFloor()
+        require(eventNanos >= 0 && eventNanos > prior) { "CAUSAL_FLOOR_INVALID" }
+        val bytes = ByteArray(8)
+        var rest = eventNanos
+        for (i in 7 downTo 0) {
+            bytes[i] = (rest and 0xff).toByte()
+            rest = rest ushr 8
+        }
+        val nextRevision = snapshot.revision + 1
+        require(nextRevision > snapshot.revision) { "CAUSAL_FLOOR_CAPACITY" }
+        val entry = ExactEntry(nextRevision, nextRevision, CAUSAL_SCOPE, CAUSAL_KEY, bytes,
+            UnoExactVaultCodec.sha256(bytes), Long.MAX_VALUE, 0L,
+            EntryKind.HYPOTHESIS, "CAUSAL_FLOOR")
+        val kept = snapshot.rows.filterNot {
+            it.bootToken == bootToken && it.entry.scope == CAUSAL_SCOPE &&
+                it.entry.factKey == CAUSAL_KEY
+        }
+        require(kept.size < UnoExactVaultCodec.MAX_ROWS) { "CAUSAL_FLOOR_CAPACITY" }
+        val updated = snapshot.copy(revision = nextRevision,
+            rows = kept + UnoExactVaultCodec.Row(entry, bootToken))
         persist(UnoExactVaultCodec.seal(updated, key))
         snapshot = updated
     }

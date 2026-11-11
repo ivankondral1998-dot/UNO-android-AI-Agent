@@ -178,4 +178,9 @@ internal class UnoAndroidExactMemory(context: Context, private val readOnly: Boo
         check(!readOnly) { "EXACT_READONLY_REVOKE_DENIED" }
         backend.revoke(scope)
     }
+    override fun causalFloor(): Long = backend.causalFloor()
+    override fun noteCausalFloor(eventNanos: Long) {
+        check(!readOnly) { "EXACT_READONLY_WRITE_DENIED" }
+        backend.noteCausalFloor(eventNanos)
+    }
 }

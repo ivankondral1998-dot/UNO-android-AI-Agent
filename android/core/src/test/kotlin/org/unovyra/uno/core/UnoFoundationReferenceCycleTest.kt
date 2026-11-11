@@ -134,6 +134,17 @@ object UnoFoundationReferenceCycleTest {
             FoundationReferenceStatus.NO_PROPOSAL)
         verify(tiny.accept(input(2), 2, 100, "session", 0).status ==
             FoundationReferenceStatus.MEMORY_UNAVAILABLE)
+        val shared = ExactMemory()
+        val first = UnoFoundationReferenceCycle(MockNeural(), shared,
+            TrustController(Native(), InMemoryLedger()), decline)
+        verify(first.accept(input(10), 10, 100, "session", 0).status ==
+            FoundationReferenceStatus.NO_PROPOSAL)
+        val reopened = UnoFoundationReferenceCycle(MockNeural(), shared,
+            TrustController(Native(), InMemoryLedger()), decline)
+        verify(reopened.accept(input(10), 10, 100, "session", 0).status ==
+            FoundationReferenceStatus.INVALID_EVENT)
+        verify(reopened.accept(input(11), 11, 100, "session", 0).status ==
+            FoundationReferenceStatus.NO_PROPOSAL)
         println("UNO_FOUNDATION_REFERENCE_CYCLE_HOST_PASS=$pass")
     }
 }

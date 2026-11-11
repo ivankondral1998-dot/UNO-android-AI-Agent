@@ -37,7 +37,6 @@ class UnoFoundationReferenceCycle(
     private val stopped = AtomicBoolean(false)
     private val busy = AtomicBoolean(false)
     private var revision = 0L
-    private var lastEventNanos = -1L
     fun stop() { stopped.set(true); scheduler.stop(); controller.stop() }
     fun isStopped() = stopped.get()
 
@@ -62,8 +61,6 @@ class UnoFoundationReferenceCycle(
             var committedEventKey: String? = null
             synchronized(this) {
                 if (stopped.get()) return report(FoundationReferenceStatus.STOPPED)
-                if (event.monotonicNanos <= lastEventNanos)
-                    return report(FoundationReferenceStatus.INVALID_EVENT)
                 observation = event.copy(data = event.data.copyOf())
                 // Use persisted generation, not activity-local revision; no key reuse
                 // after recreation or within a shared vault across event sources.
@@ -73,6 +70,8 @@ class UnoFoundationReferenceCycle(
                 // committed write. Independent cycle instances cannot reuse an
                 // event key merely because their local revisions both start at zero.
                 synchronized(memory) {
+                    if (event.monotonicNanos <= memory.causalFloor())
+                        return report(FoundationReferenceStatus.INVALID_EVENT)
                     val next = memory.generation
                     if (next == Long.MAX_VALUE)
                         return report(FoundationReferenceStatus.MEMORY_UNAVAILABLE)
@@ -87,12 +86,12 @@ class UnoFoundationReferenceCycle(
                         val entry = memory.write(scope, key, observation.data, deadline,
                             consentEpoch, EntryKind.OBSERVED, event.sourceTag)
                         check(entry.factKey == key) { "EXACT_COMMIT_KEY_MISMATCH" }
+                        memory.noteCausalFloor(event.monotonicNanos)
                         committedEventKey = entry.factKey
                     } catch (_: Exception) {
                         return report(FoundationReferenceStatus.MEMORY_UNAVAILABLE)
                     }
                 }
-                lastEventNanos = event.monotonicNanos
                 revision++
             }
             val sha = MessageDigest.getInstance("SHA-256").digest(observation.data)

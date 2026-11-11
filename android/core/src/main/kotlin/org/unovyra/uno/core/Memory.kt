@@ -47,6 +47,12 @@ class ExactMemory(private val limit: Int = UnoAbi.MAX_MEMORY) : UnoExactMemoryPo
         rows.entries.removeAll { it.value.scope==scope }
         generation++
     }
+    private var causalFloorNanos = -1L
+    @Synchronized override fun causalFloor(): Long = causalFloorNanos
+    @Synchronized override fun noteCausalFloor(eventNanos: Long) {
+        require(eventNanos >= 0 && eventNanos > causalFloorNanos) { "CAUSAL_FLOOR_INVALID" }
+        causalFloorNanos = eventNanos
+    }
     @Synchronized override fun read(scope:String,factKey:String,k:Int,scanBudget:Int,now:Long,consentEpoch:Long):ExactRead {
         if (revoked.contains(scope) || scope.isEmpty()) return ExactRead(ExactStatus.DENIED,emptyList(),0)
         if (broken || k<=0 || scanBudget<0) return ExactRead(ExactStatus.UNKNOWN,emptyList(),0)
