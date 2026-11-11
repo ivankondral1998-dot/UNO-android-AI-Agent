@@ -32,3 +32,22 @@ fun admitWeights(manifest: WeightManifest, bytes: ByteArray, acceptedVersion: St
     return if (actual == manifest.digestSha256) WeightAdmission.ADMITTED_UNVERIFIED_QUALITY
     else WeightAdmission.REJECTED
 }
+
+/** Remembers an admission. The bytes are not a neural port and not a permission. */
+class WeightSlot {
+    private var admission = WeightAdmission.REJECTED
+    fun offer(manifest: WeightManifest, bytes: ByteArray, acceptedVersion: String): WeightAdmission {
+        val decision = admitWeights(manifest, bytes, acceptedVersion)
+        admission = decision
+        return decision
+    }
+    fun admitted() = admission == WeightAdmission.ADMITTED_UNVERIFIED_QUALITY
+}
+
+/** A checked file is still not a neural port. These bytes cannot propose an action. */
+class WeightCheckedNeural(private val slot: WeightSlot) : NeuralPort {
+    override fun perceive(event: Percept): NeuralOutput {
+        if (!slot.admitted()) throw IllegalStateException("MODEL_NOT_TRAINED_OR_LOADED")
+        throw IllegalStateException("MODEL_NOT_TRAINED_OR_LOADED")
+    }
+}

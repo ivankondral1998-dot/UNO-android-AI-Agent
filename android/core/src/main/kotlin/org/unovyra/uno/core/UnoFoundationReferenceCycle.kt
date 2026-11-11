@@ -8,7 +8,7 @@ enum class FoundationReferenceStatus {
     INVALID_EVENT, BUSY, STOPPED, MEMORY_UNAVAILABLE, MODEL_UNAVAILABLE,
     NO_PROPOSAL, OWNER_DECLINED, TRUST_REJECTED, DISPATCH_REJECTED,
     MAY_HAVE_EXECUTED, READBACK_UNCONFIRMED, REFERENCE_READBACK_CLAIM,
-    AUDIO_REJECTED
+    AUDIO_REJECTED, IMAGE_REJECTED, PLAN_REJECTED
 }
 data class FoundationReferenceResult(
     val status: FoundationReferenceStatus,
@@ -34,12 +34,13 @@ class UnoFoundationReferenceCycle(
     private val controller: TrustController,
     private val owner: AuthenticatedOwnerUi,
     private val scheduler: BoundedScheduler = BoundedScheduler(32),
-    private val audio: PcmFrameGate? = null
+    private val audio: PcmFrameGate? = null,
+    private val planner: BoundedPlanner = BoundedPlanner()
 ) {
     private val stopped = AtomicBoolean(false)
     private val busy = AtomicBoolean(false)
     private var revision = 0L
-    fun stop() { stopped.set(true); scheduler.stop(); controller.stop() }
+    fun stop() { stopped.set(true); scheduler.stop(); controller.stop(); planner.stop() }
     fun isStopped() = stopped.get()
 
     @Synchronized private fun report(
@@ -64,6 +65,9 @@ class UnoFoundationReferenceCycle(
                 if (gate == null || gate.accept(event.data, true) != PcmStatus.ACCEPTED_FRAME) {
                     return report(FoundationReferenceStatus.AUDIO_REJECTED)
                 }
+            }
+            if (event.type == PerceptType.IMAGE) {
+                return report(FoundationReferenceStatus.IMAGE_REJECTED)
             }
             val observation: Percept
             var committedEventKey: String? = null
@@ -117,6 +121,17 @@ class UnoFoundationReferenceCycle(
             val proposal = output.action ?: return report(
                 FoundationReferenceStatus.NO_PROPOSAL, sha, output.stateDigest,
                 eventKey = committedEventKey)
+            val plan = planner.bound(proposal)
+            if (plan.status == PlanStatus.STOPPED) {
+                return report(FoundationReferenceStatus.STOPPED, sha, output.stateDigest,
+                    eventKey = committedEventKey)
+            }
+            val step = plan.steps.singleOrNull()
+            if (plan.status != PlanStatus.HELD || step == null || step.verb != proposal.verb ||
+                !step.canonicalArgs.contentEquals(proposal.canonicalArgs)) {
+                return report(FoundationReferenceStatus.PLAN_REJECTED, sha, output.stateDigest,
+                    eventKey = committedEventKey)
+            }
             val digest = controller.proposalDigest(proposal)
             val consent = try { owner.showExactProposalAndObtainConsent(proposal) }
                           catch (_: Exception) { null }

@@ -1,5 +1,11 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-11 — plan cannot widen an action
+
+**SOURCE:** this commit. The cycle asks `BoundedPlanner` before the owner. A step with another verb, other bytes, another effect, or past the step budget is `REJECTED`. STOP drops the plan and does not ask the owner. An image is `IMAGE_REJECTED` and is not stored. A weight file can pass its digest and still cannot propose anything. Host `UNO_PLANNER_HOST_PASS=17`, `UNO_WP01_HOST_PASS=425`.
+**NOT ON DEVICE.** No new APK. `FOUNDATION_INCOMPLETE`.
+
+
 ## UPDATE 2026-11-11 — exact and summary revoked together
 
 **SOURCE:** this commit. `UnoMemoryPorts` links a caller-supplied vector to an exact record and revokes the summary before the fact. A revoked scope cannot be linked again. Audio without an accepted PCM frame is `AUDIO_REJECTED` and is not stored. Android can open a separate semantic file with its own key only after the exact vault is owned; a missing file stays UNKNOWN and is not created on startup. Host `UNO_SEMANTIC_MEMORY_HOST_PASS=22`, `UNO_FOUNDATION_REFERENCE_CYCLE_HOST_PASS=31`, `UNO_WP01_HOST_PASS=408`. `:app:compileDebugKotlin` succeeded. No new APK: the phone still has no vector to store. `FOUNDATION_INCOMPLETE`.
