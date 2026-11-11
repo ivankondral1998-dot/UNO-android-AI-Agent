@@ -1,5 +1,11 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-11 — F reference inside the cycle, no action
+
+**SOURCE:** this commit on `feat/uno-permanent-full-foundation-20261111`. `UnoFReferencePort` runs the existing S4/S5 numerical oracle inside `UnoFoundationReferenceCycle`. Synthetic features produce a state digest and `NO_PROPOSAL`. Text is still `MODEL_UNAVAILABLE`. Inactive blocks stay skipped. No Android proposal and no native call. Host `UNO_F_REFERENCE_HOST_PASS=11`, `UNO_WP01_HOST_PASS=363`.
+**NOT:** trained intelligence, and not wired into the installed chat. The phone app still uses `NoWeightsNeuralPort`. No new APK. `FOUNDATION_INCOMPLETE`.
+
+
 ## UPDATE 2026-11-11 — A52 memory confirmed / causal floor / versionCode 8
 
 **DEVICE:** Owner, Samsung Galaxy A52. Manual fact saves, reads immediately, and reads again after the app process is closed and opened. `DEVICE_VERIFIED` for that scenario only. Survival across a phone reboot is **not** confirmed.

@@ -243,3 +243,51 @@ class UnoFReference(private val weights: UnoRefWeights) {
         ))
     }
 }
+
+/**
+ * Host numerical port only. Synthetic weights are not a trained organism.
+ * The result never contains an Android proposal. Any other byte layout is
+ * rejected the same way as a missing model.
+ */
+class UnoFReferencePort(
+    private val reference: UnoFReference,
+    private val weights: UnoRefWeights,
+    private val mask: BooleanArray,
+    private val steps: Int
+) : NeuralPort {
+    var lastTrace: UnoRefKernelTrace? = null
+        private set
+
+    override fun perceive(event: Percept): NeuralOutput {
+        val width = weights.inputWidth
+        if (event.data.size != width * 8) {
+            throw IllegalStateException("MODEL_NOT_TRAINED_OR_LOADED")
+        }
+        val features = DoubleArray(width)
+        for (index in 0 until width) {
+            var bits = 0L
+            for (byte in 0 until 8) {
+                bits = bits or ((event.data[index * 8 + byte].toLong() and 0xff) shl (8 * byte))
+            }
+            val value = Double.fromBits(bits)
+            if (!value.isFinite()) throw IllegalStateException("MODEL_NOT_TRAINED_OR_LOADED")
+            features[index] = value
+        }
+        val output = reference.forward(
+            UnoRefEvent(features, DoubleArray(32), DoubleArray(weights.d), DoubleArray(weights.d)),
+            mask, steps
+        )
+        lastTrace = output.trace
+        val packed = ByteArray(output.state.size * 8)
+        output.state.forEachIndexed { index, value ->
+            var bits = value.toRawBits()
+            for (byte in 0 until 8) {
+                packed[index * 8 + byte] = (bits and 0xff).toByte()
+                bits = bits ushr 8
+            }
+        }
+        val digest = java.security.MessageDigest.getInstance("SHA-256").digest(packed)
+            .joinToString("") { "%02x".format(it) }
+        return NeuralOutput(digest, null)
+    }
+}

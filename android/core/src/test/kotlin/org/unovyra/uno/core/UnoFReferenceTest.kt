@@ -115,6 +115,35 @@ object UnoFReferenceTest {
             check(first.state.contentEquals(second.state))
             check(input.features[0]==1.0 && input.state.all { it==0.0 })
         }
+        test("reference_port_runs_inside_cycle_without_an_action") {
+            val w = weights()
+            val port = UnoFReferencePort(UnoFReference(w), w, booleanArrayOf(true, false), 2)
+            val native = object : NativePort {
+                override val trustedSourceTag = "FAKE_JVM"
+                var calls = 0
+                override fun dispatch(ticket: Ticket): NativeEndpoint { calls++; return NativeEndpoint.TRUE }
+                override fun readback(ticket: Ticket, nowNanos: Long) = NativeEvidence(
+                    ticket.id, NativeEndpoint.TRUE, 1L, nowNanos, trustedSourceTag)
+            }
+            val memory = ExactMemory()
+            val cycle = UnoFoundationReferenceCycle(port, memory,
+                TrustController(native, InMemoryLedger()),
+                object : AuthenticatedOwnerUi {
+                    override fun showExactProposalAndObtainConsent(proposal: Proposal): Consent? = null
+                })
+            val bits = 1.0.toRawBits()
+            val packed = ByteArray(8) { byte -> ((bits ushr (8 * byte)) and 0xff).toByte() }
+            val result = cycle.accept(Percept(PerceptType.SENSOR, packed, "SYNTHETIC_FEATURES", 5L),
+                5L, 100L, "reference", 0L)
+            check(result.status == FoundationReferenceStatus.NO_PROPOSAL)
+            check(!result.verifiedAndroidEffect && native.calls == 0)
+            check(result.untrustedModelState != null && result.untrustedModelState.length == 64)
+            check(port.lastTrace?.skippedBlocks == 1 && port.lastTrace?.activeBlocks == 1)
+            check(memory.read("reference", "event:1", 1, 4, 6L, 0L).status == ExactStatus.COMPLETE)
+            val text = cycle.accept(Percept(PerceptType.TEXT, "Привет".toByteArray(), "LOCAL_UI", 6L),
+                6L, 100L, "reference", 0L)
+            check(text.status == FoundationReferenceStatus.MODEL_UNAVAILABLE && native.calls == 0)
+        }
         println("UNO_F_REFERENCE_HOST_PASS=$pass")
     }
 }
