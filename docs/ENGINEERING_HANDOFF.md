@@ -1,5 +1,11 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-11 — More panel / versionCode 7
+
+**SOURCE:** `6a6e8b8`. The chat «Ещё» button stays in the header. The menu scales out of that button and closes into it. It is not a centered dialog. Same actions as before. `DEVICE_VERIFIED=FALSE`.
+**APK:** versionCode 7, SHA-256 `45043a8bc5fea63a22aed9bcef9346692eeba89ea5af46809e57e629a3bc9f9f`, same signer.
+
+
 ## UPDATE 2026-11-11 — AndroidKeyStore IV / versionCode 6
 
 **SOURCE:** `feat/uno-permanent-full-foundation-20261111` @ `0988465`.
