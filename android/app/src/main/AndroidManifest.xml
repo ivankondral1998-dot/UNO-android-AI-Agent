@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".UnoChatActivity" android:exported="false" />
+        <activity android:name=".UnoFactsActivity" android:exported="false" />
         <service
             android:name=".NeuralWorkerService"
             android:isolatedProcess="true"

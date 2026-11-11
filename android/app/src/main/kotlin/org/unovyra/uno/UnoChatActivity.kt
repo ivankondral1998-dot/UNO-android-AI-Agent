@@ -75,6 +75,10 @@ class UnoChatActivity : Activity() {
         tool("Новый чат") { confirmNewChat() }
         root.addView(tools)
         root.addView(Button(this).apply {
+            text = "Память UNO · ручные факты"
+            setOnClickListener { startActivity(Intent(this@UnoChatActivity, UnoFactsActivity::class.java)) }
+        })
+        root.addView(Button(this).apply {
             text = "Резервный импорт GGUF с копированием (занимает сотни МБ)"
             setOnClickListener { selectModel(true) }
         })

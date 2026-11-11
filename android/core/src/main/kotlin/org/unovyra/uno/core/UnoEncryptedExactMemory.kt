@@ -227,7 +227,8 @@ class UnoEncryptedExactMemory(
             r.entry.scope == scope && r.entry.factKey == factKey &&
                 r.entry.kind != EntryKind.SEMANTIC_SUMMARY
         }
-        if (matching.any { it.bootToken != bootToken })
+        if (matching.any { it.bootToken != bootToken &&
+            !UnoManualFacts.survivesBootForRead(it.entry) })
             return ExactRead(ExactStatus.UNKNOWN, emptyList(), 0)
         val valid = matching.map { it.entry }.filter { effectiveNow < it.expiryMonotonicNanos }
         if (valid.any { it.consentEpoch != consentEpoch ||
