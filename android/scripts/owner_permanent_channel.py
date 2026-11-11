@@ -52,14 +52,34 @@ def private_file(path: Path, payload: bytes) -> None:
         os.chmod(path, 0o600)
 
 
+def _redact(text: str, env: dict[str, str] | None) -> str:
+    if not env:
+        return text
+    for key in ("UNO_OWNER_UPDATE_STORE_PASSWORD", "UNO_OWNER_UPDATE_KEY_PASSWORD"):
+        secret = env.get(key) or ""
+        if len(secret) >= 8:
+            text = text.replace(secret, "[REDACTED]")
+    return text
+
+
 def command(argv: list[str], *, env: dict[str, str] | None = None,
-            cwd: Path | None = None) -> str:
+            cwd: Path | None = None, timeout: int = 900) -> str:
     # argv never includes the password; keytool reads it by environment name.
-    result = subprocess.run(argv, env=env, cwd=cwd, capture_output=True,
-                            text=True, timeout=900, check=False)
-    if result.returncode:
+    # Gradle/NDK cold builds exceed the old 900s cap; callers pass a longer timeout.
+    try:
+        result = subprocess.run(argv, env=env, cwd=cwd, capture_output=True,
+                                text=True, timeout=timeout, check=False)
+    except subprocess.TimeoutExpired as exc:
+        stdout = exc.stdout if isinstance(exc.stdout, str) else ""
+        stderr = exc.stderr if isinstance(exc.stderr, str) else ""
+        tail = "\n".join(_redact(stdout + "\n" + stderr, env).splitlines()[-30:])
         raise ValueError("COMMAND_FAILED_" + Path(argv[0]).name +
-                         "_EXIT_" + str(result.returncode))
+                         "_TIMEOUT_" + str(timeout) + "\n" + tail)
+    if result.returncode:
+        blob = _redact((result.stdout or "") + "\n" + (result.stderr or ""), env)
+        raise ValueError("COMMAND_FAILED_" + Path(argv[0]).name +
+                         "_EXIT_" + str(result.returncode) + "\n" +
+                         "\n".join(blob.splitlines()[-40:]))
     return result.stdout
 
 
@@ -167,10 +187,11 @@ def build(folder: Path, keytool: str, gradle: str, aapt: str, apksigner: str) ->
     version = 1 if old is None else old.version_code + 1
     if version > 2_147_483_647:
         raise ValueError("ANDROID_VERSION_CODE_EXHAUSTED")
-    command([gradle, "--no-daemon", "--max-workers=2",
+    command([gradle, "--no-daemon", "--max-workers=1",
              "-PunoOwnerUpdateApplicationId=" + APP_ID,
              "-PunoOwnerUpdateVersionCode=" + str(version),
-             ":app:assembleDebug", ":app:lintDebug"], cwd=ANDROID, env=env)
+             ":app:assembleDebug", ":app:lintDebug"], cwd=ANDROID, env=env,
+            timeout=7200)
     candidate = ANDROID / "app/build/outputs/apk/debug/app-debug.apk"
     actual = inspect(candidate, aapt, apksigner)
     if actual != ApkIdentity(APP_ID, version, (data["signer_sha256"],)):

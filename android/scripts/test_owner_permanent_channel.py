@@ -45,6 +45,8 @@ class ChannelTests(unittest.TestCase):
                 return original_command(argv,**kwargs)
             args.append(argv)
             self.assertEqual(argv[0],'fake-gradle')
+            self.assertIn('--max-workers=1', argv)
+            self.assertGreaterEqual(kwargs.get('timeout', 0), 3600)
             version=int(next(a.split('=')[1] for a in argv if a.startswith('-PunoOwnerUpdateVersionCode=')))
             (build_dir/'app/build/outputs/apk/debug/app-debug.apk').write_bytes(f'fake v{version}'.encode())
             return 'mock, NO SDK'
