@@ -121,13 +121,23 @@ class UnoFoundationReferenceCycle(
             val proposal = output.action ?: return report(
                 FoundationReferenceStatus.NO_PROPOSAL, sha, output.stateDigest,
                 eventKey = committedEventKey)
-            val plan = planner.bound(proposal)
+            val opened = planner.bound(proposal)
+            if (opened.status == PlanStatus.STOPPED) {
+                return report(FoundationReferenceStatus.STOPPED, sha, output.stateDigest,
+                    eventKey = committedEventKey)
+            }
+            if (opened.status != PlanStatus.HELD) {
+                return report(FoundationReferenceStatus.PLAN_REJECTED, sha, output.stateDigest,
+                    eventKey = committedEventKey)
+            }
+            val plan = planner.take()
             if (plan.status == PlanStatus.STOPPED) {
                 return report(FoundationReferenceStatus.STOPPED, sha, output.stateDigest,
                     eventKey = committedEventKey)
             }
             val step = plan.steps.singleOrNull()
-            if (plan.status != PlanStatus.HELD || step == null || step.verb != proposal.verb ||
+            if (plan.status != PlanStatus.HELD || step == null || step.reversible ||
+                step.verb != proposal.verb ||
                 !step.canonicalArgs.contentEquals(proposal.canonicalArgs)) {
                 return report(FoundationReferenceStatus.PLAN_REJECTED, sha, output.stateDigest,
                     eventKey = committedEventKey)

@@ -1,5 +1,11 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-11 — a plan step is spent once
+
+**SOURCE:** this commit. `take` spends one step. A second open is rejected while steps remain. A reversible mark is rejected unless that effect was named in advance. `restore` drops unspent steps and does not issue them again. Host `UNO_PLANNER_HOST_PASS=28`, `UNO_WP01_HOST_PASS=436`.
+**NOT ON DEVICE.** No new APK. The plan still cannot choose a goal. `FOUNDATION_INCOMPLETE`.
+
+
 ## UPDATE 2026-11-11 — plan cannot widen an action
 
 **SOURCE:** this commit. The cycle asks `BoundedPlanner` before the owner. A step with another verb, other bytes, another effect, or past the step budget is `REJECTED`. STOP drops the plan and does not ask the owner. An image is `IMAGE_REJECTED` and is not stored. A weight file can pass its digest and still cannot propose anything. Host `UNO_PLANNER_HOST_PASS=17`, `UNO_WP01_HOST_PASS=425`.
