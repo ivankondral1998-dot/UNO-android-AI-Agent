@@ -17,6 +17,8 @@ import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import android.view.View
+import android.graphics.Canvas
+import android.graphics.Paint
 import org.json.JSONArray
 import org.unovyra.uno.core.*
 import org.json.JSONObject
@@ -123,16 +125,16 @@ class UnoActivity : Activity() {
             setBackgroundColor(Color.rgb(12,18,27))
         }
         uiRoot = root
+        root.addView(UnoMarkView(this))
         fun label(s:String, size:Float=15f)=TextView(this).apply {
             text=s;textSize=size;setTextColor(Color.WHITE);setPadding(0,8,0,8)
             labels.add(this)
         }
-        root.addView(label("UNOVYRA / UNO",25f))
+        root.addView(label("UNOVYRA UNO",25f))
         root.addView(label("УСТАНОВЛЕННЫЙ ПАКЕТ: $packageName",12f))
-        status = label("UNO · локальная диагностика по запросу",14f)
+        status = label("Каркас на устройстве. Обученной модели нет. Действия Android закрыты.",14f)
         root.addView(status)
-        report = label("Один тест: CPU, RAM, IO, сенсоры и ранее записанная память.\n" +
-            "Новой записи в точную память без отдельного согласия не будет.",13f)
+        report = label("Проверка читает уже сохранённое. Сама она ничего не записывает в точную память и не выполняет действий системы.",13f)
         root.addView(report)
         val advancedContainer = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
@@ -147,19 +149,30 @@ class UnoActivity : Activity() {
                 setOnClickListener { onClick() }
             })
         }
-        button("ОТКРЫТЬ ОФЛАЙН-ЧАТ UNO") {
+        button("ПАМЯТЬ") {
+            startActivity(Intent(this, UnoFactsActivity::class.java))
+        }
+        button("ОФЛАЙН-ЧАТ") {
             startActivity(Intent(this, UnoChatActivity::class.java))
         }
         button("ПРОВЕРИТЬ UNO · ОДИН ТЕСТ") { runUnifiedSelfTest() }
-        button("КОПИРОВАТЬ ПОЛНЫЙ ОТЧЁТ") { copyFullReport() }
-        button("СТОП: прервать все тесты и запретить действия") {
+        button("СКОПИРОВАТЬ ОТЧЁТ") { copyFullReport() }
+        button("СТОП") {
             UnoProcessStop.stop()
             explicitStopLatched.set(true)
             AppPrivateReadbackProbe.stop()
             labStop.stop();controller.stop();ownerGate.stop()
             status.text="STOP · новые лабораторные операции запрещены · уже начатый эффект не отменяется · epoch=${controller.epoch}"
         }
-        button("НАСТРОЙКИ И ИНЖЕНЕРНАЯ ЛАБОРАТОРИЯ") {
+        root.addView(label(
+            "Без искусственного PASS:\n" +
+            "• журнал действий — пустое хранилище, не выполненное действие\n" +
+            "• точная память — пока факт не сохранён вручную\n" +
+            "• локальный маркер — только отдельной кнопкой в лаборатории\n" +
+            "• подтверждение владельца — только вручную\n" +
+            "• действия Android — не включены\n" +
+            "• качество диалога — модели нет", 13f))
+        button("ЛАБОРАТОРИЯ") {
             val open = advancedContainer.visibility != View.VISIBLE
             advancedContainer.visibility = if (open) View.VISIBLE else View.GONE
         }
@@ -242,8 +255,22 @@ class UnoActivity : Activity() {
         }
         setContentView(ScrollView(this).apply {addView(root)})
         applyTheme()
+        ensureEmptyOutcomeJournal()
         mainHandler.post(heartbeat)
         reportFullyDrawn() // For full launch timing use separate physical-device Macrobenchmark.
+    }
+
+    /** Creates the empty outcome schema once. Inserts no tickets and grants no Android action. */
+    private fun ensureEmptyOutcomeJournal() {
+        worker.execute {
+            runCatching {
+                AndroidOutcomeStore(applicationContext).use { store ->
+                    check(store.inspectAfterRestart() is AndroidOutcomeStore.Inspection.Rows) {
+                        "OUTCOME_JOURNAL_UNAVAILABLE"
+                    }
+                }
+            }
+        }
     }
 
     /** Manual clipboard export only. No network, SAF, generic external intents or write access. */
@@ -817,4 +844,23 @@ class DenyAllLedger:DurableLedger {
     override fun prepare(ticket:Ticket):Boolean=false
     override fun commit(ticket:Ticket,evidence:NativeEvidence):Boolean=false
     override fun unresolved():List<Ticket> = emptyList()
+}
+
+/** Launcher-matching mark. Not a claim that a neural model is loaded. */
+private class UnoMarkView(context: android.content.Context) : View(context) {
+    private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val size = (72 * resources.displayMetrics.density).toInt()
+        setMeasuredDimension(size, size)
+    }
+    override fun onDraw(canvas: Canvas) {
+        val cx = width / 2f
+        val cy = height / 2f
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = width * 0.08f
+        paint.color = Color.rgb(232, 148, 58)
+        canvas.drawCircle(cx, cy, width * 0.36f, paint)
+        paint.style = Paint.Style.FILL
+        canvas.drawCircle(cx, cy, width * 0.12f, paint)
+    }
 }
