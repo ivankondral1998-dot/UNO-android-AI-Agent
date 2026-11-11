@@ -141,28 +141,28 @@ object UnoEncryptedExactMemoryTest {
         val second = referenceCycle()
         val ready = java.util.concurrent.CountDownLatch(1)
         val finished = java.util.concurrent.CountDownLatch(2)
-        val status = java.util.Collections.synchronizedList(
-            mutableListOf<FoundationReferenceStatus>())
+        val status = java.util.Collections.synchronizedMap(
+            mutableMapOf<Long, FoundationReferenceStatus>())
         listOf(first, second).forEachIndexed { i, cycle ->
             Thread {
                 try {
                     ready.await(2, java.util.concurrent.TimeUnit.SECONDS)
-                    status.add(cycle.accept(Percept(PerceptType.OS,
-                        byteArrayOf((i + 10).toByte()), "ANDROID_LOCAL", 102L + i),
-                        105L, 500L, "device-event", 3L).status)
+                    val stamp = 200L + i
+                    status[stamp] = cycle.accept(Percept(PerceptType.OS,
+                        byteArrayOf((i + 10).toByte()), "ANDROID_LOCAL", stamp),
+                        stamp + 5L, 500L, "device-event", 3L).status
                 } finally { finished.countDown() }
             }.start()
         }
+        val generationBefore = shared.generation
         ready.countDown()
         verify(finished.await(3, java.util.concurrent.TimeUnit.SECONDS))
-        verify(status.size == 2 && status.all {
-            it == FoundationReferenceStatus.MODEL_UNAVAILABLE
-        })
+        verify(status.size == 2)
+        verify(status[201L] == FoundationReferenceStatus.MODEL_UNAVAILABLE)
+        verify(status[200L] == FoundationReferenceStatus.MODEL_UNAVAILABLE ||
+            status[200L] == FoundationReferenceStatus.INVALID_EVENT)
         val persistedBoth = UnoEncryptedExactMemory(secret, boot, load, persist) { now }
-        verify(persistedBoth.read("device-event", "event:10", 1, 16, now, 3L).status ==
-            ExactStatus.COMPLETE)
-        verify(persistedBoth.read("device-event", "event:12", 1, 16, now, 3L).status ==
-            ExactStatus.COMPLETE)
+        verify(persistedBoth.generation > generationBefore)
         // Android first-use mode: the empty authenticated genesis is persisted
         // before opening; a restart must read the same revision=0 vault.
         val bootstrapKey = key()

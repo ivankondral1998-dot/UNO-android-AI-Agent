@@ -1,5 +1,12 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## UPDATE 2026-11-11 — semantic index beside exact memory
+
+**SOURCE:** this commit. `UnoSemanticMemory` stores a caller-supplied vector pointing at an exact record. Retrieval is `SUMMARY_ONLY`, `TRUNCATED`, `DENIED`, or `UNKNOWN`. It never returns `COMPLETE` and never returns the raw fact. Equal weights on `v` and `-v` aggregate to zero while both exact records remain. Another boot does not reuse the old index. A corrupt file is rejected and not repaired. Host `UNO_SEMANTIC_MEMORY_HOST_PASS=17`, `UNO_WP01_HOST_PASS=381`.
+**NOT ON DEVICE:** the installed app does not write this index. A vector has to come from the real operator, and no trained weights are selected. No new APK.
+**BLOCKED ON THE OWNER:** model and weight choice, speech engine, and any real Android effect. Those are not substituted here. `FOUNDATION_INCOMPLETE`.
+
+
 ## UPDATE 2026-11-11 — F reference inside the cycle, no action
 
 **SOURCE:** this commit on `feat/uno-permanent-full-foundation-20261111`. `UnoFReferencePort` runs the existing S4/S5 numerical oracle inside `UnoFoundationReferenceCycle`. Synthetic features produce a state digest and `NO_PROPOSAL`. Text is still `MODEL_UNAVAILABLE`. Inactive blocks stay skipped. No Android proposal and no native call. Host `UNO_F_REFERENCE_HOST_PASS=11`, `UNO_WP01_HOST_PASS=363`.
