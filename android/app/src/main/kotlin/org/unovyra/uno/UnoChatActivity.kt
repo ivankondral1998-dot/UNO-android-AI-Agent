@@ -14,6 +14,7 @@ import android.view.Gravity
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
@@ -45,6 +46,10 @@ class UnoChatActivity : Activity() {
     private lateinit var input: EditText
     private lateinit var send: Button
     private lateinit var stop: Button
+    private lateinit var moreButton: Button
+    private lateinit var scrim: View
+    private lateinit var panel: LinearLayout
+    private var panelOpen = false
     private var currentUser = ""
     private var partial = ""
     private var copyModelOnPick = false
@@ -56,7 +61,6 @@ class UnoChatActivity : Activity() {
         val root = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             setBackgroundColor(UnoChrome.BG)
-            fitsSystemWindows = true
             setPadding((16 * density).toInt(), (12 * density).toInt(), (16 * density).toInt(), (12 * density).toInt())
         }
         val header = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; gravity = Gravity.CENTER_VERTICAL }
@@ -66,12 +70,13 @@ class UnoChatActivity : Activity() {
             setTextColor(UnoChrome.INK)
             layoutParams = LinearLayout.LayoutParams(0, -2, 1f)
         })
-        header.addView(Button(this).apply {
+        moreButton = Button(this).apply {
             text = "Ещё"
             UnoChrome.button(this, UnoChrome.SURFACE, UnoChrome.INK)
             minHeight = (40 * density).toInt()
-            setOnClickListener { showMore() }
-        })
+            setOnClickListener { if (panelOpen) closePanel() else openPanel() }
+        }
+        header.addView(moreButton)
         root.addView(header)
         status = StatusLine(this).apply {
             text = ""
@@ -120,40 +125,110 @@ class UnoChatActivity : Activity() {
             }
         }
         root.addView(stop, LinearLayout.LayoutParams(-1, -2).apply { topMargin = (8 * density).toInt() })
-        setContentView(root)
+        val frame = FrameLayout(this).apply {
+            setBackgroundColor(UnoChrome.BG)
+            fitsSystemWindows = true
+        }
+        frame.addView(root)
+        scrim = View(this).apply {
+            setBackgroundColor(0x99080B10.toInt())
+            visibility = View.GONE
+            setOnClickListener { closePanel() }
+        }
+        frame.addView(scrim)
+        panel = sidePanel(density)
+        frame.addView(panel, FrameLayout.LayoutParams(
+            (resources.displayMetrics.widthPixels * 0.78f).toInt(), -1, Gravity.END))
+        setContentView(frame)
         lockUi(false)
         startLoadHistory()
     }
 
-    private fun showMore() {
-        val actions = arrayOf(
-            "Выбрать модель",
-            "Импортировать модель в приложение",
-            "Новый чат",
-            "Память",
-            "Проверка",
-            "Остановить UNO"
-        )
-        AlertDialog.Builder(this)
-            .setTitle("Ещё")
-            .setItems(actions) { _, which ->
-                when (which) {
-                    0 -> selectModel(false)
-                    1 -> selectModel(true)
-                    2 -> confirmNewChat()
-                    3 -> startActivity(Intent(this, UnoFactsActivity::class.java))
-                    4 -> startActivity(Intent(this, UnoActivity::class.java).putExtra("uno_show_lab", true))
-                    5 -> {
-                        UnoProcessStop.stop()
-                        cancelled.set(true)
-                        textCycle?.stop()
-                        try { UnoNativeEngine.cancel() } catch (_: Throwable) {}
-                        lockUi(false)
-                        status.text = "Новые ответы этого запуска закрыты"
-                    }
-                }
+    private fun sidePanel(density: Float): LinearLayout {
+        val list = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            background = UnoChrome.round(UnoChrome.SURFACE, 0f).apply {
+                cornerRadii = floatArrayOf(28 * density, 28 * density, 0f, 0f, 0f, 0f, 28 * density, 28 * density)
             }
-            .show()
+            setPadding((8 * density).toInt(), (20 * density).toInt(), (8 * density).toInt(), (16 * density).toInt())
+            visibility = View.GONE
+        }
+        data class Item(val label: String, val danger: Boolean = false, val run: () -> Unit)
+        val items = listOf(
+            Item("Выбрать модель") { selectModel(false) },
+            Item("Импортировать модель в приложение") { selectModel(true) },
+            Item("Новый чат") { confirmNewChat() },
+            Item("Память") { startActivity(Intent(this, UnoFactsActivity::class.java)) },
+            Item("Проверка") {
+                startActivity(Intent(this, UnoActivity::class.java).putExtra("uno_show_lab", true))
+            },
+            Item("Остановить UNO", danger = true) {
+                UnoProcessStop.stop()
+                cancelled.set(true)
+                textCycle?.stop()
+                try { UnoNativeEngine.cancel() } catch (_: Throwable) {}
+                lockUi(false)
+                status.text = "Новые ответы этого запуска закрыты"
+            }
+        )
+        items.forEach { item ->
+            list.addView(TextView(this).apply {
+                text = item.label
+                textSize = 17f
+                setTextColor(if (item.danger) 0xFFE07A72.toInt() else UnoChrome.INK)
+                setPadding((18 * density).toInt(), (16 * density).toInt(), (18 * density).toInt(), (16 * density).toInt())
+                setOnClickListener {
+                    closePanel()
+                    item.run()
+                }
+            })
+        }
+        return list
+    }
+
+    private fun placePivot() {
+        val buttonAt = IntArray(2)
+        val panelAt = IntArray(2)
+        moreButton.getLocationInWindow(buttonAt)
+        panel.getLocationInWindow(panelAt)
+        panel.pivotX = buttonAt[0] + moreButton.width / 2f - panelAt[0]
+        panel.pivotY = buttonAt[1] + moreButton.height / 2f - panelAt[1]
+    }
+
+    private fun openPanel() {
+        panelOpen = true
+        scrim.alpha = 0f
+        scrim.visibility = View.VISIBLE
+        panel.visibility = View.INVISIBLE
+        panel.post {
+            placePivot()
+            panel.scaleX = 0.08f
+            panel.scaleY = 0.08f
+            panel.alpha = 0f
+            panel.visibility = View.VISIBLE
+            panel.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(230).start()
+            scrim.animate().alpha(1f).setDuration(230).start()
+        }
+    }
+
+    private fun closePanel() {
+        if (!panelOpen && panel.visibility != View.VISIBLE) return
+        panelOpen = false
+        placePivot()
+        panel.animate().scaleX(0.08f).scaleY(0.08f).alpha(0f).setDuration(180).withEndAction {
+            panel.visibility = View.GONE
+            panel.scaleX = 1f
+            panel.scaleY = 1f
+            panel.alpha = 1f
+        }.start()
+        scrim.animate().alpha(0f).setDuration(180).withEndAction {
+            scrim.visibility = View.GONE
+        }.start()
+    }
+
+    @Deprecated("The side panel closes before the chat.")
+    override fun onBackPressed() {
+        if (panelOpen) closePanel() else super.onBackPressed()
     }
 
     private fun lockUi(on: Boolean) {
