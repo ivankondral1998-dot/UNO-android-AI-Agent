@@ -44,7 +44,7 @@ internal class UnoAndroidExactMemory(context: Context, private val readOnly: Boo
             else -> ExactVaultResidue.NONE
         }
         val partialAuthentic = if (residue == ExactVaultResidue.PARTIAL && existing is SecretKey) {
-            runCatching { UnoExactVaultCodec.open(readCapped(partial), existing) }.isSuccess
+            runCatching { exactPartialAuthentic(readCapped(partial), existing) }.getOrDefault(false)
         } else false
         when (exactFirstOpen(residue, existing is SecretKey, readOnly, partialAuthentic)) {
             ExactFirstOpen.PROMOTE_PARTIAL -> {

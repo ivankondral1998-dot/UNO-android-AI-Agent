@@ -205,6 +205,8 @@ object UnoEncryptedExactMemoryTest {
         verify(runCatching {
             exactFirstOpen(ExactVaultResidue.COMMITTED, false, false, false)
         }.isFailure)
+        verify(exactPartialAuthentic(genesisCopy, bootstrapKey))
+        verify(!exactPartialAuthentic(byteArrayOf(9, 9, 9), bootstrapKey))
         println("UNO_ENCRYPTED_EXACT_MEMORY_HOST_PASS=$pass")
     }
 }

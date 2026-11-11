@@ -248,9 +248,9 @@ class UnoEncryptedExactMemory(
  * PARTIAL means only an interrupted AtomicFile ".new" exists.
  * NONE means no ciphertext file exists; a key alone is not a vault.
  */
-internal enum class ExactVaultResidue { NONE, COMMITTED, PARTIAL }
+enum class ExactVaultResidue { NONE, COMMITTED, PARTIAL }
 
-internal enum class ExactFirstOpen {
+enum class ExactFirstOpen {
     REOPEN_COMMITTED,
     PROMOTE_PARTIAL,
     WRITE_GENESIS,
@@ -258,7 +258,7 @@ internal enum class ExactFirstOpen {
     REJECT_READONLY_EMPTY
 }
 
-internal fun exactFirstOpen(
+fun exactFirstOpen(
     residue: ExactVaultResidue,
     keyExists: Boolean,
     readOnly: Boolean,
@@ -275,3 +275,6 @@ internal fun exactFirstOpen(
         if (readOnly) ExactFirstOpen.REJECT_READONLY_EMPTY
         else ExactFirstOpen.WRITE_GENESIS
 }
+
+fun exactPartialAuthentic(bytes: ByteArray, key: javax.crypto.SecretKey): Boolean =
+    runCatching { UnoExactVaultCodec.open(bytes, key) }.isSuccess
