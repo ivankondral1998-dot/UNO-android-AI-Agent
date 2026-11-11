@@ -9,8 +9,12 @@ import android.util.AtomicFile
 import org.unovyra.uno.core.ExactEntry
 import org.unovyra.uno.core.ExactRead
 import org.unovyra.uno.core.EntryKind
+import org.unovyra.uno.core.ExactFirstOpen
+import org.unovyra.uno.core.ExactVaultResidue
 import org.unovyra.uno.core.UnoEncryptedExactMemory
 import org.unovyra.uno.core.UnoExactMemoryPort
+import org.unovyra.uno.core.exactFirstOpen
+import org.unovyra.uno.core.exactPartialAuthentic
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException
