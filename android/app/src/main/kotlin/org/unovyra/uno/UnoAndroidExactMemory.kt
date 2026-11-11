@@ -35,62 +35,104 @@ internal class UnoAndroidExactMemory(context: Context, private val readOnly: Boo
         val keystore = KeyStore.getInstance("AndroidKeyStore").apply { load(null) }
         val existing = keystore.getKey(keyAlias, null)
         val base = file.baseFile
-        val hasSnapshot = base.isFile || File(base.path + ".bak").isFile
+        val backup = File(base.path + ".bak")
+        val partial = File(base.path + ".new")
         check(existing == null || existing is SecretKey) { "EXACT_KEY_TYPE_UNSUPPORTED" }
-        check(!hasSnapshot || existing is SecretKey) { "EXACT_KEY_MISSING" }
-        check(hasSnapshot || existing == null) { "EXACT_SNAPSHOT_MISSING" }
-        // Inspection must reopen an EXISTING authenticated snapshot without
-        // generating a key or genesis file. Empty/corrupt state fails closed.
-        check(!readOnly || (hasSnapshot && existing is SecretKey)) {
-            "EXACT_READONLY_SNAPSHOT_UNAVAILABLE"
+        var residue = when {
+            base.isFile || backup.isFile -> ExactVaultResidue.COMMITTED
+            partial.isFile -> ExactVaultResidue.PARTIAL
+            else -> ExactVaultResidue.NONE
         }
+        val partialAuthentic = if (residue == ExactVaultResidue.PARTIAL && existing is SecretKey) {
+            runCatching { UnoExactVaultCodec.open(readCapped(partial), existing) }.isSuccess
+        } else false
+        when (exactFirstOpen(residue, existing is SecretKey, readOnly, partialAuthentic)) {
+            ExactFirstOpen.PROMOTE_PARTIAL -> {
+                // Interrupted finishWrite: publish the already authenticated bytes.
+                // Never replace them with an empty genesis.
+                check(!base.exists() && partial.renameTo(base)) { "EXACT_PARTIAL_PROMOTE_FAILED" }
+                residue = ExactVaultResidue.COMMITTED
+            }
+            ExactFirstOpen.REJECT_PARTIAL ->
+                throw IllegalStateException("EXACT_PARTIAL_SNAPSHOT_UNREADABLE")
+            ExactFirstOpen.REJECT_READONLY_EMPTY ->
+                throw IllegalStateException("EXACT_READONLY_SNAPSHOT_UNAVAILABLE")
+            ExactFirstOpen.REOPEN_COMMITTED, ExactFirstOpen.WRITE_GENESIS -> Unit
+        }
+        val hasSnapshot = residue == ExactVaultResidue.COMMITTED
+        check(!hasSnapshot || existing is SecretKey) { "EXACT_KEY_MISSING" }
+        // A key with no ciphertext is not evidence of a vault. Writable open
+        // completes genesis with that same key. Read-only never creates a file.
+        val createdKey = existing !is SecretKey
         val key = (existing as? SecretKey) ?: generateKey()
-        backend = UnoEncryptedExactMemory(
-            key, boot,
-            load = {
-                try {
-                    // AtomicFile.openRead() may repair a legacy backup by renaming
-                    // files. Read-only inspection must not mutate the vault.
-                    val input = if (readOnly) {
-                        check(!File(base.path + ".bak").exists()) {
-                            "EXACT_READONLY_PENDING_RECOVERY"
-                        }
-                        FileInputStream(base)
-                    } else file.openRead()
-                    input.use { input ->
-                        val out = ByteArrayOutputStream()
-                        val buffer = ByteArray(8192)
-                        while (true) {
-                            val n = input.read(buffer)
-                            if (n < 0) break
-                            check(n <= 0 || out.size() + n <= 1_500_033) {
-                                "EXACT_SNAPSHOT_TOO_LARGE"
+        try {
+            backend = UnoEncryptedExactMemory(
+                key, boot,
+                load = {
+                    try {
+                        // AtomicFile.openRead() may repair a legacy backup by renaming
+                        // files. Read-only inspection must not mutate the vault.
+                        val input = if (readOnly) {
+                            check(!backup.exists()) {
+                                "EXACT_READONLY_PENDING_RECOVERY"
                             }
-                            if (n > 0) out.write(buffer, 0, n)
+                            FileInputStream(base)
+                        } else file.openRead()
+                        input.use { stream ->
+                            val out = ByteArrayOutputStream()
+                            val buffer = ByteArray(8192)
+                            while (true) {
+                                val n = stream.read(buffer)
+                                if (n < 0) break
+                                check(n <= 0 || out.size() + n <= 1_500_033) {
+                                    "EXACT_SNAPSHOT_TOO_LARGE"
+                                }
+                                if (n > 0) out.write(buffer, 0, n)
+                            }
+                            out.toByteArray()
                         }
-                        out.toByteArray()
+                    } catch (notFound: FileNotFoundException) {
+                        if (hasSnapshot) throw IllegalStateException(
+                            "EXACT_EXISTING_SNAPSHOT_UNREADABLE", notFound)
+                        null
                     }
-                } catch (notFound: FileNotFoundException) {
-                    if (hasSnapshot) throw IllegalStateException(
-                        "EXACT_EXISTING_SNAPSHOT_UNREADABLE", notFound)
-                    null
-                }
-            },
-            persist = { bytes ->
-                val stream = file.startWrite()
-                try {
-                    stream.write(bytes)
-                    file.finishWrite(stream)
-                } catch (error: Exception) {
-                    file.failWrite(stream)
-                    throw error
-                }
-            },
-            // Fresh AndroidKeystore keys get a durable genesis snapshot,
-            // rather than leaving a key-only vault until the first observation.
-            initializeEmptyOnFirstOpen = !hasSnapshot && !readOnly,
-            clockElapsedNanos = SystemClock::elapsedRealtimeNanos
-        )
+                },
+                persist = { bytes ->
+                    val stream = file.startWrite()
+                    try {
+                        stream.write(bytes)
+                        file.finishWrite(stream)
+                    } catch (error: Exception) {
+                        file.failWrite(stream)
+                        throw error
+                    }
+                },
+                // Fresh or key-only state gets a durable genesis snapshot.
+                // An existing ciphertext file is never replaced by this path.
+                initializeEmptyOnFirstOpen = !hasSnapshot && !readOnly,
+                clockElapsedNanos = SystemClock::elapsedRealtimeNanos
+            )
+        } catch (error: Throwable) {
+            // Drop a key created in this call only when no ciphertext remains.
+            if (createdKey && !base.isFile && !backup.isFile && !partial.isFile) {
+                runCatching { keystore.deleteEntry(keyAlias) }
+            }
+            throw error
+        }
+    }
+
+    private fun readCapped(source: File): ByteArray {
+        FileInputStream(source).use { stream ->
+            val out = ByteArrayOutputStream()
+            val buffer = ByteArray(8192)
+            while (true) {
+                val n = stream.read(buffer)
+                if (n < 0) break
+                check(out.size() + n <= 1_500_033) { "EXACT_SNAPSHOT_TOO_LARGE" }
+                if (n > 0) out.write(buffer, 0, n)
+            }
+            return out.toByteArray()
+        }
     }
 
     private fun generateKey(): SecretKey {

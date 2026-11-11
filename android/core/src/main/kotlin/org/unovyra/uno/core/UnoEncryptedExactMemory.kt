@@ -241,3 +241,37 @@ class UnoEncryptedExactMemory(
             ExactStatus.CONFLICT else ExactStatus.COMPLETE, copies, valid.size)
     }
 }
+
+/**
+ * Decides how to open exact memory without hiding a lost vault.
+ * COMMITTED means a finished base or legacy backup exists.
+ * PARTIAL means only an interrupted AtomicFile ".new" exists.
+ * NONE means no ciphertext file exists; a key alone is not a vault.
+ */
+internal enum class ExactVaultResidue { NONE, COMMITTED, PARTIAL }
+
+internal enum class ExactFirstOpen {
+    REOPEN_COMMITTED,
+    PROMOTE_PARTIAL,
+    WRITE_GENESIS,
+    REJECT_PARTIAL,
+    REJECT_READONLY_EMPTY
+}
+
+internal fun exactFirstOpen(
+    residue: ExactVaultResidue,
+    keyExists: Boolean,
+    readOnly: Boolean,
+    partialAuthentic: Boolean
+): ExactFirstOpen = when (residue) {
+    ExactVaultResidue.COMMITTED -> {
+        require(keyExists) { "EXACT_KEY_MISSING" }
+        ExactFirstOpen.REOPEN_COMMITTED
+    }
+    ExactVaultResidue.PARTIAL ->
+        if (keyExists && partialAuthentic) ExactFirstOpen.PROMOTE_PARTIAL
+        else ExactFirstOpen.REJECT_PARTIAL
+    ExactVaultResidue.NONE ->
+        if (readOnly) ExactFirstOpen.REJECT_READONLY_EMPTY
+        else ExactFirstOpen.WRITE_GENESIS
+}

@@ -188,6 +188,23 @@ object UnoEncryptedExactMemoryTest {
                 bootstrapPersist, initializeEmptyOnFirstOpen = true) { 100L }
         }.isFailure)
         verify(genesis!!.contentEquals(genesisCopy))
+        verify(exactFirstOpen(ExactVaultResidue.COMMITTED, true, false, false) ==
+            ExactFirstOpen.REOPEN_COMMITTED)
+        verify(exactFirstOpen(ExactVaultResidue.NONE, true, false, false) ==
+            ExactFirstOpen.WRITE_GENESIS)
+        verify(exactFirstOpen(ExactVaultResidue.NONE, false, false, false) ==
+            ExactFirstOpen.WRITE_GENESIS)
+        verify(exactFirstOpen(ExactVaultResidue.NONE, true, true, false) ==
+            ExactFirstOpen.REJECT_READONLY_EMPTY)
+        verify(exactFirstOpen(ExactVaultResidue.PARTIAL, true, false, true) ==
+            ExactFirstOpen.PROMOTE_PARTIAL)
+        verify(exactFirstOpen(ExactVaultResidue.PARTIAL, true, false, false) ==
+            ExactFirstOpen.REJECT_PARTIAL)
+        verify(exactFirstOpen(ExactVaultResidue.PARTIAL, false, false, true) ==
+            ExactFirstOpen.REJECT_PARTIAL)
+        verify(runCatching {
+            exactFirstOpen(ExactVaultResidue.COMMITTED, false, false, false)
+        }.isFailure)
         println("UNO_ENCRYPTED_EXACT_MEMORY_HOST_PASS=$pass")
     }
 }
