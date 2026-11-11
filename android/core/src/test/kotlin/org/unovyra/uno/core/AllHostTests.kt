@@ -11,6 +11,7 @@ fun main() {
     ThemePersonalizationTest.run()
     FoundationHardeningTest.run()
     ComputeBudgetGateTest.run()
+    UnoFReferenceTest.run()
     ActionIntentJournalTest.run()
     ActionJournalControllerIntegrationTest.run()
     ActionReceiptRecoveryTest.run()
@@ -20,5 +21,5 @@ fun main() {
     UnoFoundationReferenceCycleTest.run()
     UnoEncryptedExactMemoryTest.run()
     UnoManualFactsTest.run()
-    println("UNO_WP01_HOST_PASS=${UnoChatCipherTest.pass + UnoProcessStopTest.pass + UnoFoundationReferenceCycleTest.pass + UnoEncryptedExactMemoryTest.pass + UnoTextCycleTest.pass + UnoPromptWindowTest.pass + CoreSelfTest.pass + ProbeMathTest.pass + MeasurementTest.pass + LabProtocolTest.pass + UnoDiagnosticSummaryTest.pass + ThemePersonalizationTest.pass + FoundationHardeningTest.pass + ComputeBudgetGateTest.pass + ActionIntentJournalTest.pass + ActionJournalControllerIntegrationTest.pass + ActionReceiptRecoveryTest.pass + ActionAtomicReferenceCommitTest.pass + UnoManualFactsTest.pass}")
+    println("UNO_WP01_HOST_PASS=${UnoChatCipherTest.pass + UnoProcessStopTest.pass + UnoFoundationReferenceCycleTest.pass + UnoEncryptedExactMemoryTest.pass + UnoTextCycleTest.pass + UnoPromptWindowTest.pass + CoreSelfTest.pass + ProbeMathTest.pass + MeasurementTest.pass + LabProtocolTest.pass + UnoDiagnosticSummaryTest.pass + ThemePersonalizationTest.pass + FoundationHardeningTest.pass + ComputeBudgetGateTest.pass + UnoFReferenceTest.pass + ActionIntentJournalTest.pass + ActionJournalControllerIntegrationTest.pass + ActionReceiptRecoveryTest.pass + ActionAtomicReferenceCommitTest.pass + UnoManualFactsTest.pass}")
 }
