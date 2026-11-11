@@ -75,32 +75,49 @@ class UnoFactsActivity : Activity() {
         val root = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             setPadding(20, 20, 20, 20)
-            setBackgroundColor(0xff10151f.toInt())
+            setBackgroundColor(UnoChrome.BG)
+            setPadding(UnoChrome.dp(this, 20), UnoChrome.dp(this, 16), UnoChrome.dp(this, 20), UnoChrome.dp(this, 16))
         }
         fun label(text: String) = TextView(this).apply {
             this.text = text
-            setTextColor(0xfff5f5f5.toInt())
+            setTextColor(UnoChrome.INK)
             textSize = 15f
-            setPadding(4, 10, 4, 10)
+            setPadding(0, UnoChrome.dp(this, 8), 0, UnoChrome.dp(this, 8))
         }
-        root.addView(label("Точная память UNO · ручные факты"))
-        root.addView(label("Сохраняет только явно введённое. Факты не проверены нейросетью. " +
-            "Нет доступа к Android-действиям. Удаление логическое, без гарантии очистки flash-памяти."))
+        root.addView(label("Память").apply { textSize = 28f })
+        root.addView(TextView(this).apply {
+            text = "Сюда попадает только то, что ты сам сохранил."
+            setTextColor(UnoChrome.MUTED)
+            textSize = 14f
+        })
         key = EditText(this).apply {
-            hint = "Название факта"
+            hint = "Название"
+            setTextColor(UnoChrome.INK)
+            setHintTextColor(UnoChrome.MUTED)
             filters = arrayOf(InputFilter.LengthFilter(96))
             setSingleLine(true)
         }
         value = EditText(this).apply {
-            hint = "Точное значение (до 2048 байт UTF-8)"
+            hint = "Текст"
+            setTextColor(UnoChrome.INK)
+            setHintTextColor(UnoChrome.MUTED)
             filters = arrayOf(InputFilter.LengthFilter(2048))
-            minLines = 2; maxLines = 4
+            minLines = 3; maxLines = 6
         }
         root.addView(key)
         root.addView(value)
-        save = Button(this).apply { text = "Запомнить" }
-        recall = Button(this).apply { text = "Вспомнить по названию" }
-        erase = Button(this).apply { text = "Забыть все ручные факты" }
+        save = Button(this).apply {
+            text = "Запомнить"
+            UnoChrome.button(this, UnoChrome.ACCENT, UnoChrome.ACCENT_INK)
+        }
+        recall = Button(this).apply {
+            text = "Вспомнить по названию"
+            UnoChrome.button(this, UnoChrome.SURFACE, UnoChrome.INK)
+        }
+        erase = Button(this).apply {
+            text = "Забыть все ручные факты"
+            UnoChrome.button(this, UnoChrome.SURFACE, UnoChrome.INK)
+        }
         root.addView(save)
         root.addView(recall)
         root.addView(erase)

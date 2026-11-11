@@ -10,7 +10,6 @@ import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
 import android.graphics.Color
-import android.content.res.ColorStateList
 import android.widget.CheckBox
 import android.widget.Button
 import android.widget.LinearLayout
@@ -71,13 +70,12 @@ class UnoActivity : Activity() {
         val accent = theme.accentRgb
         val tint = Color.rgb((accent shr 16) and 255, (accent shr 8) and 255, accent and 255)
         val ink = if (UnoThemeColors.contrast(accent, 0x000000) >= 4.5) Color.BLACK else Color.WHITE
+        val quietFill = if (theme.tone == ThemeTone.DARK) Color.rgb(24, 34, 44) else Color.rgb(232, 226, 214)
         for (button in themeButtons) {
-            if (button.tag == "critical_stop") {
-                button.backgroundTintList = ColorStateList.valueOf(Color.rgb(184, 55, 65))
-                button.setTextColor(Color.WHITE)
-            } else {
-                button.backgroundTintList = ColorStateList.valueOf(tint)
-                button.setTextColor(ink)
+            when (button.tag) {
+                "critical_stop" -> UnoChrome.button(button, Color.rgb(184, 55, 65), Color.WHITE)
+                "quiet" -> UnoChrome.button(button, quietFill, fg)
+                else -> UnoChrome.button(button, tint, ink)
             }
         }
     }
@@ -125,36 +123,61 @@ class UnoActivity : Activity() {
             setBackgroundColor(Color.rgb(12,18,27))
         }
         uiRoot = root
-        root.addView(UnoMarkView(this))
         fun label(s:String, size:Float=15f)=TextView(this).apply {
             text=s;textSize=size;setTextColor(Color.WHITE);setPadding(0,8,0,8)
             labels.add(this)
         }
-        root.addView(label("UNOVYRA UNO",25f))
-        root.addView(label("УСТАНОВЛЕННЫЙ ПАКЕТ: $packageName",12f))
-        status = label("Каркас на устройстве. Обученной модели нет. Действия Android закрыты.",14f)
-        root.addView(status)
-        report = label("Проверка читает уже сохранённое. Сама она ничего не записывает в точную память и не выполняет действий системы.",13f)
-        root.addView(report)
         val advancedContainer = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             visibility = View.GONE
         }
-        var buttonTarget: LinearLayout = root
+        var buttonTarget: LinearLayout = advancedContainer
         fun button(text:String,onClick:()->Unit) {
             buttonTarget.addView(Button(this).apply {
                 this.text = text
-                if (text.startsWith("СТОП")) tag = "critical_stop"
+                tag = if (text.startsWith("СТОП")) "critical_stop" else "quiet"
+                isAllCaps = false
                 themeButtons.add(this)
+                val gap = LinearLayout.LayoutParams(-1, -2)
+                gap.topMargin = UnoChrome.dp(this, 8)
+                layoutParams = gap
                 setOnClickListener { onClick() }
             })
         }
-        button("ПАМЯТЬ") {
-            startActivity(Intent(this, UnoFactsActivity::class.java))
+        fun homeButton(text: String, quiet: Boolean, onClick: () -> Unit) {
+            root.addView(Button(this).apply {
+                this.text = text
+                tag = if (quiet) "quiet" else "primary"
+                isAllCaps = false
+                themeButtons.add(this)
+                val gap = LinearLayout.LayoutParams(-1, -2)
+                gap.topMargin = UnoChrome.dp(this, 12)
+                layoutParams = gap
+                setOnClickListener { onClick() }
+            })
         }
-        button("ОФЛАЙН-ЧАТ") {
+        val markWrap = LinearLayout(this).apply { gravity = android.view.Gravity.CENTER_HORIZONTAL }
+        markWrap.addView(UnoMarkView(this))
+        root.addView(markWrap)
+        root.addView(label("UNO", 34f).apply { gravity = android.view.Gravity.CENTER_HORIZONTAL })
+        status = label("Напиши сообщение. Модель выбирается в чате.", 15f).apply {
+            gravity = android.view.Gravity.CENTER_HORIZONTAL
+        }
+        root.addView(status)
+        homeButton("Написать", false) {
             startActivity(Intent(this, UnoChatActivity::class.java))
         }
+        homeButton("Память", true) {
+            startActivity(Intent(this, UnoFactsActivity::class.java))
+        }
+        homeButton("Ещё", true) {
+            val open = advancedContainer.visibility != View.VISIBLE
+            advancedContainer.visibility = if (open) View.VISIBLE else View.GONE
+        }
+        root.addView(advancedContainer)
+        advancedContainer.addView(label("УСТАНОВЛЕННЫЙ ПАКЕТ: $packageName", 12f))
+        report = label("", 13f)
+        advancedContainer.addView(report)
         button("ПРОВЕРИТЬ UNO · ОДИН ТЕСТ") { runUnifiedSelfTest() }
         button("СКОПИРОВАТЬ ОТЧЁТ") { copyFullReport() }
         button("СТОП") {
@@ -164,20 +187,6 @@ class UnoActivity : Activity() {
             labStop.stop();controller.stop();ownerGate.stop()
             status.text="STOP · новые лабораторные операции запрещены · уже начатый эффект не отменяется · epoch=${controller.epoch}"
         }
-        root.addView(label(
-            "Без искусственного PASS:\n" +
-            "• журнал действий — пустое хранилище, не выполненное действие\n" +
-            "• точная память — пока факт не сохранён вручную\n" +
-            "• локальный маркер — только отдельной кнопкой в лаборатории\n" +
-            "• подтверждение владельца — только вручную\n" +
-            "• действия Android — не включены\n" +
-            "• качество диалога — модели нет", 13f))
-        button("ЛАБОРАТОРИЯ") {
-            val open = advancedContainer.visibility != View.VISIBLE
-            advancedContainer.visibility = if (open) View.VISIBLE else View.GONE
-        }
-        root.addView(advancedContainer)
-        buttonTarget = advancedContainer
         advancedContainer.addView(label("ОФОРМЛЕНИЕ · ручной выбор; нейровыбор пока недоступен", 17f))
         button("🟠 Оранжевый · тёмная тема") { chooseManualTheme(UnoThemeColors.ORANGE, ThemeTone.DARK) }
         button("🟡 Жёлтый · тёмная тема") { chooseManualTheme(UnoThemeColors.YELLOW, ThemeTone.DARK) }

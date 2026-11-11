@@ -4,12 +4,14 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
 import android.text.InputFilter
 import android.view.Gravity
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -26,7 +28,6 @@ import java.io.FileOutputStream
 import java.security.MessageDigest
 import java.util.concurrent.Executors
 import java.util.concurrent.atomic.AtomicBoolean
-import java.util.concurrent.atomic.AtomicInteger
 
 /** WP-04 EXPERIMENT: local CPU inference, no owner authorization, no OS effects. */
 class UnoChatActivity : Activity() {
@@ -39,7 +40,8 @@ class UnoChatActivity : Activity() {
     private var turns = listOf<UnoChatTurn>()
     private var textCycle: UnoTextCycle? = null
     private lateinit var status: TextView
-    private lateinit var transcript: TextView
+    private lateinit var thread: LinearLayout
+    private lateinit var scroller: ScrollView
     private lateinit var input: EditText
     private lateinit var send: Button
     private lateinit var stop: Button
@@ -48,94 +50,145 @@ class UnoChatActivity : Activity() {
     private var copyModelOnPick = false
     private val history by lazy { UnoSecureChatHistoryStore(applicationContext) }
 
-    private fun line(text: String, size: Float = 15f) = TextView(this).apply {
-        this.text = text; textSize = size; setTextColor(0xfff5f5f5.toInt())
-        setPadding(12, 10, 12, 10)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val density = resources.displayMetrics.density
         val root = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            setBackgroundColor(0xff10151e.toInt())
-            setPadding(12, 18, 12, 18)
+            setBackgroundColor(UnoChrome.BG)
+            setPadding((16 * density).toInt(), (12 * density).toInt(), (16 * density).toInt(), (12 * density).toInt())
         }
-        root.addView(line("UNO · Локальный нейрочат (эксперимент)", 21f))
-        status = line("Нет загруженной модели · действия Android недоступны")
+        val header = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; gravity = Gravity.CENTER_VERTICAL }
+        header.addView(TextView(this).apply {
+            text = "UNO"
+            textSize = 22f
+            setTextColor(UnoChrome.INK)
+            layoutParams = LinearLayout.LayoutParams(0, -2, 1f)
+        })
+        header.addView(Button(this).apply {
+            text = "Ещё"
+            UnoChrome.button(this, UnoChrome.SURFACE, UnoChrome.INK)
+            minHeight = (40 * density).toInt()
+            setOnClickListener { showMore() }
+        })
+        root.addView(header)
+        status = TextView(this).apply {
+            text = "Выбери модель в меню «Ещё», чтобы получать ответы."
+            textSize = 13f
+            setTextColor(UnoChrome.MUTED)
+            setPadding(0, (8 * density).toInt(), 0, (8 * density).toInt())
+        }
         root.addView(status)
-        val tools = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL }
-        fun tool(label: String, action: () -> Unit) {
-            tools.addView(Button(this).apply {
-                text = label
-                layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
-                setOnClickListener { action() }
-            })
-        }
-        tool("GGUF без копии") { selectModel(false) }
-        tool("Новый чат") { confirmNewChat() }
-        root.addView(tools)
-        root.addView(Button(this).apply {
-            text = "Память UNO · ручные факты"
-            setOnClickListener { startActivity(Intent(this@UnoChatActivity, UnoFactsActivity::class.java)) }
-        })
-        root.addView(Button(this).apply {
-            text = "Резервный импорт GGUF с копированием (занимает сотни МБ)"
-            setOnClickListener { selectModel(true) }
-        })
-        val scroller = ScrollView(this).apply { isFillViewport = true }
-        transcript = line("История ещё не загружена.")
-        scroller.addView(transcript)
+        scroller = ScrollView(this).apply { isFillViewport = true }
+        thread = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
+        scroller.addView(thread)
         root.addView(scroller, LinearLayout.LayoutParams(-1, 0, 1f))
         input = EditText(this).apply {
-            hint = "Сообщение UNO"
-            setTextColor(0xffffffff.toInt())
-            setHintTextColor(0xffb9b9b9.toInt())
+            hint = "Сообщение"
+            setTextColor(UnoChrome.INK)
+            setHintTextColor(UnoChrome.MUTED)
+            background = UnoChrome.round(UnoChrome.SURFACE, 18 * density)
             filters = arrayOf(InputFilter.LengthFilter(1200))
-            minLines = 2; maxLines = 4
+            minLines = 1
+            maxLines = 4
+            setPadding((14 * density).toInt(), (12 * density).toInt(), (14 * density).toInt(), (12 * density).toInt())
         }
-        root.addView(input)
-        val controls = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; gravity = Gravity.CENTER }
-        send = Button(this).apply { text = "Отправить"; setOnClickListener { submit() } }
+        val composer = LinearLayout(this).apply {
+            orientation = LinearLayout.HORIZONTAL
+            gravity = Gravity.CENTER_VERTICAL
+        }
+        composer.addView(input, LinearLayout.LayoutParams(0, -2, 1f))
+        send = Button(this).apply {
+            text = "Отправить"
+            UnoChrome.button(this, UnoChrome.ACCENT, UnoChrome.ACCENT_INK)
+            val gap = LinearLayout.LayoutParams(-2, -2)
+            gap.marginStart = (8 * density).toInt()
+            layoutParams = gap
+            setOnClickListener { submit() }
+        }
+        composer.addView(send)
+        root.addView(composer)
         stop = Button(this).apply {
-            text = "СТОП ОТВЕТА"
-            isEnabled = false
+            text = "Остановить ответ"
+            visibility = View.GONE
+            UnoChrome.button(this, Color.rgb(184, 55, 65), Color.WHITE)
             setOnClickListener {
                 cancelled.set(true)
                 try { UnoNativeEngine.cancel() } catch (_: Throwable) {}
-                status.text = "Генерация отменяется; системный STOP и права ОС не менялись"
+                status.text = "Ответ останавливается"
             }
         }
-        controls.addView(send, LinearLayout.LayoutParams(0, -2, 1f))
-        controls.addView(stop, LinearLayout.LayoutParams(0, -2, 1f))
-        root.addView(controls)
-        root.addView(Button(this).apply {
-            text = "СТОП UNO · запретить новые операции до перезапуска процесса"
-            setOnClickListener {
-                UnoProcessStop.stop()
-                cancelled.set(true)
-                textCycle?.stop()
-                try { UnoNativeEngine.cancel() } catch (_: Throwable) {}
-                lockUi(false)
-                status.text = "STOP UNO: новые вычисления этого процесса закрыты; Android-действия и так запрещены"
-            }
-        })
-        root.addView(line("Только текст. История текущего чата шифруется AndroidKeyStore (AES-GCM). " +
-            "Не вводите секреты: старая v1-история может остаться на устройстве без шифрования. Оператор F и Android-действия не подключены.", 12f))
+        root.addView(stop, LinearLayout.LayoutParams(-1, -2).apply { topMargin = (8 * density).toInt() })
         setContentView(root)
         lockUi(false)
         startLoadHistory()
     }
 
+    private fun showMore() {
+        val actions = arrayOf(
+            "Выбрать модель",
+            "Импортировать модель в приложение",
+            "Новый чат",
+            "Память",
+            "Остановить UNO"
+        )
+        AlertDialog.Builder(this)
+            .setTitle("Ещё")
+            .setItems(actions) { _, which ->
+                when (which) {
+                    0 -> selectModel(false)
+                    1 -> selectModel(true)
+                    2 -> confirmNewChat()
+                    3 -> startActivity(Intent(this, UnoFactsActivity::class.java))
+                    4 -> {
+                        UnoProcessStop.stop()
+                        cancelled.set(true)
+                        textCycle?.stop()
+                        try { UnoNativeEngine.cancel() } catch (_: Throwable) {}
+                        lockUi(false)
+                        status.text = "Новые ответы этого запуска закрыты"
+                    }
+                }
+            }
+            .show()
+    }
+
     private fun lockUi(on: Boolean) {
         send.isEnabled = !on && loaded && !UnoProcessStop.isStopped()
+        stop.visibility = if (on) View.VISIBLE else View.GONE
         stop.isEnabled = on
     }
+    private fun bubble(text: String, mine: Boolean): TextView {
+        val density = resources.displayMetrics.density
+        return TextView(this).apply {
+            this.text = text
+            textSize = 16f
+            setTextColor(if (mine) UnoChrome.ACCENT_INK else UnoChrome.INK)
+            background = UnoChrome.round(if (mine) UnoChrome.ACCENT else UnoChrome.SURFACE, 18 * density)
+            setPadding((14 * density).toInt(), (10 * density).toInt(), (14 * density).toInt(), (10 * density).toInt())
+            val gap = LinearLayout.LayoutParams(-2, -2)
+            gap.topMargin = (8 * density).toInt()
+            gap.gravity = if (mine) Gravity.END else Gravity.START
+            if (mine) gap.marginStart = (48 * density).toInt() else gap.marginEnd = (48 * density).toInt()
+            layoutParams = gap
+        }
+    }
     private fun render() {
-        val sb = StringBuilder()
-        turns.forEach { sb.append(if (it.role == "user") "ВЫ: " else "UNO: ").append(it.content).append("\n\n") }
-        if (currentUser.isNotEmpty()) sb.append("ВЫ: ").append(currentUser)
-            .append("\nUNO: ").append(partial.ifEmpty { "…" })
-        transcript.text = if (sb.isEmpty()) "Новый диалог." else sb.toString()
+        thread.removeAllViews()
+        if (turns.isEmpty() && currentUser.isEmpty()) {
+            thread.addView(TextView(this).apply {
+                text = "Напиши первое сообщение."
+                setTextColor(UnoChrome.MUTED)
+                textSize = 16f
+                setPadding(0, UnoChrome.dp(this, 24), 0, 0)
+            })
+        }
+        turns.forEach { thread.addView(bubble(it.content, it.role == "user")) }
+        if (currentUser.isNotEmpty()) {
+            thread.addView(bubble(currentUser, true))
+            thread.addView(bubble(partial.ifEmpty { "…" }, false))
+        }
+        scroller.post { scroller.fullScroll(View.FOCUS_DOWN) }
     }
     private fun startLoadHistory() {
         busy.set(true)
@@ -147,7 +200,7 @@ class UnoChatActivity : Activity() {
                     turns = restored
                     textCycle = UnoTextCycle(restored) { history.save(it) }
                     render()
-                    status.text = "История загружена: ${restored.size} реплик · модель не загружена"
+                    status.text = if (restored.isEmpty()) "История пуста" else "История на месте"
                     busy.set(false)
                     val preferences = getPreferences(MODE_PRIVATE)
                     val name = if (preferences.getString("model_mode", "COPY") == "COPY")
@@ -317,7 +370,7 @@ class UnoChatActivity : Activity() {
             main.post {
                 if (active) {
                     loaded = !UnoProcessStop.isStopped()
-                    status.text = if (loaded) "GGUF загружен · CPU · без Android-действий · offline" else "STOP · модель загружена, но использование запрещено"
+                    status.text = if (loaded) "Модель готова" else "Ответы закрыты"
                     busy.set(false); lockUi(false)
                 }
             }
@@ -341,12 +394,9 @@ class UnoChatActivity : Activity() {
             currentUser = ""; busy.set(false); status.text = "JNI недоступен: ${e.message}"; return
         }
         input.setText(""); render(); lockUi(true)
-        status.text = "UNO вычисляет ответ локально"
+        status.text = "Пишу ответ"
         val stamp = SystemClock.elapsedRealtimeNanos()
         worker.execute {
-            var first = -1L
-            val started = SystemClock.elapsedRealtime()
-            val tokens = AtomicInteger(0)
             var lastUi = 0L
             try {
                 val receipt = cycle.run(UnoTextInput(user, stamp, "LOCAL_UI_TEXT"), { cancelled.get() || UnoProcessStop.isStopped() }) { prompt, shouldStop ->
@@ -359,8 +409,6 @@ class UnoChatActivity : Activity() {
                                 UnoNativeEngine.cancel()
                             } else {
                                 val now = SystemClock.elapsedRealtime()
-                                if (first < 0) first = now
-                                tokens.incrementAndGet()
                                 if (now - lastUi >= 80) {
                                     lastUi = now
                                     val text = String(bytes, Charsets.UTF_8)
@@ -371,16 +419,12 @@ class UnoChatActivity : Activity() {
                     ) ?: error("INFERENCE_RETURNED_NULL")
                     String(data, Charsets.UTF_8)
                 }
-                val elapsed = (SystemClock.elapsedRealtime() - started).coerceAtLeast(1)
-                val throughput = tokens.get() * 1000.0 / elapsed
-                val ttft = if (first < 0) -1 else first - started
                 main.post {
                     if (!active) return@post
                     turns = receipt.history
                     currentUser = ""; partial = ""; render()
                     status.text = when (receipt.status) {
-                        UnoTextStatus.COMMITTED ->
-                            "Диалог записан · rev=${receipt.revision} · ${tokens.get()} токенов · ${"%.1f".format(throughput)} т/с (общая) · TTFT ${ttft} мс"
+                        UnoTextStatus.COMMITTED -> "Ответ готов"
                         UnoTextStatus.CANCELLED -> "Ответ отменён · в память ничего не записано"
                         UnoTextStatus.MODEL_FAILED -> "Модель не вернула допустимый ответ · память сохранена без изменений"
                         UnoTextStatus.STORAGE_FAILED -> "Ошибка сохранения · ответ не засчитан · проверь память телефона"
