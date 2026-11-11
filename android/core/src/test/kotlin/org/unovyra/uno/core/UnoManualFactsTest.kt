@@ -21,7 +21,9 @@ object UnoManualFactsTest {
         val first = UnoManualFacts.remember(a, scope, "город", "Рига")
         verify(first.kind == EntryKind.USER_DECLARATION && first.source == UnoManualFacts.SOURCE)
         verify(first.expiryMonotonicNanos == Long.MAX_VALUE)
-        verify(!String(persisted!!, Charsets.ISO_8859_1).contains("Рига"))
+        verify(persisted!!.toList().windowed("Рига".toByteArray(Charsets.UTF_8).size).none {
+            it == "Рига".toByteArray(Charsets.UTF_8).toList()
+        })
         first.raw[0] = 0
         verify(UnoManualFacts.recall(a, scope, "город", 100L)
             .entries.single().raw.decodeToString() == "Рига")
