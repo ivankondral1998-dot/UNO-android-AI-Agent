@@ -1,3 +1,5 @@
+> **ДЕЙСТВУЮЩИЕ ПРАВИЛА UNO:** читать [единственный канонический AGENTS.md в main](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/main/AGENTS.md) до любой работы. Исторические инструкции этой ветки удалены из HEAD, сохранены в Git history. Без доступа к main не выводить полномочия из старого README.
+
 # UNO — Unified Neural Organism
 
 > UNO — Unified Neural Organism. A commercial, fully offline Android AI agent built around a unified adaptive neural architecture, new trainable weights, plastic connections, and verified experience-based learning.
