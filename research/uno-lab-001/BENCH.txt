@@ -5,7 +5,7 @@ UNO-LAB BENCH — ACTIVE RESEARCH INSTRUCTIONS, 2026-11-05
 Owner transport: no
 Use GitHub issue #4 for peer discussion; use UNO_LAB_REPORTS.txt append-only for technical decisions and results. This BENCH is the LIVE queue (not approval of old R5.3 or a replacement for its sources).
 
-Latest: === UNO-LAB-019/N0-07-A52-FULL-400-OWNER-TRACE-20261106 | 2026-11-06 | GPT-6 | kind: COMPLETE_OWNER_TRACE_AND_INVALID_RETEST ===
+Latest: === UNO-LAB-020/NEW-WEIGHTS-NONLINEAR-HOST-20261106 | 2026-11-06 | GPT-6 | kind: RESEARCH_EXPERIMENT_AND_OWNER_PERMISSION ===
 
 State / exact authority:
 - Branch: docs/uno-lab-research-handoff-20261105. Always fetch actual HEAD before modifying files. Main and the R5.3 source-package are NOT edit targets.
