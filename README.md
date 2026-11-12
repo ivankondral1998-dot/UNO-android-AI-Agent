@@ -1,3 +1,5 @@
+> **ЕДИНЫЙ ИСТОЧНИК ПРАВИЛ UNO (12.11.2026):** [актуальный `main/AGENTS.md`](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/main/AGENTS.md). Всё ниже в этой исторической ветке — источник эпохи R5.3, не действующее ограничение на всю разработку. Прежде чем работать, прочесть `main/AGENTS.md`.
+
 > **Current pre-code candidate R5.3 (NOT OWNER APPROVED).** Agents must start from [docs/AGENT_START_HERE.md](docs/AGENT_START_HERE.md), [docs/CURRENT_TASK.md](docs/CURRENT_TASK.md), and the [R5.3 source map](docs/precode/r5.3/README.md). The original README below predates the candidate. Do not infer trained weights, code permission, or Android test status.
 
 # UNO — Unified Neural Organism
