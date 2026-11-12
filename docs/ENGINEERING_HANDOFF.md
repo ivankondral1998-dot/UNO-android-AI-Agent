@@ -572,3 +572,31 @@ intelligence or F. **DEVICE_UNTESTED**.
 Проверки: `cd android && bash scripts/run_all_preflight.sh` → `UNO_LAB_PREFLIGHT_SUCCESS (HOST ONLY; NOT ANDROID_BUILT OR DEVICE_VERIFIED)`. Android SDK в этой среде нет. Сборка APK не выполнялась. На A52 не ставилось.
 
 Статус: **FOUNDATION_INCOMPLETE**. Нет доверенного Android-порта, нет постоянного журнала на устройстве, нет модели и весов, нет native readback, нет проверки на телефоне. Каркас не выдавать за UNO 1.0.
+
+
+## Карта репозитория и маршрут отчётности — проверка 2026-11-12
+
+Контрольные HEAD ниже — момент инвентаризации; перед работой проверять новые HEAD. Коммиты не объединялись. Канонические правила — [`main/AGENTS.md`](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/main/AGENTS.md). Новое поручение владельца определяет [основной журнал](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/feat/uno-permanent-full-foundation-20261111/docs/agent-work-log/2026-11-06_chatgpt.md); на других ветках находятся исторические копии. UNO-LAB и issue #6 сохраняют отдельные функции.
+
+| Ветка | HEAD на момент сверки | Назначение |
+|---|---|---|
+| `audit/uno-experiment-evidence-20261107` | `856e584b0658cce6b52bd76ee8a46fbeaf073175` | аудит экспериментальных свидетельств |
+| `audit/uno-terra-math-training-20261112` | `0af492ee7a8d15b371bf0de1c21d73ca1fd8b050` | независимый аудит F, ограничений обучения и C1–C4 |
+| `design/uno-unified-cycle-data-20261112` | `3b06b024199d9bfcf1362a6b48156dfa0c74c9dc` | UDC v0.3, кандидат договора цикла и данных |
+| `docs/uno-lab-research-handoff-20261105` | `983ced68708a0eebe14e2a197edd0a0d6dec0f9a` | отдельный исследовательский UNO-LAB журнал и BENCH |
+| `docs/uno-r53-agent-handoff-20261102` | `7e94b717d73312f1bf3a926ea5f89586c9d23d7b` | первоисточники R5.3 и первоначальный журнал |
+| `docs/uno-vnext-r4-source-recovery-20261106` | `409a683137231032110848b1d582f7c780fb16ae` | восстановление R4 и исходников |
+| `feat/uno-foundation-hardening-20261107` | `c9739169eae091851bfab70c85d7e0c87c4f5a92` | история hardening, Android и handoff |
+| `feat/uno-permanent-full-foundation-20261111` | `775e358da1f743d6259865acd33ffa6080bea716` | Android-основа, память, host reference F и опытный чат; основной журнал |
+| `feat/uno-permanent-single-apk-20261111` | `d70155af332169fed0f128a66dbde6b6aabb9450` | историческая отдельная линия постоянного APK/подписи |
+| `feat/uno-production-foundation-20261106` | `4e9c5cc7d034104944187e872f5daac01432571e` | ранняя основа Android и исходные исследования весов |
+| `feat/uno-wp03-s4s5-cpu-reference-20261111` | `8b92076a3b96b3299889b7253f0adf4f0edbb738` | исторический host S4/S5 oracle |
+| `feature/uno-repository-foundation-20261101` | `9d484c8f8805a5efe348371d802195e6f6a9b42a` | историческая основа репозитория |
+| `integration/verified-host-utils-20261111` | `a508b85197f8ebb3a1931f74196aedb2a7708b2c` | отдельные проверяемые host utilities |
+| `main` | `6be1bd977c4c89417c7f55e02d84f5d5769b23be` | канонический AGENTS и отдельные проверенные host-компоненты; не полный Android |
+| `migration/jarvislab-jno-reference-20261101` | `0ab96ec21a4e3034827c397dde325a203d2919ca` | исторические источники Jarvis/JNO |
+| `research/uno-math-reference-pass-20261101` | `b4f2160dcae730da9b6dc2a7b25b32bec879d200` | исторические математические исследования |
+
+**Цепочка:** оригинал R5.3 → UDC-кандидат → Terra-аудит → Android reference F (`UnoFReference.kt`) → host проверки и данные владельца A52 в `docs/implementation/` → актуальные ограничения этой карты. Арифметика и host tests не подтверждают общую обучаемость или качество на A52. Полный единый обученный F не показан; C1–C4 и 17 UDC-карточек остаются открытыми в пределах аудита.
+
+**Границы инвентаризации:** исследовано 378 разных Git-коммитов с 06.11 по контрольные HEAD 12.11 UTC; наличие записей не доказывает полноту истории вне Git, создателя под Git-аккаунтом, успешность каждого теста или наличие локальных архивов. Коммиты и пути перечислены в основном журнале; прежние результаты помечены `SOURCE_REPORTED` при отсутствии независимого replay.
