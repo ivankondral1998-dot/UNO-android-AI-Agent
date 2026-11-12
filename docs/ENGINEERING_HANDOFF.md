@@ -1,5 +1,40 @@
 # UNO 1.0 — ЕДИНАЯ ИНЖЕНЕРНАЯ КАРТА / HANDOFF ДЛЯ GROK И ЛЮБОГО НОВОГО АГЕНТА
 
+## АКТУАЛЬНАЯ ТЕХНИЧЕСКАЯ КАРТА — 13.11.2026
+
+**Читать первой.** Репозиторий `ivankondral1998-dot/UNO-android-AI-Agent`; исходный HEAD рабочей ветки `feat/uno-permanent-full-foundation-20261111` = `7aacbf1954453b776bad37c17ac76c748e4a37f7`, `main` = `1df9ee7cc592f606939c8f004e1b11edd916b56c`. GitHub compare с Android-снимком `178ac32f53d1e84d44ca27475279d35113c19719` показывает только документальные различия: Android-исходники не менялись. Дальнейшие редакции этого handoff/журнала могут сдвинуть HEAD; проверяйте его повторно. Все записи ниже этой карты — исторические на свои даты, в том числе прежние утверждения о «current» и готовности; при расхождении применять эту карту и первоисточники. Правила — только [main/AGENTS.md](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/main/AGENTS.md).
+
+**Реальная трасса, не модель архитектуры:** `UnoChatActivity → UnoTextCycle → UnoNativeEngine` — экспериментальный локальный GGUF-чат; параллельно `UnoActivity → UnoFoundationReferenceCycle → NoWeightsNeuralPort + TrustController(DenyAllAndroidPort, DenyAllLedger)`. Чат не подключён к одному обученному F/состоянию/действиям; эталонный `UnoFReferencePort` не подключён к действующей Activity. [Activity](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/app/src/main/kotlin/org/unovyra/uno/UnoActivity.kt#L30) · [chat](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/app/src/main/kotlin/org/unovyra/uno/UnoChatActivity.kt#L471) · [reference port](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/core/src/main/kotlin/org/unovyra/uno/core/UnoFReference.kt#L252).
+
+| Компонент | Фактический статус и источник | Следующий недостающий этап |
+|---|---|---|
+| F / состояние | `IMPLEMENTED` численный S4/S5 double oracle с заданными параметрами и масками; historical `HOST_TESTED` только для указанного набора: [WP03 10 host checks](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/b80b7c5e516ee17f6281b18424651a9ef6ff8e08/docs/implementation/2026-11-11_WP03_S4S5_DOUBLE_ORACLE_R1.md). В `UnoFReferencePort` `s` и `g` обнуляются при вызове, результат — digest и null action. | Непрерывная сессия, обучаемый путь/градиенты, собственные веса и общая интеграция отсутствуют; current HEAD не объявлять ANDROID_BUILT/DEVICE_VERIFIED. |
+| Граф / маски | [F source](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/core/src/main/kotlin/org/unovyra/uno/core/UnoFReference.kt#L143): фиксированная block geometry b=64, две ветви; неактивные A/C/B kernels реально пропускаются. Helper задаёт геометрию cyclic-prefix, не sampling policy S6. `forward` допускает и другие непустые masks. | Изменяемый нейрограф, обученный selector/halt и равенство затрат реальному Android пути не показаны. |
+| Точная память | Android encrypted vault и ручные факты реализованы: [adapter](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/app/src/main/kotlin/org/unovyra/uno/UnoAndroidExactMemory.kt), [manual facts](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/core/src/main/kotlin/org/unovyra/uno/core/UnoManualFacts.kt). Handoff ниже сообщает owner-observed `DEVICE_VERIFIED` лишь для ручной записи/чтения/перезапуска процесса на APK v8; физический reboot и актуальный HEAD отдельно не проверены. | Единый memory/session contract, ревокация C2, rollback и recovery испытать отдельно. |
+| Семантическая память | [UnoSemanticMemory](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/core/src/main/kotlin/org/unovyra/uno/core/UnoSemanticMemory.kt): caller-supplied вектор и статус SUMMARY_ONLY, не исходный факт; [Android wrapper](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/app/src/main/kotlin/org/unovyra/uno/UnoAndroidSemanticMemory.kt). Тесты существуют; старые проходы — historical source-reported. | Нет интегрированного обученного Wq/Wk/Wv: reference ищет по raw features до S4 q и копирует один вектор как key/value; reference m=128, индекс по умолчанию dimension=8. Соединение без согласования неверно. |
+| Планирование | [BoundedPlanner](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/core/src/main/kotlin/org/unovyra/uno/core/UnoBoundedPlanner.kt) ограничивает кандидата, текущая декомпозиция разрешает только идентичный шаг; historical host checks в записях ниже. | Выбор целей, настоящие многозадачные планы и их оценка не реализованы; не путать проверки envelope с интеллектом. |
+| Речь / входы | [Manifest](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/app/src/main/AndroidManifest.xml) не запрашивает RECORD_AUDIO; [frame contract](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/core/src/main/kotlin/org/unovyra/uno/core/UnoPerceptionGate.kt) проверяет рамки PCM, но не выполняет ASR/WAKE/TTS. Сенсорные/OS лабораторные наблюдения существуют. | Интегрированная локальная речь, разрешения, данные, качество и A52 измерения отсутствуют. |
+| Действия / STOP | [Controller](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/core/src/main/kotlin/org/unovyra/uno/core/Controller.kt) — host reference, one-shot/STOP/unknown; Activity подключает deny-all. Есть отдельная ручная [app-private marker диагностика](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/app/src/main/kotlin/org/unovyra/uno/AppPrivateReadbackProbe.kt), не привилегированный порт. Ранний NOOP подтверждён только owner-observed скриншотами. | Надёжные Android authority, согласие, native readback и реальные привилегированные действия не интегрированы; STOP не отменяет уже выполненное. |
+| Рабочая сборка / устройство | Historical signed APK v8 и отдельные старые CI сборки описаны ниже по своим SHA; `ANDROID_BUILT` только для соответствующего исходника. `DEVICE_VERIFIED` относится только к перечисленным владельцем отдельным сценариям. | Текущий source HEAD, обученный F, весь организм, RAM/PSS/энергия/нагрев и полная offline-изоляция не проверялись. Никакого RELEASE_READY. |
+
+### Сверка S4–S7 и C1–C4
+
+R5.3 [ASTRA_01](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/fb2b3f4c8ad299434fe555b6ccce728c58299e97/docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md) и [UDC v0.3](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/116820103c8b3e3c315fe0c92f658900819cf8d6/docs/design/UNO_UNIFIED_CYCLE_AND_DATA_CONTRACT_V0_3_CANDIDATE_20261112.md) — кандидатные спецификации. Локальный oracle реализует выбранный S4/S5: empty I даёт `z=tanh(z0)`, последовательные слои используют общий набор параметров и синхронный update. В текущей Android-интеграции нет полноценной общей сессии GOAL/PROPOSAL, S6, S7, обученного F и 17 выполненных end-to-end карточек. Предыдущий [независимый аудит](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/tree/304b416430810dc17350bcab826046f5ade2da1d/docs/audits/uno-independent-math-training-20261112) содержит предпосылки, контрпримеры и пределы, не утверждение целой архитектуры.
+
+- **C1 — открыт / source-verified:** [prepare/dispatch](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/core/src/main/kotlin/org/unovyra/uno/core/Controller.kt#L52) проверяет expiry при prepare, но не сохраняет его для dispatch; [цикл](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/core/src/main/kotlin/org/unovyra/uno/core/UnoFoundationReferenceCycle.kt#L146) повторно использует старый `now`. Host-only controller не должен подключаться к привилегированному порту. Проверить свежие часы и TTL после всех ожиданий; отдельные негативные тесты.
+- **C2 — открыт / source-verified:** [revoke](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/core/src/main/kotlin/org/unovyra/uno/core/UnoMemoryPorts.kt#L19) последовательно меняет два store; [forgetAll](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/core/src/main/kotlin/org/unovyra/uno/core/UnoManualFacts.kt#L51) действует только на exact. Общая устойчивая логическая граница, обработка crash и сброс производного state отсутствуют. Текущая UI-утечка не установлена.
+- **C3 — открыт / source-verified:** [admitWeights](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/178ac32f53d1e84d44ca27475279d35113c19719/android/core/src/main/kotlin/org/unovyra/uno/core/UnoWeightGate.kt#L20) проверяет общие границы ширины, длину и SHA от данного manifest, но не tensor shape/ABI/происхождение. Однобайтовый payload с собственным SHA может получить ADMITTED_UNVERIFIED_QUALITY; `WeightCheckedNeural` всё равно отказывает. **Исправление прежней строки ниже «rejects ... shape, or truncated file»: это не полная проверка формы или усечения относительно реального ABI.**
+- **C4 — открыт / проектное уточнение:** UDC требует revalidate goal version, но раздельные check/publish допускают гонку. Общей session/goal реализации в Activity нет; нужный атомарный check-and-commit с STOP/revoke ещё не реализован, а не выявленная гонка работающего GOAL.
+
+### Проведено в этой сверке и короткий маршрут
+
+На локальной копии `178ac32f53d1e84d44ca27475279d35113c19719` повторно сверены Git blob hash **110 доступных Android source/test файлов** с ранее закреплённым [source manifest](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/304b416430810dc17350bcab826046f5ade2da1d/docs/audits/uno-independent-math-training-20261112/evidence/source_pin_manifest.json); compare подтверждает неизменность Android до `7aacbf1954453b776bad37c17ac76c748e4a37f7`. Python host: static guard exit 0; 44/44 тестов статического guard; SQLite schema 14/14; APK identity/update gate 8/8. Это ограниченные проверки Python/host, **не** Kotlin compile, Android runtime или новые испытания телефона. Логи текущего запуска приведены в конце этого handoff. Kotlin compiler и Android SDK в текущей среде не обнаружены/не проверены соответственно; A52 и Actions не запускались.
+
+**Дубли и маршрутизация:** повторные старые host PASS относятся к разным SHA; не переисполнять все ради обновления статуса. Чат GGUF и host F — два контура, а не две реализации подключённого общего F. В историческом тексте ниже устаревшие WP-статусы, ссылки и примечания сохранены; некорректная относительная ссылка на удалённый из feature корневой AGENTS исправлена на `main/AGENTS.md`. Не переключать рабочую ветку на историческую `feat/uno-production-foundation-20261106` из старого README.
+
+**Одно конкретное продолжение:** в отдельной разрешённой исследовательской среде/ветке реализовать проверку полного градиента общего S4/S5 на детерминированных числах: сравнение forward с уже существующим FP64 Kotlin oracle; central differences против backward при K>1, общей Θ и отдельном пути memory write→query, фиксированная маска, пустая и многокандидатная память. Сохранить исходники, параметры, tolerance и результаты; без обновления весов и без Android effects. Это проверка механизма, не обучение и не доказательство навыка. Для выполнения потребуется среда с подходящим Kotlin compiler; выбор training stack и запуск обучения — отдельные решения/полномочия. С1–С4 остаются отдельными незакрытыми задачами для безопасной будущей интеграции.
+
+
 ## UPDATE 2026-11-12 — two LFM files load, neither is the organism
 
 **SOURCE:** host trial, llama.cpp `a4d4f2f`, no weight change. Both GGUF files are architecture `lfm2`. 700M Q4_0 and LFM2.5-1.2B QAD-Q4_0 both load. Details and hashes: `docs/trials/LFM_HOST_TRIAL_20261112.md`.
@@ -470,7 +505,7 @@ intelligence or F. **DEVICE_UNTESTED**.
 
 ---
 
-**Снимок:** 2026-11-07, состояние исходников перед созданием этой карты: `f4bc0bd12f8f7b476682a4ff07da85ef419fd6fa`. **ЭТО НЕ ВЕЧНЫЙ HEAD.** Перед работой проверьте свежий SHA рабочей ветки. Этот файл — **маршрут и проверяемый снимок состояния, НЕ отдельный набор действующих правил**. Единственный нормативный источник полномочий — [корневой AGENTS.md](../AGENTS.md) (V3 или более позднее явное решение владельца).
+**Снимок:** 2026-11-07, состояние исходников перед созданием этой карты: `f4bc0bd12f8f7b476682a4ff07da85ef419fd6fa`. **ЭТО НЕ ВЕЧНЫЙ HEAD.** Перед работой проверьте свежий SHA рабочей ветки. Этот файл — **маршрут и проверяемый снимок состояния, НЕ отдельный набор действующих правил**. Единственный нормативный источник полномочий — [канонический main/AGENTS.md](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/main/AGENTS.md) (V3 или более позднее явное решение владельца).
 
 ## 0. Если вы только что вошли в проект — прочитайте это прежде, чем писать код
 
@@ -600,3 +635,97 @@ intelligence or F. **DEVICE_UNTESTED**.
 **Цепочка:** оригинал R5.3 → UDC-кандидат → Terra-аудит → Android reference F (`UnoFReference.kt`) → host проверки и данные владельца A52 в `docs/implementation/` → актуальные ограничения этой карты. Арифметика и host tests не подтверждают общую обучаемость или качество на A52. Полный единый обученный F не показан; C1–C4 и 17 UDC-карточек остаются открытыми в пределах аудита.
 
 **Границы инвентаризации:** исследовано 378 разных Git-коммитов с 06.11 по контрольные HEAD 12.11 UTC; наличие записей не доказывает полноту истории вне Git, создателя под Git-аккаунтом, успешность каждого теста или наличие локальных архивов. Коммиты и пути перечислены в основном журнале; прежние результаты помечены `SOURCE_REPORTED` при отсутствии независимого replay.
+
+
+## Приложение: выводы текущих host-проверок 13.11.2026
+
+### `python3 -B scripts/static_contract_check.py` — exit 0; SHA-256 вывода `59ed00cf6721a56a4d047dd4706b4a4505f35264d3ca77e10ff61b40a38c9a6c`
+
+```text
+STATIC_PREFLIGHT_PASS=GUARDS_OK (static only; NOT an Android build or runtime proof)
+```
+
+### `python3 -B -m unittest discover -s scripts -p test_static_contract_check.py -v` — exit 0; SHA-256 вывода `efb1aa3b201a1f4bc4e11478373da832aca5b591aff8af84aa50880145fc0e10`
+
+```text
+test_clean_fixture (test_static_contract_check.GuardTests.test_clean_fixture) ... ok
+test_reject_backup_enabled (test_static_contract_check.GuardTests.test_reject_backup_enabled) ... ok
+test_reject_cached_memory_not_disk_reopen (test_static_contract_check.GuardTests.test_reject_cached_memory_not_disk_reopen) ... ok
+test_reject_chat_intent_filter (test_static_contract_check.GuardTests.test_reject_chat_intent_filter) ... ok
+test_reject_expired_memory_as_not_run (test_static_contract_check.GuardTests.test_reject_expired_memory_as_not_run) ... ok
+test_reject_exported_chat (test_static_contract_check.GuardTests.test_reject_exported_chat) ... ok
+test_reject_exported_facts (test_static_contract_check.GuardTests.test_reject_exported_facts) ... ok
+test_reject_exported_worker (test_static_contract_check.GuardTests.test_reject_exported_worker) ... ok
+test_reject_extra_activity (test_static_contract_check.GuardTests.test_reject_extra_activity) ... ok
+test_reject_facts_intent_filter (test_static_contract_check.GuardTests.test_reject_facts_intent_filter) ... ok
+test_reject_facts_without_consent (test_static_contract_check.GuardTests.test_reject_facts_without_consent) ... ok
+test_reject_facts_without_readonly (test_static_contract_check.GuardTests.test_reject_facts_without_readonly) ... ok
+test_reject_hidden_owner_os_callback (test_static_contract_check.GuardTests.test_reject_hidden_owner_os_callback) ... ok
+test_reject_hidden_owner_result_feedback (test_static_contract_check.GuardTests.test_reject_hidden_owner_result_feedback) ... ok
+test_reject_implicit_exact_memory_recording (test_static_contract_check.GuardTests.test_reject_implicit_exact_memory_recording) ... ok
+test_reject_internet_permission (test_static_contract_check.GuardTests.test_reject_internet_permission) ... ok
+test_reject_mismatched_json_digest (test_static_contract_check.GuardTests.test_reject_mismatched_json_digest) ... ok
+test_reject_missing_app_private_effect (test_static_contract_check.GuardTests.test_reject_missing_app_private_effect) ... ok
+test_reject_missing_chat_activity (test_static_contract_check.GuardTests.test_reject_missing_chat_activity) ... ok
+test_reject_missing_clipboard (test_static_contract_check.GuardTests.test_reject_missing_clipboard) ... ok
+test_reject_missing_exact_memory_consent (test_static_contract_check.GuardTests.test_reject_missing_exact_memory_consent) ... ok
+test_reject_missing_exact_restart_locator (test_static_contract_check.GuardTests.test_reject_missing_exact_restart_locator) ... ok
+test_reject_missing_exact_restart_readback_ui (test_static_contract_check.GuardTests.test_reject_missing_exact_restart_readback_ui) ... ok
+test_reject_missing_independent_reopen (test_static_contract_check.GuardTests.test_reject_missing_independent_reopen) ... ok
+test_reject_missing_owner_revocation_control (test_static_contract_check.GuardTests.test_reject_missing_owner_revocation_control) ... ok
+test_reject_missing_package_identity (test_static_contract_check.GuardTests.test_reject_missing_package_identity) ... ok
+test_reject_missing_sqlite_button (test_static_contract_check.GuardTests.test_reject_missing_sqlite_button) ... ok
+test_reject_missing_unified_one_tap_button (test_static_contract_check.GuardTests.test_reject_missing_unified_one_tap_button) ... ok
+test_reject_overwritable_provenance_file (test_static_contract_check.GuardTests.test_reject_overwritable_provenance_file) ... ok
+test_reject_placeholder_not_wired (test_static_contract_check.GuardTests.test_reject_placeholder_not_wired) ... ok
+test_reject_readonly_adapter_missing (test_static_contract_check.GuardTests.test_reject_readonly_adapter_missing) ... ok
+test_reject_readonly_disk_repair_mutation (test_static_contract_check.GuardTests.test_reject_readonly_disk_repair_mutation) ... ok
+test_reject_restart_claiming_new_vault_write (test_static_contract_check.GuardTests.test_reject_restart_claiming_new_vault_write) ... ok
+test_reject_restart_without_source_digest_path (test_static_contract_check.GuardTests.test_reject_restart_without_source_digest_path) ... ok
+test_reject_revocation_denial_as_not_run (test_static_contract_check.GuardTests.test_reject_revocation_denial_as_not_run) ... ok
+test_reject_sdk23_permission (test_static_contract_check.GuardTests.test_reject_sdk23_permission) ... ok
+test_reject_socket_api (test_static_contract_check.GuardTests.test_reject_socket_api) ... ok
+test_reject_unbound_restart_readback_status (test_static_contract_check.GuardTests.test_reject_unbound_restart_readback_status) ... ok
+test_reject_unified_bypassing_verdict_gate (test_static_contract_check.GuardTests.test_reject_unified_bypassing_verdict_gate) ... ok
+test_reject_unified_implicit_exact_write (test_static_contract_check.GuardTests.test_reject_unified_implicit_exact_write) ... ok
+test_reject_unified_marker_autowrite (test_static_contract_check.GuardTests.test_reject_unified_marker_autowrite) ... ok
+test_reject_unified_missing_quick_profile (test_static_contract_check.GuardTests.test_reject_unified_missing_quick_profile) ... ok
+test_reject_unified_owner_auto_credential (test_static_contract_check.GuardTests.test_reject_unified_owner_auto_credential) ... ok
+test_reject_unreviewed_provider (test_static_contract_check.GuardTests.test_reject_unreviewed_provider) ... ok
+
+----------------------------------------------------------------------
+Ran 44 tests in 0.114s
+
+OK
+```
+
+### `python3 -B scripts/test_sqlite_outcome_schema.py` — exit 0; SHA-256 вывода `483a4c970461c4b73da2a9d81626736e333451e581289c9b7ab4974935fa55f6`
+
+```text
+PASS SQL_TXN schema opens with FK, WAL and integrity
+PASS SQL_TXN stage and arm are separate durable phases
+PASS SQL_TXN atomic used + outcome + memory reference
+PASS SQL_TXN committed row survives reopen
+PASS SQL_TXN duplicate id cannot stage again
+PASS SQL_TXN used prevents duplicate arm
+PASS SQL_TXN memory ref must point at existing content
+PASS SQL_TXN used without readback is rejected
+PASS SQL_TXN rollback after all writes leaves no half-commit
+PASS SQL_TXN rollback before update leaves no orphan memory
+PASS SQL_TXN prepared cannot be upgraded directly to terminal without evidence
+PASS SQL_TXN terminal timestamp cannot predate dispatch
+PASS SQL_TXN committed memory cannot be deleted while referenced
+PASS SQL_TXN incomplete records persist for reconciliation not retry
+UNO_SQLITE_SCHEMA_HOST_PASS=14
+```
+
+### `python3 -B scripts/test_apk_update_gate.py` — exit 0; SHA-256 вывода `60bb849356ffbc091f601e17fc6ae0b2eb5e26d734d433da020c6e775efbf97f`
+
+```text
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.004s
+
+OK
+```
+
