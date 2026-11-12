@@ -1,0 +1,40 @@
+{
+  "censoring": {
+    "both_observed_R1Y1": 0.5,
+    "world_a_success": 0.5,
+    "world_b_success": 1.0
+  },
+  "consent_expiry_logic": {
+    "candidate_dispatch_predicate": false,
+    "prepare": true,
+    "simulated": true,
+    "source_dispatch_predicate": true
+  },
+  "contraction": {
+    "eight_steps_bound": 0.6634204312890623,
+    "full_mask_bound": 0.95,
+    "inactive_coordinate_bound": 1.0
+  },
+  "d1024": {
+    "allocated": 55451639,
+    "fp32_adam_16bytes_MiB": 846.1248626708984,
+    "free": 55125689,
+    "raw_fp16_MiB": 105.7656078338623
+  },
+  "d512": {
+    "allocated": 23015887,
+    "fp32_adam_16bytes_MiB": 351.19456481933594,
+    "free": 22852753,
+    "raw_fp16_MiB": 43.89932060241699
+  },
+  "shared_weight_gradient": {
+    "central_difference": 0.759999999960792,
+    "exact": 0.76,
+    "wrong_last_use_only": 0.48
+  },
+  "singleton_retrieval": {
+    "d_loss_d_q": 0.0,
+    "loss": -0.0,
+    "probability": 1.0
+  }
+}

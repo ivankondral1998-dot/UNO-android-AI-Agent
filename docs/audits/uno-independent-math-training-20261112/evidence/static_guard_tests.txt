@@ -1,0 +1,49 @@
+test_clean_fixture (test_static_contract_check.GuardTests.test_clean_fixture) ... ok
+test_reject_backup_enabled (test_static_contract_check.GuardTests.test_reject_backup_enabled) ... ok
+test_reject_cached_memory_not_disk_reopen (test_static_contract_check.GuardTests.test_reject_cached_memory_not_disk_reopen) ... ok
+test_reject_chat_intent_filter (test_static_contract_check.GuardTests.test_reject_chat_intent_filter) ... ok
+test_reject_expired_memory_as_not_run (test_static_contract_check.GuardTests.test_reject_expired_memory_as_not_run) ... ok
+test_reject_exported_chat (test_static_contract_check.GuardTests.test_reject_exported_chat) ... ok
+test_reject_exported_facts (test_static_contract_check.GuardTests.test_reject_exported_facts) ... ok
+test_reject_exported_worker (test_static_contract_check.GuardTests.test_reject_exported_worker) ... ok
+test_reject_extra_activity (test_static_contract_check.GuardTests.test_reject_extra_activity) ... ok
+test_reject_facts_intent_filter (test_static_contract_check.GuardTests.test_reject_facts_intent_filter) ... ok
+test_reject_facts_without_consent (test_static_contract_check.GuardTests.test_reject_facts_without_consent) ... ok
+test_reject_facts_without_readonly (test_static_contract_check.GuardTests.test_reject_facts_without_readonly) ... ok
+test_reject_hidden_owner_os_callback (test_static_contract_check.GuardTests.test_reject_hidden_owner_os_callback) ... ok
+test_reject_hidden_owner_result_feedback (test_static_contract_check.GuardTests.test_reject_hidden_owner_result_feedback) ... ok
+test_reject_implicit_exact_memory_recording (test_static_contract_check.GuardTests.test_reject_implicit_exact_memory_recording) ... ok
+test_reject_internet_permission (test_static_contract_check.GuardTests.test_reject_internet_permission) ... ok
+test_reject_mismatched_json_digest (test_static_contract_check.GuardTests.test_reject_mismatched_json_digest) ... ok
+test_reject_missing_app_private_effect (test_static_contract_check.GuardTests.test_reject_missing_app_private_effect) ... ok
+test_reject_missing_chat_activity (test_static_contract_check.GuardTests.test_reject_missing_chat_activity) ... ok
+test_reject_missing_clipboard (test_static_contract_check.GuardTests.test_reject_missing_clipboard) ... ok
+test_reject_missing_exact_memory_consent (test_static_contract_check.GuardTests.test_reject_missing_exact_memory_consent) ... ok
+test_reject_missing_exact_restart_locator (test_static_contract_check.GuardTests.test_reject_missing_exact_restart_locator) ... ok
+test_reject_missing_exact_restart_readback_ui (test_static_contract_check.GuardTests.test_reject_missing_exact_restart_readback_ui) ... ok
+test_reject_missing_independent_reopen (test_static_contract_check.GuardTests.test_reject_missing_independent_reopen) ... ok
+test_reject_missing_owner_revocation_control (test_static_contract_check.GuardTests.test_reject_missing_owner_revocation_control) ... ok
+test_reject_missing_package_identity (test_static_contract_check.GuardTests.test_reject_missing_package_identity) ... ok
+test_reject_missing_sqlite_button (test_static_contract_check.GuardTests.test_reject_missing_sqlite_button) ... ok
+test_reject_missing_unified_one_tap_button (test_static_contract_check.GuardTests.test_reject_missing_unified_one_tap_button) ... ok
+test_reject_overwritable_provenance_file (test_static_contract_check.GuardTests.test_reject_overwritable_provenance_file) ... ok
+test_reject_placeholder_not_wired (test_static_contract_check.GuardTests.test_reject_placeholder_not_wired) ... ok
+test_reject_readonly_adapter_missing (test_static_contract_check.GuardTests.test_reject_readonly_adapter_missing) ... ok
+test_reject_readonly_disk_repair_mutation (test_static_contract_check.GuardTests.test_reject_readonly_disk_repair_mutation) ... ok
+test_reject_restart_claiming_new_vault_write (test_static_contract_check.GuardTests.test_reject_restart_claiming_new_vault_write) ... ok
+test_reject_restart_without_source_digest_path (test_static_contract_check.GuardTests.test_reject_restart_without_source_digest_path) ... ok
+test_reject_revocation_denial_as_not_run (test_static_contract_check.GuardTests.test_reject_revocation_denial_as_not_run) ... ok
+test_reject_sdk23_permission (test_static_contract_check.GuardTests.test_reject_sdk23_permission) ... ok
+test_reject_socket_api (test_static_contract_check.GuardTests.test_reject_socket_api) ... ok
+test_reject_unbound_restart_readback_status (test_static_contract_check.GuardTests.test_reject_unbound_restart_readback_status) ... ok
+test_reject_unified_bypassing_verdict_gate (test_static_contract_check.GuardTests.test_reject_unified_bypassing_verdict_gate) ... ok
+test_reject_unified_implicit_exact_write (test_static_contract_check.GuardTests.test_reject_unified_implicit_exact_write) ... ok
+test_reject_unified_marker_autowrite (test_static_contract_check.GuardTests.test_reject_unified_marker_autowrite) ... ok
+test_reject_unified_missing_quick_profile (test_static_contract_check.GuardTests.test_reject_unified_missing_quick_profile) ... ok
+test_reject_unified_owner_auto_credential (test_static_contract_check.GuardTests.test_reject_unified_owner_auto_credential) ... ok
+test_reject_unreviewed_provider (test_static_contract_check.GuardTests.test_reject_unreviewed_provider) ... ok
+
+----------------------------------------------------------------------
+Ran 44 tests in 0.058s
+
+OK

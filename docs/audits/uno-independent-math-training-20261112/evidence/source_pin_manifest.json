@@ -1,0 +1,2099 @@
+[
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "AGENTS.md",
+    "expected_git_blob": "3397443f1fbd62d28ed1233e6f4be2851094e95c",
+    "actual_git_blob": "3397443f1fbd62d28ed1233e6f4be2851094e95c",
+    "sha256": "13b338704d649d4aabdaffdf5b903670c87b6ea86f66b8fdb99d101fe2cefc58",
+    "bytes": 24432,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "README.md",
+    "expected_git_blob": "cc11d3d8512c132a1a1c6806e36929dc3078e66e",
+    "actual_git_blob": "cc11d3d8512c132a1a1c6806e36929dc3078e66e",
+    "sha256": "3a8858559404c2f15d8ee4cd0d6ef3a8bac89b9fba613a8bfb87d9a0bbbcc148",
+    "bytes": 19060,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/ENGINEERING_HANDOFF.md",
+    "expected_git_blob": "f20a9ad02f28ca0a10b930a769d4e8472f3e34b1",
+    "actual_git_blob": "f20a9ad02f28ca0a10b930a769d4e8472f3e34b1",
+    "sha256": "32712136aa404cefc4fa4a735828099b5c4e0543bb2a115e005c09395cee637c",
+    "bytes": 99959,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/design/UNO_UNIFIED_CYCLE_AND_DATA_CONTRACT_V0_1_CANDIDATE_20261112.md",
+    "expected_git_blob": "ae174e0883af3400457b51127f94b78b3fac9d8e",
+    "actual_git_blob": "ae174e0883af3400457b51127f94b78b3fac9d8e",
+    "sha256": "52ac698343aaec7c0b55a93596f835204b5e4d77b69ec5143cd82e756e85e3c0",
+    "bytes": 23283,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/design/UNO_UNIFIED_CYCLE_AND_DATA_CONTRACT_V0_2_CANDIDATE_20261112.md",
+    "expected_git_blob": "9bb43d0eb167e32b0c1562ee481e0adb4bfc9f61",
+    "actual_git_blob": "9bb43d0eb167e32b0c1562ee481e0adb4bfc9f61",
+    "sha256": "7a9d3cdba3bcdb27f4da81445f38913e0d4bf35e5732f59011b716c6231e4c14",
+    "bytes": 14601,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/design/UNO_UNIFIED_CYCLE_AND_DATA_CONTRACT_V0_3_CANDIDATE_20261112.md",
+    "expected_git_blob": "f84d4268d4156880afc123eaacf7a096f7ec1fc6",
+    "actual_git_blob": "f84d4268d4156880afc123eaacf7a096f7ec1fc6",
+    "sha256": "1b00f83e8bcd708d3dae407266b1a3aab35b59926d622f81a3fac65bf1df02b2",
+    "bytes": 18443,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-07_ANDROID_ACTION_BUILD.md",
+    "expected_git_blob": "ba675a8af32e82863d94ef5cebe0859dffa7ec6c",
+    "actual_git_blob": "ba675a8af32e82863d94ef5cebe0859dffa7ec6c",
+    "sha256": "f8e4310add92e16a901a35e041830ce44e4e5826e7bfc99652a3afb67076db7d",
+    "bytes": 1406,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-07_ANDROID_ACTION_BUILD_RESULT.md",
+    "expected_git_blob": "c1982b17bc1e1e58269195352324fdcb555e3aa3",
+    "actual_git_blob": "c1982b17bc1e1e58269195352324fdcb555e3aa3",
+    "sha256": "39d89dfaaa123c6c82ea2a3258e024c13618f48bf6b039023740ca053143698a",
+    "bytes": 3263,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-07_ANDROID_ACTION_LINT_FIX.md",
+    "expected_git_blob": "802bcea2c11e52ea5de8fec163cd92328836a5a7",
+    "actual_git_blob": "802bcea2c11e52ea5de8fec163cd92328836a5a7",
+    "sha256": "04972c143deeb69f5d4dd00bcfbe62a71143801a8f5a3573049fa6da345d27fe",
+    "bytes": 1098,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-07_COMPUTE_BUDGET_CONTRACT_R1.md",
+    "expected_git_blob": "99ea79ada89c2a66324251e4ea6009143aa12790",
+    "actual_git_blob": "99ea79ada89c2a66324251e4ea6009143aa12790",
+    "sha256": "f7056d3d2187d3bd85a2dee607b5e3053ae85ab037625174cd559fc7cf7c0a1c",
+    "bytes": 7967,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-07_FOUNDATION_HARDENING_AUDIT_V1.md",
+    "expected_git_blob": "be0f0adc61bf252ec7799f9ea1fd258c12810928",
+    "actual_git_blob": "be0f0adc61bf252ec7799f9ea1fd258c12810928",
+    "sha256": "f98704974524743c9d24db22109a8b22841a00d4419582138970a3ed81c03cd6",
+    "bytes": 12695,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-07_UI_THEME_PERSONALIZATION_FOUNDATION.md",
+    "expected_git_blob": "3de41ea3d13c7513293ef69999d536bf6b79367c",
+    "actual_git_blob": "3de41ea3d13c7513293ef69999d536bf6b79367c",
+    "sha256": "262f82a8743b6569d0c28fa26089750e7f012025f2d60e3d9dea6b4767b88563",
+    "bytes": 5812,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-07_WP01_LAB_V2_EVIDENCE.md",
+    "expected_git_blob": "720208af9052c65060b56d1b03b177dbb88239bf",
+    "actual_git_blob": "720208af9052c65060b56d1b03b177dbb88239bf",
+    "sha256": "a09772a129ddcdbdb102aade2237d368ab234243ecfef111fa0571bd741464a3",
+    "bytes": 3991,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-07_WP01_LAB_V2_MANIFEST.json",
+    "expected_git_blob": "c07f7741e702765300a20549a94ce6e2975c6ca6",
+    "actual_git_blob": "c07f7741e702765300a20549a94ce6e2975c6ca6",
+    "sha256": "ac709bcb91c2b6b156feee456ca0c8902db55a3499ce0632d8dc8cb8da7f4d4f",
+    "bytes": 5357,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-07_WP01_SCAFFOLD_REUSE.md",
+    "expected_git_blob": "158f2d1219abf9f7862bd50f007a46e464bd8daf",
+    "actual_git_blob": "158f2d1219abf9f7862bd50f007a46e464bd8daf",
+    "sha256": "815ba31c1b406440d8fbd97ba87139fb0c4ec8e3f8f9fab6b07519d97fe98065",
+    "bytes": 3673,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-07_WP01_SOURCE_AND_TESTS.json",
+    "expected_git_blob": "8ab6b00ee0ad5e1e1c039c8ea15f61a7246fcf70",
+    "actual_git_blob": "8ab6b00ee0ad5e1e1c039c8ea15f61a7246fcf70",
+    "sha256": "4104d795c65a362cfe09aad7e82bf1628d0cb7c700b2a291c9aa9b6724463ca8",
+    "bytes": 728,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_A52_OWNER_NOOP_ONE_USE_DEVICE_EVIDENCE_R1.md",
+    "expected_git_blob": "3aa8d091745930368c2f7d32a7d8d0c4883f48c0",
+    "actual_git_blob": "3aa8d091745930368c2f7d32a7d8d0c4883f48c0",
+    "sha256": "ca1ef648bd7775dd0a4f884bf50506491daa8a908358c02f3eb8eb91d25ab761",
+    "bytes": 5387,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_A52_SQLITE_INSPECTION_DEVICE_EVIDENCE_R1.md",
+    "expected_git_blob": "41e054950600a387d41ce44654d8ec185d5dc4af",
+    "actual_git_blob": "41e054950600a387d41ce44654d8ec185d5dc4af",
+    "sha256": "9d39cf7e7388aee77c7d4e83268e0d6b70c148c1074a34243907efc00c3e030c",
+    "bytes": 3998,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_A52_STRESS_DEVICE_EVIDENCE_R1.md",
+    "expected_git_blob": "aff8b07cc29e7744bc72c829f24b04aeb5369550",
+    "actual_git_blob": "aff8b07cc29e7744bc72c829f24b04aeb5369550",
+    "sha256": "4c2f8cec4f79f8df8b69d32914d5d2058eaf9376102c6c74abda792654fe6bc8",
+    "bytes": 7927,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_APP_PRIVATE_EFFECT_READBACK_WP03_R1.md",
+    "expected_git_blob": "1b058cbd2d2e867bca635d023430c656a55ad99f",
+    "actual_git_blob": "1b058cbd2d2e867bca635d023430c656a55ad99f",
+    "sha256": "6e42dd5fc453463df4566c7743abd15171dc145d74137fe9cd7888845c6df85c",
+    "bytes": 6822,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_OWNER_CREDENTIAL_A52_UI_FEEDBACK_R1.md",
+    "expected_git_blob": "92ee8d6d77f1ec45318037d4cbccb9a62d061e8d",
+    "actual_git_blob": "92ee8d6d77f1ec45318037d4cbccb9a62d061e8d",
+    "sha256": "432c3c308239093233732e466cae88a2aaf4b096f03e693b1226bce761b85045",
+    "bytes": 5061,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_UI_DIAGNOSTIC_COPY_AND_BUILD_IDENTITY_R1.md",
+    "expected_git_blob": "e29964d429b9a056923c0365190d70365342e84b",
+    "actual_git_blob": "e29964d429b9a056923c0365190d70365342e84b",
+    "sha256": "956c9f87954f1ccc8763d71725e478fa419c8784ae4cf2e8ab66f3ef801c599a",
+    "bytes": 6223,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_WP02_ACTION_INTENT_JOURNAL_HOST_R1.md",
+    "expected_git_blob": "fa3938f2549a09f17ade6864de4dafb47d03a0ab",
+    "actual_git_blob": "fa3938f2549a09f17ade6864de4dafb47d03a0ab",
+    "sha256": "a8619b3c3e0495bea375394ce5da408a18969360efc7dd9b53695feed602a37b",
+    "bytes": 7785,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_WP02_ANDROID_INSPECTION_UI_R1.md",
+    "expected_git_blob": "aa1cd8d280a1ff2de1667ac11f01ce5522de6007",
+    "actual_git_blob": "aa1cd8d280a1ff2de1667ac11f01ce5522de6007",
+    "sha256": "3c5e09ba30cc93ebca15bf0d7e2d727d95df97b319cb378fb6f949afa2622453",
+    "bytes": 7136,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_WP02_ANDROID_SDK35_CI_BUILD_R1.md",
+    "expected_git_blob": "cfac44b86953a6e8ba572e7d0406e20d4cad4e1f",
+    "actual_git_blob": "cfac44b86953a6e8ba572e7d0406e20d4cad4e1f",
+    "sha256": "ee1b71738f10affd7e1a952ce7d6fe531dfd602a08aaa09baf518b3812b503f1",
+    "bytes": 6217,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_WP02_ANDROID_SQLITE_TRANSACTIONAL_STORE_R1.md",
+    "expected_git_blob": "3aa82318dbe08fd9ac43ad12100aca43edbeb1fc",
+    "actual_git_blob": "3aa82318dbe08fd9ac43ad12100aca43edbeb1fc",
+    "sha256": "8500a74a0d330ace2a43986b39e3e3b2d8468bad753acc2cbd91459490cd7ec6",
+    "bytes": 10298,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_WP02_APK_INSTALL_CONFLICT_SIDE_BY_SIDE_R1.md",
+    "expected_git_blob": "4808deb434f8dca37215352e0fe41e724180448b",
+    "actual_git_blob": "4808deb434f8dca37215352e0fe41e724180448b",
+    "sha256": "e6f1d206eb28fa40c1914bb21803951d48f8aed61be9f7d48c9a2e1e99e52fa2",
+    "bytes": 4433,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_WP02_ATOMIC_REFERENCE_RECEIPT_JARVIS_REVIEW_R1.md",
+    "expected_git_blob": "1d3de81717d0318269ba692c730a4a55a7b5f811",
+    "actual_git_blob": "1d3de81717d0318269ba692c730a4a55a7b5f811",
+    "sha256": "37bc239231df932366e8f67b917cc9866f4268948baddf34d35d184fe1f8f310",
+    "bytes": 12390,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_WP02_CAUSAL_MATH_BRIDGE_R1.md",
+    "expected_git_blob": "12e249e692645a1c06da53b719fbefe126629046",
+    "actual_git_blob": "12e249e692645a1c06da53b719fbefe126629046",
+    "sha256": "b6a4793608665559b70473a1a5bdf0be6c7d0aeef4793eff42975410e37d5a80",
+    "bytes": 11905,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_WP02_DEVICE_CREDENTIAL_NOOP_R1.md",
+    "expected_git_blob": "a63e875b180f738008c566ae15c7edd0835e0db3",
+    "actual_git_blob": "a63e875b180f738008c566ae15c7edd0835e0db3",
+    "sha256": "15cefc264a4d43479632e5a9a606f821fcde29284316ad856a39a3437b4c36d6",
+    "bytes": 9662,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_WP02_OWNER_CONSENT_SECURITY_ERRATUM_R2.md",
+    "expected_git_blob": "35e9ae48761375f18d06e9de66b0cfcf651cda35",
+    "actual_git_blob": "35e9ae48761375f18d06e9de66b0cfcf651cda35",
+    "sha256": "ce1265d233d53f5884ad22cc7991962117b008f4a0b32403edce8ef49ccc66ff",
+    "bytes": 9774,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_WP02_READBACK_RECEIPT_REPLAY_R1.md",
+    "expected_git_blob": "0e058d06207563fd3ae97e8ea86f266be2f99a31",
+    "actual_git_blob": "0e058d06207563fd3ae97e8ea86f266be2f99a31",
+    "sha256": "26990979f5ee829cfbee0623fa7cc9bcf15c389ab0bc35a2f87185b07808e9d4",
+    "bytes": 8457,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-08_WP02_TYPED_DISPATCH_OUTCOME_R1.md",
+    "expected_git_blob": "488d8cde410defde31c64f9699a8476f5b68de3d",
+    "actual_git_blob": "488d8cde410defde31c64f9699a8476f5b68de3d",
+    "sha256": "e3c0d2d3d7a673ffccf48edde58420c563d70a3e24125c318520410c42a1497d",
+    "bytes": 9934,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-09_FOUNDATION_ACCEPTANCE_REGISTER_R1.md",
+    "expected_git_blob": "4867420d19f1c7f4124a22c47d74ee0310149816",
+    "actual_git_blob": "4867420d19f1c7f4124a22c47d74ee0310149816",
+    "sha256": "4d6fd3151f205ccebc214bb0762ab0a025a787bfc03b6b7693012a26e64c00c4",
+    "bytes": 7914,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-09_ORIGINAL_WP06_REFERENCE_R1.md",
+    "expected_git_blob": "ee6d73bd30c6b43b2545948c7ff45f4d8df72a78",
+    "actual_git_blob": "ee6d73bd30c6b43b2545948c7ff45f4d8df72a78",
+    "sha256": "2df741090fefad3690c621282c40a8afc567070e5f44219b32d8cc010c167aa1",
+    "bytes": 1535,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-09_WP03_STOP_DIAGNOSTIC_GATE_R1.md",
+    "expected_git_blob": "19bbca77a8940b483a91a65779bf3393bc8c4921",
+    "actual_git_blob": "19bbca77a8940b483a91a65779bf3393bc8c4921",
+    "sha256": "0382bfef80c9f7cae2a819173a05299b06f8c6e9cc6b77aabee8a10cc9a75708",
+    "bytes": 2175,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-09_WP04_OFFLINE_NEURAL_CHAT_BUILD_EVIDENCE_R2.md",
+    "expected_git_blob": "38579dbfaa417ab25c5f5c9301c6d6f4717ad87b",
+    "actual_git_blob": "38579dbfaa417ab25c5f5c9301c6d6f4717ad87b",
+    "sha256": "432361d1ccae948a555350bad707a093161a54948c37848ac0b87fd60c776379",
+    "bytes": 4340,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-09_WP04_OFFLINE_NEURAL_CHAT_EXPERIMENT_R1.md",
+    "expected_git_blob": "a285462ae90eaa109ed7f4d5b4eb5e34b3e884a3",
+    "actual_git_blob": "a285462ae90eaa109ed7f4d5b4eb5e34b3e884a3",
+    "sha256": "6187743c49df7490bb60a87bb32cc9442fa040f671d0ea69c98a9f5313d5d712",
+    "bytes": 5174,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-09_WP05_LOCAL_CHAT_PROTECTION_AND_PROCESS_STOP_R1.md",
+    "expected_git_blob": "afaec25ac49c9739f5e472f83bc7cd2eb62a9f07",
+    "actual_git_blob": "afaec25ac49c9739f5e472f83bc7cd2eb62a9f07",
+    "sha256": "9d6b0918fa78f909e9707ddc49ed3ca09196824f525f5ffa5a428eaec79cdd22",
+    "bytes": 1873,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-09_WP05_TEXT_CYCLE_INTEGRATION_R1.md",
+    "expected_git_blob": "42d9d4a1f6b1c48905325ecbedf767460fb3f359",
+    "actual_git_blob": "42d9d4a1f6b1c48905325ecbedf767460fb3f359",
+    "sha256": "5757b7c91a9540d11b050b9f4b499e338c7e21d471d6be4f72ee3b90d68e067f",
+    "bytes": 2384,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-09_WP06_DIRECT_GGUF_NO_DUPLICATE_R1.md",
+    "expected_git_blob": "195f6f03899c1610fdd0ffbea7c3d2eba58c3d23",
+    "actual_git_blob": "195f6f03899c1610fdd0ffbea7c3d2eba58c3d23",
+    "sha256": "33aa1d829552fdc34de08e3bf7118c6b86cbf5888a22ae0e707face503ec046b",
+    "bytes": 1745,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-10_ANDROID_EXACT_OBSERVATION_WIRING_R1.md",
+    "expected_git_blob": "21f0c86e1309b4d0aa1f7c865d954a9b0957563f",
+    "actual_git_blob": "21f0c86e1309b4d0aa1f7c865d954a9b0957563f",
+    "sha256": "9744f9d91497b75477688be1010d5f93ccbdffc76a65e244711e2539aab6b7bf",
+    "bytes": 3374,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-10_CORRECTIVE_IMPLEMENTATION_AUDIT_R1.md",
+    "expected_git_blob": "57630ab226886c2f97a73607d46cf9a56d49015e",
+    "actual_git_blob": "57630ab226886c2f97a73607d46cf9a56d49015e",
+    "sha256": "3629e7749d7b9b363212857b59953748aee70f115703e4b4f25c4a13381efbc0",
+    "bytes": 7681,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-10_EXACT_MEMORY_GENESIS_R1.md",
+    "expected_git_blob": "c80f8cbdb54ad53bed586bbcea32ab9640ba0e22",
+    "actual_git_blob": "c80f8cbdb54ad53bed586bbcea32ab9640ba0e22",
+    "sha256": "6edf0b8182398387376dbbd2458d25ba1d4e0eefe2f37a56a9f5dd7f6f433488",
+    "bytes": 2449,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-10_EXACT_REOPEN_DIAGNOSTIC_R1.md",
+    "expected_git_blob": "5441e480ca717ddbf1118d34f47c9d9a4821f51c",
+    "actual_git_blob": "5441e480ca717ddbf1118d34f47c9d9a4821f51c",
+    "sha256": "fc5d1d5d08bc051d8f0128a5b122b35cccfa28bb6d8c2867bebfd87f82f03227",
+    "bytes": 4639,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-10_JARVIS_SOURCE_CROSSCHECK_AND_DIAGNOSTIC_R3.md",
+    "expected_git_blob": "1576b2aefd98e4124dea2c7b013a2e87d94e03cb",
+    "actual_git_blob": "1576b2aefd98e4124dea2c7b013a2e87d94e03cb",
+    "sha256": "d39bd25774979f7250413efe72a67c9a450a23e096549a131fee35acec1dbc64",
+    "bytes": 7738,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-10_ORIGINAL_WP05_ENCRYPTED_EXACT_MEMORY_R1.md",
+    "expected_git_blob": "fdd0c913132c67b71735f186deb89a723380320d",
+    "actual_git_blob": "fdd0c913132c67b71735f186deb89a723380320d",
+    "sha256": "e659b11b11cce5dacfd36cd05cd42d1b8b706779a7f7c49835118e0b832906d7",
+    "bytes": 4131,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-10_OWNER_UPDATE_CHANNEL_R1.md",
+    "expected_git_blob": "90b90823178edc4bb0a791398631514911c564b4",
+    "actual_git_blob": "90b90823178edc4bb0a791398631514911c564b4",
+    "sha256": "cdde6d3405729c67289d86d35b00ff04483086b6f21a4049c989b0ac7ccf0966",
+    "bytes": 11932,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-10_UNIFIED_JARVIS_TO_UNO_DIAGNOSTIC_R2.md",
+    "expected_git_blob": "990d6569d02c3c72955a35d6a5be9fad8baba731",
+    "actual_git_blob": "990d6569d02c3c72955a35d6a5be9fad8baba731",
+    "sha256": "e89624508b9c6c378443acd7aa9a4bc1a69a47f04aea96917f920cb64161915a",
+    "bytes": 6697,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-10_UNIFIED_OWNER_DIAGNOSTIC_R1.md",
+    "expected_git_blob": "cf0a093b173f901300f710863536437cb5a11cc4",
+    "actual_git_blob": "cf0a093b173f901300f710863536437cb5a11cc4",
+    "sha256": "e5d1a183fa5471f2849be05f7450ec490b6bd967f8d4e65b7d4c8f7de68c27bf",
+    "bytes": 4179,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-11_MANUAL_FACTS_MEMORY_R1.md",
+    "expected_git_blob": "8816ddf47eaa46b27511a9267649aacea00fff0d",
+    "actual_git_blob": "8816ddf47eaa46b27511a9267649aacea00fff0d",
+    "sha256": "b610840a7f5132fb2c7835e9bb041425f956944c6f6aad6739d6e75a728d792f",
+    "bytes": 2829,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-11_PERMANENT_APK_V1_LOCAL_BUILD.md",
+    "expected_git_blob": "17f061b110c43b0f68916038d36004cdc5162f2b",
+    "actual_git_blob": "17f061b110c43b0f68916038d36004cdc5162f2b",
+    "sha256": "1b84d1702c877a47762226993b10bc8d2cfe9adb4579c3e8ca57b77bc96dddda",
+    "bytes": 1351,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-11_PERMANENT_APK_V2_UI_AND_S4_R1.md",
+    "expected_git_blob": "e717a705d4143974b55f234367831ff95209acd2",
+    "actual_git_blob": "e717a705d4143974b55f234367831ff95209acd2",
+    "sha256": "3b475444d9b572887df414ad89431ea0df421d142f7d5e71004975093c5d83c6",
+    "bytes": 1547,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/implementation/2026-11-11_WP03_S4S5_DOUBLE_ORACLE_R1.md",
+    "expected_git_blob": "776545ee006ab9a19038b3cedde6fff32f259a63",
+    "actual_git_blob": "776545ee006ab9a19038b3cedde6fff32f259a63",
+    "sha256": "a58d7de2e130c7259ab1c544b3a6327d0e1bf73a6dfad9b3d971044aba03f9b2",
+    "bytes": 3421,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/roadmap/README.md",
+    "expected_git_blob": "d36d1ca97d6a4d00455adc7fbe060a58324cecda",
+    "actual_git_blob": "d36d1ca97d6a4d00455adc7fbe060a58324cecda",
+    "sha256": "9497775e546e58df19a11df993121a83595ca18cbc03342ca640cca43302f381",
+    "bytes": 2545,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/roadmap/UNO_1_0_MASTER_PLAN.md",
+    "expected_git_blob": "2abcdbe724315ac5f537f3f50cff4c5ce9e1653d",
+    "actual_git_blob": "2abcdbe724315ac5f537f3f50cff4c5ce9e1653d",
+    "sha256": "48602598339084b503e54ba84a36e2d05908365c89a7b68af31011f7729cce9e",
+    "bytes": 54168,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/roadmap/UNO_1_0_PLAN.json",
+    "expected_git_blob": "5d0e265cece32959185eec37f996f83cb845fa1d",
+    "actual_git_blob": "5d0e265cece32959185eec37f996f83cb845fa1d",
+    "sha256": "7f569c3d179a4bec2c43c22d0e708ec4793ff429d84f4c0db4cf592f01e71703",
+    "bytes": 59457,
+    "match": true
+  },
+  {
+    "ref": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+    "path": "docs/roadmap/UNO_PROGRESS_WP01_20261107.json",
+    "expected_git_blob": "fe7a7f24e9cf598351cf7b2044a025e23ed354cd",
+    "actual_git_blob": "fe7a7f24e9cf598351cf7b2044a025e23ed354cd",
+    "sha256": "d27a8d06b0b904f2351374d1799c9077e22ea076097f993043c8c043366f0212",
+    "bytes": 4294,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/README.md",
+    "expected_git_blob": "7cc157466f877c692ca4794e8e5cf9952e740fa9",
+    "actual_git_blob": "7cc157466f877c692ca4794e8e5cf9952e740fa9",
+    "sha256": "83c8937d83aa71c7c1b5af27e874c9236399412b194e0237cc5f71bb12962460",
+    "bytes": 7742,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/build.gradle.kts",
+    "expected_git_blob": "6f194c515c458c670fe4416a78c61e52125a2e1e",
+    "actual_git_blob": "6f194c515c458c670fe4416a78c61e52125a2e1e",
+    "sha256": "f271c7eaaabf52e14a8f84339cfd92ba7372e85734ce619db0fcc6465cfc1d21",
+    "bytes": 4885,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/AndroidManifest.xml",
+    "expected_git_blob": "a01fb329cf9ceb13421d6bf87b4eb47d375fe220",
+    "actual_git_blob": "a01fb329cf9ceb13421d6bf87b4eb47d375fe220",
+    "sha256": "12f9d0c412914206dc459b54361679fcbef661b9d1d3cc2a1cef496dae2cbb3c",
+    "bytes": 1285,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/cpp/uno_llama.cpp",
+    "expected_git_blob": "4884d1140ddeeb26a081e8c0de231fb7c90278b6",
+    "actual_git_blob": "4884d1140ddeeb26a081e8c0de231fb7c90278b6",
+    "sha256": "a7e907923c7d5b4a536f04ca2846c9a5821754551bcba84f5cb73c7fbf169ab5",
+    "bytes": 9473,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/AndroidDeviceCredentialPlatform.kt",
+    "expected_git_blob": "beef1fc8fe53cefa14f432686656e1c8738dabb9",
+    "actual_git_blob": "beef1fc8fe53cefa14f432686656e1c8738dabb9",
+    "sha256": "91af6c1427bd5b1e10028dd87b4308b85e029008d92119ad45865a9b7f335514",
+    "bytes": 2018,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/AndroidOutcomeInspection.kt",
+    "expected_git_blob": "3834d92999f8f5d0c46bad3aa26946e100abb827",
+    "actual_git_blob": "3834d92999f8f5d0c46bad3aa26946e100abb827",
+    "sha256": "b99bebf0cc278b00df048607f156acbc48f62df51877b868f6b363f05e76eadd",
+    "bytes": 3033,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/AndroidOutcomeStore.kt",
+    "expected_git_blob": "9db7d76ab29969592503593555fe3062a94fd871",
+    "actual_git_blob": "9db7d76ab29969592503593555fe3062a94fd871",
+    "sha256": "3abc7155f36ccdbb669495d5246b900c7644844b6959bea8962f6004458cbb0d",
+    "bytes": 15036,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/AppPrivateReadbackProbe.kt",
+    "expected_git_blob": "d90d42202f4d661c14aab420460c9a113781733f",
+    "actual_git_blob": "d90d42202f4d661c14aab420460c9a113781733f",
+    "sha256": "29a16df9229dfa699323af510dc1d882cfececba55579b4ec794ffd4074283e8",
+    "bytes": 5604,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/DeviceLab.kt",
+    "expected_git_blob": "326f0fcc7f3a9859fb5a00049337d9cfe178b0fc",
+    "actual_git_blob": "326f0fcc7f3a9859fb5a00049337d9cfe178b0fc",
+    "sha256": "f090f759f887c8d6a6ab992163ed1b6f8acd70917413edc5f481d62e6cd511b7",
+    "bytes": 8946,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/DeviceProbe.kt",
+    "expected_git_blob": "df39aa0d82196c8409233824af2ee11022854508",
+    "actual_git_blob": "df39aa0d82196c8409233824af2ee11022854508",
+    "sha256": "35b91062f45d1e70f710aca5feffd17d638f617a5234e7937fb4643c86c7a4ba",
+    "bytes": 7217,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/LabSystemMetrics.kt",
+    "expected_git_blob": "cdef8cefc823ba16feda78fe528c86edc436547d",
+    "actual_git_blob": "cdef8cefc823ba16feda78fe528c86edc436547d",
+    "sha256": "fa6ad282294c875c94034551f60c80330fd38f5838aaf1b435cfe9e911f5bcbc",
+    "bytes": 7694,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/NeuralWorkerService.kt",
+    "expected_git_blob": "f1d60b12265ec7aba6a5abd98f5394a5b215cf08",
+    "actual_git_blob": "f1d60b12265ec7aba6a5abd98f5394a5b215cf08",
+    "sha256": "1119197b3ad6480dcbe419e1980c906da98ce9b2de963ed44334505141197045",
+    "bytes": 380,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/OwnerConsentState.kt",
+    "expected_git_blob": "bb8c8d9d8f2abdddafec05fe836a0e1ca2028cc4",
+    "actual_git_blob": "bb8c8d9d8f2abdddafec05fe836a0e1ca2028cc4",
+    "sha256": "2433b35acc32b059f34a4ab9a2118a378007818c865960095de26b8a22d3081a",
+    "bytes": 6471,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/SensorLab.kt",
+    "expected_git_blob": "c5afb9eed719f7c7833f9852139d3b7e9542d674",
+    "actual_git_blob": "c5afb9eed719f7c7833f9852139d3b7e9542d674",
+    "sha256": "3ff1e580642510ed6c1ea4248286fc18ea3bcb8c7a9d1dfea6a1c3232cf267ac",
+    "bytes": 3994,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/UnoActivity.kt",
+    "expected_git_blob": "71ffd86aaf02ba1fbe1659850b08c97c4e73b83d",
+    "actual_git_blob": "71ffd86aaf02ba1fbe1659850b08c97c4e73b83d",
+    "sha256": "aee3d3937fb955a31be5dd931221610792806712273cc322be19adcc5945938d",
+    "bytes": 51359,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/UnoAndroidExactMemory.kt",
+    "expected_git_blob": "ba903a0e0b9679c671fd259e39ddc3418431fbea",
+    "actual_git_blob": "ba903a0e0b9679c671fd259e39ddc3418431fbea",
+    "sha256": "4b46c29c5003729b5d2cb33bd3d8b3a7e1f5769ea71c5bf3e87be4ab474d8df6",
+    "bytes": 8824,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/UnoAndroidMemoryOwner.kt",
+    "expected_git_blob": "15e97e03f4c66d1c5855c0acab25f44f03ee91c2",
+    "actual_git_blob": "15e97e03f4c66d1c5855c0acab25f44f03ee91c2",
+    "sha256": "384bd1f442d2db6b90386fddb73be188f382f21dce3f641e5a8f405edf26174a",
+    "bytes": 2127,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/UnoAndroidSemanticMemory.kt",
+    "expected_git_blob": "e77bb28c719223dd1f9c14e5cc89166ee488c08a",
+    "actual_git_blob": "e77bb28c719223dd1f9c14e5cc89166ee488c08a",
+    "sha256": "a6227ddf188f1e3e908fa388b927d5962740ab06eae0524c1f727976647cb988",
+    "bytes": 3922,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/UnoChatActivity.kt",
+    "expected_git_blob": "09022a35202681c773f012fb910e08cc03aa78ec",
+    "actual_git_blob": "09022a35202681c773f012fb910e08cc03aa78ec",
+    "sha256": "5d13b7117ca882d0226b0ed98b00eff858fa121fbbf4409483c7f07c1d2debd4",
+    "bytes": 27198,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/UnoChatHistoryStore.kt",
+    "expected_git_blob": "4935fcba2cdede63dfef6c502e7c8ceee63a6fed",
+    "actual_git_blob": "4935fcba2cdede63dfef6c502e7c8ceee63a6fed",
+    "sha256": "c46f369a1b17ac06713ece40ef0e20b83e467edd82a99689554cf2f9ab9a7afb",
+    "bytes": 2296,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/UnoChrome.kt",
+    "expected_git_blob": "9fa368c38151a13d6164d1f03796edb971013b3b",
+    "actual_git_blob": "9fa368c38151a13d6164d1f03796edb971013b3b",
+    "sha256": "470b81ebf7bd9bf5b67f4be23f9b4e2451c424b78f1e1f303c1623f45333b7e1",
+    "bytes": 1100,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/UnoFactsActivity.kt",
+    "expected_git_blob": "b76241d2f8ec12fb6974417607673be8679edb0f",
+    "actual_git_blob": "b76241d2f8ec12fb6974417607673be8679edb0f",
+    "sha256": "cb611de6f1fb32a4652b963f78ccf76ff190e75e39908e6407a0ffbf3e9de612",
+    "bytes": 9629,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/UnoNativeEngine.kt",
+    "expected_git_blob": "58e92d07142738cf7481b835941cbe50353f1d4f",
+    "actual_git_blob": "58e92d07142738cf7481b835941cbe50353f1d4f",
+    "sha256": "2c6da205cb033b40fb9d39c117c85512b7fe84f8ea2db52dc24755152ddbe5a2",
+    "bytes": 656,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/kotlin/org/unovyra/uno/UnoSecureChatHistoryStore.kt",
+    "expected_git_blob": "07b9457b4dca50c4879099f8cedb8192f881be22",
+    "actual_git_blob": "07b9457b4dca50c4879099f8cedb8192f881be22",
+    "sha256": "af3236acd7f5056dda7ea73529dccae97d20cba0e1b82371bd0527c3a85259ad",
+    "bytes": 4052,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/res/drawable/ic_uno_background.xml",
+    "expected_git_blob": "7922709a0dfc9c7799bbb9a5e772f2140b255d48",
+    "actual_git_blob": "7922709a0dfc9c7799bbb9a5e772f2140b255d48",
+    "sha256": "e856b8fc1040938bd1afaf73f2f84792efafdd31a94386723b0ad9ffcacdd854",
+    "bytes": 179,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/res/drawable/ic_uno_foreground.xml",
+    "expected_git_blob": "12a5036f4725efd572b509447b822c760a54be07",
+    "actual_git_blob": "12a5036f4725efd572b509447b822c760a54be07",
+    "sha256": "c4e2d5fa828ed6f115fb0199228fc4462296773033f21991f3986a8087ee6b9e",
+    "bytes": 550,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+    "expected_git_blob": "36882772735b66cc055a241c06e91087dbd49abb",
+    "actual_git_blob": "36882772735b66cc055a241c06e91087dbd49abb",
+    "sha256": "83b3254ea53a89b7811129a5db6eedf7c515319c36d2197f3e9fadc10b4502b0",
+    "bytes": 263,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+    "expected_git_blob": "36882772735b66cc055a241c06e91087dbd49abb",
+    "actual_git_blob": "36882772735b66cc055a241c06e91087dbd49abb",
+    "sha256": "83b3254ea53a89b7811129a5db6eedf7c515319c36d2197f3e9fadc10b4502b0",
+    "bytes": 263,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/app/src/main/res/values/styles.xml",
+    "expected_git_blob": "6b9010b8b7d64a7c8f6e8e3b9430f98ded620da6",
+    "actual_git_blob": "6b9010b8b7d64a7c8f6e8e3b9430f98ded620da6",
+    "sha256": "5e665cf7968d02f71750f5e9d759eb3c39b8a60c9faac896ce4a4d8cecf290ae",
+    "bytes": 517,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/build.gradle.kts",
+    "expected_git_blob": "1aff01a0f40ad860fec2ecda598593aa7864cc8e",
+    "actual_git_blob": "1aff01a0f40ad860fec2ecda598593aa7864cc8e",
+    "sha256": "fb3031d7968d614b81c15cbd9a0c6189885a441edbcb2ed26441aab7b3eae42c",
+    "bytes": 206,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/build.gradle.kts",
+    "expected_git_blob": "163987fd9005a40d0cfbb4d45258ef88e3bbae30",
+    "actual_git_blob": "163987fd9005a40d0cfbb4d45258ef88e3bbae30",
+    "sha256": "de6fb2c245c8432ccdb0206918fcb9fa75b31d20c286ff3d71116f20bf67292c",
+    "bytes": 519,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/ActionIntentJournal.kt",
+    "expected_git_blob": "7ad7482bb2aef8d6228e94db98f13ea2df42ce78",
+    "actual_git_blob": "7ad7482bb2aef8d6228e94db98f13ea2df42ce78",
+    "sha256": "4b95a7157a86f0ee253cb408ce8960ae700a9f5d5a0cb80d3016dd9e61c8b43c",
+    "bytes": 12081,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/ComputeBudgetGate.kt",
+    "expected_git_blob": "cefdee190a09d7006568a91bcb4e9ccc9bfc1eb3",
+    "actual_git_blob": "cefdee190a09d7006568a91bcb4e9ccc9bfc1eb3",
+    "sha256": "d10dd29b721975fb37c54a05daba0721ce9d01d0850fc2530cf1c3bed151395a",
+    "bytes": 4900,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/Contracts.kt",
+    "expected_git_blob": "2422bafb5f9486b87247e2073e1dcbf241a851a5",
+    "actual_git_blob": "2422bafb5f9486b87247e2073e1dcbf241a851a5",
+    "sha256": "a946112316c12adc8cd50c7eea1a3daddcbaf45a261085a1dde38a93996c173e",
+    "bytes": 3901,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/Controller.kt",
+    "expected_git_blob": "c8dc3a4ba2e33404f55ac21d91310963017ce823",
+    "actual_git_blob": "c8dc3a4ba2e33404f55ac21d91310963017ce823",
+    "sha256": "d74a2a5512e4929976293cbc7eaa63fcd6139e173472a8495fdfd08ff8139e49",
+    "bytes": 11735,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/LabProtocol.kt",
+    "expected_git_blob": "cdb877a77c096e94504115e55f971dd5252787e9",
+    "actual_git_blob": "cdb877a77c096e94504115e55f971dd5252787e9",
+    "sha256": "317b3e6666454afbf56bb83b7a6fd203a44c8e29fe1e221f4c4a6cc939f88eb5",
+    "bytes": 10808,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/Measurement.kt",
+    "expected_git_blob": "5347546a6ea4e566b773cd0eca2b78cfef65e056",
+    "actual_git_blob": "5347546a6ea4e566b773cd0eca2b78cfef65e056",
+    "sha256": "2baa105ed3fd68a032cd99290f774e41b959c7d28dd70e18fd7579f7435eeeb4",
+    "bytes": 2844,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/Memory.kt",
+    "expected_git_blob": "70b50e9027c96ea183c4300327cdf8bdc1f37394",
+    "actual_git_blob": "70b50e9027c96ea183c4300327cdf8bdc1f37394",
+    "sha256": "b0f374602ae49750fe3a856b87e2191bf513744773904ad86711175b8b3c0e88",
+    "bytes": 3849,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/ProbeMath.kt",
+    "expected_git_blob": "7ffc6a4a6c08a8830833fe0dfc26b2360bf4916d",
+    "actual_git_blob": "7ffc6a4a6c08a8830833fe0dfc26b2360bf4916d",
+    "sha256": "627b7e5007efc32ca950d19ca7d54beda85e856b3541708cceeb00063d3181a3",
+    "bytes": 1109,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/Scheduler.kt",
+    "expected_git_blob": "2c6830916e6b4ffe218e8fe5bb5806200304ac22",
+    "actual_git_blob": "2c6830916e6b4ffe218e8fe5bb5806200304ac22",
+    "sha256": "3c43795178960e3bc5f2bdc36e69bcd0ca1e66c1885594e14cd0e0b9944b02fe",
+    "bytes": 1971,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/ThemePersonalization.kt",
+    "expected_git_blob": "744c0448924a53215c21539d2f0f9367c499e351",
+    "actual_git_blob": "744c0448924a53215c21539d2f0f9367c499e351",
+    "sha256": "fec1373fb4c1091de91ce96435b15e58487e4bd2c312c0a5931e6719227c175a",
+    "bytes": 4816,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/UnoBoundedPlanner.kt",
+    "expected_git_blob": "5d2e47aa879fa7564892e15d3af3d6a7d5ba0781",
+    "actual_git_blob": "5d2e47aa879fa7564892e15d3af3d6a7d5ba0781",
+    "sha256": "0cd5740a3d35c6fdefdb0d4121d7cfd6886a224d1916356b3b381d974ad3bc2a",
+    "bytes": 3163,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/UnoChatCipher.kt",
+    "expected_git_blob": "0c90a5b49a4f1a759cfaf806fd32cfbf0062dc58",
+    "actual_git_blob": "0c90a5b49a4f1a759cfaf806fd32cfbf0062dc58",
+    "sha256": "d0d990363860db09352200caeb26746355d375676913733981823238615cefef",
+    "bytes": 1764,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/UnoDiagnosticSummary.kt",
+    "expected_git_blob": "cced3913dbad5d61a1033fdd8fa6e9287f17abd3",
+    "actual_git_blob": "cced3913dbad5d61a1033fdd8fa6e9287f17abd3",
+    "sha256": "b5715bcc2cf9dd2844f010978876688e9b8854620021e3725327edbd343390af",
+    "bytes": 1367,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/UnoEncryptedExactMemory.kt",
+    "expected_git_blob": "d671c8cdefd79c20015fd55d404f4d1540ff365a",
+    "actual_git_blob": "d671c8cdefd79c20015fd55d404f4d1540ff365a",
+    "sha256": "80caf04fe5a851860a527814be43889f5d17acdd806ac6c77594b70249effb55",
+    "bytes": 15459,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/UnoFReference.kt",
+    "expected_git_blob": "b7ec46aa7b93bfa619cecb21441b4e76b30076d3",
+    "actual_git_blob": "b7ec46aa7b93bfa619cecb21441b4e76b30076d3",
+    "sha256": "404f731dcc5bd9eaf486e6966fffb0f5b00912d703bbd0744b6c1d24596a7c91",
+    "bytes": 13304,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/UnoFoundationReferenceCycle.kt",
+    "expected_git_blob": "e52684ef0105c6c4537d7cff025fb34122fc44e1",
+    "actual_git_blob": "e52684ef0105c6c4537d7cff025fb34122fc44e1",
+    "sha256": "48225caf03f293c111598d61c984ce4e20f841fd3ddc3f0ad6ba036af4c9c4d0",
+    "bytes": 9610,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/UnoManualFacts.kt",
+    "expected_git_blob": "d261a6e1852ce459f61cd63dc306c25f8b71be93",
+    "actual_git_blob": "d261a6e1852ce459f61cd63dc306c25f8b71be93",
+    "sha256": "744231f635a3916dab8b34f7b6155524c664deedeed7a2b93604150dd7acbdd0",
+    "bytes": 2233,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/UnoMemoryPorts.kt",
+    "expected_git_blob": "f905e027d2ea327b6ea310b606bd76e6cf146285",
+    "actual_git_blob": "f905e027d2ea327b6ea310b606bd76e6cf146285",
+    "sha256": "e6b023e905faf0f80c0b9b2a07be4b306b0a27d4f32b62bc0d72458420655a59",
+    "bytes": 777,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/UnoModelProposal.kt",
+    "expected_git_blob": "92c55fb7761436c81f477aadca673375537b61be",
+    "actual_git_blob": "92c55fb7761436c81f477aadca673375537b61be",
+    "sha256": "77b68a80cf008b0c11c6b62b4499a8db6f4bcf4d1ae539487d22229b371552ae",
+    "bytes": 1799,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/UnoPerceptionGate.kt",
+    "expected_git_blob": "5ea73fa02e552d8500e304885792ab2867bc65b9",
+    "actual_git_blob": "5ea73fa02e552d8500e304885792ab2867bc65b9",
+    "sha256": "9f3cff80227ccce06ecee6470e75d427f5fdd853e1c27118ad85052d6e707f6e",
+    "bytes": 1429,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/UnoProcessStop.kt",
+    "expected_git_blob": "b8766613212133cd029da801e7684e78e6655f09",
+    "actual_git_blob": "b8766613212133cd029da801e7684e78e6655f09",
+    "sha256": "0ac18eb5d5e31601894edb17032e6956770a30cc23f011f1148e47ef6f39ef24",
+    "bytes": 422,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/UnoPromptWindow.kt",
+    "expected_git_blob": "7524a863039243061e5ca97f9b0f8b7dd8425afb",
+    "actual_git_blob": "7524a863039243061e5ca97f9b0f8b7dd8425afb",
+    "sha256": "24a1bd042cb2503a8a8ae7dac5e24df85f8da50405e22898d84914d8ca0c664e",
+    "bytes": 2028,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/UnoSemanticMemory.kt",
+    "expected_git_blob": "fed7d37b1f5ad4c87b4cfdbf924011287fc02edc",
+    "actual_git_blob": "fed7d37b1f5ad4c87b4cfdbf924011287fc02edc",
+    "sha256": "5d6e34e4ff73719c0489484c4b2c78ffa6a28b28d7e544911c903a11b5ca8100",
+    "bytes": 7901,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/UnoTextCycle.kt",
+    "expected_git_blob": "6a91507e5eb235e81e529ae30a794d651a892978",
+    "actual_git_blob": "6a91507e5eb235e81e529ae30a794d651a892978",
+    "sha256": "349eb699379a6258081a5c7b7e0fdd5758debe6167d8b300d62ff52f42e168ce",
+    "bytes": 5586,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/main/kotlin/org/unovyra/uno/core/UnoWeightGate.kt",
+    "expected_git_blob": "d2dbdd7911f8df7549a04f1e823e90c2bbf07464",
+    "actual_git_blob": "d2dbdd7911f8df7549a04f1e823e90c2bbf07464",
+    "sha256": "69053d48fe622efa03af3e643d1d84f7f48c60862b3b2961bc4b8df5349a3d53",
+    "bytes": 2247,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/ActionAtomicReferenceCommitTest.kt",
+    "expected_git_blob": "63fd32b3066e5cb2de94a4bb245c51830e858daf",
+    "actual_git_blob": "63fd32b3066e5cb2de94a4bb245c51830e858daf",
+    "sha256": "d9f53e4965e70e92cc0f5f4b0e91c71b081cf21be6ce7d0bffbf3d3318360e65",
+    "bytes": 11316,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/ActionIntentJournalTest.kt",
+    "expected_git_blob": "5434d3986bb214ee82e88c6b23a65b3bbda85118",
+    "actual_git_blob": "5434d3986bb214ee82e88c6b23a65b3bbda85118",
+    "sha256": "101c80ce03fe25518710f9a0b89e12be36eb77133b5ec2bd9293fe60af288084",
+    "bytes": 5322,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/ActionJournalControllerIntegrationTest.kt",
+    "expected_git_blob": "c016fb9851462c6096b51feb147cde344eef775c",
+    "actual_git_blob": "c016fb9851462c6096b51feb147cde344eef775c",
+    "sha256": "f463eebfda342eb149ee91fcf0cadfef07275112936dd3312693afe6e68e1089",
+    "bytes": 16191,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/ActionReceiptRecoveryTest.kt",
+    "expected_git_blob": "ba7b4c300597af9febcfe8b8639610ef9fcbc33e",
+    "actual_git_blob": "ba7b4c300597af9febcfe8b8639610ef9fcbc33e",
+    "sha256": "bd8a4287c50fa78870f99661a0d1e7c133146f3f9f1252b7ef2c9d9e66170b69",
+    "bytes": 10149,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/AllHostTests.kt",
+    "expected_git_blob": "64abde501f7f759f80d5d1da205d45f21f9ad56f",
+    "actual_git_blob": "64abde501f7f759f80d5d1da205d45f21f9ad56f",
+    "sha256": "f0524147ffd99e6cee9b6f18ca234fc40ca986905a57263a42689c7ea8d30424",
+    "bytes": 1540,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/ComputeBudgetGateTest.kt",
+    "expected_git_blob": "e711d5fe6bde3ced1fbb4f25694ad23f5774f084",
+    "actual_git_blob": "e711d5fe6bde3ced1fbb4f25694ad23f5774f084",
+    "sha256": "f34628ea8e19b1f092d8144b6a95f88db2a7651fade5338f2e12cf6a97cadf2d",
+    "bytes": 6573,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/CoreSelfTest.kt",
+    "expected_git_blob": "ff17863a3752dd5bb113d755e5404f4ebc720e0d",
+    "actual_git_blob": "ff17863a3752dd5bb113d755e5404f4ebc720e0d",
+    "sha256": "87a781966d7cc815972325cd7ee1e1d90c8ef2cde7e55a755359f06e888ea055",
+    "bytes": 4482,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt",
+    "expected_git_blob": "84d05235b4663d10a83ce104b232334b6628102e",
+    "actual_git_blob": "84d05235b4663d10a83ce104b232334b6628102e",
+    "sha256": "9532e66c43cf7958ead367b535cc425c5688e3a78f8186eafd08008eebb7202e",
+    "bytes": 9614,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/LabProtocolTest.kt",
+    "expected_git_blob": "5682761e51a416b29e627e228466b036ea905161",
+    "actual_git_blob": "5682761e51a416b29e627e228466b036ea905161",
+    "sha256": "be4523ec35cc035373ac088aa882681744e5207d83e7c2662210939a955e0701",
+    "bytes": 2806,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/MeasurementTest.kt",
+    "expected_git_blob": "4efca6d163217343d11c620c4dba4e9e6712db7f",
+    "actual_git_blob": "4efca6d163217343d11c620c4dba4e9e6712db7f",
+    "sha256": "7508ab5f670e6f331f1daaf0ddce97967feb87d559ebf0bbe8166c62e3c8a6dc",
+    "bytes": 2652,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/ProbeMathTest.kt",
+    "expected_git_blob": "8f7ffe164ba8a1c6cefb0bfc66a22d2974bb95f3",
+    "actual_git_blob": "8f7ffe164ba8a1c6cefb0bfc66a22d2974bb95f3",
+    "sha256": "362013c225ff9c2256d6cd38ff3126b7e379340389cd4ea0725691a1638a9ffa",
+    "bytes": 1148,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/ThemePersonalizationTest.kt",
+    "expected_git_blob": "c8805abcbe0f9b2d24b6fe0bb4b8ffc7f3e16e0f",
+    "actual_git_blob": "c8805abcbe0f9b2d24b6fe0bb4b8ffc7f3e16e0f",
+    "sha256": "5e0dcb2a59065dcd2681ff7ef911cfc5c2cc1f4045c94b8868e0114ff4191a93",
+    "bytes": 2897,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/UnoChatCipherTest.kt",
+    "expected_git_blob": "d98bffb8f1485bf2786e2c842d93fca2000990d6",
+    "actual_git_blob": "d98bffb8f1485bf2786e2c842d93fca2000990d6",
+    "sha256": "273f7e9e6aa9040cf1a5186f7271871ec327321645675ebaaa112b8781a4c9ec",
+    "bytes": 1557,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/UnoDiagnosticSummaryTest.kt",
+    "expected_git_blob": "776dc2a103e96109eedaa9a7eeab8cea9d41d937",
+    "actual_git_blob": "776dc2a103e96109eedaa9a7eeab8cea9d41d937",
+    "sha256": "c34c69a3c4bc11ff3897f92ec50f577829ffc1c77e8234e97e0ece78c281e837",
+    "bytes": 2117,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/UnoEncryptedExactMemoryTest.kt",
+    "expected_git_blob": "a18bdc01b416ff2d2c948aebb43f8b43cf52f80d",
+    "actual_git_blob": "a18bdc01b416ff2d2c948aebb43f8b43cf52f80d",
+    "sha256": "1d32536b7d9b85ae1b6ce10a1fe4eab319a521dd01c5b8e68679c8675c90cc96",
+    "bytes": 13084,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/UnoFReferenceTest.kt",
+    "expected_git_blob": "79a38275aeca6c64804ca58449c7f42f52e30d4a",
+    "actual_git_blob": "79a38275aeca6c64804ca58449c7f42f52e30d4a",
+    "sha256": "e1c2e15fac901665b34e2302bbb88bc26f596af3990806475f05e599bde9b200",
+    "bytes": 11103,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/UnoFoundationReferenceCycleTest.kt",
+    "expected_git_blob": "1de83168474619c4a3668f07ee35e61651135bf5",
+    "actual_git_blob": "1de83168474619c4a3668f07ee35e61651135bf5",
+    "sha256": "1bfdc162e10e36a315b489d62d18442e8363b2061aa3d5d38564942a88b3659d",
+    "bytes": 9025,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/UnoFrameContractTest.kt",
+    "expected_git_blob": "f4c2849ed5497788e47c8b91c12453922d78a37f",
+    "actual_git_blob": "f4c2849ed5497788e47c8b91c12453922d78a37f",
+    "sha256": "6d4d71dfb3bd5c91902bcdf89198166636e9ebb58e275f8d4b1c9f22512fda41",
+    "bytes": 2061,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/UnoManualFactsTest.kt",
+    "expected_git_blob": "26513a52894d99f56081492e2fc70d5968fccafb",
+    "actual_git_blob": "26513a52894d99f56081492e2fc70d5968fccafb",
+    "sha256": "013b614ad6a46e1d9f5838a8f1e95f5d6b73958e7c362b93b3ab64bb9dfa59d2",
+    "bytes": 3651,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/UnoModelProposalTest.kt",
+    "expected_git_blob": "31293bc70eeadcfd1f8fe1e27b6f5d1a3d9fc706",
+    "actual_git_blob": "31293bc70eeadcfd1f8fe1e27b6f5d1a3d9fc706",
+    "sha256": "977641d945fe107e11031ac7acce4f2651479bafc4f2e248f6c720254d512538",
+    "bytes": 2009,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/UnoPlannerTest.kt",
+    "expected_git_blob": "8f63a938035b66a8b7ce2506ae58d865c1be0953",
+    "actual_git_blob": "8f63a938035b66a8b7ce2506ae58d865c1be0953",
+    "sha256": "d75bd4da874cce65cfb2263f7a54c16f8b0aa969d6bb3b1468c412fe58f38c23",
+    "bytes": 5349,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/UnoProcessStopTest.kt",
+    "expected_git_blob": "162bdf0ec6df65bb13339c0f84fd74e0141bb88b",
+    "actual_git_blob": "162bdf0ec6df65bb13339c0f84fd74e0141bb88b",
+    "sha256": "d0bf5850ed1d3d150fe35b3fa6b5d544d2c71476d71c6c81856c8f1dde5af10c",
+    "bytes": 396,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/UnoPromptWindowTest.kt",
+    "expected_git_blob": "98fcaa644d4c71bb60b417aaafb6d207533b9dd2",
+    "actual_git_blob": "98fcaa644d4c71bb60b417aaafb6d207533b9dd2",
+    "sha256": "be5913cdaa7e2e335a57d40e9500583a8573966bba676cfa8bb0b6508d2d09bb",
+    "bytes": 1504,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/UnoSemanticMemoryTest.kt",
+    "expected_git_blob": "9389cd37ab573c7e3e455808d6bb2cf39469f0bd",
+    "actual_git_blob": "9389cd37ab573c7e3e455808d6bb2cf39469f0bd",
+    "sha256": "26c3e2bb3715f61367c7711b74c77b5ea3eca391bcc83a047c7509aa6494ccb0",
+    "bytes": 4148,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/core/src/test/kotlin/org/unovyra/uno/core/UnoTextCycleTest.kt",
+    "expected_git_blob": "1420eb9cbb4d260947dada8e85bfafa39670df4b",
+    "actual_git_blob": "1420eb9cbb4d260947dada8e85bfafa39670df4b",
+    "sha256": "ada567f27bafbd9486406f038db4378bc64064a86b875f94b7529c7d0505af0e",
+    "bytes": 3579,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/adb_collect.py",
+    "expected_git_blob": "02e8b5ac5bcb1c94206eac4895caf6954e96a455",
+    "actual_git_blob": "02e8b5ac5bcb1c94206eac4895caf6954e96a455",
+    "sha256": "be59eed0b5f71d9ca37fe76e8cd9b9bb8d03db1c59b2e2eb6c4b2ea7e547030b",
+    "bytes": 6704,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/apk_update_gate.py",
+    "expected_git_blob": "e25d6cf3b2ae50078e2bc3e18eec5995dcf52a34",
+    "actual_git_blob": "e25d6cf3b2ae50078e2bc3e18eec5995dcf52a34",
+    "sha256": "1ad258e470d45660274b6c2e4433ac7f1effae88f6528eb3413aada8c59cf4cb",
+    "bytes": 3288,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/app_private_host/AppPrivateReadbackProbeHostTest.kt",
+    "expected_git_blob": "17cb705f1cfd932f0735afb1f87b385b06557528",
+    "actual_git_blob": "17cb705f1cfd932f0735afb1f87b385b06557528",
+    "sha256": "5c4058114be56c2b7d4e9dcc68a0845facc563e2c2fd9147d66fffe49e53345d",
+    "bytes": 4693,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/compare_lab.py",
+    "expected_git_blob": "b828343cb11c526718d2b8d5d0a8d17f66571821",
+    "actual_git_blob": "b828343cb11c526718d2b8d5d0a8d17f66571821",
+    "sha256": "7ba1f1acbec4de49b02c8b42efb3fa712801d1dc03cba930a72131bae655b43c",
+    "bytes": 2648,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/host_verify.sh",
+    "expected_git_blob": "688e3bbcd84054e0db505ed26a4564c22300ac22",
+    "actual_git_blob": "688e3bbcd84054e0db505ed26a4564c22300ac22",
+    "sha256": "e6ccd98e5c38df90518dfff589e402e1e7410575aa6cb6865e1e328e57839130",
+    "bytes": 355,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/inspection_host/ContextStub.kt",
+    "expected_git_blob": "cc77c50e7f2c60b2a6fd9e900925907e718a8249",
+    "actual_git_blob": "cc77c50e7f2c60b2a6fd9e900925907e718a8249",
+    "sha256": "5fba62050c1daec1d7909e0b64379646cc767fb2d87a6e928d8c284c7392aa87",
+    "bytes": 128,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/inspection_host/InspectionHostTest.kt",
+    "expected_git_blob": "afa592a6c5444c9810915c973d349a542524e707",
+    "actual_git_blob": "afa592a6c5444c9810915c973d349a542524e707",
+    "sha256": "986e4d095d004d9a4a65f86a767f760e832589fcf7c202be345f11c7a9bfe5f6",
+    "bytes": 5034,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/owner_gate_host/AndroidDeviceCredentialPlatformTest.kt",
+    "expected_git_blob": "58256075fb6613b0ffee401aeb3734b37e18e5d9",
+    "actual_git_blob": "58256075fb6613b0ffee401aeb3734b37e18e5d9",
+    "sha256": "8d2890f8efd6ef6860c7011b80cc94c06dfac1caa7f59b7f4167f7cf158e9fda",
+    "bytes": 3114,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/owner_gate_host/OwnerConsentStateTest.kt",
+    "expected_git_blob": "6b6a1bfaa02cfceb964ae3ec53b37b95dba67d41",
+    "actual_git_blob": "6b6a1bfaa02cfceb964ae3ec53b37b95dba67d41",
+    "sha256": "a58f23a03bc88067a4375ac2e0dd9b110b363575ff7ef40603934330749c5fae",
+    "bytes": 10664,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/owner_gate_host/stubs/AndroidActivity.kt",
+    "expected_git_blob": "e1d858f012f969498b85b561c626cfcf138ce4e5",
+    "actual_git_blob": "e1d858f012f969498b85b561c626cfcf138ce4e5",
+    "sha256": "439ea0f5ae3188d2eda0146aa3e9a458699bce7a9afba0ccb72bbf3f9e021ce4",
+    "bytes": 1113,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/owner_gate_host/stubs/AndroidClock.kt",
+    "expected_git_blob": "420b4265bf5bd2b74f83858c67319b9b1cb9267a",
+    "actual_git_blob": "420b4265bf5bd2b74f83858c67319b9b1cb9267a",
+    "sha256": "7f08264d5ef67cd8f27ea3877ebb7498668a7157808488e537e6ae72702d24b3",
+    "bytes": 84,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/owner_gate_host/stubs/AndroidIntent.kt",
+    "expected_git_blob": "2bc420f3232ac61ca688cbb5d2d7d944d1012ca5",
+    "actual_git_blob": "2bc420f3232ac61ca688cbb5d2d7d944d1012ca5",
+    "sha256": "a282fd679f0b27722017629f0fe6a8fc32d619ab0f3ff7e9734ea8e4c2080800",
+    "bytes": 37,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/owner_gate_host/stubs/AndroidPackageManager.kt",
+    "expected_git_blob": "a50b2856419d9b8adb3fdd23171a428034c221f7",
+    "actual_git_blob": "a50b2856419d9b8adb3fdd23171a428034c221f7",
+    "sha256": "dda24430e1521c6b6e8c10559f114bdf06505980ba210d7d57c6e260d28ded22",
+    "bytes": 82,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/owner_permanent_channel.py",
+    "expected_git_blob": "8a5f5b893cda15fbd4168e628f6c382afe8c6adc",
+    "actual_git_blob": "8a5f5b893cda15fbd4168e628f6c382afe8c6adc",
+    "sha256": "a79c80e2046814d90b012e7f207b65744a0f444e700cf30b4bf2c9f8b2638f45",
+    "bytes": 12664,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/owner_update_build.py",
+    "expected_git_blob": "e8ed8f34be568e53d548229af0b9f8ffc2d35c6c",
+    "actual_git_blob": "e8ed8f34be568e53d548229af0b9f8ffc2d35c6c",
+    "sha256": "f23f19a16b896088d921db1e4c4da47c892c4aaf2e9576bb62f2da40a1faff2d",
+    "bytes": 7288,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/run_all_preflight.sh",
+    "expected_git_blob": "2ba79c5d2c0e2a944f668f6c7864984965517354",
+    "actual_git_blob": "2ba79c5d2c0e2a944f668f6c7864984965517354",
+    "sha256": "ba3d38e5f18a75738287aa21886c87a9796dc30bcd41ebc797534ce6a9ea0fdf",
+    "bytes": 701,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/static_contract_check.py",
+    "expected_git_blob": "05ead52e9f9a5e8c57e78569cda00654666a4b60",
+    "actual_git_blob": "05ead52e9f9a5e8c57e78569cda00654666a4b60",
+    "sha256": "f5cae3fbe6a634eafe2af5bb4bd1f21720a24e900f355c43f323bd45eb1d286e",
+    "bytes": 12408,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/test_adb_selection.py",
+    "expected_git_blob": "caa7f321644b5a249bfd3c7b76f9a0d5f47b0399",
+    "actual_git_blob": "caa7f321644b5a249bfd3c7b76f9a0d5f47b0399",
+    "sha256": "724b0ba002af851c47d590882858f165fd91cf9c4ea4608c3f2ecbcf08ec9266",
+    "bytes": 1272,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/test_apk_update_gate.py",
+    "expected_git_blob": "da7e611f433549571135f3d0fe532b1d7a18b587",
+    "actual_git_blob": "da7e611f433549571135f3d0fe532b1d7a18b587",
+    "sha256": "1dded078c0ca19103f5d70e28c757d7c4a5d4480ce5203783f2d2898e365ea82",
+    "bytes": 1976,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/test_app_private_effect_host.sh",
+    "expected_git_blob": "829a36691da79fb618a8a6a3e339a297134e5aca",
+    "actual_git_blob": "829a36691da79fb618a8a6a3e339a297134e5aca",
+    "sha256": "6d137101f355422836f33d35f260135abc5ccb33a9972a4fddda78f9069b3a59",
+    "bytes": 420,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/test_lab_tools.py",
+    "expected_git_blob": "554324e297cc685ac82d2e9273a59ab1e14f25d7",
+    "actual_git_blob": "554324e297cc685ac82d2e9273a59ab1e14f25d7",
+    "sha256": "9d412e9791bcba35088ca3da5a01b2deb07d21b705deeaab92f3fa3d166c16af",
+    "bytes": 2320,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/test_outcome_inspection_host.sh",
+    "expected_git_blob": "118da8f7731a8fe67581689669de2227eaaf91c4",
+    "actual_git_blob": "118da8f7731a8fe67581689669de2227eaaf91c4",
+    "sha256": "66f813b9f5b81ac261fa427533874576d38bc4287f31dd50bd6e8d10938b93f9",
+    "bytes": 441,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/test_owner_consent_host.sh",
+    "expected_git_blob": "a3a00437847dab151ba68264ef09251d561c3b74",
+    "actual_git_blob": "a3a00437847dab151ba68264ef09251d561c3b74",
+    "sha256": "f6aba78baade6bffefb24cbeabc37e54ad68733b2a4cee315de3b138a7b06302",
+    "bytes": 693,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/test_owner_permanent_channel.py",
+    "expected_git_blob": "9034a0e11b8b840700bbe1c9e189080039fda72b",
+    "actual_git_blob": "9034a0e11b8b840700bbe1c9e189080039fda72b",
+    "sha256": "c34987260b545d83c92325e76aa090f5bc36458188db0c2be0bb89cefa0c65c2",
+    "bytes": 4530,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/test_owner_update_build.py",
+    "expected_git_blob": "9a755ee8a5b8b11a66a58f8960248b27cf3c0265",
+    "actual_git_blob": "9a755ee8a5b8b11a66a58f8960248b27cf3c0265",
+    "sha256": "2a08d8283a4c8e2335cc382b60e0d98003d0e0319b541d0b5cc0c24a83e7bcd4",
+    "bytes": 8429,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/test_sqlite_outcome_schema.py",
+    "expected_git_blob": "65dea3f27d24dcf4a7eb71f70508fa3285cf24c8",
+    "actual_git_blob": "65dea3f27d24dcf4a7eb71f70508fa3285cf24c8",
+    "sha256": "cb8345a5285953f7d85ea098fb8a476991719fe2310cc6f5bf2b3c3c5ae56e19",
+    "bytes": 7819,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/test_static_contract_check.py",
+    "expected_git_blob": "2fcaa84c280d6fd842233b8760e4e4e9a3f79874",
+    "actual_git_blob": "2fcaa84c280d6fd842233b8760e4e4e9a3f79874",
+    "sha256": "97995bda35586075ff60338c863bc985497c471673218655247759c6a2073bc1",
+    "bytes": 19431,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/scripts/validate_lab.py",
+    "expected_git_blob": "f982664b840e042961f12ed38b6f203c34851cd9",
+    "actual_git_blob": "f982664b840e042961f12ed38b6f203c34851cd9",
+    "sha256": "d9e76d7bba1ed7af68c5dd4f412a5db0bac65db6c9bb966da900e1c0aea62e2c",
+    "bytes": 1743,
+    "match": true
+  },
+  {
+    "ref": "178ac32f53d1e84d44ca27475279d35113c19719",
+    "path": "android/settings.gradle.kts",
+    "expected_git_blob": "93bf0d6dcab5ea5614a633ded5dc64157629f410",
+    "actual_git_blob": "93bf0d6dcab5ea5614a633ded5dc64157629f410",
+    "sha256": "e422f8d9137ad0e6d6955ebde09581520b5e8c96c1b3bde48793911a7cfd9e11",
+    "bytes": 305,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/AGENTS.md",
+    "expected_git_blob": "655a156f6d39930f45ed302242eecd43b6d2969a",
+    "actual_git_blob": "655a156f6d39930f45ed302242eecd43b6d2969a",
+    "sha256": "12fd7da0351f040b2d2e06f2112658ec7a55a64486c07fe48b81218ea09cddc9",
+    "bytes": 762,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/AGENT_PHASE_GATE.json",
+    "expected_git_blob": "d535464a2c3295abc492ef290c866c2bdd1352cb",
+    "actual_git_blob": "d535464a2c3295abc492ef290c866c2bdd1352cb",
+    "sha256": "9d1bcc21e7ab6ff1a24dcbb18453797ac5e7f9253b3daa12cc8d08a6917479e4",
+    "bytes": 1226,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/README.md",
+    "expected_git_blob": "eca734aa9b3d590574b652cef88ad0ab7db78ba3",
+    "actual_git_blob": "eca734aa9b3d590574b652cef88ad0ab7db78ba3",
+    "sha256": "4f7b12af0dab56b57b5bc353843b0b6d6e32aeff782bc90ae11a8a19e9e34710",
+    "bytes": 1985,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/00_START_HERE.md",
+    "expected_git_blob": "3119a727f2dc3c2aef0028892448e311c0ea941c",
+    "actual_git_blob": "3119a727f2dc3c2aef0028892448e311c0ea941c",
+    "sha256": "f67a7caf169a1a51f106274a00321340cada5e3870b387acb7c67f9d7b858abf",
+    "bytes": 3442,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/EVIDENCE/arithmetic_run_output.txt",
+    "expected_git_blob": "6ed4e4415421f5f4cee448b1049816e10df5074b",
+    "actual_git_blob": "6ed4e4415421f5f4cee448b1049816e10df5074b",
+    "sha256": "e1fbd6d7557e5d1dd752f8599d6f1f3e14e50f11b065df37bd88e581d2767919",
+    "bytes": 213,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/EVIDENCE/recheck_arithmetic.py",
+    "expected_git_blob": "07ec0e69b64287064f925400b2e18e37eae5a014",
+    "actual_git_blob": "07ec0e69b64287064f925400b2e18e37eae5a014",
+    "sha256": "6aec027d2a3ab6a3657673aa3276edd58656a45c63c729847b6b3562494fe7f6",
+    "bytes": 1537,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/NORMATIVE/01_SOURCE_HIERARCHY_AND_CONTRACT_INDEX.md",
+    "expected_git_blob": "6bdb6cb298ad5fb3ad23e9b628ef1f3c7dff7ac0",
+    "actual_git_blob": "6bdb6cb298ad5fb3ad23e9b628ef1f3c7dff7ac0",
+    "sha256": "98a837fa8ce45c3c34e23274f118afc243c67b261f688c1d8846e5454e6792d6",
+    "bytes": 8270,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/NORMATIVE/02_FORMAL_CORRECTIONS_AND_LIMITS.md",
+    "expected_git_blob": "c12f6422394fc2001187c39e5e9d3322d50dc5f8",
+    "actual_git_blob": "c12f6422394fc2001187c39e5e9d3322d50dc5f8",
+    "sha256": "6260310750aacfdd5326f91d6251d5649a1ca88855760110c3783fae29fade11",
+    "bytes": 11668,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/NORMATIVE/03_CONSOLIDATED_SUBSYSTEM_CONTRACTS.md",
+    "expected_git_blob": "e0781e5ed40573887d67b435b19b912dc7c7790c",
+    "actual_git_blob": "e0781e5ed40573887d67b435b19b912dc7c7790c",
+    "sha256": "69afb7138ada0188251cdbf381b03d34bc44963a080bbb63ae064da5c71953f7",
+    "bytes": 5217,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/NORMATIVE/04_ALL_GATES_D_X_B_M.md",
+    "expected_git_blob": "69a7b204d6e23413279c818dfb6b7826681efaa5",
+    "actual_git_blob": "69a7b204d6e23413279c818dfb6b7826681efaa5",
+    "sha256": "80f8d6c644af2b73843fe79dffdc1de9d116e80faf9b119c3bcce22773cc4867",
+    "bytes": 13025,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/NORMATIVE/05_OWNER_DECISIONS_AND_FUTURE_EVIDENCE.md",
+    "expected_git_blob": "c730ef990573f085c946430f1b86c00b1747d717",
+    "actual_git_blob": "c730ef990573f085c946430f1b86c00b1747d717",
+    "sha256": "9a01bd2be0fcc024e3c8f61a87c422a777ae443cbc014519424ceb7e5f3210d2",
+    "bytes": 6593,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/NORMATIVE/06_VERIFICATION_BOUNDARIES.md",
+    "expected_git_blob": "2002ae3358abcbc3026cc34a4a1b26c90a7b937b",
+    "actual_git_blob": "2002ae3358abcbc3026cc34a4a1b26c90a7b937b",
+    "sha256": "72a54778f26ce1b928785a02c56b8c86c807ea3b38b685560d973f163b52b711",
+    "bytes": 4636,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/NORMATIVE/07_EXPLANATION_FOR_OWNER.md",
+    "expected_git_blob": "943763e31b1f719c6c9e842fe492d85304fcf267",
+    "actual_git_blob": "943763e31b1f719c6c9e842fe492d85304fcf267",
+    "sha256": "7d7b745f2d585f31d344ecec020465e542d552536d50ea13a475d35d38b5f23a",
+    "bytes": 3736,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SHA256_MANIFEST.json",
+    "expected_git_blob": "0363d557fa7f54492058bafc3ff724203ce45556",
+    "actual_git_blob": "0363d557fa7f54492058bafc3ff724203ce45556",
+    "sha256": "da6832458698117c946b73e09fc618b286fe8396e61d031ae854f66cc49f35e7",
+    "bytes": 11502,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+    "expected_git_blob": "31441a7c61a10f89da165ef607233a54e1982fe7",
+    "actual_git_blob": "31441a7c61a10f89da165ef607233a54e1982fe7",
+    "sha256": "4332225c501caf15628fa8e293895382501526c6540400e9d421c0ab712dca3c",
+    "bytes": 9832,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+    "expected_git_blob": "f2c945ab63bb6175913c4cee0fd37301c82b1025",
+    "actual_git_blob": "f2c945ab63bb6175913c4cee0fd37301c82b1025",
+    "sha256": "6bd6f68989972d183b6750711dca223355a026dfcf11461275d25406319853fe",
+    "bytes": 26820,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+    "expected_git_blob": "57a1dbb15cfe94091ae37fa2f465f0a89a18161f",
+    "actual_git_blob": "57a1dbb15cfe94091ae37fa2f465f0a89a18161f",
+    "sha256": "4b9186bb19d71f88aed989b33ef8a40f5a699535e645c79f5eb97d5d97098a4c",
+    "bytes": 17474,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+    "expected_git_blob": "cf0528f00036a676d399b04bf9361863a45132b8",
+    "actual_git_blob": "cf0528f00036a676d399b04bf9361863a45132b8",
+    "sha256": "52b1eab23c977d253625b98de20bee6e5802c652973cf96403037118b5fbe4be",
+    "bytes": 27425,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+    "expected_git_blob": "0f94481323437546ee01788114f744610f56560d",
+    "actual_git_blob": "0f94481323437546ee01788114f744610f56560d",
+    "sha256": "737654965c75e83e10a2705656af0f49ff9bf2c2bb0a4f359c67f0f426c6b0c8",
+    "bytes": 13624,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+    "expected_git_blob": "429603fdf8348ff3dfaf83623fe681e3f09dfb98",
+    "actual_git_blob": "429603fdf8348ff3dfaf83623fe681e3f09dfb98",
+    "sha256": "37754c2d980838e13877ed014f870a14a879cb32b08d6e19e78c5668a06fe817",
+    "bytes": 28652,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+    "expected_git_blob": "7c03653724a3f6ae532fe6f54ff8156fcb65de76",
+    "actual_git_blob": "7c03653724a3f6ae532fe6f54ff8156fcb65de76",
+    "sha256": "dc99d2e043ffff4abb28d8f9a99458cb8e2382dfe2ff920e68f1b0b67a23b9c7",
+    "bytes": 22056,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+    "expected_git_blob": "610d0cb7cbc0e25e4fb97f71257aec11196ed6b0",
+    "actual_git_blob": "610d0cb7cbc0e25e4fb97f71257aec11196ed6b0",
+    "sha256": "2602f04c049fc721e9c6ecc79f73d5e01400429315f05744f5ed00faa5b3f857",
+    "bytes": 22258,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+    "expected_git_blob": "69196f17fed6ee658f5420b17fad0e0feb467222",
+    "actual_git_blob": "69196f17fed6ee658f5420b17fad0e0feb467222",
+    "sha256": "4129290d9ef08c86e3aaf186fcb4d830a764c514beaca33aae61b4eae698ed69",
+    "bytes": 15527,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+    "expected_git_blob": "0051a3df3465e7463d99bbc9cca0fe3c6c500e11",
+    "actual_git_blob": "0051a3df3465e7463d99bbc9cca0fe3c6c500e11",
+    "sha256": "dea19182304bd8784030fe6d7b7570bdc4ffbc2bc5dafd68c8f7e772a726aa90",
+    "bytes": 14541,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md",
+    "expected_git_blob": "9fa36b8945cfdcbf29c112839a2cf29302e0dffa",
+    "actual_git_blob": "9fa36b8945cfdcbf29c112839a2cf29302e0dffa",
+    "sha256": "c2fd8de591472c52f0d206b361f6a61fc857f9ae989751ad11ce9bd0603f95c5",
+    "bytes": 6521,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+    "expected_git_blob": "91858e6a141f55df44e2c84f1bb9a70f01229668",
+    "actual_git_blob": "91858e6a141f55df44e2c84f1bb9a70f01229668",
+    "sha256": "dbcba73af110f6725183693b2dc3a67e1b310b3c6833787985325864986cf691",
+    "bytes": 11905,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+    "expected_git_blob": "8b92c1b60add3d823bff447ae2f3b3ef2caaeb97",
+    "actual_git_blob": "8b92c1b60add3d823bff447ae2f3b3ef2caaeb97",
+    "sha256": "bebaf4a52b8c39f32da6725a9216fc782e022c1f75067889c7a39ab780694879",
+    "bytes": 10420,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_FINAL_README_AND_DECISION.md",
+    "expected_git_blob": "8485914dec1838275812d584332af3f80500dce2",
+    "actual_git_blob": "8485914dec1838275812d584332af3f80500dce2",
+    "sha256": "5b933376c6a162ddbb03925b705bc2787b1c497b9a635d36b951ba9415aa5765",
+    "bytes": 7168,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_REVISION_LOG.md",
+    "expected_git_blob": "6d73149b6f0a0f3ac392cfeab07bd7c1c98991a0",
+    "actual_git_blob": "6d73149b6f0a0f3ac392cfeab07bd7c1c98991a0",
+    "sha256": "3fc6c8c0024382a590a8f53ee8d41a34c24b16429f83d266238b0966714849fc",
+    "bytes": 4818,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/FINAL_PACKAGE_MANIFEST.json",
+    "expected_git_blob": "667e230fd56318c8398ff08444bbacb7ee899408",
+    "actual_git_blob": "667e230fd56318c8398ff08444bbacb7ee899408",
+    "sha256": "a64d92b291b47b69584b0721a27b127105b072aeed064c83a3977cce58b8568b",
+    "bytes": 21566,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/audit/R1_REVIEW.md",
+    "expected_git_blob": "2d1a8be5d9f0b72d79e05f55f1955a226bfd8a49",
+    "actual_git_blob": "2d1a8be5d9f0b72d79e05f55f1955a226bfd8a49",
+    "sha256": "fb1e3c5534b3ea02c8c8c4e2642f1662e06453bbc2a51d4115feb470104626d5",
+    "bytes": 19779,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/audit/R2_REVIEW.md",
+    "expected_git_blob": "dcd0825c27a2b2658cd9f802b949430103943db7",
+    "actual_git_blob": "dcd0825c27a2b2658cd9f802b949430103943db7",
+    "sha256": "9d3949bd323adbe2ac3b1c12ec624c4ba1edcf5f02866cdefd3ac6ef7b381eff",
+    "bytes": 14242,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/audit/R3_FINAL_REVIEW.md",
+    "expected_git_blob": "39bef957d3a651db3d3272712cf1298cc62c5af5",
+    "actual_git_blob": "39bef957d3a651db3d3272712cf1298cc62c5af5",
+    "sha256": "f87bd23cea22deba5218f960bbcfc87552210678fb2fa676968b8660ec8f6bba",
+    "bytes": 9582,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/evidence/arithmetic_v2.json",
+    "expected_git_blob": "a016c6c41164c7a3b7aa732bc03b333c7e722cc5",
+    "actual_git_blob": "a016c6c41164c7a3b7aa732bc03b333c7e722cc5",
+    "sha256": "9fb83b81489bfc9cd543b9e774d2c7047aff11a99db9c5b2daa62f3fd95041d6",
+    "bytes": 5898,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/evidence/recompute.py",
+    "expected_git_blob": "687cdc838df2f1bdf601c37eb89a63b239a9d18b",
+    "actual_git_blob": "687cdc838df2f1bdf601c37eb89a63b239a9d18b",
+    "sha256": "ccdb8c2006a9794376829afc7ca7f792d7c899191b4ec202644cbcfbf1807d0a",
+    "bytes": 5599,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_SUPPORT/evidence/tensor_manifest_d1024.json",
+    "expected_git_blob": "6b23581abbdc354ffe7325349a74c1eb86125963",
+    "actual_git_blob": "6b23581abbdc354ffe7325349a74c1eb86125963",
+    "sha256": "569f839f3cc557fed734d41d65311b46743fbc77e4c3e11037aaf9fcc2326b32",
+    "bytes": 43480,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/GROK_R53_SPEC_ORIGINAL.md",
+    "expected_git_blob": "b139c753bc415f2b9e14b5210b96265a6e69276b",
+    "actual_git_blob": "b139c753bc415f2b9e14b5210b96265a6e69276b",
+    "sha256": "f530aed4377a6dd5e2882620f28233f21867fd5f9f2ccd73c83bf6cad768d265",
+    "bytes": 8952,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/GROK_STAGE1.md",
+    "expected_git_blob": "bca1036dc15768ee5220fb8d426136613215ef60",
+    "actual_git_blob": "bca1036dc15768ee5220fb8d426136613215ef60",
+    "sha256": "268fa9b45ca181b4b0e41fba7f16e370b9f194be10e6b4cd9404ded8ce7f2b58",
+    "bytes": 5491,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/GROK_STAGE2.md",
+    "expected_git_blob": "1dd8f268ef4634e0738c9b278f9a7690cf682b10",
+    "actual_git_blob": "1dd8f268ef4634e0738c9b278f9a7690cf682b10",
+    "sha256": "1928e9c03ad2edbb81ca52937c60f416edc4747ec387626c3e8e88693ade0e63",
+    "bytes": 10445,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/INDEPENDENT_INTAKE.md",
+    "expected_git_blob": "690fc09d3e1fbc34653b34b1902515ad7a45f3a5",
+    "actual_git_blob": "690fc09d3e1fbc34653b34b1902515ad7a45f3a5",
+    "sha256": "bbb373ca0cbdc865d330a0a59aa7e1501c42276911c82b7af5e2621e53aebb90",
+    "bytes": 11227,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/INDEPENDENT_REAUDIT.md",
+    "expected_git_blob": "479694fc845e9a29ac85e195c53fd52ec6c0e655",
+    "actual_git_blob": "479694fc845e9a29ac85e195c53fd52ec6c0e655",
+    "sha256": "6f3bdc4d11ae92f189718a3ca77e28bdc0da17cfeec7fa252a48982f5085ccdf",
+    "bytes": 14403,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R4/00_READ_FIRST.md",
+    "expected_git_blob": "85d1677108058afd6eb7ac4e0737a22eef6adee5",
+    "actual_git_blob": "85d1677108058afd6eb7ac4e0737a22eef6adee5",
+    "sha256": "566f041a5a3348a1a95b7cc46d90b787630cd797e88b7ba8d04a0c4ec698db86",
+    "bytes": 3744,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R4/01_PROVENANCE_AND_INTEGRITY.md",
+    "expected_git_blob": "d853c92f8516950c6d8538be2c6e6d4cdc9d5876",
+    "actual_git_blob": "d853c92f8516950c6d8538be2c6e6d4cdc9d5876",
+    "sha256": "fedd042a7fdc28256a589a9bc510a996eb05d65a7d4a5c3e6eff669ce4fd5937",
+    "bytes": 2368,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R4/02_INDEPENDENT_ARITHMETIC_RECHECK.md",
+    "expected_git_blob": "56fae30b5d30fdeaa0cd5d5a76ca2b7a2509002a",
+    "actual_git_blob": "56fae30b5d30fdeaa0cd5d5a76ca2b7a2509002a",
+    "sha256": "e56c87b272428d15949c0cfe329be76cae74fa2951a7a48dd030a644d676a9be",
+    "bytes": 4062,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R4/03_D01_D10_STATUS.md",
+    "expected_git_blob": "7cef62008cb2c910192e1a08cbdea7bb7ace5d9b",
+    "actual_git_blob": "7cef62008cb2c910192e1a08cbdea7bb7ace5d9b",
+    "sha256": "f5571b798f100650aab66b14ea22d86721c11eaa152b7753550ee1afd060d318",
+    "bytes": 3278,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R4/04_X01_X12_STATUS.md",
+    "expected_git_blob": "5012fb1153f1b517637a891c293c02cb13e233e8",
+    "actual_git_blob": "5012fb1153f1b517637a891c293c02cb13e233e8",
+    "sha256": "4aad1871ae5eb5b3e4724d017c27d7d50a3fe83ce905822f9eb6151b84dda094",
+    "bytes": 2933,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R4/05_ADVERSARIAL_FINDINGS_IR01_IR08.md",
+    "expected_git_blob": "6f2f165f6ef49730316e04d5c06f920fe9232c62",
+    "actual_git_blob": "6f2f165f6ef49730316e04d5c06f920fe9232c62",
+    "sha256": "d2145f6318b5ae5db6d6e0cdb27f4cd69c8200cfc4b0db2ec96513e5c90fe2b9",
+    "bytes": 5773,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R4/06_END_TO_END_CONSISTENCY.md",
+    "expected_git_blob": "fcb37fdc5dcab0e3b62b3bb1e02c574025b68e32",
+    "actual_git_blob": "fcb37fdc5dcab0e3b62b3bb1e02c574025b68e32",
+    "sha256": "af471788890010dfcd3ae5fa5cf3ebac7350beb371515f56715335f566d66a03",
+    "bytes": 2838,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R4/07_BLOCKERS_AND_NEXT_CONTROL_POINT.md",
+    "expected_git_blob": "49702d8bbadb9f7665fb63eb9d2e33e0a352859c",
+    "actual_git_blob": "49702d8bbadb9f7665fb63eb9d2e33e0a352859c",
+    "sha256": "96c49af55510f54396a53e4c92c147a918c42e092672d6119953d17d2f2a99f5",
+    "bytes": 3347,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R4/08_DIALOGUE_CONTEXT_UPDATE.md",
+    "expected_git_blob": "1f7fefcca85026a7a80d3027c9aaffe690239fbd",
+    "actual_git_blob": "1f7fefcca85026a7a80d3027c9aaffe690239fbd",
+    "sha256": "1dcf66302a6b2c1a26dc0ffcd4963caa5bc57571ddcdf3a7416eaa6685edd302",
+    "bytes": 1715,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R51/00_START_HERE_AND_VERDICT.md",
+    "expected_git_blob": "7bcfadf21974183811dd553e3707340a8536ca69",
+    "actual_git_blob": "7bcfadf21974183811dd553e3707340a8536ca69",
+    "sha256": "aef792f7958478f5e0151e8947498c389096e4473280374b5a7062909bd0d664",
+    "bytes": 4127,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R51/01_GROK_R1_R2_EVIDENCE.md",
+    "expected_git_blob": "d03852958f61f62607a4aea95f3da548d5709251",
+    "actual_git_blob": "d03852958f61f62607a4aea95f3da548d5709251",
+    "sha256": "04ab7cb233cb1b6340ca53dcb2242ff59cb7f152f83d4f3b3a6940aee7990ada",
+    "bytes": 3675,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R51/02_W4_CORRECTION_AND_PROOF.md",
+    "expected_git_blob": "ab265d580e7ad5319592081360576469813d3d94",
+    "actual_git_blob": "ab265d580e7ad5319592081360576469813d3d94",
+    "sha256": "a6764047ace8eb5ab03bd9e92f7bb8d53feebc2f22f51b3482c03ea26f623e44",
+    "bytes": 4809,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R51/03_MEMORY_EXACT_CONTRACT_DRAFT.md",
+    "expected_git_blob": "656b5b15ab669e7ed2a5e9d4438b32c78e3ea0bf",
+    "actual_git_blob": "656b5b15ab669e7ed2a5e9d4438b32c78e3ea0bf",
+    "sha256": "0fe412ca52be5cada3c59a3e036399ba12e08826055074910a1ff067772b1e76",
+    "bytes": 7165,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R51/04_IR03_IR08_NOTES.md",
+    "expected_git_blob": "959449d834d192d37d30c992d974057a1b634229",
+    "actual_git_blob": "959449d834d192d37d30c992d974057a1b634229",
+    "sha256": "8282b00eded5f2eb23071daca61150e8631424e1e90b77ab83f98b715dc444b6",
+    "bytes": 3938,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R51/05_D_X_B_GATE_MATRIX.md",
+    "expected_git_blob": "d9dffe3d01f39371581e8bb22be8e36ed59148da",
+    "actual_git_blob": "d9dffe3d01f39371581e8bb22be8e36ed59148da",
+    "sha256": "aee21424b55a9ec5a03d36e484ca84ded0b494025aef0542af95ffcb23de9a5b",
+    "bytes": 4143,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R51/06_CRITICAL_AUDIT_AND_TESTS.md",
+    "expected_git_blob": "d8255511fc5c44f21991ae4e148ff8913c357bf7",
+    "actual_git_blob": "d8255511fc5c44f21991ae4e148ff8913c357bf7",
+    "sha256": "84a6945f97fe9f4a1ee29eb8414afb7affb64af2945bced4f4d3493c5cc7482c",
+    "bytes": 6255,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R51/07_NEXT_CHECKPOINT.md",
+    "expected_git_blob": "0464356c783b742597a0500bc0f9185b4d7c7567",
+    "actual_git_blob": "0464356c783b742597a0500bc0f9185b4d7c7567",
+    "sha256": "2fc8c562f3ceedb361a0485f3402a57a17f202ae5a1e1326359a127a205c6bc9",
+    "bytes": 3242,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R52/01_W4_ERRATUM.md",
+    "expected_git_blob": "a8f7e6f838e737c5cd2f174354dfc8a964b0f45e",
+    "actual_git_blob": "a8f7e6f838e737c5cd2f174354dfc8a964b0f45e",
+    "sha256": "f1260b8ee3346d41a2aa16463c248771277a3ade9f55e0bfb0ce64bc24b03167",
+    "bytes": 3866,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R52/02_MEMORY_CONTRACT.md",
+    "expected_git_blob": "afd93640f3831344821cec921b273ee72ff9f358",
+    "actual_git_blob": "afd93640f3831344821cec921b273ee72ff9f358",
+    "sha256": "42ec11748a2cb6cbe85cd82fac1adbb6195f0e17cd6e9a50bfdea007e4073d6f",
+    "bytes": 5946,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R52/03_WAKE_SENSOR_REQUIREMENTS.md",
+    "expected_git_blob": "09200a0c3ee37788dd06e38b9c470e98c434059f",
+    "actual_git_blob": "09200a0c3ee37788dd06e38b9c470e98c434059f",
+    "sha256": "b9d795ad76ed173937c93e2c74abe2e1cdb990d8b396be8cbdac64891fd69b99",
+    "bytes": 7173,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R52/04_POLICIES_AND_DECISIONS.md",
+    "expected_git_blob": "22b8181a9985aa4479677e560482b455863d85f4",
+    "actual_git_blob": "22b8181a9985aa4479677e560482b455863d85f4",
+    "sha256": "208f0713e0fb9e6327b504437d5f925c9fdbf595d253674b39f58d813ba94b57",
+    "bytes": 5420,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/R52/05_VERIFICATION_AND_GATE.md",
+    "expected_git_blob": "acdf44ac1f9868d83f80d2c3428874f7f0c620d4",
+    "actual_git_blob": "acdf44ac1f9868d83f80d2c3428874f7f0c620d4",
+    "sha256": "d25663258a93fc38eec71d2598d206eb72be4bffb3304e9c3f3e56f0407d1f7e",
+    "bytes": 4207,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/source-package/SOURCES/SELF_REAUDIT_EVIDENCE.json",
+    "expected_git_blob": "062106f2f8ca01363fde2b3256075c2b699f55f1",
+    "actual_git_blob": "062106f2f8ca01363fde2b3256075c2b699f55f1",
+    "sha256": "d9355fc37886b943134ce0ef15bda0eb6d471ea8a300a41b5fc3f95955b16ffc",
+    "bytes": 2763,
+    "match": true
+  },
+  {
+    "ref": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+    "path": "docs/precode/r5.3/verify_source_package.py",
+    "expected_git_blob": "41ad4644322f7277910828457cbb963f3ff42858",
+    "actual_git_blob": "41ad4644322f7277910828457cbb963f3ff42858",
+    "sha256": "f4b0faf38c70e0af75ad56cb5439aa576443cd4bc69352440c98d82cd45c7e90",
+    "bytes": 3250,
+    "match": true
+  }
+]

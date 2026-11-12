@@ -1,0 +1,2 @@
+PASS: 4 B2 parameter/MAC configurations; 198 tensor descriptor sums; 3 hard-selector ratios; masks; memory averaging.
+LIMITS: no proof of live training, F implementation, global stability, hardware, or licensing.
