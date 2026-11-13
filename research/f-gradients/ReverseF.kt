@@ -12,7 +12,7 @@ class ReverseF {
         require(name !in leaves && x.all(Double::isFinite))
         return V(x.copyOf()).also { leaves[name] = it }
     }
-    private fun node(x: DoubleArray, back: (V) -> Unit): V {
+    internal fun node(x: DoubleArray, back: (V) -> Unit): V {
         require(x.all(Double::isFinite)) { "NONFINITE_RESEARCH_FORWARD" }
         return V(x).also { y -> pullbacks.add { back(y) } }
     }
@@ -90,7 +90,8 @@ class ReverseF {
     /** Caller validates against the existing oracle before building a tape. Fixed route only. */
     fun forward(w: UnoRefWeights, f: V, metadata: V, state: V, goal: V,
                 keys: List<V>, values: List<V>, mask: BooleanArray, steps: Int,
-                alpha: Double=.5, rho: Double=.5, temperature: Double=1.0): V {
+                alpha: Double=.5, rho: Double=.5, temperature: Double=1.0,
+                observeRead: ((V,V) -> Unit)? = null): V {
         // Reuse actual contract, including bounds and memory shapes, without a parallel validator.
         UnoFReference(w).forward(UnoRefEvent(f.x,metadata.x,state.x,goal.x,
             keys.zip(values).map { UnoRefMemoryVector(it.first.x,it.second.x) }),mask,steps,alpha,rho,temperature)
@@ -100,7 +101,9 @@ class ReverseF {
         val z0=tanh(add(mat("projection",d,w.inputWidth,f),mat("us",d,d,state),
             mat("ug",d,d,goal),mat("meta",d,32,metadata),leaves.getValue("e"),leaves.getValue("bias")))
         val q=tanh(mat("wq",128,d,z0))
-        val z=tanh(add(z0,mat("wr",d,128,read(q,keys,values,temperature))))
+        val retrieved=read(q,keys,values,temperature)
+        observeRead?.invoke(q,retrieved)
+        val z=tanh(add(z0,mat("wr",d,128,retrieved)))
         var h=add(scale(state,rho),scale(z,1-rho))
         val cz=Array(2) { l -> Array<V?>(w.blocks) { j ->
             if(mask[j]) mat("branch.$l.$j.c",256,d,z) else null

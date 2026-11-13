@@ -51,7 +51,8 @@ class MemoryReplay(private val w: org.unovyra.uno.core.UnoRefWeights,
         val features=features.copyOf()
         val evidence=evidence.copyOf()
     }
-    data class Result(val tape: ReverseF, val states: List<ReverseF.V>, val memory: LearnedMemory)
+    data class Read(val query: ReverseF.V, val value: ReverseF.V, val entries: List<LearnedMemory.Entry>)
+    data class Result(val tape: ReverseF, val states: List<ReverseF.V>, val memory: LearnedMemory, val reads: List<Read>)
     fun prefix(events: List<Event>, count: Int, initial: DoubleArray, mask: BooleanArray, steps: Int): Result {
         require(count in 1..events.size && count<=32) { "REPLAY_PREFIX_BOUND" }
         val tape=ReverseF(); tape.weights(w)
@@ -60,16 +61,17 @@ class MemoryReplay(private val w: org.unovyra.uno.core.UnoRefWeights,
         val metadata=ReverseF.V(DoubleArray(32)); val goal=ReverseF.V(DoubleArray(w.d))
         var previousSequence=-1L; var previousTime=-1L
         val states=mutableListOf<ReverseF.V>()
+        val reads=mutableListOf<Read>()
         for(i in 0 until count) {
             val e=events[i]
             require(e.sequence>previousSequence && e.time>=previousTime) { "REPLAY_EVENT_ORDER" }
             val eligible=memory.read(e.sequence,e.time,e.scope,e.version,e.revoked)
             state=tape.forward(w,tape.leaf("event.$i",e.features),metadata,state,goal,
-                eligible.map { it.key },eligible.map { it.value },mask,steps)
+                eligible.map { it.key },eligible.map { it.value },mask,steps,observeRead={ q,r -> reads.add(Read(q,r,eligible)) })
             states.add(state)
             if(e.write) memory.commit(LearnedMemory.Stamp(e.sequence,e.time,e.expiry,e.scope,e.version),state,e.evidence)
             previousSequence=e.sequence; previousTime=e.time
         }
-        return Result(tape,states,memory)
+        return Result(tape,states,memory,reads)
     }
 }
