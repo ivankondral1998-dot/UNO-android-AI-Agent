@@ -1,0 +1,32 @@
+MUTATION=detachKey exit=1 expected=assertion failure
+CHECK prefix4.state3 expected=0.0 actual=0.0 tolerance=2.0E-14 error=0.0
+CHECK prefix4.wk[0] input=0.6 eps=1.0E-4 expected=-4.0930075301259805E-6 actual=0.0 tolerance=2.8186015060251964E-10 error=4.0930075301259805E-6
+Exception in thread "main" java.lang.IllegalStateException: prefix4.wk[0] input=0.6 eps=1.0E-4
+	at org.unovyra.uno.research.MemoryTestKt.near(MemoryTest.kt:64)
+	at org.unovyra.uno.research.MemoryTestKt.memoryMain(MemoryTest.kt:89)
+	at org.unovyra.uno.research.MemoryTestKt.main(MemoryTest.kt:157)
+	at org.unovyra.uno.research.MemoryTestKt.main(MemoryTest.kt)
+MUTATION=detachValue exit=1 expected=assertion failure
+CHECK prefix2.wk[16383] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wv[0] input=-0.4 eps=1.0E-4 expected=0.04380326517727795 actual=0.0 tolerance=8.762653035455591E-7 error=0.04380326517727795
+Exception in thread "main" java.lang.IllegalStateException: prefix2.wv[0] input=-0.4 eps=1.0E-4
+	at org.unovyra.uno.research.MemoryTestKt.near(MemoryTest.kt:64)
+	at org.unovyra.uno.research.MemoryTestKt.memoryMain(MemoryTest.kt:89)
+	at org.unovyra.uno.research.MemoryTestKt.main(MemoryTest.kt:157)
+	at org.unovyra.uno.research.MemoryTestKt.main(MemoryTest.kt)
+MUTATION=overwriteShared exit=1 expected=assertion failure
+CHECK prefix4.state3 expected=0.0 actual=0.0 tolerance=2.0E-14 error=0.0
+CHECK prefix4.wk[0] input=0.6 eps=1.0E-4 expected=-4.0930075301259805E-6 actual=1.5147515791316762E-7 tolerance=2.8186015060251964E-10 error=4.244482688039148E-6
+Exception in thread "main" java.lang.IllegalStateException: prefix4.wk[0] input=0.6 eps=1.0E-4
+	at org.unovyra.uno.research.MemoryTestKt.near(MemoryTest.kt:64)
+	at org.unovyra.uno.research.MemoryTestKt.memoryMain(MemoryTest.kt:89)
+	at org.unovyra.uno.research.MemoryTestKt.main(MemoryTest.kt:157)
+	at org.unovyra.uno.research.MemoryTestKt.main(MemoryTest.kt)
+MUTATION=admitCurrent exit=1 expected=assertion failure
+CHECK future.gradient.event.2 expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK eligible.futureSequence expected=0.0 actual=1.0 tolerance=0.0 error=1.0
+Exception in thread "main" java.lang.IllegalStateException: eligible.futureSequence
+	at org.unovyra.uno.research.MemoryTestKt.near(MemoryTest.kt:64)
+	at org.unovyra.uno.research.MemoryTestKt.memoryMain(MemoryTest.kt:124)
+	at org.unovyra.uno.research.MemoryTestKt.main(MemoryTest.kt:157)
+	at org.unovyra.uno.research.MemoryTestKt.main(MemoryTest.kt)
