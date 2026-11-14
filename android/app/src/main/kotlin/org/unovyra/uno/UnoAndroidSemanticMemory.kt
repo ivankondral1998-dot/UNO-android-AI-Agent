@@ -22,7 +22,11 @@ internal class UnoAndroidSemanticMemory(context: Context) {
     private val file = AtomicFile(File(context.applicationContext.filesDir, "uno_semantic_v1.aes"))
     private val keyAlias = "uno_semantic_aes_v1"
     private val boot = unoDeviceBootIdentifier(context.applicationContext)
-    private var cached: UnoSemanticMemory? = null
+    companion object {
+        // Serializes adapters from both UNO Activities in the same process.
+        // A trusted cross-process OS lock and power-loss/rollback protection remain open.
+        private val processStoreLock = Any()
+    }
 
     /**
      * An interrupted AtomicFile write may leave a newer revocation tombstone in .new
@@ -37,28 +41,25 @@ internal class UnoAndroidSemanticMemory(context: Context) {
         }
     }
 
-    @Synchronized fun retrieve(scope: String, query: DoubleArray, k: Int, scanBudget: Int): SemanticRead {
-        rejectPartialSnapshot()
-        if (!file.baseFile.isFile) {
-            return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
+    fun retrieve(scope: String, query: DoubleArray, k: Int, scanBudget: Int): SemanticRead =
+        synchronized(processStoreLock) {
+            rejectPartialSnapshot()
+            if (!file.baseFile.isFile) SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
+            else open(createKey = false).retrieve(scope, query, k, scanBudget)
         }
-        return open(createKey = false).retrieve(scope, query, k, scanBudget)
-    }
 
     /**
      * Fresh read-only adapter instances inspect a persisted revoke tombstone without
      * creating a key/vault. Unreadable .new/ciphertext fails closed, never returns false.
      */
-    @Synchronized fun isScopeRevoked(scope: String): Boolean {
+    fun isScopeRevoked(scope: String): Boolean = synchronized(processStoreLock) {
         require(scope.isNotBlank())
         rejectPartialSnapshot()
-        if (!file.baseFile.isFile) {
-            return false
-        }
-        return open(createKey = false).isScopeRevoked(scope)
+        if (!file.baseFile.isFile) false
+        else open(createKey = false).isScopeRevoked(scope)
     }
 
-    @Synchronized fun link(entry: ExactEntry, vector: DoubleArray) {
+    fun link(entry: ExactEntry, vector: DoubleArray) = synchronized(processStoreLock) {
         open(createKey = true).link(entry, vector)
     }
 
@@ -67,23 +68,22 @@ internal class UnoAndroidSemanticMemory(context: Context) {
      * if there was no index. If one exists, persist semantic tombstone before exact revoke.
      * Never repair or delete a corrupt existing file.
      */
-    @Synchronized fun dropScopeIfPresent(scope: String): Boolean {
+    fun dropScopeIfPresent(scope: String): Boolean = synchronized(processStoreLock) {
         require(scope.isNotBlank())
         rejectPartialSnapshot()
-        if (!file.baseFile.isFile) {
-            return false
+        if (!file.baseFile.isFile) false
+        else {
+            open(createKey = false).dropScope(scope)
+            true
         }
-        open(createKey = false).dropScope(scope)
-        return true
     }
 
-    @Synchronized fun dropScope(scope: String) {
+    fun dropScope(scope: String) = synchronized(processStoreLock) {
         open(createKey = true).dropScope(scope)
     }
 
-    @Synchronized private fun open(createKey: Boolean): UnoSemanticMemory {
-        rejectPartialSnapshot() // also applies when an adapter object has a cached snapshot
-        cached?.let { return it }
+    private fun open(createKey: Boolean): UnoSemanticMemory {
+        rejectPartialSnapshot() // No cached index: reload current committed tombstones on every call.
         val keystore = KeyStore.getInstance("AndroidKeyStore").apply { load(null) }
         val existing = keystore.getKey(keyAlias, null)
         check(existing == null || existing is SecretKey) { "SEMANTIC_KEY_TYPE_UNSUPPORTED" }
@@ -91,7 +91,7 @@ internal class UnoAndroidSemanticMemory(context: Context) {
         if (base.isFile && existing !is SecretKey) error("SEMANTIC_KEY_MISSING")
         val key = (existing as? SecretKey) ?: if (createKey) generateKey()
         else error("SEMANTIC_KEY_MISSING")
-        val opened = UnoSemanticMemory(
+        return UnoSemanticMemory(
             key, boot,
             load = {
                 if (!base.isFile) null
@@ -118,8 +118,6 @@ internal class UnoAndroidSemanticMemory(context: Context) {
                 }
             }
         )
-        cached = opened
-        return opened
     }
 
     private fun generateKey(): SecretKey {
