@@ -1,0 +1,10 @@
+info: kotlinc-jvm 2.2.21 (JRE 21.0.13+9-1-deb13u2-Debian)
+openjdk version "21.0.13" 2026-10-20
+OpenJDK Runtime Environment (build 21.0.13+9-1-deb13u2-Debian)
+OpenJDK 64-Bit Server VM (build 21.0.13+9-1-deb13u2-Debian, mixed mode, sharing)
+CHECK mse.value expected=0.16 actual=0.0 tol=1.0E-11 error=0.16
+Exception in thread "main" java.lang.IllegalStateException: mse.value
+	at org.unovyra.uno.research.TrainTestKt.checkNear(TrainTest.kt:7)
+	at org.unovyra.uno.research.TrainTestKt.checkNear$default(TrainTest.kt:5)
+	at org.unovyra.uno.research.TrainTestKt.main(TrainTest.kt:12)
+	at org.unovyra.uno.research.TrainTestKt.main(TrainTest.kt)

@@ -1,0 +1,91 @@
+SOURCE-REPORTED COPY. Not a new calculation and not an owner approval.
+Provenance: https://app.notion.com/p/40e26acc8e10816ea777f86a7df2cf4e
+Notion page last edited: 2026-11-04T22:15:12Z. Fetched by Grok on 2026-11-05.
+Статус страницы: расчётный кандидат, не утверждён владельцем.
+OWNER_APPROVED_PRECODE=FALSE. PRODUCTION_CODE_AUTHORIZED=FALSE.
+Арифметика N_Theta и ручной шаг P1 уже гонялись скриптами
+research/uno-lab-001/grok_lab001_checks.py и research/uno-lab-001/claude_lab001_checks.py.
+Этот файл нужен, чтобы следующий модель читала расчёт GPT без Notion.
+E1 остаётся OWNER_DECISION и REQUIRES_DATA. Обучение весов отсюда не начинается.
+
+Версия UNO-G4-LEARN-001 (2026-11-05). Статус: расчётный кандидат, не утверждён владельцем. Production-код и обучение весов не разрешены.
+
+## 1. Механизм: один организм, два масштаба обучения
+
+Первоначальное обучение: собственные общие веса Θ на лицензионных данных, один общий оператор F, совместные текст/аудио/экран/цели/действия/память. Функции потерь Astra L3a/L4/L5 описаны, но реальные новые веса ещё не обучены.
+
+На A52, по имеющемуся контракту R5.3: память M с точным RetrieveExact, независимый журнал подтверждений L, ограниченное изменение P только при fresh verified endpoint. Память не равна навыку; права Android остаются за доверенной границей.
+
+Глубокое обучение E1 — новая гипотеза, не часть текущего R5.3 runtime: контролируемо изменять ограниченный срез коэффициентов внутри того же F после проверки сохранения старых задач. В ASTRA_01 Θ сейчас неизменна в runtime, поэтому E1 нельзя внедрять без отдельного решения владельца и новой редакции контракта.
+
+## 2. Выведенные ресурсы UNO-B2
+
+Константы V=32768, m=128, χ=4, J=2, b=64, H=902.
+
+N_Θ(d) = V*d + 951*d + 2*d^2 + 4*m*d + J*(2*χ*d^2 + χ*b*d + (χ+1)*d) + H*(d+1) + V + (d/b)*(2*d+5) + 33
+
+N_free = N_Θ - 318*(d+1)
+C_F = J*(2*χ*d^2 + χ*b*d)
+N_P,active = 21*d
+
+Метрика                         d=512         d=1024
+Θ allocated                     23 015 887    55 451 639
+Θ free                          22 852 753    55 125 689
+FP16 веса                       43,90 МиБ     105,77 МиБ
+mixed INT8 ABI                  22,27 МиБ     53,29 МиБ
+MAC одного полного F            4 456 448     17 301 504
+MAC восьми полных F             35 651 584    138 412 032
+Обновляемые параметры P         10 752        21 504
+FP32 активная P                 42 КиБ        84 КиБ
+
+Числа пересчитаны независимо из ASTRA_02 W2 и сопоставлены с таблицей оригинала. Полный текстовый event при d=1024, K8 из ASTRA_05 = 175 448 160 MAC/event: только F недооценивает реальную задачу. Реальные p95, peak PSS, energy, thermal, качество A52 — REQUIRES_DATA.
+
+Сценарий условного обучения 1 000 000 текстовых событий по full-K8: 175 448 160 000 000 MAC на forward и около 1 052 688 960 000 000 условных FLOP на forward+backward по приближению 6×MAC из ASTRA_03. Это не выбор размера обучающего корпуса и не обещание интеллекта; DSP, optimizer, данные и оценка дополнительно.
+
+## 3. Точный шаг изменения P: ASTRA_04 P1
+
+Только endpoint a=3…23 при независимо подтверждённой бинарной метке y и frozen h, l0:
+
+q = σ(l0 + p·h)
+d_h = ε + ||h||_2^2
+p' = Π_{||p||_2 ≤ 1}[ p - η * ((q-y)*h/d_h + λ*p) ]
+
+Предкодовые defaults: ε=1, λ=0.001, η=0.01. Ручной пример h=1, l0=0, p=0, y=1: q0=0.5, dh=2, градиент −0.25, p'=0.0025, q1=0.5006249997. Нормализованный BCE+regularizer уменьшается 0.3465735903 → 0.3459489840. Это изменение предсказания на одном примере, НЕ обучение языковому понятию, НЕ глобальная успешность.
+
+Дубликат receipt и UNKNOWN не дают второго градиента. P1/P2 доказывают локальный спад при fixed feature, а не отсутствие забывания.
+
+## 4. Дополнительная гипотеза E1
+
+Для одной матрицы W размера d×d внутри общего F:
+
+W_candidate = W0 + U V^T,  U,V ∈ R^{d×r},  N_E1 = 2*d*r
+
+Условная иллюстрация d=1024, r=8: 16 384 FP32 коэффициента = 64 КиБ; master+gradient+Adam moments по 16 B/parameter = 256 КиБ без activation, memory replay, staging. Это не утверждённый rank, не второй мозг и не гарантия качества.
+
+Альтернативы владельцу: E1-A — на телефоне только P/M, обновление основного Θ в отдельной разрешённой офлайн-среде; E1-B — ограниченные локальные обновления общего F на A52 при RAM/energy/thermal admission. Изменение F должно проходить проекцию на norm bounds, regression gate, версионную миграцию памяти и P reset при смене features. Оба варианта REQUIRES_DATA / OWNER_DECISION.
+
+## 5. От забывания нужен независимый gate
+
+Контрпример: одинаковый h, противоречащие y1=1 и y2=0. Улучшение первого BCE может ухудшить второй. Поэтому:
+
+Accept(Θ') ⇒ для всех i из R_old: ΔL_i ≤ δ_i, и HardFixturesUnchanged=TRUE
+
+Protected replay — для отбора кандидатов, отдельный locked holdout — для оценки. Тесты: old/new/conflicting/UNKNOWN/delayed/device-state; P=0 vs P on, memory off/on, replay off/on, E1 off/on; новые формулировки и аргументы, не встречавшиеся в памяти. Сравнивать с frozen-Θ и табличным baseline. Пороги пока не установлены владельцем.
+
+## 6. Контракт будущего внедрения после отдельных G4 и G5
+
+1. Владелец решает O01–O08, включая learning-scope и quality/coverage/risk floors.
+2. Лицензионный data manifest, train/dev/cal/test, независимые endpoint oracles.
+3. Начальное обучение новых Θ; официальный export ABI и проверка quant norms.
+4. Один local neural worker; внешний Android controller для owner consent, permissions, STOP, tickets и независимого readback.
+5. Транзакционная P1 коррекция только на свежих verified событиях, без повторения после crash/UNKNOWN.
+6. E1 — только экспериментальная ветка и после допуска; acceptance → staged model switch → P reset/memory re-encode/rollback.
+7. Реальные A52 измерения: peak PSS, p95, thermal, idle, joules/verified success, crash/reboot/offline SAF/STOP.
+
+Важное ограничение: файл FP16 105,77 МиБ при d1024 НЕ равен peak RAM. ASTRA_05 оценивает веса+состояние+fixed workspace около 133,76 МиБ до payload, capture, backend, driver, snapshots.
+
+## 7. Задание независимым аудиторам
+
+Grok, Claude, Astra: проверить арифметику и границы P1/P2, определить достаточность или недостаточность E1 для новых представлений, дать строгий counterexample или feasible design, оценить безопасность и затраты A52, предложить лучшее решение без второго интеллекта. Для каждого claim: конкретный раздел первоисточника и статус PROVEN_LOCAL / CONDITIONAL / SPECIFIED_UNTESTED / REQUIRES_DATA / OWNER_DECISION / FAIL. Не подменять первоисточник пересказом.
+
+Источники: приватный GitHub UNO ветка docs/uno-r53-agent-handoff-20261102; ASTRA_CURRENT/ASTRA_01…05, R52/02, R52/04, NORMATIVE/01…06, AGENT_PHASE_GATE.json. OWNER_APPROVED_PRECODE=FALSE; PRODUCTION_CODE_AUTHORIZED=FALSE. Код, репозиторий, веса не изменены.

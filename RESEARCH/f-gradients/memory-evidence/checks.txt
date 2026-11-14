@@ -1,0 +1,362 @@
+info: kotlinc-jvm 2.2.21 (JRE 21.0.13+9-1-deb13u2-Debian)
+openjdk version "21.0.13" 2026-10-20
+OpenJDK Runtime Environment (build 21.0.13+9-1-deb13u2-Debian)
+OpenJDK 64-Bit Server VM (build 21.0.13+9-1-deb13u2-Debian, mixed mode, sharing)
+WkWv smooth Double; no training. All inputs: sparse inputs()/core()/events() in MemoryTest.kt; seed[0]=.7 seed[1]=-.4 others0; K3 mask[true,false]
+CHECK prefix1.state0 expected=0.0 actual=0.0 tolerance=2.0E-14 error=0.0
+CHECK prefix1.wk[0] input=0.6 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wk[0] input=0.6 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wk[1] input=-0.2 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wk[1] input=-0.2 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wk[128] input=0.1 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wk[128] input=0.1 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wk[129] input=0.5 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wk[129] input=0.5 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wk[256] input=-0.3 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wk[256] input=-0.3 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wk[257] input=0.4 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wk[257] input=0.4 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wk[16383] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wk[16383] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wv[0] input=-0.4 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wv[0] input=-0.4 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wv[1] input=0.2 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wv[1] input=0.2 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wv[128] input=0.3 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wv[128] input=0.3 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wv[129] input=0.6 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wv[129] input=0.6 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wv[256] input=0.3 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wv[256] input=0.3 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wv[257] input=-0.2 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wv[257] input=-0.2 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wv[16383] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wv[16383] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.projection[0] input=0.7 eps=1.0E-4 expected=0.08007795443285004 actual=0.080077954181727 tolerance=1.601759088657001E-6 error=2.511230390300767E-10
+CHECK prefix1.projection[0] input=0.7 eps=3.0E-5 expected=0.08007795420372776 actual=0.080077954181727 tolerance=1.6017590840745555E-6 error=2.200076232306003E-11
+CHECK prefix1.projection[1] input=-0.2 eps=1.0E-4 expected=-0.057198538793018505 actual=-0.05719853870123357 tolerance=1.1441707758603703E-6 error=9.178493382000497E-11
+CHECK prefix1.projection[1] input=-0.2 eps=3.0E-5 expected=-0.057198538709613 actual=-0.05719853870123357 tolerance=1.14417077419226E-6 error=8.37942909504008E-12
+CHECK prefix1.projection[2] input=0.1 eps=1.0E-4 expected=-0.06332686857096759 actual=-0.06332686866492565 tolerance=1.2667373714193518E-6 error=9.395806355172454E-11
+CHECK prefix1.projection[2] input=0.1 eps=3.0E-5 expected=-0.06332686865682484 actual=-0.06332686866492565 tolerance=1.2667373731364968E-6 error=8.100811688116494E-12
+CHECK prefix1.projection[3] input=0.6 eps=1.0E-4 expected=0.045233477583561665 actual=0.04523347761780404 tolerance=9.048695516712334E-7 error=3.424237282612097E-11
+CHECK prefix1.projection[3] input=0.6 eps=3.0E-5 expected=0.045233477614925466 actual=0.04523347761780404 tolerance=9.048695522985094E-7 error=2.878572380460298E-12
+CHECK prefix1.projection[255] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.projection[255] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.initial[0] input=0.2 eps=1.0E-4 expected=0.1027501949799059 actual=0.10275019495413089 tolerance=2.055203899598118E-6 error=2.5775007128636673E-11
+CHECK prefix1.initial[0] input=0.2 eps=3.0E-5 expected=0.10275019495659121 actual=0.10275019495413089 tolerance=2.0552038991318243E-6 error=2.460323611508386E-12
+CHECK prefix1.initial[1] input=-0.3 eps=1.0E-4 expected=-0.05271687306865336 actual=-0.05271687307285787 tolerance=1.0545374613730673E-6 error=4.2045117387701225E-12
+CHECK prefix1.initial[1] input=-0.3 eps=3.0E-5 expected=-0.05271687307240036 actual=-0.05271687307285787 tolerance=1.0545374614480072E-6 error=4.575090306602192E-13
+CHECK prefix1.initial[127] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.initial[127] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.event.0[0] input=0.7 eps=1.0E-4 expected=0.07103125890944861 actual=0.07103125865816619 tolerance=1.4208251781889725E-6 error=2.5128242542304946E-10
+CHECK prefix1.event.0[0] input=0.7 eps=3.0E-5 expected=0.07103125868046511 actual=0.07103125865816619 tolerance=1.4208251736093025E-6 error=2.2298926594110924E-11
+CHECK prefix1.event.0[1] input=-0.5 eps=1.0E-4 expected=-0.07715958856860383 actual=-0.07715958862185827 tolerance=1.5433917713720768E-6 error=5.3254442522465695E-11
+CHECK prefix1.event.0[1] input=-0.5 eps=3.0E-5 expected=-0.0771595886174999 actual=-0.07715958862185827 tolerance=1.5433917723499982E-6 error=4.358374772195361E-12
+CHECK prefix1.event.1[0] input=-0.4 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.event.1[0] input=-0.4 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.event.1[1] input=0.8 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.event.1[1] input=0.8 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.event.2[0] input=0.6 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.event.2[0] input=0.6 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.event.2[1] input=0.3 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.event.2[1] input=0.3 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.event.3[0] input=-0.2 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.event.3[0] input=-0.2 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.event.3[1] input=0.5 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.event.3[1] input=0.5 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wk.direction expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.wv.direction expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix1.projection.direction expected=6.563707022344545E-5 actual=6.563707022505028E-5 tolerance=2.0E-10 error=1.6048360557130437E-15
+CHECK replay.prefix1.projection.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.us.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.ug.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.meta.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.e.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.bias.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.wq.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.wr.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.0.0.a.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.0.0.c.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.0.0.b.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.0.0.ab.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.0.0.bb.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.0.1.a.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.0.1.c.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.0.1.b.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.0.1.ab.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.0.1.bb.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.1.0.a.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.1.0.c.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.1.0.b.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.1.0.ab.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.1.0.bb.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.1.1.a.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.1.1.c.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.1.1.b.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.1.1.ab.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.branch.1.1.bb.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.wk.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.wv.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.initial.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix1.event.0.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK prefix2.state0 expected=0.0 actual=0.0 tolerance=2.0E-14 error=0.0
+CHECK prefix2.state1 expected=0.0 actual=0.0 tolerance=2.0E-14 error=0.0
+CHECK prefix2.wk[0] input=0.6 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wk[0] input=0.6 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wk[1] input=-0.2 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wk[1] input=-0.2 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wk[128] input=0.1 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wk[128] input=0.1 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wk[129] input=0.5 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wk[129] input=0.5 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wk[256] input=-0.3 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wk[256] input=-0.3 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wk[257] input=0.4 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wk[257] input=0.4 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wk[16383] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wk[16383] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wv[0] input=-0.4 eps=1.0E-4 expected=0.04380326517727795 actual=0.04380326518753955 tolerance=8.762653035455591E-7 error=1.0261597127581013E-11
+CHECK prefix2.wv[0] input=-0.4 eps=3.0E-5 expected=0.04380326518680736 actual=0.04380326518753955 tolerance=8.762653037361473E-7 error=7.321851458463868E-13
+CHECK prefix2.wv[1] input=0.2 eps=1.0E-4 expected=-0.020537635783274277 actual=-0.02053763578431758 tolerance=4.109527156654856E-7 error=1.0433043318158752E-12
+CHECK prefix2.wv[1] input=0.2 eps=3.0E-5 expected=-0.020537635784615798 actual=-0.02053763578431758 tolerance=4.10952715692316E-7 error=2.982163127551729E-13
+CHECK prefix2.wv[128] input=0.3 eps=1.0E-4 expected=-0.011618636165250384 actual=-0.01161863616744821 tolerance=2.325727233050077E-7 error=2.1978252551235755E-12
+CHECK prefix2.wv[128] input=0.3 eps=3.0E-5 expected=-0.011618636167285793 actual=-0.01161863616744821 tolerance=2.3257272334571586E-7 error=1.6241695488528052E-13
+CHECK prefix2.wv[129] input=0.6 eps=1.0E-4 expected=0.00544752353247302 actual=0.005447523532684716 tolerance=1.091504706494604E-7 error=2.1169611202909167E-13
+CHECK prefix2.wv[129] input=0.6 eps=3.0E-5 expected=0.005447523532958742 actual=0.005447523532684716 tolerance=1.0915047065917486E-7 error=2.740264612444143E-13
+CHECK prefix2.wv[256] input=0.3 eps=1.0E-4 expected=0.0050947363875591956 actual=0.00509473638703818 tolerance=1.0209472775118392E-7 error=5.210155223922541E-13
+CHECK prefix2.wv[256] input=0.3 eps=3.0E-5 expected=0.0050947363876285845 actual=0.00509473638703818 tolerance=1.020947277525717E-7 error=5.904044614313264E-13
+CHECK prefix2.wv[257] input=-0.2 eps=1.0E-4 expected=-0.0023887223906532418 actual=-0.0023887223905825353 tolerance=4.797444781306484E-8 error=7.070646151907667E-14
+CHECK prefix2.wv[257] input=-0.2 eps=3.0E-5 expected=-0.0023887223907226307 actual=-0.0023887223905825353 tolerance=4.797444781445262E-8 error=1.4009540055814895E-13
+CHECK prefix2.wv[16383] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wv[16383] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.projection[0] input=0.7 eps=1.0E-4 expected=-0.0837533989644923 actual=-0.08375339903487815 tolerance=1.675267979289846E-6 error=7.038584992624664E-11
+CHECK prefix2.projection[0] input=0.7 eps=3.0E-5 expected=-0.08375339902860768 actual=-0.08375339903487815 tolerance=1.6752679805721538E-6 error=6.270470254143845E-12
+CHECK prefix2.projection[1] input=-0.2 eps=1.0E-4 expected=0.1750371940890949 actual=0.17503719441141805 tolerance=3.5009438817818983E-6 error=3.2232314040037124E-10
+CHECK prefix2.projection[1] input=-0.2 eps=3.0E-5 expected=0.17503719438247134 actual=0.17503719441141805 tolerance=3.5009438876494272E-6 error=2.8946706143173628E-11
+CHECK prefix2.projection[2] input=0.1 eps=1.0E-4 expected=0.023009543932347998 actual=0.02300954393164341 tolerance=4.6039087864696E-7 error=7.045891647905478E-13
+CHECK prefix2.projection[2] input=0.1 eps=3.0E-5 expected=0.023009543931538458 actual=0.02300954393164341 tolerance=4.603908786307692E-7 error=1.0495077029659683E-13
+CHECK prefix2.projection[3] input=0.6 eps=1.0E-4 expected=-0.0553952438751143 actual=-0.05539524387574982 tolerance=1.1081048775022861E-6 error=6.355194148710552E-13
+CHECK prefix2.projection[3] input=0.6 eps=3.0E-5 expected=-0.05539524387509116 actual=-0.05539524387574982 tolerance=1.1081048775018234E-6 error=6.586536871466819E-13
+CHECK prefix2.projection[255] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.projection[255] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.initial[0] input=0.2 eps=1.0E-4 expected=0.007515243394748405 actual=0.007515243393708606 tolerance=1.505048678949681E-7 error=1.039799323032664E-12
+CHECK prefix2.initial[0] input=0.2 eps=3.0E-5 expected=0.007515243394031386 actual=0.007515243393708606 tolerance=1.5050486788062773E-7 error=3.227799971750045E-13
+CHECK prefix2.initial[1] input=-0.3 eps=1.0E-4 expected=-0.006070744899347447 actual=-0.006070744900205583 tolerance=1.2161489798694894E-7 error=8.581364785431589E-13
+CHECK prefix2.initial[1] input=-0.3 eps=3.0E-5 expected=-0.006070744899833169 actual=-0.006070744900205583 tolerance=1.2161489799666337E-7 error=3.724139052696529E-13
+CHECK prefix2.initial[127] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.initial[127] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.event.0[0] input=0.7 eps=1.0E-4 expected=0.004815179835970795 actual=0.004815179819907679 tolerance=9.650359671941591E-8 error=1.6063116115017095E-11
+CHECK prefix2.event.0[0] input=0.7 eps=3.0E-5 expected=0.004815179821769193 actual=0.004815179819907679 tolerance=9.650359643538386E-8 error=1.861513547474214E-12
+CHECK prefix2.event.0[1] input=-0.5 eps=1.0E-4 expected=-0.007924192075639547 actual=-0.007924192084233493 tolerance=1.5868384151279094E-7 error=8.593946734802849E-12
+CHECK prefix2.event.0[1] input=-0.5 eps=3.0E-5 expected=-0.007924192083758053 actual=-0.007924192084233493 tolerance=1.5868384167516104E-7 error=4.754408672313915E-13
+CHECK prefix2.event.1[0] input=-0.4 eps=1.0E-4 expected=0.14924262680800215 actual=0.14924262701296434 tolerance=2.9850525361600433E-6 error=2.0496218611221195E-10
+CHECK prefix2.event.1[0] input=-0.4 eps=3.0E-5 expected=0.14924262699463528 actual=0.14924262701296434 tolerance=2.9850525398927057E-6 error=1.8329060491595328E-11
+CHECK prefix2.event.1[1] input=0.8 eps=1.0E-4 expected=-0.0902583515614841 actual=-0.0902583515623128 tolerance=1.8053670312296821E-6 error=8.286982211558325E-13
+CHECK prefix2.event.1[1] input=0.8 eps=3.0E-5 expected=-0.09025835156287187 actual=-0.0902583515623128 tolerance=1.8053670312574377E-6 error=5.590805596256132E-13
+CHECK prefix2.event.2[0] input=0.6 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.event.2[0] input=0.6 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.event.2[1] input=0.3 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.event.2[1] input=0.3 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.event.3[0] input=-0.2 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.event.3[0] input=-0.2 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.event.3[1] input=0.5 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.event.3[1] input=0.5 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wk.direction expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix2.wv.direction expected=-2.747481967629861E-4 actual=-2.747481968612198E-4 tolerance=2.0E-10 error=9.823370415718014E-14
+CHECK prefix2.projection.direction expected=-0.004573393624779376 actual=-0.004573393624848164 tolerance=2.0E-10 error=6.878785735464632E-14
+CHECK replay.prefix2.projection.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.us.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.ug.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.meta.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.e.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.bias.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.wq.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.wr.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.0.0.a.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.0.0.c.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.0.0.b.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.0.0.ab.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.0.0.bb.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.0.1.a.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.0.1.c.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.0.1.b.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.0.1.ab.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.0.1.bb.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.1.0.a.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.1.0.c.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.1.0.b.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.1.0.ab.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.1.0.bb.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.1.1.a.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.1.1.c.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.1.1.b.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.1.1.ab.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.branch.1.1.bb.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.wk.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.wv.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.initial.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.event.0.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix2.event.1.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK singleton.Wk.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK prefix4.state0 expected=0.0 actual=0.0 tolerance=2.0E-14 error=0.0
+CHECK prefix4.state1 expected=0.0 actual=0.0 tolerance=2.0E-14 error=0.0
+CHECK prefix4.state2 expected=0.0 actual=0.0 tolerance=2.0E-14 error=0.0
+CHECK prefix4.state3 expected=0.0 actual=0.0 tolerance=2.0E-14 error=0.0
+CHECK prefix4.wk[0] input=0.6 eps=1.0E-4 expected=-4.0930075301259805E-6 actual=-4.093007393026274E-6 tolerance=2.8186015060251964E-10 error=1.370997067568912E-13
+CHECK prefix4.wk[0] input=0.6 eps=3.0E-5 expected=-4.09300683623659E-6 actual=-4.093007393026274E-6 tolerance=2.8186013672473184E-10 error=5.567896836338316E-13
+CHECK prefix4.wk[1] input=-0.2 eps=1.0E-4 expected=1.370011395995796E-7 actual=1.3700109186801772E-7 tolerance=2.027400227919916E-10 error=4.7731561880607655E-14
+CHECK prefix4.wk[1] input=-0.2 eps=3.0E-5 expected=1.3700105864581738E-7 actual=1.3700109186801772E-7 tolerance=2.0274002117291636E-10 error=3.32222003404666E-14
+CHECK prefix4.wk[128] input=0.1 eps=1.0E-4 expected=-4.5433326545385455E-6 actual=-4.543332772976151E-6 tolerance=2.908666530907709E-10 error=1.1843760581244133E-13
+CHECK prefix4.wk[128] input=0.1 eps=3.0E-5 expected=-4.543332492631021E-6 actual=-4.543332772976151E-6 tolerance=2.908666498526204E-10 error=2.8034513051928764E-13
+CHECK prefix4.wk[129] input=0.5 eps=1.0E-4 expected=6.6114220695356885E-6 actual=6.6114220174091725E-6 tolerance=3.322284413907138E-10 error=5.212651599424689E-14
+CHECK prefix4.wk[129] input=0.5 eps=3.0E-5 expected=6.6114217110261695E-6 actual=6.6114220174091725E-6 tolerance=3.322284342205234E-10 error=3.0638300293898187E-13
+CHECK prefix4.wk[256] input=-0.3 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix4.wk[256] input=-0.3 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix4.wk[257] input=0.4 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix4.wk[257] input=0.4 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix4.wk[16383] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix4.wk[16383] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+SIGNAL wk max=6.6114220174091725E-6 required>1e-7
+CHECK prefix4.wv[0] input=-0.4 eps=1.0E-4 expected=0.04524477311314279 actual=0.045244773115604715 tolerance=9.050954622628559E-7 error=2.4619264960001885E-12
+CHECK prefix4.wv[0] input=-0.4 eps=3.0E-5 expected=0.04524477311545575 actual=0.045244773115604715 tolerance=9.050954623091151E-7 error=1.4896417432908038E-13
+CHECK prefix4.wv[1] input=0.2 eps=1.0E-4 expected=-0.002834653810360188 actual=-0.002834653810583565 tolerance=5.689307620720377E-8 error=2.233768725545815E-13
+CHECK prefix4.wv[1] input=0.2 eps=3.0E-5 expected=-0.0028346538105220955 actual=-0.002834653810583565 tolerance=5.689307621044192E-8 error=6.146949269036917E-14
+CHECK prefix4.wv[128] input=0.3 eps=1.0E-4 expected=-0.011760697593878044 actual=-0.011760697595711253 tolerance=2.354139518775609E-7 error=1.8332089318784384E-12
+CHECK prefix4.wv[128] input=0.3 eps=3.0E-5 expected=-0.011760697595531814 actual=-0.011760697595711253 tolerance=2.3541395191063628E-7 error=1.7943979635504093E-13
+CHECK prefix4.wv[129] input=0.6 eps=1.0E-4 expected=7.771890809041282E-4 actual=7.77189080545432E-4 tolerance=1.5743781618082564E-8 error=3.586961457024973E-13
+CHECK prefix4.wv[129] input=0.6 eps=3.0E-5 expected=7.771890804531001E-4 actual=7.77189080545432E-4 tolerance=1.5743781609062E-8 error=9.233195805147254E-14
+CHECK prefix4.wv[256] input=0.3 eps=1.0E-4 expected=0.005401240592492473 actual=0.005401240592110589 tolerance=1.0822481184984947E-7 error=3.818846280867483E-13
+CHECK prefix4.wv[256] input=0.3 eps=3.0E-5 expected=0.005401240592515603 actual=0.005401240592110589 tolerance=1.0822481185031207E-7 error=4.0501456355368504E-13
+CHECK prefix4.wv[257] input=-0.2 eps=1.0E-4 expected=-2.2902520113027292E-4 actual=-2.2902520112228278E-4 tolerance=4.780504022605459E-9 error=7.990136330349173E-15
+CHECK prefix4.wv[257] input=-0.2 eps=3.0E-5 expected=-2.2902520111870808E-4 actual=-2.2902520112228278E-4 tolerance=4.7805040223741625E-9 error=3.5746958778476445E-15
+CHECK prefix4.wv[16383] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix4.wv[16383] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+SIGNAL wv max=0.045244773115604715 required>1e-7
+CHECK prefix4.projection[0] input=0.7 eps=1.0E-4 expected=-0.04595625076760784 actual=-0.045956250769519376 tolerance=9.19325015352157E-7 error=1.911533431542267E-12
+CHECK prefix4.projection[0] input=0.7 eps=3.0E-5 expected=-0.045956250768868404 actual=-0.045956250769519376 tolerance=9.193250153773681E-7 error=6.509723315950566E-13
+CHECK prefix4.projection[1] input=-0.2 eps=1.0E-4 expected=0.1510995918030042 actual=0.15109959213835852 tolerance=3.0221918360600844E-6 error=3.353543276407578E-10
+CHECK prefix4.projection[1] input=-0.2 eps=3.0E-5 expected=0.15109959210791077 actual=0.15109959213835852 tolerance=3.0221918421582155E-6 error=3.0447755428042456E-11
+CHECK prefix4.projection[2] input=0.1 eps=1.0E-4 expected=0.01138740627942142 actual=0.011387406269084717 tolerance=2.279481255884284E-7 error=1.0336701980473428E-11
+CHECK prefix4.projection[2] input=0.1 eps=3.0E-5 expected=0.011387406269787922 actual=0.011387406269084717 tolerance=2.2794812539575844E-7 error=7.032048554567183E-13
+CHECK prefix4.projection[3] input=0.6 eps=1.0E-4 expected=-0.04880572468342337 actual=-0.048805724711953956 tolerance=9.763144936684674E-7 error=2.8530587614650216E-11
+CHECK prefix4.projection[3] input=0.6 eps=3.0E-5 expected=-0.0488057247091204 actual=-0.048805724711953956 tolerance=9.76314494182408E-7 error=2.833552836811748E-12
+CHECK prefix4.projection[255] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix4.projection[255] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix4.initial[0] input=0.2 eps=1.0E-4 expected=-0.007854859550224247 actual=-0.007854859548292578 tolerance=1.5729719100448495E-7 error=1.93166836692793E-12
+CHECK prefix4.initial[0] input=0.2 eps=3.0E-5 expected=-0.007854859548558912 actual=-0.007854859548292578 tolerance=1.5729719097117824E-7 error=2.6633382999019517E-13
+CHECK prefix4.initial[1] input=-0.3 eps=1.0E-4 expected=1.842897333695359E-4 actual=1.8428973321711232E-4 tolerance=3.885794667390719E-9 error=1.524235924109385E-13
+CHECK prefix4.initial[1] input=-0.3 eps=3.0E-5 expected=1.8428973335797108E-4 actual=1.8428973321711232E-4 tolerance=3.885794667159422E-9 error=1.4085876020274168E-13
+CHECK prefix4.initial[127] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix4.initial[127] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tolerance=2.0E-10 error=0.0
+CHECK prefix4.event.0[0] input=0.7 eps=1.0E-4 expected=-0.006090027649535701 actual=-0.006090027629888861 tolerance=1.22000552990714E-7 error=1.9646839710674158E-11
+CHECK prefix4.event.0[0] input=0.7 eps=3.0E-5 expected=-0.006090027631494577 actual=-0.006090027629888861 tolerance=1.2200055262989152E-7 error=1.605715560515364E-12
+CHECK prefix4.event.0[1] input=-0.5 eps=1.0E-4 expected=0.0019387986162008874 actual=0.0019387986156613665 tolerance=3.897597232401775E-8 error=5.395209019126712E-13
+CHECK prefix4.event.0[1] input=-0.5 eps=3.0E-5 expected=0.0019387986159811557 actual=0.0019387986156613665 tolerance=3.897597231962312E-8 error=3.19789117061986E-13
+CHECK prefix4.event.1[0] input=-0.4 eps=1.0E-4 expected=0.0028898009205372 actual=0.002889800925313231 tolerance=5.799601841074401E-8 error=4.7760311330802274E-12
+CHECK prefix4.event.1[0] input=-0.4 eps=3.0E-5 expected=0.002889800924712101 actual=0.002889800925313231 tolerance=5.799601849424202E-8 error=6.01130256683291E-13
+CHECK prefix4.event.1[1] input=0.8 eps=1.0E-4 expected=-0.0016411293630308466 actual=-0.0016411293628747056 tolerance=3.302258726061694E-8 error=1.5614094218963093E-13
+CHECK prefix4.event.1[1] input=0.8 eps=3.0E-5 expected=-0.0016411293628458092 actual=-0.0016411293628747056 tolerance=3.302258725691619E-8 error=2.889637314151816E-14
+CHECK prefix4.event.2[0] input=0.6 eps=1.0E-4 expected=0.01750169416340347 actual=0.017501694149273085 tolerance=3.5023388326806945E-7 error=1.4130384362598392E-11
+CHECK prefix4.event.2[0] input=0.6 eps=3.0E-5 expected=0.01750169415064747 actual=0.017501694149273085 tolerance=3.502338830129494E-7 error=1.3743832460999528E-12
+CHECK prefix4.event.2[1] input=0.3 eps=1.0E-4 expected=-0.012331023663235408 actual=-0.01233102367144942 tolerance=2.468204732647082E-7 error=8.214012803264836E-12
+CHECK prefix4.event.2[1] input=0.3 eps=3.0E-5 expected=-0.012331023671018532 actual=-0.01233102367144942 tolerance=2.468204734203707E-7 error=4.308879641978791E-13
+CHECK prefix4.event.3[0] input=-0.2 eps=1.0E-4 expected=0.1805635577118575 actual=0.18056355845135724 tolerance=3.6114711542371504E-6 error=7.394997392218272E-10
+CHECK prefix4.event.3[0] input=-0.2 eps=3.0E-5 expected=0.180563558384537 actual=0.18056355845135724 tolerance=3.6114711676907403E-6 error=6.682024378257267E-11
+CHECK prefix4.event.3[1] input=0.5 eps=1.0E-4 expected=-0.1070434866449338 actual=-0.1070434867105576 tolerance=2.141069732898676E-6 error=6.562381194008537E-11
+CHECK prefix4.event.3[1] input=0.5 eps=3.0E-5 expected=-0.10704348670451576 actual=-0.1070434867105576 tolerance=2.1410697340903156E-6 error=6.04184757779791E-12
+CHECK prefix4.wk.direction expected=-2.7205668273744266E-8 actual=-2.720559478912884E-8 tolerance=2.0E-10 error=7.348461542522007E-14
+CHECK prefix4.wv.direction expected=-4.4126324233451086E-4 actual=-4.4126324233369294E-4 tolerance=2.0E-10 error=8.179221189230645E-16
+CHECK prefix4.projection.direction expected=-0.005153549757809517 actual=-0.005153549757894494 tolerance=2.0E-10 error=8.497716419419987E-14
+CHECK replay.prefix4.projection.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.us.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.ug.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.meta.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.e.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.bias.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.wq.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.wr.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.0.0.a.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.0.0.c.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.0.0.b.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.0.0.ab.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.0.0.bb.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.0.1.a.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.0.1.c.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.0.1.b.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.0.1.ab.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.0.1.bb.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.1.0.a.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.1.0.c.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.1.0.b.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.1.0.ab.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.1.0.bb.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.1.1.a.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.1.1.c.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.1.1.b.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.1.1.ab.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.branch.1.1.bb.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.wk.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.wv.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.initial.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.event.0.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.event.1.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.event.2.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK replay.prefix4.event.3.gradient expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.output expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.projection expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.us expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.ug expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.meta expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.e expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.bias expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.wq expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.wr expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.0.0.a expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.0.0.c expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.0.0.b expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.0.0.ab expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.0.0.bb expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.0.1.a expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.0.1.c expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.0.1.b expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.0.1.ab expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.0.1.bb expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.1.0.a expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.1.0.c expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.1.0.b expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.1.0.ab expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.1.0.bb expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.1.1.a expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.1.1.c expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.1.1.b expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.1.1.ab expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.branch.1.1.bb expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.wk expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.wv expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.initial expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.event.0 expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.event.1 expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK future.gradient.event.2 expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK eligible.futureSequence expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK eligible.futureTime expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK eligible.expired expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK eligible.scope expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK eligible.version expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK eligible.revoked expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+CHECK eligible.live expected=1.0 actual=1.0 tolerance=0.0 error=0.0
+REJECT duplicateWrite MEMORY_WRITE_ORDER
+REJECT badState MEMORY_STATE
+REJECT NaNState MEMORY_STATE
+REJECT evidenceShape MEMORY_EVIDENCE
+REJECT evidenceBound MEMORY_EVIDENCE
+REJECT evidenceNaN MEMORY_EVIDENCE
+REJECT expiry Failed requirement.
+REJECT backdatedWrite MEMORY_WRITE_ORDER
+REJECT badWkShape Failed requirement.
+REJECT WvNorm MEMORY_WEIGHT_NORM
+REJECT nonfiniteWeight NONFINITE_WEIGHTS
+REJECT badPrefix REPLAY_PREFIX_BOUND
+REJECT eventOrder REPLAY_EVENT_ORDER
+CHECK FP16.roundedDerivative expected=0.0 actual=0.0 tolerance=0.0 error=0.0
+COUNTEREXAMPLE FP16: 1±1e-5 both round to1; centralDerivative=0 smoothDerivative=1; exact smooth/storage parity NOT_CLAIMED
+MEMORY_CHECKS_PASS=357 FIXED_ROUTE_DOUBLE_NO_TRAINING

@@ -1,0 +1,158 @@
+{
+  "schema": "UNO_WP01_METRICS_V2_EVIDENCE",
+  "date": "2026-11-07",
+  "source_branch": "feat/uno-production-foundation-20261106",
+  "source_head_before": "dc20297aa555080da9d5064cc753b9190d296968",
+  "scope": "WP-01 extended offline diagnostics and synthetic control-event checks",
+  "source_basis": "WP01 Grok B2 scaffold provenance and current code",
+  "status": {
+    "host_tested": true,
+    "android_built": false,
+    "device_verified": false,
+    "release_ready": false
+  },
+  "test_results": {
+    "kotlin_host_pass": 38,
+    "python_unittest_pass": 6,
+    "static_preflight_pass": 7,
+    "android_compile": "NOT_RUN_NO_SDK",
+    "apk": "NOT_BUILT",
+    "physical_A52": "NOT_RUN"
+  },
+  "changes": [
+    {
+      "path": "android/LAB_PROTOCOL_RU.md",
+      "sha256": "997d88887208305e148a9f8258988416c406c1152f22541621018f80a0f8f78f",
+      "bytes": 11035,
+      "status": "ADDED"
+    },
+    {
+      "path": "android/README.md",
+      "sha256": "807a48a5e80dfd0e7d307189568ac0c3c13a2aace8bf1202e53207cc2ecdc2cb",
+      "bytes": 4207,
+      "status": "MODIFIED"
+    },
+    {
+      "path": "android/app/src/main/kotlin/org/unovyra/uno/DeviceLab.kt",
+      "sha256": "f090f759f887c8d6a6ab992163ed1b6f8acd70917413edc5f481d62e6cd511b7",
+      "bytes": 8946,
+      "status": "ADDED"
+    },
+    {
+      "path": "android/app/src/main/kotlin/org/unovyra/uno/LabSystemMetrics.kt",
+      "sha256": "ee7e819e79d79b307d1ab2950af03bb97d90f47c5902686837f2fa2e5dc0c882",
+      "bytes": 7694,
+      "status": "ADDED"
+    },
+    {
+      "path": "android/app/src/main/kotlin/org/unovyra/uno/SensorLab.kt",
+      "sha256": "3ff1e580642510ed6c1ea4248286fc18ea3bcb8c7a9d1dfea6a1c3232cf267ac",
+      "bytes": 3994,
+      "status": "ADDED"
+    },
+    {
+      "path": "android/app/src/main/kotlin/org/unovyra/uno/UnoActivity.kt",
+      "sha256": "4a1e69ddd16fbb51bb19f7f54be38f74547cc79cddeac25f9282f816c121f98b",
+      "bytes": 7914,
+      "status": "MODIFIED"
+    },
+    {
+      "path": "android/core/src/main/kotlin/org/unovyra/uno/core/LabProtocol.kt",
+      "sha256": "1ca0107389e447a92dbb0574bc58e2b57e2d00b3b2b1ca8fc25db844eaa90820",
+      "bytes": 10819,
+      "status": "ADDED"
+    },
+    {
+      "path": "android/core/src/main/kotlin/org/unovyra/uno/core/Measurement.kt",
+      "sha256": "2baa105ed3fd68a032cd99290f774e41b959c7d28dd70e18fd7579f7435eeeb4",
+      "bytes": 2844,
+      "status": "ADDED"
+    },
+    {
+      "path": "android/core/src/main/kotlin/org/unovyra/uno/core/Scheduler.kt",
+      "sha256": "1d105bd5eb3985039a9301c41c627dcc3b57027ade2f6c141d1a11b818d873a7",
+      "bytes": 1229,
+      "status": "MODIFIED"
+    },
+    {
+      "path": "android/core/src/test/kotlin/org/unovyra/uno/core/AllHostTests.kt",
+      "sha256": "60570621552b58e6b22afbc3e58bbf78fc17198089a77d0a13bef3c7f67d4cec",
+      "bytes": 266,
+      "status": "MODIFIED"
+    },
+    {
+      "path": "android/core/src/test/kotlin/org/unovyra/uno/core/CoreSelfTest.kt",
+      "sha256": "e1c4c8bf4e00392f16113bb39a883cd195f6b6da3f442aab84ad901d524aab05",
+      "bytes": 4486,
+      "status": "MODIFIED"
+    },
+    {
+      "path": "android/core/src/test/kotlin/org/unovyra/uno/core/LabProtocolTest.kt",
+      "sha256": "bed2bfdda52ba58ed76c52f04f4548b525b85e4723f88844d26be8365221d2ad",
+      "bytes": 2804,
+      "status": "ADDED"
+    },
+    {
+      "path": "android/core/src/test/kotlin/org/unovyra/uno/core/MeasurementTest.kt",
+      "sha256": "7508ab5f670e6f331f1daaf0ddce97967feb87d559ebf0bbe8166c62e3c8a6dc",
+      "bytes": 2652,
+      "status": "ADDED"
+    },
+    {
+      "path": "android/scripts/adb_collect.py",
+      "sha256": "75c18ff093fd1768233e2bf7853723c69906563d0ce37565214773316d794d34",
+      "bytes": 5236,
+      "status": "ADDED"
+    },
+    {
+      "path": "android/scripts/compare_lab.py",
+      "sha256": "7ba1f1acbec4de49b02c8b42efb3fa712801d1dc03cba930a72131bae655b43c",
+      "bytes": 2648,
+      "status": "ADDED"
+    },
+    {
+      "path": "android/scripts/run_all_preflight.sh",
+      "sha256": "d1ba9382814181ae34da5111f4287006f6f7edcd44d99d9f864d0022a1547c34",
+      "bytes": 284,
+      "status": "ADDED"
+    },
+    {
+      "path": "android/scripts/static_contract_check.py",
+      "sha256": "e9e9698225be0aa46a6b0206a5459fa400741954b4fabc20a8162f86c2749f04",
+      "bytes": 1598,
+      "status": "ADDED"
+    },
+    {
+      "path": "android/scripts/test_lab_tools.py",
+      "sha256": "77b55bc74ffb4838f1b00a8d143ae606a4f25a1959017f13ec16873007996dca",
+      "bytes": 2138,
+      "status": "ADDED"
+    },
+    {
+      "path": "android/scripts/validate_lab.py",
+      "sha256": "d9e76d7bba1ed7af68c5dd4f412a5db0bac65db6c9bb966da900e1c0aea62e2c",
+      "bytes": 1743,
+      "status": "ADDED"
+    }
+  ],
+  "scope_safety": {
+    "manifest_permissions_count": 0,
+    "internet_permission": false,
+    "native_action_dispatch": "DENY_ALL",
+    "stop_guard": "IN_BOUNDED_TESTS",
+    "stress_limit_ms": 60000,
+    "thermal_status_limit": "SEVERE",
+    "battery_temperature_ceiling_c": 44.5,
+    "battery_charge_floor_percent": 15.0,
+    "max_stress_heap_mib": 64,
+    "auto_network_upload": false,
+    "root_required": false
+  },
+  "remaining": [
+    "Gradle/Android SDK build",
+    "APK hash and manifest validation",
+    "ADB + physical A52 trial",
+    "Native Android permissions / STOP dispatch and readback",
+    "Real model quality and physical energy"
+  ]
+}

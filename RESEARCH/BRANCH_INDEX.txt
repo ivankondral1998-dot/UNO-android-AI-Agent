@@ -1,0 +1,25 @@
+UNO REPOSITORY — LIVE BRANCH INDEX (snapshot 2026-11-14)
+Do not treat this inventory as real-time after future commits. Always fetch latest HEAD.
+Neither branch existence nor its historical tests means it is authorized as production.
+Current integration candidate: integration/uno-work-research-20261114 (new branch; read live HEAD).
+
+audit/uno-experiment-evidence-20261107  856e584b0658cce6b52bd76ee8a46fbeaf073175
+audit/uno-terra-math-training-20261112  0af492ee7a8d15b371bf0de1c21d73ca1fd8b050
+design/uno-unified-cycle-data-20261112  3b06b024199d9bfcf1362a6b48156dfa0c74c9dc
+docs/uno-lab-research-handoff-20261105  983ced68708a0eebe14e2a197edd0a0d6dec0f9a
+docs/uno-r53-agent-handoff-20261102  7e94b717d73312f1bf3a926ea5f89586c9d23d7b
+docs/uno-vnext-r4-source-recovery-20261106  409a683137231032110848b1d582f7c780fb16ae
+feat/uno-foundation-hardening-20261107  c9739169eae091851bfab70c85d7e0c87c4f5a92
+feat/uno-permanent-full-foundation-20261111  ec9764f03dcdca305b575b41514d0aa153d2aab7
+feat/uno-permanent-single-apk-20261111  d70155af332169fed0f128a66dbde6b6aabb9450
+feat/uno-production-foundation-20261106  4e9c5cc7d034104944187e872f5daac01432571e
+feat/uno-wp03-s4s5-cpu-reference-20261111  8b92076a3b96b3299889b7253f0adf4f0edbb738
+feature/uno-repository-foundation-20261101  9d484c8f8805a5efe348371d802195e6f6a9b42a
+fix/uno-consent-freshness-20261114  d439a19320e74a3a2760fbe48a53d801812aeaff
+integration/uno-work-research-20261114  1df9ee7cc592f606939c8f004e1b11edd916b56c
+integration/verified-host-utils-20261111  a508b85197f8ebb3a1931f74196aedb2a7708b2c
+main  1df9ee7cc592f606939c8f004e1b11edd916b56c
+migration/jarvislab-jno-reference-20261101  0ab96ec21a4e3034827c397dde325a203d2919ca
+research/uno-f-gradients-20261113  618b0227eb9c9d717464d923fa0312a42b0c1843
+research/uno-math-reference-pass-20261101  b4f2160dcae730da9b6dc2a7b25b32bec879d200
+research/uno-train-001-20261113  44fdc357b1b6ddec5ed97188c7fd2dc3d03b7e2d

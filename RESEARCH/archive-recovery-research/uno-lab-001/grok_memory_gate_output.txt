@@ -1,0 +1,10 @@
+before_new 0.500000
+before_old 0.982012
+verbatim_new 0.981515
+verbatim_old 0.981515
+one_slot_on_old 0.982014
+one_slot_on_new 0.982014
+sealed_flip_1 0.981418
+sealed_flip_8 0.979899
+sealed_flip_32 0.500000
+identical_again 0.981515

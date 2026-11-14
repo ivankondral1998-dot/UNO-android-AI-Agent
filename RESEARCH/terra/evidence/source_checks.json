@@ -1,0 +1,23 @@
+{
+  "design_sha": "116820103c8b3e3c315fe0c92f658900819cf8d6",
+  "android_sha": "178ac32f53d1e84d44ca27475279d35113c19719",
+  "r53_sha": "fb2b3f4c8ad299434fe555b6ccce728c58299e97",
+  "r53_manifest_sha256": "da6832458698117c946b73e09fc618b286fe8396e61d031ae854f66cc49f35e7",
+  "r53_manifest_entries": 63,
+  "r53_verified_source": {
+    "github-copy": 60,
+    "local-prior-copy": 3
+  },
+  "r53_errors": [],
+  "r53_tree_paths_identical_on_design": 64,
+  "android_tree_paths_identical_on_design": 115,
+  "downloaded_records_git_blob_match": 233,
+  "issue_6_comments_read": 15,
+  "not_tested": [
+    "Kotlin compile and execution",
+    "Android build",
+    "physical device",
+    "17 UDC end-to-end cards",
+    "new weights training"
+  ]
+}

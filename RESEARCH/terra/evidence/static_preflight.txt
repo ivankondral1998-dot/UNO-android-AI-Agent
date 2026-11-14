@@ -1,0 +1,1 @@
+STATIC_PREFLIGHT_PASS=GUARDS_OK (static only; NOT an Android build or runtime proof)

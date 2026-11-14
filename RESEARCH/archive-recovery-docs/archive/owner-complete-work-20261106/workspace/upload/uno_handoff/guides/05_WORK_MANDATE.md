@@ -1,0 +1,23 @@
+# Задание ChatGPT Work — независимое проектирование UNO на основании существующих доказательств
+
+**Роль:** математический/ML/Android инженер-аудитор. Цель — законченный, согласованный, **бумажный** кандидат единого нейронного организма для коммерческого полностью локального Android после исследования R5.3 + структурных нейронов; результат нужен владельцу для принятия решений, не для немедленного создания APK.
+
+## Не начинать с нуля
+
+1. Проверить `AGENTS.md`, `README.md`, `docs/AGENT_START_HERE.md`, `docs/CURRENT_TASK.md`, `docs/STATUS.md`, точную ветку/SHA и полные оригиналы `docs/precode/r5.3/source-package/{00_START_HERE,NORMATIVE/01-06,SOURCES/ASTRA_CURRENT/ASTRA_01-12,SOURCES/R52}`, отдельно original Grok/Astra. Прочесть комплект этого архива и SHA манифест; в каждой существенной части указывать source path и конкретные ограничения доказательства.
+2. Провести независимое сравнение R5.3 B2/LR2/H2/C256R32, LR01, N0-01, N0-02, N0-03…N0-07 и R4.1 V01–V20 (если удастся получить raw). Составить матрицу: форму состояния, графа, масок, Θ/P, ABI и динамики, источник/границы learning signal, память/provenance, экспериментальные PASS/FAIL, время/ресурсы, Android-native trust, реализованность, незакрытые противоречия.
+3. Показать **минимум два формально определённых кандидата** на интеграцию типизированных причинных связей в единую F без отдельного second-brain/orchestrator: (a) структурированные связи в memory/state читаемые F и обновляемые проверенным P, с неизменной физической tensor ABI, (b) динамическое разреженное соединение в F с ограниченным rewiring и versioned ABI; для каждого дать точные входы/выходы, уравнения, состояния, provenance, обновление, забывание, вычислительную пропускную способность, ограничения и контрпримеры. Не утверждать, что любой кандидат доказан или единственно правильный.
+4. Привести реальные pretrain/continual learning уравнения по Astra L3a/L4/L5, не заменять их кратким loss; разграничить owner utterance/label, observed sensor state, independently verified Android effect, safety/consent. Определить пригодные лицензированные датасеты или обозначить `REQUIRES_DATA`; план train/dev/locked holdout, независимый physical Android oracle, сравнение с fixed network, Markov/table, rule search, strong program synthesis, baseline equal budget.
+5. Спроектировать проверку полезной задачи (фонарик) строго после разрешения владельца: ограниченный набор естественно-языковых смыслов/объяснений, собственно learned semantics, trusted torch API action, explicit confirmation, STOP semantics before dispatch, independent native readback, device failure/reboot/stale UNKNOWN/no blind retry, owner corrections, longitudinal retention and generalization to unseen utterances. НЕ заменять обучение hardcoded if/else словарём; не переобучаться на N0-07 trace.
+6. Полнота: `S1..S6`+causal clock, exact/semantic memory, WAKE/SENSOR/audio, planning, action authority, Android lifecycle, thermal/energy, license/privacy, NCR-EVO separation, fault recovery, traceability D01–D10, X01–X12, B01–B14, M01–M44. Объективно исправлять только версионированным erratum, оригинальные R5.3/Astra не переписывать.
+7. Вынести O01–O08 в таблицу решений владельца: альтернативы, плюсы/риски и необходимые эмпирические проверки; не выбирать за него. Зафиксировать точные критерии G4 и дальнейших G5/G6 отдельно.
+
+## Требуемая сдача
+
+- `UNO_INTEGRATED_NEURAL_ORGANISM_PRECODE_CANDIDATE_vNEXT.md`: полный бумажный каркас + уравнения, tensor/graph/memory ABI, интерфейсы, отказоустойчивость, обучение, Android/функциональные компоненты без production-кода.
+- `UNO_ARCHITECTURE_ALTERNATIVES_AND_COUNTEREXAMPLES.md`: сопоставление кандидатов, честные negative cases, ценность относительно сильных baselines.
+- `UNO_EVIDENCE_TRACEABILITY_AND_TEST_GATES.md`: каждый вывод помечен PROVEN_LOCAL, CONDITIONAL, SPECIFIED_UNTESTED, REQUIRES_DATA, OWNER_DECISION или FAIL; отдельных score для всех контролей и hardware tests, переменные значения не выдавать за финальные.
+- `UNO_OWNER_DECISION_OPTIONS_O01_O08.md`: вопросы владельцу, таблица рисков, никакой подписи задним числом.
+- `UNO_WORK_RETURN_PACKAGE.zip`: завершённые эти документы с SHA256 и source references, отчёт о просмотренных/недоступных GitHub/Library исходниках.
+
+**Текущие полномочия:** бумажное проектирование/сравнение; не начинать production, не запускать большие training jobs, не изменять `main`, не запускать Actions, не удалять исходники, не выполнять Android действия, не публиковать секреты, не подписывать G4/G5 за владельца. При невозможности доступа указать точный неполученный path и полезный максимум. Окончательная архитектура и O01–O08 принадлежат владельцу.

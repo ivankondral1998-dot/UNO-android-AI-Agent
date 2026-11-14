@@ -1,0 +1,90 @@
+UNO-LAB BENCH — ACTIVE RESEARCH INSTRUCTIONS, 2026-11-05
+Owner transport: no
+Use GitHub issue #4 for peer discussion; use UNO_LAB_REPORTS.txt append-only for technical decisions and results. This BENCH is the LIVE queue (not approval of old R5.3 or a replacement for its sources).
+
+Latest: === UNO-LAB-019/N0-07-A52-FULL-400-OWNER-TRACE-20261106 | 2026-11-06 | GPT-6 | kind: COMPLETE_OWNER_TRACE_AND_INVALID_RETEST ===
+
+State / exact authority:
+- Branch: docs/uno-lab-research-handoff-20261105. Always fetch actual HEAD before modifying files. Main and the R5.3 source-package are NOT edit targets.
+- G4=PRECODE_CANDIDATE; OWNER_APPROVED_PRECODE=FALSE; PRODUCTION_CODE_AUTHORIZED=FALSE; G5/G6 NOT AUTHORIZED. O01–O08 stay OWNER_DECISION.
+- 2026-11-05 OWNER RESEARCH PERMIT: versioned isolated candidates for Theta, graph, P, M, learning rules; small experimental PC weights and synthetic tasks, free environment only. EACH run <=600 seconds, <=2 GiB RAM, stop on limit; <=3 runs per candidate before review. Lower limits if host requires. Freeze a card before execution, preserve input/seed/source/stdout/stderr/environment/hashes and acceptance criteria. This is NOT production training, APK, phone work or G4/G5 approval. No GitHub Actions, main changes, deletion, forced rewrites, secrets or unapproved binary publication.
+- Current R5.3 S1 keeps runtime Theta frozen; independent experimental E1/Theta-edit is an ALTERNATIVE, NOT adoption or permission to change the normative baseline.
+
+Closed / verified scope (do not run again merely to repeat):
+- Grok vs GPT old 0.675/0.6 and 1/1 figures used different sample distributions, data splits, trainers and one-vs-separate models. GPT 1/1 old/new is two models, NOT sequential retention.
+- Different Python-version stdout for memory-flip differs by one ULP at a reported floating-point value, not a conceptual memory dispute; earlier line 'unexamined stdout' is superseded by later journal reconciliation. Do not assert cross-version byte equality.
+- Grok's sequential small-weight toy source and stdout exist under research/uno-lab-001/grok_sequential_organism.{py,json}. GPT-6 independently reimplemented it under research/uno-lab-001/gpt6_independent_sequential_replay*; all 15 numbers in the saved JSONs match (old-before, old-after, new, shifted new, shifted old for each of 3 variants). This is an evidence comparison, not certification of a working UNO F.
+- 0.9 acquisition, retention and transformed-new transfer criteria: frozen trunk old-after=1, new=.8333, transfer=.65; anchored old-after=.9667, new=.95, transfer=.8333; free old-after=.9667, new=.95, transfer=.8667. None clears all 3 gates. Test split called 'locked' in source is PUBLIC, not sealed final holdout.
+- Source-model semantics: h=A*x and each head is linear, so w^T A x+b=(A^T w)^T x+b. There is no nonlinear missing-feature learning; the two heads are selected by evaluator, not UNO autonomous verb/action selection. 'frozen_trunk_P_heads' is not legal ASTRA_04 P1 and no lawful M-only / P+M / verified receipt/S4-S5-S7 test was run. In Grok's shared-trunk variant, on phase 2 only A and NEW head are updated; OLD head remains fixed. Preserve historical code, correct claims via journal erratum.
+
+NEW MANDATORY OWNER LEARNING REQUIREMENT (2026-11-05; does not replace existing R5.3):
+- Every agent: read docs/research/OWNER_TEACHING_AND_ANDROID_EVIDENCE_20261105.md, then research/uno-n0-06/RESEARCH_CARD_CANDIDATE_20261105.md. One organism learns from observational data, owner explanations/corrections and independent Android outcome receipts with distinct provenance, never by turning memory into authority. N0-04/N0-05 test only physical sensor prediction.
+- N0-05 owner-reported A52 experiment complete, diagnostic utility FAIL, B stages fail diversity; no proof owner teaching or verified-result learning fails (untested). Next N0-06: separate host-only conflict/teaching/readback contracts; real exact 400-row trace requires verified bytes before replay. No Android build/actions or production code from this instruction.
+
+OPEN next work (research-only; owner answer not required now):
+1. Grok review the independent 15-metric replay, the strictly linear expressivity argument and the public split. Publish ONE new versioned, pre-registered NONLINEAR/missing-feature sequential-learning candidate under the per-run budget; do not retune the published toy on its public evaluation set.
+2. GPT independently check experiment card before run, then verify source, split, reproducibility and meaning, including one shared inference state/operator, OLD→NEW→BOTH, a truly unseen sealed final evaluation, and comparison to fixed/linear/tabular/prototype baselines where meaningful. Do not claim illegal P/M arms passed or failed.
+3. Astra's independent S4/S5/S7, legal source/provenance, P1 and canonical M-insertion review remains REQUESTED, not assumed. If legal frozen-Theta realization cannot be shown, mark SPECIFIED_UNTESTED / REQUIRES_DATA rather than inventing results.
+4. After independent evidence, prepare owner alternatives for future E1 vs frozen Theta and costs. Do not infer that the owner approved an architecture. Keep G4/G5 separate.
+
+Source links: https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/issues/4 ; GPT peer-review comment 6660628133 ; latest journal entry === UNO-LAB-001/AUTHORIZATION-AND-SEMANTIC-ERRATA-20261105 | 2026-11-05 | GPT-6 | kind: ERRATUM ===
+
+
+NEW ANDROID RESEARCH CANDIDATE (owner-initiated 2026-11-05; not a change to previous Grok/Astra research requirements):
+- UNO-N0-03 is an isolated nonnumeric-synapse/structural-plasticity experimental Android APK, built and signed, NOT run on device. See research/uno-n0-03/android/BUILD_EVIDENCE_RU.md and RESEARCH_CARD_FROZEN_BEFORE_DEVICE_RUN.md.
+- Owner explicitly allowed Android research experiments today. Do not use PC training as a substitute for A52 validation. Device learning, phone RAM/latency, OS behavior, battery/energy remain REQUIRES_DATA.
+- SHA256 APK b3e88cb340f6e9b527fb283993271b52da47e6790d50841f025c7d037ea5da10. Built-in synthetic oracle is NOT native OS readback; graph update rule is designer-written; no general intelligence claim.
+- Safe next gate: owner-side A52 install and Stage1/Stage2 evidence. NO production code or G4/G5 approval. Original OPEN Grok/GPT/Astra items above remain open.
+
+
+UNO-N0-03 actual owner-reported A52 run (2026-11-05):
+- Archived evidence: research/uno-n0-03/android/OWNER_A52_TEST_REPORT_20261105.md. Stage 1 30/32 full, 13/15 unseen; stage 2 32/32 full, 11/11 unseen; old 12/12 both stages; 17 then 21 total observations, 4 composites after recovery.
+- Status DEVICE_RUN_OWNER_REPORTED; no independently captured logcat, measured battery energy, full memory/PSS, or independently hashed installed APK. Same APK contains synthetic oracle; no independent Android native readback. No autonomous primitive invention; subset enumeration and XOR are pre-programmed.
+- R5.3 production and G4/G5 gates remain closed. Only Android research candidate tested.
+
+
+UNO-N0-04 REAL SENSOR ANDROID research build:
+- Owner explicitly authorized Android research and GitHub Actions on 2026-11-05, N0-04 only; normative G4/G5/prod permission unchanged.
+- Source bundle research/uno-n0-04/source_bundle.tar.xz, frozen card and phone protocol already in branch. Source_sha256=f0d1a722baf63af3efc959e89c1d43410c0d11f0d54774cd75a6e5d908983b90.
+- Final GitHub Actions run #2 ID 42089039650 SUCCESS on commit f6ca6be23f75c038a0d6c7a242a60bf4b4f133b0. Artifact 13444187349, APK 41387 bytes, SHA256 791b171351c600eb6f493767ecdfe16efbc4b608e21a07fe22dffd9c4fb905c9, v2/v3 signed, no runtime permissions. Initial run #1 superseded for package version fix.
+- **ANDROID_BUILT only**. No A52 sensor dataset or learning/evaluation results yet. Next: owner runs 5 stage A/B/A with restart; compare to persistence and numeric table; report failures. No automated acceptance from a compiler-only pass.
+- Full evidence: research/uno-n0-04-results/BUILD_EVIDENCE_20261105.md.
+
+
+UNO-N0-04 A52 STAGE A owner-reported partial result (2026-11-05): 80/80, physical linear acceleration, 26 transitions; trained network 52, persistence 54, numeric Markov 50, STILL 44. 10 new conjunction neurons/44 connections/7 contested. 20.834s stage time; mean/p95/max 137/194/284us; Java heap 6164KiB snapshot; checkpoint COMMIT_AND_READBACK_PASS abbreviated 8da36b1e2645d4be; restart RESTORE NOT TESTED. This online training stage is behind persistence and DOES NOT satisfy the frozen final acceptance criteria by itself. Next: frozen TEST A, TRAIN B, frozen TEST B, app restart, frozen RETEST A; no reset; do not change thresholds. Evidence in the journal === UNO-LAB-006/N0-04-A52-STAGE-A-OWNER-REPORT-20261105 | 2026-11-05 | GPT-6 | kind: PARTIAL_DEVICE_RESULT ===. No new Actions required for journal/bench edits, no change to main/G4/G5.
+
+
+UNO-N0-04 A52 owner-reported TEST A (2026-11-05): log research/uno-n0-04-results/OWNER_A52_TEST_A_20261105.md. Sensor linear_acceleration API34, 80 valid windows, 16 class transitions, model 64/80, persistence 64/80, numeric Markov 64/80, always STILL 56/80, 0 new rules, 10 total 44 synapses 7 contested, inference 143/194/383 us mean/p95/max, heap snapshot 2860KiB; RESTORE PASS_SHA256 checkpoint from earlier TRAIN A; new COMMIT_AND_READBACK_PASS 8b26ccaf2ad90ce5 after control. TEST A passes equality vs both baselines but not superiority. Overall protocol pending TRAIN B, TEST B and TEST A retention after app restart. Do not re-run or adjust scoring/card.
+
+
+UNO-N0-04 A52 owner-reported TRAIN B (2026-11-05): evidence research/uno-n0-04-results/OWNER_A52_TRAIN_B_20261105.md. Valid 80, 12 class changes, 1081 sensor events, 0 skipped; graph 63/80, persistence 68/80, Markov 66/80, always STILL 40/80. 9 new rules -> 19, synapses 83, contested 12; inference 98/187/215us mean/p95/max, heap snapshot 3151KiB. New checkpoint COMMIT_AND_READBACK_PASS 76f6d041270ab3b8; RESTORE PASS_SHA256 refers to PREVIOUS completed=2 / 10-node checkpoint, not new 19-node B graph. FROZEN TEST B and RETEST A after restart still pending, therefore NO overall PASS. Stage TRAIN B underperforms persistence and Markov; preserve full failure/uncertainty. Next stage: TEST B, no reset, no unrequested Actions.
+
+
+UNO-N0-04 owner A52 TEST B result (2026-11-05): evidence research/uno-n0-04-results/OWNER_A52_TEST_B_20261105.md. Frozen B valid=80, 23 transitions, graph/persistence/Markov each 57/80, STILL 6/80; 19 nodes/83 edges/12 contested, 0 new; mean/p95/max 147/205/235us, Java heap snapshot 3187KiB; start checkpoint restored PASS_SHA256 completed=3 nodes=19; new committed short 45e6bb9f143c64d3. Brisk rotations, TRAIN B->TEST B class changes 12->23 and STILL 40/80->6/80, materially different input distribution. TIE meets single-stage comparison gate, NO superiority evidence. Next close/reopen and frozen A RETEST, do not reset. No re-build needed.
+
+
+N0-04 full A52 A/B/A study owner-reported COMPLETE, report research/uno-n0-04-results/OWNER_A52_FINAL_ABA_20261105.md. Frozen TEST A/B/RETEST A all graph=persistence=Markov respectively 64/80,57/80,63/80; aggregate 184/240 each. 19 nodes, 83 links, 12 contested, post-restart PASS_SHA256 19 nodes, all 5 stages 80 valid and >=8 motion transitions. Protocol operational noninferiority PASS BY TIE; SCIENTIFIC SUPERIORITY NOT SHOWN, no power/PSS/logcat. Prior work preserved. No production G4/G5 approval.
+
+
+N0-05 prepared for fresh owner phone A/B/A: instrumentation-only N0-04 inference/learning parity, no hypothesis that old trace can be recovered retroactively. Source commit 029882048ae404bc6bc5eb63f903d37028c27a09; GitHub Actions 42094276662 SUCCESS; Android APK sha256 052335fadd1c81d9ddf47488ac05ec4cb911d3ab527a265d6a8b637b364fe511 and 45483 bytes; 16804 host equivalence assertions PASS. Card research/uno-n0-05/RESEARCH_CARD_FROZEN_BEFORE_DEVICE_RUN.md; archived CI evidence research/uno-n0-05-results/BUILD_EVIDENCE_20261105.md. Frozen criterion: diagnostics invariants, categorical per-window trace restored after restart and ≥2/3 frozen stages with ≥8 meaningful neuron overrides and ≥3/80 accuracy advantage over both comparators; absent device evidence DEVICE_UNTESTED. Preserve N0-04, no new data assumptions. G4/G5 not authorized.
+
+
+N0-05 owner A52 first four stages: research/uno-n0-05-results/OWNER_A52_FIRST_FOUR_STAGES_20261105.md. Frozen A control 64/80 graph=persistence=Markov, STILL 68/80. Frozen B control graph 74/80 vs persistence/Markov 75/80, STILL76/80; B training/control invalid at 5 changes each (need 8). A/B controls: CONTESTED 146/160, changed neuron predictions only 2/160. Utility gate fails, final restart A pending; do not reset or retune. No Action or production code needed.
+
+
+UNO-N0-05 A52 full 5-stage phone trial COMPLETED. Final archive research/uno-n0-05-results/OWNER_A52_FINAL_ABA_20261105.md. RETEST A after restart graph55/80, persistence54/80, Markov54/80, 26 transitions, 11 nodes/47 links, RESTORE PASS_SHA256; neuron decisions change only 5/80 (2 wins/1 loss) vs frozen utility >=8 override and +3 correct requirement. Frozen tests A/B/RETEST totals all 193/240; 194/240 origins CONTESTED, 25/240 NEURON, 21/240 NO_MATCH, 7/240 actual neuron overrides; gains/losses=2/2, net zero. Both B phases INVALID at 5 transitions each vs >=8 requirement, so full operational gate NOT passed. Utility gate FAIL (0/3 qualifying frozen tests). No rerun/reinterpretation, original code and R5.3 untouched, main unchanged, no GitHub Actions. This is a reproducible negative research finding, not a successful superior network or device energy test.
+
+
+UNO N0-06 HOST SYNTHETIC PILOT COMPLETE, NOT A52: frozen fixture commit 8362c70ba1ff360821762a8a5ce4bf9a97746390, host source/outcome research/uno-n0-06/host-pilot/HOST_PILOT_RESULT_20261105.md. Original N0-05 graph on 80 synthetic frozen windows: 62/80 vs candidate C1 66/80 vs persistence 61/80 vs numeric Markov 67/80. C1 better than old graph but still loses to Markov, so no scientific superiority. Exact unchanged N0-05 Java reproduces CONTESTED lockout under 5 matching outcomes; provenance mock rejects 7 invalid Android receipts and keeps owner corrections separate from physical observations, authority grants0. Full exact 400-row physical N0-05 trace has not been materialized/hashed in GitHub: real-data replay REQUIRES_DATA, native OS evidence UNKNOWN, no phone build or Actions. Do not turn mock into accepted production ABI. Keep original N0-05 FAIL and frozen research thresholds untouched.
+
+
+N0-07 NEW isolated small shared-F neural organism after N0-06: Frozen card research/uno-n0-07/FROZEN_RESEARCH_CARD_20261105.md committed before test at 051b2134f1f0901f8e38663497b546428956ec8d; source and evidence research/uno-n0-07/ at 2fa8d605b65e9e9b782cf865ff3f43d2dee83689. D16 J2 chi2 K2, 2 active of 4 blocks, 2917 new experimental numeric trained weights, owner teaching separate from sensor and mock-only independently matched outcome P. Java host 8434 assertions PASS; frozen synthetic 3x80 performance Tiny-F 99/240 vs original N0-05 144/240, persistence 143/240, Markov 150/240. Does NOT demonstrate useful prediction; do not tune on this tested stream. Android sources available, only compiled with non-runtime stubs; no SDK, no signed APK, no phone run, no actions. Tar SHA256 0bf6758020b22e80ba07dfaef7c487d66f2d3cf613489feda090c49f9b2316fc. N0-04/N0-05 outcomes, owner training intent, G4/G5 remain unchanged.
+
+
+N0-07 actual standalone Android APK BUILT for owner, report research/uno-n0-07/results/ANDROID_BUILD_EVIDENCE_20261105.md. GitHub Actions 42104813304 success after corrected log-folder ordering; private artifact 13451865954, independently downloaded and SHA256 checked: 642d17365e3f5d40baf90450800da5b626735cec5e1ef92a51e5ffc0334ecf2e, size 53675 bytes, package org.unovyra.n007, v0.7.0-research, v2/v3 signature, min26 target35, no INTERNET. Host checks8434 PASS; frozen synthetic accuracy tinyF99/240 vs Markov150/240 FAIL remains. NEXT is owner phone installation and physical five-stage A/B/A test including feedback; device not yet verified. No Actions unless separately authorized; main/G4/G5 unchanged.
+
+
+N0-07 real Samsung A52 user report 2026-11-06 PARTIAL 4/5 stages: research/uno-n0-07/results/OWNER_A52_FIRST_FOUR_STAGES_20261106.md. All 4 stages diversity PASS, zero dropped; neural F 42/14/42/24, persistence 59/65/58/52, Markov 58/65/55/35. Both frozen A/B controls neural F predicts MOVE in all 80 windows each (severe collapse, cause unknown). Frozen F 38/160 vs persistence 117/160; trained sensor event counter160, owner hints10. Stage5 relaunch/readback still PENDING; owner must not reset or reinstall. No raw trace bytes/hash in GitHub. No G4/G5 changes, no new workflow requested.
+
+
+2026-11-06 N0-07 Samsung A52 OWNER-REPORTED 5x80 categorical trace completed; full analysis research/uno-n0-07/results/OWNER_A52_FULL_400_REVIEW_20261106.md. Stage-5 transcribed categorical CSV at research/uno-n0-07/results/OWNER_A52_STAGE5_CATEGORICAL_TRACE_RECONSTRUCTED_20261106.csv (not original phone byte/hash). Final A-after-relaunch predicts MOVE 80/80; true MOVE77 STILL3 JOLT0, changes3 < minimum8 hence STAGE5 DIVERSITY FAIL; F77/80=Markov=persistence and no usefulness result. Three frozen stages F115/240 vs persistence194/240 Markov177/240; stage5 excluded from accepted frozen gate. Only diversity-valid control stages 2+4 F38/160 vs persistence117/160 vs Markov100/160, clear FAIL. All stage totals F199/400 persistence311/400 Markov290/400. Across all frozen 240 rows F predicts MOVE every time; misses all 112 STILL and 13 JOLT. Final APP restoreStatus and post-relaunch weight fingerprint not owner-provided; code stage5 gating implies SHA restore path was entered if original app, but full device integrity unverified. No CI/training/code alteration; keep precode gate not approved.

@@ -1,0 +1,67 @@
+{
+  "status": "CONSTRUCTIVE_WITNESS_PASS",
+  "claim": "One shared S4/S5 F with legal row norms and zero biases can separate two distinct frozen input contexts for the same S7 endpoint at q>0.9 and q<0.1 after post-arg re-encode",
+  "parameter_choice": "hand-set sparse legal parameters; NOT Xavier initialization, trained Theta, or verified real-world skill",
+  "caps": {
+    "embedding_row_l1": 8,
+    "C_row_l1": 2,
+    "B_row_l1": 0.9,
+    "Wp_row_l1": 8,
+    "P_row_l2": 0,
+    "biases": 0
+  },
+  "cases": [
+    {
+      "d": 512,
+      "token_sign": 1,
+      "post_arg_h_l2": 2.2265557292164777,
+      "post_arg_h0": 0.5566389323041194,
+      "logit": 4.453111458432955,
+      "q": 0.9884916968897166,
+      "max_abs_h": 0.5566389323041194,
+      "events": 5,
+      "K": 8,
+      "mask": "full",
+      "p_norm": 0.0
+    },
+    {
+      "d": 512,
+      "token_sign": -1,
+      "post_arg_h_l2": 2.2265557292164777,
+      "post_arg_h0": -0.5566389323041194,
+      "logit": -4.453111458432955,
+      "q": 0.011508303110283303,
+      "max_abs_h": 0.5566389323041194,
+      "events": 5,
+      "K": 8,
+      "mask": "full",
+      "p_norm": 0.0
+    },
+    {
+      "d": 1024,
+      "token_sign": 1,
+      "post_arg_h_l2": 2.2265557292164777,
+      "post_arg_h0": 0.5566389323041194,
+      "logit": 4.453111458432955,
+      "q": 0.9884916968897166,
+      "max_abs_h": 0.5566389323041194,
+      "events": 5,
+      "K": 8,
+      "mask": "full",
+      "p_norm": 0.0
+    },
+    {
+      "d": 1024,
+      "token_sign": -1,
+      "post_arg_h_l2": 2.2265557292164777,
+      "post_arg_h0": -0.5566389323041194,
+      "logit": -4.453111458432955,
+      "q": 0.011508303110283303,
+      "max_abs_h": 0.5566389323041194,
+      "events": 5,
+      "K": 8,
+      "mask": "full",
+      "p_norm": 0.0
+    }
+  ]
+}

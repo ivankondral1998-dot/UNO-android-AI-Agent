@@ -1,0 +1,90 @@
+{
+  "scope": "Arithmetic only; no model code, training or device tests executed",
+  "constants": {
+    "V": 32768,
+    "H": 774,
+    "b": 64,
+    "chi": 4,
+    "J": 2,
+    "m": 128
+  },
+  "configurations": [
+    {
+      "d": 512,
+      "P_input": 18050560,
+      "P_recurrence": 4461568,
+      "P_heads": 429830,
+      "P_selector": 8265,
+      "P_total": 22950223,
+      "FP16_bytes": 45900446,
+      "FP16_MiB": 43.77407646179199,
+      "vector_FP32_params": 42255,
+      "quant_matrix_rows": 46735,
+      "INT8_mixed_bytes": 23263928,
+      "INT8_mixed_MiB": 22.18621063232422,
+      "full_F_MAC": 4456448,
+      "vocab_MAC": 16777216,
+      "Adam_FP32_16P_bytes": 367203568
+    },
+    {
+      "d": 1024,
+      "P_input": 37149696,
+      "P_recurrence": 17311744,
+      "P_heads": 826118,
+      "P_selector": 32881,
+      "P_total": 55320439,
+      "FP16_bytes": 110640878,
+      "FP16_MiB": 105.5153636932373,
+      "vector_FP32_params": 50967,
+      "quant_matrix_rows": 59543,
+      "INT8_mixed_bytes": 55711512,
+      "INT8_mixed_MiB": 53.130638122558594,
+      "full_F_MAC": 17301504,
+      "vocab_MAC": 33554432,
+      "Adam_FP32_16P_bytes": 885127024
+    },
+    {
+      "d": 1536,
+      "P_input": 57297408,
+      "P_recurrence": 38550528,
+      "P_heads": 1222406,
+      "P_selector": 73881,
+      "P_total": 97144223,
+      "FP16_bytes": 194288446,
+      "FP16_MiB": 185.28790092468262,
+      "vector_FP32_params": 59679,
+      "quant_matrix_rows": 72351,
+      "INT8_mixed_bytes": 97612664,
+      "INT8_mixed_MiB": 93.09069061279297,
+      "full_F_MAC": 38535168,
+      "vocab_MAC": 50331648,
+      "Adam_FP32_16P_bytes": 1554307568
+    },
+    {
+      "d": 2048,
+      "P_input": 78493696,
+      "P_recurrence": 68177920,
+      "P_heads": 1618694,
+      "P_selector": 131265,
+      "P_total": 148421575,
+      "FP16_bytes": 296843150,
+      "FP16_MiB": 283.09168815612793,
+      "vector_FP32_params": 68391,
+      "quant_matrix_rows": 85159,
+      "INT8_mixed_bytes": 148967384,
+      "INT8_mixed_MiB": 142.06636810302734,
+      "full_F_MAC": 68157440,
+      "vocab_MAC": 67108864,
+      "Adam_FP32_16P_bytes": 2374745200
+    }
+  ],
+  "paired_power": {
+    "each_alpha": 0.025,
+    "each_beta": 0.2,
+    "each_n": 8138,
+    "joint_beta_target": 0.2,
+    "joint_via_each_beta": 0.1,
+    "joint_n": 9457
+  },
+  "fixed_policy_evaluation_n": 4612
+}

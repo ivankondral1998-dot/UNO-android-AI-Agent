@@ -1,0 +1,23 @@
+UNO-LAB-001 Grok checks
+=== G1 ASTRA_02 arithmetic ===
+d=512 N=23015887 ok=True free=22852753 ok=True C_F=4456448 ok=True
+d=1024 N=55451639 ok=True free=55125689 ok=True C_F=17301504 ok=True
+=== G2 integral y=1, q 0.1 to 0.9, lambda=0, alpha=1 ===
+logit_gap=4.394449154672 integral=13.283338043561 steps=1328.333804
+=== G3 repeated P1, aligned, l0=logit(0.1), y=1 ===
+rho=1.000000000000 steps=None q=0.231969316684 cap=0.231969316684
+rho=2.000000000000 steps=None q=0.450853060379 cap=0.450853060379
+rho=3.000000000000 steps=None q=0.690567857703 cap=0.690567857703
+rho=4.394449154672 steps=1423 q=0.900000000000 cap=0.900000000000
+rho=5.000000000000 steps=1406 q=0.900015547709 cap=0.942825618574
+rho=32.000000000000 steps=1353 q=0.900079486457 cap=1.000000000000
+=== G4 box corner ||h||_2=sqrt(d) ===
+d=512 rho=22.627417 one_step_abs_logit_bound=0.010207
+d=1024 rho=32.000000 one_step_abs_logit_bound=0.010310
+=== G5 E1 scale vs P cap, same start logit=0, eta=0.01 ===
+P_cap_q=0.731058578630
+E1_cross_P_cap step=272 logit=1.001297 q=0.731314
+E1_reach_0.9 step=1019 logit=2.197307 q=0.900007
+=== G6 overlapping old task, hard gate ===
+eta=0.05 gate=False reached=150 acc=150 rej=0 q_new=0.900412 q_old=0.789362
+eta=0.05 gate=True reached=None acc=0 rej=5000 q_new=0.731059 q_old=0.645656

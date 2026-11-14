@@ -1,0 +1,56 @@
+{
+  "balanced_origin_max_possible_classification_accuracy": 0.5,
+  "finding": "HALF_FLIP_LABEL_AMBIGUITY",
+  "fixed_fixture_max_flips_to_reach_0_9": 25,
+  "half_flip_probability": 0.5,
+  "identical_query_from_two_opposite_classes": true,
+  "logit_threshold_t": 1.2347741641372287,
+  "results": [
+    {
+      "confident_at_0_9": true,
+      "flips": 0,
+      "probability": 0.981515211870549
+    },
+    {
+      "confident_at_0_9": true,
+      "flips": 1,
+      "probability": 0.9814176593777837
+    },
+    {
+      "confident_at_0_9": true,
+      "flips": 8,
+      "probability": 0.9798988379511517
+    },
+    {
+      "confident_at_0_9": true,
+      "flips": 16,
+      "probability": 0.9721734124571824
+    },
+    {
+      "confident_at_0_9": true,
+      "flips": 24,
+      "probability": 0.9194899771888261
+    },
+    {
+      "confident_at_0_9": true,
+      "flips": 25,
+      "probability": 0.9003339264592067
+    },
+    {
+      "confident_at_0_9": false,
+      "flips": 26,
+      "probability": 0.8746302087261959
+    },
+    {
+      "confident_at_0_9": false,
+      "flips": 31,
+      "probability": 0.5872565459130497
+    },
+    {
+      "confident_at_0_9": false,
+      "flips": 32,
+      "probability": 0.5
+    }
+  ],
+  "scope": "synthetic memory-head fixture; no trained weights, no semantic task, no real device"
+}

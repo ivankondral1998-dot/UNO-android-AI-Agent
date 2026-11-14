@@ -1,0 +1,40 @@
+MUTATION=omitLoss exit=1 expected=assertion
+CHECK extreme.CE.gradient expected=2000.0 actual=2000.0 tol=1.0E-11 error=0.0
+REJECT singleton target RETRIEVAL_TARGET_CATALOG
+DATASET_SHA256=5bce259474a1863498fa5461cfb60cbfbe912bbc4493e5fa816630939485c869
+CHECK joint.loss.independent expected=0.5701859408485126 actual=0.47958351697979107 tol=2.0E-14 error=0.09060242386872153
+Exception in thread "main" java.lang.IllegalStateException: joint.loss.independent
+	at org.unovyra.uno.research.TrainTestKt.checkNear(TrainTest.kt:10)
+	at org.unovyra.uno.research.TrainTestKt.graphTests(TrainTest.kt:65)
+	at org.unovyra.uno.research.TrainTestKt.main(TrainTest.kt:198)
+	at org.unovyra.uno.research.TrainTestKt.main(TrainTest.kt)
+MUTATION=overwriteBatch exit=1 expected=assertion
+CHECK joint.branch.0.0.bb[63] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tol=2.0E-10 error=0.0
+CHECK batch.meanUpdate.projection expected=0.0 actual=1.1790568521519162E-13 tol=0.0 error=1.1790568521519162E-13
+Exception in thread "main" java.lang.IllegalStateException: batch.meanUpdate.projection
+	at org.unovyra.uno.research.TrainTestKt.checkNear(TrainTest.kt:10)
+	at org.unovyra.uno.research.TrainTestKt.equalMaps(TrainTest.kt:21)
+	at org.unovyra.uno.research.TrainTestKt.equalMaps$default(TrainTest.kt:19)
+	at org.unovyra.uno.research.TrainTestKt.graphTests(TrainTest.kt:92)
+	at org.unovyra.uno.research.TrainTestKt.main(TrainTest.kt:198)
+	at org.unovyra.uno.research.TrainTestKt.main(TrainTest.kt)
+MUTATION=omitBiasCorrection exit=1 expected=assertion
+REJECT dataset manifest mismatch DATASET_MANIFEST_MISMATCH
+CHECK adam.norm expected=0.5 actual=0.5 tol=1.0E-11 error=0.0
+CHECK adam.first.weight expected=-0.00999999966666668 actual=-9.999999666666676E-4 tol=1.0E-11 error=0.008999999700000011
+Exception in thread "main" java.lang.IllegalStateException: adam.first.weight
+	at org.unovyra.uno.research.TrainTestKt.checkNear(TrainTest.kt:10)
+	at org.unovyra.uno.research.TrainTestKt.checkNear$default(TrainTest.kt:8)
+	at org.unovyra.uno.research.TrainTestKt.optimizerTests(TrainTest.kt:109)
+	at org.unovyra.uno.research.TrainTestKt.main(TrainTest.kt:199)
+	at org.unovyra.uno.research.TrainTestKt.main(TrainTest.kt)
+MUTATION=loseMoments exit=1 expected=assertion
+CHECK checkpoint.weights.wv expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.projection expected=0.0 actual=0.016353209188887767 tol=0.0 error=0.016353209188887767
+Exception in thread "main" java.lang.IllegalStateException: checkpoint.m.projection
+	at org.unovyra.uno.research.TrainTestKt.checkNear(TrainTest.kt:10)
+	at org.unovyra.uno.research.TrainTestKt.equalMaps(TrainTest.kt:21)
+	at org.unovyra.uno.research.TrainTestKt.equalMaps$default(TrainTest.kt:19)
+	at org.unovyra.uno.research.TrainTestKt.checkpointTests(TrainTest.kt:173)
+	at org.unovyra.uno.research.TrainTestKt.main(TrainTest.kt:199)
+	at org.unovyra.uno.research.TrainTestKt.main(TrainTest.kt)

@@ -1,0 +1,18 @@
+MUTATION=omitKey exit=1 expected=nonzero
+CHECK multipleK3.goal[127] input=0.16862702562930287 eps=3.0E-6 expected=-5.365267663019294E-5 actual=-5.365267329842535E-5 absError=3.3317675942928955E-12 tolerance=1.093053532603859E-9
+CHECK multipleK3.goal[119] input=0.29986995971112096 eps=1.0E-5 expected=-3.3659295455013E-4 actual=-3.365929553318001E-4 absError=7.816700845625357E-13 tolerance=6.7518590910026006E-9
+CHECK multipleK3.goal[119] input=0.29986995971112096 eps=3.0E-6 expected=-3.365929546079542E-4 actual=-3.365929553318001E-4 absError=7.238458964164973E-13 tolerance=6.751859092159084E-9
+CHECK multipleK3.key.0[0] input=0.635239753131616 eps=1.0E-5 expected=-4.5371692514173384E-10 actual=0.0 absError=4.5371692514173384E-10 tolerance=2.0009074338502833E-11
+Exception in thread "main" java.lang.IllegalStateException: multipleK3.key.0[0] input=0.635239753131616 eps=1.0E-5
+	at org.unovyra.uno.research.GradientTestKt.near(GradientTest.kt:67)
+	at org.unovyra.uno.research.GradientTestKt.main(GradientTest.kt:97)
+	at org.unovyra.uno.research.GradientTestKt.main(GradientTest.kt)
+MUTATION=overwriteShared exit=1 expected=nonzero
+CHECK singletonK3.branch.0.0.bb[63] input=0.028973298230893483 eps=1.0E-5 expected=0.0 actual=0.0 absError=0.0 tolerance=2.0E-11
+CHECK singletonK3.branch.0.0.bb[63] input=0.028973298230893483 eps=3.0E-6 expected=0.0 actual=0.0 absError=0.0 tolerance=2.0E-11
+CHECK singletonK3.branch.0.0.bb maskedGradientMax expected=0.0 actual=0.0 absError=0.0 tolerance=0.0
+CHECK singletonK3.branch.0.1.a[16548] input=0.003566400753147678 eps=1.0E-5 expected=-6.133594240148587E-6 actual=-1.0516210357172698E-6 absError=5.081973204431317E-6 tolerance=1.4267188480297176E-10
+Exception in thread "main" java.lang.IllegalStateException: singletonK3.branch.0.1.a[16548] input=0.003566400753147678 eps=1.0E-5
+	at org.unovyra.uno.research.GradientTestKt.near(GradientTest.kt:67)
+	at org.unovyra.uno.research.GradientTestKt.main(GradientTest.kt:97)
+	at org.unovyra.uno.research.GradientTestKt.main(GradientTest.kt)

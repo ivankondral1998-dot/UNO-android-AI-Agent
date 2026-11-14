@@ -1,0 +1,89 @@
+{
+  "arms": [
+    {
+      "acquisition": false,
+      "arm": "frozen_trunk_P_heads",
+      "new_locked": 0.8333,
+      "new_on_T": 0.65,
+      "old_after_phase1": 1.0,
+      "old_after_phase2_same_organism": 1.0,
+      "old_on_T": 0.9833,
+      "retention_same_organism": true,
+      "signal": "observed labels on adapt, old then new, same object",
+      "transfer": false,
+      "what_changes": "heads only, trunk frozen at identity"
+    },
+    {
+      "acquisition": true,
+      "arm": "shared_trunk_anchored",
+      "new_locked": 0.95,
+      "new_on_T": 0.8333,
+      "old_after_phase1": 1.0,
+      "old_after_phase2_same_organism": 0.9667,
+      "old_on_T": 0.9667,
+      "retention_same_organism": true,
+      "signal": "observed labels on adapt, old then new, same object",
+      "transfer": false,
+      "what_changes": "trunk A and both heads"
+    },
+    {
+      "acquisition": true,
+      "arm": "shared_trunk_free",
+      "new_locked": 0.95,
+      "new_on_T": 0.8667,
+      "old_after_phase1": 1.0,
+      "old_after_phase2_same_organism": 0.9667,
+      "old_on_T": 0.9333,
+      "retention_same_organism": true,
+      "signal": "observed labels on adapt, old then new, same object",
+      "transfer": false,
+      "what_changes": "trunk A and both heads"
+    }
+  ],
+  "budget": {
+    "eta": 0.05,
+    "runs_of_this_candidate": 1,
+    "steps_per_phase": 300
+  },
+  "candidate": "sequential shared trunk, two heads, synthetic h from A x",
+  "criteria": {
+    "acquisition": 0.9,
+    "retention_same_organism": 0.9,
+    "transfer": 0.9
+  },
+  "environment": {
+    "platform": "Linux-6.12.8+-x86_64-with-glibc2.36",
+    "python": "3.10.22 (main, Oct  1 2026, 21:57:32) [GCC 12.2.0]"
+  },
+  "not": "legal Theta, UNO skill, sealed holdout",
+  "prototype": {
+    "arm": "nearest_prototype_observed",
+    "counts_as_retention": false,
+    "new_locked": 0.9,
+    "new_on_T": 0.8333,
+    "old_after_phase2_same_organism": 0.95,
+    "reason": "two stores, not one sequential organism",
+    "signal": "observed adapt pairs",
+    "what_changes": "memory store only"
+  },
+  "reconciliation": {
+    "cause": "different sample, different split, different trainer, and separate models versus one model. Her files are not in the tree.",
+    "gpt_claimed": "70/70 and 70/70, perceptron 250 passes, 135+135 rational, adapt 170, public_final 70, trained separately per task",
+    "grok_earlier": "0.675/0.6, logistic 400 steps eta 0.05, n=200 seed 20261105, same model scored on both tasks, tested on T(D)",
+    "owner_rule": "separate models do not prove retention"
+  },
+  "separate_models": {
+    "arm": "separate_models_NOT_retention",
+    "counts_as_retention": false,
+    "new": 0.8333,
+    "old": 1.0
+  },
+  "split": {
+    "accept_unused": 80,
+    "adapt": 200,
+    "locked": 120,
+    "n": 400,
+    "seed": 20261105,
+    "status": "OPEN_FIXTURE"
+  }
+}

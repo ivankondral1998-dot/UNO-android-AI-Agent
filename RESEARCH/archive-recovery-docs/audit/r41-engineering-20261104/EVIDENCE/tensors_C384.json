@@ -1,0 +1,983 @@
+[
+  {
+    "name": "E_text",
+    "shape": [
+      16384,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 6291456,
+    "frozen": 0,
+    "data_offset": 12800,
+    "row_stride": 384,
+    "data_length": 6291456,
+    "scale_offset": 6304256,
+    "scale_length": 65536,
+    "end_aligned": 6369792
+  },
+  {
+    "name": "audio",
+    "shape": [
+      384,
+      80
+    ],
+    "kind": "matrix",
+    "allocated": 30720,
+    "frozen": 0,
+    "data_offset": 6369792,
+    "row_stride": 80,
+    "data_length": 30720,
+    "scale_offset": 6400512,
+    "scale_length": 1536,
+    "end_aligned": 6402048
+  },
+  {
+    "name": "image",
+    "shape": [
+      384,
+      768
+    ],
+    "kind": "matrix",
+    "allocated": 294912,
+    "frozen": 0,
+    "data_offset": 6402048,
+    "row_stride": 768,
+    "data_length": 294912,
+    "scale_offset": 6696960,
+    "scale_length": 1536,
+    "end_aligned": 6698496
+  },
+  {
+    "name": "sensor",
+    "shape": [
+      384,
+      64
+    ],
+    "kind": "matrix",
+    "allocated": 24576,
+    "frozen": 0,
+    "data_offset": 6698496,
+    "row_stride": 64,
+    "data_length": 24576,
+    "scale_offset": 6723072,
+    "scale_length": 1536,
+    "end_aligned": 6724608
+  },
+  {
+    "name": "meta",
+    "shape": [
+      384,
+      32
+    ],
+    "kind": "matrix",
+    "allocated": 12288,
+    "frozen": 0,
+    "data_offset": 6724608,
+    "row_stride": 32,
+    "data_length": 12288,
+    "scale_offset": 6736896,
+    "scale_length": 1536,
+    "end_aligned": 6738432
+  },
+  {
+    "name": "U_s",
+    "shape": [
+      384,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 147456,
+    "frozen": 0,
+    "data_offset": 6738432,
+    "row_stride": 384,
+    "data_length": 147456,
+    "scale_offset": 6885888,
+    "scale_length": 1536,
+    "end_aligned": 6887424
+  },
+  {
+    "name": "U_g",
+    "shape": [
+      384,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 147456,
+    "frozen": 0,
+    "data_offset": 6887424,
+    "row_stride": 384,
+    "data_length": 147456,
+    "scale_offset": 7034880,
+    "scale_length": 1536,
+    "end_aligned": 7036416
+  },
+  {
+    "name": "e_modality",
+    "shape": [
+      6,
+      384
+    ],
+    "kind": "fp32",
+    "allocated": 2304,
+    "frozen": 0,
+    "data_offset": 7036416,
+    "data_length": 9216,
+    "end_aligned": 7045632
+  },
+  {
+    "name": "b_z",
+    "shape": [
+      384
+    ],
+    "kind": "fp32",
+    "allocated": 384,
+    "frozen": 0,
+    "data_offset": 7045632,
+    "data_length": 1536,
+    "end_aligned": 7047168
+  },
+  {
+    "name": "W_q",
+    "shape": [
+      64,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 24576,
+    "frozen": 0,
+    "data_offset": 7047168,
+    "row_stride": 384,
+    "data_length": 24576,
+    "scale_offset": 7071744,
+    "scale_length": 256,
+    "end_aligned": 7072000
+  },
+  {
+    "name": "W_k",
+    "shape": [
+      64,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 24576,
+    "frozen": 0,
+    "data_offset": 7072000,
+    "row_stride": 384,
+    "data_length": 24576,
+    "scale_offset": 7096576,
+    "scale_length": 256,
+    "end_aligned": 7096832
+  },
+  {
+    "name": "W_v",
+    "shape": [
+      64,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 24576,
+    "frozen": 0,
+    "data_offset": 7096832,
+    "row_stride": 384,
+    "data_length": 24576,
+    "scale_offset": 7121408,
+    "scale_length": 256,
+    "end_aligned": 7121664
+  },
+  {
+    "name": "W_r",
+    "shape": [
+      384,
+      64
+    ],
+    "kind": "matrix",
+    "allocated": 24576,
+    "frozen": 0,
+    "data_offset": 7121664,
+    "row_stride": 64,
+    "data_length": 24576,
+    "scale_offset": 7146240,
+    "scale_length": 1536,
+    "end_aligned": 7147776
+  },
+  {
+    "name": "A_0_0",
+    "shape": [
+      256,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 98304,
+    "frozen": 0,
+    "data_offset": 7147776,
+    "row_stride": 384,
+    "data_length": 98304,
+    "scale_offset": 7246080,
+    "scale_length": 1024,
+    "end_aligned": 7247104
+  },
+  {
+    "name": "C_0_0",
+    "shape": [
+      256,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 98304,
+    "frozen": 0,
+    "data_offset": 7247104,
+    "row_stride": 384,
+    "data_length": 98304,
+    "scale_offset": 7345408,
+    "scale_length": 1024,
+    "end_aligned": 7346432
+  },
+  {
+    "name": "B_0_0",
+    "shape": [
+      64,
+      256
+    ],
+    "kind": "matrix",
+    "allocated": 16384,
+    "frozen": 0,
+    "data_offset": 7346432,
+    "row_stride": 256,
+    "data_length": 16384,
+    "scale_offset": 7362816,
+    "scale_length": 256,
+    "end_aligned": 7363072
+  },
+  {
+    "name": "a_0_0",
+    "shape": [
+      256
+    ],
+    "kind": "fp32",
+    "allocated": 256,
+    "frozen": 0,
+    "data_offset": 7363072,
+    "data_length": 1024,
+    "end_aligned": 7364096
+  },
+  {
+    "name": "b_0_0",
+    "shape": [
+      64
+    ],
+    "kind": "fp32",
+    "allocated": 64,
+    "frozen": 0,
+    "data_offset": 7364096,
+    "data_length": 256,
+    "end_aligned": 7364352
+  },
+  {
+    "name": "A_0_1",
+    "shape": [
+      256,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 98304,
+    "frozen": 0,
+    "data_offset": 7364352,
+    "row_stride": 384,
+    "data_length": 98304,
+    "scale_offset": 7462656,
+    "scale_length": 1024,
+    "end_aligned": 7463680
+  },
+  {
+    "name": "C_0_1",
+    "shape": [
+      256,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 98304,
+    "frozen": 0,
+    "data_offset": 7463680,
+    "row_stride": 384,
+    "data_length": 98304,
+    "scale_offset": 7561984,
+    "scale_length": 1024,
+    "end_aligned": 7563008
+  },
+  {
+    "name": "B_0_1",
+    "shape": [
+      64,
+      256
+    ],
+    "kind": "matrix",
+    "allocated": 16384,
+    "frozen": 0,
+    "data_offset": 7563008,
+    "row_stride": 256,
+    "data_length": 16384,
+    "scale_offset": 7579392,
+    "scale_length": 256,
+    "end_aligned": 7579648
+  },
+  {
+    "name": "a_0_1",
+    "shape": [
+      256
+    ],
+    "kind": "fp32",
+    "allocated": 256,
+    "frozen": 0,
+    "data_offset": 7579648,
+    "data_length": 1024,
+    "end_aligned": 7580672
+  },
+  {
+    "name": "b_0_1",
+    "shape": [
+      64
+    ],
+    "kind": "fp32",
+    "allocated": 64,
+    "frozen": 0,
+    "data_offset": 7580672,
+    "data_length": 256,
+    "end_aligned": 7580928
+  },
+  {
+    "name": "A_0_2",
+    "shape": [
+      256,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 98304,
+    "frozen": 0,
+    "data_offset": 7580928,
+    "row_stride": 384,
+    "data_length": 98304,
+    "scale_offset": 7679232,
+    "scale_length": 1024,
+    "end_aligned": 7680256
+  },
+  {
+    "name": "C_0_2",
+    "shape": [
+      256,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 98304,
+    "frozen": 0,
+    "data_offset": 7680256,
+    "row_stride": 384,
+    "data_length": 98304,
+    "scale_offset": 7778560,
+    "scale_length": 1024,
+    "end_aligned": 7779584
+  },
+  {
+    "name": "B_0_2",
+    "shape": [
+      64,
+      256
+    ],
+    "kind": "matrix",
+    "allocated": 16384,
+    "frozen": 0,
+    "data_offset": 7779584,
+    "row_stride": 256,
+    "data_length": 16384,
+    "scale_offset": 7795968,
+    "scale_length": 256,
+    "end_aligned": 7796224
+  },
+  {
+    "name": "a_0_2",
+    "shape": [
+      256
+    ],
+    "kind": "fp32",
+    "allocated": 256,
+    "frozen": 0,
+    "data_offset": 7796224,
+    "data_length": 1024,
+    "end_aligned": 7797248
+  },
+  {
+    "name": "b_0_2",
+    "shape": [
+      64
+    ],
+    "kind": "fp32",
+    "allocated": 64,
+    "frozen": 0,
+    "data_offset": 7797248,
+    "data_length": 256,
+    "end_aligned": 7797504
+  },
+  {
+    "name": "A_0_3",
+    "shape": [
+      256,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 98304,
+    "frozen": 0,
+    "data_offset": 7797504,
+    "row_stride": 384,
+    "data_length": 98304,
+    "scale_offset": 7895808,
+    "scale_length": 1024,
+    "end_aligned": 7896832
+  },
+  {
+    "name": "C_0_3",
+    "shape": [
+      256,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 98304,
+    "frozen": 0,
+    "data_offset": 7896832,
+    "row_stride": 384,
+    "data_length": 98304,
+    "scale_offset": 7995136,
+    "scale_length": 1024,
+    "end_aligned": 7996160
+  },
+  {
+    "name": "B_0_3",
+    "shape": [
+      64,
+      256
+    ],
+    "kind": "matrix",
+    "allocated": 16384,
+    "frozen": 0,
+    "data_offset": 7996160,
+    "row_stride": 256,
+    "data_length": 16384,
+    "scale_offset": 8012544,
+    "scale_length": 256,
+    "end_aligned": 8012800
+  },
+  {
+    "name": "a_0_3",
+    "shape": [
+      256
+    ],
+    "kind": "fp32",
+    "allocated": 256,
+    "frozen": 0,
+    "data_offset": 8012800,
+    "data_length": 1024,
+    "end_aligned": 8013824
+  },
+  {
+    "name": "b_0_3",
+    "shape": [
+      64
+    ],
+    "kind": "fp32",
+    "allocated": 64,
+    "frozen": 0,
+    "data_offset": 8013824,
+    "data_length": 256,
+    "end_aligned": 8014080
+  },
+  {
+    "name": "A_0_4",
+    "shape": [
+      256,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 98304,
+    "frozen": 0,
+    "data_offset": 8014080,
+    "row_stride": 384,
+    "data_length": 98304,
+    "scale_offset": 8112384,
+    "scale_length": 1024,
+    "end_aligned": 8113408
+  },
+  {
+    "name": "C_0_4",
+    "shape": [
+      256,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 98304,
+    "frozen": 0,
+    "data_offset": 8113408,
+    "row_stride": 384,
+    "data_length": 98304,
+    "scale_offset": 8211712,
+    "scale_length": 1024,
+    "end_aligned": 8212736
+  },
+  {
+    "name": "B_0_4",
+    "shape": [
+      64,
+      256
+    ],
+    "kind": "matrix",
+    "allocated": 16384,
+    "frozen": 0,
+    "data_offset": 8212736,
+    "row_stride": 256,
+    "data_length": 16384,
+    "scale_offset": 8229120,
+    "scale_length": 256,
+    "end_aligned": 8229376
+  },
+  {
+    "name": "a_0_4",
+    "shape": [
+      256
+    ],
+    "kind": "fp32",
+    "allocated": 256,
+    "frozen": 0,
+    "data_offset": 8229376,
+    "data_length": 1024,
+    "end_aligned": 8230400
+  },
+  {
+    "name": "b_0_4",
+    "shape": [
+      64
+    ],
+    "kind": "fp32",
+    "allocated": 64,
+    "frozen": 0,
+    "data_offset": 8230400,
+    "data_length": 256,
+    "end_aligned": 8230656
+  },
+  {
+    "name": "A_0_5",
+    "shape": [
+      256,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 98304,
+    "frozen": 0,
+    "data_offset": 8230656,
+    "row_stride": 384,
+    "data_length": 98304,
+    "scale_offset": 8328960,
+    "scale_length": 1024,
+    "end_aligned": 8329984
+  },
+  {
+    "name": "C_0_5",
+    "shape": [
+      256,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 98304,
+    "frozen": 0,
+    "data_offset": 8329984,
+    "row_stride": 384,
+    "data_length": 98304,
+    "scale_offset": 8428288,
+    "scale_length": 1024,
+    "end_aligned": 8429312
+  },
+  {
+    "name": "B_0_5",
+    "shape": [
+      64,
+      256
+    ],
+    "kind": "matrix",
+    "allocated": 16384,
+    "frozen": 0,
+    "data_offset": 8429312,
+    "row_stride": 256,
+    "data_length": 16384,
+    "scale_offset": 8445696,
+    "scale_length": 256,
+    "end_aligned": 8445952
+  },
+  {
+    "name": "a_0_5",
+    "shape": [
+      256
+    ],
+    "kind": "fp32",
+    "allocated": 256,
+    "frozen": 0,
+    "data_offset": 8445952,
+    "data_length": 1024,
+    "end_aligned": 8446976
+  },
+  {
+    "name": "b_0_5",
+    "shape": [
+      64
+    ],
+    "kind": "fp32",
+    "allocated": 64,
+    "frozen": 0,
+    "data_offset": 8446976,
+    "data_length": 256,
+    "end_aligned": 8447232
+  },
+  {
+    "name": "W_verb",
+    "shape": [
+      128,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 49152,
+    "frozen": 39936,
+    "data_offset": 8447232,
+    "row_stride": 384,
+    "data_length": 49152,
+    "scale_offset": 8496384,
+    "scale_length": 512,
+    "end_aligned": 8496896
+  },
+  {
+    "name": "b_verb",
+    "shape": [
+      128
+    ],
+    "kind": "fp32",
+    "allocated": 128,
+    "frozen": 104,
+    "data_offset": 8496896,
+    "data_length": 512,
+    "end_aligned": 8497408
+  },
+  {
+    "name": "W_outcome",
+    "shape": [
+      128,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 49152,
+    "frozen": 41088,
+    "data_offset": 8497408,
+    "row_stride": 384,
+    "data_length": 49152,
+    "scale_offset": 8546560,
+    "scale_length": 512,
+    "end_aligned": 8547072
+  },
+  {
+    "name": "b_outcome",
+    "shape": [
+      128
+    ],
+    "kind": "fp32",
+    "allocated": 128,
+    "frozen": 107,
+    "data_offset": 8547072,
+    "data_length": 512,
+    "end_aligned": 8547584
+  },
+  {
+    "name": "W_observable",
+    "shape": [
+      128,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 49152,
+    "frozen": 41088,
+    "data_offset": 8547584,
+    "row_stride": 384,
+    "data_length": 49152,
+    "scale_offset": 8596736,
+    "scale_length": 512,
+    "end_aligned": 8597248
+  },
+  {
+    "name": "b_observable",
+    "shape": [
+      128
+    ],
+    "kind": "fp32",
+    "allocated": 128,
+    "frozen": 107,
+    "data_offset": 8597248,
+    "data_length": 512,
+    "end_aligned": 8597760
+  },
+  {
+    "name": "W_ctc",
+    "shape": [
+      128,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 49152,
+    "frozen": 0,
+    "data_offset": 8597760,
+    "row_stride": 384,
+    "data_length": 49152,
+    "scale_offset": 8646912,
+    "scale_length": 512,
+    "end_aligned": 8647424
+  },
+  {
+    "name": "b_ctc",
+    "shape": [
+      128
+    ],
+    "kind": "fp32",
+    "allocated": 128,
+    "frozen": 0,
+    "data_offset": 8647424,
+    "data_length": 512,
+    "end_aligned": 8647936
+  },
+  {
+    "name": "W_belief",
+    "shape": [
+      128,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 49152,
+    "frozen": 0,
+    "data_offset": 8647936,
+    "row_stride": 384,
+    "data_length": 49152,
+    "scale_offset": 8697088,
+    "scale_length": 512,
+    "end_aligned": 8697600
+  },
+  {
+    "name": "b_belief",
+    "shape": [
+      128
+    ],
+    "kind": "fp32",
+    "allocated": 128,
+    "frozen": 0,
+    "data_offset": 8697600,
+    "data_length": 512,
+    "end_aligned": 8698112
+  },
+  {
+    "name": "W_speech",
+    "shape": [
+      258,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 99072,
+    "frozen": 0,
+    "data_offset": 8698112,
+    "row_stride": 384,
+    "data_length": 99072,
+    "scale_offset": 8797184,
+    "scale_length": 1032,
+    "end_aligned": 8798272
+  },
+  {
+    "name": "b_speech",
+    "shape": [
+      258
+    ],
+    "kind": "fp32",
+    "allocated": 258,
+    "frozen": 0,
+    "data_offset": 8798272,
+    "data_length": 1032,
+    "end_aligned": 8799360
+  },
+  {
+    "name": "W_value",
+    "shape": [
+      1,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 384,
+    "frozen": 0,
+    "data_offset": 8799360,
+    "row_stride": 384,
+    "data_length": 384,
+    "scale_offset": 8799744,
+    "scale_length": 4,
+    "end_aligned": 8799808
+  },
+  {
+    "name": "b_value",
+    "shape": [
+      1
+    ],
+    "kind": "fp32",
+    "allocated": 1,
+    "frozen": 0,
+    "data_offset": 8799808,
+    "data_length": 4,
+    "end_aligned": 8799872
+  },
+  {
+    "name": "W_risk",
+    "shape": [
+      1,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 384,
+    "frozen": 0,
+    "data_offset": 8799872,
+    "row_stride": 384,
+    "data_length": 384,
+    "scale_offset": 8800256,
+    "scale_length": 4,
+    "end_aligned": 8800320
+  },
+  {
+    "name": "b_risk",
+    "shape": [
+      1
+    ],
+    "kind": "fp32",
+    "allocated": 1,
+    "frozen": 0,
+    "data_offset": 8800320,
+    "data_length": 4,
+    "end_aligned": 8800384
+  },
+  {
+    "name": "W_halt",
+    "shape": [
+      1,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 384,
+    "frozen": 0,
+    "data_offset": 8800384,
+    "row_stride": 384,
+    "data_length": 384,
+    "scale_offset": 8800768,
+    "scale_length": 4,
+    "end_aligned": 8800832
+  },
+  {
+    "name": "b_halt",
+    "shape": [
+      1
+    ],
+    "kind": "fp32",
+    "allocated": 1,
+    "frozen": 0,
+    "data_offset": 8800832,
+    "data_length": 4,
+    "end_aligned": 8800896
+  },
+  {
+    "name": "W_conf",
+    "shape": [
+      1,
+      384
+    ],
+    "kind": "matrix",
+    "allocated": 384,
+    "frozen": 0,
+    "data_offset": 8800896,
+    "row_stride": 384,
+    "data_length": 384,
+    "scale_offset": 8801280,
+    "scale_length": 4,
+    "end_aligned": 8801344
+  },
+  {
+    "name": "b_conf",
+    "shape": [
+      1
+    ],
+    "kind": "fp32",
+    "allocated": 1,
+    "frozen": 0,
+    "data_offset": 8801344,
+    "data_length": 4,
+    "end_aligned": 8801408
+  },
+  {
+    "name": "b_text",
+    "shape": [
+      16384
+    ],
+    "kind": "fp32",
+    "allocated": 16384,
+    "frozen": 0,
+    "data_offset": 8801408,
+    "data_length": 65536,
+    "end_aligned": 8866944
+  },
+  {
+    "name": "W_mask",
+    "shape": [
+      6,
+      772
+    ],
+    "kind": "matrix",
+    "allocated": 4632,
+    "frozen": 0,
+    "data_offset": 8866944,
+    "row_stride": 784,
+    "data_length": 4704,
+    "scale_offset": 8871680,
+    "scale_length": 24,
+    "end_aligned": 8871744
+  },
+  {
+    "name": "b_mask",
+    "shape": [
+      6
+    ],
+    "kind": "fp32",
+    "allocated": 6,
+    "frozen": 0,
+    "data_offset": 8871744,
+    "data_length": 24,
+    "end_aligned": 8871808
+  },
+  {
+    "name": "W_wake",
+    "shape": [
+      1,
+      32
+    ],
+    "kind": "matrix",
+    "allocated": 32,
+    "frozen": 0,
+    "data_offset": 8871808,
+    "row_stride": 32,
+    "data_length": 32,
+    "scale_offset": 8871872,
+    "scale_length": 4,
+    "end_aligned": 8871936
+  },
+  {
+    "name": "b_wake",
+    "shape": [
+      1
+    ],
+    "kind": "fp32",
+    "allocated": 1,
+    "frozen": 0,
+    "data_offset": 8871936,
+    "data_length": 4,
+    "end_aligned": 8872000
+  }
+]

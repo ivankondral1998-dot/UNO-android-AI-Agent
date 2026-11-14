@@ -1,0 +1,586 @@
+{
+  "hash": "SHA-256",
+  "scope": "Every packaged file except this manifest itself",
+  "files": [
+    {
+      "path": "ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+      "bytes": 9832,
+      "sha256": "4332225c501caf15628fa8e293895382501526c6540400e9d421c0ab712dca3c"
+    },
+    {
+      "path": "ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+      "bytes": 26820,
+      "sha256": "6bd6f68989972d183b6750711dca223355a026dfcf11461275d25406319853fe"
+    },
+    {
+      "path": "ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+      "bytes": 17474,
+      "sha256": "4b9186bb19d71f88aed989b33ef8a40f5a699535e645c79f5eb97d5d97098a4c"
+    },
+    {
+      "path": "ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "bytes": 27425,
+      "sha256": "52b1eab23c977d253625b98de20bee6e5802c652973cf96403037118b5fbe4be"
+    },
+    {
+      "path": "ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+      "bytes": 13624,
+      "sha256": "737654965c75e83e10a2705656af0f49ff9bf2c2bb0a4f359c67f0f426c6b0c8"
+    },
+    {
+      "path": "ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+      "bytes": 28652,
+      "sha256": "37754c2d980838e13877ed014f870a14a879cb32b08d6e19e78c5668a06fe817"
+    },
+    {
+      "path": "ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+      "bytes": 22056,
+      "sha256": "dc99d2e043ffff4abb28d8f9a99458cb8e2382dfe2ff920e68f1b0b67a23b9c7"
+    },
+    {
+      "path": "ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+      "bytes": 22258,
+      "sha256": "2602f04c049fc721e9c6ecc79f73d5e01400429315f05744f5ed00faa5b3f857"
+    },
+    {
+      "path": "ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+      "bytes": 15527,
+      "sha256": "4129290d9ef08c86e3aaf186fcb4d830a764c514beaca33aae61b4eae698ed69"
+    },
+    {
+      "path": "ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+      "bytes": 14541,
+      "sha256": "dea19182304bd8784030fe6d7b7570bdc4ffbc2bc5dafd68c8f7e772a726aa90"
+    },
+    {
+      "path": "ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md",
+      "bytes": 6521,
+      "sha256": "c2fd8de591472c52f0d206b361f6a61fc857f9ae989751ad11ce9bd0603f95c5"
+    },
+    {
+      "path": "ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+      "bytes": 11905,
+      "sha256": "dbcba73af110f6725183693b2dc3a67e1b310b3c6833787985325864986cf691"
+    },
+    {
+      "path": "ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+      "bytes": 10420,
+      "sha256": "bebaf4a52b8c39f32da6725a9216fc782e022c1f75067889c7a39ab780694879"
+    },
+    {
+      "path": "ASTRA_FINAL_README_AND_DECISION.md",
+      "bytes": 7168,
+      "sha256": "5b933376c6a162ddbb03925b705bc2787b1c497b9a635d36b951ba9415aa5765"
+    },
+    {
+      "path": "ASTRA_REVISION_LOG.md",
+      "bytes": 4818,
+      "sha256": "3fc6c8c0024382a590a8f53ee8d41a34c24b16429f83d266238b0966714849fc"
+    },
+    {
+      "path": "audit/BLIND_AUDIT.md",
+      "bytes": 23827,
+      "sha256": "c6ef0243e337ced7bfd3c1b5d983f7d207d923d6ef07b537b33376961413510a"
+    },
+    {
+      "path": "audit/CROSSCHECK_PRIOR_AUDIT.md",
+      "bytes": 6855,
+      "sha256": "88dcf54a4d4c8919093ad8043d687a3c89a9daff51505fe8e442e8d624f220a2"
+    },
+    {
+      "path": "audit/FINAL_SIGNOFF.md",
+      "bytes": 3995,
+      "sha256": "9a93c7d113b83ba61aca87dba7a41834b81f4686faeafd8ca713f44556ba5a29"
+    },
+    {
+      "path": "audit/R1_INPUT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+      "bytes": 9760,
+      "sha256": "6b29712a73ce66b900ebe7c61a1fbf0d5d7abafaa19aad52fea3b200f3543a3c"
+    },
+    {
+      "path": "audit/R1_INPUT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+      "bytes": 22634,
+      "sha256": "1d39ef99fe4bda9d06637f38474674758e8bd1f87e07ca7b5dd480ae6b9dcfe9"
+    },
+    {
+      "path": "audit/R1_INPUT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+      "bytes": 14734,
+      "sha256": "6ddd9f72e8a7532c5f3b64528c44d916c7a0aab502d2a86682c9942f5454691e"
+    },
+    {
+      "path": "audit/R1_INPUT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "bytes": 21840,
+      "sha256": "258cd885df68578c03442a08b0a09e187ef6f87037de81192f8ce3d9c7e1d199"
+    },
+    {
+      "path": "audit/R1_INPUT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+      "bytes": 13445,
+      "sha256": "959af3cc8fff6c99ea3f91bcb5b9125aaba672ad387b2624568cb663e140ca64"
+    },
+    {
+      "path": "audit/R1_INPUT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+      "bytes": 22755,
+      "sha256": "bf5a1ed663bd7ec857ae77c9fb4ef36c7854c13e862d73ede77b48de0757d01f"
+    },
+    {
+      "path": "audit/R1_INPUT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+      "bytes": 16804,
+      "sha256": "7d6239ae82713920b27198228c07b806538cffb7f15006a1a293764212c8b417"
+    },
+    {
+      "path": "audit/R1_INPUT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+      "bytes": 18100,
+      "sha256": "27cb97a3efea3856fd5fb4ce68dff33e84993d3acfd112fff77f9587f95efe39"
+    },
+    {
+      "path": "audit/R1_INPUT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+      "bytes": 11248,
+      "sha256": "7bd29d66cedc69e297e864edc138d87cf6779af8b92e3b257486eedc9413fffe"
+    },
+    {
+      "path": "audit/R1_INPUT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+      "bytes": 12295,
+      "sha256": "819a8645e7357e1d4104483b5eb2d3de49899b968a39255a45bfdcfe17ceb60f"
+    },
+    {
+      "path": "audit/R1_INPUT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+      "bytes": 10353,
+      "sha256": "887fedfeaf471ef76ebab662763163271536502691843ca30002200a959154ac"
+    },
+    {
+      "path": "audit/R1_INPUT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+      "bytes": 10349,
+      "sha256": "a1c889b255685bfdae4759675ed8eb9db4073e0160eda7fc5ad0bb8d9281eb5b"
+    },
+    {
+      "path": "audit/R1_INPUT/MANIFEST.json",
+      "bytes": 1797,
+      "sha256": "db90c01c34c1750c75034a7f79fee11b14bdd6483a73f042c3592490dba9e042"
+    },
+    {
+      "path": "audit/R1_INPUT/arithmetic_v2.json",
+      "bytes": 4579,
+      "sha256": "e688c8070e4f6ea9e8dbbae6fb6b9d59c35cce9d06269d807ada93e825ac6192"
+    },
+    {
+      "path": "audit/R1_INPUT/recompute.py",
+      "bytes": 4439,
+      "sha256": "79c3c0e5dc1e81b70a216b502f1e1a34ff2b244b6b9a8b9aa88326443e16feda"
+    },
+    {
+      "path": "audit/R1_INPUT/tensor_manifest_d1024.json",
+      "bytes": 25857,
+      "sha256": "2c781795eacb9bc9d0c2a76fca90728d7b24b917025d1ba5acada2bb00fade65"
+    },
+    {
+      "path": "audit/R1_REVIEW.md",
+      "bytes": 19779,
+      "sha256": "fb1e3c5534b3ea02c8c8c4e2642f1662e06453bbc2a51d4115feb470104626d5"
+    },
+    {
+      "path": "audit/R2_INPUT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+      "bytes": 9832,
+      "sha256": "4332225c501caf15628fa8e293895382501526c6540400e9d421c0ab712dca3c"
+    },
+    {
+      "path": "audit/R2_INPUT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+      "bytes": 23851,
+      "sha256": "f5c0e27c387cc5eff895794fd2a5ee6794ac10adbd5301eafb072b89550d2bd8"
+    },
+    {
+      "path": "audit/R2_INPUT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+      "bytes": 17474,
+      "sha256": "4b9186bb19d71f88aed989b33ef8a40f5a699535e645c79f5eb97d5d97098a4c"
+    },
+    {
+      "path": "audit/R2_INPUT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "bytes": 25108,
+      "sha256": "05ab4f8cda159021110850941ba65c96764bdab82cf6da463576f5794671b9b6"
+    },
+    {
+      "path": "audit/R2_INPUT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+      "bytes": 13624,
+      "sha256": "737654965c75e83e10a2705656af0f49ff9bf2c2bb0a4f359c67f0f426c6b0c8"
+    },
+    {
+      "path": "audit/R2_INPUT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+      "bytes": 26887,
+      "sha256": "15ccce7a48f13d915d54d84b640b52aaa8c8ef42f6db318af9c2b555fd62cc20"
+    },
+    {
+      "path": "audit/R2_INPUT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+      "bytes": 22056,
+      "sha256": "dc99d2e043ffff4abb28d8f9a99458cb8e2382dfe2ff920e68f1b0b67a23b9c7"
+    },
+    {
+      "path": "audit/R2_INPUT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+      "bytes": 21030,
+      "sha256": "933f658b4bca075dc67231884ccdefb8c94c662d026eeeae026c1eef788f0d3a"
+    },
+    {
+      "path": "audit/R2_INPUT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+      "bytes": 14514,
+      "sha256": "51d5ccbe7bd47303996d47d3a69b35c9b25f42165c1e6ece81e100b7cd51ad15"
+    },
+    {
+      "path": "audit/R2_INPUT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+      "bytes": 13700,
+      "sha256": "00010c53e07ec96c5c71a7567ed5d7bd63eb9c56420c416aec87d72e3d4556d8"
+    },
+    {
+      "path": "audit/R2_INPUT/ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md",
+      "bytes": 4144,
+      "sha256": "a93c257343f9bac00526127ed7f5d8ef0f617685185ec3bff8533d155ea8d387"
+    },
+    {
+      "path": "audit/R2_INPUT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+      "bytes": 11905,
+      "sha256": "dbcba73af110f6725183693b2dc3a67e1b310b3c6833787985325864986cf691"
+    },
+    {
+      "path": "audit/R2_INPUT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+      "bytes": 10420,
+      "sha256": "bebaf4a52b8c39f32da6725a9216fc782e022c1f75067889c7a39ab780694879"
+    },
+    {
+      "path": "audit/R2_INPUT/ASTRA_FINAL_README_AND_DECISION.md",
+      "bytes": 6414,
+      "sha256": "fd685b159b15bebbd32769573daf87ebe0daa4e912af4edd6454804210012b91"
+    },
+    {
+      "path": "audit/R2_INPUT/ASTRA_REVISION_LOG.md",
+      "bytes": 2132,
+      "sha256": "f2231412995cc6c2192badce21c30ed0b4aced2d078c4b4f34ffed8eeeca4e91"
+    },
+    {
+      "path": "audit/R2_INPUT/MANIFEST.json",
+      "bytes": 2936,
+      "sha256": "f77357d5fa71b7b239205d763f685bf899068735bf27e619ce2028751c1a8c3c"
+    },
+    {
+      "path": "audit/R2_INPUT/arithmetic_v2.json",
+      "bytes": 5898,
+      "sha256": "9fb83b81489bfc9cd543b9e774d2c7047aff11a99db9c5b2daa62f3fd95041d6"
+    },
+    {
+      "path": "audit/R2_INPUT/recompute.py",
+      "bytes": 5599,
+      "sha256": "ccdb8c2006a9794376829afc7ca7f792d7c899191b4ec202644cbcfbf1807d0a"
+    },
+    {
+      "path": "audit/R2_INPUT/tensor_manifest_d1024.json",
+      "bytes": 43480,
+      "sha256": "569f839f3cc557fed734d41d65311b46743fbc77e4c3e11037aaf9fcc2326b32"
+    },
+    {
+      "path": "audit/R2_REVIEW.md",
+      "bytes": 14242,
+      "sha256": "9d3949bd323adbe2ac3b1c12ec624c4ba1edcf5f02866cdefd3ac6ef7b381eff"
+    },
+    {
+      "path": "audit/R3_AUDITED_MANIFEST.json",
+      "bytes": 3537,
+      "sha256": "a2ca62b8c76c7f11667e53c7fef0c68a77789783c4a5fb8a802a6970abae63d2"
+    },
+    {
+      "path": "audit/R3_FINAL_REVIEW.md",
+      "bytes": 9582,
+      "sha256": "f87bd23cea22deba5218f960bbcfc87552210678fb2fa676968b8660ec8f6bba"
+    },
+    {
+      "path": "audit/R3_INPUT/ASTRA_00_README_AND_SOURCE_PROVENANCE.md",
+      "bytes": 9832,
+      "sha256": "4332225c501caf15628fa8e293895382501526c6540400e9d421c0ab712dca3c"
+    },
+    {
+      "path": "audit/R3_INPUT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+      "bytes": 26820,
+      "sha256": "6bd6f68989972d183b6750711dca223355a026dfcf11461275d25406319853fe"
+    },
+    {
+      "path": "audit/R3_INPUT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+      "bytes": 17474,
+      "sha256": "4b9186bb19d71f88aed989b33ef8a40f5a699535e645c79f5eb97d5d97098a4c"
+    },
+    {
+      "path": "audit/R3_INPUT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "bytes": 27399,
+      "sha256": "28771231ace38382a54e3ba04fd438feb7ab6ba5f8c779f6ee23cb19c35974a1"
+    },
+    {
+      "path": "audit/R3_INPUT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+      "bytes": 13624,
+      "sha256": "737654965c75e83e10a2705656af0f49ff9bf2c2bb0a4f359c67f0f426c6b0c8"
+    },
+    {
+      "path": "audit/R3_INPUT/ASTRA_05_ANDROID_TRUST_AND_RESOURCES.md",
+      "bytes": 28652,
+      "sha256": "37754c2d980838e13877ed014f870a14a879cb32b08d6e19e78c5668a06fe817"
+    },
+    {
+      "path": "audit/R3_INPUT/ASTRA_06_NCR_EVO_MATH_AND_FALSIFICATION.md",
+      "bytes": 22056,
+      "sha256": "dc99d2e043ffff4abb28d8f9a99458cb8e2382dfe2ff920e68f1b0b67a23b9c7"
+    },
+    {
+      "path": "audit/R3_INPUT/ASTRA_07_PRECODE_ENGINEERING_D01_D10.md",
+      "bytes": 22258,
+      "sha256": "2602f04c049fc721e9c6ecc79f73d5e01400429315f05744f5ed00faa5b3f857"
+    },
+    {
+      "path": "audit/R3_INPUT/ASTRA_08_PROOF_OBLIGATIONS_AND_COUNTEREXAMPLES.md",
+      "bytes": 15527,
+      "sha256": "4129290d9ef08c86e3aaf186fcb4d830a764c514beaca33aae61b4eae698ed69"
+    },
+    {
+      "path": "audit/R3_INPUT/ASTRA_09_UPDATED_MATRIX_M01_M44_PLUS.md",
+      "bytes": 14467,
+      "sha256": "bbb6f6bce4f63eee163e900d4fca7a44f0d8230e397bb832db65802747856944"
+    },
+    {
+      "path": "audit/R3_INPUT/ASTRA_10_INDEPENDENT_REDTEAM_REPORT.md",
+      "bytes": 4942,
+      "sha256": "df269c690577792ff6c378bafa804c61bb72deb363f8ebf7808ff46d31ee4cfe"
+    },
+    {
+      "path": "audit/R3_INPUT/ASTRA_11_CODEX_FUTURE_EXECUTION_BLUEPRINT.md",
+      "bytes": 11905,
+      "sha256": "dbcba73af110f6725183693b2dc3a67e1b310b3c6833787985325864986cf691"
+    },
+    {
+      "path": "audit/R3_INPUT/ASTRA_12_UNKNOWNS_DATA_AND_HARDWARE_REQUESTS.md",
+      "bytes": 10420,
+      "sha256": "bebaf4a52b8c39f32da6725a9216fc782e022c1f75067889c7a39ab780694879"
+    },
+    {
+      "path": "audit/R3_INPUT/ASTRA_FINAL_README_AND_DECISION.md",
+      "bytes": 6617,
+      "sha256": "ac51c57389bc25b529317674bc5f00ef01028d8778e845f99d465de5bdd74fb2"
+    },
+    {
+      "path": "audit/R3_INPUT/ASTRA_REVISION_LOG.md",
+      "bytes": 3876,
+      "sha256": "1b7a447a7672d6704730bb037bb50846b158cba4a891d0a4a63375c7bf984998"
+    },
+    {
+      "path": "audit/R3_INPUT/MANIFEST.json",
+      "bytes": 2936,
+      "sha256": "437a32fe9e14aa6dee3d5a1e01a7d4f31ede556ebfaeb68a261e8650261adcc5"
+    },
+    {
+      "path": "audit/R3_INPUT/arithmetic_v2.json",
+      "bytes": 5898,
+      "sha256": "9fb83b81489bfc9cd543b9e774d2c7047aff11a99db9c5b2daa62f3fd95041d6"
+    },
+    {
+      "path": "audit/R3_INPUT/recompute.py",
+      "bytes": 5599,
+      "sha256": "ccdb8c2006a9794376829afc7ca7f792d7c899191b4ec202644cbcfbf1807d0a"
+    },
+    {
+      "path": "audit/R3_INPUT/tensor_manifest_d1024.json",
+      "bytes": 43480,
+      "sha256": "569f839f3cc557fed734d41d65311b46743fbc77e4c3e11037aaf9fcc2326b32"
+    },
+    {
+      "path": "audit/R3_PATCH_INPUT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+      "bytes": 27425,
+      "sha256": "52b1eab23c977d253625b98de20bee6e5802c652973cf96403037118b5fbe4be"
+    },
+    {
+      "path": "audit/R3_PATCH_INPUT/MANIFEST.json",
+      "bytes": 174,
+      "sha256": "6c3c8dc4f5de2e128259393d6e28fac5f7cf7bb8cadcdd97bbace467cff80945"
+    },
+    {
+      "path": "evidence/FINAL_AUTHOR_MANIFEST.json",
+      "bytes": 2963,
+      "sha256": "a6c35cc759db57f6057117bb3040644ad53874410616049bf885b9ea605723dc"
+    },
+    {
+      "path": "evidence/FINAL_VALIDATION.json",
+      "bytes": 535,
+      "sha256": "5f9ea71fe951861f69cc5c10ce716f4b5115edfd0c51936eb84721b824e8b17a"
+    },
+    {
+      "path": "evidence/PROSE_SPACING_CHANGES.json",
+      "bytes": 5190,
+      "sha256": "ba44ece2acd015dc7bdc74b642d547321c1162fee7f7331e6ba65b85a25f5bc9"
+    },
+    {
+      "path": "evidence/SOURCE_HASHES.json",
+      "bytes": 5362,
+      "sha256": "2e178d70eea79e55f602640d404cece2d0f2eef41f81050115dc12f9d21e28be"
+    },
+    {
+      "path": "evidence/SOURCE_MANIFEST_VERIFICATION.json",
+      "bytes": 5078,
+      "sha256": "11d4ebdb45414f0a152d78314af41beb88bdb505f4af4596d6fa8d875972bec6"
+    },
+    {
+      "path": "evidence/arithmetic_v2.json",
+      "bytes": 5898,
+      "sha256": "9fb83b81489bfc9cd543b9e774d2c7047aff11a99db9c5b2daa62f3fd95041d6"
+    },
+    {
+      "path": "evidence/recompute.py",
+      "bytes": 5599,
+      "sha256": "ccdb8c2006a9794376829afc7ca7f792d7c899191b4ec202644cbcfbf1807d0a"
+    },
+    {
+      "path": "evidence/tensor_manifest_d1024.json",
+      "bytes": 43480,
+      "sha256": "569f839f3cc557fed734d41d65311b46743fbc77e4c3e11037aaf9fcc2326b32"
+    },
+    {
+      "path": "sources/00_READ_ME_FIRST_ASTRA_MATH_COMPLETION_MANDATE.md",
+      "bytes": 15629,
+      "sha256": "ff2969559db9ec4e40cf91aa2658a9115d412a3289fa579be208489b30acde95"
+    },
+    {
+      "path": "sources/01_UNO_PRECODE_ENGINEERING_MASTERPLAN_2026-11-02.md",
+      "bytes": 30586,
+      "sha256": "66e31f2940398b24987403da87d64c6c3baf11a5bbde73a168801e526bfb160f"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/00_SCOPE_AND_EVIDENCE.md",
+      "bytes": 10372,
+      "sha256": "e615c5ed580c026eac2d6015e7e2bc178a6ad332be3bcdd65a3256c9d5258633"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/01_SYMBOLS_AND_STATE_SPACES.md",
+      "bytes": 12743,
+      "sha256": "09461946eff24c93d8ad2a29ee99f8012cc4290e3b7c02dff480591393d9cf87"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/02_UNO_GLOBAL_DYNAMICS.md",
+      "bytes": 25295,
+      "sha256": "edb9f3d109b78db70d2d1c117c6222758ee513ff2f12f6ee5914ac91c51aef88"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/03_NEURAL_GRAPH_AND_WEIGHTS.md",
+      "bytes": 13036,
+      "sha256": "f61f0d5f7a0a7fb23d613b7c9bb2f2f9bdafa2d2f5ffd4fcf087de0dacf0bd5c"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/04_LEARNING_AND_PLASTICITY.md",
+      "bytes": 22004,
+      "sha256": "e2845a43efa41f7460295e9584d68f7bea3e29e5b01bf8f813ca397237c0ec6b"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/05_RESOURCE_AND_SAFETY_PROOFS.md",
+      "bytes": 19203,
+      "sha256": "6ad9483e28389cfc65b1529f11f7062526b12cba6217a1e99e14dcae89bae83a"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/06_ASTRA_NCR_EVO_FORMAL.md",
+      "bytes": 25397,
+      "sha256": "4c8b9f2a3519bccc30e8debbe77300f53aae7eb27f02e0735f08b2d48c5a6d58"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/07_CRITICAL_REVIEW_AND_COUNTEREXAMPLES.md",
+      "bytes": 15705,
+      "sha256": "a5927c2fcd86e7ecb7a29021902419fbc414d04d0a911fe725932bfe38a2c28f"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/08_MATH_ACCEPTANCE_MATRIX.md",
+      "bytes": 8370,
+      "sha256": "8d35a9d6801a0f2748773d2d6dfe2509b29cc1dabe2fb908327eb431d71da118"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/09_CODEX_IMPLEMENTATION_CONTRACT_LATER.md",
+      "bytes": 8084,
+      "sha256": "3930276e7ddf3a989452c1e0cd635c246d4057f583085b12669b8184095568aa"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/INDEPENDENT_REVIEW.md",
+      "bytes": 35480,
+      "sha256": "a1d60b98dbbf2b3a1d7a345189e7ba486b047a166a04d01cf28b2b5f4b0ec107"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/OPEN_QUESTIONS_AND_DECISIONS.md",
+      "bytes": 5965,
+      "sha256": "c84b55a04066e0cc4c4084d0c6a051474870b32ae638320d0cfeceda4505f6d4"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/PACKAGE_MANIFEST_SHA256.json",
+      "bytes": 4589,
+      "sha256": "47dda9e53d4d24366d97abe968a45056ff0c156068ff0b34c96b8c7da1a57fc4"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/README.md",
+      "bytes": 5765,
+      "sha256": "650a6bc80556f6cd800d9defce06fef77a6d74ce557a460c13419a9882ce17bb"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/SOURCES_AND_REPRODUCIBILITY.md",
+      "bytes": 5522,
+      "sha256": "586ba3e99af16feebb1f08967d7513f8dab65008bb15a01ca115164b585fdd3a"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/evidence/DELIVERY_VALIDATION.json",
+      "bytes": 273,
+      "sha256": "ce0d98e7d126b0d1bbebe9721c4f67c52e01321ae9dce9e658b0dafc56547d84"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/evidence/PR3_formula.md",
+      "bytes": 13785,
+      "sha256": "b7e1b4cfbd2447cc7e4afaab7e38e8c0bd17cb936e78197f20639994357db704"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/evidence/PR3_reference.py.txt",
+      "bytes": 16971,
+      "sha256": "f1d5d6c2f97b5e8bfc15a84459a0a0fb5c3761c8070b2c558a8390b98946fcfc"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/evidence/REVISION_LOG.md",
+      "bytes": 1957,
+      "sha256": "94a36ab1f39bbe824c68a6171409f23d062bb45af8159620eedfc458cceb50c4"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/evidence/arithmetic.json",
+      "bytes": 2358,
+      "sha256": "86bc04de2bb9a30c514cdd3ba8abebe17c71c85f89827d1738ea34bdafdb590c"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/evidence/github_AGENTS.md",
+      "bytes": 6665,
+      "sha256": "648ddb44ac8a3028d1da72e8625309c9ce32cdb382c01ce892cc2a7e4cac7845"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/evidence/github_PR3_metadata.json",
+      "bytes": 24766,
+      "sha256": "309bc2e5ccf6b9450c07180be27f0a948c8fe068debf1e556f12581c33430794"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/evidence/github_README.md",
+      "bytes": 16198,
+      "sha256": "fdef04c2dd6300b7ebc1f732b3afd98b531e2a54368083322708549b9ed2cb53"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/evidence/github_UNO_SYSTEM_FORMULA.md",
+      "bytes": 5588,
+      "sha256": "ac642b92fe07a40191b5eef0a3f947357b2df3d297055cef49dfc878c754f244"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/originals/MANIFEST_SHA256.json",
+      "bytes": 746,
+      "sha256": "7187ca7e313fe184f52308720e1eaf8b9d414365941206f26a315e399314d3f5"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/originals/NCR_EVO_ASTRA_RESEARCH_BRIEF_2026-11-01.md",
+      "bytes": 21841,
+      "sha256": "60bb31db6c663b4c78ea3182c1593b94ceb2b3259f690edc6ccc1792b28c6547"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/originals/UNO_MATH_HOST_V0_1_REFERENCE_NOT_CANONICAL.md",
+      "bytes": 13784,
+      "sha256": "abe61311b62f39cf176648aa6315d21e05fe471ab77d710e566774847a059b7b"
+    },
+    {
+      "path": "sources/02_ORIGINAL_WORK_V1_1/originals/WORK_START_HERE_UNO_MATHEMATICAL_DESIGN_2026-11-01.md",
+      "bytes": 44026,
+      "sha256": "5dce811ff071b0654dfe58716424d5f6aead7fc09a1f40a6b97cdad85017f6f3"
+    }
+  ]
+}

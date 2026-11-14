@@ -1,0 +1,69 @@
+{
+  "schema": "UNO_LEGACY_JNO_MIGRATION_1",
+  "created_at": "2026-11-01",
+  "source_repo": "kolakbro5995-cpu/JarvisLab",
+  "source_commit": "393d273feea87242a8c330f66a037b243bed8e1a",
+  "source_branch_at_audit": "feature/v21-jno-native-feedback-20261101",
+  "purpose": "reference_and_baseline_only",
+  "production_runtime": false,
+  "source_history_preserved": true,
+  "files": [
+    {
+      "source_path": "docs/V21_ARCHITECTURE.md",
+      "uno_path": "research/legacy-jno/docs/V21_ARCHITECTURE.md",
+      "git_blob_sha": "dfe67a1c2430805c782487483be25304e7aeebdb"
+    },
+    {
+      "source_path": "docs/V21_MODELS_AND_EVOLUTION.md",
+      "uno_path": "research/legacy-jno/docs/V21_MODELS_AND_EVOLUTION.md",
+      "git_blob_sha": "0e93e98ef3d0513853015e88296b35d97e69fb9f"
+    },
+    {
+      "source_path": "docs/V21_MIGRATION.md",
+      "uno_path": "research/legacy-jno/docs/V21_MIGRATION.md",
+      "git_blob_sha": "b4da1500e5ba452506d957a3e01e181afced4e09"
+    },
+    {
+      "source_path": "docs/V21_VERIFICATION.md",
+      "uno_path": "research/legacy-jno/docs/V21_VERIFICATION.md",
+      "git_blob_sha": "4ec8054f4612034a2410073d016065882b808604"
+    },
+    {
+      "source_path": "docs/V21_NATIVE_FEEDBACK_INTEGRATION.md",
+      "uno_path": "research/legacy-jno/docs/V21_NATIVE_FEEDBACK_INTEGRATION.md",
+      "git_blob_sha": "894ec0b07bca6d98b39eccae9538ab192d99dd14"
+    },
+    {
+      "source_path": "docs/V21_OFFLINE_CONTRACT.md",
+      "uno_path": "research/legacy-jno/docs/V21_OFFLINE_CONTRACT.md",
+      "git_blob_sha": "ce21117356b758e28de940702ccf597eb6c80c43"
+    },
+    {
+      "source_path": "docs/architecture/JARVIS_LAB_FOUNDATIONAL_NEURAL_LINK_PRINCIPLES.md",
+      "uno_path": "research/legacy-jno/docs/JARVIS_LAB_FOUNDATIONAL_NEURAL_LINK_PRINCIPLES.md",
+      "git_blob_sha": "8f22856c887345d8d2aa1fe818592f42648b7611"
+    },
+    {
+      "source_path": "app/src/lab/java/io/jarvis/mobile/v21/NeuralCore.kt",
+      "uno_path": "research/legacy-jno/kotlin/io/jarvis/mobile/v21/NeuralCore.kt",
+      "git_blob_sha": "7e51bc013356d26479de815ce0ab7c94c8b45539"
+    },
+    {
+      "source_path": "tests/kotlin/V21CoreRepositorySmoke.kt",
+      "uno_path": "research/legacy-jno/tests/V21CoreRepositorySmoke.kt",
+      "git_blob_sha": "5f67f5569869b8ec983ab7723701165a9487fb8c"
+    },
+    {
+      "source_path": "app/src/lab/assets/jno-v21/jno2-w64-int8.bin",
+      "uno_path": "research/legacy-jno/assets/jno2-w64-int8.bin",
+      "git_blob_sha": "67c6899a7db41976f2fc8ae8fd035f44f588eb9d",
+      "reported_sha256": "7a51953eccf9c8cd978312b026c404b2451547b85468989d9d4359809a4bc170"
+    }
+  ],
+  "checks": {
+    "source_blob_identical_to_destination": true,
+    "android_build": "NOT_EXECUTED",
+    "host_test": "NOT_EXECUTED",
+    "old_repository_mutated": false
+  }
+}

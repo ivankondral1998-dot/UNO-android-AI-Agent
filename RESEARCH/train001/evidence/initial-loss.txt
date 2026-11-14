@@ -1,0 +1,7 @@
+info: kotlinc-jvm 2.2.21 (JRE 21.0.13+9-1-deb13u2-Debian)
+openjdk version "21.0.13" 2026-10-20
+OpenJDK Runtime Environment (build 21.0.13+9-1-deb13u2-Debian)
+OpenJDK 64-Bit Server VM (build 21.0.13+9-1-deb13u2-Debian, mixed mode, sharing)
+CHECK mse.value expected=0.16 actual=0.16 tol=1.0E-11 error=0.0
+CHECK mse.gradient expected=-0.4 actual=-0.39999999999999997 tol=1.0E-11 error=5.551115123125783E-17
+TRAIN001_CHECKS_PASS=2

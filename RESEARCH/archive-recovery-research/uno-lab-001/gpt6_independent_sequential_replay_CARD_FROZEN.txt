@@ -1,0 +1,8 @@
+UNO-LAB-001 independent replication card; fixed BEFORE executable candidate run.
+Target: Grok research/uno-lab-001/grok_sequential_organism.py SHA256 1a8e5ce82ef21d07c8e55edf5037cb463a505f27eb6b8cf12de9cede86ca05fa; Git blob 48ed286707a07917a785fa812b36c8044f1b1234.
+Owner authorization: small research weights only; no UNO production code, weights or Android; <=600 seconds; <=2 GiB RAM; max three candidate runs before review.
+Input: random.Random(20261105), 400 origin vectors x0 uniform(-1,0), x1..3 uniform(-1,1); x[0:200] adapt, x[200:280] accept UNUSED, x[280:340] old test, x[340:400] new test.
+Oracle old: int(x1>0); new: int(sum(x)>0); T: x0+=1, labels recomputed.
+Model: ONE A (4x4 identity init), old and new heads (4 weights + bias each), head logits head @ (A x). Train old 300 full-batch steps eta=.05 on old adapt labels, save A1; train NEW same object 300 steps on new adapt labels, no old replay. Variants: freeze A, train A with anchor lambda .1 to A1 in phase2, train A with no anchor. Old head remains in same shared object in all variants.
+Predeclared criteria from source: old after NEW >=.9; new origin >=.9; new T shift >=.9. All three needed. This is an OPEN synthetic fixture, NOT sealed generalization or full UNO. Report all metrics and old-on-T.
+No optimization or threshold/seed changes after output. One independent run of same candidate only.

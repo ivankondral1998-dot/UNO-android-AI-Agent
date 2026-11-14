@@ -1,0 +1,18 @@
+{
+  "limitations": "No trained UNO weights, no memory insertion, no online update",
+  "old_labels_invariant_under_T": true,
+  "old_rule": "y_old=1 iff x1>0",
+  "splits": {
+    "dev": {
+      "count": 85,
+      "new_label_changes": 50,
+      "old_positive": 30
+    },
+    "locked": {
+      "count": 50,
+      "new_label_changes": 15,
+      "old_positive": 15
+    }
+  },
+  "status": "OLD_ORACLE_INVARIANCE_ONLY"
+}

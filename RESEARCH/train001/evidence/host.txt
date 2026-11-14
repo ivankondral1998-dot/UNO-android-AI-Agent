@@ -1,0 +1,258 @@
+android/core/src/test/kotlin/org/unovyra/uno/core/ActionJournalControllerIntegrationTest.kt:48:25: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+                check(c.dispatch(t, 1) == NativeEndpoint.TRUE)
+                        ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/ActionJournalControllerIntegrationTest.kt:58:25: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+                check(c.dispatch(t, 1) == NativeEndpoint.FALSE)
+                        ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/ActionJournalControllerIntegrationTest.kt:68:25: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+                check(c.dispatch(t, 1) == NativeEndpoint.FALSE)
+                        ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/ActionJournalControllerIntegrationTest.kt:79:25: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+                check(c.dispatch(t, 1) == NativeEndpoint.FALSE)
+                        ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/ActionJournalControllerIntegrationTest.kt:91:25: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+                check(c.dispatch(oldTicket, 1) == NativeEndpoint.TRUE)
+                        ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/ActionJournalControllerIntegrationTest.kt:101:25: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+                check(c.dispatch(oldTicket, 2) != NativeEndpoint.TRUE)
+                        ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/ActionJournalControllerIntegrationTest.kt:111:25: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+                check(c.dispatch(fake, 1) == NativeEndpoint.FALSE)
+                        ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/ActionJournalControllerIntegrationTest.kt:122:25: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+                check(c.dispatch(forgedId, 1) == NativeEndpoint.FALSE)
+                        ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/ActionJournalControllerIntegrationTest.kt:132:25: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+                check(c.dispatch(t, 1) == NativeEndpoint.TRUE)
+                        ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/ActionJournalControllerIntegrationTest.kt:133:25: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+                check(c.dispatch(t, 2) == NativeEndpoint.UNKNOWN)
+                        ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/ActionJournalControllerIntegrationTest.kt:168:25: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+                check(c.dispatch(t, 1) == NativeEndpoint.UNKNOWN)
+                        ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/ActionJournalControllerIntegrationTest.kt:170:25: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+                check(c.dispatch(t, 2) == NativeEndpoint.UNKNOWN && calls.get() == 1)
+                        ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/CoreSelfTest.kt:26:21: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            check(t.dispatch(req,1)==NativeEndpoint.TRUE)
+                    ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/CoreSelfTest.kt:41:30: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            t.stop();check(t.dispatch(ticket,1)==NativeEndpoint.FALSE);check(ticket.phase==Phase.CANCELLED)
+                             ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/CoreSelfTest.kt:48:15: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            t.dispatch(ticket,1);t.recoverAfterProcessDeath()
+              ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt:25:21: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            check(c.dispatch(ticket,1L)==NativeEndpoint.TRUE)
+                    ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt:42:31: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+                try { check(c.dispatch(t,1L)==NativeEndpoint.TRUE) }
+                              ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt:53:21: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            check(c.dispatch(t,1L)==NativeEndpoint.FALSE)
+                    ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt:59:21: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            check(c.dispatch(fake,1L)==NativeEndpoint.FALSE)
+                    ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt:63:21: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            check(c.dispatch(t,1L)==NativeEndpoint.TRUE)
+                    ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt:66:21: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            check(c.dispatch(t,2L)==NativeEndpoint.UNKNOWN)
+                    ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt:75:21: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            check(c.dispatch(t,1L)==NativeEndpoint.FALSE)
+                    ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt:86:21: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            check(c.dispatch(t,1L)==NativeEndpoint.UNKNOWN)
+                    ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt:88:21: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            check(c.dispatch(t,2L)==NativeEndpoint.UNKNOWN)
+                    ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt:100:21: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            check(c.dispatch(t,1L)==NativeEndpoint.FALSE)
+                    ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt:158:21: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            check(c.dispatch(t,1L)==NativeEndpoint.UNKNOWN)
+                    ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt:160:21: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            check(c.dispatch(t,2L)==NativeEndpoint.UNKNOWN)
+                    ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt:172:21: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            check(c.dispatch(t,1L)==NativeEndpoint.UNKNOWN)
+                    ^^^^^^^^
+android/core/src/test/kotlin/org/unovyra/uno/core/FoundationHardeningTest.kt:175:21: warning: 'fun dispatch(t: Ticket, now: Long): NativeEndpoint' is deprecated. Ambiguous pre-dispatch FALSE; use dispatchOutcome() and independent readback.
+            check(c.dispatch(t,2L)==NativeEndpoint.UNKNOWN)
+                    ^^^^^^^^
+PASS no weights is fail closed
+PASS default closed effect catalogue
+PASS approved test effect with exact consent
+PASS stale digest cannot authorize
+PASS STOP gates native dispatch
+PASS crash never autocommits
+PASS exact memory conflict and truncate
+PASS revocation blocks exact retrieval
+PASS queue priority and STOP latch
+PASS unknown OS verbs denied
+UNO_CHAT_WINDOW_HOST_PASS=10
+UNO_TEXT_CYCLE_HOST_PASS=19
+PASS percentiles nearest rank
+PASS single sample
+PASS reject invalid percentile
+PASS inactive kernel truly skipped
+PASS active kernel executes exactly once
+PASS measurement nearest-rank and distribution
+PASS measurement supports one sample
+PASS invalid and empty measurement rejected
+PASS large numbers do not overflow
+PASS paired benchmark insufficient is not pass
+PASS paired benchmark rejects incompatible conditions
+PASS paired benchmark records descriptive ratio
+PASS zero baseline prevents speedup claim
+PASS missing native oracle cannot pass
+PASS scenario pass fail not-run distinct
+PASS quick cpu workload has finite metrics
+PASS cpu stress cancel before first round
+PASS sustained CPU respects time and produces batches
+PASS parallel CPU run joins and records thread completion
+PASS sustained CPU responds to stop
+PASS memory is capped and checksummed
+PASS memory stress cancel is safe
+PASS original payload versus altered copy
+PASS integrity test cancel before mutation
+PASS scheduler stays bounded under concurrent flood
+PASS stopped scheduler refuses future owner events
+PASS lab stop cannot undo a stop
+PASS profiles have bounded safety ceilings
+PASS empty diagnostic cannot pass
+PASS even all green probes are partial, never agent acceptance
+PASS failed probe dominates incomplete checks
+PASS unknown test verdict is fail closed
+PASS owner STOP overrides green or failed checks
+PASS aborted sub-probe cannot be counted as partial completion
+PASS nonexecuted consent and neural are not passes
+PASS declared neural NOT_TESTED is incomplete, never an unknown failure
+UNO_THEME_HOST_PASS=62
+PASS HARDENING mutable original proposal cannot change approved effect
+PASS HARDENING native sees immutable snapshot while caller mutates ticket
+PASS HARDENING mutated issued ticket rejected
+PASS HARDENING forged never-issued ticket rejected
+PASS HARDENING ticket cannot redispatch after mutable phase reset
+PASS HARDENING negative native readback never commits success
+PASS HARDENING unknown native result remains MAY_HAVE_EXECUTED
+PASS HARDENING STOP prevents any subsequent native dispatch
+PASS HARDENING memory write return cannot mutate stored bytes
+PASS HARDENING memory read result cannot mutate stored bytes
+PASS HARDENING unverified memory writer cannot forge verified Android completion
+PASS HARDENING missing exact key explicitly NOT_FOUND
+PASS HARDENING expired queued events discarded
+PASS HARDENING STOP clears queued events and is one-way
+PASS HARDENING UNKNOWN after native call is not retried
+PASS HARDENING boot does not redispatch unresolved
+PASS HARDENING semantic summary is not an exact fact
+FOUNDATION_HARDENING_PASS=17
+PASS COMPUTE_GATE inactive_mask_skips_body
+PASS COMPUTE_GATE MAC_zero_denies_and_skips_expensive_body
+PASS COMPUTE_GATE tokens_zero_denies_and_skips_expensive_body
+PASS COMPUTE_GATE scratch_zero_denies_and_skips_expensive_body
+PASS COMPUTE_GATE deadline_expiry_denies_and_skips
+PASS COMPUTE_GATE reserve_is_atomic_across_dimensions
+PASS COMPUTE_GATE consumed_work_not_refunded_on_release
+PASS COMPUTE_GATE another_gate_cannot_accept_foreign_permit
+PASS COMPUTE_GATE permit_invalid_after_release
+PASS COMPUTE_GATE STOP_clears_scratch_and_invalidates_old_permits
+PASS COMPUTE_GATE monotonic_clock_rollback_is_denied
+PASS COMPUTE_GATE remaining_scratch_is_shared_between_concurrent_permits
+PASS COMPUTE_GATE max_concurrency_prevents_parallel_admissions
+PASS COMPUTE_GATE large_numbers_do_not_overflow
+PASS COMPUTE_GATE body_exception_releases_scratch_without_refunding_MAC
+PASS COMPUTE_GATE request_with_all_zero_cost_fails_closed
+PASS COMPUTE_GATE negative_estimates_and_negative_limits_rejected
+PASS COMPUTE_GATE race_cannot_overspend_MAC_allowance
+COMPUTE_GATE_HOST_PASS=18
+PASS UNO_F_REF zero_state_is_fixed_point
+PASS UNO_F_REF empty_semantic_memory_still_applies_second_tanh
+PASS UNO_F_REF mask_skips_block_and_preserves_prior_h
+PASS UNO_F_REF synchronous_branch_average_and_leaky_recurrence
+PASS UNO_F_REF current_input_controls_semantic_query
+PASS UNO_F_REF softmax_is_finite_with_large_finite_scores
+PASS UNO_F_REF cyclic_prefix_not_an_arbitrary_posthoc_mask
+PASS UNO_F_REF nonfinite_inputs_and_empty_masks_fail_closed
+PASS UNO_F_REF row_l1_contract_rejects_expanding_A
+PASS UNO_F_REF double_oracle_is_deterministic_and_does_not_mutate_input
+PASS UNO_F_REF reference_port_runs_inside_cycle_without_an_action
+PASS UNO_F_REF summary_changes_reference_state_without_replacing_the_fact
+UNO_F_REFERENCE_HOST_PASS=12
+PASS OUTBOX new file empty and prepared
+PASS OUTBOX disk replay retains prepared but forbids rearm
+PASS OUTBOX disk replay of armed is uncertain and never redispatched
+PASS OUTBOX unknown ticket and wrong digest cannot arm
+PASS OUTBOX STOP makes admission permanently fail closed
+PASS OUTBOX a second writer cannot open a locked journal
+PASS OUTBOX tampered tail fails closed without destructive repair
+PASS OUTBOX truncated tail fails closed without truncation repair
+PASS OUTBOX invalid identifiers and digests cannot persist
+PASS OUTBOX file cannot be rearmed after close
+PASS OUTBOX intent file does not contain user action arguments
+PASS OUTBOX sequence and chain over multiple entries survive replay
+ACTION_OUTBOX_HOST_PASS=12
+PASS CONTROLLER_OUTBOX durable PREPARED precedes ticket admission
+PASS CONTROLLER_OUTBOX durable MAY_HAVE_EXECUTED precedes native dispatch
+PASS CONTROLLER_OUTBOX journal STOP blocks native even with a prepared ticket
+PASS CONTROLLER_OUTBOX controller STOP blocks native and leaves unarmed PREPARED
+PASS CONTROLLER_OUTBOX tampered proposal is refused before persistent arm
+PASS CONTROLLER_OUTBOX no replay after previous MAY_HAVE_EXECUTED and process restart
+PASS CONTROLLER_OUTBOX fake ticket identity rejected before native
+PASS CONTROLLER_OUTBOX never-issued PREPARED id is pre-native FALSE, not UNKNOWN
+PASS CONTROLLER_OUTBOX duplicate dispatch never arms or calls native twice
+PASS CONTROLLER_OUTBOX failed/invalid consent never allocates durable intent
+PASS CONTROLLER_OUTBOX closed journal denies controller prepare
+PASS CONTROLLER_OUTBOX native exception stays MAY_HAVE_EXECUTED without retry
+PASS CONTROLLER_OUTBOX rejected ledger leaves safe orphan PREPARED, no native
+PASS CONTROLLER_OUTBOX typed PREPARED without issuance is REJECTED not observed FALSE
+PASS CONTROLLER_OUTBOX typed forged existing ticket is rejected before native
+PASS CONTROLLER_OUTBOX typed STOP refusal is distinct from native FALSE
+PASS CONTROLLER_OUTBOX typed journal refusal is distinct from native UNKNOWN
+PASS CONTROLLER_OUTBOX typed bad digest never becomes a native negative sample
+PASS CONTROLLER_OUTBOX typed native FALSE is INVOKED not REJECTED and not verified
+PASS CONTROLLER_OUTBOX typed native TRUE is not independent readback success
+PASS CONTROLLER_OUTBOX typed UNKNOWN is invoked only once; following result is unresolved
+PASS CONTROLLER_OUTBOX typed expired ticket is pre-native refusal
+PASS CONTROLLER_OUTBOX typed crash-recovered ticket remains unresolved without native
+ACTION_JOURNAL_CONTROLLER_INTEGRATION_PASS=23
+PASS RECEIPT_REPLAY one synced positive receipt survives reopen
+PASS RECEIPT_REPLAY stale readback predating native admission never commits
+PASS RECEIPT_REPLAY same monotonic timestamp as admission may be valid
+PASS RECEIPT_REPLAY native-readback time from future is refused
+PASS RECEIPT_REPLAY journal STOP after native blocks success even if ledger says yes
+PASS RECEIPT_REPLAY receipt invalid id/digest/source/generation refused
+PASS RECEIPT_REPLAY readback claims cannot be added before arm or after replay
+PASS RECEIPT_REPLAY duplicate receipt is rejected and cannot overwrite committed evidence
+PASS RECEIPT_REPLAY corrupt claimed receipt stops recovery without auto repair
+PASS RECEIPT_REPLAY truncated claimed receipt stops recovery without repair
+PASS RECEIPT_REPLAY journal receipt never triggers replayed native action
+ACTION_RECEIPT_RECOVERY_PASS=11
+PASS REF_TXN single v2 record binds used and source-tagged receipt after native
+PASS REF_TXN legacy v1 receipt replays but does NOT imply durable used
+PASS REF_TXN a second reference commit is rejected without extra bytes
+PASS REF_TXN unknown native result never writes a durable used flag
+PASS REF_TXN not a fake in-memory ledger: reference commit is denied
+PASS REF_TXN pre-dispatch STOP yields only PREPARED, no used receipt
+PASS REF_TXN STOP after invocation blocks used even with positive fake readback
+PASS REF_TXN checksum-correct malformed used marker cannot replay as committed
+PASS REF_TXN v2 commit with v1 record header and valid SHA cannot replay
+PASS REF_TXN torn v2 record fails closed, no automatic truncation
+PASS REF_TXN readback mismatched source never creates used receipt
+PASS REF_TXN recovered used receipt cannot invoke native again with old ticket
+ACTION_ATOMIC_REFERENCE_COMMIT_PASS=12
+UNO_CHAT_ENCRYPTION_HOST_PASS=10
+UNO_PROCESS_STOP_HOST_PASS=3
+UNO_FOUNDATION_REFERENCE_CYCLE_HOST_PASS=31
+UNO_ENCRYPTED_EXACT_MEMORY_HOST_PASS=61
+UNO_MANUAL_FACTS_HOST_PASS=23
+UNO_SEMANTIC_MEMORY_HOST_PASS=22
+UNO_FRAME_CONTRACT_HOST_PASS=16
+UNO_PLANNER_HOST_PASS=28
+UNO_MODEL_PROPOSAL_HOST_PASS=10
+UNO_WP01_HOST_PASS=446
