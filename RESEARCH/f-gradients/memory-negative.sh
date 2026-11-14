@@ -7,7 +7,7 @@ trap 'rm -rf "$build"' EXIT
 for mutation in detachKey detachValue overwriteShared admitCurrent; do
   python3 - "$mutation" "$build" <<'PY'
 import pathlib,sys
-root=pathlib.Path('f-gradients');out=pathlib.Path(sys.argv[2]);mutation=sys.argv[1]
+root=pathlib.Path('research/f-gradients');out=pathlib.Path(sys.argv[2]);mutation=sys.argv[1]
 r=(root/'ReverseF.kt').read_text();m=(root/'LearnedMemory.kt').read_text()
 if mutation in ('detachKey','detachValue'):
     old='Entry(stamp,key,value)';new='Entry(stamp,ReverseF.V(key.x.copyOf()),value)' if mutation=='detachKey' else 'Entry(stamp,key,ReverseF.V(value.x.copyOf()))'
