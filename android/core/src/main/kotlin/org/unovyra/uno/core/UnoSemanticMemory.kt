@@ -72,6 +72,9 @@ class UnoSemanticMemory(
         require(scope.isNotEmpty())
         if (scope in revoked) return
         val nextRevoked = revoked + scope
+        // The persisted decoder accepts at most MAX_LINKS tombstones. Reject before
+        // touching disk, never create a snapshot that this same runtime cannot reopen.
+        require(nextRevoked.size <= MAX_LINKS) { "SEMANTIC_REVOKE_CAPACITY" }
         val nextLinks = links.filterNot { it.scope == scope }
         persist(seal(Snapshot(nextLinks, nextRevoked), key))
         links = nextLinks
