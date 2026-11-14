@@ -54,6 +54,10 @@ class UnoFSession(
     // A caller-supplied state vector is not evidence that F ran for this goal/event.
     private var computedGoal: Pair<GoalWork, DoubleArray>? = null
     private var computedObservation: Pair<ObservationWork, DoubleArray>? = null
+    // Bind publication to the exact output object of this F invocation.
+    // The separate immutable state copy catches later mutation of that object.
+    private var computedGoalResult: UnoRefOutput? = null
+    private var computedObservationResult: UnoRefOutput? = null
     private var state = DoubleArray(d)
     private var goal = DoubleArray(d)
 
@@ -71,7 +75,9 @@ class UnoFSession(
         val work = GoalWork(newGoalVersion, sessionEpoch, revision)
         inFlightObservation = null
         computedObservation = null
+        computedObservationResult = null
         computedGoal = null
+        computedGoalResult = null
         pendingGoal = work
         return work
     }
@@ -97,6 +103,7 @@ class UnoFSession(
                 "UNO_F_STALE_GOAL_WORK"
             }
             computedGoal = work to result.state.copyOf()
+            computedGoalResult = result
         }
         return result
     }
@@ -106,10 +113,11 @@ class UnoFSession(
         if (stopped.get() || pendingGoal !== work || work.epoch != sessionEpoch ||
             work.revision != revision || result.state.size != d ||
             result.state.any { !it.isFinite() || it !in -1.0..1.0 } ||
-            computedGoal?.first !== work ||
+            computedGoal?.first !== work || computedGoalResult !== result ||
             computedGoal?.second?.contentEquals(result.state) != true) return false
         goal = result.state.copyOf()
         computedGoal = null
+        computedGoalResult = null
         activeGoalVersion = work.goalVersion
         revision++
         pendingGoal = null
@@ -121,6 +129,7 @@ class UnoFSession(
         if (pendingGoal === work) {
             pendingGoal = null
             computedGoal = null
+            computedGoalResult = null
         }
     }
 
@@ -147,6 +156,7 @@ class UnoFSession(
                 "UNO_F_STALE_OBSERVATION_WORK"
             }
             computedObservation = work to result.state.copyOf()
+            computedObservationResult = result
         }
         return result
     }
@@ -156,10 +166,11 @@ class UnoFSession(
             work.epoch != sessionEpoch || work.revision != revision ||
             work.goalVersion != activeGoalVersion || revision == Long.MAX_VALUE ||
             result.state.size != d || result.state.any { !it.isFinite() || it !in -1.0..1.0 } ||
-            computedObservation?.first !== work ||
+            computedObservation?.first !== work || computedObservationResult !== result ||
             computedObservation?.second?.contentEquals(result.state) != true) return false
         state = result.state.copyOf()
         computedObservation = null
+        computedObservationResult = null
         revision++
         inFlightObservation = null
         return true
@@ -169,6 +180,7 @@ class UnoFSession(
         if (inFlightObservation === work) {
             inFlightObservation = null
             computedObservation = null
+            computedObservationResult = null
         }
     }
 
@@ -186,7 +198,9 @@ class UnoFSession(
         pendingGoal = null
         inFlightObservation = null
         computedGoal = null
+        computedGoalResult = null
         computedObservation = null
+        computedObservationResult = null
         state = DoubleArray(d)
         goal = DoubleArray(d)
         return true
@@ -198,7 +212,9 @@ class UnoFSession(
             pendingGoal = null
             inFlightObservation = null
             computedGoal = null
+            computedGoalResult = null
             computedObservation = null
+            computedObservationResult = null
         }
     }
 }
