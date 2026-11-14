@@ -105,6 +105,54 @@ object UnoSemanticMemoryTest {
         verify(failedPersist.recallExact("retry", "k", 1, 16, 1L, 0L).status == ExactStatus.DENIED)
         verify(failedPersistExact.read("retry", "k", 1, 16, 1L, 0L).status == ExactStatus.COMPLETE)
 
+        // C2: a read racing a failed semantic tombstone write must not expose exact bytes
+        // through the process-local gateway. This is not a durable cross-process guarantee.
+        val raceExact = ExactMemory()
+        raceExact.write("race", "secret", "still present".toByteArray(), 500L, 0L,
+            EntryKind.USER_DECLARATION, "OWNER_UI")
+        val racePersistEntered = java.util.concurrent.CountDownLatch(1)
+        val racePersistRelease = java.util.concurrent.CountDownLatch(1)
+        val raceIndex = UnoSemanticMemory(key(), "boot-a", { null }, {
+            racePersistEntered.countDown()
+            check(racePersistRelease.await(5L, java.util.concurrent.TimeUnit.SECONDS)) {
+                "C2_TEST_TOMBSTONE_TIMEOUT"
+            }
+            error("C2_TEST_TOMBSTONE_WRITE_FAILED")
+        })
+        val racePorts = UnoMemoryPorts(raceExact, raceIndex)
+        val raceWriteError = java.util.concurrent.atomic.AtomicReference<Throwable?>(null)
+        val raceReadError = java.util.concurrent.atomic.AtomicReference<Throwable?>(null)
+        val raceReadStatus = java.util.concurrent.atomic.AtomicReference<ExactStatus?>(null)
+        val raceReadStarted = java.util.concurrent.CountDownLatch(1)
+        val raceWriter = Thread {
+            runCatching { racePorts.revoke("race") }.onFailure(raceWriteError::set)
+        }
+        val raceReader = Thread {
+            raceReadStarted.countDown()
+            runCatching {
+                racePorts.recallExact("race", "secret", 1, 16, 1L, 0L).status
+            }.onSuccess(raceReadStatus::set).onFailure(raceReadError::set)
+        }
+        raceWriter.start()
+        try {
+            check(racePersistEntered.await(5L, java.util.concurrent.TimeUnit.SECONDS)) {
+                "C2_TEST_REVOKE_NOT_STARTED"
+            }
+            raceReader.start()
+            check(raceReadStarted.await(5L, java.util.concurrent.TimeUnit.SECONDS)) {
+                "C2_TEST_READER_NOT_STARTED"
+            }
+        } finally {
+            racePersistRelease.countDown()
+        }
+        raceWriter.join(5000L)
+        raceReader.join(5000L)
+        verify(!raceWriter.isAlive && !raceReader.isAlive &&
+            raceWriteError.get()?.message == "C2_TEST_TOMBSTONE_WRITE_FAILED" &&
+            raceReadError.get() == null && raceReadStatus.get() == ExactStatus.DENIED)
+        // The unrevoked raw store remains readable: only the gateway is protected.
+        verify(raceExact.read("race", "secret", 1, 16, 1L, 0L).status == ExactStatus.COMPLETE)
+
         // C2: a future revoke must not serialize a snapshot the existing parser rejects.
         val capacityKey = key()
         var capacityBytes: ByteArray? = null
