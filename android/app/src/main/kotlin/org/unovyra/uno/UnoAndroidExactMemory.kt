@@ -41,6 +41,12 @@ internal class UnoAndroidExactMemory(context: Context, private val readOnly: Boo
         val base = file.baseFile
         val backup = File(base.path + ".bak")
         val partial = File(base.path + ".new")
+        // A .new may contain a newer revocation than the still-readable base/legacy
+        // backup. Neither version is independently known to be current. Refuse
+        // ambiguous recovery and leave all bytes untouched for owner review.
+        check(!(partial.exists() && (base.exists() || backup.exists()))) {
+            "EXACT_CONFLICTING_PARTIAL_SNAPSHOT"
+        }
         check(existing == null || existing is SecretKey) { "EXACT_KEY_TYPE_UNSUPPORTED" }
         var residue = when {
             base.isFile || backup.isFile -> ExactVaultResidue.COMMITTED
