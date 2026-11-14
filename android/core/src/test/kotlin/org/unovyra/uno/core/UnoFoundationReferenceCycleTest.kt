@@ -86,6 +86,42 @@ object UnoFoundationReferenceCycleTest {
         verify(fakeMemory.read("session", "event:1", 1, 2, 2, 0).entries
             .none { it.kind == EntryKind.VERIFIED_COMPLETION })
 
+        // C1: the UI approval was valid at the event timestamp, but has expired by dispatch.
+        var elapsed = 1L
+        val delayedNative = Native()
+        val delayedTrust = TrustController(delayedNative, InMemoryLedger(),
+            mapOf(15 to "FAKE_ONLY"), trustedClockNanos = { elapsed })
+        val delayedOwner = object: AuthenticatedOwnerUi {
+            override fun showExactProposalAndObtainConsent(proposal: Proposal): Consent {
+                elapsed = 91L
+                return Consent(delayedTrust.proposalDigest(proposal), "FAKE_ONLY", 90,
+                    delayedTrust.epoch, delayedTrust.nonce, true)
+            }
+        }
+        verify(UnoFoundationReferenceCycle(MockNeural(proposal()), ExactMemory(),
+            delayedTrust, delayedOwner, trustedClockNanos = { elapsed })
+            .accept(input(), 1, 100, "session", 0).status ==
+            FoundationReferenceStatus.TRUST_REJECTED)
+        verify(delayedNative.calls == 0)
+
+        // The clock fails after owner approval: no dispatch, no invented OS effect.
+        var clockCalls = 0
+        val clockNative = Native()
+        val clockTrust = TrustController(clockNative, InMemoryLedger(),
+            mapOf(15 to "FAKE_ONLY"), trustedClockNanos = { 1L })
+        val clockOwner = object: AuthenticatedOwnerUi {
+            override fun showExactProposalAndObtainConsent(proposal: Proposal) =
+                Consent(clockTrust.proposalDigest(proposal), "FAKE_ONLY", 90,
+                    clockTrust.epoch, clockTrust.nonce, true)
+        }
+        verify(UnoFoundationReferenceCycle(MockNeural(proposal()), ExactMemory(),
+            clockTrust, clockOwner, trustedClockNanos = {
+                clockCalls++
+                if (clockCalls == 2) error("clock unavailable") else 1L
+            }).accept(input(), 1, 100, "session", 0).status ==
+            FoundationReferenceStatus.DISPATCH_REJECTED)
+        verify(clockNative.calls == 0)
+
         val uncertainNative = Native(NativeEndpoint.UNKNOWN)
         val uncertainTrust = TrustController(uncertainNative, InMemoryLedger(),
             mapOf(15 to "FAKE_ONLY"))
