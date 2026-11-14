@@ -32,8 +32,36 @@ internal class UnoAndroidSemanticMemory(context: Context) {
         return open(createKey = false).retrieve(scope, query, k, scanBudget)
     }
 
+    /**
+     * Fresh read-only adapter instances inspect a persisted revoke tombstone without
+     * creating a key/vault. Unreadable .new/ciphertext fails closed, never returns false.
+     */
+    fun isScopeRevoked(scope: String): Boolean {
+        require(scope.isNotBlank())
+        if (!file.baseFile.isFile) {
+            check(!File(file.baseFile.path + ".new").isFile) { "SEMANTIC_PARTIAL_UNREADABLE" }
+            return false
+        }
+        return open(createKey = false).isScopeRevoked(scope)
+    }
+
     fun link(entry: ExactEntry, vector: DoubleArray) {
         open(createKey = true).link(entry, vector)
+    }
+
+    /**
+     * Owner-initiated coordinated forget: do NOT create a brand-new semantic vault
+     * if there was no index. If one exists, persist semantic tombstone before exact revoke.
+     * Never repair or delete a corrupt existing file.
+     */
+    fun dropScopeIfPresent(scope: String): Boolean {
+        require(scope.isNotBlank())
+        if (!file.baseFile.isFile) {
+            check(!File(file.baseFile.path + ".new").isFile) { "SEMANTIC_PARTIAL_UNREADABLE" }
+            return false
+        }
+        open(createKey = false).dropScope(scope)
+        return true
     }
 
     fun dropScope(scope: String) {
