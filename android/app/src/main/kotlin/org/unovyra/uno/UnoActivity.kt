@@ -473,7 +473,8 @@ class UnoActivity : Activity() {
                     object : AuthenticatedOwnerUi {
                         override fun showExactProposalAndObtainConsent(proposal: Proposal): Consent? =
                             null // No Android effect authorization in the foundation lab.
-                    }
+                    },
+                    trustedClockNanos = { SystemClock.elapsedRealtimeNanos() }
                 ).also { foundationCycle = it }
             }
         }
