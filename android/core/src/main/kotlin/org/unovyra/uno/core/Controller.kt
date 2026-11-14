@@ -14,7 +14,10 @@ class TrustController(
     private val ledger: DurableLedger,
     private val allowedEffects: Map<Int, String> = emptyMap(),
     // Opt-in host/reference outbox bridge. The real Android path still requires owner/OS authority.
-    private val intentJournal: ActionIntentJournal? = null
+    private val intentJournal: ActionIntentJournal? = null,
+    // Same monotonic clock domain as the calling Android event. Required for any future privileged adapter.
+    // Null is retained solely for existing host-reference tests; NEVER use that fallback for OS effects.
+    private val trustedClockNanos: (() -> Long)? = null
 ) {
     // Reference gate only. Production dispatch still requires Android owner auth and a durable WAL.
     // A ticket is valid only if this trusted controller issued it; caller-mutable Ticket is not authority.
@@ -33,6 +36,18 @@ class TrustController(
     var nonce: String = freshNonce()
         private set
     private var serial = 0L
+    private var lastObservedNowNanos = -1L
+
+    // Fail closed if the clock throws, regresses or is behind the provided event time.
+    // All callers are under the controller monitor; sampled time is not owned by the model.
+    private fun sampledNow(callerNow: Long): Long? {
+        if (callerNow < 0L) return null
+        return try {
+            val actual = trustedClockNanos?.invoke() ?: callerNow
+            if (actual < callerNow || actual < lastObservedNowNanos) null
+            else actual.also { lastObservedNowNanos = it }
+        } catch (_: Exception) { null }
+    }
 
     fun proposalDigest(p: Proposal): String {
         // Explicit bounded bytes; no untrusted repr serialization.
@@ -50,17 +65,20 @@ class TrustController(
     }
 
     @Synchronized fun prepare(p: Proposal, consent: Consent, now: Long, deadline: Long): Ticket? {
-        if (stopLatch.get() || now < 0 || deadline <= now || issued.size >= UnoAbi.MAX_PENDING ||
+        val checkedNow = sampledNow(now) ?: return null
+        if (stopLatch.get() || deadline <= checkedNow || issued.size >= UnoAbi.MAX_PENDING ||
             p.verb !in 3..23 || !allowedEffects.containsKey(p.verb)) return null
         // Snapshot mutable bytes BEFORE binding consent. Caller may mutate its Proposal after prepare().
         val frozen = p.copy(canonicalArgs = p.canonicalArgs.copyOf())
         val d = proposalDigest(frozen)
         if (!consent.ownerUnlocked || consent.proposalDigest != d ||
             consent.effectName != allowedEffects[p.verb] || consent.epoch != epoch ||
-            consent.nonce != nonce || now >= consent.expiresAtNanos || now >= deadline ||
+            consent.nonce != nonce || checkedNow >= consent.expiresAtNanos ||
             consent.expiresAtNanos < 0 || deadline <= 0) return null
         if (serial == Long.MAX_VALUE) { stop(); return null }
-        val t = Ticket("$nonce:$epoch:${++serial}",frozen,d,epoch,nonce,deadline,allowedEffects[p.verb]!!,Phase.PREPARED)
+        // A ticket cannot outlive either the owner consent or the task deadline.
+        val validUntil = minOf(deadline, consent.expiresAtNanos)
+        val t = Ticket("$nonce:$epoch:${++serial}",frozen,d,epoch,nonce,validUntil,allowedEffects[p.verb]!!,Phase.PREPARED)
         // Persist immutable intent BEFORE making the ticket dispatchable. An orphan PREPARED
         // record if the next step fails is deliberately safe: recovery never auto-dispatches.
         if (intentJournal != null && !intentJournal.prepare(t.id, d)) return null
@@ -96,10 +114,11 @@ class TrustController(
             else -> DispatchAttempt.Unresolved // unknown older disposition, no call in this attempt
         }
         if (record.ticket !== t) return DispatchAttempt.Rejected(DispatchRejection.WRONG_TICKET)
+        val checkedNow = sampledNow(now)
         if (record.dispatched) return DispatchAttempt.Unresolved // one-shot; never redispatch
         if (t.phase != Phase.PREPARED || t.used)
             return DispatchAttempt.Rejected(DispatchRejection.CLOSED_TICKET)
-        if (stopLatch.get() || t.epoch != epoch || t.nonce != nonce || now < 0 || now >= t.deadlineNanos) {
+        if (stopLatch.get() || t.epoch != epoch || t.nonce != nonce || checkedNow == null || checkedNow >= t.deadlineNanos) {
             t.phase = Phase.CANCELLED
             issued.remove(t.id)
             return DispatchAttempt.Rejected(DispatchRejection.STOP_OR_EXPIRED)
@@ -116,13 +135,16 @@ class TrustController(
             issued.remove(t.id)
             return DispatchAttempt.Rejected(DispatchRejection.JOURNAL_UNAVAILABLE)
         }
-        if (stopLatch.get()) {
+        // Journal arm can take time. Recheck the real clock after durable intent and before native dispatch.
+        // Arm without a subsequent call is conservatively unresolved on replay, never retried.
+        val callNow = sampledNow(now)
+        if (stopLatch.get() || callNow == null || callNow >= t.deadlineNanos) {
             t.phase = Phase.CANCELLED
             issued.remove(t.id)
             return DispatchAttempt.Rejected(DispatchRejection.STOP_OR_EXPIRED)
         }
         record.dispatched = true
-        record.nativeAdmittedAtNanos = now
+        record.nativeAdmittedAtNanos = callNow
         t.phase = Phase.MAY_HAVE_EXECUTED
         val result = try { native.dispatch(forNative) } catch (_: Exception) { NativeEndpoint.UNKNOWN }
         if (result == NativeEndpoint.UNKNOWN) {
@@ -135,15 +157,18 @@ class TrustController(
 
     @Synchronized fun readbackAndCommit(t: Ticket, now: Long): Boolean {
         val record = issued[t.id] ?: return false
+        val readNow = sampledNow(now) ?: return false
         if (record.ticket !== t || !record.dispatched || stopLatch.get() ||
-            t.phase != Phase.WAIT_READBACK || t.used || now < 0 ||
-            record.nativeAdmittedAtNanos < 0 || now < record.nativeAdmittedAtNanos) return false
+            t.phase != Phase.WAIT_READBACK || t.used || readNow >= t.deadlineNanos ||
+            record.nativeAdmittedAtNanos < 0 || readNow < record.nativeAdmittedAtNanos) return false
         val forNative = t.copy(proposal = t.proposal.copy(canonicalArgs = t.proposal.canonicalArgs.copyOf()))
         if (proposalDigest(forNative.proposal) != t.proposalDigest) return false
-        val evidence = try { native.readback(forNative, now) } catch (_: Exception) { return false }
-        if (stopLatch.get() || t.epoch != epoch || t.nonce != nonce || now >= t.deadlineNanos ||
+        val evidence = try { native.readback(forNative, readNow) } catch (_: Exception) { return false }
+        // Readback itself can block past consent expiry, so revalidate before committing a receipt.
+        val commitNow = sampledNow(now) ?: return false
+        if (stopLatch.get() || t.epoch != epoch || t.nonce != nonce || commitNow >= t.deadlineNanos ||
             evidence.ticketId != t.id || evidence.source != native.trustedSourceTag ||
-            evidence.nativeGeneration <= 0 || evidence.observedAtNanos > now ||
+            evidence.nativeGeneration <= 0 || evidence.observedAtNanos > commitNow ||
             evidence.observedAtNanos < record.nativeAdmittedAtNanos) return false
         // FALSE is verified NON-success, and UNKNOWN is not evidence of completion.
         if (evidence.endpoint != NativeEndpoint.TRUE) {
