@@ -52,6 +52,9 @@ class UnoSemanticMemory(
         }
     }
 
+    /** Persisted tombstone state, used by the shared memory gate during partial revoke recovery. */
+    @Synchronized fun isScopeRevoked(scope: String): Boolean = scope in revoked
+
     @Synchronized fun link(entry: ExactEntry, vector: DoubleArray) {
         require(entry.kind != EntryKind.SEMANTIC_SUMMARY &&
             entry.kind != EntryKind.VERIFIED_COMPLETION) { "SEMANTIC_LINK_KIND" }
