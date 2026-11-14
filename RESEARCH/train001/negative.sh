@@ -8,7 +8,7 @@ for mutation in omitLoss overwriteBatch omitBiasCorrection loseMoments; do
   python3 - "$mutation" "$build" <<'PY'
 from pathlib import Path
 import sys
-root=Path('research/train001');out=Path(sys.argv[2]);mutation=sys.argv[1]
+root=Path('train001');out=Path(sys.argv[2]);mutation=sys.argv[1]
 for p in root.glob('*.kt'):
     s=p.read_text()
     edits={
