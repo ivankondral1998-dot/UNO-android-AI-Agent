@@ -2,11 +2,18 @@ package org.unovyra.uno.core
 
 import java.security.MessageDigest
 
-enum class WeightAdmission { ADMITTED_UNVERIFIED_QUALITY, REJECTED }
+enum class WeightAdmission {
+    /** Byte length and SHA match a caller-supplied manifest; NOT accepted model weights. */
+    PAYLOAD_CHECKSUM_ONLY,
+    /** Legacy status, never returned by the unchecked manifest path. */
+    ADMITTED_UNVERIFIED_QUALITY,
+    REJECTED
+}
 
 /**
- * Shape and digest check only. Admission is not a quality score,
- * not a trained model, and not permission to act.
+ * A caller-provided digest/length can check transfer integrity only.
+ * Without independent trusted tensor shapes, ABI/2 descriptors, frozen rows,
+ * norm certificates and provenance, the payload is NOT an admitted model.
  */
 data class WeightManifest(
     val version: String,
@@ -29,7 +36,7 @@ fun admitWeights(manifest: WeightManifest, bytes: ByteArray, acceptedVersion: St
     }
     val actual = MessageDigest.getInstance("SHA-256").digest(bytes)
         .joinToString("") { "%02x".format(it) }
-    return if (actual == manifest.digestSha256) WeightAdmission.ADMITTED_UNVERIFIED_QUALITY
+    return if (actual == manifest.digestSha256) WeightAdmission.PAYLOAD_CHECKSUM_ONLY
     else WeightAdmission.REJECTED
 }
 
@@ -41,7 +48,9 @@ class WeightSlot {
         admission = decision
         return decision
     }
-    fun admitted() = admission == WeightAdmission.ADMITTED_UNVERIFIED_QUALITY
+    /** No full ABI loader exists yet. The checksum-only path must never enable inference. */
+    fun admitted() = false
+    fun checksumVerifiedOnly() = admission == WeightAdmission.PAYLOAD_CHECKSUM_ONLY
 }
 
 /** A checked file is still not a neural port. These bytes cannot propose an action. */
