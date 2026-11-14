@@ -105,6 +105,22 @@ object UnoSemanticMemoryTest {
         verify(failedPersist.recallExact("retry", "k", 1, 16, 1L, 0L).status == ExactStatus.DENIED)
         verify(failedPersistExact.read("retry", "k", 1, 16, 1L, 0L).status == ExactStatus.COMPLETE)
 
+        // C2: a future revoke must not serialize a snapshot the existing parser rejects.
+        val capacityKey = key()
+        var capacityBytes: ByteArray? = null
+        val capacityIndex = UnoSemanticMemory(capacityKey, "boot-a",
+            { capacityBytes?.copyOf() }, { capacityBytes = it.copyOf() })
+        repeat(256) { capacityIndex.dropScope("scope-$it") }
+        val lastValidSnapshot = capacityBytes!!.copyOf()
+        verify(capacityIndex.isScopeRevoked("scope-0") &&
+            capacityIndex.isScopeRevoked("scope-255"))
+        verify(runCatching { capacityIndex.dropScope("scope-256") }.exceptionOrNull()
+            ?.message == "SEMANTIC_REVOKE_CAPACITY")
+        verify(capacityBytes!!.contentEquals(lastValidSnapshot))
+        val capacityReopened = UnoSemanticMemory(capacityKey, "boot-a",
+            { capacityBytes?.copyOf() }, { capacityBytes = it.copyOf() })
+        verify(capacityReopened.isScopeRevoked("scope-255") &&
+            !capacityReopened.isScopeRevoked("scope-256"))
         println("UNO_SEMANTIC_MEMORY_HOST_PASS=$pass")
     }
 }
