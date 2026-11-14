@@ -46,6 +46,9 @@ object UnoFSessionTest {
                 UnoRefEvent(doubleArrayOf(1.0), meta, DoubleArray(128),
                     DoubleArray(128), emptyList()), booleanArrayOf(true, true), 1)
             val computed = f.computeGoal(first, doubleArrayOf(1.0), meta)
+            // Same numerical state is not proof this object came from the matching F call.
+            val forgedEqualGoal = UnoRefOutput(computed.state.copyOf(), computed.trace)
+            check(!f.publishGoal(first, forgedEqualGoal))
             near(computed.state, direct.state)
             check(computed.state[0] > 0.0)
             check(f.publishGoal(first, computed))
@@ -65,6 +68,8 @@ object UnoFSessionTest {
                 listOf(UnoRefMemoryVector(key, value)))
             check(withMemory.state[0] > withoutMemory.state[0])
             check(!f.publishObservation(work, withoutMemory)) // latest work result only
+            val forgedEqualObservation = UnoRefOutput(withMemory.state.copyOf(), withMemory.trace)
+            check(!f.publishObservation(work, forgedEqualObservation))
             check(f.publishObservation(work, withMemory))
             check(!f.publishObservation(work, withMemory))
             near(f.snapshot().goal, before.goal)
