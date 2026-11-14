@@ -440,6 +440,10 @@ class UnoActivity : Activity() {
      */
     private fun observeDeviceSnapshot(snapshot: JSONObject): FoundationReferenceResult {
         check(foreground.get() && !UnoProcessStop.isStopped()) { "UNO_NOT_IN_FOREGROUND" }
+        // A semantically tombstoned scope must not accept further exact writes during torn revoke.
+        check(!UnoAndroidSemanticMemory(applicationContext).isScopeRevoked("device-observation")) {
+            "UNO_SCOPE_REVOKED_OR_PARTIAL"
+        }
         val observedNanos = snapshot.optLong("elapsed_realtime_ns", -1L)
         // Exactly the pretty-printed bytes persisted by DeviceProbe.persistImmutable.
         val reportBytes = snapshot.toString(2).toByteArray(Charsets.UTF_8)
@@ -593,7 +597,11 @@ class UnoActivity : Activity() {
             val read = try {
                 // Fresh disk-backed open: the process singleton would only
                 // prove RAM state, not persistence across Activity restarts.
-                UnoAndroidExactMemory(applicationContext, readOnly = true).read(
+                // The semantic tombstone can be durable even when exact revoke was interrupted.
+                // Never reveal an old exact entry from a partially revoked shared scope.
+                if (UnoAndroidSemanticMemory(applicationContext).isScopeRevoked("device-observation"))
+                    ExactRead(ExactStatus.DENIED, emptyList(), 0)
+                else UnoAndroidExactMemory(applicationContext, readOnly = true).read(
                     "device-observation", key!!, 1, 256,
                     SystemClock.elapsedRealtimeNanos(), 0L
                 )
@@ -658,6 +666,11 @@ class UnoActivity : Activity() {
         execute("Отзыв доступа к памяти снимков по подтверждению владельца") {
             check(foreground.get() && !UnoProcessStop.isStopped()) { "STOP_OR_BACKGROUND" }
             val exact = UnoAndroidMemoryOwner.exact(applicationContext)
+            // Explicit owner-confirmed revoke. Persist semantic tombstone first if the
+            // index exists; never generate a new vault or delete corrupt existing bytes.
+            val semanticTombstone = UnoAndroidMemoryOwner.semantic(applicationContext)
+                .dropScopeIfPresent("device-observation")
+            check(foreground.get() && !UnoProcessStop.isStopped()) { "STOP_AFTER_SEMANTIC_REVOKE" }
             exact.revoke("device-observation")
             check(exact.read("device-observation", "event:1", 1, 256,
                 SystemClock.elapsedRealtimeNanos(), 0L).status == ExactStatus.DENIED) {
@@ -668,6 +681,7 @@ class UnoActivity : Activity() {
                 .put("status", "SCOPE_REVOKED_READ_DENIED")
                 .put("scope", "device-observation")
                 .put("revision", exact.generation)
+                .put("semantic_tombstone_written_if_index_present", semanticTombstone)
                 .put("physical_flash_securely_erased", false)
                 .put("legacy_diagnostic_json_deleted", false)
                 .put("new_writes_in_scope_allowed", false)
