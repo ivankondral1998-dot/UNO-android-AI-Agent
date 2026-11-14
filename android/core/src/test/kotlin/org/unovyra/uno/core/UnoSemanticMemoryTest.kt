@@ -66,6 +66,45 @@ object UnoSemanticMemoryTest {
         verify(ports.recallSummary("notes", vector(1.0), 4, 16).status == SemanticStatus.DENIED)
         verify(ports.recallExact("notes", "city", 1, 4, 1L, 0L).status == ExactStatus.DENIED)
         verify(runCatching { ports.linkSummary(remembered, vector(1.0)) }.isFailure)
+        // C2: crash/error after durable semantic tombstone but before exact revoke.
+        val unfinishedExact = ExactMemory()
+        val old = unfinishedExact.write("partial", "secret", "old raw".toByteArray(), 500L, 0L,
+            EntryKind.USER_DECLARATION, "OWNER_UI")
+        val partialKey = key()
+        var partialBytes: ByteArray? = null
+        val partialIndex = UnoSemanticMemory(partialKey, "boot-a",
+            { partialBytes?.copyOf() }, { partialBytes = it.copyOf() })
+        val failingExact = object : UnoExactMemoryPort by unfinishedExact {
+            override fun revoke(scope: String) { throw IllegalStateException("INJECT_EXACT_PERSIST_FAIL") }
+        }
+        val partial = UnoMemoryPorts(failingExact, partialIndex)
+        partial.linkSummary(old, vector(1.0))
+        verify(runCatching { partial.revoke("partial") }.isFailure)
+        verify(unfinishedExact.read("partial", "secret", 1, 16, 1L, 0L).status == ExactStatus.COMPLETE)
+        verify(partial.recallExact("partial", "secret", 1, 16, 1L, 0L).status == ExactStatus.DENIED)
+        verify(partial.recallSummary("partial", vector(1.0), 1, 16).status == SemanticStatus.DENIED)
+        verify(runCatching { partial.linkSummary(old, vector(1.0)) }.isFailure)
+
+        // Reopen persisted semantic state after the partial revoke; no ghost fact through the gate.
+        val reopenedPartialIndex = UnoSemanticMemory(partialKey, "boot-a",
+            { partialBytes?.copyOf() }, { partialBytes = it.copyOf() })
+        val reopenedPartial = UnoMemoryPorts(unfinishedExact, reopenedPartialIndex)
+        verify(reopenedPartial.recallExact("partial", "secret", 1, 16, 1L, 0L).status == ExactStatus.DENIED)
+        verify(reopenedPartial.recallSummary("partial", vector(1.0), 1, 16).status == SemanticStatus.DENIED)
+        reopenedPartial.revoke("partial")
+        verify(unfinishedExact.read("partial", "secret", 1, 16, 1L, 0L).status == ExactStatus.DENIED)
+
+        // C2: if the first tombstone write fails, only the in-process barrier is guaranteed.
+        val failedPersistExact = ExactMemory()
+        failedPersistExact.write("retry", "k", "raw".toByteArray(), 500L, 0L,
+            EntryKind.USER_DECLARATION, "OWNER_UI")
+        val failedPersistIndex = UnoSemanticMemory(key(), "boot-a", { null },
+            { throw IllegalStateException("INJECT_SEMANTIC_PERSIST_FAIL") })
+        val failedPersist = UnoMemoryPorts(failedPersistExact, failedPersistIndex)
+        verify(runCatching { failedPersist.revoke("retry") }.isFailure)
+        verify(failedPersist.recallExact("retry", "k", 1, 16, 1L, 0L).status == ExactStatus.DENIED)
+        verify(failedPersistExact.read("retry", "k", 1, 16, 1L, 0L).status == ExactStatus.COMPLETE)
+
         println("UNO_SEMANTIC_MEMORY_HOST_PASS=$pass")
     }
 }
