@@ -30,11 +30,18 @@ class UnoFactsActivity : Activity() {
     private lateinit var recall: Button
     private lateinit var erase: Button
 
-    private fun currentScope(memory: UnoExactMemoryPort, repair: Boolean): String {
+    private fun currentScope(memory: UnoExactMemoryPort, repair: Boolean,
+                             allowRevocationRepair: Boolean = false): String {
         val preferences = getSharedPreferences("uno_manual_facts_v1", MODE_PRIVATE)
         val previous = preferences.getLong("scope_generation", 0L)
         var scope = UnoManualFacts.scope(previous)
         val probe = UnoManualFacts.recall(memory, scope, "__scope_probe__", SystemClock.elapsedRealtimeNanos())
+        // Persisted semantic tombstone wins over a still-readable exact scope after a torn revoke.
+        // Construct a fresh read-only adapter: no key creation and no stale cached snapshot.
+        val semanticRevoked = UnoAndroidSemanticMemory(applicationContext).isScopeRevoked(scope)
+        if (semanticRevoked && probe.status != ExactStatus.DENIED && !allowRevocationRepair) {
+            error("NOTE_SCOPE_REVOKE_INCOMPLETE_REPEAT_CONFIRMED_FORGET")
+        }
         if (repair && probe.status == ExactStatus.DENIED) {
             // Recovery after a crash between authenticated revoke and preference update.
             val next = memory.generation
@@ -47,7 +54,8 @@ class UnoFactsActivity : Activity() {
         return scope
     }
 
-    private fun execute(readOnly: Boolean = false, action: (UnoExactMemoryPort, String) -> String) {
+    private fun execute(readOnly: Boolean = false, allowRevocationRepair: Boolean = false,
+                        action: (UnoExactMemoryPort, String) -> String) {
         save.isEnabled = false
         recall.isEnabled = false
         erase.isEnabled = false
@@ -56,7 +64,8 @@ class UnoFactsActivity : Activity() {
                 val memory: UnoExactMemoryPort = if (readOnly)
                     UnoAndroidExactMemory(applicationContext, readOnly = true)
                 else UnoAndroidMemoryOwner.exact(applicationContext)
-                action(memory, currentScope(memory, repair = !readOnly))
+                action(memory, currentScope(memory, repair = !readOnly,
+                    allowRevocationRepair = allowRevocationRepair))
             } catch (e: Exception) {
                 "Операция не подтверждена: ${e.message ?: e.javaClass.simpleName}. Проверь состояние перед повтором."
             }
@@ -170,10 +179,16 @@ class UnoFactsActivity : Activity() {
             AlertDialog.Builder(this)
                 .setTitle("Забыть все ручные факты?")
                 .setMessage("Записи в этой области станут недоступны после подтверждённого сохранения отзыва. " +
+                    "Если сохранение прервётся, повтори это подтверждение; автоматического удаления нет. " +
                     "Это не гарантирует физическое стирание старых копий на флеш-памяти.")
                 .setNegativeButton("Отмена", null)
                 .setPositiveButton("Забыть") { _, _ ->
-                    execute { memory, scope ->
+                    execute(allowRevocationRepair = true) { memory, scope ->
+                        check(!UnoProcessStop.isStopped()) { "STOP" }
+                        // One owner-confirmed forget across both existing stores, not a new UI action.
+                        // If semantic persistence succeeds but exact fails, the tombstone denies reads
+                        // until the owner repeats this confirmation. No automatic data deletion/retry.
+                        UnoAndroidMemoryOwner.semantic(applicationContext).dropScopeIfPresent(scope)
                         check(!UnoProcessStop.isStopped()) { "STOP" }
                         val newGeneration = UnoManualFacts.forgetAll(memory, scope)
                         check(getSharedPreferences("uno_manual_facts_v1", MODE_PRIVATE).edit()
