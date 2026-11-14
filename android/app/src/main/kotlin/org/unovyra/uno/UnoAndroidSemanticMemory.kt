@@ -24,9 +24,22 @@ internal class UnoAndroidSemanticMemory(context: Context) {
     private val boot = unoDeviceBootIdentifier(context.applicationContext)
     private var cached: UnoSemanticMemory? = null
 
-    fun retrieve(scope: String, query: DoubleArray, k: Int, scanBudget: Int): SemanticRead {
+    /**
+     * An interrupted AtomicFile write may leave a newer revocation tombstone in .new
+     * while the old base snapshot is still readable. Never serve an old semantic view
+     * or allow exact-memory access from that ambiguous state.
+     * A legacy .bak is treated as equally ambiguous; neither file is deleted.
+     */
+    private fun rejectPartialSnapshot() {
+        val base = file.baseFile
+        check(!File(base.path + ".new").exists() && !File(base.path + ".bak").exists()) {
+            "SEMANTIC_PARTIAL_UNREADABLE"
+        }
+    }
+
+    @Synchronized fun retrieve(scope: String, query: DoubleArray, k: Int, scanBudget: Int): SemanticRead {
+        rejectPartialSnapshot()
         if (!file.baseFile.isFile) {
-            check(!File(file.baseFile.path + ".new").isFile) { "SEMANTIC_PARTIAL_UNREADABLE" }
             return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
         }
         return open(createKey = false).retrieve(scope, query, k, scanBudget)
@@ -36,16 +49,16 @@ internal class UnoAndroidSemanticMemory(context: Context) {
      * Fresh read-only adapter instances inspect a persisted revoke tombstone without
      * creating a key/vault. Unreadable .new/ciphertext fails closed, never returns false.
      */
-    fun isScopeRevoked(scope: String): Boolean {
+    @Synchronized fun isScopeRevoked(scope: String): Boolean {
         require(scope.isNotBlank())
+        rejectPartialSnapshot()
         if (!file.baseFile.isFile) {
-            check(!File(file.baseFile.path + ".new").isFile) { "SEMANTIC_PARTIAL_UNREADABLE" }
             return false
         }
         return open(createKey = false).isScopeRevoked(scope)
     }
 
-    fun link(entry: ExactEntry, vector: DoubleArray) {
+    @Synchronized fun link(entry: ExactEntry, vector: DoubleArray) {
         open(createKey = true).link(entry, vector)
     }
 
@@ -54,27 +67,27 @@ internal class UnoAndroidSemanticMemory(context: Context) {
      * if there was no index. If one exists, persist semantic tombstone before exact revoke.
      * Never repair or delete a corrupt existing file.
      */
-    fun dropScopeIfPresent(scope: String): Boolean {
+    @Synchronized fun dropScopeIfPresent(scope: String): Boolean {
         require(scope.isNotBlank())
+        rejectPartialSnapshot()
         if (!file.baseFile.isFile) {
-            check(!File(file.baseFile.path + ".new").isFile) { "SEMANTIC_PARTIAL_UNREADABLE" }
             return false
         }
         open(createKey = false).dropScope(scope)
         return true
     }
 
-    fun dropScope(scope: String) {
+    @Synchronized fun dropScope(scope: String) {
         open(createKey = true).dropScope(scope)
     }
 
-    private fun open(createKey: Boolean): UnoSemanticMemory {
+    @Synchronized private fun open(createKey: Boolean): UnoSemanticMemory {
+        rejectPartialSnapshot() // also applies when an adapter object has a cached snapshot
         cached?.let { return it }
         val keystore = KeyStore.getInstance("AndroidKeyStore").apply { load(null) }
         val existing = keystore.getKey(keyAlias, null)
         check(existing == null || existing is SecretKey) { "SEMANTIC_KEY_TYPE_UNSUPPORTED" }
         val base = file.baseFile
-        if (!base.isFile && File(base.path + ".new").isFile) error("SEMANTIC_PARTIAL_UNREADABLE")
         if (base.isFile && existing !is SecretKey) error("SEMANTIC_KEY_MISSING")
         val key = (existing as? SecretKey) ?: if (createKey) generateKey()
         else error("SEMANTIC_KEY_MISSING")
