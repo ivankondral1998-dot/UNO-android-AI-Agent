@@ -41,10 +41,26 @@ internal class UnoAndroidSemanticMemory(context: Context) {
         }
     }
 
+    private fun existingKey(): SecretKey? {
+        val keystore = KeyStore.getInstance("AndroidKeyStore").apply { load(null) }
+        val value = keystore.getKey(keyAlias, null)
+        check(value == null || value is SecretKey) { "SEMANTIC_KEY_TYPE_UNSUPPORTED" }
+        return value as? SecretKey
+    }
+
+    // If AndroidKeyStore remembers an index but its ciphertext vanished, the
+    // previous snapshot may have held a revocation. Never treat it as "no index".
+    private fun checkAbsentIndexWasNeverEnrolled() {
+        check(existingKey() == null) { "SEMANTIC_SNAPSHOT_MISSING" }
+    }
+
     fun retrieve(scope: String, query: DoubleArray, k: Int, scanBudget: Int): SemanticRead =
         synchronized(processStoreLock) {
             rejectPartialSnapshot()
-            if (!file.baseFile.isFile) SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
+            if (!file.baseFile.isFile) {
+                checkAbsentIndexWasNeverEnrolled()
+                SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
+            }
             else open(createKey = false).retrieve(scope, query, k, scanBudget)
         }
 
@@ -55,8 +71,10 @@ internal class UnoAndroidSemanticMemory(context: Context) {
     fun isScopeRevoked(scope: String): Boolean = synchronized(processStoreLock) {
         require(scope.isNotBlank())
         rejectPartialSnapshot()
-        if (!file.baseFile.isFile) false
-        else open(createKey = false).isScopeRevoked(scope)
+        if (!file.baseFile.isFile) {
+            checkAbsentIndexWasNeverEnrolled()
+            false
+        } else open(createKey = false).isScopeRevoked(scope)
     }
 
     fun link(entry: ExactEntry, vector: DoubleArray) = synchronized(processStoreLock) {
@@ -71,8 +89,10 @@ internal class UnoAndroidSemanticMemory(context: Context) {
     fun dropScopeIfPresent(scope: String): Boolean = synchronized(processStoreLock) {
         require(scope.isNotBlank())
         rejectPartialSnapshot()
-        if (!file.baseFile.isFile) false
-        else {
+        if (!file.baseFile.isFile) {
+            checkAbsentIndexWasNeverEnrolled()
+            false
+        } else {
             open(createKey = false).dropScope(scope)
             true
         }
@@ -84,12 +104,11 @@ internal class UnoAndroidSemanticMemory(context: Context) {
 
     private fun open(createKey: Boolean): UnoSemanticMemory {
         rejectPartialSnapshot() // No cached index: reload current committed tombstones on every call.
-        val keystore = KeyStore.getInstance("AndroidKeyStore").apply { load(null) }
-        val existing = keystore.getKey(keyAlias, null)
-        check(existing == null || existing is SecretKey) { "SEMANTIC_KEY_TYPE_UNSUPPORTED" }
+        val existing = existingKey()
         val base = file.baseFile
-        if (base.isFile && existing !is SecretKey) error("SEMANTIC_KEY_MISSING")
-        val key = (existing as? SecretKey) ?: if (createKey) generateKey()
+        if (base.isFile && existing == null) error("SEMANTIC_KEY_MISSING")
+        if (!base.isFile && existing != null) error("SEMANTIC_SNAPSHOT_MISSING")
+        val key = existing ?: if (createKey) generateKey()
         else error("SEMANTIC_KEY_MISSING")
         return UnoSemanticMemory(
             key, boot,
