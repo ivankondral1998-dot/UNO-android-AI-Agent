@@ -4,9 +4,11 @@
 
 - **`source-r53/`**: исходный полный пакет ASTRA/R52 и NORMATIVE. Сначала `00_START_HERE.md`, далее `NORMATIVE/01–06`, затем полные `SOURCES/ASTRA_CURRENT` и адресные оригиналы. Исходный Git tree сохранён.
 - **`terra/`**: независимые исправления и пределы из аудита 12.11.2026 (C1–C4, retrieval/observability, training readiness) — кандидат для сопоставления с WORK, не применённый автоматически.
+- **`grok/`**: оригинальная исправленная математическая схема минимального организма Grok, 03.11.2026; Git blob SHA `8b0827de42e53fe8af1f8a91938038fa6a4082e3` (совпадает с загруженным владельцем файлом). Исторический кандидат, не утверждённый baseline.
+- **`work-paper/`**: полный финальный owner-review paper, 03.11.2026; Git blob SHA `a143cfd1a863a89bbc30f2f11b8d310e31118410` (совпадает с загруженным файлом). Сверять с R5.3/Terra, не подменять ими исходные формулы.
 - **`udc/`**: исходный UDC v0.3 причинного цикла, состояния, GOAL/PROPOSAL, tests T01–T17.
 - **`f-gradients/`**: research reverse-mode F и Wk/Wv causal memory replay. Старые логи/тесты — историческое свидетельство, не запуск этого checkout.
-- **`train001/`**: исследовательский TRAIN-001, Adam/checkpoint/synthetic fixtures. **Не запускать обучение** по одной только готовности папки. Оригинальные пути в `*.sh` ещё могут подразумевать старое расположение `android/` и `research/` в корне; перед запуском адаптировать и проверить.
+- **`train001/`**: исследовательский TRAIN-001, Adam/checkpoint/synthetic fixtures. **Не запускать обучение** по одной только готовности папки. Восемь исследовательских shell-скриптов перенесены с адаптацией относительных путей к `WORK/android/` и `RESEARCH/`. Это проверено чтением исходников, **не** запуском Kotlin/Gradle. Примеры из корня: `bash RESEARCH/train001/run.sh`, `bash RESEARCH/f-gradients/run.sh`.
 - `legacy-jno/`: архив чужих весов Jarvis, НЕ модель UNO. `weight-kernels/`: вычислительные исследования.
 - `archive-main-20261114/`: полный снимок старого main по Git tree; read-only исторический контекст.
 - `archive-recovery-docs/`, `archive-recovery-research/`: сохранённый исторический source-recovery snapshot. Могут содержать дубли архивных формул; НЕ заменяют source-r53 и terra.
