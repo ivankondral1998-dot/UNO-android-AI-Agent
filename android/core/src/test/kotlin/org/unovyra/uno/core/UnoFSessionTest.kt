@@ -39,6 +39,9 @@ object UnoFSessionTest {
         }
         val first = f.beginGoalSwitch(1L) ?: error("first GOAL refused")
         verify("same-F GOAL uses s=0, g=0, and empty memory") {
+            val fake = UnoRefOutput(DoubleArray(128),
+                UnoRefKernelTrace(0, 0, 0, 0, 0, 0))
+            check(!f.publishGoal(first, fake)) // no matching F invocation
             val direct = UnoFReference(w).forward(
                 UnoRefEvent(doubleArrayOf(1.0), meta, DoubleArray(128),
                     DoubleArray(128), emptyList()), booleanArrayOf(true, true), 1)
@@ -54,10 +57,14 @@ object UnoFSessionTest {
             val work = f.beginObservation() ?: error("ordinary frame refused")
             val key = DoubleArray(128); key[0] = 1.0
             val value = DoubleArray(128); value[0] = 1.0
+            val fake = UnoRefOutput(DoubleArray(128),
+                UnoRefKernelTrace(0, 0, 0, 0, 0, 0))
+            check(!f.publishObservation(work, fake))
+            val withoutMemory = f.computeObservation(work, doubleArrayOf(0.2), meta, emptyList())
             val withMemory = f.computeObservation(work, doubleArrayOf(0.2), meta,
                 listOf(UnoRefMemoryVector(key, value)))
-            val withoutMemory = f.computeObservation(work, doubleArrayOf(0.2), meta, emptyList())
             check(withMemory.state[0] > withoutMemory.state[0])
+            check(!f.publishObservation(work, withoutMemory)) // latest work result only
             check(f.publishObservation(work, withMemory))
             check(!f.publishObservation(work, withMemory))
             near(f.snapshot().goal, before.goal)
@@ -97,12 +104,21 @@ object UnoFSessionTest {
             check(state.goalVersion == -1L && state.state.all { it == 0.0 } &&
                 state.goal.all { it == 0.0 })
         }
-        verify("STOP prevents new work and publishing old work") {
+        verify("mutated numerical result cannot be published as a valid GOAL") {
             val work = f.beginGoalSwitch(6L) ?: error("work refused")
+            val computed = f.computeGoal(work, doubleArrayOf(0.7), meta)
+            val original = computed.state[0]
+            computed.state[0] = if (original < 0.9) original + 0.01 else original - 0.01
+            check(!f.publishGoal(work, computed))
+            val renewed = f.computeGoal(work, doubleArrayOf(0.7), meta)
+            check(f.publishGoal(work, renewed))
+        }
+        verify("STOP prevents new work and publishing old work") {
+            val work = f.beginGoalSwitch(7L) ?: error("work refused")
             val computed = f.computeGoal(work, doubleArrayOf(0.7), meta)
             f.stop()
             check(!f.publishGoal(work, computed))
-            check(f.beginGoalSwitch(7L) == null && f.beginObservation() == null)
+            check(f.beginGoalSwitch(8L) == null && f.beginObservation() == null)
             check(f.snapshot().stopped)
         }
     }
