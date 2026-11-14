@@ -27,7 +27,12 @@ import java.util.concurrent.atomic.AtomicLong
 
 /** WP-01 offline test laboratory. No model weights, no executable Android-effect catalogue. */
 class UnoActivity : Activity() {
-    private val controller by lazy { TrustController(DenyAllAndroidPort(), DenyAllLedger()) }
+    // Read Android's actual elapsed-realtime clock at the reference gate, never reuse an old UI timestamp.
+    // Native effects remain deny-all; this is NOT an Android action authorization.
+    private val controller by lazy {
+        TrustController(DenyAllAndroidPort(), DenyAllLedger(),
+            trustedClockNanos = { SystemClock.elapsedRealtimeNanos() })
+    }
     private val neural: NeuralPort = NoWeightsNeuralPort()
     // Owner-initiated OS credential probe only; never a ticket to native dispatch.
     private val ownerGate by lazy { OwnerConsentState(AndroidDeviceCredentialPlatform(this)) }
