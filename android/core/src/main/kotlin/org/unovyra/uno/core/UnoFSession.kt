@@ -50,6 +50,10 @@ class UnoFSession(
     private var activeGoalVersion = -1L
     private var pendingGoal: GoalWork? = null
     private var inFlightObservation: ObservationWork? = null
+    // Bind one numerical result to its actual F invocation and work cookie.
+    // A caller-supplied state vector is not evidence that F ran for this goal/event.
+    private var computedGoal: Pair<GoalWork, DoubleArray>? = null
+    private var computedObservation: Pair<ObservationWork, DoubleArray>? = null
     private var state = DoubleArray(d)
     private var goal = DoubleArray(d)
 
@@ -66,6 +70,8 @@ class UnoFSession(
             newGoalVersion <= minVersion) return null
         val work = GoalWork(newGoalVersion, sessionEpoch, revision)
         inFlightObservation = null
+        computedObservation = null
+        computedGoal = null
         pendingGoal = work
         return work
     }
@@ -81,18 +87,29 @@ class UnoFSession(
             "UNO_F_GOAL_INPUT"
         }
         require(!stopped.get()) { "UNO_F_SESSION_STOPPED" }
-        return operator.forward(UnoRefEvent(
+        val result = operator.forward(UnoRefEvent(
             rawCanonicalFeatures, goalModeMetadata,
             DoubleArray(d), DoubleArray(d), emptyList()
         ), route.copyOf(), innerSteps)
+        synchronized(this) {
+            check(!stopped.get() && pendingGoal === work &&
+                work.epoch == sessionEpoch && work.revision == revision) {
+                "UNO_F_STALE_GOAL_WORK"
+            }
+            computedGoal = work to result.state.copyOf()
+        }
+        return result
     }
 
     /** Commit is atomic with respect to other goal switches, revocation and STOP. */
     @Synchronized fun publishGoal(work: GoalWork, result: UnoRefOutput): Boolean {
         if (stopped.get() || pendingGoal !== work || work.epoch != sessionEpoch ||
             work.revision != revision || result.state.size != d ||
-            result.state.any { !it.isFinite() || it !in -1.0..1.0 }) return false
+            result.state.any { !it.isFinite() || it !in -1.0..1.0 } ||
+            computedGoal?.first !== work ||
+            computedGoal?.second?.contentEquals(result.state) != true) return false
         goal = result.state.copyOf()
+        computedGoal = null
         activeGoalVersion = work.goalVersion
         revision++
         pendingGoal = null
@@ -101,7 +118,10 @@ class UnoFSession(
     }
 
     @Synchronized fun discardGoal(work: GoalWork) {
-        if (pendingGoal === work) pendingGoal = null
+        if (pendingGoal === work) {
+            pendingGoal = null
+            computedGoal = null
+        }
     }
 
     @Synchronized fun beginObservation(): ObservationWork? {
@@ -117,24 +137,39 @@ class UnoFSession(
             "UNO_F_OBSERVATION_INPUT"
         }
         require(!stopped.get()) { "UNO_F_SESSION_STOPPED" }
-        return operator.forward(UnoRefEvent(
+        val result = operator.forward(UnoRefEvent(
             features, metadata, work.startState(), work.goal(), visibleMemory
         ), route.copyOf(), innerSteps)
+        synchronized(this) {
+            check(!stopped.get() && inFlightObservation === work &&
+                pendingGoal == null && work.epoch == sessionEpoch &&
+                work.revision == revision && work.goalVersion == activeGoalVersion) {
+                "UNO_F_STALE_OBSERVATION_WORK"
+            }
+            computedObservation = work to result.state.copyOf()
+        }
+        return result
     }
 
     @Synchronized fun publishObservation(work: ObservationWork, result: UnoRefOutput): Boolean {
         if (stopped.get() || inFlightObservation !== work || pendingGoal != null ||
             work.epoch != sessionEpoch || work.revision != revision ||
             work.goalVersion != activeGoalVersion || revision == Long.MAX_VALUE ||
-            result.state.size != d || result.state.any { !it.isFinite() || it !in -1.0..1.0 }) return false
+            result.state.size != d || result.state.any { !it.isFinite() || it !in -1.0..1.0 } ||
+            computedObservation?.first !== work ||
+            computedObservation?.second?.contentEquals(result.state) != true) return false
         state = result.state.copyOf()
+        computedObservation = null
         revision++
         inFlightObservation = null
         return true
     }
 
     @Synchronized fun discardObservation(work: ObservationWork) {
-        if (inFlightObservation === work) inFlightObservation = null
+        if (inFlightObservation === work) {
+            inFlightObservation = null
+            computedObservation = null
+        }
     }
 
     /**
@@ -150,6 +185,8 @@ class UnoFSession(
         activeGoalVersion = -1L
         pendingGoal = null
         inFlightObservation = null
+        computedGoal = null
+        computedObservation = null
         state = DoubleArray(d)
         goal = DoubleArray(d)
         return true
@@ -160,6 +197,8 @@ class UnoFSession(
         synchronized(this) {
             pendingGoal = null
             inFlightObservation = null
+            computedGoal = null
+            computedObservation = null
         }
     }
 }
