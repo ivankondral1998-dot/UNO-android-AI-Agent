@@ -35,13 +35,20 @@ class UnoFoundationReferenceCycle(
     private val owner: AuthenticatedOwnerUi,
     private val scheduler: BoundedScheduler = BoundedScheduler(32),
     private val audio: PcmFrameGate? = null,
-    private val planner: BoundedPlanner = BoundedPlanner()
+    private val planner: BoundedPlanner = BoundedPlanner(),
+    // Host reference may omit this; any real Android caller must inject elapsedRealtimeNanos.
+    private val trustedClockNanos: (() -> Long)? = null
 ) {
     private val stopped = AtomicBoolean(false)
     private val busy = AtomicBoolean(false)
     private var revision = 0L
     fun stop() { stopped.set(true); scheduler.stop(); controller.stop(); planner.stop() }
     fun isStopped() = stopped.get()
+
+    private fun freshNow(callerNow: Long): Long? = try {
+        val actual = trustedClockNanos?.invoke() ?: callerNow
+        actual.takeIf { it >= callerNow && it >= 0L }
+    } catch (_: Exception) { null }
 
     @Synchronized private fun report(
         status: FoundationReferenceStatus, sha: String? = null, state: String? = null,
@@ -148,13 +155,18 @@ class UnoFoundationReferenceCycle(
             if (stopped.get()) return report(FoundationReferenceStatus.STOPPED, sha)
             if (consent == null) return report(
                 FoundationReferenceStatus.OWNER_DECLINED, sha, output.stateDigest, digest)
-            val ticket = controller.prepare(proposal, consent, now, deadline) ?: return report(
+            // Owner UI can block for seconds or minutes. Never authorize with the pre-UI event time.
+            val approvalNow = freshNow(now) ?: return report(
+                FoundationReferenceStatus.TRUST_REJECTED, sha, output.stateDigest, digest)
+            val ticket = controller.prepare(proposal, consent, approvalNow, deadline) ?: return report(
                 FoundationReferenceStatus.TRUST_REJECTED, sha, output.stateDigest, digest)
             if (stopped.get()) {
                 controller.stop()
                 return report(FoundationReferenceStatus.STOPPED, sha)
             }
-            return when (val attempt = controller.dispatchOutcome(ticket, now)) {
+            val dispatchNow = freshNow(approvalNow) ?: return report(
+                FoundationReferenceStatus.DISPATCH_REJECTED, sha, output.stateDigest, digest)
+            return when (val attempt = controller.dispatchOutcome(ticket, dispatchNow)) {
                 is DispatchAttempt.Rejected -> report(
                     FoundationReferenceStatus.DISPATCH_REJECTED, sha, output.stateDigest, digest)
                 DispatchAttempt.Unresolved -> report(
@@ -163,7 +175,7 @@ class UnoFoundationReferenceCycle(
                     stopped.get() || attempt.nativeReturn == NativeEndpoint.UNKNOWN ->
                         report(FoundationReferenceStatus.MAY_HAVE_EXECUTED, sha,
                             output.stateDigest, digest, true)
-                    controller.readbackAndCommit(ticket, now) ->
+                    freshNow(dispatchNow)?.let { controller.readbackAndCommit(ticket, it) } == true ->
                         report(FoundationReferenceStatus.REFERENCE_READBACK_CLAIM, sha,
                             output.stateDigest, digest, true)
                     else -> report(FoundationReferenceStatus.READBACK_UNCONFIRMED, sha,
