@@ -277,7 +277,7 @@ class UnoFReferencePort(
         }
         val output = reference.forward(
             UnoRefEvent(features, DoubleArray(32), DoubleArray(weights.d),
-                DoubleArray(weights.d), recalled(features)),
+                DoubleArray(weights.d), recalled()),
             mask, steps
         )
         lastTrace = output.trace
@@ -294,18 +294,14 @@ class UnoFReferencePort(
         return NeuralOutput(digest, null)
     }
 
-    /** Summary vectors only. A dimension mismatch or UNKNOWN read supplies no memory. */
-    private fun recalled(features: DoubleArray): List<UnoRefMemoryVector> {
+    /** Reference-only full eligible scan: no f-based top-k before F computes q. */
+    private fun recalled(): List<UnoRefMemoryVector> {
         val index = semantic ?: return emptyList()
         val scope = semanticScope ?: return emptyList()
-        if (features.size != weights.m) return emptyList()
-        val read = index.retrieve(scope, features, 4, 64)
-        if (read.status != SemanticStatus.SUMMARY_ONLY && read.status != SemanticStatus.TRUNCATED) {
-            return emptyList()
-        }
-        return read.hits.mapNotNull { hit ->
-            if (hit.vector.size != weights.m) null
-            else UnoRefMemoryVector(hit.vector, hit.vector.copyOf())
-        }
+        val read = index.eligibleForS4(scope, UnoAbi.MAX_MEMORY)
+        if (read.status != SemanticStatus.SUMMARY_ONLY) return emptyList()
+        // All-or-nothing for incompatible representation widths.
+        if (read.hits.any { it.vector.size != weights.m }) return emptyList()
+        return read.hits.map { UnoRefMemoryVector(it.vector, it.vector.copyOf()) }
     }
 }

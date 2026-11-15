@@ -195,6 +195,70 @@ object UnoFReferenceTest {
             check(exact.read("notes", "fact", 1, 4, 6L, 0L).entries.single()
                 .raw.contentEquals("plus".toByteArray()))
         }
+        test("S4_reads_all_five_eligible_summary_records_no_prequery_top4") {
+            val d = 128
+            val w = UnoRefWeights(
+                "S4_FULL_ELIGIBLE_SYNTHETIC/1",
+                matrix(d,d,0,0,1.0), zero(d,d), zero(d,d), zero(d,32),
+                DoubleArray(d), DoubleArray(d),
+                matrix(d,d,1,0,1.0), matrix(d,d,0,1,1.0),
+                (0 until 2).map { (0 until 2).map {
+                    UnoRefBranch(zero(256,d), zero(256,d), zero(64,256),
+                        DoubleArray(256), DoubleArray(64))
+                } }
+            )
+            val exact = ExactMemory()
+            val secret = KeyGenerator.getInstance("AES").apply { init(256) }.generateKey()
+            var saved: ByteArray? = null
+            val index = UnoSemanticMemory(secret, "s4-host-boot", { saved?.copyOf() },
+                { saved = it.copyOf() }, d)
+            fun basis(i: Int) = DoubleArray(d).also { it[i] = 1.0 }
+            val vectors = (0 until 4).map { basis(0) } + basis(1)
+            vectors.forEachIndexed { j, vector ->
+                val entry = exact.write("test-s4", "fact-$j", byteArrayOf(j.toByte()),
+                    10_000L, 0L, EntryKind.OBSERVED, "SYNTHETIC")
+                index.link(entry, vector)
+            }
+            val feature = basis(0)
+            val early = index.retrieve("test-s4", feature, 4, 64)
+            check(early.status == SemanticStatus.TRUNCATED && early.hits.size == 4)
+            check(index.eligibleForS4("test-s4", 4).status == SemanticStatus.UNKNOWN)
+            val eligible = index.eligibleForS4("test-s4", 256)
+            check(eligible.status == SemanticStatus.SUMMARY_ONLY && eligible.hits.size == 5)
+            val mask = booleanArrayOf(true,false)
+            val reference = UnoFReference(w)
+            val full = reference.forward(UnoRefEvent(
+                feature, DoubleArray(32), DoubleArray(d), DoubleArray(d),
+                vectors.map { UnoRefMemoryVector(it,it) }), mask, 1)
+            val partial = reference.forward(UnoRefEvent(
+                feature, DoubleArray(32), DoubleArray(d), DoubleArray(d),
+                early.hits.map { UnoRefMemoryVector(it.vector,it.vector) }), mask, 1)
+            check(full.state[0] - partial.state[0] > 1e-4)
+            val port = UnoFReferencePort(reference,w,mask,1,index,"test-s4")
+            val packed = ByteArray(d*8)
+            feature.forEachIndexed { i, number ->
+                var bits = number.toRawBits()
+                for (b in 0 until 8) {
+                    packed[i*8+b] = (bits and 255).toByte()
+                    bits = bits ushr 8
+                }
+            }
+            val observed = port.perceive(Percept(PerceptType.SENSOR,packed,"SYNTHETIC",1L))
+            val stateBytes = ByteArray(d*8)
+            full.state.forEachIndexed { i, number ->
+                var bits = number.toRawBits()
+                for (b in 0 until 8) {
+                    stateBytes[i*8+b] = (bits and 255).toByte()
+                    bits = bits ushr 8
+                }
+            }
+            val expected = java.security.MessageDigest.getInstance("SHA-256")
+                .digest(stateBytes).joinToString("") { "%02x".format(it) }
+            check(observed.stateDigest == expected && observed.action == null)
+            check(port.lastTrace?.skippedBlocks == 1)
+            index.dropScope("test-s4")
+            check(index.eligibleForS4("test-s4", 256).status == SemanticStatus.DENIED)
+        }
         println("UNO_F_REFERENCE_HOST_PASS=$pass")
     }
 }

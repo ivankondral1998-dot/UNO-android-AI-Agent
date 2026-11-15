@@ -81,6 +81,30 @@ class UnoSemanticMemory(
         revoked = nextRevoked
     }
 
+    /**
+     * S4 bounded UNRANKED eligible representation scan. The common F computes q
+     * and performs the S4 dot/softmax over this complete candidate set.
+     * This is a reference-only representation index, NOT exact-record freshness,
+     * authorization, learned Wk/Wv, or a production memory implementation.
+     *
+     * Do not silently take top-k: insufficient scan budget yields UNKNOWN.
+     */
+    @Synchronized fun eligibleForS4(scope: String, scanBudget: Int): SemanticRead {
+        if (scope.isEmpty() || scope in revoked) {
+            return SemanticRead(SemanticStatus.DENIED, emptyList(), 0)
+        }
+        if (scanBudget < 0) return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
+        val visible = links.filter { it.boot == bootToken && it.scope !in revoked }
+        if (visible.size > scanBudget) return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
+        val eligible = visible.filter { it.scope == scope }.map { link ->
+            // Score 0.0 is a placeholder. The selector MUST NOT rank using it.
+            SemanticHit(link.exactId, link.generation, link.sha256, link.scope,
+                0.0, link.vector.copyOf())
+        }
+        if (eligible.isEmpty()) return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
+        return SemanticRead(SemanticStatus.SUMMARY_ONLY, eligible, eligible.size)
+    }
+
     @Synchronized fun retrieve(scope: String, query: DoubleArray, k: Int, scanBudget: Int): SemanticRead {
         if (scope.isEmpty() || scope in revoked) return SemanticRead(SemanticStatus.DENIED, emptyList(), 0)
         if (k <= 0 || scanBudget < 0 || query.size != dimension || query.any { !it.isFinite() }) {
