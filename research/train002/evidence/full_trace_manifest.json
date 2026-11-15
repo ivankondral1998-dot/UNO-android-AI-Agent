@@ -1,0 +1,30 @@
+{
+  "erased.jsonl.gz": {
+    "sha256": "371ccff62597fea88f5ff216f9712c7c256367be230a898bd9501264e49fd327",
+    "bytes": 3241083
+  },
+  "full.jsonl.gz": {
+    "sha256": "5306e0513c5180765babaaeb9a124828cb802b679fe911b25f813ba0ea358e24",
+    "bytes": 3244229
+  },
+  "memory_off.jsonl.gz": {
+    "sha256": "01e84bc9544bb1cd9095fd79d0456a410a4ba21f29477198246da59d286dd9a1",
+    "bytes": 2678915
+  },
+  "permute_values.jsonl.gz": {
+    "sha256": "b51dd7fdf8ee620c680326fc66335fab76dd29d884bd6e84fce5d073fc2ee9a2",
+    "bytes": 3244577
+  },
+  "random_keys.jsonl.gz": {
+    "sha256": "164b1236c284eac340270d9441089ff0851b90df68322166377802fb60d0733a",
+    "bytes": 3239721
+  },
+  "reverse_pairs.jsonl.gz": {
+    "sha256": "b5a10896f74e9426108d2fc452928ef382075cb2b1a78d72ea7008938f0a97db",
+    "bytes": 3244290
+  },
+  "zero_values.jsonl.gz": {
+    "sha256": "cce1c2b9153afa0cb12daa78ee262a9d330bd5556403135229e2a3c552422cc4",
+    "bytes": 2936950
+  }
+}

@@ -1,0 +1,16 @@
+/workspace/uno-torch211/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:307: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+......F
+======================================================================
+FAIL: test_mislabelled_arm_checkpoint_is_rejected_before_test (__main__.StudyIdentity.test_mislabelled_arm_checkpoint_is_rejected_before_test)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/UNO-android-AI-Agent/research/train002/test_stage002.py", line 98, in test_mislabelled_arm_checkpoint_is_rejected_before_test
+    with self.assertRaises(ValueError):study.pin_selections(root,out,{'arms':[arm],'seeds':[seed],'steps':1,'batch':1})
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 7 tests in 2.073s
+
+FAILED (failures=1)

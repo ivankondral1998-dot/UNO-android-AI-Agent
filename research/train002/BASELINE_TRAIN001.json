@@ -1,0 +1,34 @@
+{
+  "id": "HISTORIC_TRAIN001_RTX_1000_20261115",
+  "code_head": "b371b627ef743b876e13daadf3b57d6013f37652",
+  "source_sha256": "87c285ac8ff09e7282e56a9c0bb8884cddb932f96ea9fd728e5d81eacd9290de",
+  "checkpoint_sha256": "d85b14a2ab0e6e2c254d1ac45e64c56b28be9b2248a165869632919ef2847404",
+  "result_archive_sha256": "6f39bf1b5a96cfb7a18d48c5c2deb13e3f78c6f5ee18c80502d934998318dcdc",
+  "step": 1000,
+  "cursor": 4000,
+  "validation_selected_step": 950,
+  "inputs": {
+    "erased.tsv": "45cffa8ceb3f01873abcac2275e5030e916697b835038aba095a9c9b34adf34d",
+    "initial.tsv": "77eedd67186aa84813d0d277a8a157af3ca0a41f07ab9020bfd85d99d1e0942a",
+    "test.tsv": "38ca745cae873082c5e9fe26ec7f3dc97419fd6eca62f7188fea0a106874be32",
+    "train.tsv": "0f90396b2443c6c10311d869289faea28df4f2f96e413159732007627bef4a4e",
+    "validation.tsv": "562090c9e8d6d9496e4b8ff63930da3ddd6353ea95aee83aacb5e742f69ebc18"
+  },
+  "learned_weight_change": {
+    "wk": {
+      "changed_coordinates": 8151,
+      "rms_delta": 0.026830108089199632,
+      "max_abs_delta": 0.11352480947971344
+    },
+    "wv": {
+      "changed_coordinates": 8107,
+      "rms_delta": 0.02922930035163712,
+      "max_abs_delta": 0.115195631980896
+    }
+  },
+  "new_stage": "TRAIN-002",
+  "old_test_status": "OPEN_HISTORIC_NOT_NEW_ACCEPTANCE",
+  "preserved": "TRAIN001 files untouched; original attachment/normalized checkpoint and all old artifacts retained",
+  "large_second_attachment": "executor transfer limit32MiB; all needed baseline inputs and code recovered locally with exact matching SHA",
+  "verification": "source-reported RTX run, independently CPU-reproduced evaluation, no new CUDA claims"
+}

@@ -1,0 +1,12 @@
+/workspace/uno-torch211/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:307: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+Traceback (most recent call last):
+  File "/workspace/UNO_TRAIN002_RTX_20261115/train002/check.py", line 10, in <module>
+    plan=load_plan(a.root);hw=hardware('cuda');guard('cuda');require(not a.receipt.exists(),'CHECK_RECEIPT_EXISTS')
+                              ^^^^^^^^^^^^^^^^
+  File "/workspace/UNO_TRAIN002_RTX_20261115/train002/study.py", line 23, in hardware
+    require(torch.cuda.is_available(),'CUDA_UNAVAILABLE; no CPU fallback')
+  File "/workspace/UNO_TRAIN002_RTX_20261115/train001/torch_backend.py", line 13, in require
+    if not condition:raise ValueError(reason)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: CUDA_UNAVAILABLE; no CPU fallback

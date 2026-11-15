@@ -1,0 +1,14 @@
+# TRAIN-002: chronological organization and causal memory diagnosis
+
+Base b371b627ef743b876e13daadf3b57d6013f37652; same research/uno-train-001-s4-20261115 branch. No earlier TRAIN-002 identifier found in repo. Existing TRAIN001 sources/results remain unchanged. User explicitly requests autonomous execution, short CPU verification and prepared Windows RTX experiments; no long cloud training, branch creation, main/production/Actions changes or deletions.
+
+1. Pin previous checkpoint/input/source hashes. Independently reproduce historic saved metrics on CPU; export per-example predictions, bank/header/key/value/attention traces, pairing, splits/balance/CI. Distinguish memory_off/zero_values/erased. Historic test is already open and used only for diagnosis.
+2. Test minimum causal chronology store (monotonic event/record numbers, predecessor/successor, slot-version history) with no label-dependent routing. A clock feature in key preactivation is the single candidate extension: k=tanh(Wk h + .5 c(record)), values unchanged. All candidates still participate in learned softmax; no hard correct-record choice. Clock-zero must exactly reduce to baseline.
+3. Test/reproduce legacy replay forward+all gradients before extension. Investigate r5 order vs learning/decoding, including conflicting future-task-dependent value targets and observable counterfactuals. Do not call missing chronology the cause without evidence.
+4. Prepare equal-data paired experiments: baseline S4/chronological S4 crossed with legacy/typed write-value supervision, F trained without memory, parameter-comparable GRU, frozen Wk/Wv, random keys, content permutation and clock controls. Three seeds; fixed budget, masks/caps/Adam/LR; track params/compute/VRAM/time. Training controls and inference ablations remain separate.
+5. Pin fresh train/validation/test before new training, pair erased raw inputs while retaining labels, audit no overlap. Add public anchored previous/next/last/version tasks; anchors/opcodes enter every model's raw inputs, never gold. New test labels not used for tuning; lock selection before terminal evaluation. Report per-rung and paired seed/episode intervals, no pseudo-independent pooled CI.
+6. Reuse TRAIN001 model schema, optimizer/projection/checkpoint/lock/schedule; add versioned config, atomic exact resume and a Windows check/train/resume/evaluate launcher. Short CPU tests only. Prepare compact packet with source hashes and a run plan; actual CUDA/quality remain for owner's RTX.
+
+Completion: working source + tests + genuine CPU evidence + Github SHA + packet, with pending GPU/quality explicitly identified. Canonical journal append prepared only if publication outside authorized branch is unavailable.
+
+Implementation and available CPU checks completed; main GPU study intentionally not run. See RESULT.md for actual evidence and limitations. Training/quality comparison remains pending the owner-run predeclared matrix.

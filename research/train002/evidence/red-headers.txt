@@ -1,0 +1,17 @@
+E
+======================================================================
+ERROR: test_causal_links_versions_and_rollback_on_invalid_append (__main__.Headers.test_causal_links_versions_and_rollback_on_invalid_append)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/UNO-android-AI-Agent/research/train002/test_stage002.py", line 7, in test_causal_links_versions_and_rollback_on_invalid_append
+    s=Chronology();a=s.append(2,-1,'k1','v1');b=s.append(5,1,'k2','v2');c=s.append(9,-1,'k3','v3')
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/UNO-android-AI-Agent/research/train002/organizer.py", line 18, in append
+    def append(self,sequence,slot,key,value):raise NotImplementedError('CHRONOLOGY_NOT_IMPLEMENTED')
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError: CHRONOLOGY_NOT_IMPLEMENTED
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

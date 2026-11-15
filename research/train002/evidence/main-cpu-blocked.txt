@@ -1,0 +1,15 @@
+/workspace/uno-torch211/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:307: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+Traceback (most recent call last):
+  File "/workspace/UNO_TRAIN002_FINAL_20261115/train002/study.py", line 167, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/UNO_TRAIN002_FINAL_20261115/train002/study.py", line 166, in main
+    with output_lock(a.output/'active-trainer'):run(a.root,a.output,a.arm,a.seed,a.device,a.command=='resume',a.max_seconds,a.receipt)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/UNO_TRAIN002_FINAL_20261115/train002/study.py", line 44, in run
+    require(device=='cuda' or plan.get('diagnostic',False),'CPU_MAIN_TRAINING_FORBIDDEN')
+  File "/workspace/UNO_TRAIN002_FINAL_20261115/train001/torch_backend.py", line 13, in require
+    if not condition:raise ValueError(reason)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: CPU_MAIN_TRAINING_FORBIDDEN
