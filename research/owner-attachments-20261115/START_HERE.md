@@ -22,7 +22,7 @@ Historic training package `UNO_CODEX_TRAIN001_HANDOFF_20261115.zip` and Windows-
 
 ## Backup truth and machine check
 
-The only machine-readable inventory for these **14 original ZIPs** is [ARTIFACTS.tsv](ARTIFACTS.tsv). Each row records original bytes, SHA-256, Git blob SHA-1, ZIP entry count and exact Git path (or `-` if pending). **9/14 matching Git blobs were verified** against source bytes; **5/14 are pending**, not backed up to the Git tree. The source ZIPs passed complete CRC checks (14/14). The separate TRAIN-002 delivery ZIP exists in `../train002/delivery/` and is **not** one of these fourteen originals.
+The only machine-readable inventory for these **14 latest-file-name ZIP entries** is [ARTIFACTS.tsv](ARTIFACTS.tsv). Each row records original bytes, SHA-256, Git blob SHA-1, ZIP entry count and exact Git path (or `-` if pending). **9/14 latest-file-name matching Git blobs were verified** against source bytes; **5/14 are pending**, not backed up to the Git tree. The source ZIPs passed complete CRC checks (14/14). The separate TRAIN-002 delivery ZIP exists in `../train002/delivery/` and is **not** one of these fourteen originals.
 
 Run against locally available original ZIPs:
 
@@ -49,3 +49,16 @@ This tool is **read-only** and requires Python standard library only. It detects
 2. Fetch uploaded objects and verify bytes, update `ARTIFACTS.tsv`, run the checker with `--require-all-git`, then revise the archival status. Until then: **PARTIAL BACKUP**.
 3. For experiments, follow TRAIN-002 README: Windows `Run.ps1 Check` on an RTX first; **27 GPU training runs have not been performed**. Do not quietly re-run or change the locked test.
 4. Work-log entry must follow the location and permissions in `main/AGENTS.md` (separate existing branch). This guide is not an alternative canonical log.
+
+
+## Version audit addendum: repeated uploads (16.11.2026)
+
+The initial **14 ZIP rows represent 14 distinct filenames / latest accessible mounted copies**, **NOT all historic versions**. Rematerializing earlier chat uploads uncovered **two additional, distinct, CRC-valid ZIP contents**, both still absent from Git. They are pinned by original user upload ID, size and SHA-256 in [EXTRA_VERSIONS.tsv](EXTRA_VERSIONS.tsv):
+
+- Early `UNO_F_DIAG_FIX_005.zip`: 28,103 bytes / 7 entries; later 30,860-byte version already stored in Git.
+- Early `UNO_F_LADDER_005_SAFE.zip`: 20,404 bytes / 9 entries; later 20,882-byte version already stored in Git.
+- A *second* 252,091,601-byte `uno_ladder_005b_gpu.zip` chat attachment could not be independently rematerialized (file tool 100-MiB cap). Its SHA-256 may or may not match the available copy; **do not count it as verified duplicate**.
+
+**Confirmed minimum is therefore 16 distinct ZIP byte streams, 9 stored, 7 not stored in Git.** Additional unverified duplicate contents may change that count. These early ZIPs must be archived without overwriting their later names (e.g. version-qualified paths).
+
+Five other **byte-exact** original text attachments are now stored in [text-versions/](text-versions/): three earlier README_RU variants and two historic 005B summary variants. Their Git object IDs were checked against raw original bytes. These files are documentation/evidence, not new tests and not substitutes for the original ZIPs. Console excerpts and UI screenshots remain separate unarchived chat materials pending sensitivity/provenance review.
