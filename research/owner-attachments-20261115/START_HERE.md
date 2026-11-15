@@ -1,0 +1,51 @@
+# UNO F/S4 research: entry point for agents (16.11.2026)
+
+**Scope:** read-only navigation, evidence and backup status, NOT new agent authority. The only current agent rules are **main/AGENTS.md**. Work in the pre-existing `research/uno-train-001-s4-20261115` branch for the F/S4/TRAIN line; inspect live HEAD first. Do not create branches, delete or overwrite original evidence, merge into main, or start Actions without applicable owner approval.
+
+## Reading order and result provenance
+
+| Stage | Where to read / original artifact | Verified scope, not an inferred outcome |
+|---|---|---|
+| 001 pilot F | `original-zips/UNO_F_PILOT_001.zip`, its README and CPU metrics | Earlier pilot and CPU artifact, not current UNO production weights |
+| 002 GPU-safe | `original-zips/UNO_GPU_SAFE_002.zip` | Protective code/tests, not proof of productive GPU training |
+| 003 memory | `original-zips/UNO_F_MEMORY_003.zip` | Early long-memory experiment |
+| 004 working memory | `original-zips/UNO_F_WORKING_MEMORY_004.zip` | Early working-memory implementation |
+| 005 diagnosis | `original-zips/UNO_F_DIAG_FIX_005.zip` | Diagnostic changes; compare README/tests |
+| 005 Ladder | `original-zips/UNO_F_LADDER_005.zip`, `UNO_F_LADDER_005_SAFE.zip`, `UNO_F_LADDER_005B.zip` | Synthetic ladder/GRU comparisons; study limitations in the ZIPs |
+| 005B GPU full | `uno_ladder_005b_gpu.zip` (**NOT GIT-PRESERVED**), `UNO_005B_FINAL_WEIGHTS_AND_RESULTS_20261115.zip` (**NOT GIT-PRESERVED**) | Full and compact GPU research archives are distinct; compact is NOT an exact substitute for all optimizer checkpoints |
+| 006 cause | `UNO_F_CAUSE_006.py`, `UNO_F_CAUSE_006_REPORT.txt` in this directory | User supplied CPU diagnostic, not a learned S4 breakthrough |
+| 007 S4 WM | `UNO_S4_WM_007.zip` (**NOT GIT-PRESERVED**) | Earlier prototype; do not mislabel hand-assigned routing as learned Wk/Wv |
+| TRAIN-001 | `../train001/RESULT.md`, `../train001/CONTINUATION_RESULT.md`, `../train001/README_RTX.md`, `original-zips/UNO_TRAIN001_RESULTS_20261115.zip` | Original RTX result: full 253/320 vs inference memory_off 148/320; **NOT** fair retrained F-only baseline |
+| TRAIN-002 | `../train002/RESULT.md`, `../train002/MATH.md`, `../train002/evidence/`, `../train002/delivery/UNO_TRAIN002_RTX_20261115.zip` | Reproduced TRAIN-001 on CPU; 30 incompatible auxiliary targets; order partly decodable. Chronology and 27-run matrix PREPARED; GPU/Windows/quality tests NOT DONE |
+
+Historic training package `UNO_CODEX_TRAIN001_HANDOFF_20261115.zip` and Windows-ready `UNO_CODEX_TRAIN001_HANDOFF_20261115(1).zip` are additionally **NOT GIT-PRESERVED**. User-supplied original `CODEX_TRAIN001_TASK_20261115.txt` is preserved here, not test evidence.
+
+## Backup truth and machine check
+
+The only machine-readable inventory for these **14 original ZIPs** is [ARTIFACTS.tsv](ARTIFACTS.tsv). Each row records original bytes, SHA-256, Git blob SHA-1, ZIP entry count and exact Git path (or `-` if pending). **9/14 matching Git blobs were verified** against source bytes; **5/14 are pending**, not backed up to the Git tree. The source ZIPs passed complete CRC checks (14/14). The separate TRAIN-002 delivery ZIP exists in `../train002/delivery/` and is **not** one of these fourteen originals.
+
+Run against locally available original ZIPs:
+
+```sh
+python3 research/owner-attachments-20261115/verify_archives.py --source /path/to/original-zips
+# If the current research branch is checked out with original blobs:
+python3 research/owner-attachments-20261115/verify_archives.py --source /path/to/original-zips --repo /path/to/UNO-checkout
+# Explicit archival-completeness gate (expected exit code 2 until all five are uploaded):
+python3 research/owner-attachments-20261115/verify_archives.py --source /path/to/original-zips --require-all-git
+```
+
+This tool is **read-only** and requires Python standard library only. It detects source corruption, CRC failures, dangerous member names, and mismatching checkout copies. The Git tree cross-check in this audit used source-derived Git SHA-1 and size to match remote Git object IDs; this verifies content-addressed identity without claiming that a ZIP was independently downloaded from GitHub. The ZIP verifier does not qualify model accuracy or Android execution.
+
+## Tooling and transfer constraints
+
+- ChatGPT conversation files are already mounted in the runtime as originals; use their real paths for local hashing instead of calling a failing rematerialization or guessing a filename path.
+- The GitHub `fetch_file` call on this branch for `AGENTS.md` returns 404 **by design**: canonical instructions are `main/AGENTS.md`. Never "fix" by inventing a new branch-local AGENTS.
+- The connected GitHub write endpoints take UTF-8 or base64 **string payloads**, not local container paths. A local ZIP cannot be made remotely present by committing a receipt. Use an actual binary transfer/Git LFS route where available; then download/compare SHA-256 and update the exact `git_path` value.
+- The 252,091,601-byte original exceeds the usual GitHub single-object size ceiling. Preserve through Git LFS or another owner-approved durable storage with verified retrieval. Do not replace originals with summaries, extracted files, blank placeholders or fabricated LFS pointers.
+
+## Next verifiable steps
+
+1. Move the five remaining originals to the **same existing research branch** using binary-capable transport; retain their exact names and SHA-256.
+2. Fetch uploaded objects and verify bytes, update `ARTIFACTS.tsv`, run the checker with `--require-all-git`, then revise the archival status. Until then: **PARTIAL BACKUP**.
+3. For experiments, follow TRAIN-002 README: Windows `Run.ps1 Check` on an RTX first; **27 GPU training runs have not been performed**. Do not quietly re-run or change the locked test.
+4. Work-log entry must follow the location and permissions in `main/AGENTS.md` (separate existing branch). This guide is not an alternative canonical log.
