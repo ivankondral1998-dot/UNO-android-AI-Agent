@@ -1,0 +1,25 @@
+{
+  "original_filename": "UNO_S4_WM_007.zip",
+  "bytes": 4022100,
+  "sha256": "d9ac20652576b788d60cf951e708ad22d7fae00fca35c9c7ae008149cc5bf2d8",
+  "parts": [
+    {
+      "file": "part001.bin",
+      "bytes": 1572864,
+      "sha256": "7b6322eec6c660520368492f739d047af3bac7677ebb83d60dddc4476df623e5",
+      "git_sha1": "08a8a89b631d20bc59b45fdfc238c5bf584705e1"
+    },
+    {
+      "file": "part002.bin",
+      "bytes": 1572864,
+      "sha256": "7dcec9fcd3124ea255b524c2639bd9043a114014dcf10a83a8c6cd2deae24e0d",
+      "git_sha1": "e2a3aaf9e0a1710cec3e48d567b886c41c7361ec"
+    },
+    {
+      "file": "part003.bin",
+      "bytes": 876372,
+      "sha256": "db4c191b040dcf5fd19a4be5de0829a86bc329b3321c287d726f0cd319d4a025",
+      "git_sha1": "0b7fc59af17bedcfaa8f099f6f2bee003dbaa959"
+    }
+  ]
+}

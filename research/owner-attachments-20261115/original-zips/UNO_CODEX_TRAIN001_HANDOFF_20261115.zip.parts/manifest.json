@@ -1,0 +1,31 @@
+{
+  "original_filename": "UNO_CODEX_TRAIN001_HANDOFF_20261115.zip",
+  "bytes": 5379990,
+  "sha256": "69518b914c65035259abef803fd65a25bbc7dc4cbf17dfe084123840698c0313",
+  "parts": [
+    {
+      "file": "part001.bin",
+      "bytes": 1572864,
+      "sha256": "5da59e9d88e811394da10de69a6b51cd33af6eb62410392470ee4a5d54c50ef7",
+      "git_sha1": "2da4a3ba8166612a20d90b3cd1077a6830eb0de8"
+    },
+    {
+      "file": "part002.bin",
+      "bytes": 1572864,
+      "sha256": "c1f849cc597aa5abdcaec1c9f14b3d16988f0987534115a35d01619dfe830d5f",
+      "git_sha1": "220873dd52de11277fde5d7e66ae7bb6d4570cc5"
+    },
+    {
+      "file": "part003.bin",
+      "bytes": 1572864,
+      "sha256": "0775c977c2b9115720b7eb181681261f14605af5117c8f38c08c9f243ed6a5ff",
+      "git_sha1": "e1cffad011fb431efafcbc3a65af3aaa87c1204e"
+    },
+    {
+      "file": "part004.bin",
+      "bytes": 661398,
+      "sha256": "ed81fd2f91b56dc94fc2faa80288b69cc24c1178e71b7c193d4021a3a8501cb5",
+      "git_sha1": "cc49a973f5d9dc0300b25a192c8d256bfa648597"
+    }
+  ]
+}
