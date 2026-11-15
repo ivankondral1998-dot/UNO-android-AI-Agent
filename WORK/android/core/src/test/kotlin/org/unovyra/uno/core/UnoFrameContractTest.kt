@@ -13,6 +13,9 @@ object UnoFrameContractTest {
         val manifest = WeightManifest("SYNTHETIC/1", 8, 128, 128, bytes.size.toLong(), sha(bytes))
         verify(admitWeights(manifest, bytes, "SYNTHETIC/1") ==
             WeightAdmission.PAYLOAD_CHECKSUM_ONLY)
+        val slot = WeightSlot()
+        verify(slot.offer(manifest, bytes, "SYNTHETIC/1") ==
+            WeightAdmission.PAYLOAD_CHECKSUM_ONLY && !slot.admitted())
         verify(admitWeights(manifest, byteArrayOf(1, 2, 3, 5), "SYNTHETIC/1") ==
             WeightAdmission.REJECTED)
         verify(admitWeights(manifest, bytes, "OTHER") == WeightAdmission.REJECTED)
