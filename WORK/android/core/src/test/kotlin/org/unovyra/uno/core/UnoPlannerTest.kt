@@ -86,7 +86,8 @@ object UnoPlannerTest {
         verify(slot.offer(manifest, byteArrayOf(1), "SYNTHETIC/1") == WeightAdmission.REJECTED)
         verify(!slot.admitted())
         verify(slot.offer(manifest, bytes, "SYNTHETIC/1") ==
-            WeightAdmission.ADMITTED_UNVERIFIED_QUALITY)
+            WeightAdmission.PAYLOAD_CHECKSUM_ONLY)
+        verify(!slot.admitted())
         verify(runCatching { checked.perceive(Percept(PerceptType.TEXT, byteArrayOf(1), "UI", 4)) }
             .isFailure)
         val admittedCycle = UnoFoundationReferenceCycle(checked, ExactMemory(),
