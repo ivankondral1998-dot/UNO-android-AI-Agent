@@ -9,7 +9,7 @@ internal fun configBytes(c:Experiment)=encode {o ->
     o.writeUTF(c.datasetHash);o.writeLong(c.seed)
     listOf(c.peakRate,c.floorRate,c.beta1,c.beta2,c.epsilon,c.clip,c.stateLoss,c.retrieveLoss,c.valueLoss).forEach(o::writeDouble)
     listOf(c.warmup,c.totalSteps,c.maxUpdates,c.innerSteps).forEach(o::writeInt)
-    o.writeInt(c.route.size);c.route.forEach(o::writeBoolean)
+    o.writeInt(c.route.size);c.route.forEach(o::writeBoolean);o.writeInt(c.replayLimit)
 }
 object TrainCheckpoint {
     private const val MAX_BYTES=64*1024*1024

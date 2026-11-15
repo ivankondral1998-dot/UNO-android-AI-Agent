@@ -1,0 +1,8 @@
+KOTLIN_FIXTURE loss=0.8745532908480679 model=3213a03d9eaa8aad498427470e2ee320b50195a52dd9edeca8c79c5b6f436cff data=005e6d145fb822ae66e16ec79694785bb6869d31b50f8d16e4b2489a13ef08da
+/workspace/uno-torch/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:377: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:82.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+torch 2.15.0+cpu cuda False
+torch.float64 ALL_NAMED_GRADIENTS_PASS loss 0.8745532908480679 max_abs 8.326672684688674e-17 max_tolerance_ratio 3.065062288091736e-05
+torch.float32 ALL_NAMED_GRADIENTS_PASS loss 0.8745533227920532 max_abs 3.748225144151185e-08 max_tolerance_ratio 0.02261837566198653
+FP16_MEMORY_FORWARD_ONLY loss 0.874553382396698 drift 9.154863012117431e-08
+ROUNDING_COUNTEREXAMPLE derivative=0 smooth=1; no AMP or FP16 gradient equivalence claim

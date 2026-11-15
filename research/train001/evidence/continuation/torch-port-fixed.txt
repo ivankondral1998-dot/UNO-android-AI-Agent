@@ -1,0 +1,5 @@
+/workspace/uno-torch/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:377: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:82.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+torch.float64 PORT_ALL_GRADIENTS_TWO_UPDATES_KOTLIN_PARITY_AND_CPU_EXACT_RESUME_PASS
+torch.float32 PORT_ALL_GRADIENTS_TWO_UPDATES_KOTLIN_PARITY_AND_CPU_EXACT_RESUME_PASS
+CHECKPOINT_CORRUPTION_REJECTED CUDA_NOT_TESTED

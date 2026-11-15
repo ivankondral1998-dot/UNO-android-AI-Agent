@@ -7,7 +7,7 @@ data class Experiment(
     val warmup:Int=1000, val totalSteps:Int=2000, val maxUpdates:Int=2,
     val beta1:Double=.9, val beta2:Double=.999, val epsilon:Double=1e-8, val clip:Double=1.0,
     val stateLoss:Double=1.0, val retrieveLoss:Double=.3, val valueLoss:Double=.2,
-    val innerSteps:Int=3, val route:List<Boolean> = listOf(true,false)
+    val replayLimit:Int=32, val innerSteps:Int=3, val route:List<Boolean> = listOf(true,false)
 ) {
     init {
         require(datasetHash.matches(Regex("[0-9a-f]{64}")))
@@ -15,6 +15,7 @@ data class Experiment(
         require(warmup>=0 && totalSteps>0 && warmup<=totalSteps && maxUpdates in 1..totalSteps)
         require(beta1 in 0.0..<1.0 && beta2 in 0.0..<1.0 && epsilon.isFinite() && epsilon>0 && clip.isFinite() && clip>0)
         require(listOf(stateLoss,retrieveLoss,valueLoss).all {it.isFinite() && it>=0} && stateLoss+retrieveLoss+valueLoss>0)
+        require(replayLimit in 1..96)
         require(innerSteps in 1..8 && route.isNotEmpty() && route.any {it})
     }
     fun rate(step:Long):Double {
@@ -63,7 +64,7 @@ object JointGraph {
         require(dataset.hash==c.datasetHash) {"DATASET_MANIFEST_MISMATCH"}
         val e=dataset.example(index)
         val graph=MemoryReplay(model.core(),model.memory("wk"),model.memory("wv"))
-            .prefix(e.events,e.events.size,e.initial,c.route.toBooleanArray(),c.innerSteps)
+            .prefix(e.events,e.events.size,e.initial,c.route.toBooleanArray(),c.innerSteps,c.replayLimit)
         val read=graph.reads.last();val target=read.entries.indexOfFirst {it.stamp.sequence==e.targetRecord}
         require(target>=0) {"RETRIEVAL_MISS"}
         val t=graph.tape

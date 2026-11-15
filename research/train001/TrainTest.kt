@@ -58,7 +58,7 @@ private fun lossTests() {
     val k1=ce.leaf("k1",doubleArrayOf(1000.0));val k2=ce.leaf("k2",doubleArrayOf(-1000.0))
     val cross=TrainLoss.retrieval(ce,q,listOf(k1,k2),1);ce.backward(cross,doubleArrayOf(1.0))
     checkNear("extreme.CE",cross.x[0],2000.0);checkNear("extreme.CE.gradient",q.g[0],2000.0)
-    rejected("singleton target") {TrainLoss.retrieval(ReverseF(),q,listOf(k1),0)}
+    rejected("empty target catalogue") {TrainLoss.retrieval(ReverseF(),q,emptyList(),0)}
 }
 private fun graphTests(model:TrainModel,examples:List<TrainingExample>,c:Experiment):Evaluation {
     val dataset=TrainingDataset(examples);val e=dataset.example(0);val full=JointGraph.evaluate(model,dataset,0,c)

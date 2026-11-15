@@ -1,0 +1,14 @@
+/workspace/uno-torch/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:377: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:82.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+VALIDATION 0 {'n': 20, 'correct': 10, 'mse': 0.6399906475429389}
+VALIDATION 10 {'n': 20, 'correct': 10, 'mse': 0.6400139798756099}
+VALIDATION 20 {'n': 20, 'correct': 10, 'mse': 0.6401144928668907}
+VALIDATION 30 {'n': 20, 'correct': 10, 'mse': 0.6402846547975422}
+VALIDATION 40 {'n': 20, 'correct': 10, 'mse': 0.6404824662219899}
+VALIDATION 50 {'n': 20, 'correct': 10, 'mse': 0.6407793196090185}
+VALIDATION 60 {'n': 20, 'correct': 10, 'mse': 0.641146056668547}
+VALIDATION 70 {'n': 20, 'correct': 10, 'mse': 0.6415144121844616}
+VALIDATION 80 {'n': 20, 'correct': 10, 'mse': 0.6420087488926898}
+VALIDATION 90 {'n': 20, 'correct': 10, 'mse': 0.6425712137682174}
+VALIDATION 100 {'n': 20, 'correct': 10, 'mse': 0.6431074784858601}
+{"torch": "2.15.0+cpu", "device": "cpu", "seed": 47, "steps": 100, "batch": 4, "params": 142116, "selected": 0, "hashes": {"train": "7582b47ffc07cd559821d9b761f2ba904e29b4a7a0f62537b54c320647c509b8", "validation": "2ed506909626b9cdd4a8108e4c6afefbf383b1c9dbd9243615f7183365076379", "test": "c65eb115296409ca5b9dc720c8eb56e23ca36bdc38743ccf8c8ea72848763817", "erased": "c730e07c04f582c73b2b4cf1fc756d277fcaaaaf3ce2224a6cd425df46ab2b71"}, "test": {"n": 320, "correct": 169, "mse": 0.6391179234898764}, "erased": {"n": 320, "correct": 169, "mse": 0.6390704727093401}, "weights_sha256": "1a5188820341d5fa1298314b6fc01ac49cc264d5cdce8aed2d2146c5cb29f111", "limits": ["same task state MSE; F also has retrieval/value auxiliary losses", "GRU unconstrained, no address bank; F constrained with episodic bank", "small synthetic CPU budget; no CUDA or general language claims"]}

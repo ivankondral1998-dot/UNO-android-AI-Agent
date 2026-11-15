@@ -13,7 +13,7 @@ object TrainLoss {
         }
     }
     fun retrieval(t: ReverseF, query: ReverseF.V, keys: List<ReverseF.V>, target: Int): ReverseF.V {
-        require(keys.size>=2 && target in keys.indices && keys.all { it.x.size==query.x.size }) { "RETRIEVAL_TARGET_CATALOG" }
+        require(keys.isNotEmpty() && target in keys.indices && keys.all { it.x.size==query.x.size }) { "RETRIEVAL_TARGET_CATALOG" }
         val scale=1/sqrt(query.x.size.toDouble())
         val logits=keys.map { k -> query.x.indices.sumOf { query.x[it]*k.x[it] }*scale }
         require(logits.all(Double::isFinite))

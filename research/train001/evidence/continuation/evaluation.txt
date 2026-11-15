@@ -1,0 +1,91 @@
+VALIDATION step=0 n=20 mse=0.6355071380237503 accuracy=0.6 misses=0
+VALIDATION step=10 n=20 mse=0.6355093965468197 accuracy=0.6 misses=0
+VALIDATION step=20 n=20 mse=0.635523655113994 accuracy=0.6 misses=0
+VALIDATION step=30 n=20 mse=0.6355450752148482 accuracy=0.6 misses=0
+VALIDATION step=40 n=20 mse=0.635568714008053 accuracy=0.6 misses=0
+VALIDATION step=50 n=20 mse=0.6356092544204135 accuracy=0.6 misses=0
+VALIDATION step=60 n=20 mse=0.6356546024695537 accuracy=0.6 misses=0
+VALIDATION step=70 n=20 mse=0.6356983835948071 accuracy=0.6 misses=0
+VALIDATION step=80 n=20 mse=0.6357651256195475 accuracy=0.6 misses=0
+VALIDATION step=90 n=20 mse=0.6358337651777279 accuracy=0.6 misses=0
+VALIDATION step=100 n=20 mse=0.6358969393617777 accuracy=0.6 misses=0
+TEST rung=r1_single length=12 mode=full hash=0b86946bee87f4b961060770fc33182c3fef8f5d0fe5893c8e70be7ea65d5f8f n=16 correct=8 misses=0 keyCorrect=16 mse=0.6405528133984979
+TEST rung=r1_single length=12 mode=memory_off hash=0b86946bee87f4b961060770fc33182c3fef8f5d0fe5893c8e70be7ea65d5f8f n=16 correct=8 misses=0 keyCorrect=16 mse=0.6404631960912397
+TEST rung=r1_single length=12 mode=zero_values hash=0b86946bee87f4b961060770fc33182c3fef8f5d0fe5893c8e70be7ea65d5f8f n=16 correct=8 misses=0 keyCorrect=16 mse=0.6404631960912397
+TEST rung=r1_single length=12 mode=erased hash=7291dbeacfbaadcd24308d633a33f1cbbce780d113b3bfc7b1fe4ed30b845dbe n=16 correct=8 misses=0 keyCorrect=16 mse=0.6404470564180069
+TEST rung=r1_single length=24 mode=full hash=c1d71c7e93eb9ddc74cf0ce82380ea1388f7165eafd3782638045e22ffa115d8 n=16 correct=8 misses=0 keyCorrect=16 mse=0.6403929334855504
+TEST rung=r1_single length=24 mode=memory_off hash=c1d71c7e93eb9ddc74cf0ce82380ea1388f7165eafd3782638045e22ffa115d8 n=16 correct=8 misses=0 keyCorrect=16 mse=0.6403077567872861
+TEST rung=r1_single length=24 mode=zero_values hash=c1d71c7e93eb9ddc74cf0ce82380ea1388f7165eafd3782638045e22ffa115d8 n=16 correct=8 misses=0 keyCorrect=16 mse=0.6403077567872861
+TEST rung=r1_single length=24 mode=erased hash=31014dfda95226fa309d3ec158a2cf6ef2b391a9a5017d7612ae349b23152fc1 n=16 correct=8 misses=0 keyCorrect=16 mse=0.6402934038410061
+TEST rung=r1_single length=48 mode=full hash=0119b005a449d7185afcaf991ae391e7480d5d85cdf8859f85c09bb834c65efe n=16 correct=8 misses=0 keyCorrect=16 mse=0.6409027589312876
+TEST rung=r1_single length=48 mode=memory_off hash=0119b005a449d7185afcaf991ae391e7480d5d85cdf8859f85c09bb834c65efe n=16 correct=8 misses=0 keyCorrect=16 mse=0.6408172740276752
+TEST rung=r1_single length=48 mode=zero_values hash=0119b005a449d7185afcaf991ae391e7480d5d85cdf8859f85c09bb834c65efe n=16 correct=8 misses=0 keyCorrect=16 mse=0.6408172740276752
+TEST rung=r1_single length=48 mode=erased hash=263a07ab08480f057643f1daec8064ee96814bf5b09260af830c3217481c4eb1 n=16 correct=8 misses=0 keyCorrect=16 mse=0.6407988231056159
+TEST rung=r1_single length=96 mode=full hash=7f17173dba0b0596e0f6d8a384f81aab4bb80229e2152615b663adcf1577269c n=16 correct=8 misses=0 keyCorrect=16 mse=0.6413154956856446
+TEST rung=r1_single length=96 mode=memory_off hash=7f17173dba0b0596e0f6d8a384f81aab4bb80229e2152615b663adcf1577269c n=16 correct=8 misses=0 keyCorrect=16 mse=0.641236536127876
+TEST rung=r1_single length=96 mode=zero_values hash=7f17173dba0b0596e0f6d8a384f81aab4bb80229e2152615b663adcf1577269c n=16 correct=8 misses=0 keyCorrect=16 mse=0.641236536127876
+TEST rung=r1_single length=96 mode=erased hash=8f7fe1e4463dc1fd05bad900e74b031e9ceba646d4dad5bdcd3b5a5a0de7944f n=16 correct=8 misses=0 keyCorrect=16 mse=0.6412198785552922
+TEST rung=r2_two length=12 mode=full hash=c1b05534ea806827530dbde1f2532cbf7166254fbdd494709a224532090f2a24 n=16 correct=7 misses=0 keyCorrect=13 mse=0.6494897929933445
+TEST rung=r2_two length=12 mode=memory_off hash=c1b05534ea806827530dbde1f2532cbf7166254fbdd494709a224532090f2a24 n=16 correct=7 misses=0 keyCorrect=13 mse=0.6495344940547194
+TEST rung=r2_two length=12 mode=zero_values hash=c1b05534ea806827530dbde1f2532cbf7166254fbdd494709a224532090f2a24 n=16 correct=7 misses=0 keyCorrect=13 mse=0.6495344940547194
+TEST rung=r2_two length=12 mode=erased hash=3ae7309b236f18c7b6bd18c15ebac8e660689a43d5133ba88688ed0d28b85f8d n=16 correct=7 misses=0 keyCorrect=13 mse=0.6494334659016316
+TEST rung=r2_two length=24 mode=full hash=997cf6b15aba530d6a410477bcfe8983225c4a11d8e695adb1c5e802305bd1e6 n=16 correct=5 misses=0 keyCorrect=14 mse=0.6574067661992036
+TEST rung=r2_two length=24 mode=memory_off hash=997cf6b15aba530d6a410477bcfe8983225c4a11d8e695adb1c5e802305bd1e6 n=16 correct=5 misses=0 keyCorrect=14 mse=0.6575486135829477
+TEST rung=r2_two length=24 mode=zero_values hash=997cf6b15aba530d6a410477bcfe8983225c4a11d8e695adb1c5e802305bd1e6 n=16 correct=5 misses=0 keyCorrect=14 mse=0.6575486135829477
+TEST rung=r2_two length=24 mode=erased hash=229e25db36911bed464b90183bba4fb5508abced46459b11261940bac088b062 n=16 correct=5 misses=0 keyCorrect=13 mse=0.6573489291149205
+TEST rung=r2_two length=48 mode=full hash=9a2fcc29bd95ab1cac255f652c06de332e4e4e373c414f458cf49dd3e47b54a7 n=16 correct=6 misses=0 keyCorrect=12 mse=0.6511443321307302
+TEST rung=r2_two length=48 mode=memory_off hash=9a2fcc29bd95ab1cac255f652c06de332e4e4e373c414f458cf49dd3e47b54a7 n=16 correct=6 misses=0 keyCorrect=12 mse=0.6512207811959411
+TEST rung=r2_two length=48 mode=zero_values hash=9a2fcc29bd95ab1cac255f652c06de332e4e4e373c414f458cf49dd3e47b54a7 n=16 correct=6 misses=0 keyCorrect=12 mse=0.6512207811959411
+TEST rung=r2_two length=48 mode=erased hash=987eaa01dfd476770a3a79e2ff876f1b683021ad0722505afaa801c9805bf7f6 n=16 correct=6 misses=0 keyCorrect=11 mse=0.6511038344493676
+TEST rung=r2_two length=96 mode=full hash=d368cd8bce00533f076760ac9d109dd6eab821d02968d27bb99d2b9d2b4a8ecb n=16 correct=6 misses=0 keyCorrect=13 mse=0.6504114920477945
+TEST rung=r2_two length=96 mode=memory_off hash=d368cd8bce00533f076760ac9d109dd6eab821d02968d27bb99d2b9d2b4a8ecb n=16 correct=6 misses=0 keyCorrect=13 mse=0.6504729709433692
+TEST rung=r2_two length=96 mode=zero_values hash=d368cd8bce00533f076760ac9d109dd6eab821d02968d27bb99d2b9d2b4a8ecb n=16 correct=6 misses=0 keyCorrect=13 mse=0.6504729709433692
+TEST rung=r2_two length=96 mode=erased hash=49b3286b283cb8cf88af0db4ec888ad614abc276efff1900bc99e66a72232853 n=16 correct=6 misses=0 keyCorrect=10 mse=0.6503546995302264
+TEST rung=r3_three length=12 mode=full hash=4fb0529298a43775de80af28ecf0b218b5a58e65fd83ca5bb2d557475667305a n=16 correct=10 misses=0 keyCorrect=7 mse=0.6311450846205698
+TEST rung=r3_three length=12 mode=memory_off hash=4fb0529298a43775de80af28ecf0b218b5a58e65fd83ca5bb2d557475667305a n=16 correct=10 misses=0 keyCorrect=7 mse=0.6309763193326124
+TEST rung=r3_three length=12 mode=zero_values hash=4fb0529298a43775de80af28ecf0b218b5a58e65fd83ca5bb2d557475667305a n=16 correct=10 misses=0 keyCorrect=7 mse=0.6309763193326124
+TEST rung=r3_three length=12 mode=erased hash=79d7b4274f4be3d519f5f4e608dd5d1f676dca3ec43cece147c3fd51fdbc10dd n=16 correct=10 misses=0 keyCorrect=5 mse=0.6310985590803533
+TEST rung=r3_three length=24 mode=full hash=7968bc792bf5c323ec5c58f4fc1e069968854ae9835c89233ea799293e28504e n=16 correct=7 misses=0 keyCorrect=8 mse=0.641846969841892
+TEST rung=r3_three length=24 mode=memory_off hash=7968bc792bf5c323ec5c58f4fc1e069968854ae9835c89233ea799293e28504e n=16 correct=7 misses=0 keyCorrect=8 mse=0.6418648000122328
+TEST rung=r3_three length=24 mode=zero_values hash=7968bc792bf5c323ec5c58f4fc1e069968854ae9835c89233ea799293e28504e n=16 correct=7 misses=0 keyCorrect=8 mse=0.6418648000122328
+TEST rung=r3_three length=24 mode=erased hash=5bd5e001ae37a923446cad3a0d8c2aa84e9f47faabbcb02052d3da24d9ec2d2f n=16 correct=7 misses=0 keyCorrect=6 mse=0.6418104131622994
+TEST rung=r3_three length=48 mode=full hash=c6eccb7289c258dfd538e36d4ed0943112597d28614b0978166ea76d297d76e6 n=16 correct=8 misses=0 keyCorrect=8 mse=0.6385574661221374
+TEST rung=r3_three length=48 mode=memory_off hash=c6eccb7289c258dfd538e36d4ed0943112597d28614b0978166ea76d297d76e6 n=16 correct=8 misses=0 keyCorrect=8 mse=0.6385497632759698
+TEST rung=r3_three length=48 mode=zero_values hash=c6eccb7289c258dfd538e36d4ed0943112597d28614b0978166ea76d297d76e6 n=16 correct=8 misses=0 keyCorrect=8 mse=0.6385497632759698
+TEST rung=r3_three length=48 mode=erased hash=c878d3bbf7dd2da4cd6900fdb0e18cfd827bc4e9af5966c09d111f6cd275badd n=16 correct=8 misses=0 keyCorrect=7 mse=0.6385244187990673
+TEST rung=r3_three length=96 mode=full hash=4e532cd677d5b1e67368819a4d00b7abe93f44c9aafc6e793e3286ff1f9c7afa n=16 correct=6 misses=0 keyCorrect=7 mse=0.64935886108175
+TEST rung=r3_three length=96 mode=memory_off hash=4e532cd677d5b1e67368819a4d00b7abe93f44c9aafc6e793e3286ff1f9c7afa n=16 correct=6 misses=0 keyCorrect=7 mse=0.6494595864079737
+TEST rung=r3_three length=96 mode=zero_values hash=4e532cd677d5b1e67368819a4d00b7abe93f44c9aafc6e793e3286ff1f9c7afa n=16 correct=6 misses=0 keyCorrect=7 mse=0.6494595864079737
+TEST rung=r3_three length=96 mode=erased hash=55da63158d92d6bd8f0c29d296a7450eee996d7ed1dbf8c1e6ac1ab29694cd3d n=16 correct=6 misses=0 keyCorrect=6 mse=0.6493242510323777
+TEST rung=r4_overwrite length=12 mode=full hash=6199761176d33533c0621ee56b163ef75b3540f8fdc29d60a2fb65c849e69147 n=16 correct=10 misses=0 keyCorrect=4 mse=0.6323526654997773
+TEST rung=r4_overwrite length=12 mode=memory_off hash=6199761176d33533c0621ee56b163ef75b3540f8fdc29d60a2fb65c849e69147 n=16 correct=10 misses=0 keyCorrect=4 mse=0.6321783513549114
+TEST rung=r4_overwrite length=12 mode=zero_values hash=6199761176d33533c0621ee56b163ef75b3540f8fdc29d60a2fb65c849e69147 n=16 correct=10 misses=0 keyCorrect=4 mse=0.6321783513549114
+TEST rung=r4_overwrite length=12 mode=erased hash=d8b343508eeffd0f21b4812e48e5667ce3bd71779760f65dd43c7014211b495c n=16 correct=10 misses=0 keyCorrect=5 mse=0.632316523208189
+TEST rung=r4_overwrite length=24 mode=full hash=e231641ffb9aa49312cd314dc0b1f1dce5bbf95dc1f47d0c69fc67e85acc1339 n=16 correct=9 misses=0 keyCorrect=5 mse=0.6343764722677989
+TEST rung=r4_overwrite length=24 mode=memory_off hash=e231641ffb9aa49312cd314dc0b1f1dce5bbf95dc1f47d0c69fc67e85acc1339 n=16 correct=9 misses=0 keyCorrect=5 mse=0.6343129439478035
+TEST rung=r4_overwrite length=24 mode=zero_values hash=e231641ffb9aa49312cd314dc0b1f1dce5bbf95dc1f47d0c69fc67e85acc1339 n=16 correct=9 misses=0 keyCorrect=5 mse=0.6343129439478035
+TEST rung=r4_overwrite length=24 mode=erased hash=180d8bdfff26ba433b503bcc85906ecbd731a8ff389d7646a0b19d0309f88518 n=16 correct=9 misses=0 keyCorrect=6 mse=0.6343477270594791
+TEST rung=r4_overwrite length=48 mode=full hash=38f138be1ac4e000a1e6e56d233b52754a121928497042110c8fb94f33399ee1 n=16 correct=11 misses=0 keyCorrect=6 mse=0.6298975279102839
+TEST rung=r4_overwrite length=48 mode=memory_off hash=38f138be1ac4e000a1e6e56d233b52754a121928497042110c8fb94f33399ee1 n=16 correct=11 misses=0 keyCorrect=6 mse=0.6297299744203005
+TEST rung=r4_overwrite length=48 mode=zero_values hash=38f138be1ac4e000a1e6e56d233b52754a121928497042110c8fb94f33399ee1 n=16 correct=11 misses=0 keyCorrect=6 mse=0.6297299744203005
+TEST rung=r4_overwrite length=48 mode=erased hash=15044028b29832a0b4bb155597b38a53414889d3c50740ff9d0e3b437726ad9f n=16 correct=11 misses=0 keyCorrect=5 mse=0.6298685939917107
+TEST rung=r4_overwrite length=96 mode=full hash=bcfb20e48fc5a437af3966191b91aa8eba36079e0b2576e7942d5ca7d6c64e74 n=16 correct=9 misses=0 keyCorrect=6 mse=0.6355035268293276
+TEST rung=r4_overwrite length=96 mode=memory_off hash=bcfb20e48fc5a437af3966191b91aa8eba36079e0b2576e7942d5ca7d6c64e74 n=16 correct=9 misses=0 keyCorrect=6 mse=0.6354167159084062
+TEST rung=r4_overwrite length=96 mode=zero_values hash=bcfb20e48fc5a437af3966191b91aa8eba36079e0b2576e7942d5ca7d6c64e74 n=16 correct=9 misses=0 keyCorrect=6 mse=0.6354167159084062
+TEST rung=r4_overwrite length=96 mode=erased hash=38e57c7415534290211e84bf3fd40b3fdc314870f26d33dd63e09e580a84cf93 n=16 correct=9 misses=0 keyCorrect=2 mse=0.6354766943390395
+TEST rung=r5_order length=12 mode=full hash=be42bc7fb1d8f6f2832c6d947a8e1a80e9ce2081b3f774d83815a59ee1deaf98 n=16 correct=10 misses=0 keyCorrect=6 mse=0.6228076811714365
+TEST rung=r5_order length=12 mode=memory_off hash=be42bc7fb1d8f6f2832c6d947a8e1a80e9ce2081b3f774d83815a59ee1deaf98 n=16 correct=10 misses=0 keyCorrect=6 mse=0.6227194181015447
+TEST rung=r5_order length=12 mode=zero_values hash=be42bc7fb1d8f6f2832c6d947a8e1a80e9ce2081b3f774d83815a59ee1deaf98 n=16 correct=10 misses=0 keyCorrect=6 mse=0.6227194181015447
+TEST rung=r5_order length=12 mode=erased hash=6765c854f66b263a8cbfc6efa6f124e0c4528b14535fa059242f6e82aa6d2c5b n=16 correct=10 misses=0 keyCorrect=8 mse=0.622804840981411
+TEST rung=r5_order length=24 mode=full hash=fc43f384e5cd307224df2b2fab44c1e5e6ed459c13bd2400cd4ff28cf84001b6 n=16 correct=7 misses=0 keyCorrect=9 mse=0.6521488634904542
+TEST rung=r5_order length=24 mode=memory_off hash=fc43f384e5cd307224df2b2fab44c1e5e6ed459c13bd2400cd4ff28cf84001b6 n=16 correct=7 misses=0 keyCorrect=9 mse=0.652222410276045
+TEST rung=r5_order length=24 mode=zero_values hash=fc43f384e5cd307224df2b2fab44c1e5e6ed459c13bd2400cd4ff28cf84001b6 n=16 correct=7 misses=0 keyCorrect=9 mse=0.652222410276045
+TEST rung=r5_order length=24 mode=erased hash=a2a9d520a67fecc91fa45266106172a1709d13a35566a338499555e6e34fa093 n=16 correct=7 misses=0 keyCorrect=11 mse=0.652154382232749
+TEST rung=r5_order length=48 mode=full hash=2e0db345f1f62aded158b9e54159bec7547ecbdb9cd251762d29ff8f53b35d9f n=16 correct=10 misses=0 keyCorrect=6 mse=0.623454045256781
+TEST rung=r5_order length=48 mode=memory_off hash=2e0db345f1f62aded158b9e54159bec7547ecbdb9cd251762d29ff8f53b35d9f n=16 correct=10 misses=0 keyCorrect=6 mse=0.62336957369442
+TEST rung=r5_order length=48 mode=zero_values hash=2e0db345f1f62aded158b9e54159bec7547ecbdb9cd251762d29ff8f53b35d9f n=16 correct=10 misses=0 keyCorrect=6 mse=0.62336957369442
+TEST rung=r5_order length=48 mode=erased hash=31c0e037dd32360ea4c4fc5452ed384028fe676233160a772bfe8182b26ad141 n=16 correct=10 misses=0 keyCorrect=6 mse=0.623453511559459
+TEST rung=r5_order length=96 mode=full hash=8bea6ca081c0526ca379b54c43f4b61d3766e5bb95c9de4f0c0be5cc05f0451b n=16 correct=15 misses=0 keyCorrect=1 mse=0.5755189609798337
+TEST rung=r5_order length=96 mode=memory_off hash=8bea6ca081c0526ca379b54c43f4b61d3766e5bb95c9de4f0c0be5cc05f0451b n=16 correct=15 misses=0 keyCorrect=1 mse=0.5752407885649012
+TEST rung=r5_order length=96 mode=zero_values hash=8bea6ca081c0526ca379b54c43f4b61d3766e5bb95c9de4f0c0be5cc05f0451b n=16 correct=15 misses=0 keyCorrect=1 mse=0.5752407885649012
+TEST rung=r5_order length=96 mode=erased hash=41b385d5c019d3294b7a8812ad626d4b4effe9cb2587821f8bb1d811896f895b n=16 correct=15 misses=0 keyCorrect=7 mse=0.5755281201282935

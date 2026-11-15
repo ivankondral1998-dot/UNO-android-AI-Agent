@@ -1,0 +1,9 @@
+/workspace/uno-torch211/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:307: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+Traceback (most recent call last):
+  File "/workspace/UNO-android-AI-Agent/research/train001/torch_crash_test.py", line 27, in <module>
+    with open(root/'resume.txt','w') as log:subprocess.run(cmd('crashed','--resume'),stdout=log,stderr=subprocess.STDOUT,check=True,timeout=180)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/workspace/uno-torch211/bin/python', '/workspace/UNO-android-AI-Agent/research/train001/torch_backend.py', 'train', '/tmp/uno-crash-test-3ob9v12r/data', '/tmp/uno-crash-test-3ob9v12r/crashed', '--device', 'cpu', '--precision', 'double', '--steps', '12', '--batch', '1', '--seed', '47', '--resume']' returned non-zero exit status 1.

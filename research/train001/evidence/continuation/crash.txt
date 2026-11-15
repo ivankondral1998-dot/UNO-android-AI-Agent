@@ -1,0 +1,9 @@
+/workspace/uno-torch211/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:307: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+/workspace/uno-torch211/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:307: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+TWELVE_SYNTHETIC_UPDATES_FORCED_PROCESS_KILL_RESUME_EXACT_WEIGHTS_MOMENTS_CURSOR_RNG_HISTORY_BEST_PASS
+COMPLETED_RESUME_CHECKPOINT_UNCHANGED_PASS
+OPTIMIZED_PYTHON_CONFIG_MISMATCH_REJECTED_PASS
+CUDA_UNAVAILABLE_NO_CPU_FALLBACK_PASS
+CRASH_TEST_PASS device=cpu; only bounded synthetic diagnostic updates, no quality training

@@ -1,0 +1,13 @@
+SINGLETON_CE_ZERO_GRADIENT_PASS
+LONG96_PLAIN_REFERENCE_FORWARD_CAUSAL_PASS
+PLAIN_DOUBLE_FD wk[514] numeric=1.2617684674864902E-8 analytic=1.261965409367859E-8
+PLAIN_DOUBLE_FD wv[3900] numeric=-5.626390797708325E-4 analytic=-5.626390722057294E-4
+PLAIN_DOUBLE_FD wq[3820] numeric=-1.1246559239452834E-8 analytic=-1.1244224667327632E-8
+PLAIN_DOUBLE_FD wr[70] numeric=-0.004243342749399304 analytic=-0.0042433427603302005
+PLAIN_DOUBLE_FD projection[2] numeric=-0.18768647255806845 analytic=-0.18768647255901674
+PLAIN_DOUBLE_FD us[36] numeric=0.0021849457243483528 analytic=0.0021849457219917825
+BATCH_CURSOR_MANIFEST_CORRUPTION_EXACT_RESUME_PASS
+Exception in thread "main" java.lang.IllegalArgumentException: LOCKED_REPORT_NOT_IMPLEMENTED
+	at org.unovyra.uno.research.LockedReportKt.lockedReport(LockedReport.kt:9)
+	at org.unovyra.uno.research.ContinuationTestKt.main(ContinuationTest.kt:72)
+	at org.unovyra.uno.research.ContinuationTestKt.main(ContinuationTest.kt)

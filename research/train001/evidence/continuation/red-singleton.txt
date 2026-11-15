@@ -1,0 +1,4 @@
+Exception in thread "main" java.lang.IllegalArgumentException: RETRIEVAL_TARGET_CATALOG
+	at org.unovyra.uno.research.TrainLoss.retrieval(Losses.kt:16)
+	at org.unovyra.uno.research.ContinuationTestKt.main(ContinuationTest.kt:5)
+	at org.unovyra.uno.research.ContinuationTestKt.main(ContinuationTest.kt)

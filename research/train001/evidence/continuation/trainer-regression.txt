@@ -1,0 +1,448 @@
+UNO-TRAIN-001 bounded synthetic diagnostics. No epochs or training loop. Full inputs Synthetic.kt; default seed11. All coordinates not listed are0.
+CHECK mse.value expected=0.16 actual=0.16 tol=1.0E-11 error=0.0
+CHECK mse.gradient expected=-0.4 actual=-0.39999999999999997 tol=1.0E-11 error=5.551115123125783E-17
+REJECT all missing mask MSE_TARGET_MASK
+REJECT nonfinite valid target Failed requirement.
+CHECK masked.gradient expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK extreme.CE expected=2000.0 actual=2000.0 tol=1.0E-11 error=0.0
+CHECK extreme.CE.gradient expected=2000.0 actual=2000.0 tol=1.0E-11 error=0.0
+REJECT empty target catalogue RETRIEVAL_TARGET_CATALOG
+DATASET_SHA256=5bce259474a1863498fa5461cfb60cbfbe912bbc4493e5fa816630939485c869
+CHECK joint.loss.independent expected=0.5701859408485126 actual=0.5701859408485126 tol=2.0E-14 error=0.0
+CHECK joint.loss.additivity expected=0.5701859408485126 actual=0.5701859408485126 tol=2.0E-14 error=0.0
+CHECK joint.gradient.additivity.projection expected=0.0 actual=8.326672684688674E-17 tol=3.0E-15 error=8.326672684688674E-17
+CHECK joint.gradient.additivity.us expected=0.0 actual=1.3877787807814457E-17 tol=3.0E-15 error=1.3877787807814457E-17
+CHECK joint.gradient.additivity.ug expected=0.0 actual=0.0 tol=3.0E-15 error=0.0
+CHECK joint.gradient.additivity.meta expected=0.0 actual=0.0 tol=3.0E-15 error=0.0
+CHECK joint.gradient.additivity.e expected=0.0 actual=6.938893903907228E-18 tol=3.0E-15 error=6.938893903907228E-18
+CHECK joint.gradient.additivity.bias expected=0.0 actual=6.938893903907228E-18 tol=3.0E-15 error=6.938893903907228E-18
+CHECK joint.gradient.additivity.wq expected=0.0 actual=5.421010862427522E-20 tol=3.0E-15 error=5.421010862427522E-20
+CHECK joint.gradient.additivity.wr expected=0.0 actual=2.7755575615628914E-17 tol=3.0E-15 error=2.7755575615628914E-17
+CHECK joint.gradient.additivity.branch.0.0.a expected=0.0 actual=6.938893903907228E-18 tol=3.0E-15 error=6.938893903907228E-18
+CHECK joint.gradient.additivity.branch.0.0.c expected=0.0 actual=1.734723475976807E-18 tol=3.0E-15 error=1.734723475976807E-18
+CHECK joint.gradient.additivity.branch.0.0.b expected=0.0 actual=1.3877787807814457E-17 tol=3.0E-15 error=1.3877787807814457E-17
+CHECK joint.gradient.additivity.branch.0.0.ab expected=0.0 actual=5.551115123125783E-17 tol=3.0E-15 error=5.551115123125783E-17
+CHECK joint.gradient.additivity.branch.0.0.bb expected=0.0 actual=5.551115123125783E-17 tol=3.0E-15 error=5.551115123125783E-17
+CHECK joint.gradient.additivity.branch.0.1.a expected=0.0 actual=0.0 tol=3.0E-15 error=0.0
+CHECK joint.gradient.additivity.branch.0.1.c expected=0.0 actual=0.0 tol=3.0E-15 error=0.0
+CHECK joint.gradient.additivity.branch.0.1.b expected=0.0 actual=0.0 tol=3.0E-15 error=0.0
+CHECK joint.gradient.additivity.branch.0.1.ab expected=0.0 actual=0.0 tol=3.0E-15 error=0.0
+CHECK joint.gradient.additivity.branch.0.1.bb expected=0.0 actual=0.0 tol=3.0E-15 error=0.0
+CHECK joint.gradient.additivity.branch.1.0.a expected=0.0 actual=6.938893903907228E-18 tol=3.0E-15 error=6.938893903907228E-18
+CHECK joint.gradient.additivity.branch.1.0.c expected=0.0 actual=1.734723475976807E-18 tol=3.0E-15 error=1.734723475976807E-18
+CHECK joint.gradient.additivity.branch.1.0.b expected=0.0 actual=1.3877787807814457E-17 tol=3.0E-15 error=1.3877787807814457E-17
+CHECK joint.gradient.additivity.branch.1.0.ab expected=0.0 actual=5.551115123125783E-17 tol=3.0E-15 error=5.551115123125783E-17
+CHECK joint.gradient.additivity.branch.1.0.bb expected=0.0 actual=5.551115123125783E-17 tol=3.0E-15 error=5.551115123125783E-17
+CHECK joint.gradient.additivity.branch.1.1.a expected=0.0 actual=0.0 tol=3.0E-15 error=0.0
+CHECK joint.gradient.additivity.branch.1.1.c expected=0.0 actual=0.0 tol=3.0E-15 error=0.0
+CHECK joint.gradient.additivity.branch.1.1.b expected=0.0 actual=0.0 tol=3.0E-15 error=0.0
+CHECK joint.gradient.additivity.branch.1.1.ab expected=0.0 actual=0.0 tol=3.0E-15 error=0.0
+CHECK joint.gradient.additivity.branch.1.1.bb expected=0.0 actual=0.0 tol=3.0E-15 error=0.0
+CHECK joint.gradient.additivity.wk expected=0.0 actual=8.809142651444724E-20 tol=3.0E-15 error=8.809142651444724E-20
+CHECK joint.gradient.additivity.wv expected=0.0 actual=2.6020852139652106E-18 tol=3.0E-15 error=2.6020852139652106E-18
+SIGNAL wk=3.6782265882264126E-4 required>1e-8
+SIGNAL wv=0.07229940253452877 required>1e-8
+SIGNAL projection=0.1635320918888777 required>1e-8
+SIGNAL us=0.04584299132802677 required>1e-8
+SIGNAL wq=2.5058387579087745E-4 required>1e-8
+SIGNAL wr=0.2517381282685476 required>1e-8
+SIGNAL branch.0.0.a=0.029266983368446034 required>1e-8
+SIGNAL branch.0.0.c=0.06866989490239654 required>1e-8
+SIGNAL branch.0.0.b=0.08746647806330515 required>1e-8
+CHECK joint.wk[0] input=0.6 eps=1.0E-4 expected=3.2654871029436094E-5 actual=3.265487069640968E-5 tol=8.53097420588722E-10 error=3.3302641243640463E-13
+CHECK joint.wk[0] input=0.6 eps=3.0E-5 expected=3.2654873249882144E-5 actual=3.265487069640968E-5 tol=8.53097464997643E-10 error=2.5534724616867177E-12
+CHECK joint.wk[1] input=-0.2 eps=1.0E-4 expected=-2.759327111245824E-4 actual=-2.759327112488048E-4 tol=5.718654222491648E-9 error=1.2422240970241805E-13
+CHECK joint.wk[1] input=-0.2 eps=3.0E-5 expected=-2.759327137151028E-4 actual=-2.759327112488048E-4 tol=5.7186542743020564E-9 error=2.46629799915965E-12
+CHECK joint.wk[128] input=0.1 eps=1.0E-4 expected=-4.046717849703896E-5 actual=-4.046717890329515E-5 tol=1.0093435699407792E-9 error=4.0625619188161544E-13
+CHECK joint.wk[128] input=0.1 eps=3.0E-5 expected=-4.046717775689027E-5 actual=-4.046717890329515E-5 tol=1.0093435551378056E-9 error=1.1464048772238077E-12
+CHECK joint.wv[0] input=-0.4 eps=1.0E-4 expected=-0.0722994025259549 actual=-0.07229940253452877 tol=1.4461880505190983E-6 error=8.573863841121465E-12
+CHECK joint.wv[0] input=-0.4 eps=3.0E-5 expected=-0.07229940253335639 actual=-0.07229940253452877 tol=1.4461880506671279E-6 error=1.1723816362163575E-12
+CHECK joint.wv[1] input=0.2 eps=1.0E-4 expected=0.006980501203734946 actual=0.0069805012039449305 tol=1.3981002407469892E-7 error=2.0998480732004055E-13
+CHECK joint.wv[1] input=0.2 eps=3.0E-5 expected=0.006980501202994796 actual=0.0069805012039449305 tol=1.3981002405989594E-7 error=9.501340686446369E-13
+CHECK joint.wv[128] input=0.3 eps=1.0E-4 expected=0.02441775922013001 actual=0.02441775922407493 tol=4.885551844026002E-7 error=3.944920778931049E-12
+CHECK joint.wv[128] input=0.3 eps=3.0E-5 expected=0.02441775922383075 actual=0.02441775922407493 tol=4.885551844766151E-7 error=2.4417967647849537E-13
+CHECK joint.projection[0] input=0.7 eps=1.0E-4 expected=0.05920122584657239 actual=0.05920122582186861 tol=1.1842245169314478E-6 error=2.4703780687751475E-11
+CHECK joint.projection[0] input=0.7 eps=3.0E-5 expected=0.059201225825293115 actual=0.05920122582186861 tol=1.1842245165058625E-6 error=3.424503736138007E-12
+CHECK joint.projection[1] input=-0.2 eps=1.0E-4 expected=-0.16353209148778358 actual=-0.1635320918888777 tol=3.270841829755672E-6 error=4.010941301313409E-10
+CHECK joint.projection[1] input=-0.2 eps=3.0E-5 expected=-0.163532091853232 actual=-0.1635320918888777 tol=3.27084183706464E-6 error=3.5645708607034976E-11
+CHECK joint.projection[128] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tol=2.0E-10 error=0.0
+CHECK joint.projection[128] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tol=2.0E-10 error=0.0
+CHECK joint.us[0] input=0.3 eps=1.0E-4 expected=-0.0458429913607894 actual=-0.04584299132802677 tol=9.17059827215788E-7 error=3.276262594553714E-11
+CHECK joint.us[0] input=0.3 eps=3.0E-5 expected=-0.04584299133266374 actual=-0.04584299132802677 tol=9.170598266532749E-7 error=4.636971362437237E-12
+CHECK joint.us[1] input=0.0 eps=1.0E-4 expected=-0.02485085840275847 actual=-0.024850858404470922 tol=4.972171680551695E-7 error=1.7124530959922168E-12
+CHECK joint.us[1] input=0.0 eps=3.0E-5 expected=-0.024850858404423803 actual=-0.024850858404470922 tol=4.972171680884761E-7 error=4.7118559054482034E-14
+CHECK joint.us[128] input=0.0 eps=1.0E-4 expected=0.007044693455804385 actual=0.007044693457847928 tol=1.410938691160877E-7 error=2.0435432859788882E-12
+CHECK joint.us[128] input=0.0 eps=3.0E-5 expected=0.0070446934563594965 actual=0.007044693457847928 tol=1.4109386912718992E-7 error=1.48843177366631E-12
+CHECK joint.wq[0] input=0.8 eps=1.0E-4 expected=9.401666056785274E-5 actual=9.401666080408651E-5 tol=2.080333211357055E-9 error=2.362337755967836E-13
+CHECK joint.wq[0] input=0.8 eps=3.0E-5 expected=9.401666112296425E-5 actual=9.401666080408651E-5 tol=2.080333222459285E-9 error=3.1887773671579467E-13
+CHECK joint.wq[1] input=0.0 eps=1.0E-4 expected=-1.3615867433536266E-4 actual=-1.3615867405561427E-4 tol=2.9231734867072537E-9 error=2.797483924198152E-13
+CHECK joint.wq[1] input=0.0 eps=3.0E-5 expected=-1.3615867322513964E-4 actual=-1.3615867405561427E-4 tol=2.9231734645027933E-9 error=8.304746322053413E-13
+CHECK joint.wq[128] input=0.0 eps=1.0E-4 expected=-1.6422251336578597E-4 actual=-1.642225130015433E-4 tol=3.48445026731572E-9 error=3.6424268007144434E-13
+CHECK joint.wq[128] input=0.0 eps=3.0E-5 expected=-1.6422251336578597E-4 actual=-1.642225130015433E-4 tol=3.48445026731572E-9 error=3.6424268007144434E-13
+CHECK joint.wr[0] input=0.8 eps=1.0E-4 expected=0.020818287409518632 actual=0.020818287408895273 tol=4.165657481903727E-7 error=6.233590033044578E-13
+CHECK joint.wr[0] input=0.8 eps=3.0E-5 expected=0.020818287408778485 actual=0.020818287408895273 tol=4.165657481755697E-7 error=1.1678852329666256E-13
+CHECK joint.wr[1] input=0.0 eps=1.0E-4 expected=-0.018007193501867746 actual=-0.018007193502428027 tol=3.6034387003735497E-7 error=5.602809882709892E-13
+CHECK joint.wr[1] input=0.0 eps=3.0E-5 expected=-0.01800719350297797 actual=-0.018007193502428027 tol=3.6034387005955946E-7 error=5.499420363541674E-13
+CHECK joint.wr[128] input=0.0 eps=1.0E-4 expected=-0.0032621450368752747 actual=-0.0032621450368475447 tol=6.54429007375055E-8 error=2.7729988444358256E-14
+CHECK joint.wr[128] input=0.0 eps=3.0E-5 expected=-0.003262145037430386 actual=-0.0032621450368475447 tol=6.544290074860773E-8 error=5.828415007569365E-13
+CHECK joint.e[0] input=0.0 eps=1.0E-4 expected=-0.281907512089119 actual=-0.281907515228481 tol=5.63835024178238E-6 error=3.139361992587908E-9
+CHECK joint.e[0] input=0.0 eps=3.0E-5 expected=-0.28190751494479765 actual=-0.281907515228481 tol=5.638350298895953E-6 error=2.8368335458495153E-10
+CHECK joint.e[1] input=0.0 eps=1.0E-4 expected=0.050022602554045115 actual=0.05002260329312883 tol=1.0006520510809025E-6 error=7.390837178378185E-10
+CHECK joint.e[1] input=0.0 eps=3.0E-5 expected=0.050022603226285156 actual=0.05002260329312883 tol=1.0006520645257031E-6 error=6.684367642728617E-11
+CHECK joint.e[127] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tol=2.0E-10 error=0.0
+CHECK joint.e[127] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tol=2.0E-10 error=0.0
+CHECK joint.bias[0] input=0.0 eps=1.0E-4 expected=-0.281907512089119 actual=-0.281907515228481 tol=5.63835024178238E-6 error=3.139361992587908E-9
+CHECK joint.bias[0] input=0.0 eps=3.0E-5 expected=-0.28190751494479765 actual=-0.281907515228481 tol=5.638350298895953E-6 error=2.8368335458495153E-10
+CHECK joint.bias[1] input=0.0 eps=1.0E-4 expected=0.050022602554045115 actual=0.05002260329312883 tol=1.0006520510809025E-6 error=7.390837178378185E-10
+CHECK joint.bias[1] input=0.0 eps=3.0E-5 expected=0.050022603226285156 actual=0.05002260329312883 tol=1.0006520645257031E-6 error=6.684367642728617E-11
+CHECK joint.bias[127] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tol=2.0E-10 error=0.0
+CHECK joint.bias[127] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tol=2.0E-10 error=0.0
+CHECK joint.branch.0.0.a[0] input=0.4 eps=1.0E-4 expected=-0.0025779611401155478 actual=-0.0025779611344387016 tol=5.175922280231096E-8 error=5.676846145941106E-12
+CHECK joint.branch.0.0.a[0] input=0.4 eps=3.0E-5 expected=-0.0025779611353045815 actual=-0.0025779611344387016 tol=5.175922270609163E-8 error=8.658798504590504E-13
+CHECK joint.branch.0.0.a[1] input=0.0 eps=1.0E-4 expected=-0.029266983365139332 actual=-0.029266983368446034 tol=5.855396673027867E-7 error=3.306702134331374E-12
+CHECK joint.branch.0.0.a[1] input=0.0 eps=3.0E-5 expected=-0.02926698336828496 actual=-0.029266983368446034 tol=5.855396673656993E-7 error=1.610725441913985E-13
+CHECK joint.branch.0.0.a[128] input=0.0 eps=1.0E-4 expected=0.0019375469995086547 actual=0.0019375469996910772 tol=3.89509399901731E-8 error=1.8242243653154855E-13
+CHECK joint.branch.0.0.a[128] input=0.0 eps=3.0E-5 expected=0.0019375470006188777 actual=0.0019375469996910772 tol=3.895094001237756E-8 error=9.27800588093608E-13
+CHECK joint.branch.0.0.c[0] input=0.6 eps=1.0E-4 expected=0.0121352045312495 actual=0.012135204537107262 tol=2.4290409062499003E-7 error=5.857762191974203E-12
+CHECK joint.branch.0.0.c[0] input=0.6 eps=3.0E-5 expected=0.012135204537540762 actual=0.012135204537107262 tol=2.429040907508153E-7 error=4.335004577527002E-13
+CHECK joint.branch.0.0.c[1] input=0.0 eps=1.0E-4 expected=-0.0686698948659803 actual=-0.06866989490239654 tol=1.373597897319606E-6 error=3.641624501948826E-11
+CHECK joint.branch.0.0.c[1] input=0.0 eps=3.0E-5 expected=-0.06866989489817676 actual=-0.06866989490239654 tol=1.3735978979635355E-6 error=4.2197773053587184E-12
+CHECK joint.branch.0.0.c[128] input=0.0 eps=1.0E-4 expected=0.0010089944829649866 actual=0.0010089944846279125 tol=2.0379889659299733E-8 error=1.662925873391341E-12
+CHECK joint.branch.0.0.c[128] input=0.0 eps=3.0E-5 expected=0.0010089944861106186 actual=0.0010089944846279125 tol=2.037988972221237E-8 error=1.482706101993414E-12
+CHECK joint.branch.0.0.b[0] input=0.5 eps=1.0E-4 expected=0.013278525394788687 actual=0.01327852540570831 tol=2.657705078957738E-7 error=1.0919622844829391E-11
+CHECK joint.branch.0.0.b[0] input=0.5 eps=3.0E-5 expected=0.013278525403300396 actual=0.01327852540570831 tol=2.65770508066008E-7 error=2.4079141458521747E-12
+CHECK joint.branch.0.0.b[1] input=0.0 eps=1.0E-4 expected=-0.08746647804647179 actual=-0.08746647806330515 tol=1.749529560929436E-6 error=1.6833368032820317E-11
+CHECK joint.branch.0.0.b[1] input=0.0 eps=3.0E-5 expected=-0.08746647806219994 actual=-0.08746647806330515 tol=1.749529561243999E-6 error=1.1052131432265355E-12
+CHECK joint.branch.0.0.b[128] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tol=2.0E-10 error=0.0
+CHECK joint.branch.0.0.b[128] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tol=2.0E-10 error=0.0
+CHECK joint.branch.0.0.ab[0] input=0.0 eps=1.0E-4 expected=-0.17243670106192877 actual=-0.1724367020001842 tol=3.4489340212385755E-6 error=9.382554455594772E-10
+CHECK joint.branch.0.0.ab[0] input=0.0 eps=3.0E-5 expected=-0.17243670191365487 actual=-0.1724367020001842 tol=3.4489340382730975E-6 error=8.652933924935269E-11
+CHECK joint.branch.0.0.ab[1] input=0.0 eps=1.0E-4 expected=0.03992259641483198 actual=0.03992259672149589 tol=7.986519282966397E-7 error=3.0666390954392497E-10
+CHECK joint.branch.0.0.ab[1] input=0.0 eps=3.0E-5 expected=0.03992259669331292 actual=0.03992259672149589 tol=7.986519338662585E-7 error=2.8182969846746175E-11
+CHECK joint.branch.0.0.ab[128] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tol=2.0E-10 error=0.0
+CHECK joint.branch.0.0.ab[128] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tol=2.0E-10 error=0.0
+CHECK joint.branch.0.0.bb[0] input=0.0 eps=1.0E-4 expected=-0.34255147680850584 actual=-0.3425514782851529 tol=6.8512295361701165E-6 error=1.4766470823879274E-9
+CHECK joint.branch.0.0.bb[0] input=0.0 eps=3.0E-5 expected=-0.342551478153356 actual=-0.3425514782851529 tol=6.85122956306712E-6 error=1.3179690672160405E-10
+CHECK joint.branch.0.0.bb[1] input=0.0 eps=1.0E-4 expected=0.10350200071285176 actual=0.10350200157355624 tol=2.0702400142570353E-6 error=8.607044799102681E-10
+CHECK joint.branch.0.0.bb[1] input=0.0 eps=3.0E-5 expected=0.10350200149722433 actual=0.10350200157355624 tol=2.0702400299444866E-6 error=7.633191301259501E-11
+CHECK joint.branch.0.0.bb[63] input=0.0 eps=1.0E-4 expected=0.0 actual=0.0 tol=2.0E-10 error=0.0
+CHECK joint.branch.0.0.bb[63] input=0.0 eps=3.0E-5 expected=0.0 actual=0.0 tol=2.0E-10 error=0.0
+CHECK batch.meanUpdate.projection expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.us expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.ug expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.meta expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.e expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.bias expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.wq expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.wr expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.0.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.0.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.0.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.0.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.0.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.0.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.0.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.0.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.0.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.0.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.1.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.1.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.1.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.1.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.1.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.1.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.1.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.1.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.1.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.branch.1.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.wk expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanUpdate.wv expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.projection expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.us expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.ug expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.meta expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.e expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.bias expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.wq expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.wr expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.0.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.0.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.0.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.0.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.0.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.0.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.0.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.0.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.0.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.0.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.1.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.1.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.1.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.1.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.1.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.1.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.1.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.1.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.1.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.branch.1.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.wk expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.meanM.wv expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK batch.cursor expected=2.0 actual=2.0 tol=0.0 error=0.0
+REJECT stale joint gradient STALE_GRADIENT
+REJECT changed experiment gradient STALE_GRADIENT
+CHECK dataset.snapshot expected=0.5701859408485126 actual=0.5701859408485126 tol=0.0 error=0.0
+REJECT dataset manifest mismatch DATASET_MANIFEST_MISMATCH
+CHECK adam.norm expected=0.5 actual=0.5 tol=1.0E-11 error=0.0
+CHECK adam.first.weight expected=-0.00999999966666668 actual=-0.00999999966666668 tol=1.0E-11 error=0.0
+CHECK adam.first.m expected=0.03 actual=0.029999999999999992 tol=1.0E-11 error=6.938893903907228E-18
+CHECK adam.first.v expected=9.0E-5 actual=9.000000000000007E-5 tol=1.0E-11 error=6.776263578034403E-20
+CHECK adam.second.weight expected=-0.014002185207191924 actual=-0.01400218520719192 tol=1.0E-11 error=3.469446951953614E-18
+CHECK adam.second.m expected=0.016999999999999998 actual=0.016999999999999994 tol=1.0E-11 error=3.469446951953614E-18
+CHECK adam.second.v expected=9.991000000000001E-5 actual=9.991000000000009E-5 tol=1.0E-11 error=8.131516293641283E-20
+REJECT budget UPDATE_BOUNDARY_OR_BUDGET
+CHECK clip.rawNorm expected=5.0 actual=5.0 tol=1.0E-11 error=0.0
+CHECK clip.m expected=0.06 actual=0.06 tol=1.0E-11 error=0.0
+CHECK L1.euclidean.x expected=1.0 actual=1.0 tol=1.0E-11 error=0.0
+CHECK L1.euclidean.y expected=0.0 actual=0.0 tol=1.0E-11 error=0.0
+CHECK L1.largeMagnitude expected=1.0 actual=1.0 tol=0.0 error=0.0
+CHECK L1.extreme.x expected=0.5 actual=0.5 tol=0.0 error=0.0
+CHECK L1.extreme.y expected=0.5 actual=0.5 tol=0.0 error=0.0
+CHECK optimizer.projectedNorm expected=1.0 actual=0.9999999999999999 tol=1.0E-11 error=1.1102230246251565E-16
+CHECK frozen.weight expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK frozen.m expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK frozen.v expected=0.0 actual=0.0 tol=0.0 error=0.0
+REJECT NaN gradient INVALID_GRADIENT
+CHECK NaN transaction.pending expected=0.0 actual=0.0 tol=0.0 error=0.0
+REJECT accumulation overflow ACCUMULATION_OVERFLOW
+CHECK overflow.pending expected=1.0 actual=1.0 tol=0.0 error=0.0
+REJECT nonfinite norm NONFINITE_NORM
+CHECK ownership.route expected=1.0 actual=1.0 tol=0.0 error=0.0
+CHECK ownership.cap expected=1.0 actual=1.0 tol=0.0 error=0.0
+CHECK ownership.frozen expected=0.0 actual=0.0 tol=0.0 error=0.0
+REJECT nonzero initial moments INITIAL_OPTIMIZER_STATE
+CHECK rate.warmup expected=2.0000000000000002E-7 actual=2.0000000000000002E-7 tol=1.0E-11 error=0.0
+CHECK rate.final expected=2.0E-5 actual=2.0E-5 tol=1.0E-11 error=0.0
+REJECT midaccumulation checkpoint CHECKPOINT_OPTIMIZER_BOUNDARY_ONLY
+DIAGNOSTIC_LOSS before=0.5701859408485126 after=0.5701851167587603 expectedAfterLessThanBefore=true ONE_STEP_ONLY
+CHECKPOINT bytes=10365754 sha256=5cb2dcf6beb15fa2e6a5a528f306dcefec48da8d52b1c38654a0ea4e87610db0
+CHECK checkpoint.step expected=1.0 actual=1.0 tol=0.0 error=0.0
+CHECK checkpoint.cursor expected=1.0 actual=1.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.projection expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.us expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.ug expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.meta expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.e expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.bias expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.wq expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.wr expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.0.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.0.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.0.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.0.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.0.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.0.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.0.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.0.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.0.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.0.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.1.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.1.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.1.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.1.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.1.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.1.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.1.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.1.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.1.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.branch.1.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.wk expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.weights.wv expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.projection expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.us expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.ug expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.meta expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.e expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.bias expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.wq expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.wr expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.0.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.0.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.0.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.0.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.0.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.0.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.0.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.0.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.0.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.0.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.1.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.1.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.1.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.1.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.1.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.1.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.1.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.1.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.1.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.branch.1.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.wk expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.m.wv expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.projection expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.us expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.ug expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.meta expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.e expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.bias expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.wq expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.wr expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.0.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.0.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.0.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.0.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.0.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.0.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.0.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.0.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.0.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.0.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.1.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.1.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.1.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.1.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.1.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.1.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.1.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.1.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.1.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.branch.1.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.wk expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK checkpoint.v.wv expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.loss expected=0.5553435141277303 actual=0.5553435141277303 tol=0.0 error=0.0
+CHECK resume.gradient.projection expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.us expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.ug expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.meta expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.e expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.bias expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.wq expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.wr expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.0.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.0.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.0.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.0.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.0.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.0.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.0.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.0.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.0.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.0.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.1.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.1.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.1.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.1.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.1.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.1.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.1.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.1.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.1.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.branch.1.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.wk expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.gradient.wv expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.projection expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.us expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.ug expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.meta expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.e expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.bias expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.wq expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.wr expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.0.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.0.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.0.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.0.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.0.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.0.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.0.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.0.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.0.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.0.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.1.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.1.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.1.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.1.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.1.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.1.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.1.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.1.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.1.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.branch.1.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.wk expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.weights.wv expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.projection expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.us expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.ug expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.meta expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.e expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.bias expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.wq expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.wr expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.0.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.0.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.0.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.0.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.0.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.0.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.0.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.0.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.0.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.0.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.1.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.1.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.1.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.1.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.1.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.1.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.1.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.1.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.1.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.branch.1.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.wk expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.m.wv expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.projection expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.us expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.ug expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.meta expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.e expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.bias expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.wq expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.wr expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.0.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.0.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.0.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.0.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.0.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.0.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.0.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.0.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.0.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.0.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.1.0.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.1.0.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.1.0.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.1.0.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.1.0.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.1.1.a expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.1.1.c expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.1.1.b expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.1.1.ab expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.branch.1.1.bb expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.wk expected=0.0 actual=0.0 tol=0.0 error=0.0
+CHECK resume.next.v.wv expected=0.0 actual=0.0 tol=0.0 error=0.0
+REJECT rejected save preserves checkpoint CHECKPOINT_OPTIMIZER_BOUNDARY_ONLY
+CHECK checkpoint.preserved expected=1.0 actual=1.0 tol=0.0 error=0.0
+REJECT config drift CHECKPOINT_EXPERIMENT
+REJECT dataset drift CHECKPOINT_EXPERIMENT
+REJECT schema drift CHECKPOINT_SCHEMA
+REJECT bit corruption CHECKPOINT_INTEGRITY
+REJECT truncated checkpoint CHECKPOINT_LENGTH
+TRAIN001_CHECKS_PASS=446 DOUBLE_FIXED_ROUTE_SYNTHETIC_ONLY

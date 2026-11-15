@@ -1,0 +1,52 @@
+[
+  {
+    "ref": "44fdc357b1b6ddec5ed97188c7fd2dc3d03b7e2d",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_01_FINAL_MATH_STATE_AND_DYNAMICS.md",
+    "sha256": "6bd6f68989972d183b6750711dca223355a026dfcf11461275d25406319853fe"
+  },
+  {
+    "ref": "44fdc357b1b6ddec5ed97188c7fd2dc3d03b7e2d",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_03_FULL_TRAINING_THEORY_AND_DATA_SPEC.md",
+    "sha256": "52b1eab23c977d253625b98de20bee6e5802c652973cf96403037118b5fbe4be"
+  },
+  {
+    "ref": "44fdc357b1b6ddec5ed97188c7fd2dc3d03b7e2d",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_04_MEMORY_PLASTICITY_RETENTION_RECOVERY.md",
+    "sha256": "737654965c75e83e10a2705656af0f49ff9bf2c2bb0a4f359c67f0f426c6b0c8"
+  },
+  {
+    "ref": "44fdc357b1b6ddec5ed97188c7fd2dc3d03b7e2d",
+    "path": "docs/precode/r5.3/source-package/SOURCES/ASTRA_CURRENT/ASTRA_02_FINAL_WEIGHTS_CONNECTIVITY_AND_COUNTS.md",
+    "sha256": "4b9186bb19d71f88aed989b33ef8a40f5a699535e645c79f5eb97d5d97098a4c"
+  },
+  {
+    "ref": "44fdc357b1b6ddec5ed97188c7fd2dc3d03b7e2d",
+    "path": "docs/precode/r5.3/source-package/SOURCES/GROK_STAGE1.md",
+    "sha256": "268fa9b45ca181b4b0e41fba7f16e370b9f194be10e6b4cd9404ded8ce7f2b58"
+  },
+  {
+    "ref": "44fdc357b1b6ddec5ed97188c7fd2dc3d03b7e2d",
+    "path": "docs/precode/r5.3/source-package/SOURCES/GROK_STAGE2.md",
+    "sha256": "1928e9c03ad2edbb81ca52937c60f416edc4747ec387626c3e8e88693ade0e63"
+  },
+  {
+    "ref": "0af492ee7a8d15b371bf0de1c21d73ca1fd8b050",
+    "path": "docs/audits/uno-independent-math-training-20261112/INDEPENDENT_VERDICT_V1_20261112.md",
+    "sha256": "9fddbdbf29ec063f1cd78ba7f702b9fc42daa3d3385d71daf50315102485d506"
+  },
+  {
+    "ref": "0af492ee7a8d15b371bf0de1c21d73ca1fd8b050",
+    "path": "docs/audits/uno-independent-math-training-20261112/TRAINING_READINESS_V1_20261112.md",
+    "sha256": "f1ec4163fd080fd805ee9171f77f2f9450842a44d6269040b0e6ba93ceb711e3"
+  },
+  {
+    "ref": "0af492ee7a8d15b371bf0de1c21d73ca1fd8b050",
+    "path": "docs/audits/uno-independent-math-training-20261112/CORRECTED_ARCHITECTURE_CANDIDATE_V1_20261112.md",
+    "sha256": "b51ac0a35ecb82336b875c75a58d178cb35c8f300feec7403f064654124fd7bd"
+  },
+  {
+    "ref": "0af492ee7a8d15b371bf0de1c21d73ca1fd8b050",
+    "path": "docs/audits/uno-independent-math-training-20261112/IMPLEMENTATION_GATE_V1_20261112.md",
+    "sha256": "d67f0ca9e12f2e10251b1228970d6367ce201c299e684ca5f13bda07e9b7d53f"
+  }
+]

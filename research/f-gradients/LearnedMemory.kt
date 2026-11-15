@@ -53,8 +53,8 @@ class MemoryReplay(private val w: org.unovyra.uno.core.UnoRefWeights,
     }
     data class Read(val query: ReverseF.V, val value: ReverseF.V, val entries: List<LearnedMemory.Entry>)
     data class Result(val tape: ReverseF, val states: List<ReverseF.V>, val memory: LearnedMemory, val reads: List<Read>)
-    fun prefix(events: List<Event>, count: Int, initial: DoubleArray, mask: BooleanArray, steps: Int): Result {
-        require(count in 1..events.size && count<=32) { "REPLAY_PREFIX_BOUND" }
+    fun prefix(events: List<Event>, count: Int, initial: DoubleArray, mask: BooleanArray, steps: Int, maxEvents: Int=32): Result {
+        require(maxEvents in 1..96 && count in 1..events.size && count<=maxEvents) { "REPLAY_PREFIX_BOUND" }
         val tape=ReverseF(); tape.weights(w)
         val memory=LearnedMemory(tape,wk,wv)
         var state=tape.leaf("initial",initial)
