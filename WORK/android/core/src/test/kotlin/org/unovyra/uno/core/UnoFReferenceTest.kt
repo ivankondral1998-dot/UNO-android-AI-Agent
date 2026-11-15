@@ -259,6 +259,33 @@ object UnoFReferenceTest {
             index.dropScope("test-s4")
             check(index.eligibleForS4("test-s4", 256).status == SemanticStatus.DENIED)
         }
+
+        test("s4_port_recalls_when_feature_width_differs_from_memory_width") {
+            // Valid synthetic S4: inputWidth=1, memoryWidth=128.
+            // The old adapter discarded the summary before F computed its query.
+            val w = weights(memory=true)
+            check(w.inputWidth==1 && w.m==128)
+            val exact=ExactMemory()
+            val record=exact.write("s4-width","fact",byteArrayOf(1),10_000L,0L,
+                EntryKind.OBSERVED,"SYNTHETIC")
+            val semanticKey=DoubleArray(128); semanticKey[0]=1.0
+            val key=KeyGenerator.getInstance("AES").apply { init(256) }.generateKey()
+            var saved: ByteArray? = null
+            val semantic=UnoSemanticMemory(key,"s4-width-boot",
+                { saved?.copyOf() }, { saved=it.copyOf() }, 128)
+            semantic.link(record,semanticKey)
+            val bits=1.0.toRawBits()
+            val payload=ByteArray(8) { byte -> ((bits ushr (8*byte)) and 255).toByte() }
+            val event=Percept(PerceptType.SENSOR,payload,"SYNTHETIC",1L)
+            val yes=UnoFReferencePort(UnoFReference(w),w,
+                booleanArrayOf(true,false),1,semantic,"s4-width").perceive(event)
+            val no=UnoFReferencePort(UnoFReference(w),w,
+                booleanArrayOf(true,false),1).perceive(event)
+            check(yes.action==null && no.action==null)
+            check(yes.stateDigest!=no.stateDigest) {
+                "S4 valid memory was ignored because inputWidth != memoryWidth"
+            }
+        }
         println("UNO_F_REFERENCE_HOST_PASS=$pass")
     }
 }
