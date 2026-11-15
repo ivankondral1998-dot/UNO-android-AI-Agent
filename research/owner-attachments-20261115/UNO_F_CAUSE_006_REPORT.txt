@@ -1,0 +1,65 @@
+UNO F / GRU DIAG-006 | 2026-11-15 | research-only
+
+Source: code from user-supplied UNO_F_LADDER_005.zip.
+Original uno_f_pilot.py SHA256:
+d290ff97eb9c58fd609d97a3c74c2a06c2b5fc0a561a3c9489776e9f8913046a
+No modifications to original UNO, owners' weights, GitHub or CUDA machine.
+All local execution: torch 2.10.0+cpu, CPU.
+
+A. State perturbation, seed=47 initialization, batch=32, length=24:
+At first WRITE event, invert only WRITE value; inspect norm of final state difference.
+Relative influence after 1/2/4/6/8 events:
+UNO F: .121331 / .015398 / .00027749 / .000005471 / .000000142
+GRU:   .524366 / .295123 / .105744   / .0408583   / .0162237
+
+B. Backprop probe at initialization, batch=64, length=24:
+Mean absolute derivative of logit w.r.t. written value:
+UNO F: 6.116e-16; GRU: 3.154e-8; ratio GRU/F about 5.16e7.
+Result depends on initialization and task; not a global proof of architectural failure.
+In F, Wq receives no gradient; Wr/Ug/Wmeta receive zero gradient
+because experiment passes no memory/goal/metadata.
+
+C. Projection probe (Adam step 1, batch=64, length=12):
+All A/C/B/Us rows start at L1 constraint radius.
+Effective norm ratio after L1 projection vs raw Adam delta:
+Us: .7288; A: ~.75; B: ~.63; C: ~.86.
+Projection changes the optimization direction; it is NOT yet proven the root cause.
+
+D. Research-only alpha/rho test at initialization:
+Default (alpha=.5,rho=.5,K2) lag6 retention: 0.000005471.
+Alternative (alpha=.1,rho=.95,K2) lag6 retention: 0.204995.
+But alternative 250 CPU training steps still ~chance accuracy (length24):
+0.4727 on 256 examples. Retention alone did not solve training.
+Do not change normative Astra coefficients based on this ablation.
+
+E. Controlled write-gating proof-of-concept:
+Training: same UNO F core, same seed=47, 250 Adam updates,
+batch32, warmup100, L1 projection unchanged,
+train lengths randomly 12/24/32, only extra operation is external
+controller: s_t = F(x_t,s_prev) if op=WRITE, otherwise s_t=s_prev.
+This is NOT a real S4 memory implementation or S6 selector.
+
+Held-out 2048 examples per length:
+Length  plain F   F+explicit-write-gate    gate erased-control
+12      0.4956    0.9824                   0.4956
+24      0.5137    0.9829                   0.5137
+48      0.5044    0.9834                   0.5044
+96      0.5029    0.9824                   0.5029
+
+SHA256 gated research weights:
+a2112184069067831eebe3c6e3a47dd9911b23c349c16ce217856b5bc12335ba
+SHA256 ungated research weights:
+f3c35cea1f9086529debfa852d20a018646ca73afcda580b7c8d4d14ecfb8686
+5 independent local checks PASS: source SHA, gate ignores unwritten
+noise, write content affects output, weights reload, hashes match.
+
+INTERPRETATION: For r1 single slot, an external explicit WRITE gate restores
+trainability of original constrained F under this isolated CPU experiment.
+But it makes the sequence-length task trivially persistent: if only one write
+happens, state no longer changes after that write. This is NOT evidence that
+F can process unrelated events and preserve separate information in the same state.
+
+NEXT: treat event processing and addressable working-memory updates as separate
+paths, then train and test actual S4 memory reading and multi-slot tasks, with
+matched GRU+memory control. Reassess normative math and owner approval before
+any production changes. GPU/CUDA for 006 NOT tested.
