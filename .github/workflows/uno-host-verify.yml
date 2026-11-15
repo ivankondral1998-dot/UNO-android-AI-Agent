@@ -1,14 +1,9 @@
 name: UNO integrated Kotlin host verification
 
+# No automatic runs: Actions quota is reserved for owner-authorized builds.
+# This historical host job can only be started deliberately by the owner.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - integration/uno-work-research-20261114
-    paths:
-      - .github/workflows/uno-host-verify.yml
-      - WORK/android/core/src/**
-      - WORK/android/scripts/host_verify.sh
 
 permissions:
   contents: read
