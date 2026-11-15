@@ -148,6 +148,152 @@ fun unoCyclicPrefixMask(blocks: Int, selected: Int, turnSerial: Long): BooleanAr
     return mask
 }
 
+/**
+ * S6 feasible catalogue and sampling. Geometry remains unoCyclicPrefixMask.
+ * Empty feasible set is BUDGET_ABORT, never a fabricated q=0.
+ * Sampling uses the Astra ε-mixture + softmax on prefix scores with a recorded PRNG.
+ */
+class UnoS6Budget(
+    val maxMac: Long,
+    val maxBytes: Long,
+    val maxInnerSteps: Int = 8
+) {
+    init {
+        require(maxMac >= 0 && maxBytes >= 0 && maxInnerSteps in 1..8)
+    }
+}
+
+data class UnoS6Selection(
+    val q: Int,
+    val mask: BooleanArray,
+    val steps: Int,
+    val seed: Long,
+    val counter: Long,
+    val aborted: Boolean = false
+)
+
+class UnoS6Sampler(
+    private val blocks: Int,
+    private val branchCount: Int,
+    private val blockWidth: Int,
+    private val hidden: Int,
+    private val epsilon: Double = 0.05,
+    private val temperature: Double = 1.0
+) {
+    init {
+        require(blocks > 0 && branchCount > 0 && blockWidth > 0 && hidden > 0)
+        require(epsilon in 0.0..1.0 && temperature > 0.0)
+    }
+
+    /** Cost model for one prefix of length q, used only to build the feasible set. */
+    fun estimatedCost(q: Int, steps: Int): Pair<Long, Long> {
+        require(q in 1..blocks && steps in 1..8)
+        val active = q
+        val mac = (steps * active * branchCount * (hidden * blockWidth + blockWidth * hidden)).toLong()
+        val bytes = (active * branchCount * (hidden * blockWidth + blockWidth * hidden) * 8).toLong()
+        return mac to bytes
+    }
+
+    fun feasible(budget: UnoS6Budget): IntArray {
+        val out = ArrayList<Int>()
+        for (q in 1..blocks) {
+            val (mac, bytes) = estimatedCost(q, 1)
+            if (mac <= budget.maxMac && bytes <= budget.maxBytes && budget.maxInnerSteps >= 1) {
+                out.add(q)
+            }
+        }
+        return out.toIntArray()
+    }
+
+    /**
+     * Sample a non-empty prefix according to Astra S6.
+     * Returns aborted=true when the feasible catalogue is empty.
+     * The same seed/counter always yields the same q and steps.
+     */
+    fun select(
+        logits: DoubleArray,
+        turnSerial: Long,
+        budget: UnoS6Budget,
+        seed: Long,
+        counter: Long,
+        hazard: Double = 0.25
+    ): UnoS6Selection {
+        require(logits.size == blocks && logits.all(Double::isFinite))
+        require(turnSerial >= 0 && seed >= 0 && counter >= 0 && hazard in 0.0..1.0)
+        val catalogue = feasible(budget)
+        if (catalogue.isEmpty()) {
+            return UnoS6Selection(0, BooleanArray(blocks), 0, seed, counter, aborted = true)
+        }
+        val shift = (turnSerial % blocks).toInt()
+        val scores = DoubleArray(catalogue.size)
+        var maxScore = Double.NEGATIVE_INFINITY
+        for (i in catalogue.indices) {
+            val q = catalogue[i]
+            var sum = 0.0
+            for (j in 0 until q) sum += logits[(j + shift) % blocks]
+            scores[i] = sum / kotlin.math.sqrt(q.toDouble())
+            if (scores[i] > maxScore) maxScore = scores[i]
+        }
+        val weights = DoubleArray(catalogue.size)
+        var total = 0.0
+        for (i in scores.indices) {
+            val w = kotlin.math.exp((scores[i] - maxScore) / temperature)
+            weights[i] = w
+            total += w
+        }
+        val rng = UnoS6Prng(seed, counter)
+        val u = rng.nextDouble()
+        val q: Int
+        if (u < epsilon) {
+            q = catalogue[rng.nextInt(catalogue.size)]
+        } else {
+            var acc = 0.0
+            val target = rng.nextDouble() * total
+            var chosen = catalogue.last()
+            for (i in weights.indices) {
+                acc += weights[i]
+                if (acc >= target) {
+                    chosen = catalogue[i]
+                    break
+                }
+            }
+            q = chosen
+        }
+        var steps = 1
+        while (steps < budget.maxInnerSteps) {
+            if (rng.nextDouble() < hazard) break
+            val (mac, bytes) = estimatedCost(q, steps + 1)
+            if (mac > budget.maxMac || bytes > budget.maxBytes) break
+            steps++
+        }
+        return UnoS6Selection(
+            q = q,
+            mask = unoCyclicPrefixMask(blocks, q, turnSerial),
+            steps = steps,
+            seed = seed,
+            counter = counter + 1,
+            aborted = false
+        )
+    }
+}
+
+/** Deterministic xorshift-style PRNG. Same seed/counter always give the same sequence. */
+class UnoS6Prng(seed: Long, counter: Long) {
+    private var state = (seed xor (counter * 0x9E3779B97F4A7C15UL.toLong())) or 1L
+    fun nextDouble(): Double {
+        state = state xor (state shl 13)
+        state = state xor (state ushr 7)
+        state = state xor (state shl 17)
+        return ((state ushr 11) and 0x1fffffffffffffL).toDouble() / 0x20000000000000L
+    }
+    fun nextInt(bound: Int): Int {
+        require(bound > 0)
+        return (nextDouble() * bound).toInt().coerceIn(0, bound - 1)
+    }
+}
+
+
+
 class UnoFReference(private val weights: UnoRefWeights) {
     fun forward(
         event: UnoRefEvent, mask: BooleanArray, steps: Int,

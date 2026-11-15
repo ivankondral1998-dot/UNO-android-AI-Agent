@@ -195,6 +195,46 @@ object UnoFReferenceTest {
             check(exact.read("notes", "fact", 1, 4, 6L, 0L).entries.single()
                 .raw.contentEquals("plus".toByteArray()))
         }
+        test("s6_empty_feasible_is_budget_abort") {
+            val sampler = UnoS6Sampler(blocks=2, branchCount=2, blockWidth=64, hidden=256)
+            val budget = UnoS6Budget(maxMac=0, maxBytes=0)
+            val sel = sampler.select(doubleArrayOf(0.0, 0.0), 0, budget, seed=1, counter=0)
+            check(sel.aborted && sel.q == 0 && sel.steps == 0)
+        }
+        test("s6_reproducible_same_seed_counter") {
+            val sampler = UnoS6Sampler(blocks=4, branchCount=2, blockWidth=32, hidden=128)
+            val budget = UnoS6Budget(maxMac=1_000_000_000, maxBytes=1_000_000_000)
+            val logits = doubleArrayOf(0.1, -0.2, 0.3, 0.0)
+            val a = sampler.select(logits, 3, budget, seed=42, counter=7)
+            val b = sampler.select(logits, 3, budget, seed=42, counter=7)
+            check(!a.aborted && a.q == b.q && a.steps == b.steps && a.mask.contentEquals(b.mask))
+            check(a.q in 1..4 && a.mask.count { it } == a.q)
+        }
+        test("s6_selected_mask_skips_inactive_kernels") {
+            val sampler = UnoS6Sampler(blocks=2, branchCount=2, blockWidth=64, hidden=256)
+            val budget = UnoS6Budget(maxMac=1_000_000_000, maxBytes=1_000_000_000, maxInnerSteps=3)
+            val sel = sampler.select(doubleArrayOf(0.5, 0.5), 0, budget, seed=1, counter=0)
+            check(!sel.aborted && sel.q >= 1)
+            val out = UnoFReference(weights()).forward(
+                event(0.0), sel.mask, sel.steps
+            )
+            val active = sel.mask.count { it }
+            check(out.trace.skippedBlocks == 2 - active)
+            check(out.trace.aCalls == sel.steps * active * 2)
+            check(out.trace.cCalls == active * 2)
+            check(out.trace.bCalls == sel.steps * active * 2)
+        }
+        test("s6_full_and_prefix_differ_in_mac_and_state") {
+            val full = booleanArrayOf(true, true)
+            val prefix = booleanArrayOf(true, false)
+            val w = weights()
+            val model = UnoFReference(w)
+            val fullOut = model.forward(event(0.3), full, 2)
+            val prefOut = model.forward(event(0.3), prefix, 2)
+            check(fullOut.trace.aCalls > prefOut.trace.aCalls)
+            check(prefOut.trace.skippedBlocks == 1)
+            check(fullOut.trace.aCalls != prefOut.trace.aCalls || !fullOut.state.contentEquals(prefOut.state))
+        }
         println("UNO_F_REFERENCE_HOST_PASS=$pass")
     }
 }
