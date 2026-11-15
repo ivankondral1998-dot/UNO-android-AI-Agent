@@ -93,9 +93,13 @@ class UnoSemanticMemory(
         if (scope.isEmpty() || scope in revoked) {
             return SemanticRead(SemanticStatus.DENIED, emptyList(), 0)
         }
-        if (scanBudget < 0) return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
+        // The scan quota is a HARD cap on records examined, not just returned.
+        // Test the raw bounded index size BEFORE any O(n) iteration/copy.
+        // This is conservatively fail-closed if old-boot or other-scope rows exist.
+        if (scanBudget < 0 || links.size > scanBudget) {
+            return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
+        }
         val visible = links.filter { it.boot == bootToken && it.scope !in revoked }
-        if (visible.size > scanBudget) return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
         val eligible = visible.filter { it.scope == scope }.map { link ->
             // Score 0.0 is a placeholder. The selector MUST NOT rank using it.
             SemanticHit(link.exactId, link.generation, link.sha256, link.scope,
