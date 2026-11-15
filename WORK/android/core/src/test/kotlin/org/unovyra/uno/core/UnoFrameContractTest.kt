@@ -12,7 +12,7 @@ object UnoFrameContractTest {
         val bytes = byteArrayOf(1, 2, 3, 4)
         val manifest = WeightManifest("SYNTHETIC/1", 8, 128, 128, bytes.size.toLong(), sha(bytes))
         verify(admitWeights(manifest, bytes, "SYNTHETIC/1") ==
-            WeightAdmission.ADMITTED_UNVERIFIED_QUALITY)
+            WeightAdmission.PAYLOAD_CHECKSUM_ONLY)
         verify(admitWeights(manifest, byteArrayOf(1, 2, 3, 5), "SYNTHETIC/1") ==
             WeightAdmission.REJECTED)
         verify(admitWeights(manifest, bytes, "OTHER") == WeightAdmission.REJECTED)
