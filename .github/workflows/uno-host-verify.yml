@@ -1,0 +1,66 @@
+name: UNO integrated Kotlin host verification
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - integration/uno-work-research-20261114
+    paths:
+      - .github/workflows/uno-host-verify.yml
+      - WORK/android/core/src/**
+      - WORK/android/scripts/host_verify.sh
+
+permissions:
+  contents: read
+
+concurrency:
+  group: uno-host-verification-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  host-kotlin:
+    name: Exact integrated JVM test suite
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          submodules: false
+      - name: JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Install standalone Kotlin 2.2.21
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --retry 3 --fail --location --silent --show-error \
+            https://github.com/JetBrains/kotlin/releases/download/v2.2.21/kotlin-compiler-2.2.21.zip \
+            -o /tmp/uno-kotlinc.zip
+          mkdir -p "$RUNNER_TEMP/uno-kotlin"
+          unzip -q /tmp/uno-kotlinc.zip -d "$RUNNER_TEMP/uno-kotlin"
+          echo "$RUNNER_TEMP/uno-kotlin/kotlinc/bin" >> "$GITHUB_PATH"
+      - name: Full host verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _uno_ci
+          {
+            echo "repo=${GITHUB_REPOSITORY}"
+            echo "commit=$(git rev-parse HEAD)"
+            echo "android_tree=$(git rev-parse HEAD:WORK/android)"
+            echo "date=$(date -u +%FT%TZ)"
+            java -version 2>&1
+            kotlinc -version 2>&1
+          } | tee _uno_ci/provenance.txt
+          bash WORK/android/scripts/host_verify.sh 2>&1 | tee _uno_ci/host_verify.log
+      - name: Preserve test output even when a test fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: uno-host-verify
+          path: _uno_ci/
+          retention-days: 7
+          if-no-files-found: warn
