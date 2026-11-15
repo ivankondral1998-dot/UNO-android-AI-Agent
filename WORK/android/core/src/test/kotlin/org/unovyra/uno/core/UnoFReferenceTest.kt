@@ -286,6 +286,28 @@ object UnoFReferenceTest {
                 "S4 valid memory was ignored because inputWidth != memoryWidth"
             }
         }
+        test("s4_scan_quota_counts_stale_boot_rows_before_filter") {
+            // Old port scanned the entire list and only then checked the quota.
+            // The hard budget includes stale-boot rows that will not be returned.
+            val exact = ExactMemory()
+            val secret = KeyGenerator.getInstance("AES").apply { init(256) }.generateKey()
+            var stored: ByteArray? = null
+            val oldBoot = UnoSemanticMemory(secret, "s4-old-boot",
+                { stored?.copyOf() }, { stored = it.copyOf() }, 128)
+            val oldFact = exact.write("s4-scan", "old", byteArrayOf(1), 10_000L,
+                0L, EntryKind.OBSERVED, "SYNTHETIC")
+            val vector = DoubleArray(128); vector[0] = 1.0
+            oldBoot.link(oldFact, vector)
+            val newBoot = UnoSemanticMemory(secret, "s4-new-boot",
+                { stored?.copyOf() }, { stored = it.copyOf() }, 128)
+            val currentFact = exact.write("s4-scan", "new", byteArrayOf(2), 10_000L,
+                0L, EntryKind.OBSERVED, "SYNTHETIC")
+            newBoot.link(currentFact, vector)
+            check(newBoot.eligibleForS4("s4-scan", 1).status == SemanticStatus.UNKNOWN)
+            val eligible = newBoot.eligibleForS4("s4-scan", 2)
+            check(eligible.status == SemanticStatus.SUMMARY_ONLY)
+            check(eligible.hits.size == 1 && eligible.hits.single().exactId == currentFact.id)
+        }
         println("UNO_F_REFERENCE_HOST_PASS=$pass")
     }
 }
