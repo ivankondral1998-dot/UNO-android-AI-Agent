@@ -1,0 +1,567 @@
+{
+  "status": "EXTRACTED_TEXT_ONLY",
+  "not_included": "binary weights/checkpoints, absent Git archives, pyc",
+  "count": 70,
+  "entries": [
+    {
+      "archive": "UNO_F_DIAG_FIX_005.zip",
+      "archive_sha256": "6dce0df4183aa1565c193fe16bc9dd69ab81fddb592ee8c29779c25c251ac81e",
+      "zip_member": "UNO_F_DIAG_FIX_005/README_RU.md",
+      "path": "UNO_F_DIAG_FIX_005/UNO_F_DIAG_FIX_005/README_RU.md",
+      "bytes": 5135,
+      "sha256": "0c73449322b41c39c3fe3e12e0cfde77ddca67fe4fd07381b479854983d1633f"
+    },
+    {
+      "archive": "UNO_F_DIAG_FIX_005.zip",
+      "archive_sha256": "6dce0df4183aa1565c193fe16bc9dd69ab81fddb592ee8c29779c25c251ac81e",
+      "zip_member": "UNO_F_DIAG_FIX_005/TEST_DIAGNOSIS_005.cmd",
+      "path": "UNO_F_DIAG_FIX_005/UNO_F_DIAG_FIX_005/TEST_DIAGNOSIS_005.cmd",
+      "bytes": 255,
+      "sha256": "9047ea0c4b1fa7c54ddf63a1d2ba9333c6b385e70b9fbb994731b53d48c56997"
+    },
+    {
+      "archive": "UNO_F_DIAG_FIX_005.zip",
+      "archive_sha256": "6dce0df4183aa1565c193fe16bc9dd69ab81fddb592ee8c29779c25c251ac81e",
+      "zip_member": "UNO_F_DIAG_FIX_005/CHECK_OWNER_WEIGHTS_005.cmd",
+      "path": "UNO_F_DIAG_FIX_005/UNO_F_DIAG_FIX_005/CHECK_OWNER_WEIGHTS_005.cmd",
+      "bytes": 259,
+      "sha256": "47669b8de75c8ec257da390ce474449bf1643905538c9cb2e0faa165bdcb935d"
+    },
+    {
+      "archive": "UNO_F_DIAG_FIX_005.zip",
+      "archive_sha256": "6dce0df4183aa1565c193fe16bc9dd69ab81fddb592ee8c29779c25c251ac81e",
+      "zip_member": "UNO_F_DIAG_FIX_005/test_diagnosis_005.py",
+      "path": "UNO_F_DIAG_FIX_005/UNO_F_DIAG_FIX_005/test_diagnosis_005.py",
+      "bytes": 930,
+      "sha256": "5bd949f2640407a8859cdc30b4bfedcfbf5fdc589575bd520fb6b051ad9a70d5"
+    },
+    {
+      "archive": "UNO_F_DIAG_FIX_005.zip",
+      "archive_sha256": "6dce0df4183aa1565c193fe16bc9dd69ab81fddb592ee8c29779c25c251ac81e",
+      "zip_member": "UNO_F_DIAG_FIX_005/check_owner_weights_005.py",
+      "path": "UNO_F_DIAG_FIX_005/UNO_F_DIAG_FIX_005/check_owner_weights_005.py",
+      "bytes": 3019,
+      "sha256": "9b3df3e00ba3c8523ed103c70f58167cfab1def4c2752b4a17fae2b13279864f"
+    },
+    {
+      "archive": "UNO_F_DIAG_FIX_005.zip",
+      "archive_sha256": "6dce0df4183aa1565c193fe16bc9dd69ab81fddb592ee8c29779c25c251ac81e",
+      "zip_member": "UNO_F_DIAG_FIX_005/uno_diag_fix_005.py",
+      "path": "UNO_F_DIAG_FIX_005/UNO_F_DIAG_FIX_005/uno_diag_fix_005.py",
+      "bytes": 17690,
+      "sha256": "850ffd2934401de7955b4cc6c26482f72611e6007c92479b6d23eb86261ef42a"
+    },
+    {
+      "archive": "UNO_F_DIAG_FIX_005.zip",
+      "archive_sha256": "6dce0df4183aa1565c193fe16bc9dd69ab81fddb592ee8c29779c25c251ac81e",
+      "zip_member": "UNO_F_DIAG_FIX_005/uno_f_pilot.py",
+      "path": "UNO_F_DIAG_FIX_005/UNO_F_DIAG_FIX_005/uno_f_pilot.py",
+      "bytes": 14037,
+      "sha256": "d290ff97eb9c58fd609d97a3c74c2a06c2b5fc0a561a3c9489776e9f8913046a"
+    },
+    {
+      "archive": "UNO_F_DIAG_FIX_005.zip",
+      "archive_sha256": "6dce0df4183aa1565c193fe16bc9dd69ab81fddb592ee8c29779c25c251ac81e",
+      "zip_member": "UNO_F_DIAG_FIX_005/uno_gpu_safe.py",
+      "path": "UNO_F_DIAG_FIX_005/UNO_F_DIAG_FIX_005/uno_gpu_safe.py",
+      "bytes": 22351,
+      "sha256": "2f4e9d95ad5c9bf0ff699fc5dbacd1b55d506efc40b74063e2cd60f277f6f952"
+    },
+    {
+      "archive": "UNO_F_DIAG_FIX_005.zip",
+      "archive_sha256": "6dce0df4183aa1565c193fe16bc9dd69ab81fddb592ee8c29779c25c251ac81e",
+      "zip_member": "UNO_F_DIAG_FIX_005/uno_working_memory.py",
+      "path": "UNO_F_DIAG_FIX_005/UNO_F_DIAG_FIX_005/uno_working_memory.py",
+      "bytes": 20615,
+      "sha256": "cb40043d91facb622736525bc5753ddc86a6d5fb5cae678aca4c44a792edd4f1"
+    },
+    {
+      "archive": "UNO_F_LADDER_005.zip",
+      "archive_sha256": "ae0b97075b54291d834424dc58d322c45e67caa04a1d66a2f8f64516542e8bd2",
+      "zip_member": "UNO_F_LADDER_005/START_005.cmd",
+      "path": "UNO_F_LADDER_005/UNO_F_LADDER_005/START_005.cmd",
+      "bytes": 596,
+      "sha256": "34792b4f91997dcb9beecd109e6ca5334171d47cae94c9f6871967bb125ca126"
+    },
+    {
+      "archive": "UNO_F_LADDER_005.zip",
+      "archive_sha256": "ae0b97075b54291d834424dc58d322c45e67caa04a1d66a2f8f64516542e8bd2",
+      "zip_member": "UNO_F_LADDER_005/SHA256SUMS.txt",
+      "path": "UNO_F_LADDER_005/UNO_F_LADDER_005/SHA256SUMS.txt",
+      "bytes": 492,
+      "sha256": "861a7560d176904df948067e726517a76e6e7e2226ebb261677205043072c652"
+    },
+    {
+      "archive": "UNO_F_LADDER_005.zip",
+      "archive_sha256": "ae0b97075b54291d834424dc58d322c45e67caa04a1d66a2f8f64516542e8bd2",
+      "zip_member": "UNO_F_LADDER_005/test_ladder_005.py",
+      "path": "UNO_F_LADDER_005/UNO_F_LADDER_005/test_ladder_005.py",
+      "bytes": 3361,
+      "sha256": "d2f49d2bf23f64dfc0660bdb9766ab0e84c9b5d7e22fcbb6568477df990b2dc0"
+    },
+    {
+      "archive": "UNO_F_LADDER_005.zip",
+      "archive_sha256": "ae0b97075b54291d834424dc58d322c45e67caa04a1d66a2f8f64516542e8bd2",
+      "zip_member": "UNO_F_LADDER_005/uno_f_pilot.py",
+      "path": "UNO_F_LADDER_005/UNO_F_LADDER_005/uno_f_pilot.py",
+      "bytes": 14037,
+      "sha256": "d290ff97eb9c58fd609d97a3c74c2a06c2b5fc0a561a3c9489776e9f8913046a"
+    },
+    {
+      "archive": "UNO_F_LADDER_005.zip",
+      "archive_sha256": "ae0b97075b54291d834424dc58d322c45e67caa04a1d66a2f8f64516542e8bd2",
+      "zip_member": "UNO_F_LADDER_005/uno_ladder_005.py",
+      "path": "UNO_F_LADDER_005/UNO_F_LADDER_005/uno_ladder_005.py",
+      "bytes": 12171,
+      "sha256": "aa46b28e9924d3f50b08c53c7d0e3ee53aea024eee08d6b0ac126a80f5f4a584"
+    },
+    {
+      "archive": "UNO_F_LADDER_005.zip",
+      "archive_sha256": "ae0b97075b54291d834424dc58d322c45e67caa04a1d66a2f8f64516542e8bd2",
+      "zip_member": "UNO_F_LADDER_005/TEST_CPU_005.cmd",
+      "path": "UNO_F_LADDER_005/UNO_F_LADDER_005/TEST_CPU_005.cmd",
+      "bytes": 201,
+      "sha256": "01883fe2ae02496b3753119ddc560900048a15a51d0129f235b16cba9f6fc988"
+    },
+    {
+      "archive": "UNO_F_LADDER_005.zip",
+      "archive_sha256": "ae0b97075b54291d834424dc58d322c45e67caa04a1d66a2f8f64516542e8bd2",
+      "zip_member": "UNO_F_LADDER_005/README_RU.md",
+      "path": "UNO_F_LADDER_005/UNO_F_LADDER_005/README_RU.md",
+      "bytes": 4059,
+      "sha256": "fbc84ce50d4cdb2638ce6a33c011ccd9194c67525925615757ad87c12eb9af49"
+    },
+    {
+      "archive": "UNO_F_LADDER_005B.zip",
+      "archive_sha256": "39fd8a55f96a1a1f10c3cd3f2b8b2f5c8587310faac99df4c5bae5a3fb747dca",
+      "zip_member": "UNO_F_LADDER_005B/test_ladder_005b.py",
+      "path": "UNO_F_LADDER_005B/UNO_F_LADDER_005B/test_ladder_005b.py",
+      "bytes": 10228,
+      "sha256": "155681c4f1e01274ba63461432271a24825e2cc629c84b42cead25e546a933e5"
+    },
+    {
+      "archive": "UNO_F_LADDER_005B.zip",
+      "archive_sha256": "39fd8a55f96a1a1f10c3cd3f2b8b2f5c8587310faac99df4c5bae5a3fb747dca",
+      "zip_member": "UNO_F_LADDER_005B/SHA256SUMS.txt",
+      "path": "UNO_F_LADDER_005B/UNO_F_LADDER_005B/SHA256SUMS.txt",
+      "bytes": 577,
+      "sha256": "ae08979408e71885ba43936bf218d99db93eecda8f24ccb469d0859f3356836a"
+    },
+    {
+      "archive": "UNO_F_LADDER_005B.zip",
+      "archive_sha256": "39fd8a55f96a1a1f10c3cd3f2b8b2f5c8587310faac99df4c5bae5a3fb747dca",
+      "zip_member": "UNO_F_LADDER_005B/uno_ladder_005b.py",
+      "path": "UNO_F_LADDER_005B/UNO_F_LADDER_005B/uno_ladder_005b.py",
+      "bytes": 13371,
+      "sha256": "70836655897dfec05f0321dbd24661b2f2e73e48c0ce257b0baf3a8c89990491"
+    },
+    {
+      "archive": "UNO_F_LADDER_005B.zip",
+      "archive_sha256": "39fd8a55f96a1a1f10c3cd3f2b8b2f5c8587310faac99df4c5bae5a3fb747dca",
+      "zip_member": "UNO_F_LADDER_005B/uno_f_pilot.py",
+      "path": "UNO_F_LADDER_005B/UNO_F_LADDER_005B/uno_f_pilot.py",
+      "bytes": 14037,
+      "sha256": "d290ff97eb9c58fd609d97a3c74c2a06c2b5fc0a561a3c9489776e9f8913046a"
+    },
+    {
+      "archive": "UNO_F_LADDER_005B.zip",
+      "archive_sha256": "39fd8a55f96a1a1f10c3cd3f2b8b2f5c8587310faac99df4c5bae5a3fb747dca",
+      "zip_member": "UNO_F_LADDER_005B/uno_ladder_005.py",
+      "path": "UNO_F_LADDER_005B/UNO_F_LADDER_005B/uno_ladder_005.py",
+      "bytes": 12171,
+      "sha256": "aa46b28e9924d3f50b08c53c7d0e3ee53aea024eee08d6b0ac126a80f5f4a584"
+    },
+    {
+      "archive": "UNO_F_LADDER_005B.zip",
+      "archive_sha256": "39fd8a55f96a1a1f10c3cd3f2b8b2f5c8587310faac99df4c5bae5a3fb747dca",
+      "zip_member": "UNO_F_LADDER_005B/CHECK_005B.cmd",
+      "path": "UNO_F_LADDER_005B/UNO_F_LADDER_005B/CHECK_005B.cmd",
+      "bytes": 630,
+      "sha256": "05f8f208306aba55165c48b476093ec204adf3d513821b680b092b2f96634497"
+    },
+    {
+      "archive": "UNO_F_LADDER_005B.zip",
+      "archive_sha256": "39fd8a55f96a1a1f10c3cd3f2b8b2f5c8587310faac99df4c5bae5a3fb747dca",
+      "zip_member": "UNO_F_LADDER_005B/START_005B.cmd",
+      "path": "UNO_F_LADDER_005B/UNO_F_LADDER_005B/START_005B.cmd",
+      "bytes": 1182,
+      "sha256": "629acd4a9b8038182fe10b1c9966a22c1fe1c785a37d251d5163eff7c571087d"
+    },
+    {
+      "archive": "UNO_F_LADDER_005B.zip",
+      "archive_sha256": "39fd8a55f96a1a1f10c3cd3f2b8b2f5c8587310faac99df4c5bae5a3fb747dca",
+      "zip_member": "UNO_F_LADDER_005B/README_RU.md",
+      "path": "UNO_F_LADDER_005B/UNO_F_LADDER_005B/README_RU.md",
+      "bytes": 5252,
+      "sha256": "1f7175d4c97a50f89b7b937331ab4c03521870e919896b7633f076d139053207"
+    },
+    {
+      "archive": "UNO_F_LADDER_005_SAFE.zip",
+      "archive_sha256": "5bf1f88f98b3c1a76f98028bee25e4b36959a52a0b8b7e96b1e4c99f883e7ac2",
+      "zip_member": "UNO_F_LADDER_005_SAFE/uno_f_pilot.py",
+      "path": "UNO_F_LADDER_005_SAFE/UNO_F_LADDER_005_SAFE/uno_f_pilot.py",
+      "bytes": 14037,
+      "sha256": "d290ff97eb9c58fd609d97a3c74c2a06c2b5fc0a561a3c9489776e9f8913046a"
+    },
+    {
+      "archive": "UNO_F_LADDER_005_SAFE.zip",
+      "archive_sha256": "5bf1f88f98b3c1a76f98028bee25e4b36959a52a0b8b7e96b1e4c99f883e7ac2",
+      "zip_member": "UNO_F_LADDER_005_SAFE/uno_ladder_005.py",
+      "path": "UNO_F_LADDER_005_SAFE/UNO_F_LADDER_005_SAFE/uno_ladder_005.py",
+      "bytes": 12171,
+      "sha256": "aa46b28e9924d3f50b08c53c7d0e3ee53aea024eee08d6b0ac126a80f5f4a584"
+    },
+    {
+      "archive": "UNO_F_LADDER_005_SAFE.zip",
+      "archive_sha256": "5bf1f88f98b3c1a76f98028bee25e4b36959a52a0b8b7e96b1e4c99f883e7ac2",
+      "zip_member": "UNO_F_LADDER_005_SAFE/START_SHORT_005.cmd",
+      "path": "UNO_F_LADDER_005_SAFE/UNO_F_LADDER_005_SAFE/START_SHORT_005.cmd",
+      "bytes": 520,
+      "sha256": "7ea83df926b4715c490590faca6c456bd5da3b774be503dd09a19fb0234bce03"
+    },
+    {
+      "archive": "UNO_F_LADDER_005_SAFE.zip",
+      "archive_sha256": "5bf1f88f98b3c1a76f98028bee25e4b36959a52a0b8b7e96b1e4c99f883e7ac2",
+      "zip_member": "UNO_F_LADDER_005_SAFE/START_SAFE_005.cmd",
+      "path": "UNO_F_LADDER_005_SAFE/UNO_F_LADDER_005_SAFE/START_SAFE_005.cmd",
+      "bytes": 526,
+      "sha256": "36d758945b526442b305260fc7b97d77c71ed6cc8a7ec175ba96a5927fce1f54"
+    },
+    {
+      "archive": "UNO_F_LADDER_005_SAFE.zip",
+      "archive_sha256": "5bf1f88f98b3c1a76f98028bee25e4b36959a52a0b8b7e96b1e4c99f883e7ac2",
+      "zip_member": "UNO_F_LADDER_005_SAFE/test_ladder_005.py",
+      "path": "UNO_F_LADDER_005_SAFE/UNO_F_LADDER_005_SAFE/test_ladder_005.py",
+      "bytes": 3361,
+      "sha256": "d2f49d2bf23f64dfc0660bdb9766ab0e84c9b5d7e22fcbb6568477df990b2dc0"
+    },
+    {
+      "archive": "UNO_F_LADDER_005_SAFE.zip",
+      "archive_sha256": "5bf1f88f98b3c1a76f98028bee25e4b36959a52a0b8b7e96b1e4c99f883e7ac2",
+      "zip_member": "UNO_F_LADDER_005_SAFE/uno_ladder_005_safe.py",
+      "path": "UNO_F_LADDER_005_SAFE/UNO_F_LADDER_005_SAFE/uno_ladder_005_safe.py",
+      "bytes": 10139,
+      "sha256": "9486ef14149b6ef8234a595328e0fd8a52eae272ad1192a8daf39be1047f3da4"
+    },
+    {
+      "archive": "UNO_F_LADDER_005_SAFE.zip",
+      "archive_sha256": "5bf1f88f98b3c1a76f98028bee25e4b36959a52a0b8b7e96b1e4c99f883e7ac2",
+      "zip_member": "UNO_F_LADDER_005_SAFE/SHA256SUMS.txt",
+      "path": "UNO_F_LADDER_005_SAFE/UNO_F_LADDER_005_SAFE/SHA256SUMS.txt",
+      "bytes": 674,
+      "sha256": "1d3197916a54d545bf52cda41729edcbb3cb676c83f891e5c193490c9b0e9b14"
+    },
+    {
+      "archive": "UNO_F_LADDER_005_SAFE.zip",
+      "archive_sha256": "5bf1f88f98b3c1a76f98028bee25e4b36959a52a0b8b7e96b1e4c99f883e7ac2",
+      "zip_member": "UNO_F_LADDER_005_SAFE/README_RU.md",
+      "path": "UNO_F_LADDER_005_SAFE/UNO_F_LADDER_005_SAFE/README_RU.md",
+      "bytes": 4059,
+      "sha256": "fbc84ce50d4cdb2638ce6a33c011ccd9194c67525925615757ad87c12eb9af49"
+    },
+    {
+      "archive": "UNO_F_LADDER_005_SAFE.zip",
+      "archive_sha256": "5bf1f88f98b3c1a76f98028bee25e4b36959a52a0b8b7e96b1e4c99f883e7ac2",
+      "zip_member": "UNO_F_LADDER_005_SAFE/README_AUDIT_RU.md",
+      "path": "UNO_F_LADDER_005_SAFE/UNO_F_LADDER_005_SAFE/README_AUDIT_RU.md",
+      "bytes": 4507,
+      "sha256": "9d2b2db91b4bfeb78a5761732596d343a44cfe0362039eba113f674c43de15c4"
+    },
+    {
+      "archive": "UNO_F_MEMORY_003.zip",
+      "archive_sha256": "b39471db11a47b4ea428b930213ade12cd23f2b21478e764d12dc185e3540fdf",
+      "zip_member": "UNO_F_MEMORY_003/uno_f_pilot.py",
+      "path": "UNO_F_MEMORY_003/UNO_F_MEMORY_003/uno_f_pilot.py",
+      "bytes": 14037,
+      "sha256": "d290ff97eb9c58fd609d97a3c74c2a06c2b5fc0a561a3c9489776e9f8913046a"
+    },
+    {
+      "archive": "UNO_F_MEMORY_003.zip",
+      "archive_sha256": "b39471db11a47b4ea428b930213ade12cd23f2b21478e764d12dc185e3540fdf",
+      "zip_member": "UNO_F_MEMORY_003/uno_gpu_safe.py",
+      "path": "UNO_F_MEMORY_003/UNO_F_MEMORY_003/uno_gpu_safe.py",
+      "bytes": 22351,
+      "sha256": "2f4e9d95ad5c9bf0ff699fc5dbacd1b55d506efc40b74063e2cd60f277f6f952"
+    },
+    {
+      "archive": "UNO_F_MEMORY_003.zip",
+      "archive_sha256": "b39471db11a47b4ea428b930213ade12cd23f2b21478e764d12dc185e3540fdf",
+      "zip_member": "UNO_F_MEMORY_003/uno_long_memory.py",
+      "path": "UNO_F_MEMORY_003/UNO_F_MEMORY_003/uno_long_memory.py",
+      "bytes": 15435,
+      "sha256": "8e429f97dda5d88d0e3a88e608d735571cd6ff133e98c9e6dd17ff2d4246764f"
+    },
+    {
+      "archive": "UNO_F_MEMORY_003.zip",
+      "archive_sha256": "b39471db11a47b4ea428b930213ade12cd23f2b21478e764d12dc185e3540fdf",
+      "zip_member": "UNO_F_MEMORY_003/test_memory_003.py",
+      "path": "UNO_F_MEMORY_003/UNO_F_MEMORY_003/test_memory_003.py",
+      "bytes": 3621,
+      "sha256": "c0ea24fd635cf124157676a6fc4ccd39a9dda633f3fded039c712c5199170fc2"
+    },
+    {
+      "archive": "UNO_F_MEMORY_003.zip",
+      "archive_sha256": "b39471db11a47b4ea428b930213ade12cd23f2b21478e764d12dc185e3540fdf",
+      "zip_member": "UNO_F_MEMORY_003/START_MEMORY_003.cmd",
+      "path": "UNO_F_MEMORY_003/UNO_F_MEMORY_003/START_MEMORY_003.cmd",
+      "bytes": 818,
+      "sha256": "98f3bc8478fa38207ee1f61f6da37889f62d069f7b7216f869f9841e9152bc1a"
+    },
+    {
+      "archive": "UNO_F_MEMORY_003.zip",
+      "archive_sha256": "b39471db11a47b4ea428b930213ade12cd23f2b21478e764d12dc185e3540fdf",
+      "zip_member": "UNO_F_MEMORY_003/RESUME_MEMORY_003.cmd",
+      "path": "UNO_F_MEMORY_003/UNO_F_MEMORY_003/RESUME_MEMORY_003.cmd",
+      "bytes": 590,
+      "sha256": "e0af849d4ec1e410bbb29d0ca7343c6a94b2c7318004467894c9c6d6add8f547"
+    },
+    {
+      "archive": "UNO_F_MEMORY_003.zip",
+      "archive_sha256": "b39471db11a47b4ea428b930213ade12cd23f2b21478e764d12dc185e3540fdf",
+      "zip_member": "UNO_F_MEMORY_003/README_RU.md",
+      "path": "UNO_F_MEMORY_003/UNO_F_MEMORY_003/README_RU.md",
+      "bytes": 3143,
+      "sha256": "db63673abb6a8a987ca777e9863cb0acb486756f2155e783e8179565b8e6c5bd"
+    },
+    {
+      "archive": "UNO_F_MEMORY_003.zip",
+      "archive_sha256": "b39471db11a47b4ea428b930213ade12cd23f2b21478e764d12dc185e3540fdf",
+      "zip_member": "UNO_F_MEMORY_003/SHA256SUMS.txt",
+      "path": "UNO_F_MEMORY_003/UNO_F_MEMORY_003/SHA256SUMS.txt",
+      "bytes": 587,
+      "sha256": "e0acd2180f72339b556c742ca1c9d8bfff0a984a70daf18b1423e75eb25aac69"
+    },
+    {
+      "archive": "UNO_F_PILOT_001.zip",
+      "archive_sha256": "3d1daee647530a920363358c595622ce3092afe41407339c31a4aa856aaabd96",
+      "zip_member": "UNO_F_PILOT_001/uno_f_pilot.py",
+      "path": "UNO_F_PILOT_001/UNO_F_PILOT_001/uno_f_pilot.py",
+      "bytes": 14037,
+      "sha256": "d290ff97eb9c58fd609d97a3c74c2a06c2b5fc0a561a3c9489776e9f8913046a"
+    },
+    {
+      "archive": "UNO_F_PILOT_001.zip",
+      "archive_sha256": "3d1daee647530a920363358c595622ce3092afe41407339c31a4aa856aaabd96",
+      "zip_member": "UNO_F_PILOT_001/cpu_trial/metrics.json",
+      "path": "UNO_F_PILOT_001/UNO_F_PILOT_001/cpu_trial/metrics.json",
+      "bytes": 2614,
+      "sha256": "780159e19ce2930b6a811fb2f7dd12f57efc4f370d61984cf31b489b49e89fd7"
+    },
+    {
+      "archive": "UNO_F_PILOT_001.zip",
+      "archive_sha256": "3d1daee647530a920363358c595622ce3092afe41407339c31a4aa856aaabd96",
+      "zip_member": "UNO_F_PILOT_001/cpu_trial/SHA256SUMS.txt",
+      "path": "UNO_F_PILOT_001/UNO_F_PILOT_001/cpu_trial/SHA256SUMS.txt",
+      "bytes": 91,
+      "sha256": "3f382129917ed8d853bee2b416f891d17b58174ecaabb19106cd0f92d4ba67ae"
+    },
+    {
+      "archive": "UNO_F_PILOT_001.zip",
+      "archive_sha256": "3d1daee647530a920363358c595622ce3092afe41407339c31a4aa856aaabd96",
+      "zip_member": "UNO_F_PILOT_001/cpu_trial/config.json",
+      "path": "UNO_F_PILOT_001/UNO_F_PILOT_001/cpu_trial/config.json",
+      "bytes": 393,
+      "sha256": "872c82619282fddcc0d57162e41b684f42d5b96f1d3e28792bb063961df6565e"
+    },
+    {
+      "archive": "UNO_F_PILOT_001.zip",
+      "archive_sha256": "3d1daee647530a920363358c595622ce3092afe41407339c31a4aa856aaabd96",
+      "zip_member": "UNO_F_PILOT_001/test_uno_f.py",
+      "path": "UNO_F_PILOT_001/UNO_F_PILOT_001/test_uno_f.py",
+      "bytes": 3475,
+      "sha256": "e363b7cc7b8ea2e6f441f5d1e6fa326e37ba1bfe149dc4e6b347224dab69510a"
+    },
+    {
+      "archive": "UNO_F_PILOT_001.zip",
+      "archive_sha256": "3d1daee647530a920363358c595622ce3092afe41407339c31a4aa856aaabd96",
+      "zip_member": "UNO_F_PILOT_001/verify_weights.py",
+      "path": "UNO_F_PILOT_001/UNO_F_PILOT_001/verify_weights.py",
+      "bytes": 1179,
+      "sha256": "8a91c89ac34a3796a8f82a0d4bdf6bb32bb72ff57ff494e900ff561d495e5c01"
+    },
+    {
+      "archive": "UNO_F_PILOT_001.zip",
+      "archive_sha256": "3d1daee647530a920363358c595622ce3092afe41407339c31a4aa856aaabd96",
+      "zip_member": "UNO_F_PILOT_001/README_RU.md",
+      "path": "UNO_F_PILOT_001/UNO_F_PILOT_001/README_RU.md",
+      "bytes": 5915,
+      "sha256": "5079abd8060d26b2c5d58a2957eb7bc9c9b21ab58b5820fad9ff81cc88dcb566"
+    },
+    {
+      "archive": "UNO_F_PILOT_001.zip",
+      "archive_sha256": "3d1daee647530a920363358c595622ce3092afe41407339c31a4aa856aaabd96",
+      "zip_member": "UNO_F_PILOT_001/run_windows.ps1",
+      "path": "UNO_F_PILOT_001/UNO_F_PILOT_001/run_windows.ps1",
+      "bytes": 629,
+      "sha256": "b61973c3323d6fcf6c130d3e4dfeae0ced6032c28ceeab24a52014dcd03b9919"
+    },
+    {
+      "archive": "UNO_F_WORKING_MEMORY_004.zip",
+      "archive_sha256": "d7a36551f23ce814ac5d7ccdd9acc96b7ca68b1123f4beda9b4ec1580a3aa47d",
+      "zip_member": "UNO_F_WORKING_MEMORY_004/README_RU.md",
+      "path": "UNO_F_WORKING_MEMORY_004/UNO_F_WORKING_MEMORY_004/README_RU.md",
+      "bytes": 8435,
+      "sha256": "e635fb083d9637cd8b8d9fd34a1da06348fa2dad4bbdb935bde0e9e209904277"
+    },
+    {
+      "archive": "UNO_F_WORKING_MEMORY_004.zip",
+      "archive_sha256": "d7a36551f23ce814ac5d7ccdd9acc96b7ca68b1123f4beda9b4ec1580a3aa47d",
+      "zip_member": "UNO_F_WORKING_MEMORY_004/START_004.cmd",
+      "path": "UNO_F_WORKING_MEMORY_004/UNO_F_WORKING_MEMORY_004/START_004.cmd",
+      "bytes": 820,
+      "sha256": "b93f78f6a526955593036f3d8ab53d9a9ae6a8ef717e8141f507b6f8058c4f57"
+    },
+    {
+      "archive": "UNO_F_WORKING_MEMORY_004.zip",
+      "archive_sha256": "d7a36551f23ce814ac5d7ccdd9acc96b7ca68b1123f4beda9b4ec1580a3aa47d",
+      "zip_member": "UNO_F_WORKING_MEMORY_004/RESUME_004.cmd",
+      "path": "UNO_F_WORKING_MEMORY_004/UNO_F_WORKING_MEMORY_004/RESUME_004.cmd",
+      "bytes": 618,
+      "sha256": "cd07d4b7c51767acdc7d191cd54088559a3a5571b686f039f1c41b38e574704d"
+    },
+    {
+      "archive": "UNO_F_WORKING_MEMORY_004.zip",
+      "archive_sha256": "d7a36551f23ce814ac5d7ccdd9acc96b7ca68b1123f4beda9b4ec1580a3aa47d",
+      "zip_member": "UNO_F_WORKING_MEMORY_004/TEST_CPU_004.cmd",
+      "path": "UNO_F_WORKING_MEMORY_004/UNO_F_WORKING_MEMORY_004/TEST_CPU_004.cmd",
+      "bytes": 280,
+      "sha256": "db1943d68514a93ec59a9c50ab40e9434022c123294b6d07f2874eb86a17db09"
+    },
+    {
+      "archive": "UNO_F_WORKING_MEMORY_004.zip",
+      "archive_sha256": "d7a36551f23ce814ac5d7ccdd9acc96b7ca68b1123f4beda9b4ec1580a3aa47d",
+      "zip_member": "UNO_F_WORKING_MEMORY_004/uno_working_memory.py",
+      "path": "UNO_F_WORKING_MEMORY_004/UNO_F_WORKING_MEMORY_004/uno_working_memory.py",
+      "bytes": 20615,
+      "sha256": "cb40043d91facb622736525bc5753ddc86a6d5fb5cae678aca4c44a792edd4f1"
+    },
+    {
+      "archive": "UNO_F_WORKING_MEMORY_004.zip",
+      "archive_sha256": "d7a36551f23ce814ac5d7ccdd9acc96b7ca68b1123f4beda9b4ec1580a3aa47d",
+      "zip_member": "UNO_F_WORKING_MEMORY_004/uno_f_pilot.py",
+      "path": "UNO_F_WORKING_MEMORY_004/UNO_F_WORKING_MEMORY_004/uno_f_pilot.py",
+      "bytes": 14037,
+      "sha256": "d290ff97eb9c58fd609d97a3c74c2a06c2b5fc0a561a3c9489776e9f8913046a"
+    },
+    {
+      "archive": "UNO_F_WORKING_MEMORY_004.zip",
+      "archive_sha256": "d7a36551f23ce814ac5d7ccdd9acc96b7ca68b1123f4beda9b4ec1580a3aa47d",
+      "zip_member": "UNO_F_WORKING_MEMORY_004/uno_gpu_safe.py",
+      "path": "UNO_F_WORKING_MEMORY_004/UNO_F_WORKING_MEMORY_004/uno_gpu_safe.py",
+      "bytes": 22351,
+      "sha256": "2f4e9d95ad5c9bf0ff699fc5dbacd1b55d506efc40b74063e2cd60f277f6f952"
+    },
+    {
+      "archive": "UNO_F_WORKING_MEMORY_004.zip",
+      "archive_sha256": "d7a36551f23ce814ac5d7ccdd9acc96b7ca68b1123f4beda9b4ec1580a3aa47d",
+      "zip_member": "UNO_F_WORKING_MEMORY_004/test_working_memory_004.py",
+      "path": "UNO_F_WORKING_MEMORY_004/UNO_F_WORKING_MEMORY_004/test_working_memory_004.py",
+      "bytes": 5995,
+      "sha256": "12fc00334fd27f19cc4c5b96eeb0abc116d52b4db9c9ff10b83ed19efd55d362"
+    },
+    {
+      "archive": "UNO_F_WORKING_MEMORY_004.zip",
+      "archive_sha256": "d7a36551f23ce814ac5d7ccdd9acc96b7ca68b1123f4beda9b4ec1580a3aa47d",
+      "zip_member": "UNO_F_WORKING_MEMORY_004/SHA256SUMS.txt",
+      "path": "UNO_F_WORKING_MEMORY_004/UNO_F_WORKING_MEMORY_004/SHA256SUMS.txt",
+      "bytes": 667,
+      "sha256": "a47e849fcb0fb57af69813f1b257ee67269eda80db5ed39d091697aed6fd24f7"
+    },
+    {
+      "archive": "UNO_GPU_SAFE_002.zip",
+      "archive_sha256": "b4f45047c3485b9cc7978567983348043caeedc9782db12cb5bf53c7742f6033",
+      "zip_member": "UNO_GPU_SAFE_002/uno_f_pilot.py",
+      "path": "UNO_GPU_SAFE_002/UNO_GPU_SAFE_002/uno_f_pilot.py",
+      "bytes": 14037,
+      "sha256": "d290ff97eb9c58fd609d97a3c74c2a06c2b5fc0a561a3c9489776e9f8913046a"
+    },
+    {
+      "archive": "UNO_GPU_SAFE_002.zip",
+      "archive_sha256": "b4f45047c3485b9cc7978567983348043caeedc9782db12cb5bf53c7742f6033",
+      "zip_member": "UNO_GPU_SAFE_002/uno_gpu_safe.py",
+      "path": "UNO_GPU_SAFE_002/UNO_GPU_SAFE_002/uno_gpu_safe.py",
+      "bytes": 22351,
+      "sha256": "2f4e9d95ad5c9bf0ff699fc5dbacd1b55d506efc40b74063e2cd60f277f6f952"
+    },
+    {
+      "archive": "UNO_GPU_SAFE_002.zip",
+      "archive_sha256": "b4f45047c3485b9cc7978567983348043caeedc9782db12cb5bf53c7742f6033",
+      "zip_member": "UNO_GPU_SAFE_002/test_uno_f.py",
+      "path": "UNO_GPU_SAFE_002/UNO_GPU_SAFE_002/test_uno_f.py",
+      "bytes": 3475,
+      "sha256": "e363b7cc7b8ea2e6f441f5d1e6fa326e37ba1bfe149dc4e6b347224dab69510a"
+    },
+    {
+      "archive": "UNO_GPU_SAFE_002.zip",
+      "archive_sha256": "b4f45047c3485b9cc7978567983348043caeedc9782db12cb5bf53c7742f6033",
+      "zip_member": "UNO_GPU_SAFE_002/test_gpu_safe.py",
+      "path": "UNO_GPU_SAFE_002/UNO_GPU_SAFE_002/test_gpu_safe.py",
+      "bytes": 4704,
+      "sha256": "e09c61a47ec5a12abc99212356231801462210b6dbd812997a210b095fcc58e3"
+    },
+    {
+      "archive": "UNO_GPU_SAFE_002.zip",
+      "archive_sha256": "b4f45047c3485b9cc7978567983348043caeedc9782db12cb5bf53c7742f6033",
+      "zip_member": "UNO_GPU_SAFE_002/README_RU.md",
+      "path": "UNO_GPU_SAFE_002/UNO_GPU_SAFE_002/README_RU.md",
+      "bytes": 8856,
+      "sha256": "74c6cb6f1ccd1b4963395865b6ccca1835d44c5720b8661aacf814de30b54f25"
+    },
+    {
+      "archive": "UNO_GPU_SAFE_002.zip",
+      "archive_sha256": "b4f45047c3485b9cc7978567983348043caeedc9782db12cb5bf53c7742f6033",
+      "zip_member": "UNO_GPU_SAFE_002/START_SAFE_FP32.cmd",
+      "path": "UNO_GPU_SAFE_002/UNO_GPU_SAFE_002/START_SAFE_FP32.cmd",
+      "bytes": 1005,
+      "sha256": "0e8f89a584ce5e84b73f82be3015aee2f1122e61ddc3dd3f8834a6b9edbd35ff"
+    },
+    {
+      "archive": "UNO_GPU_SAFE_002.zip",
+      "archive_sha256": "b4f45047c3485b9cc7978567983348043caeedc9782db12cb5bf53c7742f6033",
+      "zip_member": "UNO_GPU_SAFE_002/VERIFY_LOCAL_HASHES.ps1",
+      "path": "UNO_GPU_SAFE_002/UNO_GPU_SAFE_002/VERIFY_LOCAL_HASHES.ps1",
+      "bytes": 561,
+      "sha256": "39f4a146f6bb57c72e7cbe34fdd8999fecfcfcdb7e33a62981b69f592130abe3"
+    },
+    {
+      "archive": "UNO_GPU_SAFE_002.zip",
+      "archive_sha256": "b4f45047c3485b9cc7978567983348043caeedc9782db12cb5bf53c7742f6033",
+      "zip_member": "UNO_GPU_SAFE_002/SHA256SUMS.txt",
+      "path": "UNO_GPU_SAFE_002/UNO_GPU_SAFE_002/SHA256SUMS.txt",
+      "bytes": 581,
+      "sha256": "29ba5b72fd75503db8f8ad5cf4ffcfb29dac35c80cfce5988c3bf6f8f5353a10"
+    },
+    {
+      "archive": "UNO_TRAIN001_RESULTS_20261115.zip",
+      "archive_sha256": "6f39bf1b5a96cfb7a18d48c5c2deb13e3f78c6f5ee18c80502d934998318dcdc",
+      "zip_member": "rtx_run/manifest.json",
+      "path": "UNO_TRAIN001_RESULTS_20261115/rtx_run/manifest.json",
+      "bytes": 851,
+      "sha256": "ad7fbfc33574032ebd12fa007aa9c6926a0d366beacdb14d53c07838ccb9ce0e"
+    },
+    {
+      "archive": "UNO_TRAIN001_RESULTS_20261115.zip",
+      "archive_sha256": "6f39bf1b5a96cfb7a18d48c5c2deb13e3f78c6f5ee18c80502d934998318dcdc",
+      "zip_member": "rtx_run/test-selected.json",
+      "path": "UNO_TRAIN001_RESULTS_20261115/rtx_run/test-selected.json",
+      "bytes": 96,
+      "sha256": "bb14eb57fe48b23e5a806c62009fd013678ddb1d6f973fdb2b9106b0d2a61498"
+    },
+    {
+      "archive": "UNO_TRAIN001_RESULTS_20261115.zip",
+      "archive_sha256": "6f39bf1b5a96cfb7a18d48c5c2deb13e3f78c6f5ee18c80502d934998318dcdc",
+      "zip_member": "rtx_run/test.json",
+      "path": "UNO_TRAIN001_RESULTS_20261115/rtx_run/test.json",
+      "bytes": 6062,
+      "sha256": "1f70116288601fd239eb6f54fab38d94b34ae3e933185f8184ab8bbb595d35cc"
+    },
+    {
+      "archive": "UNO_TRAIN001_RESULTS_20261115.zip",
+      "archive_sha256": "6f39bf1b5a96cfb7a18d48c5c2deb13e3f78c6f5ee18c80502d934998318dcdc",
+      "zip_member": "rtx_run/training.json",
+      "path": "UNO_TRAIN001_RESULTS_20261115/rtx_run/training.json",
+      "bytes": 73286,
+      "sha256": "93ab5133a090705186353b11ae2726058e21fd429a80c82186c5a4462cc89cc3"
+    }
+  ]
+}
