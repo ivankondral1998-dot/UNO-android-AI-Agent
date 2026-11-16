@@ -1,5 +1,7 @@
 # UNO F/S4 research: entry point for agents (16.11.2026)
 
+**Сводная карта работы и результатов для новых агентов:** [AGENT_RESEARCH_HANDOFF_20261116.md](AGENT_RESEARCH_HANDOFF_20261116.md). Машинный JSON-аудит ZIP: [audit_research_artifacts.py](audit_research_artifacts.py). Это дополнения к существующим первоисточникам, не отдельные правила.
+
 **Scope:** read-only navigation, evidence and backup status, NOT new agent authority. The only current agent rules are **main/AGENTS.md**. Work in the pre-existing `research/uno-train-001-s4-20261115` branch for the F/S4/TRAIN line; inspect live HEAD first. Do not create branches, delete or overwrite original evidence, merge into main, or start Actions without applicable owner approval.
 
 ## Reading order and result provenance
