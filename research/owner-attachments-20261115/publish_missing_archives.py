@@ -17,6 +17,14 @@ BRANCH = "research/uno-train-001-s4-20261115"
 ROOT = "research/owner-attachments-20261115"
 DEST = ROOT + "/original-zips"
 
+# Owner scope, 2026-11-16: preserve the research, not duplicate recoverable ZIPs.
+# These originals must stay available at their existing locations; no deletion.
+EXCLUDED_OR_RESTORABLE = {
+    "uno_ladder_005b_gpu.zip": "owner excluded the 252 MB archive",
+    "UNO_S4_WM_007.zip": "byte-exact original restored from tracked .parts",
+    "UNO_CODEX_TRAIN001_HANDOFF_20261115.zip": "byte-exact original restored from tracked .parts",
+}
+
 
 def git(repo, *args):
     return subprocess.run(["git", "-C", str(repo), *args], check=True,
@@ -55,6 +63,9 @@ def main():
     for r in rows(base / "ARTIFACTS.tsv"):
         if r["git_path"] == "-":
             name = r["filename"]
+            if name in EXCLUDED_OR_RESTORABLE:
+                print("SKIP:", name, "-", EXCLUDED_OR_RESTORABLE[name])
+                continue
             missing.append((a.source / name, DEST + "/" + name,
                             int(r["bytes"]), r["sha256"], int(r["zip_entries"])))
     for r in rows(base / "EXTRA_VERSIONS.tsv"):
@@ -62,6 +73,17 @@ def main():
             name = r["original_name"]
             missing.append((a.early_source / name, DEST + "/early-v1/" + name,
                             int(r["bytes"]), r["sha256"], int(r["zip_entries"])))
+    # Refuse unreviewed additions to the archive list, rather than silently
+    # expanding the transfer scope when an inventory changes.
+    expected = {
+        "UNO_005B_FINAL_WEIGHTS_AND_RESULTS_20261115.zip",
+        "UNO_CODEX_TRAIN001_HANDOFF_20261115(1).zip",
+        "early-v1/UNO_F_DIAG_FIX_005.zip",
+        "early-v1/UNO_F_LADDER_005_SAFE.zip",
+    }
+    selected = {rel.removeprefix(DEST + "/") for _, rel, *_ in missing}
+    if selected != expected:
+        raise ValueError(f"Archive scope changed; refuse transfer: {selected ^ expected}")
     if len({x[1] for x in missing}) != len(missing):
         raise ValueError("Duplicate destination")
     # Check all source bytes and all destinations before any mutation.
