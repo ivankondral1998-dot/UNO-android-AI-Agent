@@ -4,6 +4,15 @@
 
 **Scope:** read-only navigation, evidence and backup status, NOT new agent authority. The only current agent rules are **main/AGENTS.md**. Work in the pre-existing `research/uno-train-001-s4-20261115` branch for the F/S4/TRAIN line; inspect live HEAD first. Do not create branches, delete or overwrite original evidence, merge into main, or start Actions without applicable owner approval.
 
+
+## Обновление объёма резервирования по указанию владельца, 16.11.2026
+
+**НЕ загружать большой `uno_ladder_005b_gpu.zip` (252 МБ) только ради коллекции материалов.** Для ознакомления агентам доступны все 48 его программных файлов через восемь уже сохранённых малых ZIP (подробное совпадение: `005B_SPLIT_RESULT_20261116.md`). Не следует требовать этот большой архив как условие начала дальнейшего исследования. Но 47 старых промежуточных optimizer checkpoints из него удалённо не восстановимы: честно сохранить статус `NOT_IN_GIT`.
+
+**Сначала изучить результаты:** [EXPERIMENT_RESULTS_MATRIX.md](EXPERIMENT_RESULTS_MATRIX.md) с точными сравнительными таблицами 005B / 007 / TRAIN-001 / TRAIN-002. Для восстановления читаемых файлов и тестов из девяти существующих Git ZIP использовать [extract_research_sources.py](extract_research_sources.py), без дублирующего хранения сотен мегабайт. Это восстановление исходников, не новые испытания.
+
+Остальные отсутствующие материалы 007/финальные веса/Windows handoff нельзя автоматически объявить сохранёнными: прежний реестр `ARTIFACTS.tsv` продолжает отражать фактическое наличие самостоятельных ZIP, а научный доступ к исходникам и полнота backup оригиналов — разные требования.
+
 ## Reading order and result provenance
 
 | Stage | Where to read / original artifact | Verified scope, not an inferred outcome |
