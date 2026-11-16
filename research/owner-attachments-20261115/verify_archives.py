@@ -3,12 +3,15 @@
 
 Exit 0: all available local inputs and declared stored Git paths match;
         pending Git uploads are reported, not treated as backups.
+When --repo is set, exact ZIPs split into tracked .parts are reconstructed
+cryptographically in memory and counted as recoverable, not missing.
 Exit 1: missing input/hash/CRC mismatch; exit 2: --require-all-git pending.
 Does not extract ZIPs, contact GitHub, write files or launch training.
 """
 import argparse
 import csv
 import hashlib
+import json
 import sys
 import zipfile
 from pathlib import Path, PurePosixPath
@@ -44,6 +47,52 @@ def check_zip(path, expected):
             raise ValueError(f"ZIP_CRC {bad}")
 
 
+
+
+def verify_parts(repo, name, expected_bytes, expected_sha256):
+    """Prove that split Git checkout parts reconstruct the exact original ZIP."""
+    root = repo / 'research/owner-attachments-20261115/original-zips' / (name + '.parts')
+    manifest_path = root / 'manifest.json'
+    if not manifest_path.is_file():
+        return False
+    manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+    if (manifest.get('original_filename') != name or
+            manifest.get('bytes') != expected_bytes or
+            manifest.get('sha256') != expected_sha256):
+        raise ValueError('SPLIT_MANIFEST_IDENTITY_MISMATCH')
+    parts = manifest.get('parts')
+    if not isinstance(parts, list) or not parts:
+        raise ValueError('EMPTY_SPLIT_PARTS')
+    full = hashlib.sha256()
+    total = 0
+    seen = set()
+    for entry in parts:
+        filename = entry.get('file')
+        if (not isinstance(filename, str) or
+                Path(filename).name != filename or filename in seen):
+            raise ValueError('UNSAFE_OR_DUPLICATE_SPLIT_PART_NAME')
+        seen.add(filename)
+        path = root / filename
+        if path.is_symlink() or not path.is_file():
+            raise ValueError('SPLIT_PART_MISSING_OR_SYMLINK')
+        size = path.stat().st_size
+        if size != entry['bytes']:
+            raise ValueError('SPLIT_PART_SIZE_MISMATCH')
+        part_hash = hashlib.sha256()
+        blob_hash = hashlib.sha1(f'blob {size}\0'.encode())
+        with path.open('rb') as fh:
+            for chunk in iter(lambda: fh.read(1024 * 1024), b''):
+                part_hash.update(chunk)
+                blob_hash.update(chunk)
+                full.update(chunk)
+        if (part_hash.hexdigest() != entry['sha256'] or
+                blob_hash.hexdigest() != entry['git_sha1']):
+            raise ValueError('SPLIT_PART_HASH_MISMATCH')
+        total += size
+    if total != expected_bytes or full.hexdigest() != expected_sha256:
+        raise ValueError('SPLIT_RESTORED_BYTES_MISMATCH')
+    return True
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path, required=True, help='directory of original user ZIPs')
@@ -53,6 +102,7 @@ def main():
     args = parser.parse_args()
     failures = []
     pending = []
+    split_verified = []
     seen = set()
     with args.manifest.open(encoding='utf-8', newline='') as fh:
         records = list(csv.DictReader(fh, delimiter='\t'))
@@ -74,8 +124,15 @@ def main():
             failures.append(f"LOCAL_FAIL {name}: {exc}")
         git_path = row['git_path']
         if git_path == '-':
-            pending.append(name)
-            print(f"GIT_PENDING {name}")
+            try:
+                if args.repo is not None and verify_parts(args.repo, name, int(row['bytes']), row['sha256']):
+                    split_verified.append(name)
+                    print(f"REPO_SPLIT_OK {name}")
+                else:
+                    pending.append(name)
+                    print(f"GIT_PENDING {name}")
+            except (OSError, ValueError, TypeError, KeyError) as exc:
+                failures.append(f"REPO_SPLIT_FAIL {name}: {exc}")
         elif args.repo is not None:
             remote = args.repo / git_path
             try:
@@ -86,7 +143,8 @@ def main():
                 print(f"REPO_OK {name}")
             except (OSError, ValueError) as exc:
                 failures.append(f"REPO_FAIL {name}: {exc}")
-    print(f"SUMMARY total={len(records)} git_declared={len(records)-len(pending)} git_pending={len(pending)} failures={len(failures)}")
+    direct = sum(row['git_path'] != '-' for row in records)
+    print(f"SUMMARY total={len(records)} git_direct_declared={direct} repo_split_verified={len(split_verified)} git_pending={len(pending)} failures={len(failures)}")
     for failure in failures:
         print(failure, file=sys.stderr)
     if failures:
