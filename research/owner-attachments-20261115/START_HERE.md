@@ -11,7 +11,7 @@
 
 **Сначала изучить результаты:** [EXPERIMENT_RESULTS_MATRIX.md](EXPERIMENT_RESULTS_MATRIX.md) с точными сравнительными таблицами 005B / 007 / TRAIN-001 / TRAIN-002. Теперь в Git побайтно проверены **[005B SUMМARY + 30 исходных JSON](results-005b/)** и **[007 README, исходник, тесты, CPU-метрики, управляющие тексты](study-007/)**; исходные ZIP с бинарными промежуточными состояниями остаются отдельно учтёнными. Для восстановления читаемых файлов и тестов из девяти существующих Git ZIP использовать [extract_research_sources.py](extract_research_sources.py), без дублирующего хранения сотен мегабайт. Это восстановление исходников, не новые испытания.
 
-Остальные отсутствующие материалы 007/финальные веса/Windows handoff нельзя автоматически объявить сохранёнными: прежний реестр `ARTIFACTS.tsv` продолжает отражать фактическое наличие самостоятельных ZIP, а научный доступ к исходникам и полнота backup оригиналов — разные требования.
+Оригиналы `UNO_S4_WM_007.zip` и `UNO_CODEX_TRAIN001_HANDOFF_20261115.zip` теперь **побайтно восстанавливаются из Git** через `original-zips/<имя>.parts/` и `restore_split_zip.py`: SHA-256 каждой части, Git blob SHA-1 и итоговые SHA-256 сверены с пользовательскими оригиналами. Эти два ZIP **не лежат отдельными Git-файлами**, но их исходные байты сохранены. Компактные финальные веса 005B и отдельный Windows-ready handoff (37,8 МБ) остаются не подтверждены в Git. Полнота архивирования ZIP и доступность материалов исследований — разные показатели.
 
 **Машинный каталог 70 исходных текстов из девяти сохранённых ZIP:** [EXTRACTED_TEXTS_MANIFEST.json](EXTRACTED_TEXTS_MANIFEST.json) (побайтные SHA-256, исходный ZIP и путь внутри). [extract_research_sources.py](extract_research_sources.py) опубликован в точности той же версией, которая локально восстановила 70 файлов из 9 архивов; Git blob SHA-1 исходного проверенного скрипта `4043c0c2bb730fe9bb831badfaf6d24d2ae3fcfe`. Сравнение сохранённых текстов/хешей не равно новому запуску моделей.
 
@@ -27,15 +27,15 @@
 | 005 Ladder | `original-zips/UNO_F_LADDER_005.zip`, `UNO_F_LADDER_005_SAFE.zip`, `UNO_F_LADDER_005B.zip` | Synthetic ladder/GRU comparisons; study limitations in the ZIPs |
 | 005B GPU full | `uno_ladder_005b_gpu.zip` (**NOT GIT-PRESERVED**), `UNO_005B_FINAL_WEIGHTS_AND_RESULTS_20261115.zip` (**NOT GIT-PRESERVED**) | Full and compact GPU research archives are distinct; compact is NOT an exact substitute for all optimizer checkpoints |
 | 006 cause | `UNO_F_CAUSE_006.py`, `UNO_F_CAUSE_006_REPORT.txt` in this directory | User supplied CPU diagnostic, not a learned S4 breakthrough |
-| 007 S4 WM | `UNO_S4_WM_007.zip` (**NOT GIT-PRESERVED**) | Earlier prototype; do not mislabel hand-assigned routing as learned Wk/Wv |
+| 007 S4 WM | `study-007/` и `original-zips/UNO_S4_WM_007.zip.parts/` (**EXACT RESTORABLE**) | Original code/tests/CPU result, exact source ZIP recoverable from Git parts; fixed-address prototype, not trained Wk/Wv |
 | TRAIN-001 | `../train001/RESULT.md`, `../train001/CONTINUATION_RESULT.md`, `../train001/README_RTX.md`, `original-zips/UNO_TRAIN001_RESULTS_20261115.zip` | Original RTX result: full 253/320 vs inference memory_off 148/320; **NOT** fair retrained F-only baseline |
 | TRAIN-002 | `../train002/RESULT.md`, `../train002/MATH.md`, `../train002/evidence/`, `../train002/delivery/UNO_TRAIN002_RTX_20261115.zip` | Reproduced TRAIN-001 on CPU; 30 incompatible auxiliary targets; order partly decodable. Chronology and 27-run matrix PREPARED; GPU/Windows/quality tests NOT DONE |
 
-Historic training package `UNO_CODEX_TRAIN001_HANDOFF_20261115.zip` and Windows-ready `UNO_CODEX_TRAIN001_HANDOFF_20261115(1).zip` are additionally **NOT GIT-PRESERVED**. User-supplied original `CODEX_TRAIN001_TASK_20261115.txt` is preserved here, not test evidence.
+Historic `UNO_CODEX_TRAIN001_HANDOFF_20261115.zip` is **EXACT RESTORABLE from Git parts** in `original-zips/`; Windows-ready `UNO_CODEX_TRAIN001_HANDOFF_20261115(1).zip` is **NOT GIT-PRESERVED**. User-supplied original `CODEX_TRAIN001_TASK_20261115.txt` is preserved here, not test evidence.
 
 ## Backup truth and machine check
 
-The only machine-readable inventory for these **14 latest-file-name ZIP entries** is [ARTIFACTS.tsv](ARTIFACTS.tsv). Each row records original bytes, SHA-256, Git blob SHA-1, ZIP entry count and exact Git path (or `-` if pending). **9/14 latest-file-name matching Git blobs were verified** against source bytes; **5/14 are pending as original ZIPs**. This is a raw-ZIP archival statistic, NOT a measure of research-source coverage. The source ZIPs passed complete CRC checks (14/14). The separate TRAIN-002 delivery ZIP exists in `../train002/delivery/` and is **not** one of these fourteen originals.
+The only machine-readable inventory for these **14 latest-file-name ZIP entries** is [ARTIFACTS.tsv](ARTIFACTS.tsv). Each row records original bytes, SHA-256, Git blob SHA-1, ZIP entry count and exact Git path (or `-` if pending). **9/14 original ZIPs are single matching Git blobs, and 2 further ZIPs are exactly recoverable from tracked parts** when a checked-out branch is verified. **3/14 are not confirmed recoverable as original bytes** (including the intentionally excluded 252-MB archive). This is a raw-ZIP archival statistic, NOT a measure of research-source coverage. The source ZIPs passed complete CRC checks (14/14). The separate TRAIN-002 delivery ZIP exists in `../train002/delivery/` and is **not** one of these fourteen originals.
 
 Run against locally available original ZIPs:
 
@@ -43,7 +43,7 @@ Run against locally available original ZIPs:
 python3 research/owner-attachments-20261115/verify_archives.py --source /path/to/original-zips
 # If the current research branch is checked out with original blobs:
 python3 research/owner-attachments-20261115/verify_archives.py --source /path/to/original-zips --repo /path/to/UNO-checkout
-# Explicit archival-completeness gate (expected exit code 2 until all five are uploaded):
+# Optional whole-original-archive gate (not required for the owner's research-usability goal):
 python3 research/owner-attachments-20261115/verify_archives.py --source /path/to/original-zips --require-all-git
 ```
 
