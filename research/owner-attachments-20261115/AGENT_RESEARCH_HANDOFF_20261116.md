@@ -19,9 +19,9 @@
 | PILOT-001 | `original-zips/UNO_F_PILOT_001.zip` | Ранний F-пилот и результаты | Готовность Android UNO |
 | GPU SAFE-002 | `original-zips/UNO_GPU_SAFE_002.zip` | Защитные проверки | Эффективность нового обучения |
 | MEMORY-003 / WM-004 | соответствующие `original-zips/` | Ранние механизмы памяти | Обобщение на большие задачи |
-| DIAG-005 / LADDER-005/005B | `original-zips/`, отчёты 005B | Синтетические диагностики и контроль GRU | Доказанное превосходство F |
+| DIAG-005 / LADDER-005/005B | `original-zips/`, **`results-005b/`** (30 оригинальных JSON+SUMMARY) | Синтетические диагностики и контроль GRU | Доказанное превосходство F |
 | CAUSE-006 | `UNO_F_CAUSE_006.py` и отчёт | CPU-диагностика | Новое обучение S4 |
-| S4 WM-007 | `UNO_S4_WM_007.zip` — Git pending | Прототип памяти | Обученные адреса Wk/Wv |
+| S4 WM-007 | **`study-007/`**: оригинальные README, Python-код, CPU-тесты, метрики, скрипты в JSON со сверкой SHA; бинарный ZIP — Git pending | Прототип заданного адресного чтения | Обученные Wk/Wv и воспроизводимое RTX-обучение |
 | TRAIN-001 | `../train001/`, оригинальный ZIP результатов | RTX source-reported; CPU-повтор оценки: full 253/320, inference memory_off 148/320 | Сравнение с переобученным F-only/GRU, Android, масштабирование |
 | TRAIN-002 | `../train002/`, delivery ZIP | CPU-аудит: 30 конфликтных auxiliary targets, r5/96 0/16 положительных; подготовлена хронология и 27-run матрица | Новые Windows/CUDA/quality прогоны |
 
