@@ -13,6 +13,8 @@
 
 Остальные отсутствующие материалы 007/финальные веса/Windows handoff нельзя автоматически объявить сохранёнными: прежний реестр `ARTIFACTS.tsv` продолжает отражать фактическое наличие самостоятельных ZIP, а научный доступ к исходникам и полнота backup оригиналов — разные требования.
 
+**Машинный каталог 70 исходных текстов из девяти сохранённых ZIP:** [EXTRACTED_TEXTS_MANIFEST.json](EXTRACTED_TEXTS_MANIFEST.json) (побайтные SHA-256, исходный ZIP и путь внутри). [extract_research_sources.py](extract_research_sources.py) опубликован в точности той же версией, которая локально восстановила 70 файлов из 9 архивов; Git blob SHA-1 исходного проверенного скрипта `4043c0c2bb730fe9bb831badfaf6d24d2ae3fcfe`. Сравнение сохранённых текстов/хешей не равно новому запуску моделей.
+
 ## Reading order and result provenance
 
 | Stage | Where to read / original artifact | Verified scope, not an inferred outcome |
