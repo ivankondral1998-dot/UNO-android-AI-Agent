@@ -24,7 +24,7 @@ Historic training package `UNO_CODEX_TRAIN001_HANDOFF_20261115.zip` and Windows-
 
 ## Backup truth and machine check
 
-The only machine-readable inventory for these **14 latest-file-name ZIP entries** is [ARTIFACTS.tsv](ARTIFACTS.tsv). Each row records original bytes, SHA-256, Git blob SHA-1, ZIP entry count and exact Git path (or `-` if pending). **9/14 latest-file-name matching Git blobs were verified** against source bytes; **5/14 are pending**, not backed up to the Git tree. The source ZIPs passed complete CRC checks (14/14). The separate TRAIN-002 delivery ZIP exists in `../train002/delivery/` and is **not** one of these fourteen originals.
+The only machine-readable inventory for these **14 latest-file-name ZIP entries** is [ARTIFACTS.tsv](ARTIFACTS.tsv). Each row records original bytes, SHA-256, Git blob SHA-1, ZIP entry count and exact Git path (or `-` if pending). **9/14 latest-file-name matching Git blobs were verified** against source bytes; **5/14 are pending as original ZIPs**. This is a raw-ZIP archival statistic, NOT a measure of research-source coverage. The source ZIPs passed complete CRC checks (14/14). The separate TRAIN-002 delivery ZIP exists in `../train002/delivery/` and is **not** one of these fourteen originals.
 
 Run against locally available original ZIPs:
 
@@ -47,7 +47,7 @@ This tool is **read-only** and requires Python standard library only. It detects
 
 ## Next verifiable steps
 
-1. Move the five remaining originals to the **same existing research branch** using binary-capable transport; retain their exact names and SHA-256.
+1. Prioritize research usability: preserve distinct source code, experiment configurations, verified evaluation results, final weights and reproducibility instructions. Full original ZIP byte-for-byte preservation is a separate optional archival goal, not a gate for the owner's requested research handoff. Do not require the 252 MB original or 47 intermediate optimizer checkpoints for agent research use.
 2. Fetch uploaded objects and verify bytes, update `ARTIFACTS.tsv`, run the checker with `--require-all-git`, then revise the archival status. Until then: **PARTIAL BACKUP**.
 3. For experiments, follow TRAIN-002 README: Windows `Run.ps1 Check` on an RTX first; **27 GPU training runs have not been performed**. Do not quietly re-run or change the locked test.
 4. Work-log entry must follow the location and permissions in `main/AGENTS.md` (separate existing branch). This guide is not an alternative canonical log.
