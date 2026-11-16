@@ -1,0 +1,30 @@
+{
+  "original_zip_sha256": "d9ac20652576b788d60cf951e708ad22d7fae00fca35c9c7ae008149cc5bf2d8",
+  "files": [
+    {
+      "path": "START_GPU_007.cmd",
+      "sha256": "9f8d23339419cfc305f887939df3234d7136697d23b6940318f6be2ba6bbd324",
+      "text": "@echo off\nsetlocal\ncd /d \"%~dp0\"\nset \"PY=D:\\OwnNeuralNet\\.venv\\Scripts\\python.exe\"\nset \"OUT=D:\\OwnNeuralNet\\uno_s4_wm_007_gpu\"\nif not exist \"%PY%\" (\n echo ERROR: Python venv missing: %PY%\n goto failed\n)\n\"%PY%\" test_007.py\nif errorlevel 1 goto failed\n\"%PY%\" -u uno_s4_wm_007.py --device cuda --rungs r2_two,r3_three,r4_overwrite --modes no_memory,s4_goal --steps 200 --batch 32 --eval-samples 512 --log-every 25 --save-every 25 --route-loss 0.25 --key-gain 0.99 --max-seconds 600 --max-temp 80 --max-gpu-mib 7000 --output \"%OUT%\"\nif errorlevel 1 goto failed\necho.\necho SUCCESS. Results: %OUT%\npause\nexit /b 0\n:failed\necho.\necho STOPPED OR FAILED. Previous output and checkpoints were not deleted.\necho If there is a checkpoint, use RESUME_GPU_007.cmd.\npause\nexit /b 1\n"
+    },
+    {
+      "path": "RESUME_GPU_007.cmd",
+      "sha256": "9b2d52b8c7e955c36d1b72f01eef90864142e5744a0c6448f446003b1ba7b2ca",
+      "text": "@echo off\nsetlocal\ncd /d \"%~dp0\"\nset \"PY=D:\\OwnNeuralNet\\.venv\\Scripts\\python.exe\"\nset \"OUT=D:\\OwnNeuralNet\\uno_s4_wm_007_gpu\"\nif not exist \"%PY%\" goto failed\nif not exist \"%OUT%\" (\n echo ERROR: No previous output. Use START_GPU_007.cmd instead.\n goto failed\n)\n\"%PY%\" test_007.py\nif errorlevel 1 goto failed\n\"%PY%\" -u uno_s4_wm_007.py --device cuda --rungs r2_two,r3_three,r4_overwrite --modes no_memory,s4_goal --steps 200 --batch 32 --eval-samples 512 --log-every 25 --save-every 25 --route-loss 0.25 --key-gain 0.99 --max-seconds 600 --max-temp 80 --max-gpu-mib 7000 --resume --output \"%OUT%\"\nif errorlevel 1 goto failed\necho.\necho SUCCESS. Results: %OUT%\npause\nexit /b 0\n:failed\necho.\necho STOPPED OR FAILED. Output was not deleted.\npause\nexit /b 1\n"
+    },
+    {
+      "path": "CHECK_CPU_007.cmd",
+      "sha256": "b9069833cd37dd23d8c9967450e817276e79425172f38d4b9af977bae33ff8d0",
+      "text": "@echo off\nsetlocal\ncd /d \"%~dp0\"\nset \"PY=D:\\OwnNeuralNet\\.venv\\Scripts\\python.exe\"\nif not exist \"%PY%\" (\n echo Python not found: %PY%\n pause\n exit /b 1\n)\n\"%PY%\" test_007.py\npause\n"
+    },
+    {
+      "path": "REQUIREMENTS.txt",
+      "sha256": "f12f4a3a575b1800dcefa9993683163e8f945bff5dc3f7a07f576b1c9db4356c",
+      "text": "Requires existing PyTorch installation (owner: torch 2.11.0+cu128).\nNo new pip packages are required.\n"
+    },
+    {
+      "path": "SHA256SUMS.txt",
+      "sha256": "60539c76215790b9cd27e3dcf96868c1577d14c0368113b58fd5061232ae07e5",
+      "text": "d290ff97eb9c58fd609d97a3c74c2a06c2b5fc0a561a3c9489776e9f8913046a  uno_f_pilot.py\naa46b28e9924d3f50b08c53c7d0e3ee53aea024eee08d6b0ac126a80f5f4a584  uno_ladder_005.py\nb0d50bfa270bf7429ff6455c80700e4faa69612a4c7f36656f7fb781c89452f5  uno_s4_wm_007.py\nb4ad0cbe6d1603c9f35269ba23e70eead07707c1aaa2ed9d6581ff3f25fb775f  test_007.py\na2112184069067831eebe3c6e3a47dd9911b23c349c16ce217856b5bc12335ba  seed_F_006_research_only.pt\n9f8d23339419cfc305f887939df3234d7136697d23b6940318f6be2ba6bbd324  START_GPU_007.cmd\n9b2d52b8c7e955c36d1b72f01eef90864142e5744a0c6448f446003b1ba7b2ca  RESUME_GPU_007.cmd\nb9069833cd37dd23d8c9967450e817276e79425172f38d4b9af977bae33ff8d0  CHECK_CPU_007.cmd\n74fc2c888ef0bb14be1271475e68239a00f2cb7d2c94c546eda4c5a3a2e3a028  README_RU.md\nf12f4a3a575b1800dcefa9993683163e8f945bff5dc3f7a07f576b1c9db4356c  REQUIREMENTS.txt\ndbe7a78e59f934a3454aa4d6089e0f3756b6e196ef9cd62b9d1a4fc4fc4d4287  CPU_VERIFIED/RESULTS_SUMMARY.json\n806aae16a4563beccc528620dfe825d30de6a3ce5b309a7cc6684b4cc3eed853  CPU_VERIFIED/r2_two_s4_goal.pt\n58123ff670ce929eb5e2720041ffa7eb17977572885fcc2a186e0e86d90e3882  CPU_VERIFIED/r3_three_s4_goal.pt\nf26ad4ec2dde8e66320cc06d4d92fbf35d1ba48d5f71d226bb226c14f62dba86  CPU_VERIFIED/r4_overwrite_s4_goal.pt\n"
+    }
+  ]
+}
