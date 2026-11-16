@@ -56,8 +56,9 @@ def main():
             for r in csv.DictReader(f,delimiter='\t'):
                 extras.append({'name':r['original_name'],'bytes':int(r['bytes']),'sha256':r['sha256'],'status':r['status'],'source':'NOT_AVAILABLE_BY_FILENAME'})
     pending=sum(x['git']=='PENDING' for x in result)+sum('PENDING' in x['status'] for x in extras)
-    report={'status':'FAIL' if errors else ('PARTIAL_BACKUP' if pending else 'DECLARED_BACKUP'),
-            'originals':result,'historic_versions':extras,'pending_git':pending,'errors':errors,
+    unchecked=sum(x['git']=='DECLARED_UNCHECKED' for x in result)
+    report={'status':'FAIL' if errors else ('PARTIAL_BACKUP' if pending else 'ALL_PATHS_DECLARED_UNVERIFIED'),
+            'originals':result,'historic_versions':extras,'pending_git':pending,'unchecked_git':unchecked,'errors':errors,
             'note':'DECLARED_UNCHECKED is not verified remote storage. Earlier same-name versions need distinct source paths.'}
     print(json.dumps(report,ensure_ascii=False,indent=2))
     return 1 if errors else (2 if a.require_all_git and pending else 0)
