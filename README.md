@@ -2,13 +2,15 @@
 >
 > Public visibility is not an open-source license. See [LICENSE](LICENSE). Statutory, platform and existing third-party license rights are preserved. Official repository changes require owner authorization. This notice does not configure access controls or authorize use contrary to applicable hosting terms.
 
-> **ЕДИНЫЕ ПРАВИЛА UNO (12.11.2026):** действующий `AGENTS.md` только в [`main`](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/main/AGENTS.md). Здесь не создавать вторые правила; любые исторические ссылки и старые разрешения ниже являются контекстом, а не полномочиями. Новые исполнители сначала читают `main/AGENTS.md`.
+> **ЕДИНЫЕ ПРАВИЛА UNO (актуальная редакция в main):** действующий `AGENTS.md` только в [`main`](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/main/AGENTS.md). Здесь не создавать вторые правила; любые исторические ссылки и старые разрешения ниже являются контекстом, а не полномочиями. Новые исполнители сначала читают `main/AGENTS.md`.
+
+> **ТЕКУЩАЯ МАТЕМАТИКА — R5.4 Candidate (решение владельца 24–25.11.2026).** Не утверждена; аудит Astra от 24.11.2026, CONDITIONAL. R5.3 сохраняется как историческая основа. Канонический маршрут к точным архивам, SHA-256, границам и текущей локальной контрольной точке — [AGENTS.md, §5](AGENTS.md#5-математика-и-исследовательские-первоисточники). Не считать выбор кандидата разрешением на обучение, релиз или G4/G5/G6.
 
 > **Текущий журнал и карта:** [фактический журнал работы](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/feat/uno-permanent-full-foundation-20261111/docs/agent-work-log/2026-11-06_chatgpt.md), [инженерная карта и ветки](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/blob/feat/uno-permanent-full-foundation-20261111/docs/ENGINEERING_HANDOFF.md). Приведённые ниже старые ссылки на рабочую ветку и правила относятся к их историческим датам; текущий HEAD перед работой проверять.
 
 > **ДЕЙСТВУЮЩИЕ ПРАВИЛА — 07.11.2026:** [**/AGENTS.md**](AGENTS.md) — единый обязательный источник для всех агентов. **UNO 1.0: полнофункциональный локальный Android ИИ-агент без самообучения и изменения весов при работе.** Память, интеллект, действия, безопасность и независимый readback обязательны. Более ранние описания ниже — исторические. Производственный код разрешён на отдельной feature-ветке; выпуск приложения, обучение весов, GitHub Actions, удаление и публикация требуют отдельного разрешения.
 
-> **РАБОЧАЯ ВЕТКА ДЛЯ КОДА И ИССЛЕДОВАНИЙ:** [feat/uno-production-foundation-20261106](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/tree/feat/uno-production-foundation-20261106). `main` содержит документы входа и историческую основу; новые исследования и код не переносить сюда без отдельного поручения.
+> **ИСТОРИЧЕСКАЯ PRODUCT-ВЕТКА (06.11.2026; актуальные маршруты — AGENTS.md §§6, 10):** [feat/uno-production-foundation-20261106](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/tree/feat/uno-production-foundation-20261106). `main` содержит канонические документы входа; новые исследования и код не переносить сюда без отдельного поручения. Для F/S4 и TRAIN001/002 применяется существующая ветка [research/uno-train-001-s4-20261115](https://github.com/ivankondral1998-dot/UNO-android-AI-Agent/tree/research/uno-train-001-s4-20261115).
 
 ---
 
