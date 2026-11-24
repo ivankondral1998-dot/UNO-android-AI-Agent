@@ -1,3 +1,4 @@
+# Owner-approved scoped SDK verification, 2026-11-25. Research branch only. Do not upload APK, weights, or release artifacts in public repository.
 # Owner approval 2026-11-08: necessary GitHub Actions for this feature-branch Android SDK build.
 # 2026-11-10: one scoped R4 SDK build after local-only owner-update pipeline, no owner signing key in CI.
 # 2026-11-10: rerun exact corrected R4 source after one FAIL in test's public-alias-vs-secret assertion.
@@ -24,12 +25,12 @@
 # This run also verifies the bounded app-private marker and separate descriptor readback.
 # Final current-SHA build additionally includes a distinct read-only reopen button for post-restart checks.
 # Never publishes releases, writes to main, uploads personal data or accesses repository secrets.
-name: UNO feature Android SDK verification (private debug)
+name: UNO R5.4 research Android SDK verification
 
 on:
   push:
     branches:
-      - feat/uno-foundation-hardening-20261107
+      - research/uno-train-001-s4-20261115
     paths:
       - .github/workflows/uno-feature-android-verify.yml
   workflow_dispatch:
@@ -112,14 +113,8 @@ jobs:
             exit 1
           fi
           printf 'SHA=%s\nREF=%s\nRUN_ID=%s\nPACKAGE=%s\nINSTALL_MODE=SIDE_BY_SIDE_NO_UNINSTALL\n' "${GITHUB_SHA}" "${GITHUB_REF_NAME}" "${GITHUB_RUN_ID}" "org.unovyra.uno.scaffold.ci${GITHUB_RUN_ID}" > ci-evidence/BUILD_PROVENANCE.txt
-      - name: Private CI debug evidence ONLY (not an owner update or release)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: uno-ci-only-not-owner-update-${{ github.run_number }}
-          path: |
-            android/app/build/outputs/apk/debug/app-debug.apk
-            android/ci-evidence/*.txt
-            android/app/build/reports/lint-results-debug.html
-          if-no-files-found: warn
-          retention-days: 3
+
+      - name: Record exact source and APK verification in job log (no public APK upload)
+        run: |
+          set -euo pipefail
+          cat ci-evidence/BUILD_PROVENANCE.txt ci-evidence/APK_SHA256SUMS.txt
