@@ -1,4 +1,4 @@
-# Owner-approved scoped SDK verification, 2026-11-25. Research branch only. Do not upload APK, weights, or release artifacts in public repository.
+# Owner-requested test APK delivery, 2026-11-25. One-day CI artifact only; no owner signature, weights or releases.
 # Owner approval 2026-11-08: necessary GitHub Actions for this feature-branch Android SDK build.
 # 2026-11-10: one scoped R4 SDK build after local-only owner-update pipeline, no owner signing key in CI.
 # 2026-11-10: rerun exact corrected R4 source after one FAIL in test's public-alias-vs-secret assertion.
@@ -120,3 +120,16 @@ jobs:
         run: |
           set -euo pipefail
           cat ci-evidence/BUILD_PROVENANCE.txt ci-evidence/APK_SHA256SUMS.txt
+
+      - name: Retain requested isolated debug APK and provenance
+        uses: actions/upload-artifact@v4
+        with:
+          name: uno-r54-test-apk-${{ github.run_id }}
+          path: |
+            android/app/build/outputs/apk/debug/app-debug.apk
+            android/ci-evidence/APK_SHA256SUMS.txt
+            android/ci-evidence/BUILD_PROVENANCE.txt
+            android/ci-evidence/APK_BADGING.txt
+            android/ci-evidence/APK_PERMISSIONS.txt
+          if-no-files-found: error
+          retention-days: 1
