@@ -78,6 +78,7 @@ jobs:
           python3 scripts/test_lab_tools.py
           python3 scripts/test_apk_update_gate.py
           python3 scripts/test_owner_update_build.py
+      # Keep owner signing disabled in CI; verify refusal/path guards, not local signing lifecycle.
       - name: Run all existing Kotlin host checks if standalone compiler is present
         run: |
           set -euo pipefail
