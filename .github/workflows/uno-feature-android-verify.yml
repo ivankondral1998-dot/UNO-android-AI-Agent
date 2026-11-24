@@ -88,6 +88,7 @@ jobs:
           else
             printf '%s\n' 'SKIPPED_STANDALONE_KOTLINC: core Gradle host tests still run in next step.' | tee ci-evidence/HOST_PREFLIGHT.txt
           fi
+      # Verify tests with the actual separate Gradle compilation boundary.
       - name: Run complete Gradle core JVM suite
         run: gradle --no-daemon --stacktrace :core:unoHostTests
       - name: Compile isolated side-by-side Android debug app with SDK 35

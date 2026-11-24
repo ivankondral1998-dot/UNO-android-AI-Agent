@@ -138,7 +138,7 @@ object UnoFReferenceTest {
                 5L, 100L, "reference", 0L)
             check(result.status == FoundationReferenceStatus.NO_PROPOSAL)
             check(!result.verifiedAndroidEffect && native.calls == 0)
-            check(result.untrustedModelState != null && result.untrustedModelState.length == 64)
+            check(requireNotNull(result.untrustedModelState).length == 64)
             check(port.lastTrace?.skippedBlocks == 1 && port.lastTrace?.activeBlocks == 1)
             check(memory.read("reference", "event:1", 1, 4, 6L, 0L).status == ExactStatus.COMPLETE)
             val text = cycle.accept(Percept(PerceptType.TEXT, "Привет".toByteArray(), "LOCAL_UI", 6L),
@@ -352,8 +352,9 @@ object UnoFReferenceTest {
             check(out.selection.steps==2 && out.selection.q==1 && out.selection.counter==7L)
             check(out.selection.stopReason==UnoS6StopReason.HAZARD)
             val fixed=model.forward(input,booleanArrayOf(true,false),2)
-            check(out.output!!.state.contentEquals(fixed.state) && out.output.trace==fixed.trace)
-            check(out.output.trace.aCalls==4 && out.output.trace.cCalls==2 && out.output.trace.bCalls==4)
+            val output = requireNotNull(out.output)
+            check(output.state.contentEquals(fixed.state) && output.trace==fixed.trace)
+            check(output.trace.aCalls==4 && output.trace.cCalls==2 && output.trace.bCalls==4)
         }
         test("s6_v2_budget_forced_stop_before_hazard") {
             val model=UnoFReference(weights())
@@ -365,7 +366,8 @@ object UnoFReferenceTest {
                 logits={_,_->logitsCalls++;doubleArrayOf(0.0,0.0)},hazard={error("forced stop must not draw")})
             check(logitsCalls==1 && out.selection.steps==1 && out.selection.counter==3L)
             check(out.selection.stopReason==UnoS6StopReason.NEXT_STEP_BUDGET)
-            check(out.output!!.trace.aCalls==2 && out.output.trace.cCalls==2 && out.output.trace.bCalls==2)
+            val output = requireNotNull(out.output)
+            check(output.trace.aCalls==2 && output.trace.cCalls==2 && output.trace.bCalls==2)
             val limited=model.forwardAdaptive(event(),UnoS6Budget(163_840,1_310_720,1),0,1,3,
                 logits={_,_->doubleArrayOf(0.0,0.0)},hazard={error("forced limit must not draw")})
             check(limited.selection.stopReason==UnoS6StopReason.STEP_LIMIT)
