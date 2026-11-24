@@ -6,7 +6,10 @@ import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import org.unovyra.uno.core.ExactEntry
 import org.unovyra.uno.core.SemanticRead
-import org.unovyra.uno.core.SemanticStatus
+import org.unovyra.uno.core.S4Access
+import org.unovyra.uno.core.S4Revocation
+import org.unovyra.uno.core.UnoExactMemoryPort
+import org.unovyra.uno.core.UnoMemoryPorts
 import org.unovyra.uno.core.UnoSemanticMemory
 import java.io.File
 import java.io.FileInputStream
@@ -18,35 +21,34 @@ import javax.crypto.SecretKey
  * Summary index beside the exact vault. A missing file is UNKNOWN, not an
  * empty fact. This store does not create vectors and does not open the vault.
  */
-internal class UnoAndroidSemanticMemory(context: Context) {
+internal class UnoAndroidSemanticMemory(context: Context, private val exact: UnoExactMemoryPort) {
     private val file = AtomicFile(File(context.applicationContext.filesDir, "uno_semantic_v1.aes"))
     private val keyAlias = "uno_semantic_aes_v1"
     private val boot = unoDeviceBootIdentifier(context.applicationContext)
     private var cached: UnoSemanticMemory? = null
 
-    fun retrieve(scope: String, query: DoubleArray, k: Int, scanBudget: Int): SemanticRead {
-        if (!file.baseFile.isFile) {
-            check(!File(file.baseFile.path + ".new").isFile) { "SEMANTIC_PARTIAL_UNREADABLE" }
-            return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
-        }
-        return open(createKey = false).retrieve(scope, query, k, scanBudget)
+    // No public raw-index read/write path. Exact authority is mandatory even if
+    // the index is missing or cannot be opened; revoked scopes stay DENIED.
+    private fun ports(createKey: Boolean): UnoMemoryPorts =
+        UnoMemoryPorts(exact, if (createKey) open(true) else try { open(false) } catch (_: Exception) { null })
+
+    fun retrieve(access: S4Access, query: DoubleArray, k: Int): SemanticRead =
+        ports(false).recallSummary(access, query, k)
+
+    fun link(entry: ExactEntry, vector: DoubleArray, access: S4Access) {
+        ports(true).linkSummary(entry, vector, access)
     }
 
-    fun link(entry: ExactEntry, vector: DoubleArray) {
-        open(createKey = true).link(entry, vector)
-    }
+    fun dropScope(scope: String): S4Revocation = ports(false).revoke(scope)
 
-    fun dropScope(scope: String) {
-        open(createKey = true).dropScope(scope)
-    }
-
-    private fun open(createKey: Boolean): UnoSemanticMemory {
+    @Synchronized private fun open(createKey: Boolean): UnoSemanticMemory {
         cached?.let { return it }
         val keystore = KeyStore.getInstance("AndroidKeyStore").apply { load(null) }
         val existing = keystore.getKey(keyAlias, null)
         check(existing == null || existing is SecretKey) { "SEMANTIC_KEY_TYPE_UNSUPPORTED" }
         val base = file.baseFile
-        if (!base.isFile && File(base.path + ".new").isFile) error("SEMANTIC_PARTIAL_UNREADABLE")
+        check(!File(base.path + ".bak").exists() && !File(base.path + ".new").exists()) { "SEMANTIC_PENDING_RECOVERY" }
+        check(createKey || base.isFile) { "SEMANTIC_INDEX_UNAVAILABLE" }
         if (base.isFile && existing !is SecretKey) error("SEMANTIC_KEY_MISSING")
         val key = (existing as? SecretKey) ?: if (createKey) generateKey()
         else error("SEMANTIC_KEY_MISSING")

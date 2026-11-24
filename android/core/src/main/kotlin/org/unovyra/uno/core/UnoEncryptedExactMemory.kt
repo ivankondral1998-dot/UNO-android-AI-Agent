@@ -9,6 +9,13 @@ import javax.crypto.Cipher
 import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
 
+/** Host S4 authority view. No raw bytes or permission grants. */
+data class S4RecordRef(val id: Long, val generation: Long, val sha256: String, val scope: String)
+data class S4AuthorityView(val status: S4Status, val generation: Long,
+                           val live: Set<S4RecordRef>, val scannedRows: Int,
+                           val validUntilNanos: Long = Long.MAX_VALUE)
+data class S4Access(val scope: String, val now: Long, val consentEpoch: Long, val scanBudget: Int)
+
 /** Exact observation memory contract: no neural action authority. */
 interface UnoExactMemoryPort {
     val generation: Long
@@ -17,6 +24,9 @@ interface UnoExactMemoryPort {
     fun read(scope: String, factKey: String, k: Int, scanBudget: Int,
              now: Long, consentEpoch: Long): ExactRead
     fun revoke(scope: String)
+    /** Unsupported backends fail closed. Callback runs under the authoritative store lock. */
+    fun <T> withS4Authority(access: S4Access, use: (S4AuthorityView) -> T): T =
+        use(S4AuthorityView(S4Status.UNKNOWN, generation, emptySet(), 0))
     /** Highest accepted event time for this boot, or -1 when this boot has none. */
     fun causalFloor(): Long
     /** Records that time after the observation commit. Not an owner fact. */
@@ -152,6 +162,35 @@ internal object UnoExactVaultCodec {
     fun sha256(data: ByteArray): String = sha(data)
 }
 
+/** Single-writer persistence contract. Readback verifies visibility, not power-loss durability.
+ * If a write failed and the previous authenticated envelope is not demonstrably still
+ * present, quarantine the live instance. Never continue serving a possibly revoked view.
+ */
+internal class UnoSnapshotCommit(private val load: () -> ByteArray?,
+                                 private val persist: (ByteArray) -> Unit) {
+    private var initial = load()
+    private var digest = initial?.let(UnoExactVaultCodec::sha256)
+    fun takeInitial(): ByteArray? = initial.also { initial = null }
+    var uncertain = false
+        private set
+    fun requireHealthy() { check(!uncertain) { "MEMORY_PERSISTENCE_UNCERTAIN_REOPEN_REQUIRED" } }
+    fun write(bytes: ByteArray) {
+        requireHealthy()
+        val next = UnoExactVaultCodec.sha256(bytes)
+        try {
+            persist(bytes)
+            check(load()?.let(UnoExactVaultCodec::sha256) == next) { "MEMORY_PERSISTENCE_READBACK_MISMATCH" }
+            digest = next
+        } catch (e: Exception) {
+            // A failure before replacement is recoverable only when the old bytes
+            // are read back successfully. An exception after replacement is ambiguous.
+            uncertain = try { load()?.let(UnoExactVaultCodec::sha256) != digest }
+                        catch (_: Exception) { true }
+            throw e
+        }
+    }
+}
+
 /**
  * Owner-controlled exact observation store, not semantic synthesis or OS permission.
  * Persist before publishing a new generation; if disk fails no in-memory commit.
@@ -180,16 +219,18 @@ class UnoEncryptedExactMemory(
         const val CAUSAL_KEY = "causal-floor"
     }
     init { require(bootToken.length in 1..128 && bootToken.all { it >= ' ' }) }
-    private var snapshot = load()?.let { UnoExactVaultCodec.open(it, key) }
+    private val commit = UnoSnapshotCommit(load, persist)
+    private var snapshot = commit.takeInitial()?.let { UnoExactVaultCodec.open(it, key) }
         ?: UnoExactVaultCodec.Snapshot(0L, emptyList(), emptySet()).also { empty ->
-            if (initializeEmptyOnFirstOpen) persist(UnoExactVaultCodec.seal(empty, key))
+            if (initializeEmptyOnFirstOpen) commit.write(UnoExactVaultCodec.seal(empty, key))
         }
 
-    override val generation: Long @Synchronized get() = snapshot.revision
+    override val generation: Long @Synchronized get() { commit.requireHealthy(); return snapshot.revision }
 
     @Synchronized override fun write(scope: String, factKey: String, raw: ByteArray,
                                      expiry: Long, consentEpoch: Long,
                                      kind: EntryKind, source: String): ExactEntry {
+        commit.requireHealthy()
         val now = clockElapsedNanos()
         require(now >= 0 && expiry > now && consentEpoch >= 0 &&
             scope.length in 1..128 && factKey.length in 1..128 &&
@@ -205,12 +246,13 @@ class UnoEncryptedExactMemory(
             UnoExactVaultCodec.sha256(bytes), expiry, consentEpoch, kind, source)
         val updated = snapshot.copy(revision = nextRevision,
             rows = snapshot.rows + UnoExactVaultCodec.Row(entry, bootToken))
-        persist(UnoExactVaultCodec.seal(updated, key))
+        commit.write(UnoExactVaultCodec.seal(updated, key))
         snapshot = updated
         return entry.copy(raw = bytes.copyOf())
     }
 
     @Synchronized override fun revoke(scope: String) {
+        commit.requireHealthy()
         require(scope.length in 1..128 && scope.all { it >= ' ' && it != '\u007f' })
         if (scope in snapshot.revoked) return
         require(snapshot.revoked.size < UnoExactVaultCodec.MAX_ROWS &&
@@ -218,11 +260,39 @@ class UnoEncryptedExactMemory(
         val updated = snapshot.copy(revision = snapshot.revision + 1,
             rows = snapshot.rows.filterNot { it.entry.scope == scope },
             revoked = snapshot.revoked + scope)
-        persist(UnoExactVaultCodec.seal(updated, key))
+        commit.write(UnoExactVaultCodec.seal(updated, key))
         snapshot = updated
     }
 
+    @Synchronized override fun <T> withS4Authority(access: S4Access, use: (S4AuthorityView) -> T): T {
+        fun result(status: S4Status, live: Set<S4RecordRef> = emptySet(), scanned: Int = 0,
+                   validUntil: Long = Long.MAX_VALUE) =
+            use(S4AuthorityView(status, snapshot.revision, live, scanned, validUntil))
+        if (access.scope.isBlank() || access.scope in snapshot.revoked) return result(S4Status.DENIED)
+        if (commit.uncertain) return result(S4Status.UNKNOWN)
+        val current = clockElapsedNanos()
+        if (access.now < 0 || current < 0 || access.consentEpoch < 0 || access.scanBudget < 0)
+            return result(S4Status.UNKNOWN)
+        if (snapshot.rows.size > access.scanBudget) return result(S4Status.BUDGET_EXCEEDED)
+        val now = maxOf(access.now, current)
+        val liveRows = snapshot.rows.filter { row ->
+            val e = row.entry
+            row.bootToken == bootToken && e.scope == access.scope && e.consentEpoch == access.consentEpoch &&
+                now < e.expiryMonotonicNanos && e.kind != EntryKind.SEMANTIC_SUMMARY &&
+                e.kind != EntryKind.VERIFIED_COMPLETION
+        }
+        val live = liveRows.map { row -> row.entry.let { S4RecordRef(it.id, it.generation, it.sha256, it.scope) } }.toSet()
+        val rev = snapshot.revision
+        val output = result(if (live.isEmpty()) S4Status.EMPTY else S4Status.COMPLETE, live, snapshot.rows.size,
+            liveRows.minOfOrNull { it.entry.expiryMonotonicNanos } ?: Long.MAX_VALUE)
+        val end = clockElapsedNanos()
+        check(!commit.uncertain && snapshot.revision == rev && end >= current &&
+            liveRows.all { maxOf(access.now, end) < it.entry.expiryMonotonicNanos }) { "S4_AUTHORITY_STALE" }
+        return output
+    }
+
     @Synchronized override fun causalFloor(): Long {
+        commit.requireHealthy()
         val raw = snapshot.rows.lastOrNull {
             it.bootToken == bootToken && it.entry.scope == CAUSAL_SCOPE &&
                 it.entry.factKey == CAUSAL_KEY
@@ -254,7 +324,7 @@ class UnoEncryptedExactMemory(
         require(kept.size < UnoExactVaultCodec.MAX_ROWS) { "CAUSAL_FLOOR_CAPACITY" }
         val updated = snapshot.copy(revision = nextRevision,
             rows = kept + UnoExactVaultCodec.Row(entry, bootToken))
-        persist(UnoExactVaultCodec.seal(updated, key))
+        commit.write(UnoExactVaultCodec.seal(updated, key))
         snapshot = updated
     }
 
@@ -263,6 +333,7 @@ class UnoEncryptedExactMemory(
                                      consentEpoch: Long): ExactRead {
         if (scope.isBlank() || scope in snapshot.revoked)
             return ExactRead(ExactStatus.DENIED, emptyList(), 0)
+        if (commit.uncertain) return ExactRead(ExactStatus.UNKNOWN, emptyList(), 0)
         val currentNow = clockElapsedNanos()
         if (now < 0 || consentEpoch < 0 || k <= 0 || scanBudget < 0 ||
             currentNow < 0) return ExactRead(ExactStatus.UNKNOWN, emptyList(), 0)

@@ -21,10 +21,35 @@ data class SemanticHit(
     val vector: DoubleArray
 )
 
+/** Raw S4 candidate. Not a verified exact record or training-derived key/value. */
+data class S4EligibleSummary(
+    val exactId: Long,
+    val generation: Long,
+    val sha256: String,
+    val scope: String,
+    val vector: DoubleArray
+)
+
+/** Typed catalogue admission; only COMPLETE/EMPTY may feed F. */
+enum class S4Status { COMPLETE, EMPTY, DENIED, BUDGET_EXCEEDED, UNKNOWN, INCOMPATIBLE }
+enum class S4Reason { NONE, DENIED_SCOPE, SCAN_LIMIT, UNAVAILABLE, STALE_LINK, INDEX_UNAVAILABLE, INCOMPATIBLE_VECTOR }
+private fun S4Status.reason() = when (this) {
+    S4Status.COMPLETE, S4Status.EMPTY -> S4Reason.NONE
+    S4Status.DENIED -> S4Reason.DENIED_SCOPE
+    S4Status.BUDGET_EXCEEDED -> S4Reason.SCAN_LIMIT
+    S4Status.UNKNOWN -> S4Reason.UNAVAILABLE
+    S4Status.INCOMPATIBLE -> S4Reason.INCOMPATIBLE_VECTOR
+}
+data class S4Catalogue(val status: S4Status, val hits: List<S4EligibleSummary>, val scannedRows: Int,
+                       val authorityGeneration: Long? = null, val semanticGeneration: Long? = null,
+                       val validUntilNanos: Long = Long.MAX_VALUE, val reason: S4Reason = status.reason())
+
 data class SemanticRead(
     val status: SemanticStatus,
     val hits: List<SemanticHit>,
-    val matchedLowerBound: Int
+    val matchedLowerBound: Int,
+    val catalogueStatus: S4Status? = null,
+    val catalogueReason: S4Reason? = null
 )
 
 /**
@@ -42,9 +67,13 @@ class UnoSemanticMemory(
     init { require(dimension in 1..128 && bootToken.length in 1..128) }
     private var links = emptyList<Link>()
     private var revoked = emptySet<String>()
+    private val commit = UnoSnapshotCommit(load, persist)
+    private var revision = 0L
+    internal val generation: Long
+        @Synchronized get() { commit.requireHealthy(); return revision }
 
     init {
-        val bytes = load()
+        val bytes = commit.takeInitial()
         if (bytes != null) {
             val opened = open(bytes, key)
             links = opened.links
@@ -52,51 +81,65 @@ class UnoSemanticMemory(
         }
     }
 
-    @Synchronized fun link(entry: ExactEntry, vector: DoubleArray) {
+    @Synchronized internal fun link(entry: ExactEntry, vector: DoubleArray) {
+        commit.requireHealthy()
         require(entry.kind != EntryKind.SEMANTIC_SUMMARY &&
             entry.kind != EntryKind.VERIFIED_COMPLETION) { "SEMANTIC_LINK_KIND" }
         require(entry.scope !in revoked) { "SEMANTIC_SCOPE_REVOKED" }
         require(vector.size == dimension && vector.all(Double::isFinite)) { "SEMANTIC_VECTOR" }
+        check(generation < Long.MAX_VALUE) { "SEMANTIC_GENERATION_EXHAUSTED" }
         val kept = links.filterNot { it.exactId == entry.id && it.boot == bootToken }
         require(kept.size < MAX_LINKS) { "SEMANTIC_CAPACITY" }
         val next = kept + Link(entry.id, entry.generation, entry.sha256, entry.scope,
             bootToken, vector.copyOf())
-        persist(seal(Snapshot(next, revoked), key))
+        commit.write(seal(Snapshot(next, revoked), key))
         links = next
+        revision++
     }
 
-    @Synchronized fun dropScope(scope: String) {
+    @Synchronized internal fun dropScope(scope: String) {
+        commit.requireHealthy()
         require(scope.isNotEmpty())
         if (scope in revoked) return
+        check(generation < Long.MAX_VALUE) { "SEMANTIC_GENERATION_EXHAUSTED" }
+        require(revoked.size < MAX_LINKS) { "SEMANTIC_REVOKE_CAPACITY" }
         val nextRevoked = revoked + scope
         val nextLinks = links.filterNot { it.scope == scope }
-        persist(seal(Snapshot(nextLinks, nextRevoked), key))
+        commit.write(seal(Snapshot(nextLinks, nextRevoked), key))
         links = nextLinks
         revoked = nextRevoked
+        revision++
     }
 
-    @Synchronized fun retrieve(scope: String, query: DoubleArray, k: Int, scanBudget: Int): SemanticRead {
+    /**
+     * Reconstructed S4 reference admission: no top-k truncation before F computes q.
+     * Budget covers *all* persisted rows, including stale-boot and foreign-scope
+     * rows. Over budget fails closed; filtering never silently drops a fifth hit.
+     * This does NOT validate exact entry TTL, consent epoch or provenance.
+     */
+    @Synchronized internal fun eligibleForS4(scope: String, scanBudget: Int): S4Catalogue {
+        if (scope.isBlank() || scope in revoked) return S4Catalogue(S4Status.DENIED, emptyList(), 0)
+        if (commit.uncertain) return S4Catalogue(S4Status.UNKNOWN, emptyList(), 0, reason = S4Reason.INDEX_UNAVAILABLE)
+        if (scanBudget < 0) return S4Catalogue(S4Status.UNKNOWN, emptyList(), 0)
+        if (links.size > scanBudget) return S4Catalogue(S4Status.BUDGET_EXCEEDED, emptyList(), 0)
+        val hits = links.asSequence()
+            .filter { it.boot == bootToken && it.scope == scope && it.scope !in revoked }
+            .map { S4EligibleSummary(it.exactId, it.generation, it.sha256, it.scope, it.vector.copyOf()) }
+            .toList()
+        return S4Catalogue(if (hits.isEmpty()) S4Status.EMPTY else S4Status.COMPLETE, hits, links.size)
+    }
+
+    @Synchronized internal fun retrieve(scope: String, query: DoubleArray, k: Int, scanBudget: Int): SemanticRead {
         if (scope.isEmpty() || scope in revoked) return SemanticRead(SemanticStatus.DENIED, emptyList(), 0)
+        if (commit.uncertain) return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
         if (k <= 0 || scanBudget < 0 || query.size != dimension || query.any { !it.isFinite() }) {
             return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
         }
         val visible = links.filter { it.boot == bootToken && it.scope !in revoked }
         if (scanBudget < visible.size) return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
-        val queryNorm = norm(query)
-        if (queryNorm == 0.0) return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
-        val scored = visible.mapNotNull { link ->
-            if (link.scope != scope) return@mapNotNull null
-            val linkNorm = norm(link.vector)
-            if (linkNorm == 0.0) return@mapNotNull null
-            val score = dot(query, link.vector) / (queryNorm * linkNorm)
-            if (!score.isFinite()) return@mapNotNull null
-            SemanticHit(link.exactId, link.generation, link.sha256, link.scope, score, link.vector.copyOf())
-        }.sortedWith(compareByDescending<SemanticHit> { it.score }.thenBy { it.exactId })
-        if (scored.isEmpty()) return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
-        if (scored.size > k) {
-            return SemanticRead(SemanticStatus.TRUNCATED, scored.take(k), scored.size)
-        }
-        return SemanticRead(SemanticStatus.SUMMARY_ONLY, scored, scored.size)
+        return summarizeS4Catalogue(visible.filter { it.scope == scope }.map {
+            S4EligibleSummary(it.exactId, it.generation, it.sha256, it.scope, it.vector.copyOf())
+        }, query, k)
     }
 
     private data class Link(
@@ -185,3 +228,23 @@ private fun dot(left: DoubleArray, right: DoubleArray): Double {
 }
 
 private fun norm(value: DoubleArray): Double = sqrt(dot(value, value))
+
+/** Score only already admitted rows; no second index scan or authority bypass. */
+internal fun summarizeS4Catalogue(hits: List<S4EligibleSummary>, query: DoubleArray, k: Int): SemanticRead {
+    if (k <= 0 || query.any { !it.isFinite() } || hits.any { it.vector.size != query.size })
+        return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
+    val queryNorm = norm(query)
+    if (!queryNorm.isFinite() || queryNorm == 0.0) return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
+    val scored = hits.mapNotNull { hit ->
+        val n = norm(hit.vector)
+        if (!n.isFinite() || n == 0.0) return@mapNotNull null
+        val score = dot(query, hit.vector) / (queryNorm * n)
+        if (!score.isFinite()) return@mapNotNull null
+        SemanticHit(hit.exactId, hit.generation, hit.sha256, hit.scope, score, hit.vector.copyOf())
+    }.sortedWith(compareByDescending<SemanticHit> { it.score }.thenBy { it.exactId })
+    return when {
+        scored.isEmpty() -> SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
+        scored.size > k -> SemanticRead(SemanticStatus.TRUNCATED, scored.take(k), scored.size)
+        else -> SemanticRead(SemanticStatus.SUMMARY_ONLY, scored, scored.size)
+    }
+}

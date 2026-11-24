@@ -6,6 +6,8 @@ import android.provider.Settings
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.util.AtomicFile
+import org.unovyra.uno.core.S4Access
+import org.unovyra.uno.core.S4AuthorityView
 import org.unovyra.uno.core.ExactEntry
 import org.unovyra.uno.core.ExactRead
 import org.unovyra.uno.core.EntryKind
@@ -164,6 +166,10 @@ internal class UnoAndroidExactMemory(context: Context, private val readOnly: Boo
     override fun revoke(scope: String) {
         check(!readOnly) { "EXACT_READONLY_REVOKE_DENIED" }
         backend.revoke(scope)
+    }
+    override fun <T> withS4Authority(access: S4Access, use: (S4AuthorityView) -> T): T {
+        check(!readOnly) { "EXACT_READONLY_S4_DENIED" }
+        return backend.withS4Authority(access, use)
     }
     override fun causalFloor(): Long = backend.causalFloor()
     override fun noteCausalFloor(eventNanos: Long) {

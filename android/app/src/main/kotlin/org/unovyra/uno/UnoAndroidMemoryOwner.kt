@@ -51,7 +51,7 @@ internal object UnoAndroidMemoryOwner {
 
     @Synchronized fun semantic(context: Context): UnoAndroidSemanticMemory {
         check(session?.lock?.isValid == true) { "SEMANTIC_REQUIRES_EXACT_OWNER" }
-        return semanticStore ?: UnoAndroidSemanticMemory(context.applicationContext)
+        return semanticStore ?: UnoAndroidSemanticMemory(context.applicationContext, checkNotNull(session).store)
             .also { semanticStore = it }
     }
 

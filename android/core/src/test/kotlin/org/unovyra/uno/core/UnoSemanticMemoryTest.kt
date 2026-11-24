@@ -58,14 +58,68 @@ object UnoSemanticMemoryTest {
             { portsBytes?.copyOf() }, { portsBytes = it.copyOf() }))
         val remembered = portsExact.write("notes", "city", "Riga".toByteArray(), 500L, 0L,
             EntryKind.USER_DECLARATION, "OWNER_UI")
-        ports.linkSummary(remembered, vector(1.0))
-        verify(ports.recallSummary("notes", vector(1.0), 4, 16).status == SemanticStatus.SUMMARY_ONLY)
+        ports.linkSummary(remembered, vector(1.0), S4Access("notes", 1L, 0L, 16))
+        verify(ports.recallSummary(S4Access("notes", 1L, 0L, 16), vector(1.0), 4).status == SemanticStatus.SUMMARY_ONLY)
         verify(ports.recallExact("notes", "city", 1, 4, 1L, 0L).entries.single()
             .raw.contentEquals("Riga".toByteArray()))
         ports.revoke("notes")
-        verify(ports.recallSummary("notes", vector(1.0), 4, 16).status == SemanticStatus.DENIED)
+        verify(ports.recallSummary(S4Access("notes", 1L, 0L, 16), vector(1.0), 4).status == SemanticStatus.DENIED)
         verify(ports.recallExact("notes", "city", 1, 4, 1L, 0L).status == ExactStatus.DENIED)
-        verify(runCatching { ports.linkSummary(remembered, vector(1.0)) }.isFailure)
+        verify(runCatching { ports.linkSummary(remembered, vector(1.0), S4Access("notes", 1L, 0L, 16)) }.isFailure)
+        // S4 authority and failure injection: both scans share one budget.
+        var exactBytes: ByteArray? = null
+        var summaryBytes: ByteArray? = null
+        var failExact = false
+        var failSummary = false
+        var clock = 10L
+        val exactKey = key()
+        val summaryKey = key()
+        fun openExact() = UnoEncryptedExactMemory(exactKey, "boot-a", { exactBytes?.copyOf() },
+            { if (failExact) error("exact disk failed") else exactBytes = it.copyOf() }) { clock }
+        fun openSummary() = UnoSemanticMemory(summaryKey, "boot-a", { summaryBytes?.copyOf() },
+            { if (failSummary) error("index disk failed") else summaryBytes = it.copyOf() })
+        val vault = openExact()
+        val summaries = openSummary()
+        val bank = UnoMemoryPorts(vault, summaries)
+        fun access(budget: Int = 16, epoch: Long = 7L, scope: String = "s4") =
+            S4Access(scope, 10L, epoch, budget)
+        fun view(p: UnoMemoryPorts = bank, a: S4Access = access(), width: Int = UnoSemanticMemory.DIM) =
+            p.withS4Bank(a, width) { it }
+        verify(view().status == S4Status.EMPTY)
+        val rec = vault.write("s4", "fact", byteArrayOf(1), 100L, 7L, EntryKind.OBSERVED, "LOCAL_UI")
+        bank.linkSummary(rec, vector(1.0), access())
+        verify(view().status == S4Status.COMPLETE && view().scannedRows == 2)
+        verify(view(a = access(0)).status == S4Status.BUDGET_EXCEEDED)
+        verify(view(a = access(1)).status == S4Status.BUDGET_EXCEEDED && view(a = access(1)).scannedRows == 1)
+        verify(view(a = access(2)).hits.single().exactId == rec.id)
+        verify(view(a = access(epoch = 8)).status == S4Status.UNKNOWN)
+        verify(view(width = 2).status == S4Status.INCOMPATIBLE)
+        verify(view(a = access(scope = "foreign")).status == S4Status.EMPTY)
+        verify(runCatching { bank.linkSummary(rec.copy(sha256 = "forged"), vector(1.0), access()) }.isFailure)
+        val copied = view().hits.single().vector
+        copied[0] = -1.0
+        verify(view().hits.single().vector[0] == 1.0)
+        clock = 100L
+        verify(view().status == S4Status.UNKNOWN)
+        clock = 10L
+        verify(runCatching { bank.withS4Bank(access(), UnoSemanticMemory.DIM) { clock = 100L; it } }.isFailure)
+        clock = 10L
+        failExact = true
+        verify(runCatching { bank.revoke("s4") }.isFailure)
+        verify(view().status == S4Status.COMPLETE)
+        failExact = false
+        failSummary = true
+        verify(bank.revoke("s4") == S4Revocation.REVOKED_CLEANUP_PENDING)
+        verify(view().status == S4Status.DENIED)
+        verify(bank.recallExact("s4", "fact", 1, 16, 10L, 7L).status == ExactStatus.DENIED)
+        // Persisted stale index is deliberately left intact; authoritative view still denies.
+        val restarted = UnoMemoryPorts(openExact(), openSummary())
+        verify(view(restarted).status == S4Status.DENIED)
+        verify(restarted.recallSummary(access(), vector(1.0), 4).status == SemanticStatus.DENIED)
+        verify(runCatching { restarted.linkSummary(rec, vector(1.0), access()) }.isFailure)
+        failSummary = false
+        verify(restarted.revoke("s4") == S4Revocation.REVOKED_CLEAN)
+        verify(view(UnoMemoryPorts(openExact(), openSummary())).status == S4Status.DENIED)
         println("UNO_SEMANTIC_MEMORY_HOST_PASS=$pass")
     }
 }

@@ -1,6 +1,13 @@
 package org.unovyra.uno.core
 
 fun main() {
+    Astra12PolicyParityTest.run()
+    Astra08MemoryContractTest.run()
+    Astra06StabilityTest.run()
+    Astra05CycleBudgetTest.run()
+    C3CanonicalGeometryTest.run()
+    C4ReferenceSessionTest.run()
+    ConsentFreshnessRegressionTest.run()
     CoreSelfTest.run()
     UnoPromptWindowTest.run()
     UnoTextCycleTest.run()
@@ -25,5 +32,5 @@ fun main() {
     UnoFrameContractTest.run()
     UnoPlannerTest.run()
     UnoModelProposalTest.run()
-    println("UNO_WP01_HOST_PASS=${UnoChatCipherTest.pass + UnoProcessStopTest.pass + UnoFoundationReferenceCycleTest.pass + UnoEncryptedExactMemoryTest.pass + UnoTextCycleTest.pass + UnoPromptWindowTest.pass + CoreSelfTest.pass + ProbeMathTest.pass + MeasurementTest.pass + LabProtocolTest.pass + UnoDiagnosticSummaryTest.pass + ThemePersonalizationTest.pass + FoundationHardeningTest.pass + ComputeBudgetGateTest.pass + UnoFReferenceTest.pass + ActionIntentJournalTest.pass + ActionJournalControllerIntegrationTest.pass + ActionReceiptRecoveryTest.pass + ActionAtomicReferenceCommitTest.pass + UnoManualFactsTest.pass + UnoSemanticMemoryTest.pass + UnoFrameContractTest.pass + UnoPlannerTest.pass + UnoModelProposalTest.pass}")
+    println("UNO_WP01_HOST_PASS=${Astra12PolicyParityTest.pass + Astra08MemoryContractTest.pass + Astra06StabilityTest.pass + Astra05CycleBudgetTest.pass + C3CanonicalGeometryTest.pass + C4ReferenceSessionTest.pass + ConsentFreshnessRegressionTest.pass + UnoChatCipherTest.pass + UnoProcessStopTest.pass + UnoFoundationReferenceCycleTest.pass + UnoEncryptedExactMemoryTest.pass + UnoTextCycleTest.pass + UnoPromptWindowTest.pass + CoreSelfTest.pass + ProbeMathTest.pass + MeasurementTest.pass + LabProtocolTest.pass + UnoDiagnosticSummaryTest.pass + ThemePersonalizationTest.pass + FoundationHardeningTest.pass + ComputeBudgetGateTest.pass + UnoFReferenceTest.pass + ActionIntentJournalTest.pass + ActionJournalControllerIntegrationTest.pass + ActionReceiptRecoveryTest.pass + ActionAtomicReferenceCommitTest.pass + UnoManualFactsTest.pass + UnoSemanticMemoryTest.pass + UnoFrameContractTest.pass + UnoPlannerTest.pass + UnoModelProposalTest.pass}")
 }
