@@ -26,6 +26,7 @@ internal fun refMul(vararg values: Long): Long = values.fold(1L, Math::multiplyE
  */
 internal class RefCycleMeter(private val limits: RefCycleLimits,
     private val checkTime: () -> Unit) {
+    private var reserved = false
     private var mac = 0L
     private var scalar = 0L
     private var numeric = 0L
@@ -36,13 +37,16 @@ internal class RefCycleMeter(private val limits: RefCycleLimits,
     val remainingMac get() = limits.mac - mac
     fun checkpoint() = checkTime()
     fun reserve(minMac: Long, scalarUnits: Long, numericBytes: Long, catalogueRows: Long) {
+        check(!reserved) { "CYCLE_ALREADY_RESERVED" }
+        require(minMac >= 0 && scalarUnits >= 0 && numericBytes >= 0 && catalogueRows >= 0)
         checkpoint()
         if (minMac > limits.mac || scalarUnits > limits.scalarUnits ||
             numericBytes > limits.numericBytes || catalogueRows > limits.catalogueRows)
             throw RefCycleAbort(RefSessionStatus.BUDGET_ABORT)
-        scalar = scalarUnits; numeric = numericBytes; rows = catalogueRows
+        scalar = scalarUnits; numeric = numericBytes; rows = catalogueRows; reserved = true
     }
     fun ensureMac(cost: Long) {
+        check(reserved) { "CYCLE_NOT_RESERVED" }
         if (cost < 0 || cost > remainingMac) throw RefCycleAbort(RefSessionStatus.BUDGET_ABORT)
     }
     fun enter(name: String, cost: Long) {
@@ -51,9 +55,10 @@ internal class RefCycleMeter(private val limits: RefCycleLimits,
         entries[name] = Math.incrementExact(entries[name] ?: 0L)
     }
     fun observeCatalogue(count: Int) {
+        check(reserved) { "CYCLE_NOT_RESERVED" }
         require(count >= 0 && count.toLong() <= rows - observed)
         observed += count
     }
-    fun head() { checkpoint(); heads = Math.incrementExact(heads) }
+    fun head() { check(reserved) { "CYCLE_NOT_RESERVED" }; checkpoint(); heads = Math.incrementExact(heads) }
     fun usage() = RefCycleUsage(mac, scalar, numeric, rows, observed, entries.toMap(), heads)
 }

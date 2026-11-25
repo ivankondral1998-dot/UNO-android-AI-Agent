@@ -96,6 +96,17 @@ object Astra08MemoryContractTest {
             verify("torn_snapshot_quarantined",runCatching{torn.write("third","fact",byteArrayOf(9),100,3,EntryKind.OBSERVED,"LOCAL_UI")}.isFailure && runCatching{torn.generation}.isFailure)
             exact.fault=Fault.NONE
             verify("torn_snapshot_not_reinitialized",runCatching{vault()}.isFailure && exact.load()!!.size==7)
+            val exact2=ExactMemory();var index2Bytes:ByteArray?=null
+            val index2=UnoSemanticMemory(key,"boot",{index2Bytes?.copyOf()},{index2Bytes=it.copyOf()},dimension=8)
+            val ports2=UnoMemoryPorts(exact2,index2)
+            val pos=exact2.write("owner","one",byteArrayOf(1),100,3,EntryKind.OBSERVED,"LOCAL_UI")
+            val zero=exact2.write("owner","two",byteArrayOf(2),100,3,EntryKind.OBSERVED,"LOCAL_UI")
+            ports2.linkSummary(pos,q,a);ports2.linkSummary(zero,DoubleArray(8),a)
+            verify("S4_keeps_valid_zero_vector",bank(ports2).let{it.status==S4Status.COMPLETE && it.hits.size==2})
+            val summary=ports2.recallSummary(a,q,2)
+            verify("undefined_cosine_never_claims_partial_summary_complete",summary.status==SemanticStatus.UNKNOWN && summary.hits.isEmpty())
+            verify("exact_tombstone_denies_both_paths",ports2.revoke("owner")==S4Revocation.REVOKED_CLEAN &&
+                ports2.recallExact("owner","one",2,16,10,3).status==ExactStatus.DENIED && bank(ports2).status==S4Status.DENIED)
             println("UNO_ASTRA08_MEMORY_HOST_PASS=$pass")
         } finally { dir.toFile().deleteRecursively() }
     }

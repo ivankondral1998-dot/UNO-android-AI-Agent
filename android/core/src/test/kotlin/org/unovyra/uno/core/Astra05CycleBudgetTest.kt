@@ -80,6 +80,31 @@ object Astra05CycleBudgetTest {
         } finally {release.countDown();t.join(5000)}
         verify("newer_request_invalidates_old_without_second_workspace",!t.isAlive && prior.get()?.status==RefSessionStatus.STALE && race.session.snapshot().revision==0L)
         verify("reservation_released_after_rejection",race.run().status==RefSessionStatus.COMMITTED)
+        // Meter cannot be reused/reset, nor spend before reservation.
+        val meter=RefCycleMeter(RefCycleLimits(2,3,4,2)) {}
+        verify("no_kernel_before_reservation",runCatching{meter.enter("probe",1)}.isFailure)
+        verify("negative_reservation_denied",runCatching{meter.reserve(-1,0,0,0)}.isFailure)
+        meter.reserve(1,3,4,2);meter.enter("probe",1);meter.observeCatalogue(1)
+        verify("second_reservation_cannot_reset_ledger",runCatching{meter.reserve(0,0,0,0)}.isFailure &&
+            meter.usage().enteredMac==1L && meter.usage().catalogueRowsObserved==1L)
+        verify("no_row_overrun",runCatching{meter.observeCatalogue(2)}.isFailure && meter.usage().catalogueRowsObserved==1L)
+        verify("no_mac_overrun",runCatching{meter.enter("probe",2)}.isFailure && meter.usage().enteredMac==1L)
+        // A real encrypted authority view is scanned, then its post-callback
+        // clock check fails. The completed scans remain charged despite refusal.
+        val key=KeyGenerator.getInstance("AES").apply{init(128)}.generateKey()
+        var exactBytes:ByteArray?=null;var indexBytes:ByteArray?=null
+        var clockReads=0;var regress=false
+        val vault=UnoEncryptedExactMemory(key,"boot",{exactBytes?.copyOf()},{exactBytes=it.copyOf()}){
+            if(regress && ++clockReads==2) 9L else 10L }
+        val index=UnoSemanticMemory(key,"boot",{indexBytes?.copyOf()},{indexBytes=it.copyOf()},dimension=128)
+        val ports=UnoMemoryPorts(vault,index)
+        val row=vault.write("owner","key",byteArrayOf(1),100,0,EntryKind.OBSERVED,"LOCAL_UI")
+        ports.linkSummary(row,DoubleArray(128){0.5},S4Access("owner",10,0,64))
+        val abortMeter=RefCycleMeter(generous){};abortMeter.reserve(0,0,0,64)
+        regress=true
+        verify("post_scan_rejection_keeps_both_catalogue_charges",runCatching{
+            ports.withS4BankMetered(S4Access("owner",10,0,64),128,abortMeter::observeCatalogue){it}
+        }.isFailure && abortMeter.usage().catalogueRowsObserved==2L)
         println("UNO_ASTRA05_CYCLE_HOST_PASS=$pass")
     }
 }

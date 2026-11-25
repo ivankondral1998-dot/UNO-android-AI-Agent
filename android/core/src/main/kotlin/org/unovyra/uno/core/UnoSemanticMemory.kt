@@ -235,11 +235,13 @@ internal fun summarizeS4Catalogue(hits: List<S4EligibleSummary>, query: DoubleAr
         return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
     val queryNorm = norm(query)
     if (!queryNorm.isFinite() || queryNorm == 0.0) return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
-    val scored = hits.mapNotNull { hit ->
+    val scored = hits.map { hit ->
         val n = norm(hit.vector)
-        if (!n.isFinite() || n == 0.0) return@mapNotNull null
+        // Zero vectors are valid S4 keys/values, but cosine is undefined.
+        // A partial ranking must not masquerade as a complete summary.
+        if (!n.isFinite() || n == 0.0) return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
         val score = dot(query, hit.vector) / (queryNorm * n)
-        if (!score.isFinite()) return@mapNotNull null
+        if (!score.isFinite()) return SemanticRead(SemanticStatus.UNKNOWN, emptyList(), 0)
         SemanticHit(hit.exactId, hit.generation, hit.sha256, hit.scope, score, hit.vector.copyOf())
     }.sortedWith(compareByDescending<SemanticHit> { it.score }.thenBy { it.exactId })
     return when {

@@ -1,0 +1,537 @@
+BASE 16aafdd3b7b1bdf8030605f7acc2aea1f4896d4e
+FINAL_STANDALONE_EXIT=0
+FINAL_SEPARATE_EXIT=0
+FINAL_SEPARATE_STDOUT_SHA256=6437944e6f51692922ec9239fe66fb20396aa10a5b02492dc8eeaa097aa06467
+
+=== baseline_11 exit=1 ===
+PASS C4 normal_commit_matches_same_F
+PASS C4 defensive_state_snapshot
+PASS C4 second_event_uses_prior_committed_state
+PASS C4 goal_switch_blocks_normal_and_stale_version
+PASS C4 goal_same_F_empty_bank_zero_temporary_state
+PASS C4 duplicate_goal_reencoding_denied
+PASS C4 stale_goal_encoding_never_publishes
+PASS C4 stale_goal_remains_pending
+PASS C4 stop_during_actual_F
+PASS C4 stopped_session_no_new_work
+PASS C4 consent_epoch_changes
+PASS C4 goal_change_invalidates_normal_work
+PASS C4 exact_and_semantic_revoke_during_F
+PASS C4 revoked_scope_new_work_denied
+PASS C4 semantic_only_change_invalidates_stamp
+PASS C4 semantic_ABA_invalidates_stamp
+PASS C4 newer_cookie_aborted_still_invalidates_old
+PASS C4 exact_write_invalidates_stamp
+PASS C4 memory_expiry_before_publish
+PASS C4 deadline_before_publish
+PASS C4 clock_regression_fail_closed
+PASS C4 catalogue_budget_denied
+PASS C4 S6_budget_abort_no_state_commit
+PASS C4 encrypted_reference_store_commit
+PASS C4 encrypted_reference_revocation
+PASS C4 encrypted_expiry
+Exception in thread "main" java.lang.IllegalStateException: pre_snapshot_consent_change_cannot_rebase
+	at org.unovyra.uno.core.C4ReferenceSessionTest.verify(C4ReferenceSessionTest.kt:11)
+	at org.unovyra.uno.core.C4ReferenceSessionTest.run(C4ReferenceSessionTest.kt:100)
+	at org.unovyra.uno.core.WitnessKt.main(Witness.kt:2)
+
+=== baseline_08 exit=1 ===
+PASS ASTRA08 known_empty
+PASS ASTRA08 unavailable_index_not_empty
+PASS ASTRA08 live_link
+PASS ASTRA08 callback_index_mutation_rejected
+PASS ASTRA08 reason_exact_budget
+PASS ASTRA08 reason_combined_budget
+PASS ASTRA08 reason_wrong_epoch
+PASS ASTRA08 incompatible_width
+PASS ASTRA08 expiry_equality
+PASS ASTRA08 precommit_failure_throws
+PASS ASTRA08 confirmed_old_snapshot_retained
+PASS ASTRA08 silent_noop_not_committed
+PASS ASTRA08 ambiguous_commit_no_success
+PASS ASTRA08 ambiguous_commit_quarantines_exact
+PASS ASTRA08 ambiguous_commit_blocks_generation_and_write
+PASS ASTRA08 persisted_tombstone_denies_after_reopen
+PASS ASTRA08 deny_even_missing_index
+PASS ASTRA08 stale_index_cannot_link
+PASS ASTRA08 cleanup_failure_pending
+PASS ASTRA08 cleanup_failure_does_not_regrant
+PASS ASTRA08 cleanup_retry_idempotent
+PASS ASTRA08 unrelated_scope_live
+PASS ASTRA08 index_ambiguous_update_throws
+PASS ASTRA08 index_ambiguous_update_quarantined
+PASS ASTRA08 index_reopened_from_new_bytes
+PASS ASTRA08 readback_unavailable_quarantines
+PASS ASTRA08 second_tombstone_persisted
+PASS ASTRA08 torn_snapshot_quarantined
+PASS ASTRA08 torn_snapshot_not_reinitialized
+PASS ASTRA08 S4_keeps_valid_zero_vector
+Exception in thread "main" java.lang.IllegalStateException: undefined_cosine_never_claims_partial_summary_complete
+	at org.unovyra.uno.core.Astra08MemoryContractTest.verify(Astra08MemoryContractTest.kt:12)
+	at org.unovyra.uno.core.Astra08MemoryContractTest.run(Astra08MemoryContractTest.kt:107)
+	at org.unovyra.uno.core.WitnessKt.main(Witness.kt:2)
+
+=== host_verified exit=0 ===
+ASTRA12_PREFIX	1	0	0.0	0.5	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	0	0.0	1.7	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	0	0.05	0.5	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	0	0.05	1.7	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	0	1.0	0.5	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	0	1.0	1.7	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	1	0.0	0.5	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	1	0.0	1.7	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	1	0.05	0.5	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	1	0.05	1.7	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	1	1.0	0.5	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	1	1.0	1.7	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	2	0.0	0.5	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	2	0.0	1.7	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	2	0.05	0.5	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	2	0.05	1.7	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	2	1.0	0.5	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	2	1.0	1.7	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	3	0.0	0.5	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	3	0.0	1.7	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	3	0.05	0.5	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	3	0.05	1.7	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	3	1.0	0.5	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	1	3	1.0	1.7	0.7,-0.4,0.2,-0.9	1.0
+ASTRA12_PREFIX	2	0	0.0	0.5	0.7,-0.4,0.2,-0.9	0.7262613130421656,0.27373868695783454
+ASTRA12_PREFIX	2	0	0.0	1.7	0.7,-0.4,0.2,-0.9	0.5712569098966561,0.4287430901033439
+ASTRA12_PREFIX	2	0	0.05	0.5	0.7,-0.4,0.2,-0.9	0.7149482473900572,0.2850517526099428
+ASTRA12_PREFIX	2	0	0.05	1.7	0.7,-0.4,0.2,-0.9	0.5676940644018234,0.4323059355981767
+ASTRA12_PREFIX	2	0	1.0	0.5	0.7,-0.4,0.2,-0.9	0.5,0.5
+ASTRA12_PREFIX	2	0	1.0	1.7	0.7,-0.4,0.2,-0.9	0.5,0.5
+ASTRA12_PREFIX	2	1	0.0	0.5	0.7,-0.4,0.2,-0.9	0.37351719483815343,0.6264828051618465
+ASTRA12_PREFIX	2	1	0.0	1.7	0.7,-0.4,0.2,-0.9	0.46204687414817247,0.5379531258518274
+ASTRA12_PREFIX	2	1	0.05	0.5	0.7,-0.4,0.2,-0.9	0.37984133509624574,0.6201586649037543
+ASTRA12_PREFIX	2	1	0.05	1.7	0.7,-0.4,0.2,-0.9	0.46394453044076384,0.5360554695592361
+ASTRA12_PREFIX	2	1	1.0	0.5	0.7,-0.4,0.2,-0.9	0.5,0.5
+ASTRA12_PREFIX	2	1	1.0	1.7	0.7,-0.4,0.2,-0.9	0.5,0.5
+ASTRA12_PREFIX	2	2	0.0	0.5	0.7,-0.4,0.2,-0.9	0.8005841799796415,0.19941582002035857
+ASTRA12_PREFIX	2	2	0.0	1.7	0.7,-0.4,0.2,-0.9	0.6008021869956451,0.3991978130043548
+ASTRA12_PREFIX	2	2	0.05	0.5	0.7,-0.4,0.2,-0.9	0.7855549709806594,0.21444502901934065
+ASTRA12_PREFIX	2	2	0.05	1.7	0.7,-0.4,0.2,-0.9	0.5957620776458629,0.4042379223541371
+ASTRA12_PREFIX	2	2	1.0	0.5	0.7,-0.4,0.2,-0.9	0.5,0.5
+ASTRA12_PREFIX	2	2	1.0	1.7	0.7,-0.4,0.2,-0.9	0.5,0.5
+ASTRA12_PREFIX	2	3	0.0	0.5	0.7,-0.4,0.2,-0.9	0.1798805047639608,0.8201194952360392
+ASTRA12_PREFIX	2	3	0.0	1.7	0.7,-0.4,0.2,-0.9	0.39025921985914974,0.6097407801408503
+ASTRA12_PREFIX	2	3	0.05	0.5	0.7,-0.4,0.2,-0.9	0.19588647952576274,0.8041135204742373
+ASTRA12_PREFIX	2	3	0.05	1.7	0.7,-0.4,0.2,-0.9	0.39574625886619225,0.6042537411338077
+ASTRA12_PREFIX	2	3	1.0	0.5	0.7,-0.4,0.2,-0.9	0.5,0.5
+ASTRA12_PREFIX	2	3	1.0	1.7	0.7,-0.4,0.2,-0.9	0.5,0.5
+ASTRA12_PREFIX	3	0	0.0	0.5	0.7,-0.4,0.2,-0.9	0.550605901547129,0.20753155071609206,0.241862547736779
+ASTRA12_PREFIX	3	0	0.0	1.7	0.7,-0.4,0.2,-0.9	0.39438136748877844,0.29599341950526326,0.30962521300595836
+ASTRA12_PREFIX	3	0	0.05	0.5	0.7,-0.4,0.2,-0.9	0.5397422731364392,0.2138216398469541,0.2464360870166067
+ASTRA12_PREFIX	3	0	0.05	1.7	0.7,-0.4,0.2,-0.9	0.3913289657810062,0.29786041519666673,0.3108106190223271
+ASTRA12_PREFIX	3	0	1.0	0.5	0.7,-0.4,0.2,-0.9	0.3333333333333333,0.3333333333333333,0.3333333333333333
+ASTRA12_PREFIX	3	0	1.0	1.7	0.7,-0.4,0.2,-0.9	0.3333333333333333,0.3333333333333333,0.3333333333333333
+ASTRA12_PREFIX	3	1	0.0	0.5	0.7,-0.4,0.2,-0.9	0.3028331333895399,0.5079277568039055,0.18923910980655473
+ASTRA12_PREFIX	3	1	0.0	1.7	0.7,-0.4,0.2,-0.9	0.3294748930232511,0.38360187787941863,0.28692322909733026
+ASTRA12_PREFIX	3	1	0.05	0.5	0.7,-0.4,0.2,-0.9	0.3043581433867295,0.49919803563037685,0.19644382098289367
+ASTRA12_PREFIX	3	1	0.05	1.7	0.7,-0.4,0.2,-0.9	0.3296678150387552,0.38108845065211433,0.28924373430913036
+ASTRA12_PREFIX	3	1	1.0	0.5	0.7,-0.4,0.2,-0.9	0.3333333333333333,0.3333333333333333,0.3333333333333333
+ASTRA12_PREFIX	3	1	1.0	1.7	0.7,-0.4,0.2,-0.9	0.3333333333333333,0.3333333333333333,0.3333333333333333
+ASTRA12_PREFIX	3	2	0.0	0.5	0.7,-0.4,0.2,-0.9	0.5209939919068903,0.1297732914537914,0.34923271663931826
+ASTRA12_PREFIX	3	2	0.0	1.7	0.7,-0.4,0.2,-0.9	0.39162684417870697,0.2602130669525513,0.34816008886874167
+ASTRA12_PREFIX	3	2	0.05	0.5	0.7,-0.4,0.2,-0.9	0.5116109589782125,0.1399512935477685,0.348437747474019
+ASTRA12_PREFIX	3	2	0.05	1.7	0.7,-0.4,0.2,-0.9	0.38871216863643826,0.2638690802715904,0.34741875109197123
+ASTRA12_PREFIX	3	2	1.0	0.5	0.7,-0.4,0.2,-0.9	0.3333333333333333,0.3333333333333333,0.3333333333333333
+ASTRA12_PREFIX	3	2	1.0	1.7	0.7,-0.4,0.2,-0.9	0.3333333333333333,0.3333333333333333,0.3333333333333333
+ASTRA12_PREFIX	3	3	0.0	0.5	0.7,-0.4,0.2,-0.9	0.11648143987536497,0.5310675539870434,0.3524510061375917
+ASTRA12_PREFIX	3	3	0.0	1.7	0.7,-0.4,0.2,-0.9	0.2533365930074636,0.39581294687758123,0.3508504601149552
+ASTRA12_PREFIX	3	3	0.05	0.5	0.7,-0.4,0.2,-0.9	0.12732403454826338,0.521180842954358,0.35149512249737874
+ASTRA12_PREFIX	3	3	0.05	1.7	0.7,-0.4,0.2,-0.9	0.25733643002375706,0.3926889662003688,0.3499746037758741
+ASTRA12_PREFIX	3	3	1.0	0.5	0.7,-0.4,0.2,-0.9	0.3333333333333333,0.3333333333333333,0.3333333333333333
+ASTRA12_PREFIX	3	3	1.0	1.7	0.7,-0.4,0.2,-0.9	0.3333333333333333,0.3333333333333333,0.3333333333333333
+ASTRA12_PREFIX	4	0	0.0	0.5	0.7,-0.4,0.2,-0.9	0.5046732922957827,0.19021886736202115,0.2216859062105755,0.08342193413162066
+ASTRA12_PREFIX	4	0	0.0	1.7	0.7,-0.4,0.2,-0.9	0.32004423713166646,0.24020147996533012,0.25126381026619177,0.18849047263681168
+ASTRA12_PREFIX	4	0	0.05	0.5	0.7,-0.4,0.2,-0.9	0.49193962768099364,0.1932079239939201,0.2231016109000467,0.09175083742503963
+ASTRA12_PREFIX	4	0	0.05	1.7	0.7,-0.4,0.2,-0.9	0.3165420252750831,0.2406914059670636,0.25120061975288216,0.1915659490049711
+ASTRA12_PREFIX	4	0	1.0	0.5	0.7,-0.4,0.2,-0.9	0.25,0.25,0.25,0.25
+ASTRA12_PREFIX	4	0	1.0	1.7	0.7,-0.4,0.2,-0.9	0.25,0.25,0.25,0.25
+ASTRA12_PREFIX	4	1	0.0	0.5	0.7,-0.4,0.2,-0.9	0.20859523886537384,0.3498669731775256,0.1303502588073557,0.31118752914974485
+ASTRA12_PREFIX	4	1	0.0	1.7	0.7,-0.4,0.2,-0.9	0.240385790110042,0.27987698745601364,0.20933997882084127,0.27039724361310313
+ASTRA12_PREFIX	4	1	0.05	0.5	0.7,-0.4,0.2,-0.9	0.21066547692210513,0.34487362451864934,0.13633274586698793,0.30812815269225763
+ASTRA12_PREFIX	4	1	0.05	1.7	0.7,-0.4,0.2,-0.9	0.24086650060453987,0.27838313808321297,0.2113729798797992,0.26937738143244794
+ASTRA12_PREFIX	4	1	1.0	0.5	0.7,-0.4,0.2,-0.9	0.25,0.25,0.25,0.25
+ASTRA12_PREFIX	4	1	1.0	1.7	0.7,-0.4,0.2,-0.9	0.25,0.25,0.25,0.25
+ASTRA12_PREFIX	4	2	0.0	0.5	0.7,-0.4,0.2,-0.9	0.4221659240068437,0.1051564170586258,0.2829862816149457,0.18969137731958477
+ASTRA12_PREFIX	4	2	0.0	1.7	0.7,-0.4,0.2,-0.9	0.2990618901280376,0.19870908441437915,0.2658689407836374,0.2363600846739459
+ASTRA12_PREFIX	4	2	0.05	0.5	0.7,-0.4,0.2,-0.9	0.4135576278065015,0.11239859620569452,0.2813369675341984,0.19270680845360555
+ASTRA12_PREFIX	4	2	0.05	1.7	0.7,-0.4,0.2,-0.9	0.2966087956216357,0.20127363019366018,0.2650754937444555,0.2370420804402486
+ASTRA12_PREFIX	4	2	1.0	0.5	0.7,-0.4,0.2,-0.9	0.25,0.25,0.25,0.25
+ASTRA12_PREFIX	4	2	1.0	1.7	0.7,-0.4,0.2,-0.9	0.25,0.25,0.25,0.25
+ASTRA12_PREFIX	4	3	0.0	0.5	0.7,-0.4,0.2,-0.9	0.07911230501963865,0.36069247050870346,0.23937900777901353,0.32081621669264443
+ASTRA12_PREFIX	4	3	0.0	1.7	0.7,-0.4,0.2,-0.9	0.18325769253939933,0.2863217131836473,0.2537969149413761,0.2766236793355773
+ASTRA12_PREFIX	4	3	0.05	0.5	0.7,-0.4,0.2,-0.9	0.0876566897686567,0.3551578469832683,0.23991005739006285,0.3172754058580122
+ASTRA12_PREFIX	4	3	0.05	1.7	0.7,-0.4,0.2,-0.9	0.18659480791242936,0.2845056275244649,0.25360706919430726,0.27529249536879846
+ASTRA12_PREFIX	4	3	1.0	0.5	0.7,-0.4,0.2,-0.9	0.25,0.25,0.25,0.25
+ASTRA12_PREFIX	4	3	1.0	1.7	0.7,-0.4,0.2,-0.9	0.25,0.25,0.25,0.25
+PASS ASTRA12 runtime_prefix_fixtures_96
+PASS ASTRA12 budget_forced_no_score_head
+PASS ASTRA12 cap_forced_no_score_head
+PASS ASTRA12 fixed_zero_hazard
+PASS ASTRA12 fixed_one_hazard
+PASS ASTRA12 interior_hazard_draw
+PASS ASTRA08 known_empty
+PASS ASTRA08 unavailable_index_not_empty
+PASS ASTRA08 live_link
+PASS ASTRA08 callback_index_mutation_rejected
+PASS ASTRA08 reason_exact_budget
+PASS ASTRA08 reason_combined_budget
+PASS ASTRA08 reason_wrong_epoch
+PASS ASTRA08 incompatible_width
+PASS ASTRA08 expiry_equality
+PASS ASTRA08 precommit_failure_throws
+PASS ASTRA08 confirmed_old_snapshot_retained
+PASS ASTRA08 silent_noop_not_committed
+PASS ASTRA08 ambiguous_commit_no_success
+PASS ASTRA08 ambiguous_commit_quarantines_exact
+PASS ASTRA08 ambiguous_commit_blocks_generation_and_write
+PASS ASTRA08 persisted_tombstone_denies_after_reopen
+PASS ASTRA08 deny_even_missing_index
+PASS ASTRA08 stale_index_cannot_link
+PASS ASTRA08 cleanup_failure_pending
+PASS ASTRA08 cleanup_failure_does_not_regrant
+PASS ASTRA08 cleanup_retry_idempotent
+PASS ASTRA08 unrelated_scope_live
+PASS ASTRA08 index_ambiguous_update_throws
+PASS ASTRA08 index_ambiguous_update_quarantined
+PASS ASTRA08 index_reopened_from_new_bytes
+PASS ASTRA08 readback_unavailable_quarantines
+PASS ASTRA08 second_tombstone_persisted
+PASS ASTRA08 torn_snapshot_quarantined
+PASS ASTRA08 torn_snapshot_not_reinitialized
+PASS ASTRA08 S4_keeps_valid_zero_vector
+PASS ASTRA08 undefined_cosine_never_claims_partial_summary_complete
+PASS ASTRA08 exact_tombstone_denies_both_paths
+UNO_ASTRA08_MEMORY_HOST_PASS=32
+PASS ASTRA06 actual_decoded_norms
+PASS ASTRA06 allowed_tolerance_not_nominal_gamma
+PASS ASTRA06 actual_branch_average_not_cap
+PASS ASTRA06 partial_identity_not_point95
+PASS ASTRA06 full_coefficient
+PASS ASTRA06 alpha_zero_and_one
+PASS ASTRA06 fair_sweep_requires_coverage
+PASS ASTRA06 fair_sweep_bound
+PASS ASTRA06 unselected_coordinate_exact_identity
+PASS ASTRA06 fixed_point_zero
+PASS ASTRA06 real_kernel_same_z_masks_72_pairs
+PASS ASTRA06 real_kernel_different_z_72_pairs
+PASS ASTRA06 common_sequence_product_sum_96_steps
+PASS ASTRA06 real_kernel_fair_sweep_24_pairs
+PASS ASTRA06 real_kernel_K8_24_pairs
+PASS ASTRA06 cube_invariance_sample
+PASS ASTRA06 actual_S6_distinct_masks
+PASS ASTRA06 actual_adaptive_counterexample
+ASTRA06 gamma_upper=0.9000000000000002 Lz_upper=1.8000000000000007 c_full=0.9500000000000004 c_partial=1.0 tolerance_gamma=0.9000000000950004 adaptive_amplification=2.5E7
+PASS ASTRA06 int8_decoded_norm_counterexample
+PASS ASTRA06 invalid_mask_and_alpha
+PASS ASTRA06 invalid_error_and_context_delta
+PASS ASTRA05 independent_S4_formula
+PASS ASTRA05 minimum_path_rejected_before_S4
+PASS ASTRA05 exact_minimum_boundary
+PASS ASTRA05 S4_entries_and_actual_selected_kernels
+PASS ASTRA05 independent_scan_reserve_and_actual
+PASS ASTRA05 scalar_payload_reserved
+PASS ASTRA05 scalar_cap_precedes_any_kernel
+PASS ASTRA05 numeric_cap_precedes_any_kernel
+PASS ASTRA05 second_scan_reserved_before_first
+PASS ASTRA05 all_reservation_boundaries
+PASS ASTRA05 actual_attention_cost_checked_after_catalogue_before_forward
+PASS ASTRA05 memory_both_passes_and_attention
+PASS ASTRA05 next_step_uses_total_remaining_budget
+PASS ASTRA05 one_MAC_below_second_step
+PASS ASTRA05 both_blocks_actual_entries
+PASS ASTRA05 deadline_after_selector_no_S5
+PASS ASTRA05 failed_head_does_not_refund_S4
+PASS ASTRA05 deadline_after_first_recurrent_step
+PASS ASTRA05 goal_no_catalogue_charge_same_F
+PASS ASTRA05 one_workspace_in_flight
+PASS ASTRA05 newer_request_invalidates_old_without_second_workspace
+PASS ASTRA05 reservation_released_after_rejection
+PASS ASTRA05 no_kernel_before_reservation
+PASS ASTRA05 negative_reservation_denied
+PASS ASTRA05 second_reservation_cannot_reset_ledger
+PASS ASTRA05 no_row_overrun
+PASS ASTRA05 no_mac_overrun
+PASS ASTRA05 post_scan_rejection_keeps_both_catalogue_charges
+UNO_ASTRA05_CYCLE_HOST_PASS=28
+PASS C3 one_byte_legacy_rejected_even_with_matching_digest
+PASS C3 source_tensor_inventory_512
+PASS C3 inventory_512
+PASS C3 source_tensor_inventory_1024
+PASS C3 inventory_1024
+PASS C3 source_tensor_inventory_1536
+PASS C3 inventory_1536
+PASS C3 source_tensor_inventory_2048
+PASS C3 inventory_2048
+PASS C3 complete_zero_candidate_geometry_not_runtime_admission
+PASS C3 wrong_digest
+PASS C3 unapproved_width
+PASS C3 missing_tensor
+PASS C3 duplicate_tensor
+PASS C3 same_count_wrong_shape
+PASS C3 overlap
+PASS C3 hole
+PASS C3 wrong_length
+PASS C3 truncated_payload
+PASS C3 nonfinite_nan
+PASS C3 nonfinite_inf
+PASS C3 exact_row_cap_not_rounded_down
+PASS C3 row_l1_not_individual_elements
+PASS C3 modality_box_cap
+PASS C3 B_row_real_point_nine_cap
+PASS C3 frozen_verb_row
+PASS C3 frozen_endpoint_bias
+PASS C3 fixture_restored
+PASS C3 valid_boundary_nonzero_candidate
+PASS C3 FP16_exact_cap
+PASS C3 FP16_cap_plus_min_subnormal_rejected
+PASS C3 FP16_nonfinite_inf_nan
+PASS C3 FP16_frozen_zero_only
+PASS C3 FP16_box_not_row_l1
+PASS C3 FP16_wrong_shape
+PASS C3 INT8_Astra_rounding_counterexample_rejected
+PASS C3 INT8_signed_abs_sum_exact_cap
+PASS C3 INT8_exact_scale_one_ulp_above_cap
+PASS C3 INT8_individual_FP32_decode_rounding_checked
+PASS C3 INT8_negative_128_not_wrapped
+PASS C3 INT8_invalid_scale
+PASS C3 INT8_frozen_row
+PASS C3 INT8_layout_and_box_checks
+PASS C3 INT8_09_decimal_cap
+UNO_C3_GEOMETRY_HOST_PASS=44
+PASS C4 normal_commit_matches_same_F
+PASS C4 defensive_state_snapshot
+PASS C4 second_event_uses_prior_committed_state
+PASS C4 goal_switch_blocks_normal_and_stale_version
+PASS C4 goal_same_F_empty_bank_zero_temporary_state
+PASS C4 duplicate_goal_reencoding_denied
+PASS C4 stale_goal_encoding_never_publishes
+PASS C4 stale_goal_remains_pending
+PASS C4 stop_during_actual_F
+PASS C4 stopped_session_no_new_work
+PASS C4 consent_epoch_changes
+PASS C4 goal_change_invalidates_normal_work
+PASS C4 exact_and_semantic_revoke_during_F
+PASS C4 revoked_scope_new_work_denied
+PASS C4 semantic_only_change_invalidates_stamp
+PASS C4 semantic_ABA_invalidates_stamp
+PASS C4 newer_cookie_aborted_still_invalidates_old
+PASS C4 exact_write_invalidates_stamp
+PASS C4 memory_expiry_before_publish
+PASS C4 deadline_before_publish
+PASS C4 clock_regression_fail_closed
+PASS C4 catalogue_budget_denied
+PASS C4 S6_budget_abort_no_state_commit
+PASS C4 encrypted_reference_store_commit
+PASS C4 encrypted_reference_revocation
+PASS C4 encrypted_expiry
+PASS C4 pre_snapshot_consent_change_cannot_rebase
+PASS C4 pre_snapshot_memory_change_cannot_rebase
+PASS C4 pre_snapshot_newer_cookie_cannot_rebase
+PASS C4 final_clock_consent_change_never_publishes
+PASS C4 final_clock_STOP_never_publishes
+PASS C4 final_clock_memory_change_never_publishes
+UNO_C4_SESSION_HOST_PASS=32
+PASS C1 consent expiry bounds ticket even in legacy host clock mode
+PASS C1 stale caller timestamp cannot extend consent
+PASS C1 before expiry is allowed in synthetic reference
+PASS C1 task deadline earlier than consent
+PASS C1 regressing trusted clock fails closed
+PASS C1 throwing trusted clock fails closed
+PASS C1 clock rechecked after durable journal arm
+PASS C1 expiry during independent readback blocks positive commit
+PASS C1 owner callback delay cannot authorize with old event time
+UNO_C1_HOST_PASS=9
+PASS no weights is fail closed
+PASS default closed effect catalogue
+PASS approved test effect with exact consent
+PASS stale digest cannot authorize
+PASS STOP gates native dispatch
+PASS crash never autocommits
+PASS exact memory conflict and truncate
+PASS revocation blocks exact retrieval
+PASS queue priority and STOP latch
+PASS unknown OS verbs denied
+UNO_CHAT_WINDOW_HOST_PASS=10
+UNO_TEXT_CYCLE_HOST_PASS=19
+PASS percentiles nearest rank
+PASS single sample
+PASS reject invalid percentile
+PASS inactive kernel truly skipped
+PASS active kernel executes exactly once
+PASS measurement nearest-rank and distribution
+PASS measurement supports one sample
+PASS invalid and empty measurement rejected
+PASS large numbers do not overflow
+PASS paired benchmark insufficient is not pass
+PASS paired benchmark rejects incompatible conditions
+PASS paired benchmark records descriptive ratio
+PASS zero baseline prevents speedup claim
+PASS missing native oracle cannot pass
+PASS scenario pass fail not-run distinct
+PASS quick cpu workload has finite metrics
+PASS cpu stress cancel before first round
+PASS sustained CPU respects time and produces batches
+PASS parallel CPU run joins and records thread completion
+PASS sustained CPU responds to stop
+PASS memory is capped and checksummed
+PASS memory stress cancel is safe
+PASS original payload versus altered copy
+PASS integrity test cancel before mutation
+PASS scheduler stays bounded under concurrent flood
+PASS stopped scheduler refuses future owner events
+PASS lab stop cannot undo a stop
+PASS profiles have bounded safety ceilings
+PASS empty diagnostic cannot pass
+PASS even all green probes are partial, never agent acceptance
+PASS failed probe dominates incomplete checks
+PASS unknown test verdict is fail closed
+PASS owner STOP overrides green or failed checks
+PASS aborted sub-probe cannot be counted as partial completion
+PASS nonexecuted consent and neural are not passes
+PASS declared neural NOT_TESTED is incomplete, never an unknown failure
+UNO_THEME_HOST_PASS=62
+PASS HARDENING mutable original proposal cannot change approved effect
+PASS HARDENING native sees immutable snapshot while caller mutates ticket
+PASS HARDENING mutated issued ticket rejected
+PASS HARDENING forged never-issued ticket rejected
+PASS HARDENING ticket cannot redispatch after mutable phase reset
+PASS HARDENING negative native readback never commits success
+PASS HARDENING unknown native result remains MAY_HAVE_EXECUTED
+PASS HARDENING STOP prevents any subsequent native dispatch
+PASS HARDENING memory write return cannot mutate stored bytes
+PASS HARDENING memory read result cannot mutate stored bytes
+PASS HARDENING unverified memory writer cannot forge verified Android completion
+PASS HARDENING missing exact key explicitly NOT_FOUND
+PASS HARDENING expired queued events discarded
+PASS HARDENING STOP clears queued events and is one-way
+PASS HARDENING UNKNOWN after native call is not retried
+PASS HARDENING boot does not redispatch unresolved
+PASS HARDENING semantic summary is not an exact fact
+FOUNDATION_HARDENING_PASS=17
+PASS COMPUTE_GATE inactive_mask_skips_body
+PASS COMPUTE_GATE MAC_zero_denies_and_skips_expensive_body
+PASS COMPUTE_GATE tokens_zero_denies_and_skips_expensive_body
+PASS COMPUTE_GATE scratch_zero_denies_and_skips_expensive_body
+PASS COMPUTE_GATE deadline_expiry_denies_and_skips
+PASS COMPUTE_GATE reserve_is_atomic_across_dimensions
+PASS COMPUTE_GATE consumed_work_not_refunded_on_release
+PASS COMPUTE_GATE another_gate_cannot_accept_foreign_permit
+PASS COMPUTE_GATE permit_invalid_after_release
+PASS COMPUTE_GATE STOP_clears_scratch_and_invalidates_old_permits
+PASS COMPUTE_GATE monotonic_clock_rollback_is_denied
+PASS COMPUTE_GATE remaining_scratch_is_shared_between_concurrent_permits
+PASS COMPUTE_GATE max_concurrency_prevents_parallel_admissions
+PASS COMPUTE_GATE large_numbers_do_not_overflow
+PASS COMPUTE_GATE body_exception_releases_scratch_without_refunding_MAC
+PASS COMPUTE_GATE request_with_all_zero_cost_fails_closed
+PASS COMPUTE_GATE negative_estimates_and_negative_limits_rejected
+PASS COMPUTE_GATE race_cannot_overspend_MAC_allowance
+COMPUTE_GATE_HOST_PASS=18
+PASS UNO_F_REF zero_state_is_fixed_point
+PASS UNO_F_REF empty_semantic_memory_still_applies_second_tanh
+PASS UNO_F_REF mask_skips_block_and_preserves_prior_h
+PASS UNO_F_REF synchronous_branch_average_and_leaky_recurrence
+PASS UNO_F_REF current_input_controls_semantic_query
+PASS UNO_F_REF softmax_is_finite_with_large_finite_scores
+PASS UNO_F_REF cyclic_prefix_not_an_arbitrary_posthoc_mask
+PASS UNO_F_REF nonfinite_inputs_and_empty_masks_fail_closed
+PASS UNO_F_REF row_l1_contract_rejects_expanding_A
+PASS UNO_F_REF double_oracle_is_deterministic_and_does_not_mutate_input
+PASS UNO_F_REF reference_port_runs_inside_cycle_without_an_action
+PASS UNO_F_REF summary_changes_reference_state_without_replacing_the_fact
+PASS UNO_F_REF s6_matrix_budget_matches_actual_a_c_b_trace
+PASS UNO_F_REF s6_exact_mac_boundary_and_inner_step_admission
+PASS UNO_F_REF s6_bytes_and_overflow_fail_closed
+PASS UNO_F_REF s6_empty_feasible_is_budget_abort
+PASS UNO_F_REF s6_reproducible_same_seed_counter
+PASS UNO_F_REF s6_selected_mask_skips_inactive_kernels
+PASS UNO_F_REF s6_full_and_prefix_differ_in_mac_and_state
+S6_V2_SEED_SWEEP q1=3965/4096 observed=0.968017578125 ideal=0.9716927390677877
+PASS UNO_F_REF s6_v2_seed_sweep_regression_and_replay
+PASS UNO_F_REF s6_v2_finite_prefix_and_temperature
+PASS UNO_F_REF s6_v2_half_open_cdf_and_unbiased_integer
+PASS UNO_F_REF s6_v2_counter_never_wraps
+PASS UNO_F_REF s6_v2_actual_post_step_state_hazard
+PASS UNO_F_REF s6_v2_budget_forced_stop_before_hazard
+PASS UNO_F_REF s6_v2_adaptive_invalid_hazard_and_callback_isolation
+PASS UNO_F_REF recovered_s4_all_five_eligible_not_prequery_top4
+PASS UNO_F_REF recovered_s4_input_width_one_memory_width_128
+PASS UNO_F_REF recovered_s4_raw_scan_budget_counts_stale_boot
+UNO_F_REFERENCE_HOST_PASS=29
+PASS OUTBOX new file empty and prepared
+PASS OUTBOX disk replay retains prepared but forbids rearm
+PASS OUTBOX disk replay of armed is uncertain and never redispatched
+PASS OUTBOX unknown ticket and wrong digest cannot arm
+PASS OUTBOX STOP makes admission permanently fail closed
+PASS OUTBOX a second writer cannot open a locked journal
+PASS OUTBOX tampered tail fails closed without destructive repair
+PASS OUTBOX truncated tail fails closed without truncation repair
+PASS OUTBOX invalid identifiers and digests cannot persist
+PASS OUTBOX file cannot be rearmed after close
+PASS OUTBOX intent file does not contain user action arguments
+PASS OUTBOX sequence and chain over multiple entries survive replay
+ACTION_OUTBOX_HOST_PASS=12
+PASS CONTROLLER_OUTBOX durable PREPARED precedes ticket admission
+PASS CONTROLLER_OUTBOX durable MAY_HAVE_EXECUTED precedes native dispatch
+PASS CONTROLLER_OUTBOX journal STOP blocks native even with a prepared ticket
+PASS CONTROLLER_OUTBOX controller STOP blocks native and leaves unarmed PREPARED
+PASS CONTROLLER_OUTBOX tampered proposal is refused before persistent arm
+PASS CONTROLLER_OUTBOX no replay after previous MAY_HAVE_EXECUTED and process restart
+PASS CONTROLLER_OUTBOX fake ticket identity rejected before native
+PASS CONTROLLER_OUTBOX never-issued PREPARED id is pre-native FALSE, not UNKNOWN
+PASS CONTROLLER_OUTBOX duplicate dispatch never arms or calls native twice
+PASS CONTROLLER_OUTBOX failed/invalid consent never allocates durable intent
+PASS CONTROLLER_OUTBOX closed journal denies controller prepare
+PASS CONTROLLER_OUTBOX native exception stays MAY_HAVE_EXECUTED without retry
+PASS CONTROLLER_OUTBOX rejected ledger leaves safe orphan PREPARED, no native
+PASS CONTROLLER_OUTBOX typed PREPARED without issuance is REJECTED not observed FALSE
+PASS CONTROLLER_OUTBOX typed forged existing ticket is rejected before native
+PASS CONTROLLER_OUTBOX typed STOP refusal is distinct from native FALSE
+PASS CONTROLLER_OUTBOX typed journal refusal is distinct from native UNKNOWN
+PASS CONTROLLER_OUTBOX typed bad digest never becomes a native negative sample
+PASS CONTROLLER_OUTBOX typed native FALSE is INVOKED not REJECTED and not verified
+PASS CONTROLLER_OUTBOX typed native TRUE is not independent readback success
+PASS CONTROLLER_OUTBOX typed UNKNOWN is invoked only once; following result is unresolved
+PASS CONTROLLER_OUTBOX typed expired ticket is pre-native refusal
+PASS CONTROLLER_OUTBOX typed crash-recovered ticket remains unresolved without native
+ACTION_JOURNAL_CONTROLLER_INTEGRATION_PASS=23
+PASS RECEIPT_REPLAY one synced positive receipt survives reopen
+PASS RECEIPT_REPLAY stale readback predating native admission never commits
+PASS RECEIPT_REPLAY same monotonic timestamp as admission may be valid
+PASS RECEIPT_REPLAY native-readback time from future is refused
+PASS RECEIPT_REPLAY journal STOP after native blocks success even if ledger says yes
+PASS RECEIPT_REPLAY receipt invalid id/digest/source/generation refused
+PASS RECEIPT_REPLAY readback claims cannot be added before arm or after replay
+PASS RECEIPT_REPLAY duplicate receipt is rejected and cannot overwrite committed evidence
+PASS RECEIPT_REPLAY corrupt claimed receipt stops recovery without auto repair
+PASS RECEIPT_REPLAY truncated claimed receipt stops recovery without repair
+PASS RECEIPT_REPLAY journal receipt never triggers replayed native action
+ACTION_RECEIPT_RECOVERY_PASS=11
+PASS REF_TXN single v2 record binds used and source-tagged receipt after native
+PASS REF_TXN legacy v1 receipt replays but does NOT imply durable used
+PASS REF_TXN a second reference commit is rejected without extra bytes
+PASS REF_TXN unknown native result never writes a durable used flag
+PASS REF_TXN not a fake in-memory ledger: reference commit is denied
+PASS REF_TXN pre-dispatch STOP yields only PREPARED, no used receipt
+PASS REF_TXN STOP after invocation blocks used even with positive fake readback
+PASS REF_TXN checksum-correct malformed used marker cannot replay as committed
+PASS REF_TXN v2 commit with v1 record header and valid SHA cannot replay
+PASS REF_TXN torn v2 record fails closed, no automatic truncation
+PASS REF_TXN readback mismatched source never creates used receipt
+PASS REF_TXN recovered used receipt cannot invoke native again with old ticket
+ACTION_ATOMIC_REFERENCE_COMMIT_PASS=12
+UNO_CHAT_ENCRYPTION_HOST_PASS=10
+UNO_PROCESS_STOP_HOST_PASS=3
+UNO_FOUNDATION_REFERENCE_CYCLE_HOST_PASS=31
+UNO_ENCRYPTED_EXACT_MEMORY_HOST_PASS=61
+UNO_MANUAL_FACTS_HOST_PASS=23
+UNO_SEMANTIC_MEMORY_HOST_PASS=44
+UNO_FRAME_CONTRACT_HOST_PASS=16
+UNO_PLANNER_HOST_PASS=28
+UNO_MODEL_PROPOSAL_HOST_PASS=10
+UNO_WP01_HOST_PASS=657

@@ -24,13 +24,23 @@ class UnoMemoryPorts(
 
     /** Budget in row visits, across BOTH catalogues. No teacher ID participates. */
     fun <T> withS4Bank(access: S4Access, width: Int, use: (S4Catalogue) -> T): T =
+        withS4BankMetered(access, width, {}, use)
+
+    /** Charge completed catalogue scans as soon as their view is available,
+     * even if subsequent authority validation rejects the cycle. No refund.
+     * A backend failing before it reports a view is covered by reservation,
+     * not claimed as observed work. */
+    internal fun <T> withS4BankMetered(access: S4Access, width: Int,
+        onScan: (Int) -> Unit, use: (S4Catalogue) -> T): T =
         exact.withS4Authority(access) { authority ->
+            onScan(authority.scannedRows)
             if (authority.status != S4Status.COMPLETE && authority.status != S4Status.EMPTY)
                 use(S4Catalogue(authority.status, emptyList(), authority.scannedRows))
             else if (semantic == null) use(S4Catalogue(S4Status.UNKNOWN, emptyList(), authority.scannedRows,
                 reason = S4Reason.INDEX_UNAVAILABLE))
             else synchronized(semantic) {
                 val raw = semantic.eligibleForS4(access.scope, access.scanBudget - authority.scannedRows)
+                onScan(raw.scannedRows)
                 val scanned = authority.scannedRows + raw.scannedRows
                 if (raw.status != S4Status.COMPLETE && raw.status != S4Status.EMPTY)
                     use(S4Catalogue(raw.status, emptyList(), scanned, reason = raw.reason))

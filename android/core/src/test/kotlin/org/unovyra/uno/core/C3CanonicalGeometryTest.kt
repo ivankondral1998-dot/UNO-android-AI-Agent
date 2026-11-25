@@ -65,6 +65,40 @@ object C3CanonicalGeometryTest {
         verify("fixture_restored",sha(data)==zeroSha)
         put("U_s",1f);put("F.0.0.B",0.9f);put("W_verb",0.25f,row=23);put("b_outcome",0.5f,row=3)
         verify("valid_boundary_nonzero_candidate",checkData())
+        // Small isolated, untrained numeric fixtures; no new ABI or model admission.
+        val mat=B2CanonicalTensor("synthetic",listOf(1,2),false,1.0)
+        val fp16Ok=CanonicalGeometry.VALIDATED_CANDIDATE
+        fun half(vararg x:Int)=x.map{it.toShort()}.toShortArray()
+        fun h(spec:B2CanonicalTensor,vararg x:Int)=validateB2DecodedFP16Tensor(spec,half(*x))==fp16Ok
+        verify("FP16_exact_cap",h(mat,0x3800,0xb800)) // +0.5 and -0.5
+        verify("FP16_cap_plus_min_subnormal_rejected",!h(mat,0x3c00,0x0001))
+        verify("FP16_nonfinite_inf_nan",!h(mat,0x7c00,0) && !h(mat,0,0xfe00))
+        verify("FP16_frozen_zero_only",h(mat.copy(frozenRows=setOf(0)),0,0x8000) &&
+            !h(mat.copy(frozenRows=setOf(0)),0,0x0001))
+        verify("FP16_box_not_row_l1",h(mat.copy(box=true),0x3c00,0xbc00))
+        verify("FP16_wrong_shape",!h(mat,0x3800))
+        // Source Astra tests/boundaries.py: normalize [1, .51/127], round
+        // to int8 [127,1] with max/127 scale. The decoded real norm exceeds 1.
+        val witnessScale=(1.0/(1.0+0.51/127.0)/127.0).toFloat()
+        fun q(spec:B2CanonicalTensor, values:ByteArray, scales:FloatArray)=
+            validateB2DecodedINT8Matrix(spec,values,scales)==fp16Ok
+        verify("INT8_Astra_rounding_counterexample_rejected",!q(mat,byteArrayOf(127,1),floatArrayOf(witnessScale)))
+        verify("INT8_signed_abs_sum_exact_cap",q(mat,byteArrayOf(64,-64),floatArrayOf(1f/128)))
+        verify("INT8_exact_scale_one_ulp_above_cap",!q(mat,byteArrayOf(64,-64),floatArrayOf(Math.nextUp(1f/128))))
+        // Exact q*scale norm <=1, but independently rounded FP32 products exceed 1.
+        val roundedScale=1f/116
+        verify("INT8_individual_FP32_decode_rounding_checked",116.0*roundedScale.toDouble()<=1.0 &&
+            (114f*roundedScale).toDouble()+(2f*roundedScale).toDouble()>1.0 &&
+            !q(mat,byteArrayOf(114,2),floatArrayOf(roundedScale)))
+        verify("INT8_negative_128_not_wrapped",!q(mat,byteArrayOf(-128,1),floatArrayOf(1f/128)))
+        verify("INT8_invalid_scale",listOf(0f,-1f,Float.NaN,Float.POSITIVE_INFINITY).all{
+            !q(mat,byteArrayOf(0,0),floatArrayOf(it))})
+        verify("INT8_frozen_row",q(mat.copy(frozenRows=setOf(0)),byteArrayOf(0,0),floatArrayOf(1f)) &&
+            !q(mat.copy(frozenRows=setOf(0)),byteArrayOf(0,1),floatArrayOf(Float.MIN_VALUE)))
+        verify("INT8_layout_and_box_checks",!q(mat,byteArrayOf(1),floatArrayOf(1f)) &&
+            !q(mat,byteArrayOf(0,0),floatArrayOf()) && !q(mat.copy(box=true),byteArrayOf(0,0),floatArrayOf(1f)))
+        verify("INT8_09_decimal_cap",q(mat.copy(cap=0.9),byteArrayOf(1,0),floatArrayOf(0.9f)) &&
+            !q(mat.copy(cap=0.9),byteArrayOf(1,0),floatArrayOf(Math.nextUp(0.9f))))
         println("UNO_C3_GEOMETRY_HOST_PASS=$pass")
     }
 }

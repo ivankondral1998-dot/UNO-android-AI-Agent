@@ -135,6 +135,97 @@ internal fun validateB2CanonicalFP32(bytes: ByteArray, trustedD: Int, trustedDig
     return CanonicalGeometry.VALIDATED_CANDIDATE
 }
 
+/** R5.4 §6 / erratum 10: mathematical checks on isolated tensor payloads.
+ * No file parser, layout or deployment selection: the trusted caller must first
+ * validate the whole manifest, offsets, padding, dtype and digest. These helpers
+ * cannot grant WeightAdmission. A successful check only certifies the supplied
+ * snapshot of the numeric tensor, not a mutable buffer or an entire checkpoint.
+ */
+private fun decodedTensorGeometry(spec: B2CanonicalTensor, elements: Int): Pair<Int, Int>? {
+    val shape = spec.shape
+    if (shape.size !in 1..2 || shape.any { it <= 0 } || (!spec.box && shape.size != 2) ||
+        !spec.cap.isFinite() || spec.cap !in 0.0..8.0 ||
+        spec.frozenRows.any { it !in 0 until shape[0] }) return null
+    val rows = shape[0]; val cols = shape.getOrElse(1) { 1 }
+    if (rows.toLong() * cols != elements.toLong()) return null
+    return rows to cols
+}
+
+/** FP16 values are exact integer multiples of 2^-24. Count their absolute
+ * units, rather than summing rounded float values near the row cap. */
+private fun halfAbsUnits(bits: Short): Long? {
+    val value = bits.toInt() and 0x7fff
+    val exp = value ushr 10
+    val fraction = value and 1023
+    if (exp == 31) return null // Inf or NaN, either sign
+    return if (exp == 0) fraction.toLong() else (1024L + fraction) shl (exp - 1)
+}
+internal fun validateB2DecodedFP16Tensor(trustedSpec: B2CanonicalTensor, payload: ShortArray): CanonicalGeometry {
+    val reject = CanonicalGeometry.REJECTED
+    val spec = trustedSpec.copy(shape = trustedSpec.shape.toList(), frozenRows = trustedSpec.frozenRows.toSet())
+    val (rows, cols) = decodedTensorGeometry(spec, payload.size) ?: return reject
+    val data = payload.copyOf()
+    val capUnits = BigDecimal.valueOf(spec.cap).multiply(BigDecimal.valueOf(1L shl 24)).toLong()
+    for (row in 0 until rows) {
+        var sum = 0L
+        for (col in 0 until cols) {
+            val units = halfAbsUnits(data[row * cols + col]) ?: return reject
+            if (row in spec.frozenRows && units != 0L) return reject
+            if (spec.box) {
+                if (units > capUnits) return reject
+            } else {
+                // Early check bounds the sum by capUnits <= 8*2^24; no overflow.
+                if (units > capUnits - sum) return reject
+                sum += units
+            }
+        }
+    }
+    return CanonicalGeometry.VALIDATED_CANDIDATE
+}
+
+/** A02 mixed INT8 matrix: zero-point 0, one finite positive FP32 scale per
+ * output row. Its real decoded L1 norm is scale*sum(abs(q)); integer sum is
+ * exact and BigDecimal(Double) preserves the exact binary FP32 scale. Also
+ * certify individually rounded FP32 dequantization, since a backend may
+ * materialize q*scale in FP32. Neither certifies an unspecified kernel's
+ * other rounding/accumulation behavior. The packed signed-byte range/padding
+ * is a separate deployment ABI decision.
+ * Box vectors stay FP32 in the specified mixed layout, never routed here. */
+internal fun validateB2DecodedINT8Matrix(trustedSpec: B2CanonicalTensor,
+    coefficients: ByteArray, rowScales: FloatArray): CanonicalGeometry {
+    val reject = CanonicalGeometry.REJECTED
+    val spec = trustedSpec.copy(shape = trustedSpec.shape.toList(), frozenRows = trustedSpec.frozenRows.toSet())
+    if (spec.box) return reject
+    val (rows, cols) = decodedTensorGeometry(spec, coefficients.size) ?: return reject
+    if (rowScales.size != rows) return reject
+    val data = coefficients.copyOf(); val scales = rowScales.copyOf()
+    val cap = BigDecimal.valueOf(spec.cap)
+    for (row in 0 until rows) {
+        val scale = scales[row]
+        if (!scale.isFinite() || scale <= 0.0f) return reject
+        var sum = 0L
+        var upper = 0.0
+        for (col in 0 until cols) {
+            val magnitude = abs(data[row * cols + col].toInt())
+            if (row in spec.frozenRows && magnitude != 0) return reject
+            sum += magnitude // <=128*Int.MAX_VALUE, fits Long
+            val rounded = magnitude.toFloat() * scale
+            if (!rounded.isFinite()) return reject
+            if (rounded != 0.0f) upper = Math.nextUp(upper + rounded.toDouble())
+        }
+        if (BigDecimal(scale.toDouble()).multiply(BigDecimal.valueOf(sum)) > cap) return reject
+        if (upper > Math.nextDown(spec.cap)) {
+            var exactRounded = BigDecimal.ZERO
+            for (col in 0 until cols) {
+                val rounded = abs(data[row * cols + col].toInt()).toFloat() * scale
+                exactRounded = exactRounded.add(BigDecimal(rounded.toDouble()))
+            }
+            if (exactRounded > cap) return reject
+        }
+    }
+    return CanonicalGeometry.VALIDATED_CANDIDATE
+}
+
 /** Remembers an admission. The bytes are not a neural port and not a permission. */
 class WeightSlot {
     private var admission = WeightAdmission.REJECTED

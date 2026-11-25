@@ -18,7 +18,9 @@ object C4ReferenceSessionTest {
         val index=UnoSemanticMemory(key,"boot",{indexBytes?.copyOf()},{indexBytes=it.copyOf()}, dimension=128)
         val ports=UnoMemoryPorts(exact,index)
         val model=UnoFReference(UnoFReferenceTest.weights(rec=true,memory=true))
-        val session=UnoRefSession(model,"a".repeat(64),ports,"owner",0){now.get()}
+        var clockReads=0
+        var clockHook:(Int)->Unit={}
+        val session=UnoRefSession(model,"a".repeat(64),ports,"owner",0){clockHook(++clockReads);now.get()}
         val budget=UnoS6Budget(Long.MAX_VALUE,Long.MAX_VALUE,1)
         val logits:(DoubleArray,DoubleArray)->DoubleArray={_,_->doubleArrayOf(0.0,-1000.0)}
         fun add(expiry:Long=100L):ExactEntry {
@@ -90,6 +92,35 @@ object C4ReferenceSessionTest {
         val enc=Fixture(encrypted=true);enc.add();verify("encrypted_reference_store_commit",enc.run().status==RefSessionStatus.COMMITTED)
         concurrent("encrypted_reference_revocation",enc,{enc.ports.revoke("owner")})
         val encExpiry=Fixture(encrypted=true);encExpiry.add(expiry=20);concurrent("encrypted_expiry",encExpiry,{encExpiry.now.set(20)},RefSessionStatus.DEADLINE)
+        // Deterministically force the interleaving at the reservation boundary:
+        // monitor reentry is used only as a test hook, not a runtime clock policy.
+        val earlyConsent=Fixture()
+        earlyConsent.clockHook={i->if(i==2)check(earlyConsent.session.changeConsentEpoch(1))}
+        val rejectedConsent=earlyConsent.run()
+        verify("pre_snapshot_consent_change_cannot_rebase",rejectedConsent.status==RefSessionStatus.STALE &&
+            rejectedConsent.resources?.enteredMac==0L && earlyConsent.session.snapshot().state.all{it==0.0})
+        val earlyMemory=Fixture()
+        earlyMemory.clockHook={i->if(i==2)earlyMemory.add()}
+        val rejectedMemory=earlyMemory.run()
+        verify("pre_snapshot_memory_change_cannot_rebase",rejectedMemory.status==RefSessionStatus.STALE &&
+            rejectedMemory.resources?.enteredMac==0L && earlyMemory.session.snapshot().revision==0L)
+        val earlyNewer=Fixture()
+        earlyNewer.clockHook={i->if(i==2)check(earlyNewer.run().status==RefSessionStatus.BUDGET_ABORT)}
+        val rejectedNewer=earlyNewer.run()
+        verify("pre_snapshot_newer_cookie_cannot_rebase",rejectedNewer.status==RefSessionStatus.STALE &&
+            rejectedNewer.resources?.enteredMac==0L && earlyNewer.session.snapshot().revision==0L)
+        val control=Fixture();check(control.run().status==RefSessionStatus.COMMITTED)
+        val lastClock=control.clockReads
+        val finalConsent=Fixture()
+        finalConsent.clockHook={i->if(i==lastClock)check(finalConsent.session.changeConsentEpoch(1))}
+        verify("final_clock_consent_change_never_publishes",finalConsent.run().status==RefSessionStatus.STALE &&
+            finalConsent.session.snapshot().state.all{it==0.0})
+        val finalStop=Fixture();finalStop.clockHook={i->if(i==lastClock)finalStop.session.stop()}
+        verify("final_clock_STOP_never_publishes",finalStop.run().status==RefSessionStatus.STOPPED &&
+            finalStop.session.snapshot().revision==0L)
+        val finalMemory=Fixture();finalMemory.clockHook={i->if(i==lastClock)finalMemory.add()}
+        verify("final_clock_memory_change_never_publishes",finalMemory.run().status==RefSessionStatus.STALE &&
+            finalMemory.session.snapshot().revision==0L)
         println("UNO_C4_SESSION_HOST_PASS=$pass")
     }
 }
