@@ -1,0 +1,1508 @@
+{
+  "status": "ARCHIVED_EVIDENCE_REANALYSIS_NOT_NEW_TRAINING_OR_HOLDOUT",
+  "source_sha256": "ef8b8634bf1e130178ba631b39a9401a3ee3b1515bcf28247fc6a253a71a5ae5",
+  "prior_sha256": "4006750c471cc7d6c4adfbf3f483bc1ad38c9763f85037dbf808a37bf77ca0ca",
+  "14": {
+    "selected": 950,
+    "splits": {
+      "train": {
+        "n": 600,
+        "lengths": {
+          "12": 200,
+          "24": 200,
+          "32": 200
+        },
+        "trajectory_count": 600,
+        "noise_families": 600,
+        "exact_real_value_loss_floor_mean": 5.387931471172906e-05
+      },
+      "validation": {
+        "n": 20,
+        "lengths": {
+          "12": 5,
+          "24": 5,
+          "48": 5,
+          "96": 5
+        },
+        "trajectory_count": 20,
+        "noise_families": 20,
+        "exact_real_value_loss_floor_mean": 5.176059980807061e-05
+      },
+      "test": {
+        "n": 320,
+        "lengths": {
+          "12": 80,
+          "24": 80,
+          "48": 80,
+          "96": 80
+        },
+        "trajectory_count": 320,
+        "noise_families": 256,
+        "exact_real_value_loss_floor_mean": 5.507300322531309e-05
+      },
+      "erased": {
+        "n": 320,
+        "lengths": {
+          "12": 80,
+          "24": 80,
+          "48": 80,
+          "96": 80
+        },
+        "trajectory_count": 320,
+        "noise_families": 256,
+        "exact_real_value_loss_floor_mean": 5.507300322531309e-05
+      }
+    },
+    "overlap": {
+      "train__validation": {
+        "trajectory": 0,
+        "noise": 0
+      },
+      "train__test": {
+        "trajectory": 0,
+        "noise": 0
+      },
+      "validation__test": {
+        "trajectory": 0,
+        "noise": 0
+      }
+    },
+    "unseen_in_training": [
+      48,
+      96
+    ],
+    "also_used_in_validation": [
+      48,
+      96
+    ],
+    "order_value_floor": 0.00025880299904035303,
+    "grouped_prior_replay": {
+      "full": {
+        "correct": 253,
+        "n": 320,
+        "accuracy": 0.790625,
+        "noise_families": 256,
+        "equal_family_accuracy": 0.80859375,
+        "max_family_size": 2,
+        "independence_established": false
+      },
+      "erased": {
+        "correct": 163,
+        "n": 320,
+        "accuracy": 0.509375,
+        "noise_families": 256,
+        "equal_family_accuracy": 0.513671875,
+        "max_family_size": 2,
+        "independence_established": false
+      },
+      "memory_off": {
+        "correct": 148,
+        "n": 320,
+        "accuracy": 0.4625,
+        "noise_families": 256,
+        "equal_family_accuracy": 0.4609375,
+        "max_family_size": 2,
+        "independence_established": false
+      },
+      "zero_values": {
+        "correct": 148,
+        "n": 320,
+        "accuracy": 0.4625,
+        "noise_families": 256,
+        "equal_family_accuracy": 0.4609375,
+        "max_family_size": 2,
+        "independence_established": false
+      }
+    }
+  },
+  "15": {
+    "runs": [
+      {
+        "rung": "r2_two",
+        "mode": "s4_goal",
+        "trainable_count": 49281,
+        "changed_count": null,
+        "history": [
+          {
+            "step": 1,
+            "total_loss": 0.868951,
+            "answer_bce": null,
+            "route_ce": null
+          },
+          {
+            "step": 50,
+            "total_loss": 0.049164,
+            "answer_bce": null,
+            "route_ce": null
+          },
+          {
+            "step": 100,
+            "total_loss": 0.019534,
+            "answer_bce": null,
+            "route_ce": null
+          },
+          {
+            "step": 150,
+            "total_loss": 0.038822,
+            "answer_bce": null,
+            "route_ce": null
+          },
+          {
+            "step": 200,
+            "total_loss": 0.027452,
+            "answer_bce": null,
+            "route_ce": null
+          }
+        ],
+        "eval": {
+          "12": {
+            "correct": 506,
+            "n": 512,
+            "accuracy": 0.98828125,
+            "wilson95": [
+              0.9746716344674621,
+              0.9946184283031602
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 503,
+            "n": 512,
+            "accuracy": 0.982421875,
+            "wilson95": [
+              0.9669335150663066,
+              0.9907250669510682
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 501,
+            "n": 512,
+            "accuracy": 0.978515625,
+            "wilson95": [
+              0.9619423364720409,
+              0.9879619250431689
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 509,
+            "n": 512,
+            "accuracy": 0.994140625,
+            "wilson95": [
+              0.9829162193160559,
+              0.998005324207814
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      },
+      {
+        "rung": "r4_overwrite",
+        "mode": "s4_goal",
+        "trainable_count": 49281,
+        "changed_count": null,
+        "history": [
+          {
+            "step": 1,
+            "total_loss": 0.962564,
+            "answer_bce": null,
+            "route_ce": null
+          },
+          {
+            "step": 50,
+            "total_loss": 0.09364,
+            "answer_bce": null,
+            "route_ce": null
+          },
+          {
+            "step": 100,
+            "total_loss": 0.067017,
+            "answer_bce": null,
+            "route_ce": null
+          },
+          {
+            "step": 150,
+            "total_loss": 0.050383,
+            "answer_bce": null,
+            "route_ce": null
+          },
+          {
+            "step": 200,
+            "total_loss": 0.070648,
+            "answer_bce": null,
+            "route_ce": null
+          }
+        ],
+        "eval": {
+          "12": {
+            "correct": 503,
+            "n": 512,
+            "accuracy": 0.982421875,
+            "wilson95": [
+              0.9669335150663066,
+              0.9907250669510682
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 509,
+            "n": 512,
+            "accuracy": 0.994140625,
+            "wilson95": [
+              0.9829162193160559,
+              0.998005324207814
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 508,
+            "n": 512,
+            "accuracy": 0.9921875,
+            "wilson95": [
+              0.9800865852024431,
+              0.9969577980703442
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 504,
+            "n": 512,
+            "accuracy": 0.984375,
+            "wilson95": [
+              0.9694739672468663,
+              0.9920617750215911
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      },
+      {
+        "rung": "r3_three",
+        "mode": "s4_goal",
+        "trainable_count": 49281,
+        "changed_count": null,
+        "history": [
+          {
+            "step": 1,
+            "total_loss": 0.960337,
+            "answer_bce": null,
+            "route_ce": null
+          },
+          {
+            "step": 50,
+            "total_loss": 0.096115,
+            "answer_bce": null,
+            "route_ce": null
+          },
+          {
+            "step": 100,
+            "total_loss": 0.064739,
+            "answer_bce": null,
+            "route_ce": null
+          },
+          {
+            "step": 150,
+            "total_loss": 0.062304,
+            "answer_bce": null,
+            "route_ce": null
+          },
+          {
+            "step": 200,
+            "total_loss": 0.020346,
+            "answer_bce": null,
+            "route_ce": null
+          }
+        ],
+        "eval": {
+          "12": {
+            "correct": 503,
+            "n": 512,
+            "accuracy": 0.982421875,
+            "wilson95": [
+              0.9669335150663066,
+              0.9907250669510682
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 502,
+            "n": 512,
+            "accuracy": 0.98046875,
+            "wilson95": [
+              0.9644243436209257,
+              0.9893570781453667
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 507,
+            "n": 512,
+            "accuracy": 0.990234375,
+            "wilson95": [
+              0.977345524728445,
+              0.9958216982932597
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 505,
+            "n": 512,
+            "accuracy": 0.986328125,
+            "wilson95": [
+              0.9720509995117902,
+              0.9933619030077497
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      },
+      {
+        "rung": "r2_two",
+        "mode": "no_memory",
+        "trainable_count": 129,
+        "changed_count": null,
+        "history": [
+          {
+            "step": 1,
+            "total_loss": 0.693275,
+            "answer_bce": 0.693275,
+            "route_ce": null
+          },
+          {
+            "step": 50,
+            "total_loss": 0.672549,
+            "answer_bce": 0.672549,
+            "route_ce": null
+          },
+          {
+            "step": 100,
+            "total_loss": 0.713454,
+            "answer_bce": 0.713454,
+            "route_ce": null
+          },
+          {
+            "step": 150,
+            "total_loss": 0.693038,
+            "answer_bce": 0.693038,
+            "route_ce": null
+          },
+          {
+            "step": 200,
+            "total_loss": 0.704812,
+            "answer_bce": 0.704812,
+            "route_ce": null
+          }
+        ],
+        "eval": {
+          "12": {
+            "correct": 245,
+            "n": 512,
+            "accuracy": 0.478515625,
+            "wilson95": [
+              0.4355672416399762,
+              0.5217839955981164
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 268,
+            "n": 512,
+            "accuracy": 0.5234375,
+            "wilson95": [
+              0.48016210712441953,
+              0.5663638158885704
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 244,
+            "n": 512,
+            "accuracy": 0.4765625,
+            "wilson95": [
+              0.43363618411142957,
+              0.5198378928755806
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 240,
+            "n": 512,
+            "accuracy": 0.46875,
+            "wilson95": [
+              0.4259185141654849,
+              0.5120469218171952
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      },
+      {
+        "rung": "r3_three",
+        "mode": "no_memory",
+        "trainable_count": 129,
+        "changed_count": null,
+        "history": [
+          {
+            "step": 1,
+            "total_loss": 0.69354,
+            "answer_bce": 0.69354,
+            "route_ce": null
+          },
+          {
+            "step": 50,
+            "total_loss": 0.693355,
+            "answer_bce": 0.693355,
+            "route_ce": null
+          },
+          {
+            "step": 100,
+            "total_loss": 0.671873,
+            "answer_bce": 0.671873,
+            "route_ce": null
+          },
+          {
+            "step": 150,
+            "total_loss": 0.697936,
+            "answer_bce": 0.697936,
+            "route_ce": null
+          },
+          {
+            "step": 200,
+            "total_loss": 0.684805,
+            "answer_bce": 0.684805,
+            "route_ce": null
+          }
+        ],
+        "eval": {
+          "12": {
+            "correct": 251,
+            "n": 512,
+            "accuracy": 0.490234375,
+            "wilson95": [
+              0.4471673378916501,
+              0.5334468608529375
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 239,
+            "n": 512,
+            "accuracy": 0.466796875,
+            "wilson95": [
+              0.42399073881526494,
+              0.5100975369163327
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 262,
+            "n": 512,
+            "accuracy": 0.51171875,
+            "wilson95": [
+              0.4684953142550904,
+              0.5547676472514046
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 263,
+            "n": 512,
+            "accuracy": 0.513671875,
+            "wilson95": [
+              0.47043814338260587,
+              0.5567019783749716
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      },
+      {
+        "rung": "r4_overwrite",
+        "mode": "no_memory",
+        "trainable_count": 129,
+        "changed_count": null,
+        "history": [
+          {
+            "step": 1,
+            "total_loss": 0.692429,
+            "answer_bce": 0.692429,
+            "route_ce": null
+          },
+          {
+            "step": 50,
+            "total_loss": 0.693948,
+            "answer_bce": 0.693948,
+            "route_ce": null
+          },
+          {
+            "step": 100,
+            "total_loss": 0.686325,
+            "answer_bce": 0.686325,
+            "route_ce": null
+          },
+          {
+            "step": 150,
+            "total_loss": 0.704186,
+            "answer_bce": 0.704186,
+            "route_ce": null
+          },
+          {
+            "step": 200,
+            "total_loss": 0.697533,
+            "answer_bce": 0.697533,
+            "route_ce": null
+          }
+        ],
+        "eval": {
+          "12": {
+            "correct": 249,
+            "n": 512,
+            "accuracy": 0.486328125,
+            "wilson95": [
+              0.4432980216250284,
+              0.5295618566173942
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 261,
+            "n": 512,
+            "accuracy": 0.509765625,
+            "wilson95": [
+              0.46655313914706253,
+              0.5528326621083499
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 272,
+            "n": 512,
+            "accuracy": 0.53125,
+            "wilson95": [
+              0.48795307818280476,
+              0.5740814858345151
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 247,
+            "n": 512,
+            "accuracy": 0.482421875,
+            "wilson95": [
+              0.4394313222394468,
+              0.5256742355008108
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      }
+    ],
+    "attribution": "joint memory, goal, trainable parameters and route loss intervention; individual effects not identified"
+  },
+  "16": {
+    "005_005B_identical_cells": 10,
+    "cells": {
+      "r1_single__gru": {
+        "same_005_005b": true,
+        "final": {
+          "12": {
+            "correct": 2026,
+            "n": 2048,
+            "accuracy": 0.9892578125,
+            "wilson95": [
+              0.9837883060165369,
+              0.992895341438276
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 2031,
+            "n": 2048,
+            "accuracy": 0.99169921875,
+            "wilson95": [
+              0.9867463946217417,
+              0.9948109237285544
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 2038,
+            "n": 2048,
+            "accuracy": 0.9951171875,
+            "wilson95": [
+              0.9910348809283089,
+              0.9973455766756634
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 2041,
+            "n": 2048,
+            "accuracy": 0.99658203125,
+            "wilson95": [
+              0.992961308806918,
+              0.9983433513343443
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        },
+        "erased_control": {
+          "12": {
+            "correct": 998,
+            "n": 2048,
+            "accuracy": 0.4873046875,
+            "wilson95": [
+              0.46570095068796247,
+              0.5089559606555253
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 992,
+            "n": 2048,
+            "accuracy": 0.484375,
+            "wilson95": [
+              0.4627803328889163,
+              0.5060281733799917
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 1052,
+            "n": 2048,
+            "accuracy": 0.513671875,
+            "wilson95": [
+              0.49201988596495516,
+              0.5352726710497502
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 1022,
+            "n": 2048,
+            "accuracy": 0.4990234375,
+            "wilson95": [
+              0.4773908402648949,
+              0.5206596913769117
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      },
+      "r1_single__uno_f": {
+        "same_005_005b": true,
+        "final": {
+          "12": {
+            "correct": 1035,
+            "n": 2048,
+            "accuracy": 0.50537109375,
+            "wilson95": [
+              0.483727817190906,
+              0.5269942587791568
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 988,
+            "n": 2048,
+            "accuracy": 0.482421875,
+            "wilson95": [
+              0.460833666808915,
+              0.5040759027436066
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 1043,
+            "n": 2048,
+            "accuracy": 0.50927734375,
+            "wilson95": [
+              0.48762922542371406,
+              0.5308907239791218
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 1024,
+            "n": 2048,
+            "accuracy": 0.5,
+            "wilson95": [
+              0.4783655332567372,
+              0.5216344667432629
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        },
+        "erased_control": {
+          "12": {
+            "correct": 1035,
+            "n": 2048,
+            "accuracy": 0.50537109375,
+            "wilson95": [
+              0.483727817190906,
+              0.5269942587791568
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 988,
+            "n": 2048,
+            "accuracy": 0.482421875,
+            "wilson95": [
+              0.460833666808915,
+              0.5040759027436066
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 1043,
+            "n": 2048,
+            "accuracy": 0.50927734375,
+            "wilson95": [
+              0.48762922542371406,
+              0.5308907239791218
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 1024,
+            "n": 2048,
+            "accuracy": 0.5,
+            "wilson95": [
+              0.4783655332567372,
+              0.5216344667432629
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      },
+      "r2_two__gru": {
+        "same_005_005b": true,
+        "final": {
+          "12": {
+            "correct": 2038,
+            "n": 2048,
+            "accuracy": 0.9951171875,
+            "wilson95": [
+              0.9910348809283089,
+              0.9973455766756634
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 2038,
+            "n": 2048,
+            "accuracy": 0.9951171875,
+            "wilson95": [
+              0.9910348809283089,
+              0.9973455766756634
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 2039,
+            "n": 2048,
+            "accuracy": 0.99560546875,
+            "wilson95": [
+              0.991668902429808,
+              0.997686289353261
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 2024,
+            "n": 2048,
+            "accuracy": 0.98828125,
+            "wilson95": [
+              0.9826217304949864,
+              0.9921124486016334
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        },
+        "erased_control": {
+          "12": {
+            "correct": 1058,
+            "n": 2048,
+            "accuracy": 0.5166015625,
+            "wilson95": [
+              0.49494792068286986,
+              0.5381930414064152
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 1038,
+            "n": 2048,
+            "accuracy": 0.5068359375,
+            "wilson95": [
+              0.4851906907780998,
+              0.5284555877292529
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 1074,
+            "n": 2048,
+            "accuracy": 0.5244140625,
+            "wilson95": [
+              0.5027596450766081,
+              0.5459770638782229
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 1018,
+            "n": 2048,
+            "accuracy": 0.4970703125,
+            "wilson95": [
+              0.47544170140755976,
+              0.5187098935178605
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      },
+      "r2_two__uno_f": {
+        "same_005_005b": true,
+        "final": {
+          "12": {
+            "correct": 1014,
+            "n": 2048,
+            "accuracy": 0.4951171875,
+            "wilson95": [
+              0.4734928920661387,
+              0.5167597661428951
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 1035,
+            "n": 2048,
+            "accuracy": 0.50537109375,
+            "wilson95": [
+              0.483727817190906,
+              0.5269942587791568
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 997,
+            "n": 2048,
+            "accuracy": 0.48681640625,
+            "wilson95": [
+              0.4652141295115727,
+              0.5084680476528185
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 981,
+            "n": 2048,
+            "accuracy": 0.47900390625,
+            "wilson95": [
+              0.4574277955810351,
+              0.5006586347178101
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        },
+        "erased_control": {
+          "12": {
+            "correct": 1014,
+            "n": 2048,
+            "accuracy": 0.4951171875,
+            "wilson95": [
+              0.4734928920661387,
+              0.5167597661428951
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 1035,
+            "n": 2048,
+            "accuracy": 0.50537109375,
+            "wilson95": [
+              0.483727817190906,
+              0.5269942587791568
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 997,
+            "n": 2048,
+            "accuracy": 0.48681640625,
+            "wilson95": [
+              0.4652141295115727,
+              0.5084680476528185
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 981,
+            "n": 2048,
+            "accuracy": 0.47900390625,
+            "wilson95": [
+              0.4574277955810351,
+              0.5006586347178101
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      },
+      "r3_three__gru": {
+        "same_005_005b": true,
+        "final": {
+          "12": {
+            "correct": 1518,
+            "n": 2048,
+            "accuracy": 0.7412109375,
+            "wilson95": [
+              0.7218034889784201,
+              0.75971519549531
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 1508,
+            "n": 2048,
+            "accuracy": 0.736328125,
+            "wilson95": [
+              0.7168152315728611,
+              0.7549561111099028
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 1552,
+            "n": 2048,
+            "accuracy": 0.7578125,
+            "wilson95": [
+              0.7387868182231682,
+              0.7758728283398469
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 1513,
+            "n": 2048,
+            "accuracy": 0.73876953125,
+            "wilson95": [
+              0.7193089810468207,
+              0.7573360325314262
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        },
+        "erased_control": {
+          "12": {
+            "correct": 973,
+            "n": 2048,
+            "accuracy": 0.47509765625,
+            "wilson95": [
+              0.4535366102741405,
+              0.4967519465919318
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 980,
+            "n": 2048,
+            "accuracy": 0.478515625,
+            "wilson95": [
+              0.4569413251213984,
+              0.5001703709983503
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 1024,
+            "n": 2048,
+            "accuracy": 0.5,
+            "wilson95": [
+              0.4783655332567372,
+              0.5216344667432629
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 1003,
+            "n": 2048,
+            "accuracy": 0.48974609375,
+            "wilson95": [
+              0.4681353657433453,
+              0.5113952164956255
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      },
+      "r3_three__uno_f": {
+        "same_005_005b": true,
+        "final": {
+          "12": {
+            "correct": 992,
+            "n": 2048,
+            "accuracy": 0.484375,
+            "wilson95": [
+              0.4627803328889163,
+              0.5060281733799917
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 994,
+            "n": 2048,
+            "accuracy": 0.4853515625,
+            "wilson95": [
+              0.46375378967934405,
+              0.5070041849477573
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 995,
+            "n": 2048,
+            "accuracy": 0.48583984375,
+            "wilson95": [
+              0.46424054900561373,
+              0.5074921598005842
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 1016,
+            "n": 2048,
+            "accuracy": 0.49609375,
+            "wilson95": [
+              0.4744672555458308,
+              0.5177348710213961
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        },
+        "erased_control": {
+          "12": {
+            "correct": 992,
+            "n": 2048,
+            "accuracy": 0.484375,
+            "wilson95": [
+              0.4627803328889163,
+              0.5060281733799917
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 994,
+            "n": 2048,
+            "accuracy": 0.4853515625,
+            "wilson95": [
+              0.46375378967934405,
+              0.5070041849477573
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 995,
+            "n": 2048,
+            "accuracy": 0.48583984375,
+            "wilson95": [
+              0.46424054900561373,
+              0.5074921598005842
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 1016,
+            "n": 2048,
+            "accuracy": 0.49609375,
+            "wilson95": [
+              0.4744672555458308,
+              0.5177348710213961
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      },
+      "r4_overwrite__gru": {
+        "same_005_005b": true,
+        "final": {
+          "12": {
+            "correct": 1448,
+            "n": 2048,
+            "accuracy": 0.70703125,
+            "wilson95": [
+              0.6869470919297519,
+              0.7263402000072149
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 1442,
+            "n": 2048,
+            "accuracy": 0.7041015625,
+            "wilson95": [
+              0.683965834463624,
+              0.723473052398763
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 1444,
+            "n": 2048,
+            "accuracy": 0.705078125,
+            "wilson95": [
+              0.6849594783198761,
+              0.7244288769007042
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 1422,
+            "n": 2048,
+            "accuracy": 0.6943359375,
+            "wilson95": [
+              0.6740352978619593,
+              0.7139089054184953
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        },
+        "erased_control": {
+          "12": {
+            "correct": 1030,
+            "n": 2048,
+            "accuracy": 0.5029296875,
+            "wilson95": [
+              0.48129010648213955,
+              0.5245582985924402
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 1052,
+            "n": 2048,
+            "accuracy": 0.513671875,
+            "wilson95": [
+              0.49201988596495516,
+              0.5352726710497502
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 1017,
+            "n": 2048,
+            "accuracy": 0.49658203125,
+            "wilson95": [
+              0.47495446817916853,
+              0.518222392567155
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 1001,
+            "n": 2048,
+            "accuracy": 0.48876953125,
+            "wilson95": [
+              0.46716153789221787,
+              0.5104195759885598
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      },
+      "r4_overwrite__uno_f": {
+        "same_005_005b": true,
+        "final": {
+          "12": {
+            "correct": 1053,
+            "n": 2048,
+            "accuracy": 0.51416015625,
+            "wilson95": [
+              0.4925078401994158,
+              0.5357594509943863
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 1046,
+            "n": 2048,
+            "accuracy": 0.5107421875,
+            "wilson95": [
+              0.4890925934539811,
+              0.5323515584861445
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 1036,
+            "n": 2048,
+            "accuracy": 0.505859375,
+            "wilson95": [
+              0.48421542112187804,
+              0.5274813890272815
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 1047,
+            "n": 2048,
+            "accuracy": 0.51123046875,
+            "wilson95": [
+              0.4895804240114402,
+              0.5328384621077821
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        },
+        "erased_control": {
+          "12": {
+            "correct": 1053,
+            "n": 2048,
+            "accuracy": 0.51416015625,
+            "wilson95": [
+              0.4925078401994158,
+              0.5357594509943863
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 1046,
+            "n": 2048,
+            "accuracy": 0.5107421875,
+            "wilson95": [
+              0.4890925934539811,
+              0.5323515584861445
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 1036,
+            "n": 2048,
+            "accuracy": 0.505859375,
+            "wilson95": [
+              0.48421542112187804,
+              0.5274813890272815
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 1047,
+            "n": 2048,
+            "accuracy": 0.51123046875,
+            "wilson95": [
+              0.4895804240114402,
+              0.5328384621077821
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      },
+      "r5_order__gru": {
+        "same_005_005b": true,
+        "final": {
+          "12": {
+            "correct": 2048,
+            "n": 2048,
+            "accuracy": 1.0,
+            "wilson95": [
+              0.9981277993949387,
+              1.0
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 2048,
+            "n": 2048,
+            "accuracy": 1.0,
+            "wilson95": [
+              0.9981277993949387,
+              1.0
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 2048,
+            "n": 2048,
+            "accuracy": 1.0,
+            "wilson95": [
+              0.9981277993949387,
+              1.0
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 2041,
+            "n": 2048,
+            "accuracy": 0.99658203125,
+            "wilson95": [
+              0.992961308806918,
+              0.9983433513343443
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        },
+        "erased_control": {
+          "12": {
+            "correct": 999,
+            "n": 2048,
+            "accuracy": 0.48779296875,
+            "wilson95": [
+              0.4661877924778581,
+              0.5094438530447264
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 1023,
+            "n": 2048,
+            "accuracy": 0.49951171875,
+            "wilson95": [
+              0.4778781764639951,
+              0.5211470893569082
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 1054,
+            "n": 2048,
+            "accuracy": 0.5146484375,
+            "wilson95": [
+              0.4929958150522427,
+              0.536246210320656
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 1065,
+            "n": 2048,
+            "accuracy": 0.52001953125,
+            "wilson95": [
+              0.49836489978506243,
+              0.541599201557899
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      },
+      "r5_order__uno_f": {
+        "same_005_005b": true,
+        "final": {
+          "12": {
+            "correct": 978,
+            "n": 2048,
+            "accuracy": 0.4775390625,
+            "wilson95": [
+              0.45596844615676607,
+              0.4991937816047893
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 1018,
+            "n": 2048,
+            "accuracy": 0.4970703125,
+            "wilson95": [
+              0.47544170140755976,
+              0.5187098935178605
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 1006,
+            "n": 2048,
+            "accuracy": 0.4912109375,
+            "wilson95": [
+              0.4695962620665665,
+              0.5128585227096942
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 1056,
+            "n": 2048,
+            "accuracy": 0.515625,
+            "wilson95": [
+              0.49397182662000816,
+              0.5372196671110836
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        },
+        "erased_control": {
+          "12": {
+            "correct": 978,
+            "n": 2048,
+            "accuracy": 0.4775390625,
+            "wilson95": [
+              0.45596844615676607,
+              0.4991937816047893
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "24": {
+            "correct": 1018,
+            "n": 2048,
+            "accuracy": 0.4970703125,
+            "wilson95": [
+              0.47544170140755976,
+              0.5187098935178605
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "48": {
+            "correct": 1006,
+            "n": 2048,
+            "accuracy": 0.4912109375,
+            "wilson95": [
+              0.4695962620665665,
+              0.5128585227096942
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          },
+          "96": {
+            "correct": 1056,
+            "n": 2048,
+            "accuracy": 0.515625,
+            "wilson95": [
+              0.49397182662000816,
+              0.5372196671110836
+            ],
+            "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+          }
+        }
+      }
+    },
+    "train001_full_vs_first_write": {
+      "all": {
+        "n": 64,
+        "both_correct": 45,
+        "left_only": 3,
+        "right_only": 12,
+        "both_wrong": 4,
+        "paired_accuracy_delta_left_minus_right": -0.140625
+      },
+      "hard": {
+        "n": 7,
+        "both_correct": 0,
+        "left_only": 3,
+        "right_only": 0,
+        "both_wrong": 4,
+        "paired_accuracy_delta_left_minus_right": 0.42857142857142855
+      }
+    },
+    "perfect_2048": {
+      "correct": 2048,
+      "n": 2048,
+      "accuracy": 1.0,
+      "wilson95": [
+        0.9981277993949387,
+        1.0
+      ],
+      "interval_assumption": "independent Bernoulli episodes; not across training seeds"
+    },
+    "first_write_theoretical_accuracy": 0.8333333333333334,
+    "unit": "one generated episode conditional on a fixed model/seed; not independent training repeats"
+  }
+}

@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse,hashlib,io,json,math,os,pathlib,tempfile,time,contextlib
 import torch
 from torch import nn
+from r54_measurement import trajectory_keys, group_accuracy, value_loss_floor, split_lineage
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def file_sha(p):return sha(p.read_bytes())
@@ -126,9 +127,11 @@ def dataset(path,dtype,device):
     rows=[]
     for line in path.read_text().splitlines():
         name,label,record,value,raw=line.split('\t')
-        x=torch.tensor([[float(v) for v in f.split(',')] for f in raw.split(';')],dtype=dtype,device=device)
+        events=[[float(v) for v in f.split(',')] for f in raw.split(';')]
+        trajectory,noise_family=trajectory_keys(events)
+        x=torch.tensor(events,dtype=dtype,device=device)
         require(bool(torch.isfinite(x).all()) and x.shape[1]==3 and 1<=len(x)<=96 and int(label) in (0,1),"INPUT_OR_MANIFEST_REJECTED")
-        rows.append({'id':name,'label':int(label),'record':int(record),'value':float(value),'state':.8 if int(label) else -.8,'x':x})
+        rows.append({'id':name,'label':int(label),'record':int(record),'value':float(value),'state':.8 if int(label) else -.8,'x':x,'trajectory_sha256':trajectory,'noise_family_sha256':noise_family})
     require(rows and len({r['id'] for r in rows})==len(rows),"INPUT_OR_MANIFEST_REJECTED")
     return rows
 
@@ -161,14 +164,16 @@ def scores(model,rows,mode='full'):
     Preserve legacy task-correct and global MSE definitions on TRAIN001 data.
     """
     require(bool(rows) and mode in ('full','memory_off','zero_values'), 'EVALUATION_INPUT')
-    out={}
+    out={};families=[]
     def counts():return {'n':0,'correct':0,'sse':0.,'presence_misses':0,'retrieval_top1_n':0,'retrieval_top1_correct':0}
     with torch.no_grad():
         for row in rows:
             h,q,bank=terminal_episode(model,row['x'],mode)
             group='-'.join(row['id'].split('-')[1:-1]);r=out.setdefault(group,counts())
             hit=any(seq==row['record'] for seq,_,_ in bank)
-            r['n']+=1;r['correct']+=int(hit and (float(h[0])>=0)==bool(row['label']))
+            correct=int(hit and (float(h[0])>=0)==bool(row['label']))
+            r['n']+=1;r['correct']+=correct
+            if 'noise_family_sha256' in row:families.append((row['noise_family_sha256'],correct))
             r['sse']+=(float(h[0])-row['state'])**2;r['presence_misses']+=int(not hit)
             if mode!='memory_off':
                 r['retrieval_top1_n']+=1
@@ -181,7 +186,11 @@ def scores(model,rows,mode='full'):
         r['retrieval_top1_accuracy']=(r['retrieval_top1_correct']/r['retrieval_top1_n'] if r['retrieval_top1_n'] else None)
         return r
     total=finish({k:sum(v[k] for v in out.values()) for k in counts()})
-    return {'metric_schema':2,**total,'groups':{k:finish(v) for k,v in out.items()}}
+    result={'metric_schema':2,**total,'groups':{k:finish(v) for k,v in out.items()}}
+    if families:
+        require(len(families)==len(rows),'MIXED_LINEAGE_METADATA')
+        result['lineage']=group_accuracy(families)
+    return result
 
 @contextlib.contextmanager
 def output_lock(output):
@@ -213,13 +222,13 @@ def run(a):
     if a.device=='cuda':
         require(a.cuda_receipt is not None,'CUDA_CHECK_RECEIPT_REQUIRED')
         receipt=json.loads(a.cuda_receipt.read_text())
-        require(receipt.get('status')=='CUDA_MECHANISM_CHECK_PASS_NOT_QUALITY' and receipt.get('backend_sha256')==file_sha(pathlib.Path(__file__)) and receipt.get('torch')==torch.__version__ and receipt.get('gpu')==torch.cuda.get_device_name(0),'CUDA_CHECK_RECEIPT_MISMATCH')
+        require(receipt.get('status')=='CUDA_MECHANISM_CHECK_PASS_NOT_QUALITY' and receipt.get('backend_sha256')==file_sha(pathlib.Path(__file__)) and receipt.get('measurement_sha256')==file_sha(pathlib.Path(__file__).with_name('r54_measurement.py')) and receipt.get('torch')==torch.__version__ and receipt.get('gpu')==torch.cuda.get_device_name(0),'CUDA_CHECK_RECEIPT_MISMATCH')
     dtype={'double':torch.float64,'float32':torch.float32}[a.precision]
     torch.set_num_threads(2);torch.manual_seed(a.seed);torch.use_deterministic_algorithms(True)
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
     model=TorchF(a.data/'initial.tsv',dtype,a.device);opt=torch.optim.Adam(model.parameters(),lr=2e-4)
     data={s:dataset(a.data/f'{s}.tsv',dtype,a.device) for s in ('train','validation')} # test stays unopened
-    cfg={'version':1,'source':file_sha(pathlib.Path(__file__)),'input':{p.name:file_sha(p) for p in a.data.glob('*.tsv')},'steps':a.steps,'batch':a.batch,'seed':a.seed,'precision':a.precision,'device':a.device,'torch':str(torch.__version__),'cuda':torch.version.cuda,'cublas':os.environ.get('CUBLAS_WORKSPACE_CONFIG'),'gpu':torch.cuda.get_device_name(0) if a.device=='cuda' else None,'geometry':'d64/m128/b64/chi4/J2/K2,alpha=rho=.5,full-route,f_e=0','fp32_cap_tolerance':2e-6,'projection':'FP64 threshold then cast to master dtype','tf32':False,'deterministic':True}
+    cfg={'version':2,'source':file_sha(pathlib.Path(__file__)),'measurement_source':file_sha(pathlib.Path(__file__).with_name('r54_measurement.py')),'input':{p.name:file_sha(p) for p in a.data.glob('*.tsv')},'steps':a.steps,'batch':a.batch,'seed':a.seed,'precision':a.precision,'device':a.device,'torch':str(torch.__version__),'cuda':torch.version.cuda,'cublas':os.environ.get('CUBLAS_WORKSPACE_CONFIG'),'gpu':torch.cuda.get_device_name(0) if a.device=='cuda' else None,'geometry':'d64/m128/b64/chi4/J2/K2,alpha=rho=.5,full-route,f_e=0','fp32_cap_tolerance':2e-6,'projection':'FP64 threshold then cast to master dtype','tf32':False,'deterministic':True}
     if a.resume:
         require(json.loads((a.output/'manifest.json').read_text())==cfg,"RUN_MANIFEST_MISMATCH")
         state=restore(a.output/'latest.uno');require(state['config']==cfg,"INPUT_OR_MANIFEST_REJECTED")
@@ -254,11 +263,11 @@ def run(a):
                 best_loss=row['validation']['mse'];selected=step;best={k:v.detach().cpu().clone() for k,v in model.state_dict().items()}
         history.append(row);save();print(canonical(row),flush=True)
     # Evaluation is a separate explicit command; never open test during training.
-    atomic(a.output/'training.json',canonical({'config':cfg,'selected':selected,'best_validation_mse':best_loss,'history':history,'status':'TRAIN_FINISHED_QUALITY_UNASSESSED'}).encode())
+    atomic(a.output/'training.json',canonical({'config':cfg,'selected':selected,'best_validation_mse':best_loss,'history':history,'split_lineage':split_lineage(data),'value_loss_floor_exact_real_mean_train':sum(value_loss_floor(row['value']) for row in data['train'])/len(data['train']),'status':'TRAIN_FINISHED_QUALITY_UNASSESSED'}).encode())
 
 def evaluate(a):
     torch.set_num_threads(2)
-    cfg=json.loads((a.output/'manifest.json').read_text());require(cfg['source']==file_sha(pathlib.Path(__file__)) and cfg['torch']==str(torch.__version__),"EVALUATION_RUNTIME_OR_SOURCE_MISMATCH")
+    cfg=json.loads((a.output/'manifest.json').read_text());require(cfg['source']==file_sha(pathlib.Path(__file__)) and cfg.get('measurement_source')==file_sha(pathlib.Path(__file__).with_name('r54_measurement.py')) and cfg['torch']==str(torch.__version__),"EVALUATION_RUNTIME_OR_SOURCE_MISMATCH")
     require(cfg['input']=={p.name:file_sha(p) for p in a.data.glob('*.tsv')},"INPUT_OR_MANIFEST_REJECTED")
     state=restore(a.output/'latest.uno');require(state['config']==cfg and state['step']==cfg['steps'],"INPUT_OR_MANIFEST_REJECTED")
     pin=canonical({'checkpoint':file_sha(a.output/'latest.uno'),'selected':state['selected']})
@@ -269,7 +278,8 @@ def evaluate(a):
     dtype={'double':torch.float64,'float32':torch.float32}[cfg['precision']]
     model=TorchF(a.data/'initial.tsv',dtype,'cpu');model.load_state_dict(state['best']);model.validate()
     test=dataset(a.data/'test.tsv',dtype,'cpu');erased=dataset(a.data/'erased.tsv',dtype,'cpu')
-    result={'selected':state['selected'],'full':scores(model,test),'erased':scores(model,erased),'memory_off':scores(model,test,'memory_off'),'zero_values':scores(model,test,'zero_values'),'evaluation_device':'cpu','training_device':cfg['device']}
+    lineage=split_lineage({'train':dataset(a.data/'train.tsv',dtype,'cpu'),'validation':dataset(a.data/'validation.tsv',dtype,'cpu'),'test':test})
+    result={'selected':state['selected'],'split_lineage':lineage,'full':scores(model,test),'erased':scores(model,erased),'memory_off':scores(model,test,'memory_off'),'zero_values':scores(model,test,'zero_values'),'evaluation_device':'cpu','training_device':cfg['device']}
     atomic(report,canonical(result).encode());print(canonical(result))
 
 if __name__=='__main__':
