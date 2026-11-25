@@ -1,0 +1,161 @@
+CPU host qualification; only synthetic fixture updates, no quality training.
+python 3.13.5 torch 2.10.0+cpu CUDA False
+test_box_nonfinite_rejected_before_projection (__main__.DecodedCapsTest.test_box_nonfinite_rejected_before_projection) ... ok
+test_decimal_point_nine (__main__.DecodedCapsTest.test_decimal_point_nine) ... ok
+test_extreme_finite_rows (__main__.DecodedCapsTest.test_extreme_finite_rows) ... ok
+test_interior_unchanged_and_zero (__main__.DecodedCapsTest.test_interior_unchanged_and_zero) ... ok
+test_nonfinite_rejected_before_copy (__main__.DecodedCapsTest.test_nonfinite_rejected_before_copy) ... ok
+test_original_rounding_counterexample (__main__.DecodedCapsTest.test_original_rounding_counterexample) ... ok
+test_random_exact_and_idempotent (__main__.DecodedCapsTest.test_random_exact_and_idempotent) ... ok
+test_wrong_geometry_and_nonfinite_rejected (__main__.DecodedCapsTest.test_wrong_geometry_and_nonfinite_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.149s
+
+OK
+=== parity ===
+torch.float64 PORT_ALL_GRADIENTS_TWO_UPDATES_KOTLIN_PARITY_AND_CPU_EXACT_RESUME_PASS
+torch.float32 PORT_ALL_GRADIENTS_TWO_UPDATES_KOTLIN_PARITY_AND_CPU_EXACT_RESUME_PASS
+CHECKPOINT_CORRUPTION_AND_CONCURRENT_WRITER_REJECTED
+CUDA_NOT_TESTED
+=== parity96 ===
+torch.float64 PORT_ALL_GRADIENTS_TWO_UPDATES_KOTLIN_PARITY_AND_CPU_EXACT_RESUME_PASS
+torch.float32 PORT_ALL_GRADIENTS_TWO_UPDATES_KOTLIN_PARITY_AND_CPU_EXACT_RESUME_PASS
+CHECKPOINT_CORRUPTION_AND_CONCURRENT_WRITER_REJECTED
+CUDA_NOT_TESTED
+=== parity-singleton ===
+torch.float64 PORT_ALL_GRADIENTS_TWO_UPDATES_KOTLIN_PARITY_AND_CPU_EXACT_RESUME_PASS
+torch.float32 PORT_ALL_GRADIENTS_TWO_UPDATES_KOTLIN_PARITY_AND_CPU_EXACT_RESUME_PASS
+CHECKPOINT_CORRUPTION_AND_CONCURRENT_WRITER_REJECTED
+CUDA_NOT_TESTED
+PASS full SSE_MSE_PRESENCE_RETRIEVAL
+PASS zero_values SSE_MSE_PRESENCE_RETRIEVAL
+PASS memory_off SSE_MSE_PRESENCE_RETRIEVAL
+PASS EMPTY_AND_NONQUERY_REJECTED
+test_floor (__main__.Tests.test_floor) ... ok
+test_group (__main__.Tests.test_group) ... ok
+test_identity (__main__.Tests.test_identity) ... ok
+test_loss_and_delta (__main__.Tests.test_loss_and_delta) ... ok
+test_objective_components_and_gradients (__main__.Tests.test_objective_components_and_gradients) ... ok
+test_overwrite (__main__.Tests.test_overwrite) ... ok
+test_pair (__main__.Tests.test_pair) ... ok
+test_real_generator_pair (__main__.Tests.test_real_generator_pair) ... ok
+test_split_lineage (__main__.Tests.test_split_lineage) ... ok
+test_trainer_lineage (__main__.Tests.test_trainer_lineage) ... ok
+test_wilson (__main__.Tests.test_wilson) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.178s
+
+OK
+actual generator paired hard 341 of 2048; first-write correct 1707
+PASS archive CRC
+PASS parity-singleton causal prefix IDs
+PASS parity-singleton all encoded writes equal causal prefix
+parity-singleton writes 1 task-only max |grad| wk,wq,wv [0.0, 0.0, 0.0005198287555070847]
+PASS parity-singleton task-only Wk and Wq zero
+PASS parity-singleton task-only Wv nonzero
+PASS parity-singleton archived loss parity
+PASS parity-singleton all 142272 gradient coordinates
+parity-singleton max abs grad delta 1.1102230246251565e-16
+PASS parity-singleton teacher changes cannot change forward
+PASS parity-singleton teacher applied only in loss
+PASS parity-singleton missing teacher is miss
+PASS parity-singleton missing teacher does not insert entry
+PASS parity-singleton terminal write rejected
+PASS parity-singleton premature query rejected
+PASS parity-singleton unchanged weights
+PASS parity causal prefix IDs
+PASS parity all encoded writes equal causal prefix
+parity writes 2 task-only max |grad| wk,wq,wv [7.405247259614192e-08, 8.28843680345479e-08, 0.0004535954194564365]
+PASS parity task-only gradients nonzero for these weights
+PASS parity archived loss parity
+PASS parity all 142272 gradient coordinates
+parity max abs grad delta 8.326672684688674e-17
+PASS parity teacher changes cannot change forward
+PASS parity teacher applied only in loss
+PASS parity missing teacher is miss
+PASS parity missing teacher does not insert entry
+PASS parity terminal write rejected
+PASS parity premature query rejected
+PASS parity unchanged weights
+PASS parity96 causal prefix IDs
+PASS parity96 all encoded writes equal causal prefix
+parity96 writes 2 task-only max |grad| wk,wq,wv [1.1453560869184441e-07, 1.2150861096934018e-07, 0.0004312899632858383]
+PASS parity96 task-only gradients nonzero for these weights
+PASS parity96 archived loss parity
+PASS parity96 all 142272 gradient coordinates
+parity96 max abs grad delta 6.938893903907228e-17
+PASS parity96 teacher changes cannot change forward
+PASS parity96 teacher applied only in loss
+PASS parity96 missing teacher is miss
+PASS parity96 missing teacher does not insert entry
+PASS parity96 terminal write rejected
+PASS parity96 premature query rejected
+PASS parity96 unchanged weights
+PASS empty actual bank loss miss
+PASS empty actual bank evaluation miss
+PASS post-query bank injection rejected
+PASS nonfinite teacher rejected
+PASS analytic score gradient
+PASS analytic value gradient
+PASS analytic query/key gradient
+PASS equal values score degeneracy n=1
+PASS equal values nonzero value path n=1
+PASS zero downstream n=1
+PASS equal values score degeneracy n=2
+PASS equal values nonzero value path n=2
+PASS zero downstream n=2
+PASS equal values score degeneracy n=5
+PASS equal values nonzero value path n=5
+PASS zero downstream n=5
+PASS train chronological contract and derived teacher n=600
+PASS validation chronological contract and derived teacher n=20
+PASS test chronological contract and derived teacher n=320
+PASS erased chronological contract and erased shape n=320
+PASS 320 aligned erased controls retain teacher and nonwrites
+UNO_ERRATUM_07_PASS=59
+PASS 96 actual runtime prefix laws
+PASS all 960 prefix score coordinates vs finite difference
+prefix_max_prob_delta 1.1102230246251565e-16 prefix_max_fd_delta 2.7948865444216153e-11
+PASS Astra baseline counterexample corrected
+PASS wrong shared baseline reproduces -0.21
+PASS mass and unchanged path value eps=0.0
+PASS causal shared theta score + direct derivative eps=0.0
+PASS independent finite difference eps=0.0
+eps 0.0 grad [-0.3342499422406429, -0.033696442315434845, -0.06664639485632186] max_error 6.221259618577335e-12
+PASS mass and unchanged path value eps=0.05
+PASS causal shared theta score + direct derivative eps=0.05
+PASS independent finite difference eps=0.05
+eps 0.05 grad [-0.3340636051465239, -0.03367583467533521, -0.0666653052449794] max_error 4.0921710464658645e-12
+PASS mass and unchanged path value eps=0.6
+PASS causal shared theta score + direct derivative eps=0.6
+PASS independent finite difference eps=0.6
+eps 0.6 grad [-0.3320138971112139, -0.033449150634239325, -0.06687331952021204] max_error 4.9416165603943796e-12
+PASS mass and unchanged path value eps=1.0
+PASS causal shared theta score + direct derivative eps=1.0
+PASS independent finite difference eps=1.0
+eps 1.0 grad [-0.33052320035826105, -0.0332842895134423, -0.06702460262947216] max_error 5.938888270051734e-12
+PASS baseline and reward detached
+PASS direct loss preserved
+PASS forced or terminal zero decisions
+PASS empty support
+PASS invalid rotation
+PASS nonfinite input
+PASS overflow prefix
+PASS invalid temperature
+PASS underflow
+PASS saturated trainable hazard
+PASS invalid log probability
+PASS advantage overflow
+ASTRA12_CPU_PASS=28
+=== independent exact audit (exit 2 expected) ===
+audit_exit=2
+=== core parity, separate invocation after combined tool timeout ===
+PASS parity all compared state/key/value coordinates 1728 max_delta 2.2551405187698492e-17
+PASS parity96 all compared state/key/value coordinates 1728 max_delta 2.0816681711721685e-17
+PASS parity-singleton all compared state/key/value coordinates 960 max_delta 1.3877787807814457e-17
+CORE_REJECTED_DECODED_NORM	B2_RECURRENCE_NORM_INVALID
+CORE_PARITY_PASS_NOT_RUNTIME_ADMISSION
+d85b14a2ab0e6e2c254d1ac45e64c56b28be9b2248a165869632919ef2847404  /mnt/data/uno_integration/results/rtx_run/latest.uno
+R54_DECODED_CAP_AND_CORE_PARITY_CPU_PASS

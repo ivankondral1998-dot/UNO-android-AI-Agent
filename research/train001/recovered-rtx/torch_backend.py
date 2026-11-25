@@ -22,17 +22,45 @@ def atomic(path,data):
     finally:
         if os.path.exists(tmp):os.unlink(tmp)
 
+def decoded_row_guard(cap,cols):
+    """Conservative inward bound for a positive binary64 reduction.
+
+    The cap is the normative decimal; nextafter also covers its binary64 rounding.
+    For at most cols-1 additions, 8*cols*eps is larger than the usual gamma bound.
+    No cancellation; the final margin is checked on decoded master values.
+    This is not a production ABI or a CUDA qualification.
+    """
+    require(math.isfinite(cap) and 0.<cap<=8. and 1<=cols<=2_000_000,
+            'PROJECTION_CAP_OR_SHAPE')
+    return math.nextafter(cap*(1.-8.*cols*math.ulp(1.)),0.)
+
 def project(row,cap):
-    """Euclidean projection in gap coordinates, same stable contract as Kotlin."""
-    # All row work vectorized. Sort ascending gaps; active rows found before delta update.
-    x=row.detach().double().reshape(-1,row.shape[-1]);outside=x.abs().sum(-1)>cap
-    if not bool(outside.any()):return row
-    active=x[outside];largest=active.abs().amax(-1,keepdim=True);gaps=(largest-active.abs()).sort(-1).values
-    delta=torch.full((len(active),),cap,dtype=torch.float64,device=row.device)
-    for i in range(1,x.shape[-1]):
-        delta=torch.where(gaps[:,i]<delta,delta+(gaps[:,i]-delta)/(i+1),delta)
-    x[outside]=active.sign()*torch.clamp(delta[:,None]-(largest-active.abs()),min=0)
-    row.copy_(x.reshape_as(row).to(row.dtype))
+    """Gap-coordinate L1 projection, followed by bounded inward rounding.
+
+    Keep comfortably feasible rows bitwise unchanged. Boundary rows may move
+    inward, including after conversion to FP32. Never publish an unchecked cast.
+    Legacy frozen checkpoint replay still uses the historical validate tolerance.
+    """
+    require(row.ndim==2 and row.shape[0]>0 and row.dtype in (torch.float32,torch.float64),
+            'PROJECTION_SHAPE_OR_DTYPE')
+    guard=decoded_row_guard(cap,row.shape[1])
+    require(bool(torch.isfinite(row).all()),'NONFINITE_PARAMETER')
+    x=row.detach().double().clone();outside=x.abs().sum(-1)>cap
+    if bool(outside.any()):
+        active=x[outside];largest=active.abs().amax(-1,keepdim=True);gaps=(largest-active.abs()).sort(-1).values
+        delta=torch.full((len(active),),cap,dtype=torch.float64,device=row.device)
+        for i in range(1,x.shape[-1]):
+            delta=torch.where(gaps[:,i]<delta,delta+(gaps[:,i]-delta)/(i+1),delta)
+        x[outside]=active.sign()*torch.clamp(delta[:,None]-(largest-active.abs()),min=0)
+    candidate=x.to(row.dtype)
+    norm=candidate.double().abs().sum(-1);border=norm>guard
+    if bool(border.any()):
+        inner=decoded_row_guard(guard,row.shape[1])
+        q=(candidate[border].double()*(inner/norm[border])[:,None]).to(row.dtype)
+        candidate[border]=torch.nextafter(q,torch.zeros_like(q))
+    require(bool(torch.isfinite(candidate).all()) and
+            bool((candidate.double().abs().sum(-1)<=guard).all()),'DECODED_CAP_UNPROVEN')
+    with torch.no_grad():row.copy_(candidate)
     return row
 
 class TorchF(nn.Module):
@@ -62,12 +90,21 @@ class TorchF(nn.Module):
             # Explicit FP32 arithmetic tolerance; not a strict decoded-cap/export certificate.
             tol=1e-10 if p.dtype==torch.float64 else 2e-6
             if norm>cap+tol:raise ValueError(f'PARAMETER_NORM {n} norm={norm.item()} cap={cap} dtype={p.dtype}')
+    def validate_projected(self):
+        """New training/export-preparation boundary; legacy replay uses validate()."""
+        self.validate()
+        for (n,r,c,cap,box),p in zip(self.rules,self.slots):
+            norm=p.detach().double().abs().max() if box else p.detach().double().abs().sum(-1).max()
+            limit=cap if box else decoded_row_guard(cap,c)
+            require(bool(norm<=limit),'DECODED_CAP_UNPROVEN '+n)
     def project_(self):
+        # Reject nonfinite master parameters before any clamp can conceal them.
+        require(all(bool(torch.isfinite(p).all()) for p in self.slots),'NONFINITE_PARAMETER')
         with torch.no_grad():
             for (_,_,_,cap,box),p in zip(self.rules,self.slots):
                 if box:p.clamp_(-cap,cap)
                 else:project(p,cap)
-        self.validate()
+        self.validate_projected()
     def episode(self,features,mode='full'):
         """Only raw observable features enter F. Return bank for loss *after* graph construction."""
         require(features.ndim==2 and features.shape[1]==3 and 1<=len(features)<=96 and mode in ('full','memory_off','zero_values'),"INPUT_OR_MANIFEST_REJECTED")
@@ -228,16 +265,17 @@ def run(a):
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
     model=TorchF(a.data/'initial.tsv',dtype,a.device);opt=torch.optim.Adam(model.parameters(),lr=2e-4)
     data={s:dataset(a.data/f'{s}.tsv',dtype,a.device) for s in ('train','validation')} # test stays unopened
-    cfg={'version':2,'source':file_sha(pathlib.Path(__file__)),'measurement_source':file_sha(pathlib.Path(__file__).with_name('r54_measurement.py')),'input':{p.name:file_sha(p) for p in a.data.glob('*.tsv')},'steps':a.steps,'batch':a.batch,'seed':a.seed,'precision':a.precision,'device':a.device,'torch':str(torch.__version__),'cuda':torch.version.cuda,'cublas':os.environ.get('CUBLAS_WORKSPACE_CONFIG'),'gpu':torch.cuda.get_device_name(0) if a.device=='cuda' else None,'geometry':'d64/m128/b64/chi4/J2/K2,alpha=rho=.5,full-route,f_e=0','fp32_cap_tolerance':2e-6,'projection':'FP64 threshold then cast to master dtype','tf32':False,'deterministic':True}
+    cfg={'version':2,'source':file_sha(pathlib.Path(__file__)),'measurement_source':file_sha(pathlib.Path(__file__).with_name('r54_measurement.py')),'input':{p.name:file_sha(p) for p in a.data.glob('*.tsv')},'steps':a.steps,'batch':a.batch,'seed':a.seed,'precision':a.precision,'device':a.device,'torch':str(torch.__version__),'cuda':torch.version.cuda,'cublas':os.environ.get('CUBLAS_WORKSPACE_CONFIG'),'gpu':torch.cuda.get_device_name(0) if a.device=='cuda' else None,'geometry':'d64/m128/b64/chi4/J2/K2,alpha=rho=.5,full-route,f_e=0','legacy_replay_fp32_cap_tolerance':2e-6,'projection':'FP64 gap + decoded master inward guard V1','tf32':False,'deterministic':True}
     if a.resume:
         require(json.loads((a.output/'manifest.json').read_text())==cfg,"RUN_MANIFEST_MISMATCH")
         state=restore(a.output/'latest.uno');require(state['config']==cfg,"INPUT_OR_MANIFEST_REJECTED")
-        model.load_state_dict(state['weights'],strict=True);model.validate();opt.load_state_dict(state['optimizer'])
+        model.load_state_dict(state['weights'],strict=True);model.validate_projected();opt.load_state_dict(state['optimizer'])
         step=state['step'];require(0<=step<=a.steps and state['cursor']==step*a.batch,"INPUT_OR_MANIFEST_REJECTED")
         history=state['history'];best=state['best'];best_loss=state['best_loss'];selected=state['selected']
         torch.set_rng_state(state['cpu_rng'])
         if a.device=='cuda':torch.cuda.set_rng_state_all(state['cuda_rng'])
     else:
+        model.project_() # certify initial boundary before selecting step zero
         a.output.mkdir(parents=True,exist_ok=False);atomic(a.output/'manifest.json',canonical(cfg).encode())
         step=0;history=[];best={k:v.detach().cpu().clone() for k,v in model.state_dict().items()};best_loss=scores(model,data['validation'])['mse'];selected=0
     def save():
@@ -276,7 +314,7 @@ def evaluate(a):
     else:atomic(marker,pin.encode())
     if report.exists():print(report.read_text());return
     dtype={'double':torch.float64,'float32':torch.float32}[cfg['precision']]
-    model=TorchF(a.data/'initial.tsv',dtype,'cpu');model.load_state_dict(state['best']);model.validate()
+    model=TorchF(a.data/'initial.tsv',dtype,'cpu');model.load_state_dict(state['best']);model.validate_projected()
     test=dataset(a.data/'test.tsv',dtype,'cpu');erased=dataset(a.data/'erased.tsv',dtype,'cpu')
     lineage=split_lineage({'train':dataset(a.data/'train.tsv',dtype,'cpu'),'validation':dataset(a.data/'validation.tsv',dtype,'cpu'),'test':test})
     result={'selected':state['selected'],'split_lineage':lineage,'full':scores(model,test),'erased':scores(model,erased),'memory_off':scores(model,test,'memory_off'),'zero_values':scores(model,test,'zero_values'),'evaluation_device':'cpu','training_device':cfg['device']}

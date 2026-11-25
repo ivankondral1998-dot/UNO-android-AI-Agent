@@ -1,0 +1,257 @@
+{
+  "checkpoint_sha256": "d85b14a2ab0e6e2c254d1ac45e64c56b28be9b2248a165869632919ef2847404",
+  "initial_sha256": "77eedd67186aa84813d0d277a8a157af3ca0a41f07ab9020bfd85d99d1e0942a",
+  "max_excess": 5.0044036470353603e-08,
+  "precision": "float32",
+  "production_abi": "NOT_PRESENT",
+  "rows": 2624,
+  "runtime_admitted": false,
+  "saved_step": 1000,
+  "selected_step": 950,
+  "status": "REJECTED_DECODED_CAP",
+  "tensor_reports": [
+    {
+      "box": false,
+      "cap": "8.0",
+      "max_decoded_norm": 0.8331498205661774,
+      "max_excess": 0.0,
+      "name": "projection",
+      "shape": [
+        64,
+        3
+      ],
+      "violating_rows": 0
+    },
+    {
+      "box": false,
+      "cap": "1.0",
+      "max_decoded_norm": 1.0000000127620297,
+      "max_excess": 1.2762029655277729e-08,
+      "name": "us",
+      "shape": [
+        64,
+        64
+      ],
+      "violating_rows": 9
+    },
+    {
+      "box": false,
+      "cap": "1.0",
+      "max_decoded_norm": 1.0000000093132257,
+      "max_excess": 9.313225746154785e-09,
+      "name": "ug",
+      "shape": [
+        64,
+        64
+      ],
+      "violating_rows": 28
+    },
+    {
+      "box": false,
+      "cap": "8.0",
+      "max_decoded_norm": 5.341970916837454,
+      "max_excess": 0.0,
+      "name": "meta",
+      "shape": [
+        64,
+        32
+      ],
+      "violating_rows": 0
+    },
+    {
+      "box": true,
+      "cap": "1.0",
+      "max_decoded_norm": 0.01462333370000124,
+      "max_excess": 0.0,
+      "name": "e",
+      "shape": [
+        64,
+        1
+      ],
+      "violating_rows": 0
+    },
+    {
+      "box": true,
+      "cap": "1.0",
+      "max_decoded_norm": 0.01387607678771019,
+      "max_excess": 0.0,
+      "name": "bias",
+      "shape": [
+        64,
+        1
+      ],
+      "violating_rows": 0
+    },
+    {
+      "box": false,
+      "cap": "2.0",
+      "max_decoded_norm": 2.0000000443396857,
+      "max_excess": 4.43396857008338e-08,
+      "name": "wq",
+      "shape": [
+        128,
+        64
+      ],
+      "violating_rows": 53
+    },
+    {
+      "box": false,
+      "cap": "2.0",
+      "max_decoded_norm": 2.000000036829533,
+      "max_excess": 3.682953320094384e-08,
+      "name": "wr",
+      "shape": [
+        64,
+        128
+      ],
+      "violating_rows": 15
+    },
+    {
+      "box": false,
+      "cap": "1.0",
+      "max_decoded_norm": 1.0000000188447302,
+      "max_excess": 1.8844730220735073e-08,
+      "name": "branch.0.0.a",
+      "shape": [
+        256,
+        64
+      ],
+      "violating_rows": 121
+    },
+    {
+      "box": false,
+      "cap": "2.0",
+      "max_decoded_norm": 2.0000000457002898,
+      "max_excess": 4.57002897746861e-08,
+      "name": "branch.0.0.c",
+      "shape": [
+        256,
+        64
+      ],
+      "violating_rows": 118
+    },
+    {
+      "box": false,
+      "cap": "0.9",
+      "max_decoded_norm": 0.900000016506965,
+      "max_excess": 1.6506965039297937e-08,
+      "name": "branch.0.0.b",
+      "shape": [
+        64,
+        256
+      ],
+      "violating_rows": 27
+    },
+    {
+      "box": true,
+      "cap": "8.0",
+      "max_decoded_norm": 0.014412679709494114,
+      "max_excess": 0.0,
+      "name": "branch.0.0.ab",
+      "shape": [
+        256,
+        1
+      ],
+      "violating_rows": 0
+    },
+    {
+      "box": true,
+      "cap": "8.0",
+      "max_decoded_norm": 0.014877635054290295,
+      "max_excess": 0.0,
+      "name": "branch.0.0.bb",
+      "shape": [
+        64,
+        1
+      ],
+      "violating_rows": 0
+    },
+    {
+      "box": false,
+      "cap": "1.0",
+      "max_decoded_norm": 1.0000000209111022,
+      "max_excess": 2.0911102183163166e-08,
+      "name": "branch.1.0.a",
+      "shape": [
+        256,
+        64
+      ],
+      "violating_rows": 115
+    },
+    {
+      "box": false,
+      "cap": "2.0",
+      "max_decoded_norm": 2.0000000500440365,
+      "max_excess": 5.0044036470353603e-08,
+      "name": "branch.1.0.c",
+      "shape": [
+        256,
+        64
+      ],
+      "violating_rows": 120
+    },
+    {
+      "box": false,
+      "cap": "0.9",
+      "max_decoded_norm": 0.9000000197338522,
+      "max_excess": 1.9733852241188286e-08,
+      "name": "branch.1.0.b",
+      "shape": [
+        64,
+        256
+      ],
+      "violating_rows": 34
+    },
+    {
+      "box": true,
+      "cap": "8.0",
+      "max_decoded_norm": 0.015315592288970947,
+      "max_excess": 0.0,
+      "name": "branch.1.0.ab",
+      "shape": [
+        256,
+        1
+      ],
+      "violating_rows": 0
+    },
+    {
+      "box": true,
+      "cap": "8.0",
+      "max_decoded_norm": 0.014692090451717377,
+      "max_excess": 0.0,
+      "name": "branch.1.0.bb",
+      "shape": [
+        64,
+        1
+      ],
+      "violating_rows": 0
+    },
+    {
+      "box": false,
+      "cap": "2.0",
+      "max_decoded_norm": 2.000000048235961,
+      "max_excess": 4.823596100322902e-08,
+      "name": "wk",
+      "shape": [
+        128,
+        64
+      ],
+      "violating_rows": 53
+    },
+    {
+      "box": false,
+      "cap": "2.0",
+      "max_decoded_norm": 2.0000000398904376,
+      "max_excess": 3.989043761976063e-08,
+      "name": "wv",
+      "shape": [
+        128,
+        64
+      ],
+      "violating_rows": 29
+    }
+  ],
+  "tensors": 20,
+  "violating_rows": 722,
+  "violating_tensors": 12
+}
