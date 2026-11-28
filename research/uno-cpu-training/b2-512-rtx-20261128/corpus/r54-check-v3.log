@@ -1,0 +1,39 @@
+{
+  "sha_files": 25,
+  "episodes": 5145,
+  "unique_simulator_devices": 4,
+  "simulator_groups": 228,
+  "head_targets_and_audit": {
+    "abstain_incomplete": 52,
+    "abstain_missing": 52,
+    "already_true": 164,
+    "answer_grounded": 68,
+    "ask_fresh_screen": 16,
+    "ask_fresh_sensor": 52,
+    "bounded_abort": 4,
+    "clarify": 4,
+    "clarify_conflict": 52,
+    "explain": 17,
+    "intent": 2853,
+    "may_have_executed": 168,
+    "no_dispatch": 820,
+    "plan_unsupported": 4,
+    "propose": 1515,
+    "reencode_goal": 4,
+    "remember_requested": 52,
+    "reply": 303,
+    "retrieve_exact": 104,
+    "sim_not_met": 164,
+    "sim_verified": 164,
+    "unknown": 164
+  },
+  "language_counts": {
+    "train": 140,
+    "validation": 14,
+    "calibration": 6,
+    "test": 16
+  },
+  "pretrain_train_only": 15947,
+  "physical_readback": 0,
+  "closed_holdout": false
+}

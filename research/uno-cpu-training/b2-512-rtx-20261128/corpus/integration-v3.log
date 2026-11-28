@@ -1,0 +1,11 @@
+{"oasst_raw":[],"oasst_ru":["uno_prep_test_inputs/oasst2_ru_main_branch.jsonl"],"aya":[],"massive":[],"russian_pd":[],"tatoeba":["uno_prep_test_inputs/rus_sentences_detailed.tsv.bz2"],"taskmaster":[]}
+Original R5.4 archive manifest verified
+  5,000 candidate records
+  10,000 candidate records
+  15,000 candidate records
+Reading oasst2_ru_main_branch.jsonl
+Reading rus_sentences_detailed.tsv.bz2
+Removing exact duplicates and train/holdout collisions...
+DONE: /mnt/data/uno_prep_v3_test_output_final
+{"dialogue/train/r54:uno-original":29,"dialogue/train/r54:CohereLabs/aya_dataset":20,"language/train/r54:kukunechka/russian-everyday-dialogues":20,"dialogue/train/r54:databricks/databricks-dolly-15k":29,"dialogue/train/r54:uno-authored-synthetic-20261128":42,"dialogue/validation/r54:uno-original":7,"dialogue/validation/r54:CohereLabs/aya_dataset":7,"dialogue/calibration/r54:uno-original":6,"dialogue/test/r54:uno-original":8,"dialogue/test/r54:CohereLabs/aya_dataset":8,"language/train/r54:pretrain":15947,"language/train/r54:literature":1142,"language/validation/r54:literature":219,"language/test/r54:literature":265,"dialogue/train/oasst2":54,"dialogue/validation/oasst2":3,"dialogue/test/oasst2":3,"language/train/tatoeba":97,"language/validation/tatoeba":1,"language/test/tatoeba":2}
+See report.json; original files unchanged.

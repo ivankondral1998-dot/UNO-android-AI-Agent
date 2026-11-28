@@ -1,0 +1,8 @@
+projection exact weights step 1 original 0.1143 new 0.0189
+projection exact weights step 2 original 0.0407 new 0.016
+projection exact weights step 3 original 0.0436 new 0.0174
+inactive optimizer guard PASS
+record cache PASS
+checkpoint previous PASS
+OS lock concurrent refusal + forced death recovery PASS
+AUDIT TESTS PASS

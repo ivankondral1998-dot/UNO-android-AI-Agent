@@ -1,0 +1,818 @@
+[
+  {
+    "path": "corpus/AUDIT_RU.txt",
+    "source": "UNO_CORPUS_PREP_FIX03_20261128.zip!AUDIT_RU.txt",
+    "size": 1998,
+    "sha256": "2eb877286cb0d23be884e58e3d517b2e476e3b51639702e04257189784c951e2",
+    "git_sha": "5edd40c64a64555d8154c832c135f3cedb3ab69d",
+    "parts": 4
+  },
+  {
+    "path": "corpus/README_RU.txt",
+    "source": "UNO_CORPUS_PREP_FIX03_20261128.zip!README_RU.txt",
+    "size": 6118,
+    "sha256": "ce33f0fb2ae34a3b34b93181deea27b9098be4dae408970d4b5a8f50bf32bbd5",
+    "git_sha": "078a4142c9200fdf80ce1e0622f1e44e27d93aab",
+    "parts": 11
+  },
+  {
+    "path": "corpus/SHA256SUMS.txt",
+    "source": "UNO_CORPUS_PREP_FIX03_20261128.zip!SHA256SUMS.txt",
+    "size": 1284,
+    "sha256": "2ff7711f67088acbd25399ef5cdd5b0b6786bfe35425578340d6d3f7a43eae00",
+    "git_sha": "ca49d67f448bd9d23f90a92d8ba53039e37ed07f",
+    "parts": 3
+  },
+  {
+    "path": "corpus/integration-v3.log",
+    "source": "UNO_CORPUS_PREP_FIX03_20261128.zip!integration-v3.log",
+    "size": 1335,
+    "sha256": "2fb8c7747710bb9ed9ae42a4c09fd0ea9c94e235e03de09b831dce1548ec631d",
+    "git_sha": "02bc4e3745976f58e15f6e87c111392e7af888dd",
+    "parts": 3
+  },
+  {
+    "path": "corpus/integrity-v3.log",
+    "source": "UNO_CORPUS_PREP_FIX03_20261128.zip!integrity-v3.log",
+    "size": 331,
+    "sha256": "f1bf28c99e3dae468a491b5283cfb19cbc0f870c4865ff53ace935412193b2eb",
+    "git_sha": "22faf410bd37edb1852b28601aa1be0e6aec21da",
+    "parts": 1
+  },
+  {
+    "path": "corpus/legacy_tokenizer.json",
+    "source": "UNO_CORPUS_PREP_FIX03_20261128.zip!legacy_tokenizer.json",
+    "size": 26570,
+    "sha256": "1c622409b42d96d339505d15d69da66d7176788f358e828672970c3ee637474f",
+    "git_sha": "4065dde9cc3e7c8e467a53fa03b8af6a97e1adcb",
+    "parts": 47
+  },
+  {
+    "path": "corpus/pd_gate.py",
+    "source": "UNO_CORPUS_PREP_FIX03_20261128.zip!pd_gate.py",
+    "size": 17376,
+    "sha256": "c2c7e29afc4e2148269339995eea42294a12a413143fa72e2457b8294366b68d",
+    "git_sha": "982daedbc3117d163889767515a797d5f87dc001",
+    "parts": 31
+  },
+  {
+    "path": "corpus/prepare_uno.py",
+    "source": "UNO_CORPUS_PREP_FIX03_20261128.zip!prepare_uno.py",
+    "size": 33778,
+    "sha256": "aea1df170109945df0a365d7b649191427b114c86bef8cd4d1807e9b12d1acc0",
+    "git_sha": "c73c184c64669fa74ec987b16e3e7400715e79a8",
+    "parts": 59
+  },
+  {
+    "path": "corpus/prepare_uno_fix04.py",
+    "source": "prepare_uno_fix04.py",
+    "size": 35801,
+    "sha256": "499d0b1b18a8d0ce381fa2eab0efdd1a8aab74a1edc24c04043a80cd62e2acf1",
+    "git_sha": "c8becbf9d282b63a7d5aa600410e4dc44a4556ef",
+    "parts": 63
+  },
+  {
+    "path": "corpus/r54-check-v3.log",
+    "source": "UNO_CORPUS_PREP_FIX03_20261128.zip!r54-check-v3.log",
+    "size": 870,
+    "sha256": "2b9f70a57a70e7f09c6a498406815605d57852c91b80a04a947404ed0d80eb32",
+    "git_sha": "b5c82562131abdb3494df33c3bc553b97e899c87",
+    "parts": 2
+  },
+  {
+    "path": "corpus/test_fix03.py",
+    "source": "UNO_CORPUS_PREP_FIX03_20261128.zip!test_fix03.py",
+    "size": 2890,
+    "sha256": "3ffaec8459c227efa58528949bfe0124903685c2d095e7adeb6853827623b4f0",
+    "git_sha": "804526fd19049f4416f79008b3f8297f87dbb264",
+    "parts": 6
+  },
+  {
+    "path": "corpus/test_prepare.py",
+    "source": "UNO_CORPUS_PREP_FIX03_20261128.zip!test_prepare.py",
+    "size": 2672,
+    "sha256": "bdf08263472ca083c2e0bfe7d367e816a0a2936687aab60399abae8a000e6106",
+    "git_sha": "9035db6e993ae2a47a2ac9f47374012958a99451",
+    "parts": 5
+  },
+  {
+    "path": "corpus/test_regression.py",
+    "source": "UNO_CORPUS_PREP_FIX03_20261128.zip!test_regression.py",
+    "size": 4354,
+    "sha256": "09aab2cd1499686542e5e12068cb6a071e1cae5f5384ada2a06faa1439d38661",
+    "git_sha": "0de24eeb698da2ce73b303515d0701ab8d295d3a",
+    "parts": 8
+  },
+  {
+    "path": "corpus/unit-test-v3.log",
+    "source": "UNO_CORPUS_PREP_FIX03_20261128.zip!unit-test-v3.log",
+    "size": 2315,
+    "sha256": "dbf63992fbdfdffc0af71a7cd073099ce6c084b85412009448b0af9ec4c665b8",
+    "git_sha": "f7d981aa0ce4c865b0a76bc1e339cbd045ba22f8",
+    "parts": 5
+  },
+  {
+    "path": "experiments/b2_answer06/results.json",
+    "source": "b2_answer06/results.json",
+    "size": 1144,
+    "sha256": "03039f322bab3d635c854cd7b34e4be95158665cc9e052d91221c61e6ea096c4",
+    "git_sha": "a039a340fce80dbddeb84dd608d56d38aa6f0d3c",
+    "parts": 2
+  },
+  {
+    "path": "experiments/b2_answer06/study_answer.py",
+    "source": "b2_answer06/study_answer.py",
+    "size": 3789,
+    "sha256": "d32a03ad515cb596d5c305f5d9664bf11a595deeba88bd80780e5890d7f1f60b",
+    "git_sha": "88f2b8ddc4dbd66e19fc79ed8b8cb7a4e55db75d",
+    "parts": 7
+  },
+  {
+    "path": "experiments/b2_lr_study05/results.json",
+    "source": "b2_lr_study05/results.json",
+    "size": 5267,
+    "sha256": "faf9f7dde8bb87d5cf1c3b086b1f10a6e53905f4d772425ce88a8edf9140aa46",
+    "git_sha": "3a97617572dc719ccecb8f5c2b7a1ebb0e4f02cb",
+    "parts": 10
+  },
+  {
+    "path": "experiments/b2_lr_study05/study_lr.py",
+    "source": "b2_lr_study05/study_lr.py",
+    "size": 3570,
+    "sha256": "4eb927753ecf34f3200343e10291d5fd424340f179e9993a52ea1ad98f3c48b8",
+    "git_sha": "abd3deff438d8d7bc4d8a6b55aca54c71d90a8bd",
+    "parts": 7
+  },
+  {
+    "path": "experiments/b2_vocab04/extend_vocab04.py",
+    "source": "b2_vocab04/extend_vocab04.py",
+    "size": 4394,
+    "sha256": "b12d52b23465d28cb12a6c46e64f0784b35253b5768ef8804b0fc113dfc7e6d7",
+    "git_sha": "7ca70d20e571ddb430dd88742b6091ca9fd53d26",
+    "parts": 8
+  },
+  {
+    "path": "experiments/b2_vocab04/fast_model03.py",
+    "source": "b2_vocab04/fast_model03.py",
+    "size": 4430,
+    "sha256": "11dc4660778c35c58d663d9262375d9590c4ffb59cc4514b4ccc33148c5fbedb",
+    "git_sha": "9740a69815af27caa330b95736e9c82967d1b132",
+    "parts": 8
+  },
+  {
+    "path": "experiments/b2_vocab04/train_cuda_vocab04.py",
+    "source": "b2_vocab04/train_cuda_vocab04.py",
+    "size": 18492,
+    "sha256": "673e33b56887ea4568e57980f0fa7c093614db6b630b4a4f2ace44c2c2041487",
+    "git_sha": "bb81b6e48088482901247f9a31968d6be73f741c",
+    "parts": 33
+  },
+  {
+    "path": "math/00_VERDICT_RU.md",
+    "source": "files/UNO_ASTRA_MATH_AUDIT_RETURN_20261124.zip!00_VERDICT_RU.md",
+    "size": 11448,
+    "sha256": "84a642ed3bbe6a248c54ec080d7b295e373b4fac614c6ea8ddb55a05256bd0d1",
+    "git_sha": "bec5a53c7d890594f6fbcd2dc0dee6bd8bca93b8",
+    "parts": 20
+  },
+  {
+    "path": "math/01_MATH_CANDIDATE_RU.md",
+    "source": "files/UNO_ASTRA_MATH_AUDIT_RETURN_20261124.zip!01_MATH_CANDIDATE_RU.md",
+    "size": 56294,
+    "sha256": "b9d34985c6f6bab95e793c6920e2562924056d5e83af4db534066961789cd425",
+    "git_sha": "7c9006ae02604cefef584f43cdbdc7c68ca3f092",
+    "parts": 98
+  },
+  {
+    "path": "math/02_ERRATA_RU.md",
+    "source": "files/UNO_ASTRA_MATH_AUDIT_RETURN_20261124.zip!02_ERRATA_RU.md",
+    "size": 11917,
+    "sha256": "45d01e85678368465282ec95e41432cd4cc6c3b2e9c91a6fb707747cf2e61306",
+    "git_sha": "1c7bb51ba413abf771786443aad5765c20f616a5",
+    "parts": 21
+  },
+  {
+    "path": "math/03_GATES.tsv",
+    "source": "files/UNO_ASTRA_MATH_AUDIT_RETURN_20261124.zip!03_GATES.tsv",
+    "size": 36439,
+    "sha256": "9cde97df51ae94584ddb42cd5b28e6b0ff55cc860128d046afd22a95f34a85ba",
+    "git_sha": "c639db4a3b43327d641c42e8ed6486928ada26f9",
+    "parts": 64
+  },
+  {
+    "path": "reference/b2_step50/README_RU.md",
+    "source": "files/UNO_B2_512_LANGUAGE_STEP000050_RESUME.zip!README_RU.md",
+    "size": 7444,
+    "sha256": "076d3cdea0e0f72486a7c2a0f7972a668d6c149ed0928dbfe2a6fd42263d0c80",
+    "git_sha": "8323d0ee544570b78abbcf54dd28472a3969fcc5",
+    "parts": 13
+  },
+  {
+    "path": "reference/b2_step50/metrics.json",
+    "source": "files/UNO_B2_512_LANGUAGE_STEP000050_RESUME.zip!metrics.json",
+    "size": 8109,
+    "sha256": "787457e78574cff86e633515008803df087cbda7421cde2abaab2155ed96dde3",
+    "git_sha": "ec89473601b9089d43989957d35860377c461fe5",
+    "parts": 15
+  },
+  {
+    "path": "reference/b2_step50/model.py",
+    "source": "files/UNO_B2_512_LANGUAGE_STEP000050_RESUME.zip!model.py",
+    "size": 5165,
+    "sha256": "6be3a65087c4e4829b7364d233eeec929a9c3530d28581c4ac3a8067fb5e930f",
+    "git_sha": "a896debbb9b81267dd31981cfef4a5e5116ef84d",
+    "parts": 9
+  },
+  {
+    "path": "reference/b2_step50/parity.log",
+    "source": "files/UNO_B2_512_LANGUAGE_STEP000050_RESUME.zip!parity.log",
+    "size": 137,
+    "sha256": "b2f22920747411988d2767d384299d54633cda18a3a2512e11fa2175b9fc33a8",
+    "git_sha": "7756adf954f2f3371df8d79c5ffcd7f3326eb80e",
+    "parts": 1
+  },
+  {
+    "path": "reference/b2_step50/parity.py",
+    "source": "files/UNO_B2_512_LANGUAGE_STEP000050_RESUME.zip!parity.py",
+    "size": 980,
+    "sha256": "31e168506bc172b8bc631cce92b775def213151aac60dc2a0ed40914b163c4bd",
+    "git_sha": "ecc54d56d1cfcfaf4cd8fd8e639ed36d47a8eea8",
+    "parts": 2
+  },
+  {
+    "path": "reference/b2_step50/reference128.py",
+    "source": "files/UNO_B2_512_LANGUAGE_STEP000050_RESUME.zip!reference128.py",
+    "size": 13950,
+    "sha256": "677750362ff83f94c5177fdd04907920a47d74964d9fca3842e5cade13ddb972",
+    "git_sha": "183eda36344341b16d41aa46dc87378b271e37ef",
+    "parts": 25
+  },
+  {
+    "path": "reference/b2_step50/tokenizer.json",
+    "source": "files/UNO_B2_512_LANGUAGE_STEP000050_RESUME.zip!tokenizer.json",
+    "size": 26570,
+    "sha256": "1c622409b42d96d339505d15d69da66d7176788f358e828672970c3ee637474f",
+    "git_sha": "4065dde9cc3e7c8e467a53fa03b8af6a97e1adcb",
+    "parts": 47
+  },
+  {
+    "path": "reference/b2_step50/tokenizer.py",
+    "source": "files/UNO_B2_512_LANGUAGE_STEP000050_RESUME.zip!tokenizer.py",
+    "size": 3381,
+    "sha256": "734c875dfba681c344e7befcda92ed20c7e3157441e21c2b5d8fb8f21f7faf49",
+    "git_sha": "4a784757180d6b00ad24073d5f1cb8f9b523934d",
+    "parts": 6
+  },
+  {
+    "path": "reference/b2_step50/train.py",
+    "source": "files/UNO_B2_512_LANGUAGE_STEP000050_RESUME.zip!train.py",
+    "size": 6236,
+    "sha256": "1c76114bb818244ef0a8ee3a235c1698f9b0bf6dacebbba67dcb8b9ba703ff67",
+    "git_sha": "8f03cdd367ac08b7dbd4efa671b29b96c2d24cc1",
+    "parts": 11
+  },
+  {
+    "path": "reference/b2_step50/train_01.log",
+    "source": "files/UNO_B2_512_LANGUAGE_STEP000050_RESUME.zip!train_01.log",
+    "size": 566,
+    "sha256": "2cab94e1216348e22dddaf2c045672da9fad50b5c040e1368eb012ad82ef0418",
+    "git_sha": "81285911e392de12f107c41840baf9bd38e35a2c",
+    "parts": 1
+  },
+  {
+    "path": "reference/b2_step50/train_02.log",
+    "source": "files/UNO_B2_512_LANGUAGE_STEP000050_RESUME.zip!train_02.log",
+    "size": 462,
+    "sha256": "b1737e8089fcd367025457f15374aa434ff74d82950cfd5e7ef6b71e20e60b2c",
+    "git_sha": "2d80719f0199d18b6b1988fc1dd8249189efe111",
+    "parts": 1
+  },
+  {
+    "path": "reference/b2_step50/train_03.log",
+    "source": "files/UNO_B2_512_LANGUAGE_STEP000050_RESUME.zip!train_03.log",
+    "size": 459,
+    "sha256": "c27f54ec20d8b9a1de00431ca9614e74e76dd695a5f32d08f4967d2a648dcb8b",
+    "git_sha": "324f868c5eeef7a395be6ea42d840d2eded80c08",
+    "parts": 1
+  },
+  {
+    "path": "reference/cpu_fix03/CHECK.cmd",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!CHECK.cmd",
+    "size": 637,
+    "sha256": "44d596463cc33f3f502f9028055452717287f921c96de06bacedc3f22e767f72",
+    "git_sha": "3f332d60096ba742482ff06420cb223208ee6324",
+    "parts": 2
+  },
+  {
+    "path": "reference/cpu_fix03/EVIDENCE.md",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!EVIDENCE.md",
+    "size": 8600,
+    "sha256": "c4457fac2bd54ae2d74a349051dc3823919a39ad647e69132f844e790c158aac",
+    "git_sha": "792c42fc0454105ab48dbb22777233787e26708a",
+    "parts": 15
+  },
+  {
+    "path": "reference/cpu_fix03/FIX01_EVIDENCE.md",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!FIX01_EVIDENCE.md",
+    "size": 3022,
+    "sha256": "0c346bb5e91411ed7863c5eba33857286f6d80a03baebed684a6cc73e9cdf48e",
+    "git_sha": "701ddf1b0dece8a8316c31b73e93915eead3dc29",
+    "parts": 6
+  },
+  {
+    "path": "reference/cpu_fix03/FIX02_EVIDENCE.md",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!FIX02_EVIDENCE.md",
+    "size": 5669,
+    "sha256": "8081aa0d80682ef86067d64595add296f5b1ac77f52e17415b6215abc8f34d6d",
+    "git_sha": "fb1ffcdb4a0978555075c69a69ea02eac7f33a8d",
+    "parts": 10
+  },
+  {
+    "path": "reference/cpu_fix03/FIX03_EVIDENCE.md",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!FIX03_EVIDENCE.md",
+    "size": 13821,
+    "sha256": "cac5bc81840199f0e250bb3298d14bfb9cfa6176f911c844f98d960fdfd2ceda",
+    "git_sha": "e997436b6934d7cafecda3e1e94735f1a251fc93",
+    "parts": 24
+  },
+  {
+    "path": "reference/cpu_fix03/INSTALL.cmd",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!INSTALL.cmd",
+    "size": 468,
+    "sha256": "0efda04b477cd8a12b6c8b8561c9ec30aaa40596ec6a75464488c9ea3d2ed26f",
+    "git_sha": "15665a34450d691398a2281adcd4d7d47b14cf33",
+    "parts": 1
+  },
+  {
+    "path": "reference/cpu_fix03/LanguageCoreParity.kt",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!LanguageCoreParity.kt",
+    "size": 1661,
+    "sha256": "169e40524a39c49f9ac53d12e67a995223c2cd1d6ec86c53b4ff42a45d272220",
+    "git_sha": "27c7aedc52075ae42b2681c070f304387265f205",
+    "parts": 3
+  },
+  {
+    "path": "reference/cpu_fix03/README.md",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!README.md",
+    "size": 16502,
+    "sha256": "1b97f130f631cd63e22301e5d99e46a77021c29cf2d45810f75f10e7b4a04d6e",
+    "git_sha": "f9829ba5c9ac15ea8671322741921151b531cc22",
+    "parts": 29
+  },
+  {
+    "path": "reference/cpu_fix03/RESUME_TRAINING.cmd",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!RESUME_TRAINING.cmd",
+    "size": 179,
+    "sha256": "8c41d2f59fae04cc39c4eeaa39588df3dd20f3fe2a21d6fd038df59dafd17230",
+    "git_sha": "69aa1e8f6c4392df6cd23762183697e8aaf2d93e",
+    "parts": 1
+  },
+  {
+    "path": "reference/cpu_fix03/START_TRAINING.cmd",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!START_TRAINING.cmd",
+    "size": 178,
+    "sha256": "bb1cef39ae03a712c384794c5f4f8f2220712da258b1ad378808f28bfd15fc0c",
+    "git_sha": "2802e337dc9d80a03a7473ad2ca45929fe73e97f",
+    "parts": 1
+  },
+  {
+    "path": "reference/cpu_fix03/TEST_MODEL.cmd",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!TEST_MODEL.cmd",
+    "size": 177,
+    "sha256": "f12bcd5351ce4354e2c97817732df90e863fee61087a01e11ea026a2e6b32f11",
+    "git_sha": "8f95e49933187ebb97c5cdf46c1e77f153779949",
+    "parts": 1
+  },
+  {
+    "path": "reference/cpu_fix03/acceptance.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!acceptance.py",
+    "size": 10746,
+    "sha256": "9edbe016e222af18837a51d51d14b8b51038faccba3b021d502c01c0f21771e2",
+    "git_sha": "ec786c41938ed51df09e39b8c07bddcab0f459e4",
+    "parts": 19
+  },
+  {
+    "path": "reference/cpu_fix03/analytic_backward.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!analytic_backward.py",
+    "size": 2507,
+    "sha256": "20d04430c6cee7995801bd7cca3e640bc3fbe54d8ff8d46a149c88b3c790d945",
+    "git_sha": "e09d987e1b2f4e26dfe5222d09c74e603efdb0eb",
+    "parts": 5
+  },
+  {
+    "path": "reference/cpu_fix03/audit_tests.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!audit_tests.py",
+    "size": 5091,
+    "sha256": "06fd87ccfb597f77cf5ea9d03612eebae2c846e7ec9898607302f7602d531c97",
+    "git_sha": "73bcc6406a9f18fd3fcc08bfd252f3f2a4bfe2db",
+    "parts": 9
+  },
+  {
+    "path": "reference/cpu_fix03/boundary.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!boundary.py",
+    "size": 2503,
+    "sha256": "ecd5062dea61bccae8d0405b4af238e337a585c9a4cedf763ac663c92a3a294c",
+    "git_sha": "dbf0e1b32272247d4697483f1599862ae131e4f3",
+    "parts": 5
+  },
+  {
+    "path": "reference/cpu_fix03/corpus_check.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!corpus_check.py",
+    "size": 9335,
+    "sha256": "7d686d3ed49b92d3c0518f93854d06dff9444ca49f0cb0c021c8aa5b1e3b88c2",
+    "git_sha": "b9f13e322fb098ab5ee30c0949f28365aaef3898",
+    "parts": 17
+  },
+  {
+    "path": "reference/cpu_fix03/corpus_smoke.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!corpus_smoke.py",
+    "size": 1957,
+    "sha256": "cb6bfe662102191f39f58a61a3ad0a319f3d027e921d4eab9d6a12f4469a7032",
+    "git_sha": "3062233ad263f2ca6e833f543eb24abe5225ad13",
+    "parts": 4
+  },
+  {
+    "path": "reference/cpu_fix03/efficiency_tests.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!efficiency_tests.py",
+    "size": 3020,
+    "sha256": "cfed305da180170d1ecd2bf2bdfa6788275b6cf728f3b0ad5725cb97dca7d672",
+    "git_sha": "8fda2d1c2e8d79d1aa4f310e535ed65df11ef828",
+    "parts": 6
+  },
+  {
+    "path": "reference/cpu_fix03/fast_projection.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!fast_projection.py",
+    "size": 1617,
+    "sha256": "d586f8d5f079713717483b369954fc6111fbebdbb78d30f6faeaa8d62f38e593",
+    "git_sha": "10df5cd766ce3d25dedf41b7b827bc58992085f1",
+    "parts": 3
+  },
+  {
+    "path": "reference/cpu_fix03/guard.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!guard.py",
+    "size": 5106,
+    "sha256": "159a7490e24c1c9db09ba5f54d5fba604e1f126d44b456b88d2979031f7fcc9e",
+    "git_sha": "ad1820e076cb4a3996131546b23fe5708dd247f1",
+    "parts": 9
+  },
+  {
+    "path": "reference/cpu_fix03/kotlin_parity.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!kotlin_parity.py",
+    "size": 2203,
+    "sha256": "9669ba936171599a3d40e6e62e9e1b6c165e9664adc2148b65294db32785a003",
+    "git_sha": "96e895b39732bb40fbb222cdeefa1547571a3407",
+    "parts": 4
+  },
+  {
+    "path": "reference/cpu_fix03/model.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!model.py",
+    "size": 3234,
+    "sha256": "22693a58414a04a7777c288c95dfe0f890e201b2740499ac4b52855222ea92d0",
+    "git_sha": "9e3b411fe9df979184b40f38e8c4e3e90e8645e1",
+    "parts": 6
+  },
+  {
+    "path": "reference/cpu_fix03/r54_measurement.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!r54_measurement.py",
+    "size": 8655,
+    "sha256": "d958ff9767f3d4c45bbfdadfc5846e38532d546782552b09f010b75705ea1764",
+    "git_sha": "7c4b0c4d57a9d9f5d38a63596b080a014f2151d9",
+    "parts": 16
+  },
+  {
+    "path": "reference/cpu_fix03/requirements.txt",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!requirements.txt",
+    "size": 184,
+    "sha256": "bebd923a03ea546b2a3836e4172a84873b5c2dfcfea95b49862df34ed3de8af3",
+    "git_sha": "8bdf55a66b5984590d0b8ca27d9945ed79cf676f",
+    "parts": 1
+  },
+  {
+    "path": "reference/cpu_fix03/safety_tests.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!safety_tests.py",
+    "size": 11304,
+    "sha256": "97b5d84e74f345aa0e42d942551b03546c354e92a28e515979a0cc0db928516f",
+    "git_sha": "426731d90beb7e3714eae27e05ebe4a47d1a8be7",
+    "parts": 20
+  },
+  {
+    "path": "reference/cpu_fix03/supervise.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!supervise.py",
+    "size": 11431,
+    "sha256": "fbdf3f154504ff586d2abd42e1a3b7438dd46b1f30248bf48ba07a4d5a33ec7a",
+    "git_sha": "6b05e3c920c88b676e4708449e249e6566028189",
+    "parts": 20
+  },
+  {
+    "path": "reference/cpu_fix03/train.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!train.py",
+    "size": 19753,
+    "sha256": "2c87741e96cc6ba6c6d826038c5f511e5cffb24a4f93e3dce425c28f3e3241b7",
+    "git_sha": "347136b3445483e0dbba6b3e5442c39195fa338b",
+    "parts": 35
+  },
+  {
+    "path": "reference/cpu_fix03/train001_backend.py",
+    "source": "files/UNO_CPU_TRAINING_20261126_FIX03.zip!train001_backend.py",
+    "size": 22362,
+    "sha256": "6ca7867d2018a597def5bd4b2fec273c1d56f4f2e131b2a2d8dae36641a44dc3",
+    "git_sha": "96df45f25f062fddaa1fdb76f9b136aed68520a8",
+    "parts": 39
+  },
+  {
+    "path": "reference/cpu_step2000/UNO_FAST/analytic_backward.py",
+    "source": "files/UNO_CPU_RESEARCH_2000_BACKUP_20261127.zip!UNO_FAST/analytic_backward.py",
+    "size": 2507,
+    "sha256": "20d04430c6cee7995801bd7cca3e640bc3fbe54d8ff8d46a149c88b3c790d945",
+    "git_sha": "e09d987e1b2f4e26dfe5222d09c74e603efdb0eb",
+    "parts": 5
+  },
+  {
+    "path": "reference/cpu_step2000/UNO_FAST/boundary.py",
+    "source": "files/UNO_CPU_RESEARCH_2000_BACKUP_20261127.zip!UNO_FAST/boundary.py",
+    "size": 2503,
+    "sha256": "ecd5062dea61bccae8d0405b4af238e337a585c9a4cedf763ac663c92a3a294c",
+    "git_sha": "dbf0e1b32272247d4697483f1599862ae131e4f3",
+    "parts": 5
+  },
+  {
+    "path": "reference/cpu_step2000/UNO_FAST/corpus_check.py",
+    "source": "files/UNO_CPU_RESEARCH_2000_BACKUP_20261127.zip!UNO_FAST/corpus_check.py",
+    "size": 9335,
+    "sha256": "7d686d3ed49b92d3c0518f93854d06dff9444ca49f0cb0c021c8aa5b1e3b88c2",
+    "git_sha": "b9f13e322fb098ab5ee30c0949f28365aaef3898",
+    "parts": 17
+  },
+  {
+    "path": "reference/cpu_step2000/UNO_FAST/fast_projection.py",
+    "source": "files/UNO_CPU_RESEARCH_2000_BACKUP_20261127.zip!UNO_FAST/fast_projection.py",
+    "size": 1617,
+    "sha256": "d586f8d5f079713717483b369954fc6111fbebdbb78d30f6faeaa8d62f38e593",
+    "git_sha": "10df5cd766ce3d25dedf41b7b827bc58992085f1",
+    "parts": 3
+  },
+  {
+    "path": "reference/cpu_step2000/UNO_FAST/flat_backward.py",
+    "source": "files/UNO_CPU_RESEARCH_2000_BACKUP_20261127.zip!UNO_FAST/flat_backward.py",
+    "size": 2525,
+    "sha256": "7860c8f65ee35e856c1dcbe9f3514f84db79dd8c4f5063f03f3eebf3cee58f4b",
+    "git_sha": "4499022e965982a57f5aecefafce9c38b1869b68",
+    "parts": 5
+  },
+  {
+    "path": "reference/cpu_step2000/UNO_FAST/guard.py",
+    "source": "files/UNO_CPU_RESEARCH_2000_BACKUP_20261127.zip!UNO_FAST/guard.py",
+    "size": 5106,
+    "sha256": "a79b79ec6a4819ab3bf8a124b7c7619cd33f81f5f97edd54af357284a1e5c877",
+    "git_sha": "914d3a61ab88a1565393475c4c3c55ad04264aa7",
+    "parts": 9
+  },
+  {
+    "path": "reference/cpu_step2000/UNO_FAST/model.py",
+    "source": "files/UNO_CPU_RESEARCH_2000_BACKUP_20261127.zip!UNO_FAST/model.py",
+    "size": 3234,
+    "sha256": "22693a58414a04a7777c288c95dfe0f890e201b2740499ac4b52855222ea92d0",
+    "git_sha": "9e3b411fe9df979184b40f38e8c4e3e90e8645e1",
+    "parts": 6
+  },
+  {
+    "path": "reference/cpu_step2000/UNO_FAST/r54_measurement.py",
+    "source": "files/UNO_CPU_RESEARCH_2000_BACKUP_20261127.zip!UNO_FAST/r54_measurement.py",
+    "size": 8655,
+    "sha256": "d958ff9767f3d4c45bbfdadfc5846e38532d546782552b09f010b75705ea1764",
+    "git_sha": "7c4b0c4d57a9d9f5d38a63596b080a014f2151d9",
+    "parts": 16
+  },
+  {
+    "path": "reference/cpu_step2000/UNO_FAST/recover_sensor.py",
+    "source": "files/UNO_CPU_RESEARCH_2000_BACKUP_20261127.zip!UNO_FAST/recover_sensor.py",
+    "size": 4146,
+    "sha256": "0de787ee8bb1b6bf005ff265e7fd9495d664d51e24edbcd104676d4a4816fdb5",
+    "git_sha": "e908a333d8a0e4c63c27787f36bcbf6acdbff064",
+    "parts": 8
+  },
+  {
+    "path": "reference/cpu_step2000/UNO_FAST/supervise.py",
+    "source": "files/UNO_CPU_RESEARCH_2000_BACKUP_20261127.zip!UNO_FAST/supervise.py",
+    "size": 12205,
+    "sha256": "db64c6c1f89b57628233ff425911083b4785020e689bca14dee5bcf94d3b967f",
+    "git_sha": "9b28bd2458c34640e2c04534c69f1533a484d5a4",
+    "parts": 22
+  },
+  {
+    "path": "reference/cpu_step2000/UNO_FAST/thermal.py",
+    "source": "files/UNO_CPU_RESEARCH_2000_BACKUP_20261127.zip!UNO_FAST/thermal.py",
+    "size": 2314,
+    "sha256": "fb4793b4be411507a299cbc08bc39fb772c95f2840fa8fd8c84b97f2ef9415f5",
+    "git_sha": "d665e34a903a92306b559c8a254551f80286e861",
+    "parts": 5
+  },
+  {
+    "path": "reference/cpu_step2000/UNO_FAST/train.py",
+    "source": "files/UNO_CPU_RESEARCH_2000_BACKUP_20261127.zip!UNO_FAST/train.py",
+    "size": 23643,
+    "sha256": "355f19a325f9366a0f5d44219541a536ee9589f28d01ff25cc24db6cc2802e04",
+    "git_sha": "4103d121e8872435d20c0dac1ba1577023027749",
+    "parts": 42
+  },
+  {
+    "path": "reference/cpu_step2000/UNO_FAST/train001_backend.py",
+    "source": "files/UNO_CPU_RESEARCH_2000_BACKUP_20261127.zip!UNO_FAST/train001_backend.py",
+    "size": 22362,
+    "sha256": "6ca7867d2018a597def5bd4b2fec273c1d56f4f2e131b2a2d8dae36641a44dc3",
+    "git_sha": "96df45f25f062fddaa1fdb76f9b136aed68520a8",
+    "parts": 39
+  },
+  {
+    "path": "trainer/README_AUDIT01.txt",
+    "source": "UNO_B2_512_AUDIT01_PATCH.zip!README_AUDIT01.txt",
+    "size": 2099,
+    "sha256": "f5b061e3680c63088778af4c86e29c25ca8dac3c8980799959aeafeeff36ffd1",
+    "git_sha": "05f7c8d7b5b5125602bba7ace124af75f8dbbc60",
+    "parts": 4
+  },
+  {
+    "path": "trainer/README_FAST03.txt",
+    "source": "UNO_B2_512_FAST03_PATCH.zip!README_FAST03.txt",
+    "size": 2284,
+    "sha256": "e318fd59a1e8d7cec6b3a6763bb63d23c6ee81ff0b898be287112ca0d035de71",
+    "git_sha": "40fa51c51d7268cceedecfd5bac93334ae5cc15a",
+    "parts": 4
+  },
+  {
+    "path": "trainer/README_RU.txt",
+    "source": "UNO_B2_512_CUDA_BRIDGE_20261128.zip!README_RU.txt",
+    "size": 3691,
+    "sha256": "2de87aec6866834e0d164e4419cce52b5193c4b37d0432a991e137e17e9b75da",
+    "git_sha": "f7ab86f1677a2f6bbdb9a160e52f8125b32787d3",
+    "parts": 7
+  },
+  {
+    "path": "trainer/SHA256SUMS.txt",
+    "source": "UNO_B2_512_CUDA_BRIDGE_20261128.zip!SHA256SUMS.txt",
+    "size": 713,
+    "sha256": "e2ef112008746fb1a50598f3d9c97abbe45bc0145f36a625e072c16d181991b3",
+    "git_sha": "45942dfd1207c1749179a5e4434940cf891b9573",
+    "parts": 2
+  },
+  {
+    "path": "trainer/SHA256SUMS_AUDIT01.txt",
+    "source": "UNO_B2_512_AUDIT01_PATCH.zip!SHA256SUMS_AUDIT01.txt",
+    "size": 499,
+    "sha256": "9bbd914762c236efd962f2ef14f6b2298ee45262e05dfd2204528539d3850a7d",
+    "git_sha": "d5a6c2c19974fb31b5af342ee8a6cdd026e6887e",
+    "parts": 1
+  },
+  {
+    "path": "trainer/audit_tests.log",
+    "source": "UNO_B2_512_AUDIT01_PATCH.zip!audit_tests.log",
+    "size": 322,
+    "sha256": "ed6f1935d26b29b0ed3495282df80da2dda77924139ce46405052c4563b6768a",
+    "git_sha": "3c0700757e04f50e43264006eb778a82ae65d5b2",
+    "parts": 1
+  },
+  {
+    "path": "trainer/bench_fast03.py",
+    "source": "UNO_B2_512_FAST03_PATCH.zip!bench_fast03.py",
+    "size": 2664,
+    "sha256": "169244f3e2b0e646867c27ab25bfe723eec2db0c80879b324a2700552cb2efbe",
+    "git_sha": "daa0c846ff93e7a06c92fc94826885a8fe6a3e41",
+    "parts": 5
+  },
+  {
+    "path": "trainer/fast_model03.py",
+    "source": "UNO_B2_512_FAST03_PATCH.zip!fast_model03.py",
+    "size": 4370,
+    "sha256": "42627261991012cc1e50888da8d22df2819cd3f5ab76f1bd15254b58bcfdaeae",
+    "git_sha": "19e9d2c64ad10302c8c38d746d8b84a556485c17",
+    "parts": 8
+  },
+  {
+    "path": "trainer/full_cpu_probe.log",
+    "source": "UNO_B2_512_AUDIT01_PATCH.zip!full_cpu_probe.log",
+    "size": 417,
+    "sha256": "f5a49260ee454ff0bd73fc7944ced7d23480a8bab9569fd8977494fec934f402",
+    "git_sha": "3d0adf93936b1510f22a9fdee013e0471fe2b153",
+    "parts": 1
+  },
+  {
+    "path": "trainer/model.py",
+    "source": "UNO_B2_512_CUDA_BRIDGE_20261128.zip!model.py",
+    "size": 5267,
+    "sha256": "1cf5130706dd063ee8b817959f5b2c6cae2b0dbb28e81113e9fa999a41048e86",
+    "git_sha": "7f3b30122da7772663ab3059378c15dc02008803",
+    "parts": 10
+  },
+  {
+    "path": "trainer/model_audit.py",
+    "source": "UNO_B2_512_AUDIT01_PATCH.zip!model_audit.py",
+    "size": 5663,
+    "sha256": "74c911ebff801004054b7838796d93046a68f6f790f0760976ec6320f50e3212",
+    "git_sha": "ab720f6d90c2784b9b1cf5261b961b617eff3104",
+    "parts": 10
+  },
+  {
+    "path": "trainer/model_original.py",
+    "source": "UNO_B2_512_CUDA_BRIDGE_20261128.zip!model_original.py",
+    "size": 5165,
+    "sha256": "6be3a65087c4e4829b7364d233eeec929a9c3530d28581c4ac3a8067fb5e930f",
+    "git_sha": "a896debbb9b81267dd31981cfef4a5e5116ef84d",
+    "parts": 9
+  },
+  {
+    "path": "trainer/test_audit.py",
+    "source": "UNO_B2_512_AUDIT01_PATCH.zip!test_audit.py",
+    "size": 2879,
+    "sha256": "3342e5f4cfa490d0deaca4eb8171903bda9a194db74d43624eedd04f9b1ba964",
+    "git_sha": "9a73285e760708207213de221966e85d1db47065",
+    "parts": 5
+  },
+  {
+    "path": "trainer/test_audit02.py",
+    "source": "b2_audit02/test_audit02.py",
+    "size": 2188,
+    "sha256": "f289d0578b19d3983919f57111e8e791bc425baf68cc041bbf66a54333b11dab",
+    "git_sha": "9627f3a8845307949ae887ab0a96e5a9821501cb",
+    "parts": 4
+  },
+  {
+    "path": "trainer/test_bridge.py",
+    "source": "UNO_B2_512_CUDA_BRIDGE_20261128.zip!test_bridge.py",
+    "size": 1929,
+    "sha256": "53d72eb12670717286b5b8a62ed137890ac80ee8bab693fffee00549dbc4d8a4",
+    "git_sha": "d8d8084c62abb44eacf2f5f2c64ba0ef5bafe5fa",
+    "parts": 4
+  },
+  {
+    "path": "trainer/test_fast03.log",
+    "source": "UNO_B2_512_FAST03_PATCH.zip!test_fast03.log",
+    "size": 199,
+    "sha256": "3f8d3308f9f4e436af4bf306c8be525f8ab23e77f52688fb0cfb6d637ee68848",
+    "git_sha": "1a71978442f162fc489b6aa279addba0921036a3",
+    "parts": 1
+  },
+  {
+    "path": "trainer/test_fast03.py",
+    "source": "UNO_B2_512_FAST03_PATCH.zip!test_fast03.py",
+    "size": 3558,
+    "sha256": "1df95cd2ad7af95f1e4e8c1fa217503f1494723303fdf1896f80fc0e1f74459c",
+    "git_sha": "358741f81e5cc90ce0992a4098d2e9cdcfbb58fc",
+    "parts": 7
+  },
+  {
+    "path": "trainer/tests.log",
+    "source": "UNO_B2_512_CUDA_BRIDGE_20261128.zip!tests.log",
+    "size": 567,
+    "sha256": "267732710f230fe58f4afc699ff070df1c4e1734831addcd50e68f6d77bd7215",
+    "git_sha": "255720075320f1e603384c4432ac654656db4f9f",
+    "parts": 1
+  },
+  {
+    "path": "trainer/tokenizer.json",
+    "source": "UNO_B2_512_CUDA_BRIDGE_20261128.zip!tokenizer.json",
+    "size": 26570,
+    "sha256": "1c622409b42d96d339505d15d69da66d7176788f358e828672970c3ee637474f",
+    "git_sha": "4065dde9cc3e7c8e467a53fa03b8af6a97e1adcb",
+    "parts": 47
+  },
+  {
+    "path": "trainer/tokenizer.py",
+    "source": "UNO_B2_512_CUDA_BRIDGE_20261128.zip!tokenizer.py",
+    "size": 3381,
+    "sha256": "734c875dfba681c344e7befcda92ed20c7e3157441e21c2b5d8fb8f21f7faf49",
+    "git_sha": "4a784757180d6b00ad24073d5f1cb8f9b523934d",
+    "parts": 6
+  },
+  {
+    "path": "trainer/train_cuda.py",
+    "source": "UNO_B2_512_CUDA_BRIDGE_20261128.zip!train_cuda.py",
+    "size": 11785,
+    "sha256": "b9e6b01fcf63784fe80e30dd6bf8556369f884ff795ccc1eca120f398fb80161",
+    "git_sha": "b5f0734740cc2ae157222f34c3a98a2054f9c56f",
+    "parts": 21
+  },
+  {
+    "path": "trainer/train_cuda_audit.py",
+    "source": "UNO_B2_512_AUDIT01_PATCH.zip!train_cuda_audit.py",
+    "size": 15708,
+    "sha256": "39fbeaeced0132de5144c2fe2f48b67f4370871e88d743cfcfe15d5cf54831ac",
+    "git_sha": "5976e3c90eae3f1b40009fb5d3ba3b4ffcd8c941",
+    "parts": 28
+  },
+  {
+    "path": "trainer/train_cuda_audit02.py",
+    "source": "b2_audit02/train_cuda_audit02.py",
+    "size": 16788,
+    "sha256": "512b454c3434865c2fa94d858795e1fe4c0f0116e91c6242f73919fd22769e99",
+    "git_sha": "994eb2b5346cd7398bea899f3c97837cca74e173",
+    "parts": 30
+  },
+  {
+    "path": "trainer/train_cuda_fast03.py",
+    "source": "UNO_B2_512_FAST03_PATCH.zip!train_cuda_fast03.py",
+    "size": 18170,
+    "sha256": "5b25c0845ba44073ff9fc28096479ed358b8eff7323028a8009fdbf0883376f0",
+    "git_sha": "5d60e0b48f459685fc693f55eb995d66f3c1c8d0",
+    "parts": 32
+  }
+]

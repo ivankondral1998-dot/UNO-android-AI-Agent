@@ -1,0 +1,7 @@
+STEP 15 loss 5.6486358642578125 elapsed 7.13
+STEP 20 loss 5.883659839630127 elapsed 12.84
+DEV 20 {'tokens': 492, 'nll': 5.787294620420875, 'perplexity': 326.12952565627984, 'accuracy': 0.016260162601626018, 'correct': 8}
+STEP 25 loss 5.544681072235107 elapsed 18.28
+STEP 30 loss 5.674492835998535 elapsed 24.68
+DEV 30 {'tokens': 492, 'nll': 5.802372009773564, 'perplexity': 331.0839636328245, 'accuracy': 0.018292682926829267, 'correct': 9}
+END 30 seconds 25.42

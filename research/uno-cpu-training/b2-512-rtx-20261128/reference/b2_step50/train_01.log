@@ -1,0 +1,5 @@
+BASELINE {'tokens': 492, 'nll': 6.24183605163078, 'perplexity': 513.8010106224712, 'accuracy': 0.0, 'correct': 0} CLASSICAL {'uniform_nll': 6.2422232654551655, 'unigram_nll': 5.8007331386403775, 'bigram_nll': 5.385139618422574, 'unigram_ppl': 330.54180406834433, 'bigram_ppl': 218.1405584220949, 'alpha': 0.1, 'dev_tokens': 492}
+STEP 5 loss 6.207322120666504 elapsed 6.6
+STEP 10 loss 6.013304233551025 elapsed 14.57
+DEV 10 {'tokens': 492, 'nll': 5.812752018129922, 'perplexity': 334.5385160661679, 'accuracy': 0.016260162601626018, 'correct': 8}
+END 10 seconds 15.1

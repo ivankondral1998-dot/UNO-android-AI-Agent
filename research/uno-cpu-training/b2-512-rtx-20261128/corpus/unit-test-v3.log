@@ -1,0 +1,41 @@
+test_conflicting_intent (test_fix03.Fix03.test_conflicting_intent) ... Removing exact duplicates and train/holdout collisions...
+ok
+test_cross_holdout (test_fix03.Fix03.test_cross_holdout) ... Removing exact duplicates and train/holdout collisions...
+ok
+test_everyday_prose_only (test_fix03.Fix03.test_everyday_prose_only) ... Original R5.4 archive manifest verified
+  5,000 candidate records
+  10,000 candidate records
+  15,000 candidate records
+ok
+test_non_alternation_and_english (test_fix03.Fix03.test_non_alternation_and_english) ... ok
+test_prior_train_not_new_holdout (test_fix03.Fix03.test_prior_train_not_new_holdout) ... Removing exact duplicates and train/holdout collisions...
+ok
+test_quality_align (test_fix03.Fix03.test_quality_align) ... ok
+test_special_casefold_and_format (test_fix03.Fix03.test_special_casefold_and_format) ... ok
+test_aya_filter (test_prepare.Test.test_aya_filter) ... ok
+test_holdout_priority (test_prepare.Test.test_holdout_priority) ... Removing exact duplicates and train/holdout collisions...
+ok
+test_massive (test_prepare.Test.test_massive) ... ok
+test_no_special_injection (test_prepare.Test.test_no_special_injection) ... ok
+test_pd (test_prepare.Test.test_pd) ... ok
+test_pii (test_prepare.Test.test_pii) ... ok
+test_aya_actual_annotation (test_regression.Regression.test_aya_actual_annotation) ... ok
+test_aya_group (test_regression.Regression.test_aya_group) ... ok
+test_base_extra_file (test_regression.Regression.test_base_extra_file) ... ok
+test_base_manifest_and_dialogues (test_regression.Regression.test_base_manifest_and_dialogues) ... Original R5.4 archive manifest verified
+  5,000 candidate records
+  10,000 candidate records
+  15,000 candidate records
+ok
+test_legacy (test_regression.Regression.test_legacy) ... ok
+test_oasst_derived (test_regression.Regression.test_oasst_derived) ... ok
+test_oasst_raw_pii (test_regression.Regression.test_oasst_raw_pii) ... ok
+test_old_test_prompt (test_regression.Regression.test_old_test_prompt) ... Removing exact duplicates and train/holdout collisions...
+ok
+test_reviewed_pd_hash (test_regression.Regression.test_reviewed_pd_hash) ... ok
+test_unmapped_massive (test_regression.Regression.test_unmapped_massive) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 6.536s
+
+OK

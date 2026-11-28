@@ -1,0 +1,9 @@
+BPE parity 256/256
+assistant-only mask PASS
+original vs packed embedding forward exact, backward max abs 0
+checkpoint roundtrip + corruption rejection PASS
+STEP 1 language loss 6.2256 targets 4
+STEP 2 language loss 5.7972 targets 4
+STEP 3 dialogue loss 5.9672 targets 4
+PROBE_DEV {'language': {'nll': 5.462010383605957, 'targets': 4, 'accuracy': 0.0}, 'dialogue': {'nll': 5.64832878112793, 'targets': 4, 'accuracy': 0.0}}
+{"step": 3, "targets": 12, "seconds": 1.0153054729998985, "parameters": 23015887, "peak_cuda_mib": null, "status": "MECHANISM_ONLY_NOT_QUALITY"}

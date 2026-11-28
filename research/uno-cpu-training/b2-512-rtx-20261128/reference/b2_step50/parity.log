@@ -1,0 +1,5 @@
+fixed-route parity 0 max abs 0.0
+causality PASS
+fixed-route parity 3 max abs 0.0
+causality PASS
+inventory 512 23015887 118 free 22852753

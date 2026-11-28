@@ -1,0 +1,8 @@
+Prepared SHA256: 67 PASS
+Original extracted files byte equal: 55
+model_visible 2988
+teacher 2988
+simulator_trace 947
+Original B2 tokenizer SHA256 PASS
+Retained cross-split exact keys: 0; human dialogue removed from assistant supervision: 20
+External test records are synthetic fixtures, not downloaded OASST/Tatoeba full datasets.

@@ -1,0 +1,5 @@
+STEP 1 language loss 5.4763 targets 32
+STEP 2 language loss 5.8865 targets 32
+STEP 3 dialogue loss 5.6453 targets 32
+PROBE_DEV {'language': {'nll': 5.254495143890381, 'targets': 32, 'accuracy': 0.0}, 'dialogue': {'nll': 5.392441431681315, 'targets': 24, 'accuracy': 0.0}}
+{"step": 3, "targets": 96, "seconds": 0.8616703039988352, "parameters": 23015887, "peak_cuda_mib": null, "status": "MECHANISM_ONLY_NOT_QUALITY"}
