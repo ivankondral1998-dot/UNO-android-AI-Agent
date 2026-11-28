@@ -1,0 +1,71 @@
+{
+  "fixture": {
+    "contrast": {
+      "exact": 0,
+      "total": 4
+    },
+    "paraphrase": {
+      "exact": 0,
+      "total": 4
+    },
+    "multiturn": {
+      "exact": 0,
+      "total": 4
+    },
+    "negation": {
+      "exact": 0,
+      "total": 4
+    },
+    "intent": {
+      "exact": 0,
+      "total": 4
+    },
+    "instruction": {
+      "exact": 0,
+      "total": 4
+    },
+    "contradiction": {
+      "exact": 0,
+      "total": 4
+    },
+    "refusal": {
+      "exact": 0,
+      "total": 4
+    }
+  },
+  "candidate": {
+    "contrast": {
+      "exact": 0,
+      "total": 4
+    },
+    "paraphrase": {
+      "exact": 0,
+      "total": 4
+    },
+    "multiturn": {
+      "exact": 0,
+      "total": 4
+    },
+    "negation": {
+      "exact": 0,
+      "total": 4
+    },
+    "intent": {
+      "exact": 0,
+      "total": 4
+    },
+    "instruction": {
+      "exact": 0,
+      "total": 4
+    },
+    "contradiction": {
+      "exact": 0,
+      "total": 4
+    },
+    "refusal": {
+      "exact": 0,
+      "total": 4
+    }
+  },
+  "newly_failed": []
+}

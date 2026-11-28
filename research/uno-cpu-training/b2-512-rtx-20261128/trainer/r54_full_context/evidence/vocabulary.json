@@ -1,0 +1,39 @@
+{
+  "train_sha256": "9e32f7eebe613d65b74e50d3089dea5c2d8dba3268eaa728f51addfd45f906e4",
+  "validation_sha256": "47a343b09dbde37774e371ff913981a1ed77e8eeedc43c72f0d94aeabc741ff6",
+  "results": [
+    {
+      "active_ids": 514,
+      "dialogues": 154,
+      "raw_text_tokens": 8439,
+      "median_dialogue_tokens": 66.0,
+      "full_dialogue_at_128": 150,
+      "full_dialogue_at_512": 154,
+      "question_and_marker_at_128": 153,
+      "compact_text_weight_mib_fp32": 1.0058670043945312,
+      "encoding_wall_seconds_single_run": 0.031360562999907415
+    },
+    {
+      "active_ids": 1024,
+      "dialogues": 154,
+      "raw_text_tokens": 6193,
+      "median_dialogue_tokens": 52.0,
+      "full_dialogue_at_128": 150,
+      "full_dialogue_at_512": 154,
+      "question_and_marker_at_128": 153,
+      "compact_text_weight_mib_fp32": 2.00390625,
+      "encoding_wall_seconds_single_run": 0.033681281999975
+    },
+    {
+      "active_ids": 1766,
+      "dialogues": 154,
+      "raw_text_tokens": 5813,
+      "median_dialogue_tokens": 49.5,
+      "full_dialogue_at_128": 150,
+      "full_dialogue_at_512": 154,
+      "question_and_marker_at_128": 153,
+      "compact_text_weight_mib_fp32": 3.4559555053710938,
+      "encoding_wall_seconds_single_run": 0.03487826100001712
+    }
+  ]
+}

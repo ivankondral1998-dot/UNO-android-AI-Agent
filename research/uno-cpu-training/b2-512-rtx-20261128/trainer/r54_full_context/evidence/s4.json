@@ -1,0 +1,80 @@
+{
+  "steps": 32,
+  "seconds": 10.125722348999943,
+  "gradients_before_updates": {
+    "single": {
+      "W_q": 0.0,
+      "W_k": 0.0,
+      "W_v": 0.6574853658676147,
+      "W_r": 0.24493533372879028
+    },
+    "bank": {
+      "W_q": 0.0002962321450468153,
+      "W_k": 0.0003031375235877931,
+      "W_v": 0.4986588656902313,
+      "W_r": 0.18582755327224731
+    }
+  },
+  "after": {
+    "train": {
+      "bank": {
+        "first_correct": 0,
+        "targets": 2,
+        "mean_first_margin": 2.384185791015625e-07,
+        "first_logit_gap": 3.814697265625e-06
+      },
+      "empty": {
+        "first_correct": 0,
+        "targets": 2,
+        "mean_first_margin": 2.384185791015625e-07,
+        "first_logit_gap": 9.5367431640625e-07
+      },
+      "swapped": {
+        "first_correct": 0,
+        "targets": 2,
+        "mean_first_margin": -2.384185791015625e-07,
+        "first_logit_gap": 4.76837158203125e-06
+      }
+    },
+    "unseen": {
+      "bank": {
+        "first_correct": 0,
+        "targets": 2,
+        "mean_first_margin": 4.76837158203125e-07,
+        "first_logit_gap": 4.76837158203125e-06
+      },
+      "empty": {
+        "first_correct": 0,
+        "targets": 2,
+        "mean_first_margin": 2.384185791015625e-07,
+        "first_logit_gap": 9.5367431640625e-07
+      },
+      "swapped": {
+        "first_correct": 0,
+        "targets": 2,
+        "mean_first_margin": -2.384185791015625e-07,
+        "first_logit_gap": 4.291534423828125e-06
+      }
+    },
+    "long": {
+      "bank": {
+        "first_correct": 0,
+        "targets": 2,
+        "mean_first_margin": -2.384185791015625e-07,
+        "first_logit_gap": 3.814697265625e-06
+      },
+      "empty": {
+        "first_correct": 0,
+        "targets": 2,
+        "mean_first_margin": 0.0,
+        "first_logit_gap": 0.0
+      },
+      "swapped": {
+        "first_correct": 0,
+        "targets": 2,
+        "mean_first_margin": 2.384185791015625e-07,
+        "first_logit_gap": 3.814697265625e-06
+      }
+    }
+  }
+}

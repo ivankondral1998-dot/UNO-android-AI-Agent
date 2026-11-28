@@ -1,0 +1,12 @@
+{
+  "manifest": "70fb3c31f7fcbfb2d2c7b0a44435cda8ba6bda75d3d7bdd4deea1971bd09c85a",
+  "rows": {
+    "test/language/synthetic": 1,
+    "test/dialogue/synthetic": 2,
+    "validation/language/synthetic": 1,
+    "validation/dialogue/synthetic": 2,
+    "train/language/synthetic": 1,
+    "train/dialogue/synthetic": 2
+  },
+  "overlaps": {}
+}

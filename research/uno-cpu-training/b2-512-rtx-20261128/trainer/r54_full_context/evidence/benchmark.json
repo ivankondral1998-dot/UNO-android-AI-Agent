@@ -1,0 +1,21 @@
+{
+  "context": 128,
+  "targets_per_update": 64,
+  "measured_updates": 4,
+  "fast03_targets_s": [
+    85.37772827216133,
+    103.62457286154779,
+    94.74613790129871,
+    99.20688236338158
+  ],
+  "full_context_targets_s": [
+    89.87263386542129,
+    96.8043901262864,
+    86.46245424732854,
+    82.33798576788847
+  ],
+  "median_fast03_targets_s": 96.97651013234014,
+  "median_full_context_targets_s": 88.16754405637491,
+  "max_loss_difference": 0.0,
+  "max_weight_difference": 8.381903171539307e-09
+}
